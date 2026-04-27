@@ -74,7 +74,7 @@ export default function StudyPage() {
             transition={{ duration: 0.2 }}
           >
             <QuestionCard 
-              question={questionsData[currentIndex]} 
+              question={questionsData[currentIndex] as any} 
               onNext={handleNext}
               onPrevious={handlePrevious}
               isFirst={currentIndex === 0}
