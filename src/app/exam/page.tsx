@@ -294,7 +294,7 @@ export default function ExamPage() {
                     </div>
                   </div>
 
-                  {Object.keys(q.explanation.why_wrong).length > 0 && (
+                  {q.explanation.why_wrong && Object.keys(q.explanation.why_wrong).length > 0 && (
                     <div className="explanation-block" style={{ marginBottom: '1.5rem' }}>
                       <div className="explanation-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-error)', fontWeight: '600', marginBottom: '0.5rem' }}>
                         <XCircle size={18} /> Tại sao các đáp án khác sai?
