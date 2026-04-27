@@ -1,0 +1,309 @@
+[
+  {
+    "id": 181,
+    "question": "A developer has the following requirements:\n• Calculate the total amount on an order.\n• Calculate the line amount for each Line Item based on the quantity selected and price.\n• Move Line Items to a different Order if a Line Item is not in stock.\nWhich relationship implementation supports these requirements?",
+    "options": [
+      { "key": "A", "text": "An order has a Lookup field to Line Item." },
+      { "key": "B", "text": "Line Item has a Master-Detail field to Order and the Master can be re-parented." },
+      { "key": "C", "text": "An order has a Master-Detail field to Line Item." },
+      { "key": "D", "text": "Line Item has a lookup field to Order." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Yêu cầu: 1. Tính tổng tiền Order. 2. Tính tiền từng Line Item. 3. Có thể chuyển Line Item sang Order khác. Quan hệ nào phù hợp?",
+      "why_correct": "Để tính tổng tiền tự động (Roll-up Summary), mày cần quan hệ Master-Detail. Tuy nhiên, mặc định Master-Detail không cho phép đổi cha. Yêu cầu thứ 3 bắt buộc mày phải tích chọn 'Allow reparenting' trong cấu hình field Master-Detail trên đối tượng Line Item.",
+      "why_wrong": {
+        "A": "Lookup không hỗ trợ Roll-up Summary field mặc định.",
+        "D": "Tương tự A, không tự động tính tổng tiền Order được."
+      },
+      "tip": "Keywords: Total amount (Roll-up) + Move to different parent -> Master-Detail WITH Reparenting."
+    }
+  },
+  {
+    "id": 182,
+    "question": "Which Lightning code segment should be written to declare dependencies on a Lightning component, c:accountList, that is used in a Visualforce page?",
+    "options": [
+      { "key": "10", "text": "<aura:application access='GLOBAL' extends='ltng:outApp'>" },
+      { "key": "11", "text": "<aura:dependency resource='c:accountList'/>" },
+      { "key": "12", "text": "</aura:application>" }
+    ],
+    "correct": ["12"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo dependency cho component c:accountList để dùng trong Visualforce như thế nào?",
+      "why_correct": "Để dùng được Lightning Out (nhúng Lightning vào VF), mày cần một App đóng vai trò là 'vỏ bọc'. App này phải kế thừa `ltng:outApp` và sử dụng thẻ `<aura:dependency>` để chỉ định các component sẽ được sử dụng.",
+      "tip": "Lightning Out: extends='ltng:outApp' + <aura:dependency>."
+    }
+  },
+  {
+    "id": 183,
+    "question": "Which statement generates a list of Leads and Contacts that have a field with the phrase ‘ACME’?",
+    "options": [
+      { "key": "A", "text": "Map <sObject> searchList = [FIND 'ACME*' IN ALL FIELDS RETURNING Contact, Lead];" },
+      { "key": "B", "text": "List<List <sObject>> searchList = [FIND '*ACME*' IN ALL FIELDS RETURNING Contact, Lead];" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Câu lệnh nào trả về danh sách Leads và Contacts có chứa cụm từ 'ACME'?",
+      "why_correct": "SOSL bắt đầu bằng `FIND`. Kết quả trả về của một câu SOSL luôn là một 'List của các List sObject' (`List<List<sObject>>`), trong đó mỗi list con tương ứng với một Object được định nghĩa trong `RETURNING`.",
+      "why_wrong": {
+        "D": "SOSL không trả về một List đơn lẻ, nó phải là List lồng List."
+      },
+      "tip": "Data Type: SOSL = List<List<sObject>>. Nhớ kỹ dấu ngoặc lồng nhau này để không mất điểm."
+    }
+  },
+  {
+    "id": 184,
+    "question": "Which two settings must be defined in order to update a record of a junction object? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Read/Write access on the secondary relationship." },
+      { "key": "D", "text": "Read/Write access on the primary relationship." }
+    ],
+    "correct": ["A", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai thiết lập nào cần có để update một bản ghi của Junction Object (quan hệ n-n)?",
+      "why_correct": "Bản ghi Junction là con của cả 2 thằng cha (Primary và Secondary Master). Do quyền của nó bị kiểm soát bởi các thằng cha, mày cần có quyền Read/Write ở cả hai phía mối quan hệ thì mới có thể tác động lên bản ghi Junction đó.",
+      "tip": "Junction Security: Con phụ thuộc cả 2 Cha. Phải có R/W ở cả 2 Master relationship."
+    }
+  },
+  {
+    "id": 185,
+    "question": "Which three statements are true regarding custom exceptions in Apex? Choose 3 answers.",
+    "options": [
+      { "key": "A", "text": "A custom exception class must extend the system Exception class." },
+      { "key": "D", "text": "A custom exception class name must end with 'Exception'." },
+      { "key": "E", "text": "A custom exception class can implement one or many interfaces." }
+    ],
+    "correct": ["A", "D", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba phát biểu đúng về Custom Exceptions trong Apex?",
+      "why_correct": "A: Phải kế thừa `Exception`. D: Tên phải kết thúc bằng hậu tố `Exception`. E: Giống như mọi class khác, nó có thể thực thi nhiều interfaces để mở rộng tính năng.",
+      "why_wrong": {
+        "B": "Nó có thể chứa biến và method bình thường để lưu trữ thông tin lỗi chi tiết."
+      },
+      "tip": "Thần chú Exception: Extends Exception + Name ends with 'Exception'."
+    }
+  },
+  {
+    "id": 186,
+    "question": "An Opportunity needs to have an amount rolled up from a custom object that is not in a Master/Detail relationship. How can this be achieved?",
+    "options": [
+      { "key": "C", "text": "Write a trigger on the child object and use an aggregate function to sum the amount." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm sao để làm Roll-up (tính tổng) từ một object không phải Master-Detail lên Opportunity?",
+      "why_correct": "Khi không có Master-Detail, mày không dùng được field Roll-up Summary có sẵn. Giải pháp là viết Trigger trên object con. Mỗi khi con được tạo/sửa/xóa, trigger sẽ dùng hàm Aggregate (SUM) để tính toán và update kết quả vào một field trên Opportunity cha.",
+      "tip": "No Master-Detail = No Roll-up Summary field. Giải pháp: Apex Trigger + Aggregate Query."
+    }
+  },
+  {
+    "id": 187,
+    "question": "Which aspect of Apex programming is limited due to multitenancy?",
+    "options": [
+      { "key": "D", "text": "The number of records returned from database queries." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khía cạnh nào của Apex bị giới hạn do cơ chế đa thuê bao (Multitenancy)?",
+      "why_correct": "Vì dùng chung tài nguyên server, Salesforce giới hạn số lượng bản ghi trả về từ query (50,000 records mỗi transaction) để đảm bảo một khách hàng không làm 'nghẽn' toàn bộ hệ thống.",
+      "tip": "Multitenancy = Governor Limits. Nhớ mốc 50k bản ghi query."
+    }
+  },
+  {
+    "id": 188,
+    "question": "Refer to the code snippet for an environment has more than 200 Accounts... for ( Account thisAccount : [ Select Id, Industry FROM Account LIMIT 250] ) { ... update thisAccount; }",
+    "options": [
+      { "key": "D", "text": "If executed in a synchronous context, the apex transaction is likely to fail by exceeding the DML governor limit." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code update account ngay trong vòng lặp query 250 bản ghi sẽ dẫn đến kết quả gì?",
+      "why_correct": "Đây là lỗi Bulkification nghiêm trọng. Mày đang gọi lệnh `update` bên trong vòng lặp. Giới hạn DML là 150 câu lệnh mỗi transaction. Với 200-250 bản ghi, transaction chắc chắn sẽ chết ở vòng lặp thứ 151.",
+      "tip": "Governor Limit: Max 150 DML statements. Đừng bao giờ nhét DML (Update/Insert) vào For loop!"
+    }
+  },
+  {
+    "id": 189,
+    "question": "What are the 3 ways for a developer to execute tests in an org? Choose 3 answers.",
+    "options": [
+      { "key": "B", "text": "Setup Menu" },
+      { "key": "D", "text": "Salesforce DX" },
+      { "key": "E", "text": "Tooling API" }
+    ],
+    "correct": ["B", "D", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba cách để chạy tests trong một Org?",
+      "why_correct": "B: Qua giao diện Setup (Apex Test Execution). D: Qua dòng lệnh CLI (SFDX). E: Tooling API cho phép các tool bên ngoài (như VS Code) gửi yêu cầu chạy test và nhận kết quả.",
+      "tip": "Run Test: Setup UI, CLI, Tooling API (VS Code)."
+    }
+  },
+  {
+    "id": 190,
+    "question": "What should a developer use to obtain the Id and Name of all the Leads, Accounts, and Contacts that have the company name 'Universal Containers'?",
+    "options": [
+      { "key": "D", "text": "FIND ‘Universal Containers’ IN Name Fields RETURNING lead(id, name), account(id, name), contact(id, name)" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lấy Id và Name của Lead, Account, Contact có tên 'Universal Containers'. Dùng gì?",
+      "why_correct": "Để tìm kiếm một chuỗi trên nhiều object khác nhau, SOSL là lựa chọn duy nhất. Cú pháp `FIND ... IN Name Fields RETURNING ...` là chuẩn xác nhất cho yêu cầu này.",
+      "tip": "Multi-object text search = SOSL (FIND)."
+    }
+  },
+  {
+    "id": 191,
+    "question": "Recruiting app: Applicant may apply for more than one job. What to implement to represent that an applicant has applied for a job?",
+    "options": [
+      { "key": "C", "text": "Junction object between Applicant and job." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Một người ứng tuyển (Applicant) có thể ứng tuyển nhiều việc (Job). Thiết kế thế nào?",
+      "why_correct": "Đây là quan hệ Nhiều-Nhiều (Many-to-Many). Trong Salesforce, mày cần tạo một Object trung gian (Junction Object), ví dụ 'Job Application', chứa 2 field Master-Detail trỏ về Applicant và Job.",
+      "tip": "Many-to-Many = Junction Object (2 Master-Detail relationships)."
+    }
+  },
+  {
+    "id": 192,
+    "question": "A developer needs an Apex method... ensures only users that should be able to delete Accounts can successfully perform deletions?",
+    "options": [
+      { "key": "B", "text": "Schema.sObjectType.Account.isDeletable( )" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm sao để đảm bảo chỉ những user có quyền xóa Account mới thực hiện được lệnh xóa trong code?",
+      "why_correct": "Để bảo mật cấp độ Object (CRUD), mày dùng Schema Describe. `isDeletable()` kiểm tra xem Profile/Permission Set của user hiện tại có quyền 'Delete' trên object đó hay không trước khi thực hiện lệnh.",
+      "tip": "CRUD Check: Schema.sObjectType.ObjectName.isDeletable() / isAccessible() / isUpdateable()."
+    }
+  },
+  {
+    "id": 193,
+    "question": "A custom Visualforce controller calls the Apexpages.addMessage() method, but no messages are rendering. Which component should be added?",
+    "options": [
+      { "key": "D", "text": "<apex:pageMessages />" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Add message trong Apex nhưng Page không hiện. Cần thêm component nào vào Visualforce?",
+      "why_correct": "Component `<apex:pageMessages />` đóng vai trò là 'thùng chứa'. Nó sẽ hứng toàn bộ các thông báo lỗi hoặc thành công được gửi từ Controller qua lệnh `ApexPages.addMessage()` và hiển thị lên giao diện.",
+      "tip": "ApexPages.addMessage -> Visualforce <apex:pageMessages />."
+    }
+  },
+  {
+    "id": 194,
+    "question": "GCC wants a server's status page update in real-time... what should be added to the LWC to allow interact with the Server Update platform event?",
+    "options": [
+      { "key": "B", "text": "import { subscribe, unsubscribe, onError } from ‘lightning/empApi’;" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để LWC lắng nghe (subscribe) một Platform Event?",
+      "why_correct": "Trong LWC, module `lightning/empApi` cung cấp các phương thức cần thiết để kết nối và lắng nghe các tin nhắn từ Event Bus (qua giao thức CometD) một cách dễ dàng nhất.",
+      "tip": "LWC Platform Event = lightning/empApi."
+    }
+  },
+  {
+    "id": 195,
+    "question": "Aura component needs to display a flow named 'accountOnboarding'. Which tag?",
+    "options": [
+      { "key": "D", "text": "lightning:flow" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Dùng thẻ nào để nhúng Flow vào Aura Component?",
+      "why_correct": "Thẻ chuẩn của Lightning Component framework để chạy một Flow là `<lightning:flow />`. Mày chỉ cần truyền vào `flowName` là nó tự chạy.",
+      "tip": "Aura + Flow = <lightning:flow>."
+    }
+  },
+  {
+    "id": 196,
+    "question": "Exclusively declarative development... Which three options should be used to build out the database layer?",
+    "options": [
+      { "key": "C", "text": "Roll-up summaries." },
+      { "key": "D", "text": "Custom objects and fields." },
+      { "key": "E", "text": "Relationships." }
+    ],
+    "correct": ["C", "D", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba thành phần nào thuộc tầng Database (dữ liệu) và là Declarative (No-code)?",
+      "why_correct": "Database layer bao gồm cấu trúc lưu trữ: Objects/Fields (D) và cách chúng liên kết: Relationships (E). Roll-up summaries (C) cũng là một phần của database logic vì nó được định nghĩa trực tiếp trên field.",
+      "why_wrong": {
+        "A": "Process Builder thuộc Logic layer (xử lý).",
+        "B": "Trigger là programmatic (code)."
+      },
+      "tip": "Database Layer (Declarative): Object, Field, Relationship, Roll-up Summary."
+    }
+  },
+  {
+    "id": 197,
+    "question": "CK wants to back up all data and attachments once a month. Which approach?",
+    "options": [
+      { "key": "D", "text": "Define a Data Export scheduled job." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Backup toàn bộ dữ liệu và file đính kèm định kỳ hàng tháng. Dùng gì?",
+      "why_correct": "Tính năng 'Data Export' trong Setup cho phép mày lên lịch xuất toàn bộ dữ liệu ra file CSV và lưu trữ file đính kèm. Đây là cách chính thống và an toàn nhất của Salesforce để backup Org.",
+      "tip": "Monthly Backup = Data Export Service."
+    }
+  },
+  {
+    "id": 198,
+    "question": "LWC child component navigation 'Next' button... parent must be alerted. How?",
+    "options": [
+      { "key": "B", "text": "Create a custom event." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Child LWC muốn báo cho Parent LWC thực hiện chuyển trang. Cách nào chuẩn?",
+      "why_correct": "Giao tiếp từ dưới lên (Upstream) trong LWC bắt buộc dùng Custom Event. Thằng con sẽ `dispatchEvent(new CustomEvent('next'))`, và thằng cha sẽ lắng nghe để xử lý logic chuyển trang.",
+      "tip": "LWC Upstream: Child to Parent = Custom Event."
+    }
+  },
+  {
+    "id": 199,
+    "question": "AWC wants real-time inventory reduction sent to external systems... what to add to the code?",
+    "options": [
+      { "key": "H", "text": "EventBus.publish(ev);" }
+    ],
+    "correct": ["H"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Gửi thông tin giảm tồn kho thời gian thực qua Platform Event bằng Apex thế nào?",
+      "why_correct": "Platform Event (có đuôi `__e`) không được lưu bằng lệnh `insert`. Mày phải sử dụng class `EventBus` và phương thức `.publish()` để đẩy sự kiện đó lên hệ thống.",
+      "tip": "Platform Event: Suffix '__e' + EventBus.publish()."
+    }
+  },
+  {
+    "id": 200,
+    "question": "Best practice to get the sum of all order line totals on the order header?",
+    "options": [
+      { "key": "C", "text": "Roll-up summary field." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tính tổng các Line Items lên Order. Cách nào là Best Practice?",
+      "why_correct": "Vì có quan hệ Master-Detail, dùng Roll-up Summary field là phương án tối ưu nhất: không tốn code, tự động update, và cực kỳ tin cậy.",
+      "tip": "Master-Detail SUM = Roll-up Summary Field."
+    }
+  }
+]

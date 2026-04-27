@@ -1,0 +1,349 @@
+[
+  {
+    "id": 101,
+    "question": "The StatusFetcher class successfully compiled. However, the Calculator class has a compile-time error. How should the developer fix this code?",
+    "options": [
+      { "key": "A", "text": "Make the isActive method in the StatusFetcher class public." },
+      { "key": "B", "text": "Change the class declaration to public with inherited sharing." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Class StatusFetcher biên dịch thành công, nhưng Class Calculator bị lỗi compile-time khi gọi method của StatusFetcher. Phải sửa thế nào?",
+      "why_correct": "Lỗi nằm ở Access Modifier. Method `isActive()` trong StatusFetcher đang được khai báo là `private`, nghĩa là chỉ có code bên trong class đó mới thấy được nó. Để class Calculator gọi được, mày phải đổi nó sang `public`.",
+      "why_wrong": {
+        "B": "Thay đổi sharing model không giải quyết được vấn đề quyền truy cập (visibility) của method."
+      },
+      "tip": "OOP 101: Muốn thằng khác dùng đồ của mình -> Để Public. Dùng nội bộ -> Để Private."
+    }
+  },
+  {
+    "id": 102,
+    "question": "What does the Lightning Component framework provide to developers?",
+    "options": [
+      { "key": "A", "text": "Support for Classic and Lightning UIs." },
+      { "key": "B", "text": "Templates to create custom components." },
+      { "key": "C", "text": "Prebuilt components that can be reused." },
+      { "key": "D", "text": "Extended governor limits for applications." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Framework Lightning Component cung cấp điều gì cho developer?",
+      "why_correct": "Điểm mạnh của Lightning là 'Component-based'. Salesforce cung cấp sẵn một thư viện đồ sộ các component (Base Lightning Components) để mày lắp ghép và tái sử dụng, giúp tốc độ dev nhanh gấp bội.",
+      "why_wrong": {
+        "D": "Framework không làm tăng Governor Limits. Limit là do Platform quy định chung."
+      },
+      "tip": "Lightning = Lego. Có sẵn đống gạch (Prebuilt components), chỉ việc lắp thôi!"
+    }
+  },
+  {
+    "id": 103,
+    "question": "What occurs when more than one account is returned by the SOQL query: Account myAccount = [Select ID, Name from Account];?",
+    "options": [
+      { "key": "A", "text": "The variable is automatically cast to the List data type." },
+      { "key": "B", "text": "The first Account returned is assigned to myAccount." },
+      { "key": "C", "text": "An unhandled exception is thrown and the code terminates." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Nếu câu query gán cho 1 biến sObject đơn lẻ mà trả về nhiều hơn 1 bản ghi thì sao?",
+      "why_correct": "Salesforce cực kỳ nghiêm túc vụ này. Nếu mày gán kết quả query cho một biến đơn (không phải List) mà query đó trả về >1 bản ghi, hệ thống sẽ bắn lỗi `QueryException: List has more than 1 row for assignment` và dừng code ngay lập tức.",
+      "why_wrong": {
+        "A": "Apex không tự động ép kiểu từ sObject sang List.",
+        "B": "Nó không tự lấy thằng đầu tiên trừ khi mày dùng LIMIT 1 hoặc lấy index [0]."
+      },
+      "tip": "Quy tắc an toàn: Luôn query vào List, dù mày nghĩ nó chỉ trả về 1 bản ghi."
+    }
+  },
+  {
+    "id": 104,
+    "question": "What should the developer consider while testing the trigger code given multiple automations exist on Account?",
+    "options": [
+      { "key": "A", "text": "A workflow rule field update will cause the custom validation to run again." },
+      { "key": "B", "text": "The trigger may fire multiple times during a transaction." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khi test Trigger trên Account (nơi có cả Workflow, Flow, Validation), cần lưu ý điều gì?",
+      "why_correct": "Theo 'Order of Execution', các tác vụ như Workflow Field Update có thể làm Trigger chạy lại (re-fire). Do đó, Trigger phải được viết để chống đệ quy (Recursion) để không bị dính Limit.",
+      "why_wrong": {
+        "A": "Workflow field update KHÔNG làm chạy lại Validation Rules (trừ khi là Field Update trên cùng bản ghi đó và cấu hình đặc biệt, nhưng B là đáp án chuẩn PD1 hơn)."
+      },
+      "tip": "Keyword: Multiple automations -> Trigger re-fires. Phải dùng static variable để chặn đệ quy!"
+    }
+  },
+  {
+    "id": 105,
+    "question": "What is the fundamental difference between a Master-Detail relationship and a Lookup relationship?",
+    "options": [
+      { "key": "A", "text": "A Master-Detail relationship detail record inherits the sharing and security of its master record." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Sự khác biệt cơ bản nhất giữa Master-Detail và Lookup là gì?",
+      "why_correct": "Sharing & Security. Trong Master-Detail, thằng con (Detail) hoàn toàn phụ thuộc vào thằng cha (Master). Cha được xem thì con được xem, cha bị xóa thì con 'bay màu' theo.",
+      "why_wrong": {
+        "B": "Lookup thì con có thể sống độc lập, không kế thừa sharing từ cha."
+      },
+      "tip": "Master-Detail = Ký sinh (Sống chết, bảo mật theo cha). Lookup = Bạn bè (Chơi chung nhưng ví ai nấy giữ)."
+    }
+  },
+  {
+    "id": 106,
+    "question": "A developer wants to create a Visualforce section to display Account, Plan, and Plan_Item (nested Master-Detail). What controller should be used?",
+    "options": [
+      { "key": "A", "text": "A custom controller by itself." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Hiển thị cấu trúc lồng nhau Account -> Plan -> Plan_Item (3 tầng) trên Visualforce. Dùng controller nào?",
+      "why_correct": "Khi cần hiển thị dữ liệu phức tạp từ nhiều tầng object lồng nhau (Grandparent-Parent-Child), Standard Controller không cân nổi. Mày cần viết `Custom Controller` để tự định nghĩa logic lấy data.",
+      "why_wrong": {
+        "B": "Standard controller chỉ hỗ trợ tốt 2 tầng (Cha-Con) thông qua các related list mặc định."
+      },
+      "tip": "Logic khó, data tầng tầng lớp lớp -> Custom Controller cho nó 'tự do'."
+    }
+  },
+  {
+    "id": 107,
+    "question": "Which statement should be used to allow some of the records in a list to be inserted if others fail?",
+    "options": [
+      { "key": "A", "text": "Database.insert(records, false)" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để insert một danh sách mà thằng nào lỗi thì kệ nó, thằng nào đúng thì vẫn lưu?",
+      "why_correct": "Dùng `Database.insert` với tham số `allOrNone = false`. Đây là chế độ 'Partial Success', giúp tối ưu hóa việc xử lý dữ liệu lớn khi một vài bản ghi bị lỗi validation.",
+      "why_wrong": {
+        "B": "Dùng `true` (mặc định) thì chỉ cần 1 thằng lỗi là cả list bị rollback sạch."
+      },
+      "tip": "Keyword: Partial Success -> Database.insert(list, false)."
+    }
+  },
+  {
+    "id": 108,
+    "question": "How many Accounts will be inserted by the following block of code (Loop 500 inserts)?",
+    "options": [
+      { "key": "A", "text": "0" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Vòng lặp chạy 500 lần, mỗi lần gọi lệnh 'insert a'. Có bao nhiêu bản ghi được tạo?",
+      "why_correct": "Đáp án là 0. Vì Governor Limit của Salesforce chỉ cho phép tối đa 150 lệnh DML trong 1 transaction. Đến lần thứ 151, hệ thống bắn lỗi `LimitException` và rollback toàn bộ transaction.",
+      "why_wrong": {
+        "B": "Không phải 150, vì khi dính lỗi limit là nó hủy hết những thằng đã làm trước đó."
+      },
+      "tip": "DML Limit = 150. Đừng bao giờ nhét DML vào vòng lặp, 'cook' đấy!"
+    }
+  },
+  {
+    "id": 109,
+    "question": "While writing an Apex class, a developer wants to make sure all required fields are handled. Which approach?",
+    "options": [
+      { "key": "A", "text": "Run the code in an Execute Anonymous block." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Muốn check nhanh xem code tạo Account đã xử lý hết các required fields chưa. Dùng cách nào?",
+      "why_correct": "Execute Anonymous là cách nhanh nhất để 'thử' code mà không cần viết cả một bộ unit test rườm rà. Mày paste đoạn code vào, chạy cái 'rẹt' là biết có lỗi dính required field hay không ngay.",
+      "why_wrong": {
+        "B": "Unit test là để đảm bảo chất lượng lâu dài, không phải cách nhanh nhất để 'check thử' logic vừa viết."
+      },
+      "tip": "Check nhanh, test gấp -> Execute Anonymous."
+    }
+  },
+  {
+    "id": 110,
+    "question": "What should a developer use to script the deployment and unit test execution as part of continuous integration (CI)?",
+    "options": [
+      { "key": "A", "text": "Salesforce CLI." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Công cụ nào dùng để viết script tự động deploy và chạy test cho quy trình CI/CD?",
+      "why_correct": "Salesforce CLI (SFDX) là 'xương sống' của CI/CD. Nó cung cấp các dòng lệnh để mày tích hợp vào Jenkins, GitHub Actions... nhằm tự động hóa mọi công đoạn deploy.",
+      "why_wrong": {
+        "B": "VS Code là giao diện người dùng, không phải công cụ chạy script tự động trong server CI."
+      },
+      "tip": "CI/CD / Automation / Scripting -> Salesforce CLI."
+    }
+  },
+  {
+    "id": 111,
+    "question": "A developer must troubleshoot causing performance issues when a custom page loads. Which tool?",
+    "options": [
+      { "key": "A", "text": "Developer console." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Trang custom load chậm. Dùng tool nào để tìm nguyên nhân (troubleshoot)?",
+      "why_correct": "Developer Console có phần 'Timeline' và 'Execution Log' cực chi tiết. Nó cho mày biết câu query nào chạy tốn bao nhiêu giây, code Apex nào ngốn CPU nhất để mà tối ưu.",
+      "why_wrong": {
+        "B": "Setup Menu chỉ để cấu hình, không soi được performance của code."
+      },
+      "tip": "Soi lỗi, soi hiệu năng, soi log -> Developer Console."
+    }
+  },
+  {
+    "id": 112,
+    "question": "Which three code lines are required to create a Lightning component on a Visualforce page? Choose 3 answers.",
+    "options": [
+      { "key": "A", "text": "$Lightning.use" },
+      { "key": "B", "text": "$Lightning.createComponent" },
+      { "key": "C", "text": "<apex:includeLightning/>" }
+    ],
+    "correct": ["A", "B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba thành phần bắt buộc để nhúng Lightning Component vào trang Visualforce là gì?",
+      "why_correct": "Đây là bộ 3 huyền thoại: 1. `<apex:includeLightning/>` để nạp thư viện. 2. `$Lightning.use` để khai báo app chứa component. 3. `$Lightning.createComponent` để khởi tạo component đó vào một thẻ div.",
+      "tip": "Nhúng Lightning vào VF: Include -> Use -> Create. Cứ nhớ thứ tự này là ăn điểm."
+    }
+  },
+  {
+    "id": 113,
+    "question": "Expose an unmanaged LWC only on Record Page Layouts. Which two actions? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Ensure isExposed is set to true on the XML file." },
+      { "key": "B", "text": "Specify lightning__RecordPage as a target in the XML file." }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Muốn LWC xuất hiện trên Record Page. Cấu hình file metadata (.js-meta.xml) thế nào?",
+      "why_correct": "A: `isExposed` phải bằng `true` thì App Builder mới thấy được component. B: `<target>` phải là `lightning__RecordPage` để Salesforce biết nó chỉ dùng cho trang chi tiết bản ghi.",
+      "why_wrong": {
+        "C": "lightningCommunity_Page là dành cho trang Experience Cloud (Communities)."
+      },
+      "tip": "LWC Visibility: isExposed=true + Target chuẩn = Hiện hình."
+    }
+  },
+  {
+    "id": 114,
+    "question": "Opportunities should no longer be editable when reaching Closed/Won stage. How?",
+    "options": [
+      { "key": "A", "text": "Use a validation rule." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm sao để chặn không cho sửa Opportunity khi nó đã ở trạng thái Closed/Won?",
+      "why_correct": "Dùng Validation Rule với logic: `PRIORVALUE(IsClosed) = True`. Nó sẽ kiểm tra, nếu giá trị trước đó đã là 'Đóng' thì không cho phép thực hiện bất kỳ thay đổi nào nữa.",
+      "why_wrong": {
+        "B": "Read-only trên page layout chỉ có tác dụng trên giao diện, không chặn được sửa qua API/Code."
+      },
+      "tip": "Chặn sửa / Khóa dữ liệu -> Validation Rule."
+    }
+  },
+  {
+    "id": 115,
+    "question": "Update existing Visualforce page to match look and feel of Lightning Experience. Which code?",
+    "options": [
+      { "key": "A", "text": "<apex:page lightningStylesheets='true'>" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để trang Visualforce cũ tự 'lột xác' trông giống giao diện Lightning?",
+      "why_correct": "Chỉ cần thêm thuộc tính `lightningStylesheets='true'` vào thẻ `<apex:page>`. Salesforce sẽ tự động áp dụng CSS của Lightning Design System (SLDS) vào các thẻ standard của mày.",
+      "why_wrong": {
+        "B": "<apex:slds/> chỉ nạp CSS, mày vẫn phải tự viết class mệt nghỉ."
+      },
+      "tip": "VF sang Lightning nhanh nhất: lightningStylesheets='true'."
+    }
+  },
+  {
+    "id": 116,
+    "question": "Which SOQL query will get the record for the Viridian City Gym and all its trainers?",
+    "options": [
+      { "key": "A", "text": "SELECT Id, (SELECT Id FROM Trainers__r) FROM Gym__c WHERE Name = 'Viridian City Gym'" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Query lấy thông tin Gym và danh sách tất cả Trainers liên quan. Cú pháp nào đúng?",
+      "why_correct": "Đây là 'Parent-to-Child' query. Khi query từ cha xuống con, mày dùng tên quan hệ (Relationship Name) và thêm hậu tố `__r`. Trong trường hợp này là `(SELECT Id FROM Trainers__r)`.",
+      "why_wrong": {
+        "B": "Dùng `__c` là tên object, không dùng được trong inner query."
+      },
+      "tip": "Query Cha xuống Con: Dùng Relationship Name + __r."
+    }
+  },
+  {
+    "id": 117,
+    "question": "How can a developer check the test coverage of active Process Builder and flows before deploying?",
+    "options": [
+      { "key": "A", "text": "Use SOQL and the Tooling API." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm sao để check tỉ lệ test coverage của Flow và Process Builder?",
+      "why_correct": "Dữ liệu coverage của Flow không hiển thị ở các chỗ thông thường. Mày phải dùng Tooling API hoặc query SOQL vào object `FlowTestCoverage` để lấy con số này.",
+      "why_wrong": {
+        "B": "Trang Code Coverage setup thường chỉ hiển thị cho Apex."
+      },
+      "tip": "Flow Coverage = Tooling API. Nhớ cái tên này!"
+    }
+  },
+  {
+    "id": 118,
+    "question": "How many total accounts will be in the org after this code is executed (5 existing + code)?",
+    "options": [
+      { "key": "A", "text": "6" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Org có 5 Account. Chạy code insert 1 cái và loop 9 cái (nhưng không có lệnh insert list). Tổng cộng có mấy cái?",
+      "why_correct": "Đáp án thực tế là 6. Có 5 cái cũ + 1 cái `myAccount` được insert bằng lệnh `Insert myAccount;`. Cái danh sách `newAccounts` mặc dù được thêm 9 cái trong vòng lặp nhưng KHÔNG hề có lệnh `insert` cho nó, nên chúng không bao giờ vào DB.",
+      "why_wrong": {
+        "B": "Nhiều người đếm 5 + 1 + 9 = 15 là sai vì thiếu lệnh insert cho list."
+      },
+      "tip": "Bẫy PD1: Soi kỹ xem có lệnh DML (Insert/Update) cho cái List đó không. Không có -> Coi như không làm gì."
+    }
+  },
+  {
+    "id": 119,
+    "question": "For which three items can a trace flag be configured? Choose 3 answers.",
+    "options": [
+      { "key": "A", "text": "User." },
+      { "key": "C", "text": "Apex Class." },
+      { "key": "E", "text": "Apex Trigger." }
+    ],
+    "correct": ["A", "C", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Mày có thể đặt Trace Flag (để bắt log) cho những đối tượng nào? (Chọn 3)",
+      "why_correct": "Trace Flag cho phép mày chỉ định Salesforce ghi log khi một thực thể cụ thể hoạt động. Ba đối tượng phổ biến nhất là: 1. User cụ thể, 2. Một Apex Class nhất định, 3. Một Trigger nhất định.",
+      "tip": "Trace Flag = Đặt máy quay lén. Quay theo: Người (User), Khuôn mẫu (Class), hoặc Hành động (Trigger)."
+    }
+  },
+  {
+    "id": 120,
+    "question": "Real-time inventory reduction sent to external systems. What to add to the code?",
+    "options": [
+      { "key": "A", "text": "InventoryReductionEvent__e ev = new InventoryReductionEvent__e(...); EventBus.publish(ev);" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Gửi thông báo giảm tồn kho thời gian thực cho hệ thống ngoài. Dùng code gì?",
+      "why_correct": "Dùng **Platform Events**. Bước 1: Khởi tạo event object (kết thúc bằng `__e`). Bước 2: Dùng `EventBus.publish(ev)` để đẩy tin nhắn đó lên hệ thống. Hệ thống ngoài sẽ subscribe để nhận data.",
+      "why_wrong": {
+        "B": "Dùng `insert` cũng chạy được nhưng `EventBus.publish()` là cách chuẩn và hỗ trợ xử lý lỗi tốt hơn cho Platform Events."
+      },
+      "tip": "Platform Event: Đuôi là __e, lệnh là EventBus.publish()."
+    }
+  }
+]

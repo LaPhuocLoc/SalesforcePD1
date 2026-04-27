@@ -1,0 +1,190 @@
+[
+  {
+    "id": 201,
+    "question": "Which two statements are true about using the @testSetup annotation in an Apex test class?",
+    "options": [
+      { "key": "A", "text": "The @testSetup annotation is not supported when the @isTest(SeeAllData=True) annotation is used." },
+      { "key": "E", "text": "In a test setup method, test data is inserted once and made available for all test methods in the test class." }
+    ],
+    "correct": ["A", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai phát biểu nào đúng về việc dùng annotation @testSetup trong class test?",
+      "why_correct": "E: Đây là mục đích chính của @testSetup – tạo data một lần cho cả class dùng chung để tiết kiệm thời gian. A: Salesforce không cho phép dùng chung @testSetup với SeeAllData=true vì chúng xung đột về cơ chế cách ly dữ liệu.",
+      "why_wrong": {
+        "B": "Dữ liệu trong test setup hoàn toàn có thể được update bởi các test method (nhưng sẽ được rollback sau mỗi method).",
+        "C": "Nó chỉ chạy DUY NHẤT một lần cho toàn bộ class, không phải chạy cho từng method."
+      },
+      "tip": "Keyword: @testSetup = Insert Once, Available for All. Cấm đi chung với SeeAllData=true."
+    }
+  },
+  {
+    "id": 202,
+    "question": "What is the benefit of developing applications in a multi-tenant environment?",
+    "options": [
+      { "key": "A", "text": "Enforced best practices for development." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lợi ích của việc phát triển app trong môi trường đa thuê bao (Multi-tenant) là gì?",
+      "why_correct": "Trong môi trường dùng chung tài nguyên, Salesforce ép buộc dev phải tuân thủ các 'Best Practices' thông qua Governor Limits. Điều này đảm bảo code của mày không làm sập server và luôn chạy hiệu quả cho mọi khách hàng.",
+      "why_wrong": {
+        "C": "Sai hoàn toàn, tài nguyên là có hạn (Limits), không bao giờ là 'unlimited'."
+      },
+      "tip": "Multi-tenant = Chia sẻ tài nguyên + Bị 'xích' bởi Governor Limits để bảo vệ hệ thống."
+    }
+  },
+  {
+    "id": 203,
+    "question": "Refer to the following Apex code: Integer x = 0; do { x = 1; x++; } while (x < 1); System.debug (x); What is the value of x?",
+    "options": [
+      { "key": "C", "text": "2" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Giá trị của x khi ghi ra debug log là bao nhiêu?",
+      "why_correct": "Vòng lặp `do-while` luôn chạy ít nhất một lần. Bước 1: x gán bằng 1. Bước 2: x++ thành 2. Bước 3: Kiểm tra điều kiện `2 < 1` là sai nên dừng lặp. Kết quả cuối cùng là 2.",
+      "tip": "Bẫy vòng lặp: 'do' là làm trước, 'while' là hỏi sau. Cứ nhào vô làm rồi mới check điều kiện."
+    }
+  },
+  {
+    "id": 204,
+    "question": "Correct declaration of a custom SOAP Web Service class and methods with helper methods?",
+    "options": [
+      { "key": "16", "text": "global class WebServiceClass { private Boolean helperMethod() {...} webservice static String updateRecords() {...} }" }
+    ],
+    "correct": ["16"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo SOAP Web Service và các helper method đi kèm thế nào cho đúng?",
+      "why_correct": "Bất kỳ class nào chứa method `webservice` đều BẮT BUỘC phải khai báo là `global`. Các helper method dùng nội bộ thì nên để `private` để đảm bảo tính đóng gói và không bị lộ ra API bên ngoài.",
+      "tip": "SOAP Rule: Class Global + Method Webservice + Static."
+    }
+  },
+  {
+    "id": 205,
+    "question": "Which three Salesforce resources can be accessed from a Lightning web component?",
+    "options": [
+      { "key": "B", "text": "Content asset files." },
+      { "key": "C", "text": "SVG resources." },
+      { "key": "E", "text": "Static resources." }
+    ],
+    "correct": ["B", "C", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba tài nguyên nào của Salesforce có thể truy cập từ LWC?",
+      "why_correct": "LWC cực kỳ linh hoạt, nó cho phép mày import trực tiếp: B: Content Assets (file nội dung), C: SVG (để làm icon), và E: Static Resources (CSS/JS ngoài) qua module `@salesforce/resourceUrl`.",
+      "tip": "LWC Resources: Asset, SVG, Static Resource. Nhớ từ khóa @salesforce/ để lấy đồ."
+    }
+  },
+  {
+    "id": 206,
+    "question": "Two advantages of implementing the view layer using LWC over Visualforce?",
+    "options": [
+      { "key": "A", "text": "Self-contained and reusable units of an application." },
+      { "key": "B", "text": "Rich component ecosystem." }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai ưu điểm của LWC so với Visualforce ở tầng View?",
+      "why_correct": "A: LWC thiết kế theo hướng component hóa, mỗi 'viên gạch' là độc lập và tái sử dụng được ở nhiều nơi. B: LWC chạy trên nền tảng Web Standards hiện đại, có hệ sinh thái base components cực kỳ phong phú và hiệu năng cao hơn hẳn VF.",
+      "tip": "LWC vs VF: LWC = Modern, Standards, Fast, Reusable. VF = Legacy, Page-based."
+    }
+  },
+  {
+    "id": 207,
+    "question": "Custom button to redirect to Visualforce page. Which three attributes need to be defined in <apex:page>?",
+    "options": [
+      { "key": "A", "text": "extensions" },
+      { "key": "B", "text": "action" },
+      { "key": "E", "text": "standardController" }
+    ],
+    "correct": ["A", "B", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba thuộc tính cần có trong thẻ <apex:page> để thực hiện tính toán và redirect từ nút bấm?",
+      "why_correct": "E: Cần `standardController` để biết nó gắn với object nào (ví dụ Account). A: Cần `extensions` để nhét code Apex tính toán vào. B: Thuộc tính `action` trong thẻ page cho phép thực hiện logic ngay khi trang vừa load.",
+      "tip": "Custom VF Logic: standardController + extensions. Muốn chạy code ngay khi mở trang -> dùng action."
+    }
+  },
+  {
+    "id": 208,
+    "question": "Three considerations while developing the Apex Interface?",
+    "options": [
+      { "key": "A", "text": "A method defined in an Apex Interface cannot have an access modifier." },
+      { "key": "C", "text": "A method implementation cannot be defined within the Apex Interface." },
+      { "key": "E", "text": "The Apex class must be declared using the interface keyword." }
+    ],
+    "correct": ["A", "C", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba lưu ý khi xây dựng Interface trong Apex?",
+      "why_correct": "E: Phải dùng keyword `interface` thay vì `class`. C: Interface chỉ chứa cái 'khung', không được phép viết code thực thi bên trong. A: Các method trong interface mặc định là public, mày không được ghi access modifier (như private/public) vào signature của method.",
+      "tip": "Interface: Chỉ 'Hứa' (Signature), không 'Làm' (Implementation). Cấm modifier ở method."
+    }
+  },
+  {
+    "id": 209,
+    "question": "What can be developed using the Lightning Component framework?",
+    "options": [
+      { "key": "A", "text": "Single-page web apps." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khung làm việc Lightning Component có thể dùng để phát triển cái gì?",
+      "why_correct": "Lightning Component (cả Aura và LWC) được thiết kế theo kiến trúc Single-Page Application (SPA). Dữ liệu được load động mà không cần reload cả trang web, giúp trải nghiệm mượt mà như app mobile.",
+      "tip": "Lightning = SPA (Single Page Application)."
+    }
+  },
+  {
+    "id": 210,
+    "question": "Which code displays the contents of a Visualforce page as a PDF?",
+    "options": [
+      { "key": "A", "text": "<apex:page renderAs='pdf'>" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code nào biến trang Visualforce thành file PDF?",
+      "why_correct": "Thuộc tính `renderAs='pdf'` trong thẻ `<apex:page>` là công cụ 'ma thuật' của Salesforce để render toàn bộ HTML/CSS sang định dạng PDF.",
+      "why_wrong": {
+        "B": "contentType='application/pdf' chỉ báo cho trình duyệt biết đây là file gì, chứ không tự render PDF được."
+      },
+      "tip": "VF to PDF: Luôn là renderAs='pdf'."
+    }
+  },
+  {
+    "id": 211,
+    "question": "Calculate the estimated ship date (max of availability dates) for an Order?",
+    "options": [
+      { "key": "B", "text": "Use a MAX Roll-Up Summary field on the latest availability date fields." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tính ngày giao hàng dự kiến (ngày muộn nhất trong các Line Items). Dùng cách nào?",
+      "why_correct": "Vì có quan hệ Master-Detail, Roll-up Summary field là giải pháp tối ưu nhất. Sử dụng hàm MAX trên trường ngày tháng của các bản ghi con sẽ tự động tìm ra ngày muộn nhất để hiển thị lên Order cha.",
+      "tip": "Keywords: Master-Detail + Max Date -> Roll-up Summary field."
+    }
+  },
+  {
+    "id": 212,
+    "question": "Three statements useful inside the unit test to effectively test the custom controller (VF Wizard)?",
+    "options": [
+      { "key": "A", "text": "String nextPage = controller.save().getUrl();" },
+      { "key": "C", "text": "Test.setCurrentPage(pageRef);" },
+      { "key": "D", "text": "ApexPages.currentPage().getParameters().put(‘input’,’TestValue’);" }
+    ],
+    "correct": ["A", "C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba lệnh hữu ích để viết Unit Test cho Custom Controller dùng trong Visualforce Wizard?",
+      "why_correct": "C: Để giả lập việc user đang đứng ở trang nào. D: Để nhét các tham số (params) vào URL cho code xử lý. A: Để kiểm tra xem sau khi Save, trang có chuyển hướng đúng (navigation) như mong đợi hay không.",
+      "tip": "Unit Test VF: Phải có setCurrentPage, getParameters().put và check getUrl()."
+    }
+  }
+]

@@ -1,0 +1,403 @@
+[
+  {
+    "id": 1,
+    "question": "Application Events follow the traditional publish-subscribe model.\nWhich method is used to fire an event?",
+    "options": [
+      { "key": "A", "text": "fire( )" },
+      { "key": "B", "text": "registerEvent( )" },
+      { "key": "C", "text": "emit( )" },
+      { "key": "D", "text": "fireEvent( )" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Application Events tuân theo mô hình publish-subscribe truyền thống. Phương thức nào được dùng để kích hoạt (fire) một event?",
+      "why_correct": "Trong lập trình Aura Component, sau khi lấy được instance của event bằng $A.getEvt()$, ta sử dụng phương thức .fire() để đẩy event đó vào hệ thống.",
+      "why_wrong": {
+        "B": "registerEvent() dùng trong component để khai báo event chứ không phải để kích hoạt.",
+        "C": "emit() là từ khóa thường dùng trong Node.js hoặc Vue, không tồn tại trong Aura/LWC.",
+        "D": "fireEvent() là một cái tên gây nhầm lẫn, Salesforce chỉ dùng .fire()."
+      },
+      "tip": "Keywords: Aura Event -> .fire(). Nhớ nhé: 'Fire' là bắn, 'Event' là đạn."
+    }
+  },
+  {
+    "id": 2,
+    "question": "A workflow updates the value of a custom field for an existing Account.\nHow can a developer access the updated custom field value from a trigger?",
+    "options": [
+      { "key": "A", "text": "By writing a Before Insert trigger and accessing the field value from Trigger.new" },
+      { "key": "B", "text": "By writing an After Insert trigger and accessing the field value from Trigger.old" },
+      { "key": "C", "text": "By writing an After Update trigger and accessing the field value from Trigger.old" },
+      { "key": "D", "text": "By writing a Before Update trigger and accessing the field value from Trigger.new" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Một workflow cập nhật giá trị của một custom field trên một Account hiện có. Làm thế nào để developer truy cập được giá trị đã cập nhật đó từ trigger?",
+      "why_correct": "Theo 'Order of Execution', khi Workflow thực hiện Field Update, Salesforce sẽ thực thi lại Before Update và After Update triggers một lần nữa. Do đó, giá trị mới nhất sẽ nằm trong Trigger.new của Before Update trigger.",
+      "why_wrong": {
+        "A": "Câu hỏi nói là 'existing Account', nên không thể dùng Insert trigger.",
+        "B": "Tương tự, Insert không dành cho bản ghi đã tồn tại.",
+        "C": "Trigger.old luôn chứa giá trị cũ trước khi có thay đổi, không chứa giá trị đã cập nhật."
+      },
+      "tip": "Keyword: Workflow Field Update -> Trigger re-fires. Nhớ vòng đời: 'Before Update' là nơi đón đầu mọi thay đổi giá trị."
+    }
+  },
+  {
+    "id": 3,
+    "question": "A developer wants to retrieve the Contacts and Users with the email address\n'dev@uc.com'. Which SOSL statement should the developer use?",
+    "options": [
+      { "key": "A", "text": "FIND {dev@uc.com} IN Email Fields RETURNING Contact (Email), User (Email)" },
+      { "key": "B", "text": "FIND {Email = 'dev@uc.com'} IN Contact, User" },
+      { "key": "C", "text": "FIND Email IN Contact, User FOR {dev2uc.com}" },
+      { "key": "D", "text": "FIND {Email = 'dev@uc.com'} RETURNING Contact (Email), User (Email)" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Developer muốn lấy danh sách Contacts và Users có email 'dev@uc.com'. Câu lệnh SOSL nào là đúng?",
+      "why_correct": "SOSL bắt đầu bằng từ khóa FIND kèm theo chuỗi tìm kiếm trong ngoặc nhọn {}. Cấu trúc RETURNING cho phép chỉ định nhiều object và các field muốn lấy về.",
+      "why_wrong": {
+        "B": "SOSL không dùng toán tử gán '=' trực tiếp trong mệnh đề FIND như SOQL.",
+        "C": "Cú pháp 'FOR' và cách sắp xếp này hoàn toàn sai quy định của Salesforce.",
+        "D": "Thiếu mệnh đề 'IN' để giới hạn phạm vi tìm kiếm (Search Group)."
+      },
+      "tip": "SOSL Thần chú: FIND {Text} IN Groups RETURNING Object(Fields). Kết quả SOSL luôn là List của List: List<List<sObject>>."
+    }
+  },
+  {
+    "id": 4,
+    "question": "Given the following trigger Implementation: [Code Snippet] ... The developer receives deployment errors ... What should the developer do?",
+    "options": [
+      { "key": "A", "text": "Ensure the deployment is validated by a System Admin user on Production." },
+      { "key": "B", "text": "Ensure BUSINESS_RECORDTYPEID is retrieved using Schema.Describe calls." },
+      { "key": "C", "text": "Ensure BUSINESS_RECORDTYPEID is pushed as part of deployment components" },
+      { "key": "D", "text": "Ensure a record type with an ID of BUSINESS_RECORDTYPEID exists on Production prior to deployment." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Trigger đang gán cứng (Hardcode) ID của Record Type. Tại sao bị lỗi deployment và cách sửa?",
+      "why_correct": "Lỗi cực kỳ cơ bản của lính mới là Hardcode ID. RecordType ID ở Sandbox và Production thường khác nhau. Dùng Schema.Describe (ví dụ: SObjectType.Lead.getRecordTypeInfosByDeveloperName()) giúp lấy ID động dựa trên tên, đảm bảo chạy đúng ở mọi môi trường.",
+      "why_wrong": {
+        "A": "Admin validate không giải quyết được lỗi logic code.",
+        "C": "RecordType ID không phải là thứ có thể 'push' để giữ nguyên giá trị ID giữa các Org.",
+        "D": "Dù có tạo tay trên Pro cũng không ai dám chắc ID nó sẽ giống hệt Sandbox."
+      },
+      "tip": "Keywords: Hardcoded IDs -> Bad practice. Thay bằng: Schema Describe hoặc Query theo DeveloperName."
+    }
+  },
+  {
+    "id": 5,
+    "question": "If Apex code executes inside the execute ( ) method ... regarding governor limits? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "The Apex governor limits cannot be exceeded due to the asynchronous nature of the transaction." },
+      { "key": "B", "text": "The Apex governor limits are relaxed while calling the constructor of the Apex class." },
+      { "key": "C", "text": "The Apex governor limits are reset for each iteration of the execute ( ) method." },
+      { "key": "D", "text": "The Apex governor limits might be higher due to the asynchronous nature of the transaction." }
+    ],
+    "correct": ["C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Trong Batch Apex, phương thức execute() tuân theo các quy tắc Governor Limits nào? (Chọn 2)",
+      "why_correct": "C: Mỗi lần execute() chạy một batch (thường là 200 records), Salesforce sẽ cấp một 'hạn mức' mới hoàn toàn. D: Asynchronous Apex (như Batch) có một số limit cao hơn (ví dụ: Heap size 12MB thay vì 6MB).",
+      "why_wrong": {
+        "A": "Dù là không đồng bộ thì vẫn có limit, không phải là 'không thể vượt quá'.",
+        "B": "Constructor của class không được hưởng cơ chế 'relaxed' limits."
+      },
+      "tip": "Batch Apex: Mỗi batch là một transaction riêng biệt. Limit được RESET."
+    }
+  },
+  {
+    "id": 6,
+    "question": "In this implementation scenario, which artifact is part of the Controller according to the MVC architecture?",
+    "options": [
+      { "key": "A", "text": "XML file" },
+      { "key": "B", "text": "HTML file" },
+      { "key": "C", "text": "Apex class" },
+      { "key": "D", "text": "JavaScript file" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Trong mô hình MVC của Salesforce, thành phần nào đóng vai trò là Controller?",
+      "why_correct": "Trong kiến trúc truyền thống, Apex Class (Server-side) xử lý logic và truy vấn dữ liệu chính là Controller. Lưu ý: Trong LWC, JS file là Client-side Controller, nhưng nếu hỏi về artifact thực hiện logic phức tạp/kết nối DB thì Apex là câu trả lời chuẩn PD1.",
+      "why_wrong": {
+        "A": "XML (Metadata) thường dùng để cấu hình.",
+        "B": "HTML là View layer (hiển thị).",
+        "D": "JavaScript là Client-side controller, nhưng Apex class là thành phần Controller truyền thống của Salesforce."
+      },
+      "tip": "MVC: Model (Object/Field), View (HTML/Visualforce), Controller (Apex/JS)."
+    }
+  },
+  {
+    "id": 7,
+    "question": "Which process automation should be used to send an outbound message without using Apex code?",
+    "options": [
+      { "key": "A", "text": "Workflow Rule." },
+      { "key": "B", "text": "Process Builder." },
+      { "key": "C", "text": "Strategy Builder." },
+      { "key": "D", "text": "Flow Builder." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Công cụ tự động hóa nào có thể gửi Outbound Message mà không cần code?",
+      "why_correct": "Dù đã cũ, nhưng Workflow Rule vẫn là công cụ duy nhất trong danh sách này có tính năng gửi Outbound Message trực tiếp từ giao diện Setup mà không cần code bổ sung.",
+      "why_wrong": {
+        "B": "Process Builder không hỗ trợ gửi Outbound Message trực tiếp.",
+        "D": "Flow Builder muốn gửi Outbound Message phải gọi Apex hoặc dùng External Service (cần cấu hình thêm)."
+      },
+      "tip": "Outbound Message = Workflow Rule. (Mẹo thi: Flow giờ là vua, nhưng câu hỏi về OM thì cứ nhớ Workflow)."
+    }
+  },
+  {
+    "id": 8,
+    "question": "Which two SOQL queries performed are safe from SOQL injection? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Dynamic query using concatenation without sanitization" },
+      { "key": "B", "text": "String query = ... + String.escapeSingleQuotes(name) + ..." },
+      { "key": "C", "text": "Variable assignment" },
+      { "key": "D", "text": "Static SOQL with variable bind (:query)" }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai cách nào sau đây giúp chống lại lỗi SOQL Injection?",
+      "why_correct": "B: Sử dụng hàm escapeSingleQuotes() để vô hiệu hóa các ký tự điều khiển trong chuỗi. D: Sử dụng Static SOQL với Variable Binding (dấu hai chấm ':') là cách an toàn nhất vì Salesforce tự xử lý việc sanitize.",
+      "why_wrong": {
+        "A": "Cộng chuỗi trực tiếp từ user input là con đường nhanh nhất để bị hack.",
+        "E": "Tương tự A, cộng chuỗi không qua xử lý cực kỳ nguy hiểm."
+      },
+      "tip": "Chống SOQL Injection: 1. Static SOQL (:bind), 2. escapeSingleQuotes()."
+    }
+  },
+  {
+    "id": 9,
+    "question": "What is the correct definition of a Lightning Web component property that uses the getAccounts method?",
+    "options": [
+      { "key": "E", "text": "@wire(getAccounts, { searchTerm: '$searchTerm' })" },
+      { "key": "F", "text": "accountList;" }
+    ],
+    "correct": ["F"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cú pháp @wire nào là đúng trong LWC để gọi một Apex method có tham số?",
+      "why_correct": "Cú pháp chuẩn là @wire(FunctionName, { paramName: '$dynamicValue' }). Dấu '$' làm cho tham số trở thành reactive (tự động gọi lại khi giá trị thay đổi).",
+      "why_wrong": {
+        "A": "Cú pháp @AuraEnabled dùng cho Apex, không phải decorator trong JS LWC.",
+        "G": "Thiếu cặp ngoặc nhọn {} để truyền object chứa tham số."
+      },
+      "tip": "LWC @wire: Phải có ngoặc nhọn { } cho tham số và '$' để reactive."
+    }
+  },
+  {
+    "id": 10,
+    "question": "Because of what reason developer choose Data Loader over the Data Import Wizard?",
+    "options": [
+      { "key": "A", "text": "Data Loader automatically relates Opportunities to Accounts." },
+      { "key": "B", "text": "Data Import Wizard does not support Opportunities." },
+      { "key": "C", "text": "Data Loader runs from the developer's browser." },
+      { "key": "D", "text": "Data Import Wizard can not import all 500 records." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tại sao lại chọn Data Loader thay vì Data Import Wizard để import Opportunity?",
+      "why_correct": "Data Import Wizard chỉ hỗ trợ một số Standard Objects (Account, Contact, Lead, Solution, Campaign Member). Nó KHÔNG hỗ trợ Opportunity.",
+      "why_wrong": {
+        "A": "Cả hai đều có thể map AccountId.",
+        "C": "Data Loader là client app cài trên máy, không chạy trên browser.",
+        "D": "Import Wizard hỗ trợ tới 50,000 records, 500 records là chuyện nhỏ."
+      },
+      "tip": "Wizard: Max 50k, giới hạn Object. Loader: Max 5M, quất được mọi Object."
+    }
+  },
+  {
+    "id": 11,
+    "question": "When importing and exporting data into Salesforce, which two statements are true?",
+    "options": [
+      { "key": "A", "text": "Bulk API can be used to import large data volumes without bypassing storage limits." },
+      { "key": "C", "text": "Developer and Developer Pro sandboxes have different storage limits." }
+    ],
+    "correct": ["A", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Phát biểu nào đúng về việc import/export dữ liệu trong Salesforce?",
+      "why_correct": "A: Dùng Bulk API giúp xử lý dữ liệu lớn cực nhanh nhưng vẫn phải tuân thủ giới hạn lưu trữ (Storage Limits) của Org. C: Dev Sandbox (200MB) và Dev Pro (1GB) rõ ràng là khác nhau.",
+      "why_wrong": {
+        "B": "Không có tool nào giúp bypass được Storage Limits của Org.",
+        "D": "Import Wizard là web-based tool, Data Loader mới là client application."
+      },
+      "tip": "Data storage: Dev (200MB), Dev Pro (1GB). Nhớ con số này để thi!"
+    }
+  },
+  {
+    "id": 12,
+    "question": "What are three considerations when using the @InvocableMethod annotation in Apex?",
+    "options": [
+      { "key": "B", "text": "A method must be declared as static." },
+      { "key": "C", "text": "Only one method per Apex class." },
+      { "key": "D", "text": "Can be declared as Public or Global." }
+    ],
+    "correct": ["B", "C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba lưu ý quan trọng khi dùng @InvocableMethod để gọi Apex từ Flow/Process?",
+      "why_correct": "B: Phải là 'static' để Salesforce gọi được mà không cần khởi tạo class. C: Mỗi class chỉ được phép có duy nhất 1 method gắn tag này. D: Phải có modifier là Public hoặc Global để các công cụ bên ngoài truy cập được.",
+      "why_wrong": {
+        "A": "InvocableMethod chỉ chấp nhận DUY NHẤT một tham số đầu vào (dạng List).",
+        "E": "Không bắt buộc phải có return value (có thể là void)."
+      },
+      "tip": "Invocable: Static, 1 method/class, input là List."
+    }
+  },
+  {
+    "id": 13,
+    "question": "Which two types of process automation can be used to calculate shipping cost...?",
+    "options": [
+      { "key": "B", "text": "Flow Builder" },
+      { "key": "D", "text": "Process Builder" }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai công cụ nào có thể dùng để tính toán phí ship và update các bản ghi liên quan (Order Products)?",
+      "why_correct": "Cả Flow và Process Builder đều có khả năng thực hiện logic tính toán và duyệt qua các bản ghi liên quan (Child records) để cập nhật dữ liệu.",
+      "why_wrong": {
+        "A": "Workflow chỉ update được field của chính bản ghi đó hoặc Parent (Master-Detail).",
+        "C": "Approval Process dùng để phê duyệt, không phải để tính toán logic phức tạp."
+      },
+      "tip": "Keywords: Update Related Records -> Flow hoặc Process Builder."
+    }
+  },
+  {
+    "id": 14,
+    "question": "Which three statements are accurate about debug logs?",
+    "options": [
+      { "key": "A", "text": "Debug Log Levels are cumulative..." },
+      { "key": "B", "text": "Permissions: Manage Users or View All Data." },
+      { "key": "D", "text": "Controlled by log levels." }
+    ],
+    "correct": ["A", "B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba phát biểu đúng về Debug Logs?",
+      "why_correct": "A: Log levels có tính kế thừa (cumulative), cấp thấp hơn sẽ bao gồm cả cấp cao hơn (ví dụ FINE bao gồm cả INFO, ERROR). B: Đây là các permission cần thiết để xem log. D: Log levels (ERROR, WARN, INFO...) giúp lọc lượng thông tin ghi ra log.",
+      "why_wrong": {
+        "C": "Modify All Data là quá quyền hạn so với nhu cầu chỉ xem log.",
+        "E": "Debug log được hệ thống ghi lại dựa trên cấu hình, không phải điều khiển trực tiếp bằng code (programmatically) kiểu 'ghi đè' cơ chế log."
+      },
+      "tip": "Log Levels: FINEST > FINER > FINE > DEBUG > INFO > WARN > ERROR."
+    }
+  },
+  {
+    "id": 15,
+    "question": "A recursive transaction hits a stack depth of 16. Which statement is true?",
+    "options": [
+      { "key": "B", "text": "The transaction succeeds and all changes are committed." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Một transaction bị đệ quy và đạt độ sâu stack là 16. Kết quả thế nào?",
+      "why_correct": "Giới hạn đệ quy (Stack depth) của Salesforce là 16. Nếu đạt đúng 16 mà không vượt quá, transaction vẫn thành công. Nếu là lần thứ 17, nó mới 'oẳng' (LimitException).",
+      "why_wrong": {
+        "A": "Salesforce không bao giờ commit một nửa transaction (Atomic).",
+        "C": "Chỉ rollback nếu vượt quá 16.",
+        "D": "Trigger của Contact cũng tính chung vào tổng stack depth của transaction đó."
+      },
+      "tip": "Recursion Limit: 16. Chạm 16 vẫn sống, 17 là 'cook'."
+    }
+  },
+  {
+    "id": 16,
+    "question": "How does the lightning component framework help developers implement solutions faster?",
+    "options": [
+      { "key": "B", "text": "By providing device-awareness for mobile and desktops." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khung làm việc Lightning giúp developer làm nhanh hơn nhờ điều gì?",
+      "why_correct": "Lightning framework được thiết kế kiểu 'Responsive' ngay từ đầu, tự động tối ưu giao diện cho cả Mobile và Desktop mà không cần dev phải viết nhiều code CSS/JS riêng biệt.",
+      "why_wrong": {
+        "A": "Code review là quy trình con người, không phải do framework.",
+        "D": "Version control (Git) nằm ngoài phạm vi framework này."
+      },
+      "tip": "Lightning = Mobile First + Component Based."
+    }
+  },
+  {
+    "id": 17,
+    "question": "What are two ways the developer can fire the exception in Apex?",
+    "options": [
+      { "key": "A", "text": "throw new ParityException ('message');" },
+      { "key": "B", "text": "throw new ParityException();" }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai cách đúng để kích hoạt (fire) một Exception tùy chỉnh trong Apex?",
+      "why_correct": "A: Khởi tạo kèm message thông báo lỗi. B: Khởi tạo mặc định. Cả hai đều phải đi kèm từ khóa 'throw' để thực sự dừng transaction và báo lỗi.",
+      "why_wrong": {
+        "C": "Thiếu từ khóa 'throw', lệnh này chỉ tạo ra object Exception rồi để đó chơi.",
+        "D": "Tương tự C, không có 'throw' thì không có lỗi nào được bắn ra."
+      },
+      "tip": "Exception: Phải có chữ 'throw' đứng đầu câu."
+    }
+  },
+  {
+    "id": 18,
+    "question": "Which field should the developer add to create the most efficient model...?",
+    "options": [
+      { "key": "A", "text": "Add a Lookup field on the Account object to the Global Address object." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Nhiều Accounts dùng chung một Global Address. Thiết kế relationship nào là tối ưu?",
+      "why_correct": "Đây là quan hệ Many-to-One. Nhiều Account trỏ về 1 Address. Đặt Lookup field trên Account là cách chuẩn mực và hiệu quả nhất.",
+      "why_wrong": {
+        "B": "Master-Detail trên Account sẽ làm cho Account bị xóa nếu Address bị xóa (vô lý).",
+        "D": "Đặt Lookup trên Global Address sẽ khiến 1 Address chỉ trỏ được về 1 Account (ngược yêu cầu)."
+      },
+      "tip": "Nhiều thằng dùng chung 1 thằng -> Đặt 'của nợ' (Lookup) ở bên 'Nhiều'."
+    }
+  },
+  {
+    "id": 19,
+    "question": "Calculate order amount on Order and line amount on Line Item... What is the correct implementation?",
+    "options": [
+      { "key": "B", "text": "Line amount = formula field, Order amount = roll-up summary field." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tính tổng tiền Order dựa trên Line Items. Cách nào là Best Practice (No Code)?",
+      "why_correct": "Line Item tính giá dựa trên Price * Quantity -> Dùng Formula Field cho khỏe. Order tổng hợp từ Line Items -> Dùng Roll-up Summary (vì là Master-Detail) là chuẩn 'Architect' nhất.",
+      "why_wrong": {
+        "A": "Dùng Process Builder cập nhật field thủ công là dư thừa và dễ lỗi race condition.",
+        "D": "Trigger là giải pháp cuối cùng khi No-code không làm được. Ở đây No-code làm quá tốt."
+      },
+      "tip": "Thần chú: Master-Detail + Sum/Min/Max = Roll-up Summary."
+    }
+  },
+  {
+    "id": 20,
+    "question": "What should a developer do to check the code coverage of a class after running all tests?",
+    "options": [
+      { "key": "A", "text": "View the Overall Code Coverage panel of the Tests tab in the Developer Console." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Sau khi chạy test, xem tỉ lệ bao phủ code (Coverage) ở đâu?",
+      "why_correct": "Developer Console là tool 'quốc dân'. Tab Test -> Overall Code Coverage sẽ cho mày cái nhìn tổng quát nhất từng dòng code nào đã được chạy qua.",
+      "why_wrong": {
+        "D": "List view trên Apex Classes page chỉ cho biết con số tổng quát, không xem được chi tiết dòng nào chưa cover."
+      },
+      "tip": "Code Coverage: Dev Console hoặc VS Code. Tối thiểu 75% mới được lên Pro."
+    }
+  }
+]

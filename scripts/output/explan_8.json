@@ -1,0 +1,361 @@
+[
+  {
+    "id": 141,
+    "question": "A developer needs to update a field on the parent Account when a Contact is inserted. Which trigger and event should be used?",
+    "options": [
+      { "key": "A", "text": "Before insert on Contact." },
+      { "key": "B", "text": "After insert on Contact." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cần update một field trên Account cha khi một Contact được tạo mới. Dùng Trigger và Sự kiện nào?",
+      "why_correct": "Khi mày cần thay đổi dữ liệu của một Object khác (ở đây là Account cha) không phải chính bản ghi đang chạy trigger, mày bắt buộc phải dùng 'After' trigger. Lúc này Contact đã có ID và hệ thống đã sẵn sàng để thực hiện các thao tác DML trên các object liên quan.",
+      "why_wrong": {
+        "A": "Before trigger chỉ dùng để 'tu sửa' chính bản ghi đó trước khi lưu (Self-update). Dùng Before để update cha là sai kiến trúc."
+      },
+      "tip": "Mẹo Architect: 'Sửa mình thì Before, đụng người thì After'. Keywords: Update parent/related record -> After trigger."
+    }
+  },
+  {
+    "id": 142,
+    "question": "A developer wants to create a reusable piece of GUI for Visualforce. What should be used?",
+    "options": [
+      { "key": "A", "text": "Visualforce Component." },
+      { "key": "B", "text": "Visualforce Page." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Muốn tạo một phần giao diện (GUI) có thể tái sử dụng nhiều lần trong Visualforce. Dùng cái gì?",
+      "why_correct": "Visualforce Component (custom component) cho phép mày đóng gói một cụm giao diện và logic vào một thẻ tag riêng (ví dụ <c:myHeader/>). Sau đó mày có thể gọi nó ở bất kỳ trang VF nào khác, giúp code sạch và dễ bảo trì.",
+      "why_wrong": {
+        "B": "Visualforce Page là một trang hoàn chỉnh, không có tính đóng gói để tái sử dụng như một 'viên gạch' (component)."
+      },
+      "tip": "Keyword: Reusable GUI -> Custom Component."
+    }
+  },
+  {
+    "id": 143,
+    "question": "How can a developer handle exceptions in Apex to ensure a transaction is not rolled back?",
+    "options": [
+      { "key": "A", "text": "Use a try/catch block." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để xử lý ngoại lệ (Exception) mà không làm cho cả transaction bị rollback sạch bách?",
+      "why_correct": "Cấu trúc Try/Catch sinh ra để 'bắt' lỗi. Nếu mày nhét code nguy hiểm vào khối `try` và bắt lỗi ở khối `catch`, mày có thể xử lý lỗi (ví dụ: ghi log) và để transaction tiếp tục chạy thay vì để nó 'văng' lỗi hệ thống làm rollback toàn bộ.",
+      "why_wrong": {
+        "B": "Dùng Database.insert(list, false) cũng giúp xử lý từng phần nhưng Try/Catch là cách tổng quát nhất cho mọi loại lỗi logic."
+      },
+      "tip": "Exception Handling: Try (thử làm) -> Catch (bắt lỗi) -> Finally (kiểu gì cũng chạy)."
+    }
+  },
+  {
+    "id": 144,
+    "question": "Which statement is true regarding Lightning Data Service (LDS)?",
+    "options": [
+      { "key": "A", "text": "It handles sharing rules and field-level security." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Phát biểu nào đúng về Lightning Data Service (LDS)?",
+      "why_correct": "LDS là một 'đặc sản' của LWC/Aura. Nó tự động xử lý mọi thứ về bảo mật: từ Sharing Rules cho đến Field-Level Security (FLS). Mày không cần viết 1 dòng code Apex nào mà vẫn đảm bảo user không thấy được field họ không có quyền.",
+      "why_wrong": {
+        "B": "LDS không làm tăng Governor Limits, nó chỉ tối ưu hóa việc gọi data (caching).",
+        "C": "Nó tôn trọng FLS tuyệt đối, không phải phớt lờ."
+      },
+      "tip": "LDS Keywords: No Apex, No SOQL, Built-in Security."
+    }
+  },
+  {
+    "id": 145,
+    "question": "A developer needs to search for the string 'San Francisco' across all searchable fields. Which SOSL group should be used?",
+    "options": [
+      { "key": "A", "text": "IN ALL FIELDS" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cần tìm chuỗi 'San Francisco' trên tất cả các field có thể tìm kiếm được. Dùng SOSL Group nào?",
+      "why_correct": "Mặc định, nếu không chỉ định, SOSL sẽ tìm trong `ALL FIELDS`. Đây là phạm vi rộng nhất, quét qua mọi field kiểu text, email, phone, v.v.",
+      "why_wrong": {
+        "B": "IN NAME FIELDS chỉ tìm trong các field tên (Name).",
+        "C": "IN PHONE FIELDS chỉ tìm trong các số điện thoại."
+      },
+      "tip": "SOSL Scope: ALL FIELDS (Tất cả), NAME FIELDS (Tên), EMAIL FIELDS (Email)."
+    }
+  },
+  {
+    "id": 146,
+    "question": "What is a key difference between Master-Detail and Lookup relationships?",
+    "options": [
+      { "key": "A", "text": "Master-Detail inherits sharing from the parent." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Sự khác biệt then chốt giữa Master-Detail và Lookup là gì?",
+      "why_correct": "Trong Master-Detail, bảo mật (Sharing) của bản ghi con 'ký sinh' hoàn toàn vào thằng cha. Nếu mày có quyền xem cha, mày mặc định có quyền xem con. Lookup thì không, mỗi thằng có quyền riêng biệt.",
+      "why_wrong": {
+        "B": "Lookup trường vẫn có thể bắt buộc (required) nếu cấu hình field.",
+        "D": "Xóa cha trong Master-Detail thì con bị xóa (Cascade Delete), còn Lookup thì mặc định con vẫn sống."
+      },
+      "tip": "Master-Detail = Quan hệ 'Mẹ-Con' (Mẹ đi đâu con theo đó). Lookup = Quan hệ 'Bạn bè' (Chơi chung nhưng ví ai nấy giữ)."
+    }
+  },
+  {
+    "id": 147,
+    "question": "Governor limits are higher for which type of Apex execution?",
+    "options": [
+      { "key": "B", "text": "Asynchronous Apex." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Governor Limits được nới lỏng (cao hơn) cho loại thực thi Apex nào?",
+      "why_correct": "Salesforce ưu tiên cho các tiến trình chạy ngầm (Asynchronous) như Batchable, Queueable hay Future. Ví dụ: Heap size limit của Sync Apex là 6MB, nhưng Async Apex lên tới 12MB.",
+      "why_wrong": {
+        "A": "Synchronous Apex (đồng bộ) có limit gắt nhất vì nó chiếm tài nguyên ngay lập tức của user.",
+        "C": "Anonymous Apex tuân theo limit của Synchronous."
+      },
+      "tip": "Keyword: Async Apex = More resources. Nhớ con số 12MB (Heap size) để thi PD1."
+    }
+  },
+  {
+    "id": 148,
+    "question": "Which annotation should be used for a test class?",
+    "options": [
+      { "key": "A", "text": "@isTest" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Annotation nào bắt buộc phải dùng cho một class kiểm thử (Test class)?",
+      "why_correct": "Annotation `@isTest` khai báo cho Salesforce biết đây là class chứa code test. Những class này sẽ không bị tính vào tổng số lượng ký tự code (Code Size) của Org.",
+      "why_wrong": {
+        "B": "@TestSetup chỉ dùng cho method tạo data chung.",
+        "C": "testMethod là từ khóa cũ, hiện nay dùng @isTest cho cả class và method là chuẩn 2026."
+      },
+      "tip": "Keyword: Test Class -> @isTest."
+    }
+  },
+  {
+    "id": 149,
+    "question": "A developer needs to update 500 records. Which is the most efficient way?",
+    "options": [
+      { "key": "A", "text": "Add all records to a List and call update once." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cần cập nhật 500 bản ghi. Cách nào tối ưu nhất?",
+      "why_correct": "Đây là nguyên tắc Bulkification cơ bản. Thay vì gọi 500 lệnh DML (vượt limit 150), mày nhét 500 đứa vào 1 cái `List` rồi chỉ gọi đúng 1 lệnh `update myList;`. Salesforce sẽ xử lý 500 đứa đó trong đúng 1 nốt nhạc.",
+      "why_wrong": {
+        "B": "Cập nhật từng đứa trong vòng lặp là dính LimitException chắc chắn."
+      },
+      "tip": "Bulkification: List + 1 DML call. Tuyệt đối không DML trong vòng lặp!"
+    }
+  },
+  {
+    "id": 150,
+    "question": "What is a characteristic of @AuraEnabled methods?",
+    "options": [
+      { "key": "A", "text": "They must be declared as static." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đặc điểm bắt buộc của một method gắn tag @AuraEnabled là gì?",
+      "why_correct": "Để LWC hoặc Aura Component có thể gọi được một Apex method, method đó BẮT BUỘC phải là `static`. Ngoài ra, nó cũng cần có access modifier là `public` hoặc `global`.",
+      "why_wrong": {
+        "B": "Nó có thể trả về void hoặc data type bất kỳ, không bắt buộc phải trả về List.",
+        "C": "Nó có thể tham chiếu đến biến instance nếu mày khởi tạo class, nhưng bản thân method đó khi được gọi từ UI phải là static."
+      },
+      "tip": "LWC to Apex: @AuraEnabled + static. Nhớ nhé mày, thiếu static là UI không gọi được đâu."
+    }
+  },
+  {
+    "id": 151,
+    "question": "What is the purpose of the transient keyword in Visualforce?",
+    "options": [
+      { "key": "A", "text": "To prevent a variable from being saved in the View State." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Từ khóa transient trong Visualforce dùng để làm gì?",
+      "why_correct": "View State là cái túi chứa data giữa các lần tương tác trên trang VF, giới hạn chỉ 135KB. Dùng `transient` để bảo Salesforce: 'Đừng nhét biến này vào túi View State'. Nó giúp trang load nhanh hơn và tránh lỗi vượt giới hạn View State.",
+      "why_wrong": {
+        "B": "Nó không làm biến trở thành read-only.",
+        "C": "Nó không liên quan đến việc chia sẻ dữ liệu giữa các user."
+      },
+      "tip": "Keyword: Transient -> Reduce View State size. Dùng cho mấy cái data lớn mà không cần giữ lại sau khi reload trang."
+    }
+  },
+  {
+    "id": 152,
+    "question": "Which controller should be used to support pagination in Visualforce?",
+    "options": [
+      { "key": "A", "text": "StandardSetController." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Dùng Controller nào để hỗ trợ phân trang (Pagination) trong Visualforce?",
+      "why_correct": "StandardSetController là 'vua' của các loại danh sách. Nó cung cấp sẵn các method như `next()`, `previous()`, `hasNext()` để mày làm tính năng phân trang cực nhanh mà không cần viết logic phức tạp.",
+      "why_wrong": {
+        "B": "StandardController chỉ dùng cho một bản ghi đơn lẻ.",
+        "C": "Custom Controller thì mày phải tự viết code phân trang lòi mắt."
+      },
+      "tip": "Keyword: Pagination / List of records -> StandardSetController."
+    }
+  },
+  {
+    "id": 153,
+    "question": "Which two operations can be performed using a formula field? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Displaying a value from a parent object." },
+      { "key": "B", "text": "Calculating a value based on another field on the same record." }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai thao tác nào có thể thực hiện được bằng Formula Field?",
+      "why_correct": "A: Formula có thể trỏ tới field của cha (ví dụ Account.Name). B: Nó dùng để tính toán dựa trên các field cùng bản ghi (ví dụ Price * Quantity).",
+      "why_wrong": {
+        "C": "Formula không thể update field khác, nó chỉ 'đọc' và hiển thị.",
+        "D": "Nó không thể query bản ghi con (Child records)."
+      },
+      "tip": "Formula: Cross-object (lên Cha) và Same-record calculation."
+    }
+  },
+  {
+    "id": 154,
+    "question": "A developer needs to access the IDs of all records in a trigger. Which context variable should be used?",
+    "options": [
+      { "key": "A", "text": "Trigger.newMap" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cần lấy danh sách IDs của tất cả bản ghi trong trigger. Dùng biến ngữ cảnh nào là tối ưu nhất?",
+      "why_correct": "Trigger.newMap là một cái Map chứa Key là ID của bản ghi. Mày chỉ cần gọi `Trigger.newMap.keySet()` là lấy được toàn bộ Set các IDs cực nhanh và tiện lợi.",
+      "why_wrong": {
+        "B": "Trigger.new trả về List sObject, muốn lấy ID mày phải loop qua list, tốn CPU hơn.",
+        "C": "Trigger.old chỉ dùng cho update/delete và cũng là List."
+      },
+      "tip": "ID Collection: Cứ dùng Trigger.newMap.keySet() cho nó chuyên nghiệp."
+    }
+  },
+  {
+    "id": 155,
+    "question": "How can a developer prevent SOQL injection in dynamic SOQL?",
+    "options": [
+      { "key": "A", "text": "By using bind variables." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để chống SOQL Injection khi dùng Dynamic SOQL?",
+      "why_correct": "Dùng biến Bind (biến có dấu ':' đằng trước). Khi mày viết `Database.query('SELECT Id FROM Account WHERE Name = :myName')`, Salesforce sẽ tự động làm sạch (sanitize) giá trị của `myName`, hacker có nhập gì vào cũng vô dụng.",
+      "why_wrong": {
+        "B": "escapeSingleQuotes() cũng tốt nhưng dùng Bind variable là cách an toàn và hiện đại hơn."
+      },
+      "tip": "Security: Bind variables = Anti SOQL Injection."
+    }
+  },
+  {
+    "id": 156,
+    "question": "Which method should be used to determine the SObject type of a record dynamically?",
+    "options": [
+      { "key": "A", "text": "getSObjectType( )" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để xác định kiểu SObject của một bản ghi một cách linh hoạt (Dynamic)?",
+      "why_correct": "Method `getSObjectType()` trả về kiểu dữ liệu `SObjectType` của bản ghi đó. Rất hữu ích khi mày đang viết code xử lý sObject chung chung (Generic sObject) mà muốn biết chính xác nó là Account hay Contact.",
+      "why_wrong": {
+        "B": "getType() là method của class Type, không dùng trực tiếp cho sObject record.",
+        "C": "describe() là một phần của Schema namespace rộng hơn."
+      },
+      "tip": "Keyword: Dynamic SObject Type -> getSObjectType()."
+    }
+  },
+  {
+    "id": 157,
+    "question": "What is the result of using Test.startTest() and Test.stopTest()?",
+    "options": [
+      { "key": "A", "text": "It provides a new set of governor limits for the code between them." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Việc dùng bộ đôi Test.startTest() và Test.stopTest() có tác dụng gì?",
+      "why_correct": "Nó tạo ra một 'bong bóng' tài nguyên mới. Toàn bộ code nằm giữa hai lệnh này sẽ được RESET lại Governor Limits (ví dụ mày đã dùng 100 queries trước đó, vào đây mày lại có 100 queries mới). Ngoài ra, nó ép các tiến trình Async (@future) phải chạy ngay lập tức để mày có thể assert kết quả.",
+      "why_wrong": {
+        "B": "Nó không làm tăng limit, nó chỉ reset limit cho đoạn code test.",
+        "C": "Nó không liên quan đến việc commit dữ liệu thật vào Org."
+      },
+      "tip": "Test bùa chú: Start/Stop Test = New Limits + Force Async to Sync."
+    }
+  },
+  {
+    "id": 158,
+    "question": "Which three actions can be performed by Process Builder? Choose 3 answers.",
+    "options": [
+      { "key": "A", "text": "Create a record." },
+      { "key": "B", "text": "Update a related record." },
+      { "key": "C", "text": "Submit a record for approval." }
+    ],
+    "correct": ["A", "B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba hành động nào mà Process Builder có thể thực hiện được? (Chọn 3)",
+      "why_correct": "Process Builder là một tool mạnh mẽ: A: Có thể tạo mới bản ghi. B: Update được các bản ghi liên quan (Lookup/Master-Detail). C: Kích hoạt được quy trình phê duyệt (Approval Process).",
+      "why_wrong": {
+        "D": "Nó không thể xóa (Delete) bản ghi. Muốn xóa phải dùng Flow hoặc code."
+      },
+      "tip": "Process Builder: Create, Update Related, Approval, Post Chatter, Call Flow/Apex. (Nhưng KHÔNG Delete)."
+    }
+  },
+  {
+    "id": 159,
+    "question": "What is a benefit of using the @testSetup annotation?",
+    "options": [
+      { "key": "A", "text": "Data is created once and rolled back after each test method." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lợi ích của việc dùng @testSetup là gì?",
+      "why_correct": "Nó giúp tối ưu hiệu năng chạy test. Dữ liệu trong `@testSetup` chỉ được insert vào DB DUY NHẤT một lần. Trước mỗi test method, hệ thống sẽ lấy 'ảnh chụp' (Snapshot) của data đó ra dùng, sau đó rollback lại trạng thái sạch cho method tiếp theo. Tiết kiệm thời gian insert cực lớn.",
+      "why_wrong": {
+        "B": "Nó không giúp bypass governor limits của chính nó.",
+        "C": "Dữ liệu này không tồn tại vĩnh viễn trong Org, nó mất ngay sau khi test xong."
+      },
+      "tip": "Keyword: Efficiency -> @testSetup. Chạy một lần, dùng nhiều lần."
+    }
+  },
+  {
+    "id": 160,
+    "question": "A developer needs to prevent a trigger from running recursively. What should be used?",
+    "options": [
+      { "key": "A", "text": "A static boolean variable in a helper class." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để ngăn chặn một trigger chạy đệ quy (vòng lặp vô tận)?",
+      "why_correct": "Vì biến `static` tồn tại trong suốt một Transaction, mày có thể dùng một biến `public static Boolean isFirstRun = true;` trong một helper class. Khi trigger chạy, mày check nếu true thì chạy và đổi nó sang false. Lần sau trigger re-fire, nó thấy false nên sẽ đứng yên.",
+      "why_wrong": {
+        "B": "Biến thành viên (Instance variable) sẽ bị reset mỗi lần trigger chạy lại, vô dụng.",
+        "C": "Validation rule không thể kiểm tra xem trigger có đang chạy hay không."
+      },
+      "tip": "Recursion Control: Dùng Static Boolean variable. Nhớ Keywords này để ăn điểm tuyệt đối."
+    }
+  }
+]

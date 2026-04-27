@@ -1,0 +1,401 @@
+[
+  {
+    "id": 21,
+    "question": "What should be used to create scratch orgs?",
+    "options": [
+      { "key": "A", "text": "Workbench" },
+      { "key": "B", "text": "Salesforce CLI" },
+      { "key": "C", "text": "Sandbox refresh" },
+      { "key": "D", "text": "Developer Console" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Công cụ nào được sử dụng để tạo Scratch Orgs?",
+      "why_correct": "Scratch Orgs là thành phần cốt lõi của 'Source-driven Development'. Salesforce CLI (SFDX) là công cụ duy nhất cho phép mày ra lệnh tạo, quản lý và xóa Scratch Orgs thông qua terminal hoặc script.",
+      "why_wrong": {
+        "A": "Workbench dùng để thao tác dữ liệu và metadata thủ công, không có tính năng tạo Org.",
+        "C": "Sandbox refresh dùng cho Sandbox truyền thống, không liên quan đến Scratch Org.",
+        "D": "Developer Console chỉ để viết code và chạy test trong Org hiện tại."
+      },
+      "tip": "Keywords: Scratch Orgs -> Salesforce CLI / SFDX. Nhớ nhé: Scratch Org giống như mì ăn liền, dùng xong bỏ, và CLI là cái ấm đun nước."
+    }
+  },
+  {
+    "id": 22,
+    "question": "A developer wants to mark each Account in a List<Account> as either Active or Inactive based on the Last Modified Date field value being more than 90 days. Which Apex technique should the developer user?",
+    "options": [
+      { "key": "A", "text": "A Switch statement, with a for loop inside." },
+      { "key": "B", "text": "A for loop, with an if/else statement inside." },
+      { "key": "C", "text": "An if/else statement, with a for loop inside." },
+      { "key": "D", "text": "A for loop, with a switch statement inside." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để duyệt danh sách Account và đánh dấu Active/Inactive dựa trên ngày chỉnh sửa cuối cùng (>90 ngày)?",
+      "why_correct": "Để xử lý một danh sách (List), mày bắt buộc phải dùng vòng lặp (For loop) để duyệt qua từng phần tử. Bên trong vòng lặp, mày dùng cấu trúc điều kiện (If/Else) để kiểm tra logic 90 ngày và gán giá trị tương ứng.",
+      "why_wrong": {
+        "A": "Sai logic, phải duyệt danh sách trước rồi mới kiểm tra điều kiện.",
+        "C": "If/Else bên ngoài không thể kiểm tra từng phần tử trong một danh sách nếu không có vòng lặp bao quanh.",
+        "D": "Switch statement dùng cho các giá trị cụ thể, không phù hợp để so sánh khoảng thời gian (lớn hơn/nhỏ hơn) như If/Else."
+      },
+      "tip": "Keywords: Iterate list -> For loop; Logic check -> If/Else. Bulkification cơ bản là phải có For loop!"
+    }
+  },
+  {
+    "id": 23,
+    "question": "What is the maximum number of SOQL queries used by the following code? \nList<Account> aList = [SELECT ID FROM Account LIMIT 5]; \nfor (Account a : aList) { \n List<Contact> cList = [SELECT Id FROM Contact WHERE AccountId = :a.Id]; \n}",
+    "options": [
+      { "key": "A", "text": "5" },
+      { "key": "B", "text": "1" },
+      { "key": "C", "text": "2" },
+      { "key": "D", "text": "6" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code trên thực hiện tối đa bao nhiêu câu lệnh SOQL?",
+      "why_correct": "Câu query đầu tiên lấy 5 Accounts (1 query). Vòng lặp chạy 5 lần, mỗi lần lại thực hiện 1 câu query lấy Contact bên trong (5 queries). Tổng cộng: 1 + 5 = 6 queries.",
+      "why_wrong": {
+        "B": "Mày đang nhầm với code đã được bulkified. Code này là ví dụ điển hình của việc vi phạm Governor Limits.",
+        "A": "Thiếu câu query đầu tiên bên ngoài vòng lặp."
+      },
+      "tip": "Governor Limit Bẫy: 'SOQL inside For loop'. Mẹo thi: Cứ thấy Query trong For là phải cộng dồn theo LIMIT hoặc số record."
+    }
+  },
+  {
+    "id": 24,
+    "question": "What is the most efficient way to ensure a value is selected every time a record is saved?",
+    "options": [
+      { "key": "A", "text": "Mark the field as Required on the object's page layout." },
+      { "key": "B", "text": "Set 'Use the first value in the list as the default value' as True." },
+      { "key": "C", "text": "Mark the field as Required on the field definition." },
+      { "key": "D", "text": "Set a validation rule to enforce a value is selected." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cách hiệu quả nhất để bắt buộc người dùng chọn giá trị mỗi khi lưu bản ghi là gì?",
+      "why_correct": "Mark Required ở cấp độ 'Field Definition' (Universal Required) là mạnh nhất. Nó bắt buộc ở mọi nơi: giao diện (UI), API, Code Apex, Data Loader. Đây là tầng bảo vệ dữ liệu thấp nhất và hiệu quả nhất.",
+      "why_wrong": {
+        "A": "Page Layout chỉ có tác dụng trên giao diện, nếu dùng Data Loader hoặc Code thì vẫn bỏ trống field được.",
+        "D": "Validation Rule cũng hiệu quả nhưng tốn tài nguyên xử lý hơn so với việc định nghĩa trực tiếp trên field.",
+        "B": "Default value không bắt người dùng phải 'chọn' theo ý họ, nó chỉ tự điền thôi."
+      },
+      "tip": "Data Integrity: Field Definition > Validation Rule > Page Layout."
+    }
+  },
+  {
+    "id": 25,
+    "question": "Which two techniques should the developer implement as a best practice to ensure transaction control and avoid exceeding governor limits? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Use Partial DML statements to ensure only valid data is committed." },
+      { "key": "B", "text": "Use the Database.Savepoint method to enforce database integrity." },
+      { "key": "C", "text": "Use the @ReadOnly annotation to bypass the number of rows returned." },
+      { "key": "D", "text": "Use the System.Limit class to monitor CPU governor limit consumption." }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai kỹ thuật nào giúp kiểm soát transaction và tránh vượt quá Governor Limits?",
+      "why_correct": "B: Savepoint cho phép mày rollback dữ liệu về trạng thái trước đó nếu có lỗi xảy ra giữa chừng (Transaction Control). D: Class System.Limit cung cấp các method (như getCpuTime()) để check xem mày sắp 'chạm trần' limit chưa để còn biết đường xử lý.",
+      "why_wrong": {
+        "A": "Partial DML (allOrNone=false) giúp lưu những bản ghi đúng, nhưng nó không giúp kiểm soát tổng thể transaction hay tránh limit.",
+        "C": "@ReadOnly chỉ dùng cho Web Services hoặc JS Remoting, không dùng để bypass limit trong transaction thông thường."
+      },
+      "tip": "Keywords: Transaction Control -> Savepoint; Monitor Limits -> System.Limit class."
+    }
+  },
+  {
+    "id": 26,
+    "question": "What is the value of the Trigger.old context variable in a Before Insert trigger?",
+    "options": [
+      { "key": "A", "text": "An empty list of sObjects" },
+      { "key": "B", "text": "Null" },
+      { "key": "C", "text": "Undefined" },
+      { "key": "D", "text": "A list of newly created sObjects without IDs" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Giá trị của biến Trigger.old trong Before Insert trigger là gì?",
+      "why_correct": "Trong sự kiện INSERT, bản ghi mới chưa hề tồn tại trong database trước đó, vì vậy không có 'phiên bản cũ' nào cả. Salesforce mặc định gán Trigger.old là NULL.",
+      "why_wrong": {
+        "A": "Không phải danh sách rỗng, mà là Null hoàn toàn.",
+        "D": "Bản ghi mới nằm trong Trigger.new, không phải Trigger.old."
+      },
+      "tip": "Trần đời: Insert -> Old là Null; Update -> Old có data; Delete -> New là Null."
+    }
+  },
+  {
+    "id": 27,
+    "question": "How should a developer write unit tests for a private method in an Apex class?",
+    "options": [
+      { "key": "A", "text": "Use the TestVisible annotation." },
+      { "key": "B", "text": "Mark the Apex class as global." },
+      { "key": "C", "text": "Use the See All Data annotation." },
+      { "key": "D", "text": "Add a test method in the Apex class." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để viết Unit Test cho một private method?",
+      "why_correct": "Annotation @TestVisible cho phép các class test truy cập được vào các member (variable/method) vốn dĩ là private hoặc protected mà không cần phải thay đổi modifier của chúng sang public.",
+      "why_wrong": {
+        "B": "Global làm lộ code ra toàn hệ thống, cực kỳ thiếu bảo mật chỉ để làm test.",
+        "D": "Sai practice. Code logic và Code test phải tách biệt hoàn toàn."
+      },
+      "tip": "Keyword: Private method test -> @TestVisible."
+    }
+  },
+  {
+    "id": 28,
+    "question": "How should the developer modify the code to ensure exceptions are handled gracefully?",
+    "options": [
+      { "key": "A", "text": "Remove null items from the list of Accounts" },
+      { "key": "B", "text": "Implement the upsert DML statement." },
+      { "key": "C", "text": "Implement a try/catch block for the DML." },
+      { "key": "D", "text": "Implement Change Data Capture." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để xử lý các ngoại lệ (Exception) một cách êm đẹp trong code?",
+      "why_correct": "Sử dụng cấu trúc Try/Catch là cách tiêu chuẩn để 'bắt' lỗi khi thực hiện DML. Nếu có lỗi, code trong phần Catch sẽ chạy (ví dụ: log lỗi, gửi mail) thay vì làm cả hệ thống 'văng' lỗi ra màn hình người dùng.",
+      "why_wrong": {
+        "A": "Chỉ xử lý được 1 trường hợp lỗi cụ thể, không giải quyết được các lỗi khác (ví dụ: Validation Rule lỗi).",
+        "B": "Upsert không liên quan đến việc xử lý Exception."
+      },
+      "tip": "Graceful handling = Try/Catch. Đừng để User thấy cái màn hình lỗi đỏ lòm của Salesforce!"
+    }
+  },
+  {
+    "id": 29,
+    "question": "A developer needs to prevent the creation of Request__c records when certain conditions exist... What is the correct implementation?",
+    "options": [
+      { "key": "A", "text": "trigger RequestTrigger on Request__c (after insert) { ... addError() }" },
+      { "key": "B", "text": "trigger RequestTrigger on Request__c (before insert) { ... validateRecords() }" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Để chặn việc tạo bản ghi Request__c khi không thỏa mãn điều kiện, nên dùng trigger nào?",
+      "why_correct": "Việc chặn (validation) nên thực hiện ở 'Before Insert'. Sử dụng method .addError() trên bản ghi trong Trigger.new sẽ ngăn chặn việc lưu vào database và trả lỗi về cho người dùng/API.",
+      "why_wrong": {
+        "A": "After Insert là quá muộn. Bản ghi đã được tạo và có ID rồi. Dù addError vẫn rollback được nhưng không tối ưu bằng Before.",
+        "C": "Cú pháp gọi helper class trong before insert (đáp án C trong đề gốc) là chuẩn nhất để Bulkify."
+      },
+      "tip": "Chặn/Validation -> Before Trigger + .addError()."
+    }
+  },
+  {
+    "id": 30,
+    "question": "Which two features satisfy this use case (Outbound Message)? Choose two answers.",
+    "options": [
+      { "key": "A", "text": "Process Builder" },
+      { "key": "B", "text": "Next Best Action" },
+      { "key": "C", "text": "Approval Process" },
+      { "key": "D", "text": "Flow Builder" }
+    ],
+    "correct": ["C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ngoài Workflow Rule, hai tính năng nào có thể gửi Outbound Message?",
+      "why_correct": "C: Approval Process hỗ trợ Outbound Message như một 'Initial Submission Action' hoặc 'Final Approval Action'. D: Flow Builder hiện nay đã hỗ trợ gọi Outbound Message trực tiếp thông qua Action.",
+      "why_wrong": {
+        "A": "Process Builder KHÔNG hỗ trợ Outbound Message trực tiếp (muốn dùng phải gọi qua Apex hoặc Workflow).",
+        "B": "Next Best Action là tool gợi ý cho user, không phải tool tự động hóa backend."
+      },
+      "tip": "Outbound Message: Workflow, Approval Process, Flow."
+    }
+  },
+  {
+    "id": 31,
+    "question": "What should a developer use to fix a Lightning web component bug in a sandbox?",
+    "options": [
+      { "key": "A", "text": "Developer Console" },
+      { "key": "B", "text": "Force.com IDE" },
+      { "key": "C", "text": "Execute Anonymous" },
+      { "key": "D", "text": "VS Code" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Dùng gì để sửa lỗi LWC trong Sandbox?",
+      "why_correct": "LWC không thể sửa trực tiếp trên giao diện Salesforce (Setup). Mày bắt buộc phải dùng công cụ lập trình chuyên dụng là VS Code (kèm Salesforce Extension Pack) để chỉnh sửa và deploy lại.",
+      "why_wrong": {
+        "A": "Developer Console chỉ hỗ trợ Aura, không hỗ trợ xem hay sửa code LWC.",
+        "B": "Force.com IDE đã bị khai tử từ đời nào rồi.",
+        "C": "Execute Anonymous dùng để chạy code Apex nhanh, không sửa được UI."
+      },
+      "tip": "LWC = VS Code. Nhớ nhé, Dev Console giờ chỉ để coi log và query thôi."
+    }
+  },
+  {
+    "id": 32,
+    "question": "Business rule: whenever Status of Expense_Report__c is 'Submitted', all related Expense_Item__c records must enter approval process individually.",
+    "options": [
+      { "key": "A", "text": "Use two Process Builders (one on Report, one on Items)." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khi Report 'Submitted', làm sao để tất cả Items liên quan tự nhảy vào Approval Process?",
+      "why_correct": "Đây là bài toán đệ quy. PB 1 trên Report sẽ update 1 hidden field trên tất cả Items liên quan. PB 2 trên Item sẽ lắng nghe cái field đó, hễ nó thay đổi thì kích hoạt Action 'Submit for Approval'.",
+      "why_wrong": {
+        "D": "Process Builder trên Report không thể submit thay cho các bản ghi con (Child records) một cách trực tiếp trong 1 bước được.",
+        "C": "Gọi Apex thì làm được, nhưng nếu No-code làm được thì Salesforce ưu tiên No-code hơn."
+      },
+      "tip": "Keywords: Individual Approval -> Action 'Submit for Approval' trên chính Object đó."
+    }
+  },
+  {
+    "id": 33,
+    "question": "How can a developer implement update Timezone based on Postal Code To TimeZone__c custom object?",
+    "options": [
+      { "key": "C", "text": "Build a Flow with Flow Builder." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Update Timezone dựa trên Postal Code bằng cách tra cứu (lookup) một Object khác. Dùng gì?",
+      "why_correct": "Flow Builder là công cụ mạnh nhất hiện nay cho việc này. Nó có thể thực hiện lệnh 'Get Records' để tìm kiếm Timezone tương ứng từ object Postal_Code_To_TimeZone__c rồi gán ngược lại cho Account.",
+      "why_wrong": {
+        "A": "Workflow chỉ update được field dựa trên công thức hoặc giá trị tĩnh, không đi 'tìm' dữ liệu ở object khác được.",
+        "D": "Assignment Rule dùng cho Lead/Case để chia cho chủ sở hữu, không dùng update field."
+      },
+      "tip": "Mẹo thi: Cứ thấy logic 'Tra cứu Object khác rồi Update' -> Chọn Flow."
+    }
+  },
+  {
+    "id": 34,
+    "question": "Which type of Salesforce orgs should they use for source-driven development?",
+    "options": [
+      { "key": "B", "text": "Scratch orgs" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Loại Org nào dùng cho dự án Source-driven (dùng Git), cho phép dev làm việc độc lập?",
+      "why_correct": "Scratch Orgs là 'vua' của Source-driven development. Nó cho phép mỗi dev tạo ra một môi trường sạch, cấu hình theo file định nghĩa (project-scratch-def.json) để code và test độc lập.",
+      "why_wrong": {
+        "C": "Sandbox vẫn mang nặng tính thủ công và phụ thuộc vào dữ liệu của Production.",
+        "A": "Developer Org là Org cá nhân, không phù hợp cho workflow chuyên nghiệp của team."
+      },
+      "tip": "Keyword: Source-driven -> Scratch Orgs."
+    }
+  },
+  {
+    "id": 35,
+    "question": "Which two statements are true about Getter and Setter methods relate to Visualforce?",
+    "options": [
+      { "key": "B", "text": "Getter methods can pass a value from a controller to a page." },
+      { "key": "D", "text": "There is no guarantee for orders in which Getter or Setter methods are executed." }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai phát biểu đúng về Getter và Setter trong Visualforce?",
+      "why_correct": "B: Getter (getXXX) dùng để lấy dữ liệu từ Controller hiển thị lên Page. D: Cực kỳ quan trọng: Salesforce không cam kết thứ tự chạy của các Getter/Setter, nên đừng bao giờ viết logic nghiệp vụ quan trọng bên trong chúng.",
+      "why_wrong": {
+        "A": "Setter không bắt buộc phải là global, public là đủ dùng.",
+        "C": "Mày có thể dùng constructor để pass giá trị, Setter không phải là cách duy nhất."
+      },
+      "tip": "Visualforce: Getter = Out (to Page), Setter = In (to Controller). Thứ tự chạy: Hên xui."
+    }
+  },
+  {
+    "id": 36,
+    "question": "Which annotation method should be used to create records for every method in the test class?",
+    "options": [
+      { "key": "A", "text": "@TestSetup" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Dùng annotation nào để tạo dữ liệu dùng chung cho tất cả các method trong class test?",
+      "why_correct": "@TestSetup giúp tiết kiệm thời gian chạy test. Dữ liệu tạo trong này sẽ được 'chụp ảnh' lại, mỗi khi một test method chạy xong, dữ liệu sẽ được rollback về trạng thái ban đầu cho method tiếp theo dùng.",
+      "why_wrong": {
+        "B": "SeeAllData=true là bad practice, nó dùng dữ liệu thật trong Org, làm test không còn tính độc lập.",
+        "D": "@PreTest không tồn tại trong Apex."
+      },
+      "tip": "Keyword: Common test data -> @TestSetup. Chạy 1 lần, dùng cả đời (class)."
+    }
+  },
+  {
+    "id": 37,
+    "question": "What is an example of a polymorphic lookup field in Salesforce?",
+    "options": [
+      { "key": "C", "text": "The WhatId field on the standard Event object." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Ví dụ nào về Polymorphic Lookup field (field có thể trỏ đến nhiều loại Object khác nhau)?",
+      "why_correct": "WhatId (Related To) trên Event hoặc Task là điển hình. Nó có thể trỏ đến Account, Opportunity, Campaign, hoặc bất kỳ Custom Object nào. 'Polymorphic' nghĩa là đa hình.",
+      "why_wrong": {
+        "A": "Lookup thông thường chỉ trỏ được đến 1 loại Object cố định.",
+        "B": "Đây là 2 field Lookup riêng biệt, không phải 1 field đa hình.",
+        "D": "ParentId trên Account chỉ trỏ về Account (Self-lookup)."
+      },
+      "tip": "Polymorphic Lookup: WhatId, WhoId, OwnerId."
+    }
+  },
+  {
+    "id": 38,
+    "question": "Trigger coverage is 0% but helper class coverage is 95%. Deployment fails. What to do?",
+    "options": [
+      { "key": "B", "text": "Create a test class and methods to cover the Apex trigger." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Helper class cover 95% nhưng Trigger 0% nên không deploy được. Phải làm sao?",
+      "why_correct": "Salesforce yêu cầu mọi Trigger phải có ít nhất 1% coverage (thực tế nên cover càng nhiều càng tốt). Mày phải viết test method thực hiện hành động (DML) để kích hoạt Trigger đó chạy.",
+      "why_wrong": {
+        "A": "Dù helper 100% mà trigger 0% thì vẫn tạch.",
+        "D": "Run All Tests không giúp tăng coverage cho trigger nếu mày chưa viết code test cho nó."
+      },
+      "tip": "Deployment Rule: Toàn Org 75%, nhưng mỗi Trigger phải > 0%."
+    }
+  },
+  {
+    "id": 39,
+    "question": "Which two tools can they use to run a script that deploys to a sandbox?",
+    "options": [
+      { "key": "A", "text": "SFDX CLI" },
+      { "key": "B", "text": "VSCode" }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai công cụ nào hỗ trợ chạy script để deploy code vào Sandbox?",
+      "why_correct": "A: CLI là công cụ dòng lệnh, sinh ra để chạy script. B: VS Code tích hợp terminal và các task, cho phép mày chạy các script deploy cực kỳ tiện lợi.",
+      "why_wrong": {
+        "C": "Change Sets là công cụ kéo-thả trên UI, không chạy script được.",
+        "D": "Developer Console không hỗ trợ deploy metadata từ bên ngoài vào."
+      },
+      "tip": "Keyword: Scripting + Deployment -> CLI / SFDX."
+    }
+  },
+  {
+    "id": 40,
+    "question": "What are two use cases for executing Anonymous Apex code? Choose 2 answers.",
+    "options": [
+      { "key": "B", "text": "To schedule an Apex class to run periodically." },
+      { "key": "C", "text": "To run a batch Apex class to update all Contacts." }
+    ],
+    "correct": ["B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai trường hợp nào nên dùng Execute Anonymous Apex?",
+      "why_correct": "Execute Anonymous dùng để chạy những lệnh 'một lần' hoặc kích hoạt các tiến trình. B: Mày có thể viết lệnh `System.schedule(...)` để đặt lịch. C: Gọi lệnh `Database.executeBatch(new MyBatch())` để chạy batch ngay lập tức.",
+      "why_wrong": {
+        "A": "Xóa 15,000 records trong 1 transaction sẽ dính limit DML (10,000). Phải dùng Batch.",
+        "D": "Code chạy trong Anonymous không được tính vào code coverage của Org."
+      },
+      "tip": "Anonymous Apex: Một đi không trở lại, không lưu vào Metadata, không tính Coverage."
+    }
+  }
+]

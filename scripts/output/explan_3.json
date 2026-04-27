@@ -1,0 +1,398 @@
+[
+  {
+    "id": 41,
+    "question": "A developer created a child Lightning web component nested inside a parent Lightning web component. The parent component needs to pass a string value to the child component. In which two ways can this be accomplished? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "The parent component can use a custom event to pass the data." },
+      { "key": "B", "text": "The parent component can use the Apex controller class." },
+      { "key": "C", "text": "The parent component can use a public property to pass the data." },
+      { "key": "D", "text": "The parent component can invoke a method in the child component." }
+    ],
+    "correct": ["C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Parent LWC muốn truyền một chuỗi (string) xuống Child LWC. Hai cách nào sau đây làm được việc đó?",
+      "why_correct": "C: Đây là cách phổ biến nhất (Downstream), dùng decorator @api trên property của Child để biến nó thành public. D: Parent có thể dùng querySelector để tìm Child và gọi một method được đánh dấu @api của Child.",
+      "why_wrong": {
+        "A": "Custom Event dùng để truyền data từ Child LÊN Parent (Upstream), không phải truyền xuống.",
+        "B": "Dùng Apex để truyền data giữa 2 component là đi đường vòng, tốn tài nguyên server vô ích."
+      },
+      "tip": "Giao tiếp LWC: Xuống thì dùng @api (Property/Method), Lên thì dùng Custom Event (Dispatch)."
+    }
+  },
+  {
+    "id": 42,
+    "question": "Which three data types can a SOQL query return? Choose 3 answers.",
+    "options": [
+      { "key": "A", "text": "Double" },
+      { "key": "B", "text": "Long" },
+      { "key": "C", "text": "List" },
+      { "key": "D", "text": "sObject" },
+      { "key": "E", "text": "Integer" }
+    ],
+    "correct": ["C", "D", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Một câu lệnh SOQL có thể trả về những kiểu dữ liệu nào? (Chọn 3)",
+      "why_correct": "C: Trả về một danh sách bản ghi (phổ biến nhất). D: Trả về duy nhất 1 bản ghi (nếu query theo Id). E: Trả về số lượng bản ghi khi dùng COUNT().",
+      "why_wrong": {
+        "A": "Double không phải là kiểu trả về của SOQL.",
+        "B": "Long cũng vậy. SOQL chỉ quan tâm đến sObject hoặc số đếm Integer."
+      },
+      "tip": "SOQL return: List<sObject>, sObject (Single), hoặc Integer (COUNT)."
+    }
+  },
+  {
+    "id": 43,
+    "question": "How can the developer find the current user's default record type?",
+    "options": [
+      { "key": "A", "text": "Use the Schema.userInfo.Opportunity.getDefaultRecordType() method." },
+      { "key": "B", "text": "Use Opportunity.SObjectType.getDescribe().getRecordTypeInfos() and iterate..." },
+      { "key": "C", "text": "Query the profile where the ID equals to userInfo.getProfileID()." },
+      { "key": "D", "text": "Create the opportunity and check the recordType before inserting." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để tìm Record Type mặc định của user hiện tại bằng Apex?",
+      "why_correct": "Dùng Schema Describe là cách chính thống nhất. Duyệt qua danh sách RecordTypeInfos của Object và kiểm tra method isDefaultRecordTypeMapping() để xác định cái nào là mặc định cho User đó.",
+      "why_wrong": {
+        "A": "Method này không tồn tại trong class Schema.",
+        "C": "Profile không chứa thông tin trực tiếp về record type mapping theo cách query đơn giản này.",
+        "D": "Không thực tế, tạo bản ghi ảo chỉ để check record type là tốn Heap size."
+      },
+      "tip": "Keyword: Schema Describe -> getRecordTypeInfos -> isDefaultRecordTypeMapping."
+    }
+  },
+  {
+    "id": 44,
+    "question": "Which two operations can be performed using a formula field? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Calculating a score on a lead based on information from another field." },
+      { "key": "B", "text": "Displaying an image based on the opportunity Amount." },
+      { "key": "C", "text": "Displaying the last four digits of an encrypted Social Security number." },
+      { "key": "D", "text": "Triggering a Process Builder." }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai thao tác nào có thể thực hiện được bằng Formula Field?",
+      "why_correct": "A: Formula sinh ra để tính toán dựa trên các field khác cùng object hoặc parent. B: Hàm IMAGE() trong formula cho phép hiển thị hình ảnh động (ví dụ: cột cờ xanh/đỏ) dựa trên giá trị của Amount.",
+      "why_wrong": {
+        "C": "Formula không thể truy cập vào các field đã được mã hóa (Encrypted fields) vì lý do bảo mật.",
+        "D": "Formula field chỉ hiển thị giá trị, nó không phải là một 'Event' để trigger cái gì khác chạy."
+      },
+      "tip": "Formula: Chỉ Đọc (Read-only), Luôn tính toán (Runtime), hiển thị được Ảnh (IMAGE)."
+    }
+  },
+  {
+    "id": 45,
+    "question": "What is the result of the following code? Account a = new Account(); Database.insert(a, false);",
+    "options": [
+      { "key": "A", "text": "The record will be created and no error will be reported." },
+      { "key": "B", "text": "The record will be created and a message will be in the debug log." },
+      { "key": "C", "text": "The record will not be created and no error will be reported." },
+      { "key": "D", "text": "The record will not be created and an exception will be thrown." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Kết quả của đoạn code trên là gì (biết rằng Account không có Name - trường bắt buộc)?",
+      "why_correct": "Account mới tạo thiếu Name nên chắc chắn sẽ insert lỗi. Tuy nhiên, tham số `false` (allOrNone = false) trong `Database.insert` bảo Salesforce: 'Nếu lỗi thì cứ bỏ qua, đừng bắn Exception'. Do đó, bản ghi không được tạo nhưng code cũng không bị dừng đột ngột.",
+      "why_wrong": {
+        "D": "Nếu dùng `insert a;` hoặc `Database.insert(a, true);` thì mới bắn Exception.",
+        "A": "Lỗi Required field thì không bao giờ bản ghi được tạo."
+      },
+      "tip": "Database.insert(records, false): Lỗi thì âm thầm chịu đựng, không bắn Exception. Nhớ check SaveResult để biết lỗi gì."
+    }
+  },
+  {
+    "id": 46,
+    "question": "Which action will allow the developer to relate records in the data model without knowing the Salesforce ID?",
+    "options": [
+      { "key": "A", "text": "Create a custom field on the child object of type External Relationship." },
+      { "key": "B", "text": "Create and populate a custom field on the parent object marked as an External ID." },
+      { "key": "C", "text": "Create and populate a custom field on the parent object marked as Unique." },
+      { "key": "D", "text": "Create a custom field on the child object of type Lookup." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để liên kết các bản ghi mà không cần biết ID của Salesforce?",
+      "why_correct": "Bằng cách dùng External ID. Khi import hoặc dùng code, mày có thể dùng cái mã từ hệ thống bên ngoài (ví dụ: Mã nhân viên) để Salesforce tự tìm và map vào bản ghi tương ứng.",
+      "why_wrong": {
+        "C": "Unique chỉ ngăn trùng lặp, không hỗ trợ tính năng map bản ghi khi upsert.",
+        "D": "Lookup field vẫn cần ID để gán nếu dùng cách truyền thống."
+      },
+      "tip": "Keyword: Relate without ID -> External ID."
+    }
+  },
+  {
+    "id": 47,
+    "question": "What is the result of the following code snippet? Public void dowork(Account acct){ For (Integer i=0; i<=200; i++) { Insert acct; } }",
+    "options": [
+      { "key": "A", "text": "201 Accounts are inserted." },
+      { "key": "B", "text": "0 Accounts are inserted." },
+      { "key": "C", "text": "200 Accounts are inserted." },
+      { "key": "D", "text": "1 Account is inserted." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code chạy vòng lặp insert 201 lần cùng 1 biến acct sẽ cho kết quả gì?",
+      "why_correct": "Lần đầu tiên insert acct thành công. Lần thứ hai, acct đã có ID rồi, việc gọi 'insert' trên một bản ghi đã có ID sẽ bắn lỗi ngay lập tức. Vì code không có try/catch, cả transaction sẽ rollback -> 0 bản ghi được tạo.",
+      "why_wrong": {
+        "A": "Vượt limit 150 DML statements (Governor Limit) cũng là một lý do làm nó tạch sạch.",
+        "C": "Dính cả lỗi logic (Insert record with ID) và lỗi Limit."
+      },
+      "tip": "Governor Limit: Max 150 DML statements per transaction. Thấy insert trong vòng lặp là chọn ngay đáp án lỗi."
+    }
+  },
+  {
+    "id": 48,
+    "question": "Which statement describes the execution order when triggers are associated to the same object and event?",
+    "options": [
+      { "key": "A", "text": "Triggers are executed alphabetically by trigger name." },
+      { "key": "B", "text": "Triggers are executed in the order they are created." },
+      { "key": "C", "text": "Trigger execution order cannot be guaranteed." },
+      { "key": "D", "text": "Triggers are executed in the order they are modified." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Thứ tự thực thi của các trigger trên cùng một Object và cùng một sự kiện (ví dụ Before Insert) là gì?",
+      "why_correct": "Salesforce không cam kết bất kỳ thứ tự nào. Đây là lý do tại sao 'Trigger Best Practice' luôn khuyên chỉ nên có 1 Trigger duy nhất cho mỗi Object để kiểm soát được logic.",
+      "why_wrong": {
+        "A": "Nghe có vẻ hợp lý nhưng Salesforce không làm thế.",
+        "B": "Cũng không đúng, việc tạo trước hay sau không quyết định thứ tự chạy."
+      },
+      "tip": "One Trigger per Object = Best Practice. Thứ tự chạy nhiều trigger = Hên xui (Random)."
+    }
+  },
+  {
+    "id": 49,
+    "question": "Order records will be imported. How should the Order Number field be defined?",
+    "options": [
+      { "key": "A", "text": "Indirect Lookup" },
+      { "key": "B", "text": "Number with External ID" },
+      { "key": "C", "text": "Direct Lookup" },
+      { "key": "D", "text": "Lookup" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Import dữ liệu Order từ hệ thống ngoài, dùng Order Number làm định danh. Field này nên cấu hình thế nào?",
+      "why_correct": "Vì nó dùng để map dữ liệu từ bên ngoài vào, nó phải là External ID. Kiểu dữ liệu Number hoặc Text tùy nhu cầu, nhưng attribute 'External ID' là bắt buộc.",
+      "why_wrong": {
+        "A": "Indirect Lookup dùng cho External Objects (Salesforce Connect), không phải để import data thông thường.",
+        "D": "Lookup là quan hệ giữa các bản ghi, không phải thuộc tính của 1 field chứa mã định danh."
+      },
+      "tip": "Keyword: Import from external system -> External ID."
+    }
+  },
+  {
+    "id": 50,
+    "question": "Developer needs to ensure maxAttempts preserves its value for the length of the transaction while being able to share state between trigger executions. How should it be declared?",
+    "options": [
+      { "key": "A", "text": "Declare maxAttempts as a private static variable on a helper class." },
+      { "key": "B", "text": "Declare maxAttempts as a constant using the static and final keywords." },
+      { "key": "C", "text": "Declare maxAttempts as a member variable on the trigger definition." },
+      { "key": "D", "text": "Declare maxAttempts as a variable on a helper class." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo biến thế nào để nó giữ nguyên giá trị trong suốt Transaction và dùng chung được cho các lần trigger chạy lại?",
+      "why_correct": "Biến 'static' tồn tại suốt thời gian sống của một Transaction. Thêm 'final' để đảm bảo nó chỉ được khởi tạo 1 lần và không bị thay đổi lung tung (hằng số).",
+      "why_wrong": {
+        "C": "Biến trong trigger sẽ bị hủy và khởi tạo lại mỗi khi trigger re-fire.",
+        "D": "Thiếu 'static' thì nó là biến instance, không dùng chung được giữa các lần gọi khác nhau của class đó trong cùng transaction."
+      },
+      "tip": "Static variable = Sống trọn 1 Transaction. Dùng để chống đệ quy (Recursion control)."
+    }
+  },
+  {
+    "id": 51,
+    "question": "Shipping Calculator class cannot be instantiated and must include a default implementation of calculate method that sub-classes can override.",
+    "options": [
+      { "key": "C", "text": "public abstract class ShippingCalculator { public virtual void calculate() { ... } }" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Class không được phép khởi tạo (instantiated) trực tiếp nhưng phải có method mặc định cho lớp con ghi đè (override). Khai báo thế nào?",
+      "why_correct": "Từ khóa `abstract` cho class ngăn việc dùng lệnh `new ShippingCalculator()`. Từ khóa `virtual` cho method cho phép các class con dùng `override` để viết lại logic khác.",
+      "why_wrong": {
+        "A": "Method abstract thì KHÔNG được có phần thân (body) thực thi mặc định.",
+        "B": "Method không có 'virtual' thì lớp con không thể override được."
+      },
+      "tip": "OOP: Abstract class = Không được tạo instance. Virtual method = Cho phép lớp con Override."
+    }
+  },
+  {
+    "id": 52,
+    "question": "What should the developer use to enforce sharing permissions for the currently logged-in user?",
+    "options": [
+      { "key": "A", "text": "Use the with sharing keyword on the class declaration." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để đảm bảo code Apex tuân thủ Sharing Rules của User đang đăng nhập?",
+      "why_correct": "Thêm từ khóa `with sharing` vào phần khai báo class. Khi đó, các câu lệnh SOQL sẽ chỉ lấy được những bản ghi mà User đó thực sự có quyền xem (theo OWD, Sharing Rules, v.v.).",
+      "why_wrong": {
+        "C": "`without sharing` sẽ chạy dưới quyền System, thấy hết mọi thứ (ngược yêu cầu).",
+        "D": "Lọc thủ công bằng UserInfo cực kỳ tốn code và dễ sai sót."
+      },
+      "tip": "Apex Security: with sharing (tuân thủ luật), without sharing (phớt lờ luật), inherited sharing (theo thằng gọi nó)."
+    }
+  },
+  {
+    "id": 53,
+    "question": "What are the three characteristics of changeset deployments? Choose 3 answers.",
+    "options": [
+      { "key": "C", "text": "Sending a changeset between two orgs requires a deployment connection." },
+      { "key": "D", "text": "Deployment is done in a one-way, single transaction." },
+      { "key": "E", "text": "Changesets can only be used between related organizations." }
+    ],
+    "correct": ["C", "D", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba đặc điểm của việc dùng Change Sets để deploy?",
+      "why_correct": "C: Hai Org phải 'bắt tay' nhau qua Deployment Connection. D: Khi deploy, mọi thứ chạy trong 1 transaction (All or Nothing). E: Chỉ dùng được giữa các Org có liên quan (ví dụ Sandbox và Production của cùng 1 khách hàng).",
+      "why_wrong": {
+        "A": "Change set chỉ deploy Metadata, không deploy Data (Custom Settings data là dữ liệu).",
+        "B": "Change set không dùng để transfer bản ghi (records)."
+      },
+      "tip": "Change Sets: Chỉ Metadata, chỉ Org liên quan, cần Connection."
+    }
+  },
+  {
+    "id": 54,
+    "question": "How should the developer modify the code to ensure best practices are met (Bulkification)?",
+    "options": [
+      { "key": "A", "text": "public static void setBusinessUnitToEMEA (List<Contact> contacts) { for... update contacts; }" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code update từng Contact một. Sửa thế nào để đúng Best Practice (Bulkify)?",
+      "why_correct": "Thay vì nhận 1 Contact, hãy nhận 1 `List<Contact>`. Duyệt qua list để gán giá trị và chỉ gọi lệnh `update` DUY NHẤT một lần cho cả list bên ngoài vòng lặp.",
+      "why_wrong": {
+        "B": "Update contacts[0] chỉ xử lý được 1 đứa, vô dụng khi xử lý hàng loạt.",
+        "D": "Vẫn gọi update trong vòng lặp (nếu có index) là dính Limit DML ngay."
+      },
+      "tip": "Bulkification: Nhận vào List, Update cả List. Tuyệt đối không DML trong For!"
+    }
+  },
+  {
+    "id": 55,
+    "question": "The value of the account type field is not being displayed correctly on the Visualforce page. What should the developer do?",
+    "options": [
+      { "key": "A", "text": "Add a getter method for the actType attribute." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Visualforce không hiển thị được giá trị actType từ Controller. Tại sao?",
+      "why_correct": "Trong Visualforce, để một biến từ Apex hiển thị được lên UI, nó cần có Getter method (ví dụ `getActType()` hoặc dùng cú pháp `{get; set;}`). Nếu không có, Page sẽ không 'thấy' được dữ liệu.",
+      "why_wrong": {
+        "C": "`with sharing` không ảnh hưởng đến việc hiển thị biến lên UI.",
+        "D": "Kiểu dữ liệu đã là String rồi, không cần convert nữa."
+      },
+      "tip": "VF + Apex: Không có Get/Set thì đừng hòng dữ liệu lên được Page."
+    }
+  },
+  {
+    "id": 56,
+    "question": "Which is the correct definition of the Apex method that gets the additional information (InvocableMethod)?",
+    "options": [
+      { "key": "D", "text": "public static List<ContactInfo> getInfo(List<Id> contactIds) { ... }" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cấu pháp chuẩn của InvocableMethod dùng trong Flow là gì?",
+      "why_correct": "Method phải là `static`. Tham số đầu vào và kiểu trả về BẮT BUỘC phải là một `List` (ví dụ `List<Id>` vào và `List<ContactInfo>` ra) để Salesforce thực hiện Bulkification khi có nhiều bản ghi cùng chạy qua Flow.",
+      "why_wrong": {
+        "B": "Tham số lẻ (Id) không được chấp nhận, phải là List.",
+        "C": "Thiếu từ khóa static."
+      },
+      "tip": "InvocableMethod: Mọi thứ phải là LIST. Input List, Output List. Bulkify là trên hết!"
+    }
+  },
+  {
+    "id": 57,
+    "question": "Which scenario is valid for execution by unit tests?",
+    "options": [
+      { "key": "B", "text": "Set the created date of a record using a system method." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Hành động nào sau đây là hợp lệ khi chạy Unit Test?",
+      "why_correct": "Mặc dù `CreatedDate` là field read-only, nhưng trong Unit Test, mày có thể dùng `Test.setCreatedDate(recordId, dateTime)` để giả lập ngày tạo, phục vụ cho việc test các logic liên quan đến thời gian.",
+      "why_wrong": {
+        "A": "getContentAsPDF() không chạy được trong test (bắn lỗi exception).",
+        "C": "Callout thực sự bị cấm trong test, phải dùng Mock.",
+        "D": "Execute anonymous không phải là một phần của Unit Test."
+      },
+      "tip": "Test: No Callouts (use Mock), Yes Test.setCreatedDate()."
+    }
+  },
+  {
+    "id": 58,
+    "question": "How should the developer prevent a cross-site scripting (XSS) vulnerability?",
+    "options": [
+      { "key": "C", "text": "ApexPages.currentPage().getParameters().get('url_param').escapeHtml()" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để chống tấn công XSS khi lấy tham số từ URL hiển thị lên Visualforce?",
+      "why_correct": "Sử dụng hàm `.escapeHtml()` trên chuỗi lấy được từ URL. Nó sẽ biến các ký tự nguy hiểm như `<script>` thành văn bản thuần túy, ngăn chặn trình duyệt thực thi mã độc.",
+      "why_wrong": {
+        "B": "escapeSingleQuotes() dùng để chống SOQL Injection, không chống được XSS.",
+        "D": "Để nguyên như vậy là tạo lỗ hổng XSS cực lớn."
+      },
+      "tip": "XSS = Hacker nhồi script vào UI. Cách chống: .escapeHtml() hoặc dùng <apex:outputText> mặc định."
+    }
+  },
+  {
+    "id": 59,
+    "question": "What is the value of the count field if an Account is inserted with an initial value of zero?",
+    "options": [
+      { "key": "D", "text": "2" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Insert Account (count=0), có Trigger Before (+1) và Workflow (+1). Kết quả cuối cùng là mấy?",
+      "why_correct": "Thứ tự: 1. Before Trigger chạy (0+1=1). 2. Lưu bản ghi (giá trị là 1). 3. Workflow Field Update chạy (1+1=2). Vì Workflow không cấu hình re-evaluate, nên trigger không chạy lại lần nữa. Tổng = 2.",
+      "why_wrong": {
+        "A": "Bằng 3 nếu Workflow có tích chọn re-evaluate trigger.",
+        "C": "Bằng 1 là quên chưa tính Workflow."
+      },
+      "tip": "Order of Execution: Trigger Before -> Workflow -> (Nếu re-evaluate) -> Trigger Before/After lần nữa."
+    }
+  },
+  {
+    "id": 60,
+    "question": "Which two will restrict the records correctly (Lightning component search)? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Public with sharing class ContactController." },
+      { "key": "C", "text": "Public inherited sharing class ContactController." }
+    ],
+    "correct": ["A", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai cách nào giúp giới hạn bản ghi tìm kiếm theo quyền của User trong Lightning Component?",
+      "why_correct": "A: `with sharing` ép class tuân thủ quyền user. C: `inherited sharing` sẽ lấy quyền từ class gọi nó (thường là component gọi nên nó sẽ mặc định tuân thủ quyền user), đây là một secure practice mới của Salesforce.",
+      "why_wrong": {
+        "B": "Nếu không ghi gì (omitted), mặc định class chạy ở quyền System (thấy hết), trừ khi là lớp con của một class with sharing.",
+        "D": "`without sharing` chắc chắn là không giới hạn rồi."
+      },
+      "tip": "Apex Security: with sharing là lựa chọn an toàn nhất cho mọi controller."
+    }
+  }
+]

@@ -1,0 +1,379 @@
+[
+  {
+    "id": 61,
+    "question": "Which two statements are accurate regarding Apex classes and interfaces? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Classes are final by default." },
+      { "key": "B", "text": "Inner classes are public by default." },
+      { "key": "C", "text": "Interface methods are public by default." },
+      { "key": "D", "text": "A TOP-LEVEL Class can only have one inner class level." }
+    ],
+    "correct": ["A", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai phát biểu nào đúng về class và interface trong Apex?",
+      "why_correct": "A: Trong Apex, mặc định các class là 'final' (không thể kế thừa), muốn cho lớp khác kế thừa phải dùng từ khóa 'virtual'. D: Salesforce giới hạn class tầng cao nhất (top-level) chỉ được chứa một cấp độ class bên trong (inner class).",
+      "why_wrong": {
+        "B": "Inner class mặc định là 'private', muốn public phải khai báo rõ.",
+        "C": "Method trong interface mặc định là 'global' hoặc 'public' tùy vào modifier của interface đó, nhưng ý D là một quy tắc kiến trúc chặt chẽ hơn trong thi cử."
+      },
+      "tip": "Mặc định Apex Class = Final (không đẻ con được). Top-level = Chỉ có 1 tầng inner class (không được lồng nhau quá nhiều)."
+    }
+  },
+  {
+    "id": 62,
+    "question": "A developer needs to create a constant named DELIVERY_MULTIPLIER with a value of 4.15. The value should not modify any time. How should the developer declare it?",
+    "options": [
+      { "key": "A", "text": "static final decimal DELIVERY_MULTIPLIER = 4.15;" },
+      { "key": "B", "text": "static decimal DELIVERY_MULTIPLIER = 4.15;" },
+      { "key": "C", "text": "constant decimal DELIVERY_MULTIPLIER = 4.15;" },
+      { "key": "D", "text": "decimal DELIVERY_MULTIPLIER = 4.15" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo hằng số DELIVERY_MULTIPLIER bằng 4.15 và không cho phép thay đổi giá trị. Cách nào đúng?",
+      "why_correct": "Trong Apex, hằng số (Constant) được tạo bằng cách kết hợp `static` (để dùng chung cho mọi instance) và `final` (để giá trị chỉ được gán 1 lần duy nhất).",
+      "why_wrong": {
+        "B": "Thiếu 'final' thì nó chỉ là biến tĩnh, vẫn thay đổi được giá trị.",
+        "C": "Apex không có từ khóa 'constant'.",
+        "D": "Đây là biến instance thông thường."
+      },
+      "tip": "Constant = static + final. Nhớ nhé, không có 'constant' keyword đâu!"
+    }
+  },
+  {
+    "id": 63,
+    "question": "Which two statements accurately represent the MVC framework implementation in Salesforce? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Lightning component HTML files represent the Model (M)." },
+      { "key": "B", "text": "Standard and Custom objects represent the View (V)." },
+      { "key": "C", "text": "Validation rules represent the Controller (C)." },
+      { "key": "D", "text": "Records created by triggers represent the Model (M)." }
+    ],
+    "correct": ["C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai phát biểu nào đúng về mô hình MVC trong Salesforce?",
+      "why_correct": "C: Validation rules chứa logic kiểm tra dữ liệu, đóng vai trò của Controller (C). D: Records (dữ liệu trong database) chính là Model (M).",
+      "why_wrong": {
+        "A": "HTML là View (V).",
+        "B": "Objects/Fields là Model (M), không phải View."
+      },
+      "tip": "M = Dữ liệu (Objects/Records), V = Giao diện (HTML/Page), C = Logic (Apex/Validation/Flow)."
+    }
+  },
+  {
+    "id": 64,
+    "question": "Representatives are allowed to see information on the Order, but they are not allowed to see the Line items. Which type of relationship should be used?",
+    "options": [
+      { "key": "A", "text": "Indirect lookup." },
+      { "key": "B", "text": "Direct Lookup." },
+      { "key": "C", "text": "Lookup." },
+      { "key": "D", "text": "Master-Detail." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "User được xem Order nhưng không được xem Line Items. Dùng loại quan hệ nào?",
+      "why_correct": "Quan hệ Lookup cho phép thiết lập quyền truy cập (Sharing) độc lập cho từng Object. Master-Detail thì thằng con sẽ tự động 'thừa kế' quyền của thằng cha, nên nếu thấy Order là sẽ thấy hết Line Items -> Không thỏa mãn yêu cầu bảo mật.",
+      "why_wrong": {
+        "D": "Master-Detail ép buộc sharing phải giống nhau.",
+        "A": "Indirect lookup chỉ dùng cho dữ liệu bên ngoài (External Objects)."
+      },
+      "tip": "Bảo mật riêng tư = Lookup. Sống chết có nhau = Master-Detail."
+    }
+  },
+  {
+    "id": 65,
+    "question": "Combine the two SELECT statements into a single SOQL statement (to fix SOQL in loop).",
+    "options": [
+      { "key": "A", "text": "Combine the two SELECT statements into a single SOQL statement." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để sửa lỗi query trong vòng lặp?",
+      "why_correct": "Đây là bài toán Bulkification kinh điển. Thay vì query Contact cho mỗi Account trong vòng lặp, ta dùng 'Parent-to-Child' query (Inner Query) kiểu `SELECT Id, (SELECT Id FROM Contacts) FROM Account` để lấy hết data chỉ trong 1 lần query duy nhất.",
+      "why_wrong": {
+        "B": "LIMIT hay WHERE không giải quyết được vấn đề 'số lần' gọi query."
+      },
+      "tip": "Anti-Pattern: Query in For loop. Sửa bằng: Inner Query (Parent-to-Child)."
+    }
+  },
+  {
+    "id": 66,
+    "question": "A System.CalloutException is occurring in an after update trigger. What should the developer do to fix this error?",
+    "options": [
+      { "key": "A", "text": "Replace the after update trigger with a before insert trigger." },
+      { "key": "B", "text": "Move the callout to an asynchronous method with @future(callout=true)." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lỗi CalloutException xảy ra trong trigger. Cách sửa là gì?",
+      "why_correct": "Mặc định Salesforce không cho phép thực hiện Callout trực tiếp trong Trigger vì nó làm đứng (lock) database transaction. Phải đẩy Callout sang tiến trình không đồng bộ (Asynchronous) bằng `@future(callout=true)`.",
+      "why_wrong": {
+        "A": "Trước hay sau hay loại trigger nào thì cũng không được callout trực tiếp.",
+        "C": "Try/catch chỉ để bắt lỗi, không làm cho Callout chạy được trong transaction đồng bộ."
+      },
+      "tip": "Trigger Callout = @future(callout=true). Không đồng bộ là chìa khóa!"
+    }
+  },
+  {
+    "id": 67,
+    "question": "Which three steps allow a custom SVG to be included in a Lightning web component? Choose 3 answers.",
+    "options": [
+      { "key": "A", "text": "Upload the SVG as a static resource." },
+      { "key": "D", "text": "Reference the getter in the HTML template." },
+      { "key": "E", "text": "Import the static resource and provide a getter for it in JavaScript." }
+    ],
+    "correct": ["A", "D", "E"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba bước để nhúng file SVG tùy chỉnh vào LWC?",
+      "why_correct": "A: File SVG phải được đẩy lên làm Static Resource. E: Trong JS, dùng từ khóa `import` để lấy link resource đó và tạo 1 getter function. D: Cuối cùng, dùng getter đó trong file HTML (ví dụ `<img src={svgUrl}/>`).",
+      "why_wrong": {
+        "B": "Content asset file không phải là cách chính thống để nhúng vào code LWC.",
+        "C": "Không thể import trực tiếp trong HTML."
+      },
+      "tip": "LWC SVG: Static Resource -> Import in JS -> Getter in HTML."
+    }
+  },
+  {
+    "id": 68,
+    "question": "Which security consideration should the developer be aware of when using Lightning Data Service (LDS)?",
+    "options": [
+      { "key": "A", "text": "Lightning Data Service handles sharing rules and field-level security." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lưu ý gì về bảo mật khi dùng Lightning Data Service (LDS)?",
+      "why_correct": "Đây là điểm mạnh nhất của LDS. Nó tự động kiểm tra quyền của User (Sharing) và quyền trên Field (FLS). Nếu user không có quyền xem field đó, LDS sẽ không trả về data, giúp dev rảnh tay không cần viết code check bảo mật.",
+      "why_wrong": {
+        "B": "Sai, LDS cực kỳ tôn trọng FLS.",
+        "C": "`with sharing` dùng cho Apex, LDS là client-side service."
+      },
+      "tip": "LDS = Security Built-in. Không cần lo check quyền thủ công."
+    }
+  },
+  {
+    "id": 69,
+    "question": "Which annotation exposes an Apex class as a RESTful web service?",
+    "options": [
+      { "key": "C", "text": "@RestResource" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Annotation nào biến Apex class thành một REST API?",
+      "why_correct": "Annotation `@RestResource(urlMapping='/YourPath/*')` dùng để khai báo class là một RESTful service. Đi kèm với nó là các method được gán tag `@HttpGet`, `@HttpPost`, v.v.",
+      "why_wrong": {
+        "A": "RemoteAction dùng cho Visualforce JS Remoting.",
+        "B": "AuraEnabled dùng cho LWC/Aura gọi Apex."
+      },
+      "tip": "Keywords: REST API -> @RestResource."
+    }
+  },
+  {
+    "id": 70,
+    "question": "Which two characteristics are true for Aura component events? Choose 2 answers.",
+    "options": [
+      { "key": "B", "text": "The event propagates to every owner in the containment hierarchy." },
+      { "key": "D", "text": "If a container component needs to handle a component event, add a handleFacets='true' attribute." }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai đặc điểm của Aura Component Events?",
+      "why_correct": "B: Aura component event tuân theo cơ chế 'Bubble', lan tỏa dần lên các component cha (owner). D: Thuộc tính `handleFacets='true'` cho phép handler bắt được các event từ các component nằm trong 'facet' (ví dụ như nằm trong một thẻ con của component khác).",
+      "why_wrong": {
+        "C": "Mặc định không phải mọi container đều bắt được, phải khai báo handler."
+      },
+      "tip": "Aura Event: Bubble (Lên trên). Nhớ cái handleFacets='true' cho trường hợp đặc biệt."
+    }
+  },
+  {
+    "id": 71,
+    "question": "Administrator upload 179 accounts using Data Loader, it fails with System.Exception errors. Which two actions fix the code? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Query for existing opportunities outside of the for loop." },
+      { "key": "D", "text": "Move the DML that saves opportunities outside of the for loop." }
+    ],
+    "correct": ["A", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Upload 179 bản ghi bằng Data Loader bị lỗi. Sửa trigger thế nào? (Chọn 2)",
+      "why_correct": "Mặc dù limit SOQL là 100 và DML là 150, nhưng 179 bản ghi chạy qua vòng lặp sẽ vượt qua cả 2 limit này. Phải đưa Query (A) và DML (D) ra ngoài vòng lặp (Bulkify).",
+      "why_wrong": {
+        "B": "Required fields là lỗi dữ liệu, không phải lỗi hệ thống do limit.",
+        "C": "Database.query vẫn tính vào limit 100 câu query."
+      },
+      "tip": "Bulkification: No Query/DML in For loop. Nhớ con số 179 > 100 (Limit SOQL)."
+    }
+  },
+  {
+    "id": 72,
+    "question": "Page is failing with a view state limit (10,000 records). What should a developer change?",
+    "options": [
+      { "key": "C", "text": "Implement pagination with a StandardSetController." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Trang Visualforce bị lỗi View State (do load 10k bản ghi). Cách sửa?",
+      "why_correct": "View State bị giới hạn (135KB). Thay vì load hết 10k bản ghi 1 lúc, dùng `StandardSetController` để phân trang (Pagination). Nó chỉ load 1 lượng nhỏ bản ghi lên UI mỗi lần, giúp giảm tải cực lớn cho View State.",
+      "why_wrong": {
+        "A": "Transient giúp giảm View State nhưng không giải quyết được việc hiển thị 10k bản ghi.",
+        "B": "OffsetController không phải là một controller chuẩn của Salesforce."
+      },
+      "tip": "Keywords: View State limit -> Pagination -> StandardSetController."
+    }
+  },
+  {
+    "id": 73,
+    "question": "Ensure that a user populates the Lead Source field prior to converting a Lead. What should be used?",
+    "options": [
+      { "key": "D", "text": "Validation Rule." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Bắt buộc điền Lead Source trước khi chuyển đổi (Convert) Lead. Dùng gì?",
+      "why_correct": "Validation Rule có thể kiểm tra trạng thái của field `IsConverted`. Nếu `IsConverted` là true mà `LeadSource` trống, nó sẽ chặn lại không cho convert.",
+      "why_wrong": {
+        "A": "Formula field chỉ để hiển thị.",
+        "B": "Workflow chỉ để tự động hóa sau khi lưu, không chặn được hành động."
+      },
+      "tip": "Keywords: Prior to / Enforce / Block -> Validation Rule."
+    }
+  },
+  {
+    "id": 74,
+    "question": "Which two events need to happen when deploying to a production org? Choose 2 answers.",
+    "options": [
+      { "key": "B", "text": "All Apex code must have at least 75% test coverage." },
+      { "key": "D", "text": "All triggers must have at least 1% test coverage." }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai điều kiện bắt buộc khi deploy code lên Production?",
+      "why_correct": "B: Trung bình cộng coverage của toàn bộ class/trigger trong Org phải >= 75%. D: Riêng đối với Trigger, mỗi cái phải được 'chạm' vào ít nhất 1 dòng code bởi unit test (>0%).",
+      "why_wrong": {
+        "A": "Flow không bắt buộc test coverage để deploy (nhưng khuyến khích).",
+        "C": "Tương tự A, Process Builder không bị ép 1%."
+      },
+      "tip": "Deploy Pro: Toàn Org 75%, Mỗi Trigger > 0%."
+    }
+  },
+  {
+    "id": 75,
+    "question": "Developer receives an error calling a global server-side method using @RemoteAction. How to resolve?",
+    "options": [
+      { "key": "B", "text": "Add static to the server-side method signature." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lỗi khi gọi method @RemoteAction. Cách xử lý?",
+      "why_correct": "Quy định bắt buộc của Salesforce: Mọi method được gắn tag `@RemoteAction` phải được khai báo là `static` để có thể được gọi từ JavaScript mà không cần khởi tạo class.",
+      "why_wrong": {
+        "A": "Phải là static=true.",
+        "D": "Phải là global hoặc public, private thì JS không gọi được."
+      },
+      "tip": "@RemoteAction = Global/Public + Static."
+    }
+  },
+  {
+    "id": 76,
+    "question": "Case and Defect__c have Private OWD. How to share a specific Junction object record (Case_Defect__c)?",
+    "options": [
+      { "key": "C", "text": "Share the parent Case and Defect__c records." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Object Junction (Master-Detail) giữa Case và Defect. Làm sao để share bản ghi Junction này?",
+      "why_correct": "Trong quan hệ Master-Detail, bản ghi con không có quyền Sharing riêng. Để thấy được bản ghi Junction, User phải có quyền 'Read' ở CẢ HAI bản ghi cha (Case và Defect).",
+      "why_wrong": {
+        "A": "Chỉ thấy Case thì không đủ để thấy bản ghi Junction.",
+        "B": "Bản ghi Junction không có nút Share riêng (inherits from parents)."
+      },
+      "tip": "Junction Sharing: Phải thấy cả 2 thằng Cha thì mới thấy thằng Con."
+    }
+  },
+  {
+    "id": 77,
+    "question": "Visualforce page lists the contacts owned by current user. Without writing unnecessary code, which controller should be used?",
+    "options": [
+      { "key": "B", "text": "Standard list controller." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Hiển thị list Contacts của User trên Visualforce mà không muốn viết thêm code. Dùng gì?",
+      "why_correct": "Standard List Controller cung cấp sẵn các tính năng như hiển thị danh sách, phân trang, lọc bản ghi mà không cần viết 1 dòng code Apex nào (`standardController='Contact' recordSetVar='contacts'`).",
+      "why_wrong": {
+        "C": "Custom controller bắt buộc phải viết code Apex.",
+        "D": "Standard controller chỉ dùng cho 1 bản ghi duy nhất."
+      },
+      "tip": "Keyword: Lists / Without unnecessary code -> Standard List Controller."
+    }
+  },
+  {
+    "id": 78,
+    "question": "Efficiently generate baseline set of data for an entire suite of tests. Which approach?",
+    "options": [
+      { "key": "C", "text": "Use @testSetup with a void method." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cách hiệu quả nhất để tạo dữ liệu mẫu cho toàn bộ test class?",
+      "why_correct": "Sử dụng `@testSetup`. Dữ liệu chỉ được tạo 1 lần và dùng chung cho mọi test method trong class, giúp giảm thời gian chạy test và tiết kiệm tài nguyên (DML limit).",
+      "why_wrong": {
+        "A": "SeeAllData=true là sai lầm vì nó phụ thuộc data thật của Org.",
+        "B": "Tạo trong từng method sẽ làm code bị lặp và chạy chậm."
+      },
+      "tip": "Test Data Chìa khóa: @testSetup."
+    }
+  },
+  {
+    "id": 79,
+    "question": "Const p1 = 3.1415926; What is the data type of p1?",
+    "options": [
+      { "key": "B", "text": "Number" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo p1 = 3.14... Trong ngữ cảnh này (thường là LWC/JS), data type là gì?",
+      "why_correct": "Trong JavaScript (ngôn ngữ của LWC), tất cả các số (nguyên hay thập phân) đều thuộc kiểu dữ liệu `Number`.",
+      "why_wrong": {
+        "A": "Decimal dùng trong Apex.",
+        "C": "Float là kiểu dữ liệu trong các ngôn ngữ khác như Java/C#."
+      },
+      "tip": "JS/LWC: Cứ là số thì là 'Number'. Apex: Số lẻ là 'Decimal'."
+    }
+  },
+  {
+    "id": 80,
+    "question": "Support split shipments... ship Line Items to different locations. What to add?",
+    "options": [
+      { "key": "B", "text": "Order_Shipment_Group__c object and master-detail field on Order_Line__c" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Yêu cầu chia nhỏ chuyến hàng (Split Shipments). Thiết kế database thế nào?",
+      "why_correct": "Tạo một object trung gian `Order_Shipment_Group__c` để chứa thông tin địa điểm giao hàng. Mỗi `Order_Line__c` sẽ trỏ về một Group này (Master-Detail) để biết nó thuộc chuyến hàng nào.",
+      "why_wrong": {
+        "A": "Trỏ từ Order về Group thì không chia nhỏ lẻ từng Line Item được.",
+        "C": "Trỏ Master-Detail về cả 2 phía là sai logic quan hệ 1-n."
+      },
+      "tip": "Thiết kế: Cha (Order) -> Con (Group) -> Cháu (Line Items). Đây là mô hình chuẩn cho split shipment."
+    }
+  }
+]

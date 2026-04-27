@@ -1,0 +1,305 @@
+[
+  {
+    "id": 121,
+    "question": "A developer is debugging why Accounts are not being created: Database.insert (a, false); How should the code be altered to help debug?",
+    "options": [
+      { "key": "A", "text": "Set the second insert method parameter to TRUE." },
+      { "key": "D", "text": "Collect the insert method return value in a SaveResult record." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Developer đang debug tại sao Account không được tạo khi dùng Database.insert(a, false). Sửa code thế nào để tìm ra nguyên nhân?",
+      "why_correct": "Khi dùng `allOrNone = false`, Salesforce sẽ không bắn Exception nếu lỗi. Cách duy nhất để biết lỗi gì là hứng kết quả trả về vào object `Database.SaveResult`. Sau đó mày có thể lặp qua `sr.getErrors()` để xem thông báo lỗi cụ thể.",
+      "why_wrong": {
+        "A": "Đổi thành TRUE sẽ làm code văng Exception và dừng lại, nhưng D là cách chuyên nghiệp để xử lý và log lỗi mà không làm chết transaction."
+      },
+      "tip": "Database.insert + allOrNone=false -> Phải đi kèm với SaveResult để check lỗi."
+    }
+  },
+  {
+    "id": 122,
+    "question": "Which Salesforce org has a complete duplicate copy of the production org including data and configuration?",
+    "options": [
+      { "key": "C", "text": "Full Sandbox." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Loại Sandbox nào là bản sao hoàn chỉnh của Production bao gồm cả cấu hình và toàn bộ dữ liệu?",
+      "why_correct": "Full Sandbox là 'bản sao y bản chính' nhất. Nó copy toàn bộ Metadata và toàn bộ Records từ Production. Thường dùng để Performance Test hoặc UAT (User Acceptance Testing) cuối cùng.",
+      "why_wrong": {
+        "A": "Partial Copy chỉ copy cấu hình và một phần dữ liệu (theo template).",
+        "B": "Developer Pro chỉ copy cấu hình (Metadata)."
+      },
+      "tip": "Sandbox: Full = Tất cả; Partial = Một phần; Dev = Chỉ cấu hình."
+    }
+  },
+  {
+    "id": 123,
+    "question": "Which three operations affect the number of times a trigger can fire? Choose 3 answers.",
+    "options": [
+      { "key": "B", "text": "Roll-up Summary fields." },
+      { "key": "C", "text": "Lightning Flows." },
+      { "key": "D", "text": "Workflow Rules." }
+    ],
+    "correct": ["B", "C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Ba thao tác nào ảnh hưởng đến số lần Trigger bị kích hoạt (re-fire)?",
+      "why_correct": "Đây là các thành phần gây ra hiện tượng 're-entrant'. B: Roll-up Summary trên bản ghi cha sẽ kích hoạt trigger của cha khi con thay đổi. C & D: Flow và Workflow Field Update có thể làm bản ghi được cập nhật lại và kích hoạt lại các Before/After Update triggers.",
+      "tip": "Keywords: Trigger re-fire -> Workflow, Flow, Roll-up Summary."
+    }
+  },
+  {
+    "id": 124,
+    "question": "Which two examples correctly display results from SOQL aggregate queries using system.debug statements?",
+    "options": [
+      { "key": "B", "text": "Example 2 (Using Alias)" },
+      { "key": "C", "text": "Example 1 (Using expr0)" }
+    ],
+    "correct": ["B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai ví dụ nào hiển thị đúng kết quả của câu query Aggregate (AVG, SUM...)?",
+      "why_correct": "Khi dùng Aggregate function, Salesforce trả về `AggregateResult`. C: Nếu không đặt tên hiệu (Alias), Salesforce tự đặt là `expr0`, `expr1`... B: Nếu có đặt Alias (ví dụ `AVG(Amount) theAverage`), mày truy cập qua cái tên đó bằng `.get('theAverage')`.",
+      "tip": "AggregateResult: Không Alias -> expr0; Có Alias -> Dùng Alias."
+    }
+  },
+  {
+    "id": 125,
+    "question": "What are two benefits of choosing a formula field instead of an Apex trigger to show the ratio between rejected and approved timesheets?",
+    "options": [
+      { "key": "B", "text": "Using a formula field reduces maintenance overhead." },
+      { "key": "D", "text": "A formula field will calculate the value retroactively for existing records." }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Tại sao nên dùng Formula Field thay vì Trigger để tính tỷ lệ phần trăm (Ratio)?",
+      "why_correct": "B: Formula là Declarative (No-code), dễ bảo trì hơn code Apex nhiều. D: Formula cực kỳ lợi hại ở chỗ nó tự tính toán cho cả các bản ghi cũ đã tồn tại, trong khi Trigger chỉ chạy khi bản ghi được update/insert sau này.",
+      "tip": "Formula vs Trigger: Formula thắng ở khoản 'Hồi tố' (Retroactive) và 'Dễ nuôi' (Maintenance)."
+    }
+  },
+  {
+    "id": 126,
+    "question": "What is the correct way for the developer to declare a class that can be used as an exception?",
+    "options": [
+      { "key": "A", "text": "public class PurchaseOrderException extends Exception {}" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo class Exception tùy chỉnh thế nào cho đúng?",
+      "why_correct": "Mọi class muốn làm Exception đều phải kế thừa (extends) từ class `Exception` có sẵn của hệ thống. Ngoài ra, tên class BẮT BUỘC phải kết thúc bằng chữ 'Exception'.",
+      "why_wrong": {
+        "B": "Exception trong Apex không dùng `implements`."
+      },
+      "tip": "Custom Exception = extends Exception + Tên kết thúc bằng 'Exception'."
+    }
+  },
+  {
+    "id": 127,
+    "question": "Management wants an opportunity created only for Accounts marked as 'Active'. Which two automation tools?",
+    "options": [
+      { "key": "A", "text": "Salesforce Flow." },
+      { "key": "B", "text": "Process Builder." }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Tự động tạo Opportunity cho Account có trạng thái 'Active'. Dùng 2 công cụ nào?",
+      "why_correct": "Cả Flow và Process Builder đều có khả năng lắng nghe sự kiện thay đổi bản ghi (Record Change) và thực hiện hành động tạo bản ghi mới (Create Record).",
+      "tip": "Keywords: Create record automatically -> Flow / Process Builder."
+    }
+  },
+  {
+    "id": 128,
+    "question": "Which method allows access to the standard pricebook in a test class?",
+    "options": [
+      { "key": "C", "text": "Use Test.getStandardPricebookId() to get the standard pricebook ID." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để lấy được ID của Standard Pricebook khi viết test?",
+      "why_correct": "Trong môi trường Test, mày không thể query trực tiếp Pricebook của Org trừ khi dùng SeeAllData=true (Bad Practice). Salesforce cung cấp method `Test.getStandardPricebookId()` để lấy ID 'ảo' của Pricebook tiêu chuẩn phục vụ việc test.",
+      "tip": "Test + Pricebook -> Test.getStandardPricebookId()."
+    }
+  },
+  {
+    "id": 129,
+    "question": "A loop with 2000 leads and an 'update thisLead' inside. Which governor limit will be exceeded?",
+    "options": [
+      { "key": "B", "text": "Total number of DML statements issued." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Loop 2000 lần, mỗi lần gọi lệnh 'update'. Limit nào sẽ bị dính?",
+      "why_correct": "Limit của DML statements là 150 câu lệnh mỗi transaction. Vòng lặp này chạy tới 2000 lần, chắc chắn sẽ 'oẳng' ở lần thứ 151.",
+      "why_wrong": {
+        "D": "Limit số bản ghi (DML rows) là 10,000, nên 2000 vẫn chưa dính limit này, nhưng dính limit 'số câu lệnh' (statements) trước."
+      },
+      "tip": "DML Limit: 150 statements / 10,000 rows. Thấy update trong for loop là chọn 'statements' ngay."
+    }
+  },
+  {
+    "id": 130,
+    "question": "Which is the correct implementation to use the PaymentProcessor interface class?",
+    "options": [
+      { "key": "B", "text": "public class CheckPaymentProcessor implements PaymentProcessor { Public void pay (Decimal amount) { } }" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cấu pháp đúng để thực thi (implement) một Interface là gì?",
+      "why_correct": "Dùng từ khóa `implements`. Class thực thi phải viết lại đầy đủ phần thân (body) cho tất cả các method đã định nghĩa trong Interface.",
+      "why_wrong": {
+        "C": "`extends` dùng cho class, không dùng cho interface."
+      },
+      "tip": "Interface = implements; Class = extends."
+    }
+  },
+  {
+    "id": 131,
+    "question": "Why did the method fail in the sandbox test framework but succeed in the Developer Console?",
+    "options": [
+      { "key": "C", "text": "The test method relies on existing data in the sandbox." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tại sao chạy bằng Test Framework thì lỗi, mà chạy bằng Execute Anonymous (Dev Console) thì lại đúng?",
+      "why_correct": "Sự khác biệt lớn nhất là Data Isolation. Test Framework mặc định không thấy data thật của Org, trong khi Execute Anonymous thì thấy hết. Nếu code của mày đi query data có sẵn mà không tự tạo data trong test, nó sẽ tạch khi chạy Test.",
+      "tip": "Test fail but Anon success -> Thiếu bước tạo Data trong Unit Test."
+    }
+  },
+  {
+    "id": 132,
+    "question": "What does a developer need to enable to create and manage scratch orgs?",
+    "options": [
+      { "key": "A", "text": "Dev Hub." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Để tạo Scratch Orgs, mày cần phải bật cái gì lên?",
+      "why_correct": "Mày phải bật 'Dev Hub' trong một Org có bản quyền (thường là Production hoặc Business Org). Org này sẽ đóng vai trò 'mẹ', quản lý việc đẻ ra và nuôi nấng các Scratch Orgs con.",
+      "tip": "Scratch Org = Con; Dev Hub = Mẹ."
+    }
+  },
+  {
+    "id": 133,
+    "question": "Notify an external system to an unhandled exception. What is the appropriate publish/subscribe logic?",
+    "options": [
+      { "key": "B", "text": "Publish error event using EventBus.publish() and subscribe using CometD." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để báo cho hệ thống ngoài biết khi có lỗi xảy ra trong Salesforce?",
+      "why_correct": "Dùng Platform Events. Salesforce bắn (publish) tin nhắn lỗi lên Bus bằng `EventBus.publish()`. Hệ thống ngoài lắng nghe (subscribe) tin nhắn đó qua giao thức CometD để xử lý thời gian thực.",
+      "tip": "Salesforce to External Real-time -> Platform Events + CometD."
+    }
+  },
+  {
+    "id": 134,
+    "question": "Create CreditCardPayment class that provides an implementation of existing Payment class. Correct implementation?",
+    "options": [
+      { "key": "A", "text": "public class CreditCardPayment extends Payment { Public override void makePayment (Decimal amount) { } }" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Class cha có method virtual. Class con muốn viết lại logic đó thì làm thế nào?",
+      "why_correct": "Dùng `extends` để kế thừa class cha. Ở class con, dùng từ khóa `override` để ghi đè lên method `virtual` của cha.",
+      "tip": "OOP: Cha để 'virtual', con dùng 'override'."
+    }
+  },
+  {
+    "id": 135,
+    "question": "Visualforce page allows users to edit multiple records from a list button. Which feature?",
+    "options": [
+      { "key": "C", "text": "recordSetVar page attribute." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Thuộc tính nào của Visualforce cho phép làm việc với danh sách nhiều bản ghi cùng lúc?",
+      "why_correct": "Đó là `recordSetVar`. Khi khai báo thuộc tính này, trang Visualforce sẽ chuyển từ Standard Controller đơn lẻ sang Standard List Controller, cho phép mày thao tác hàng loạt bản ghi chọn từ List View.",
+      "tip": "Keyword: List Button / Edit Multiple -> recordSetVar."
+    }
+  },
+  {
+    "id": 136,
+    "question": "Boolean isOK; integer x; String theString = 'Hello'; ... what is the value of x?",
+    "options": [
+      { "key": "B", "text": "4" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code logic If/Else phức tạp. Giá trị của x cuối cùng là mấy?",
+      "why_correct": "Mấu chốt ở chỗ biến `Boolean isOK` chỉ mới khai báo, chưa gán giá trị nên nó là `null`. Tất cả các điều kiện `isOK == false` hay `isOK == true` đều sai. Code sẽ nhảy vào khối `else` cuối cùng, gán `x = 4`.",
+      "tip": "Bẫy Apex: Biến primitive (Boolean, Integer...) chưa gán giá trị thì mặc định là NULL, không phải false hay 0."
+    }
+  },
+  {
+    "id": 137,
+    "question": "Communicate between Toggle and Temperature components (LWC). Recommended way?",
+    "options": [
+      { "key": "B", "text": "The Toggle component should call a method in the Temperature component." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Hai component LWC 'anh em' muốn nói chuyện với nhau. Cách nào tốt nhất?",
+      "why_correct": "Trong kiến trúc LWC, cách tốt nhất cho 2 thằng ngang hàng là thông qua thằng cha (Lifting State Up). Thằng Toggle bắn event lên Cha, thằng Cha hứng được rồi gọi một method `@api` của thằng Temperature để truyền data xuống.",
+      "tip": "LWC Communication: Lên dùng Event, Xuống dùng Public Method (@api)."
+    }
+  },
+  {
+    "id": 138,
+    "question": "Users cannot view Licensed Professional records even though they own the associated Contact. Causes?",
+    "options": [
+      { "key": "A", "text": "Role restricted access to Licensed_Professional__c." },
+      { "key": "D", "text": "Certification__c is the primary relationship and is private." }
+    ],
+    "correct": ["A", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Tại sao User không xem được bản ghi con Licensed Professional dù họ là chủ của Contact cha?",
+      "why_correct": "Vì đây là quan hệ Master-Detail với 2 cha. Trong Salesforce, quyền của bản ghi con bị kiểm soát bởi thằng 'Primary Master' (thằng cha đầu tiên được tạo). Nếu Primary Master là Certification và nó đang ở chế độ Private, thì dù mày là chủ của Contact (cha thứ 2) mày cũng không xem được con.",
+      "tip": "Master-Detail bẫy: Thằng cha nào tạo trước (Primary) là thằng đó nắm quyền sinh sát."
+    }
+  },
+  {
+    "id": 139,
+    "question": "Aggregate information about Engineering_Support__c records shown on Opportunity. What to implement?",
+    "options": [
+      { "key": "A", "text": "Master-detail field from Engineering_Support__c to Opportunity" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Muốn làm Roll-up Summary (tổng hợp dữ liệu) từ bản ghi con lên Opportunity. Cần quan hệ gì?",
+      "why_correct": "Để dùng được Roll-up Summary Field (No-code), mày bắt buộc phải thiết lập quan hệ Master-Detail. Khi đó Opportunity sẽ là Master và nắm quyền tổng hợp data từ các bản ghi con.",
+      "tip": "Roll-up Summary = Master-Detail Relationship."
+    }
+  },
+  {
+    "id": 140,
+    "question": "Proactively delete associated opportunity records when the related Account is deleted. Automation tool?",
+    "options": [
+      { "key": "B", "text": "Record-Triggered Flow." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Xóa Account thì tự động xóa luôn Opportunity liên quan. Dùng gì cho hiện đại?",
+      "why_correct": "Dù Master-Detail tự làm được việc này, nhưng nếu đề hỏi về công cụ tự động hóa thì Record-Triggered Flow (Before Delete) là lựa chọn chuẩn nhất để xử lý logic xóa bản ghi con trước khi cha biến mất.",
+      "tip": "Cascade Delete: Master-Detail (Tự động) hoặc Record-Triggered Flow (Manual)."
+    }
+  }
+]

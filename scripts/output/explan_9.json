@@ -1,0 +1,326 @@
+[
+  {
+    "id": 161,
+    "question": "A developer needs to search for a specific phone number across multiple objects. Which SOSL search group should be used?",
+    "options": [
+      { "key": "A", "text": "IN PHONE FIELDS" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Cần tìm một số điện thoại cụ thể trên nhiều Object khác nhau. Dùng SOSL search group nào là chuẩn nhất?",
+      "why_correct": "Khi mày biết chắc chắn mình đang tìm số điện thoại, dùng `IN PHONE FIELDS` sẽ giúp Salesforce thu hẹp phạm vi tìm kiếm, giúp query chạy nhanh hơn và chính xác hơn thay vì quét toàn bộ các field text.",
+      "why_wrong": {
+        "B": "IN ALL FIELDS sẽ quét cả tên, địa chỉ... tốn tài nguyên không cần thiết.",
+        "C": "IN NAME FIELDS chỉ quét các field tên bản ghi."
+      },
+      "tip": "SOSL Thần chú: Biết tìm gì thì giới hạn đó. PHONE -> IN PHONE FIELDS, EMAIL -> IN EMAIL FIELDS."
+    }
+  },
+  {
+    "id": 162,
+    "question": "Which two statements are true regarding the levels of debug logs? Choose 2 answers.",
+    "options": [
+      { "key": "B", "text": "Logging levels are cumulative." },
+      { "key": "D", "text": "The lowest logging level is ERROR." }
+    ],
+    "correct": ["B", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai phát biểu nào đúng về các cấp độ (levels) của debug logs?",
+      "why_correct": "B: Các cấp độ log có tính tích lũy (Cumulative), nghĩa là nếu mày chọn mức INFO, nó sẽ bao gồm cả WARN và ERROR. D: ERROR là cấp độ thấp nhất (ít thông tin nhất), chỉ hiện ra khi có lỗi nghiêm trọng.",
+      "why_wrong": {
+        "A": "DEBUG không phải là cấp độ thấp nhất.",
+        "C": "FINEST mới là cấp độ cao nhất, cho nhiều thông tin nhất."
+      },
+      "tip": "Thứ tự 'độ hóng hớt' của Log: ERROR < WARN < INFO < DEBUG < FINE < FINER < FINEST."
+    }
+  },
+  {
+    "id": 163,
+    "question": "When should a developer use the Trigger.isBefore context variable?",
+    "options": [
+      { "key": "A", "text": "To validate record values before they are saved to the database." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khi nào thì nên sử dụng biến ngữ cảnh Trigger.isBefore?",
+      "why_correct": "Before Trigger là 'trạm gác' cuối cùng trước khi dữ liệu đi vào database. Đây là nơi lý tưởng để check logic (Validation) và báo lỗi `.addError()` nếu dữ liệu không ổn, vì nó giúp tiết kiệm tài nguyên DML so với việc để nó vào hẳn rồi mới rollback.",
+      "why_wrong": {
+        "B": "After trigger mới là nơi tốt nhất để update các bản ghi liên quan (related records)."
+      },
+      "tip": "Keywords: Validation / Self-update -> Before Trigger."
+    }
+  },
+  {
+    "id": 164,
+    "question": "A developer wants to retrieve the Name of the Account for each Contact in a single query. Which SOQL statement is correct?",
+    "options": [
+      { "key": "A", "text": "SELECT Name, Account.Name FROM Contact" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Lấy tên của Contact và tên của Account cha trong cùng 1 query. Cú pháp nào đúng?",
+      "why_correct": "Đây là 'Child-to-Parent' query. Với các Standard Relationship, mày dùng toán tử chấm `.` để truy cập vào field của cha qua tên quan hệ (Account). Ví dụ: `Account.Name`.",
+      "why_wrong": {
+        "B": "Account__r.Name chỉ dùng cho Custom Relationship.",
+        "C": "Dùng sub-query (SELECT Name FROM Account) là kiểu Parent-to-Child, không dùng được ở đây."
+      },
+      "tip": "Query lên Cha: Dùng dấu chấm (.). Nếu là Custom thì thêm __r."
+    }
+  },
+  {
+    "id": 165,
+    "question": "Which two scenarios require a custom controller instead of a standard controller in Visualforce? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "The page needs to integrate with an external web service." },
+      { "key": "C", "text": "The page needs to perform complex logic across multiple objects." }
+    ],
+    "correct": ["A", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai trường hợp nào bắt buộc phải dùng Custom Controller thay vì Standard Controller?",
+      "why_correct": "A: Standard Controller không biết làm Callout ra ngoài, mày phải viết Apex để xử lý. C: Khi cần 'múa' logic phức tạp trên nhiều Object cùng lúc mà không có quan hệ trực tiếp, mày cần Custom Controller để tự quản lý data.",
+      "why_wrong": {
+        "B": "Hiển thị danh sách bản ghi thì Standard Set Controller cân được.",
+        "D": "Update field đơn giản thì Standard Controller làm tốt."
+      },
+      "tip": "Custom Controller = External Callout hoặc Complex Multi-object Logic."
+    }
+  },
+  {
+    "id": 166,
+    "question": "What is the minimum test coverage required to deploy a trigger to production?",
+    "options": [
+      { "key": "A", "text": "1%" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tỉ lệ test coverage tối thiểu để deploy một trigger lên Production là bao nhiêu?",
+      "why_correct": "Salesforce cực kỳ gắt gao với Trigger. Mặc dù tổng Org cần 75%, nhưng riêng mỗi Trigger phải được unit test 'chạm' vào ít nhất 1 dòng code (1%). Nếu 0% là 'cook' ngay lập tức.",
+      "tip": "Deploy Trigger: Phải > 0% (ít nhất là 1%). Đừng nhầm với 75% của toàn Org."
+    }
+  },
+  {
+    "id": 167,
+    "question": "How can a Lightning component handle a custom event fired from a child component?",
+    "options": [
+      { "key": "A", "text": "By adding an on[eventname] attribute to the child component tag in the parent's HTML." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để một Parent component hứng được Custom Event từ Child component?",
+      "why_correct": "Trong LWC, mày dùng cú pháp `on` + `tên-event` trực tiếp trên tag của child component (ví dụ: `<c-child onmyevent={handleEvent}>`). Đây là cách hứng event chính thống và trực quan nhất.",
+      "why_wrong": {
+        "B": "Dùng addEventListener trong JS cũng được nhưng không phải là cách Declarative chuẩn của LWC."
+      },
+      "tip": "LWC Upstream: Child dispatch -> Parent handle bằng on[eventname]."
+    }
+  },
+  {
+    "id": 168,
+    "question": "A developer exceeds the maximum CPU time governor limit. Which two actions can reduce CPU time? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Use Map collections to avoid nested for loops." },
+      { "key": "D", "text": "Avoid unnecessary SOSL queries." }
+    ],
+    "correct": ["A", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Làm sao để giảm thiểu việc ngốn CPU (CPU Time limit) trong Apex?",
+      "why_correct": "A: Dùng Map để 'look up' dữ liệu thay vì chạy 2 vòng lặp lồng nhau (O(n^2)) là cách cứu vớt CPU hiệu quả nhất. D: SOSL rất nặng, hạn chế dùng nó trong các transaction cần tốc độ cao.",
+      "why_wrong": {
+        "B": "Dùng Async Apex không làm giảm tổng CPU nhưng nó đẩy sang transaction khác, đây cũng là 1 cách nhưng A và D trực diện hơn về tối ưu code."
+      },
+      "tip": "CPU 'Sát thủ': Nested For Loops. CPU 'Cứu tinh': Map Collection."
+    }
+  },
+  {
+    "id": 169,
+    "question": "In Apex, what is the difference between Decimal and Double data types?",
+    "options": [
+      { "key": "B", "text": "Decimal is used for currency and provides exact precision." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Sự khác biệt giữa kiểu dữ liệu Decimal và Double trong Apex là gì?",
+      "why_correct": "Decimal là 'con cưng' của Salesforce cho các phép tính tài chính vì nó giữ được độ chính xác tuyệt đối sau dấu phẩy. Double là kiểu số thực dấu phẩy động, dễ bị sai số làm tròn (rounding errors) trong các phép tính lớn.",
+      "why_wrong": {
+        "A": "Double không chính xác hơn Decimal trong tài chính."
+      },
+      "tip": "Salesforce Finance: Luôn dùng Decimal. Thấy Double trong đáp án tính tiền là nghi ngờ ngay!"
+    }
+  },
+  {
+    "id": 170,
+    "question": "A developer needs to create a relationship where the child record is deleted when the parent is deleted. Which type?",
+    "options": [
+      { "key": "A", "text": "Master-Detail Relationship" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Loại quan hệ nào mà khi xóa cha thì con tự động 'bay màu' (Cascade Delete)?",
+      "why_correct": "Master-Detail là quan hệ 'sống chết có nhau'. Thằng con hoàn toàn lệ thuộc vào thằng cha, nên cha mất thì con cũng bị hệ thống xóa theo để đảm bảo tính toàn vẹn dữ liệu.",
+      "why_wrong": {
+        "B": "Lookup thì mặc định con vẫn sống, trừ khi mày cấu hình thêm 'Delete child'."
+      },
+      "tip": "Master-Detail = Cascade Delete (Xóa kéo theo)."
+    }
+  },
+  {
+    "id": 171,
+    "question": "Which tool is best for deploying metadata between two unrelated Salesforce orgs?",
+    "options": [
+      { "key": "B", "text": "Salesforce CLI" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Công cụ nào tốt nhất để deploy Metadata giữa hai Org không liên quan gì đến nhau?",
+      "why_correct": "Salesforce CLI (SFDX) cho phép mày 'bốc' metadata từ Org A về máy, sau đó 'đẩy' sang Org B bất kể chúng có chung cha mẹ (Production) hay không. Nó cực kỳ linh hoạt cho dân dev.",
+      "why_wrong": {
+        "A": "Change Sets chỉ dùng được giữa các Org có liên kết (Sandbox/Prod).",
+        "C": "Data Loader chỉ deploy Data, không deploy Metadata."
+      },
+      "tip": "Deploy mọi nơi, mọi Org -> Salesforce CLI."
+    }
+  },
+  {
+    "id": 172,
+    "question": "What is the result of the following code? List<Integer> nums = new List<Integer>{1, 2, 3}; nums.add(4); nums.remove(0);",
+    "options": [
+      { "key": "A", "text": "The list contains {2, 3, 4}" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Kết quả của đoạn code List: thêm 4 vào cuối và xóa phần tử ở vị trí index 0?",
+      "why_correct": "Ban đầu: {1, 2, 3}. `add(4)` -> {1, 2, 3, 4}. `remove(0)` xóa số 1 (vì index bắt đầu từ 0) -> {2, 3, 4}.",
+      "tip": "Apex List: Index luôn bắt đầu từ 0. Thêm vào cuối, xóa ở bất cứ đâu."
+    }
+  },
+  {
+    "id": 173,
+    "question": "Which automation tool can be used to send an email alert to a customer when a Case is closed?",
+    "options": [
+      { "key": "A", "text": "Workflow Rule" },
+      { "key": "B", "text": "Flow Builder" },
+      { "key": "C", "text": "Process Builder" }
+    ],
+    "correct": ["A", "B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Công cụ nào có thể gửi Email Alert khi Case bị đóng?",
+      "why_correct": "Cả ba công cụ này đều hỗ trợ gửi Email Alert. Workflow Rule (cổ điển), Process Builder (trung đại) và Flow Builder (hiện đại) đều làm tốt việc này.",
+      "tip": "Email Alert: Tool nào cũng cân được. Nhưng đi thi 2026 thì Flow là ưu tiên hàng đầu."
+    }
+  },
+  {
+    "id": 174,
+    "question": "Which LWC decorator is used to make a property reactive and public?",
+    "options": [
+      { "key": "A", "text": "@api" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Decorator nào trong LWC giúp biến một thuộc tính thành 'reactive' và 'public'?",
+      "why_correct": "Annotation `@api` biến một property thành public API, cho phép các component cha có thể truyền dữ liệu xuống. Ngoài ra, nó cũng có tính reactive: hễ giá trị thay đổi là UI tự update.",
+      "why_wrong": {
+        "B": "@track dùng cho private reactive (nội bộ).",
+        "C": "@wire dùng để lấy data từ Apex/LDS."
+      },
+      "tip": "LWC Decorator: @api (Public), @track (Private), @wire (Data)."
+    }
+  },
+  {
+    "id": 175,
+    "question": "What is a major advantage of using SOSL over SOQL?",
+    "options": [
+      { "key": "A", "text": "SOSL can search across multiple objects simultaneously." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Ưu điểm lớn nhất của SOSL so với SOQL là gì?",
+      "why_correct": "SOSL sinh ra để tìm kiếm văn bản (Text Search). Điểm ăn tiền nhất là nó có thể quét một từ khóa trên nhiều Object khác nhau chỉ bằng một câu lệnh duy nhất, điều mà SOQL không bao giờ làm được.",
+      "tip": "SOQL = Chính xác trên 1 object. SOSL = Tìm kiếm mông lung trên nhiều objects."
+    }
+  },
+  {
+    "id": 176,
+    "question": "How should a developer handle a custom error message in a trigger?",
+    "options": [
+      { "key": "A", "text": "Use the .addError( ) method on the sObject record." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để hiển thị thông báo lỗi tùy chỉnh trong Trigger?",
+      "why_correct": "Method `.addError()` là 'vũ khí' chính của trigger. Nó chặn việc lưu bản ghi và đẩy thông báo lỗi lên giao diện cho user thấy. Mày có thể dùng nó trên từng field hoặc trên toàn bộ bản ghi.",
+      "tip": "Keyword: Trigger Error -> .addError()."
+    }
+  },
+  {
+    "id": 177,
+    "question": "A Visualforce page is timing out due to a large view state. How to fix?",
+    "options": [
+      { "key": "A", "text": "Use the transient keyword for variables that don't need to be persisted." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Trang Visualforce bị lỗi timeout do View State quá lớn. Sửa thế nào?",
+      "why_correct": "Dùng từ khóa `transient`. Nó bảo Salesforce đừng lưu cái biến đó vào View State (vốn chỉ có 135KB). Thường dùng cho các list data lớn chỉ để hiển thị chứ không cần dùng lại sau khi postback.",
+      "tip": "View State héo -> Dùng Transient cho béo."
+    }
+  },
+  {
+    "id": 178,
+    "question": "What is the behavior of an Apex class defined with 'inherited sharing'?",
+    "options": [
+      { "key": "A", "text": "It runs with the sharing settings of the class that called it." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Class khai báo với 'inherited sharing' sẽ hoạt động như thế nào?",
+      "why_correct": "Đây là kiểu 'gió chiều nào che chiều nấy'. Nếu nó được gọi bởi một class `with sharing`, nó sẽ tuân thủ quyền user. Nếu gọi bởi `without sharing`, nó sẽ chạy quyền System. Đây là best practice để viết code linh hoạt và an toàn.",
+      "tip": "Inherited sharing = Đi với bụt mặc áo cà sa, đi với ma mặc áo giấy."
+    }
+  },
+  {
+    "id": 179,
+    "question": "What is required to deploy metadata using Change Sets?",
+    "options": [
+      { "key": "A", "text": "A deployment connection between the source and target orgs." }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Để deploy bằng Change Sets, yêu cầu bắt buộc là gì?",
+      "why_correct": "Hai Org (ví dụ Sandbox và Prod) phải 'thông nòng' với nhau thông qua Deployment Connection. Mày phải vào Setup của Org đích để cho phép nhận Change Set từ Org nguồn.",
+      "tip": "Change Sets = Phải có Deployment Connection."
+    }
+  },
+  {
+    "id": 180,
+    "question": "Which method is used to get a map of all field names to field describe results for an object?",
+    "options": [
+      { "key": "A", "text": "Schema.getGlobalDescribe( ).get(ObjectName).getDescribe( ).fields.getMap( )" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để lấy được Map của tất cả các field (tên field -> describe result) của một Object?",
+      "why_correct": "Dùng Schema Describe. Qua chuỗi method này, mày lấy được `Map<String, SObjectField>`, cho phép mày duyệt qua toàn bộ field của object một cách động (dynamic) để check quyền hoặc lấy label.",
+      "tip": "Dynamic Apex: fields.getMap() là chìa khóa để 'soi' mọi field."
+    }
+  }
+]

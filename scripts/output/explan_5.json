@@ -1,0 +1,371 @@
+[
+  {
+    "id": 81,
+    "question": "A developer wrote Apex code that calls out to an external system. How should a developer write the test to provide test coverage?",
+    "options": [
+      { "key": "A", "text": "Write a class that implements WebserviceMock." },
+      { "key": "B", "text": "Write a class that implements the HTTPCalloutMock interface." },
+      { "key": "C", "text": "Write a class that extends WebserviceMock." },
+      { "key": "D", "text": "Write a class that extends HTTPCalloutMock." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Developer viết code gọi ra hệ thống bên ngoài (Callout). Làm sao để viết unit test cho đoạn code này?",
+      "why_correct": "Salesforce cấm thực hiện Callout thật trong Unit Test. Để test, mày phải tạo một class 'giả lập' (Mock) thực thi interface `HttpCalloutMock`. Interface này định nghĩa method `respond()` để trả về kết quả HTTP giả cho code chính chạy tiếp.",
+      "why_wrong": {
+        "A": "WebserviceMock dùng cho SOAP API, không phải HTTP thông thường.",
+        "D": "Salesforce dùng Interface (implements), không dùng kế thừa (extends) cho Mock class này."
+      },
+      "tip": "Keyword: HTTP Callout Test -> implements HttpCalloutMock."
+    }
+  },
+  {
+    "id": 82,
+    "question": "A developer needs an Apex method that can process Account or Contact records. Which method signature should the developer use?",
+    "options": [
+      { "key": "A", "text": "Public void doWork(Account || Contact)" },
+      { "key": "B", "text": "Public void doWork(sObject theRecord)" },
+      { "key": "C", "text": "Public void doWork(Account Contact)" },
+      { "key": "D", "text": "Public void doWork(Record theRecord)" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế năng để một method xử lý được cả bản ghi Account lẫn Contact?",
+      "why_correct": "Đây là tính đa hình (Polymorphism) trong Apex. `sObject` là lớp cha (Generic type) của tất cả các object trong Salesforce. Một biến kiểu `sObject` có thể chứa bất kỳ bản ghi nào, từ Account, Contact cho đến Custom Object.",
+      "why_wrong": {
+        "A": "Cú pháp này hoàn toàn không tồn tại trong Apex.",
+        "D": "Apex không có kiểu dữ liệu nào tên là 'Record'."
+      },
+      "tip": "ID vs sObject: ID chỉ là chuỗi định danh, sObject là cả một bản ghi đầy đủ data. Muốn đa năng -> Dùng sObject."
+    }
+  },
+  {
+    "id": 83,
+    "question": "Which two techniques should the developer implement to ensure trigger best practices are followed? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Maintain all three triggers on the object, but move logic out." },
+      { "key": "B", "text": "Create helper classes to execute the appropriate logic." },
+      { "key": "C", "text": "Unify all three triggers in a single trigger on the object." },
+      { "key": "D", "text": "Unify before insert/update and use Process Builder for delete." }
+    ],
+    "correct": ["B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai kỹ thuật nào là Best Practice khi viết Trigger?",
+      "why_correct": "C: Gom tất cả logic vào 1 Trigger duy nhất cho mỗi Object để kiểm soát thứ tự thực thi. B: Đưa logic ra khỏi Trigger body và nhét vào Helper Class (Trigger Handler) để code sạch sẽ, dễ bảo trì và tái sử dụng.",
+      "why_wrong": {
+        "A": "Nhiều trigger trên một object là thảm họa vì không biết thằng nào chạy trước thằng nào.",
+        "D": "Process Builder không thay thế hoàn toàn được logic phức tạp của Delete trigger."
+      },
+      "tip": "Trigger Thần Chú: One Trigger per Object + Logicless Trigger."
+    }
+  },
+  {
+    "id": 84,
+    "question": "Which two are phases in the Salesforce Aura Application Event propagation framework? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Default" },
+      { "key": "B", "text": "Emit" },
+      { "key": "C", "text": "Bubble" },
+      { "key": "D", "text": "Control" }
+    ],
+    "correct": ["A", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai giai đoạn (phase) trong quá trình lan truyền của Aura Application Event là gì?",
+      "why_correct": "Application Event trong Aura có 3 phase: Capture, Bubble (lan tỏa từ con lên cha) và Default (chạy các handler đã đăng ký). Trong đáp án này, A và C là đúng quy chuẩn.",
+      "why_wrong": {
+        "B": "Emit thường dùng trong các framework JS khác, Aura không dùng từ này.",
+        "D": "Control không phải là một phase trong event lifecycle."
+      },
+      "tip": "Aura Event Phases: Capture -> Bubble -> Default."
+    }
+  },
+  {
+    "id": 85,
+    "question": "Which code modification should be made to insert the Accounts so that field-level security is respected?",
+    "options": [
+      { "key": "C", "text": "05 SObjectAccessDecision sd = Security.stripInaccessible(AccessType.CREATABLE, accts);" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để insert bản ghi mà vẫn tôn trọng quyền trên field (FLS) của user?",
+      "why_correct": "Sử dụng class `Security.stripInaccessible()`. Nó sẽ tự động loại bỏ các field mà user không có quyền ghi trước khi thực hiện DML, giúp code của mày an toàn và tuân thủ bảo mật tuyệt đối.",
+      "why_wrong": {
+        "A": "Database.stripInaccessible không tồn tại, phải là class Security.",
+        "D": "Check từng field một bằng isCreatable() rất tốn công và khó bulkify."
+      },
+      "tip": "FLS Security: Dùng Security.stripInaccessible cho rảnh tay mà lại cực an toàn."
+    }
+  },
+  {
+    "id": 86,
+    "question": "Where are two locations a developer can look to find information about the status of batch or future methods? Choose 2 answers.",
+    "options": [
+      { "key": "C", "text": "Apex Flex Queue." },
+      { "key": "D", "text": "Apex Jobs." }
+    ],
+    "correct": ["C", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Xem trạng thái của Batch hoặc Future method ở đâu trong Setup?",
+      "why_correct": "D: Apex Jobs hiển thị tất cả các tác vụ không đồng bộ đã và đang chạy. C: Apex Flex Queue hiển thị các Batch job đang nằm chờ (Holding) trước khi được đưa vào xử lý.",
+      "why_wrong": {
+        "A": "Flow Interviews chỉ dành cho Flow.",
+        "B": "Time-Based Workflow chỉ dành cho Workflow Rule có đặt lịch."
+      },
+      "tip": "Keyword: Monitor Async Apex -> Apex Jobs & Flex Queue."
+    }
+  },
+  {
+    "id": 87,
+    "question": "What are two characteristics related to formulas? Choose 2 answers.",
+    "options": [
+      { "key": "B", "text": "Formulas are calculated at runtime and are not stored in the database." },
+      { "key": "C", "text": "Formulas can reference values in related objects." }
+    ],
+    "correct": ["B", "C"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai đặc điểm đúng của Formula Field là gì?",
+      "why_correct": "B: Formula không lưu data vào database, nó chỉ tính toán ngay tại thời điểm user xem bản ghi (Runtime). C: Formula có thể 'với' tới các field của object cha (Cross-object formula).",
+      "why_wrong": {
+        "A": "Formula không được phép tự tham chiếu chính nó (Circular reference).",
+        "D": "Nếu xóa field đang dùng trong formula, Salesforce sẽ chặn lại báo lỗi ngay."
+      },
+      "tip": "Formula: Không chiếm bộ nhớ database (Storage), luôn tính mới nhất."
+    }
+  },
+  {
+    "id": 88,
+    "question": "What is the value of the number field obtained from Trigger.old after a workflow field update changed it from 10 to 11?",
+    "options": [
+      { "key": "D", "text": "1" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Giá trị ban đầu là 1, user sửa thành 10, Workflow sửa thành 11. Trigger.old lúc này trả về mấy?",
+      "why_correct": "Trigger.old luôn chứa giá trị của bản ghi TRƯỚC khi transaction bắt đầu. Trong trường hợp này, trước khi user nhấn Save, giá trị là 1. Mọi thay đổi trong transaction (kể cả Workflow) đều không làm thay đổi Trigger.old.",
+      "why_wrong": {
+        "B": "10 là giá trị trung gian do user nhập, không phải giá trị 'gốc' trong database trước transaction."
+      },
+      "tip": "Trigger.old: Là 'quá khứ' trước khi mọi thứ bắt đầu. Bất biến trong suốt transaction."
+    }
+  },
+  {
+    "id": 89,
+    "question": "What two things should be done to create 200 account records with unique names in a unit test with the least code? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Create a static resource containing test data." },
+      { "key": "D", "text": "Use Test.loadData to populate data in your test methods." }
+    ],
+    "correct": ["A", "D"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Cách nào tạo 200 bản ghi test nhanh nhất và ít tốn code nhất?",
+      "why_correct": "Thay vì viết vòng lặp `for` để insert, mày hãy tạo một file CSV chứa 200 cái tên, up lên làm Static Resource (A), sau đó dùng lệnh `Test.loadData()` (D) để nạp thẳng vào database.",
+      "why_wrong": {
+        "C": "SeeAllData=true là tội ác trong unit test, tuyệt đối không dùng để 'tạo' data."
+      },
+      "tip": "Test Data Bulk: Static Resource (CSV) + Test.loadData()."
+    }
+  },
+  {
+    "id": 90,
+    "question": "What is an approach a developer can take to streamline maintenance of common picklist values across different objects?",
+    "options": [
+      { "key": "D", "text": "Create a Global Picklist Value Set containing the values." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để dùng chung một bộ giá trị Picklist cho nhiều Object khác nhau?",
+      "why_correct": "Sử dụng 'Global Value Set'. Mày định nghĩa bộ giá trị (ví dụ: High, Medium, Low) ở một nơi duy nhất. Khi cần thay đổi, mày chỉ cần sửa ở đó, tất cả các field trên các object khác sẽ tự động cập nhật theo.",
+      "why_wrong": {
+        "B": "Tạo tay trên từng object sẽ làm việc bảo trì trở thành cực hình khi số lượng object tăng lên."
+      },
+      "tip": "Keyword: Common values across objects -> Global Picklist Value Set."
+    }
+  },
+  {
+    "id": 91,
+    "question": "Which action may cause triggers to fire?",
+    "options": [
+      { "key": "C", "text": "Updates to Feed Items." }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Hành động nào dưới đây sẽ làm kích hoạt Trigger?",
+      "why_correct": "FeedItem (bài đăng trên Chatter) cũng là một sObject. Khi mày cập nhật hoặc thêm bài đăng, các trigger viết trên đối tượng FeedItem sẽ được kích hoạt.",
+      "why_wrong": {
+        "A": "Thay đổi picklist entry không kích hoạt trigger trên các bản ghi đang dùng giá trị đó.",
+        "B": "Cascading delete (xóa cha kéo theo con) đôi khi không kích hoạt trigger của con (tùy cấu hình và loại object)."
+      },
+      "tip": "Trigger Trigger: Cứ đụng đến thao tác dữ liệu (Insert/Update/Delete) trên sObject là trigger nổ."
+    }
+  },
+  {
+    "id": 92,
+    "question": "Which code in a Visualforce page might present a security vulnerability?",
+    "options": [
+      { "key": "B", "text": "<apex:outputText escape='false' value='{!$CurrentPage.parameter.userInput}' />" }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Đoạn code Visualforce nào có nguy cơ bị tấn công bảo mật?",
+      "why_correct": "Khi mày đặt `escape='false'`, Salesforce sẽ không khử khuẩn các ký tự đặc biệt. Nếu hacker nhét một đoạn `<script>` vào URL parameter, nó sẽ chạy thẳng trên trình duyệt của người dùng (tấn công XSS).",
+      "why_wrong": {
+        "D": "apex:outputField luôn có cơ chế bảo vệ mặc định và tôn trọng FLS/Sharing."
+      },
+      "tip": "Security Bẫy: escape='false' = Mở cửa cho Hacker."
+    }
+  },
+  {
+    "id": 93,
+    "question": "What is the maximum number of search terms the end-user can provide to successfully execute the search without a governor limit?",
+    "options": [
+      { "key": "D", "text": "20" }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Tối đa bao nhiêu từ khóa tìm kiếm (search terms) có thể được thực hiện trong 1 transaction SOSL?",
+      "why_correct": "Trong một giao dịch (Transaction) của Apex, giới hạn tối đa cho số lượng câu lệnh SOSL là 20. Code trong ví dụ đang chạy FIND trong vòng lặp, nên tối đa chỉ được 20 vòng.",
+      "why_wrong": {
+        "A": "200 là limit của bản ghi trả về trên mỗi object trong SOSL.",
+        "C": "2000 là tổng số bản ghi tối đa SOSL trả về."
+      },
+      "tip": "Governor Limit: SOQL = 100, SOSL = 20. Cứ nhớ SOSL 'ít' hơn SOQL 5 lần."
+    }
+  },
+  {
+    "id": 94,
+    "question": "Which class definition should be used to successfully implement Schedulable and Batchable?",
+    "options": [
+      { "key": "C", "text": "Global inherited sharing class ProcessAccountProcessor implements Database.Batchable<sObject>, Schedulable" }
+    ],
+    "correct": ["C"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Khai báo class thế nào để vừa có thể chạy Batch, vừa có thể đặt lịch (Schedule)?",
+      "why_correct": "Một class có thể thực thi (implements) nhiều interface cùng lúc. Bằng cách implement cả `Database.Batchable` và `Schedulable`, mày có thể viết logic batch và sau đó đặt lịch cho nó chạy định kỳ.",
+      "why_wrong": {
+        "D": "Queueable là một kiểu async khác, không liên quan đến việc đặt lịch kiểu Schedulable."
+      },
+      "tip": "Class Power: Một mình 'cân' cả Batch lẫn Schedule bằng cách dùng dấu phẩy giữa các interface."
+    }
+  },
+  {
+    "id": 95,
+    "question": "Agents should be presented with a list of order numbers from an external system in real time within a Flow. What should a developer use?",
+    "options": [
+      { "key": "A", "text": "An invocable method" }
+    ],
+    "correct": ["A"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm sao để lấy dữ liệu thời gian thực từ hệ thống ngoài hiển thị lên Flow?",
+      "why_correct": "Dùng `Invocable Method`. Mày viết một đoạn code Apex thực hiện Callout lấy data, sau đó gắn tag `@InvocableMethod` để Flow có thể gọi nó và lấy kết quả trả về hiển thị lên màn hình.",
+      "why_wrong": {
+        "B": "Outbound message chỉ gửi đi, không lấy data về cho Flow dùng ngay được.",
+        "D": "REST class là để hệ thống ngoài gọi vào Salesforce, không phải Flow gọi ra ngoài."
+      },
+      "tip": "Flow + Real-time External Data = Invocable Method Callout."
+    }
+  },
+  {
+    "id": 96,
+    "question": "Provide custom interfaces when users edit a Contact in either Salesforce Classic or Lightning Experience. What should be used?",
+    "options": [
+      { "key": "D", "text": "A Visualforce page in Salesforce Classic and a Lightning component in Lightning Experience." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Ghi đè (Override) nút Edit của Contact cho cả Classic và Lightning. Dùng gì?",
+      "why_correct": "Salesforce cho phép cấu hình override riêng biệt. Classic thì dùng Visualforce là chuẩn bài, còn Lightning Experience thì dùng Lightning Component (Aura/LWC) để có trải nghiệm mượt mà nhất.",
+      "why_wrong": {
+        "C": "Lightning component không chạy 'ngon' khi làm override trong Classic."
+      },
+      "tip": "Override: Classic -> Visualforce; Lightning -> Lightning Component."
+    }
+  },
+  {
+    "id": 97,
+    "question": "Gather multiple pieces of information from a customer in order to send a replacement credit card. Which automation tool?",
+    "options": [
+      { "key": "B", "text": "Flow Builder." }
+    ],
+    "correct": ["B"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Công cụ nào tốt nhất để thu thập thông tin khách hàng qua nhiều bước (Multi-step)?",
+      "why_correct": "Screen Flow (tạo bằng Flow Builder) là 'vua' của các loại form. Nó cho phép mày tạo giao diện nhiều trang, bắt lỗi nhập liệu và thực hiện logic phức tạp mà không cần viết code.",
+      "why_wrong": {
+        "C": "Process Builder không có giao diện cho người dùng nhập liệu.",
+        "A": "Lightning Component làm được nhưng tốn thời gian code hơn Flow nhiều."
+      },
+      "tip": "Keyword: Gather information / User Input / Multi-screen -> Screen Flow."
+    }
+  },
+  {
+    "id": 98,
+    "question": "Enforce field visibility so that the component works for both users without showing any error? (Commission field visibility)",
+    "options": [
+      { "key": "D", "text": "Use Security.stripInaccessible to remove fields inaccessible to the current user." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Làm thế nào để ẩn field 'Hoa hồng' với người không có quyền mà app vẫn không bị văng lỗi?",
+      "why_correct": "Lại là class `Security.stripInaccessible()`. Nó sẽ âm thầm loại bỏ cái field 'Hoa hồng' ra khỏi kết quả trả về nếu user không có quyền xem, giúp code chạy trơn tru cho mọi loại user.",
+      "why_wrong": {
+        "A": "WITH SECURITY_ENFORCED sẽ bắn lỗi (Exception) nếu user thiếu quyền vào bất kỳ field nào trong query, làm app bị crash.",
+        "C": "Locker Service bảo vệ các component khỏi nhau, không bảo vệ data cấp độ field."
+      },
+      "tip": "Security Practice: Muốn app chạy 'êm' dù thiếu quyền -> Dùng Security.stripInaccessible."
+    }
+  },
+  {
+    "id": 99,
+    "question": "Many developers work in their own individual orgs with same configuration as production. Which type of org?",
+    "options": [
+      { "key": "D", "text": "Developer Sandbox." }
+    ],
+    "correct": ["D"],
+    "type": "single",
+    "explanation": {
+      "vi_question": "Loại Org nào phù hợp cho nhiều dev làm việc độc lập với cấu hình giống Production?",
+      "why_correct": "Developer Sandbox là lựa chọn rẻ và nhanh nhất. Nó copy toàn bộ Metadata (cấu hình) từ Production nhưng không copy data, phù hợp để dev code và test tính năng mới.",
+      "why_wrong": {
+        "A": "Developer Edition là Org cá nhân, không có liên kết gì với Production của khách hàng.",
+        "C": "Full Sandbox quá đắt đỏ và thường chỉ dùng để test giai đoạn cuối (UAT)."
+      },
+      "tip": "Sandbox: Developer (Metadata only), Full (Metadata + All Data)."
+    }
+  },
+  {
+    "id": 100,
+    "question": "What are two ways the developer can prevent a SOQL Injection attack? Choose 2 answers.",
+    "options": [
+      { "key": "A", "text": "Use a variable binding and replace the dynamic query with static SOQL." },
+      { "key": "B", "text": "Use the escapeSingleQuotes method to sanitize the parameter." }
+    ],
+    "correct": ["A", "B"],
+    "type": "multi",
+    "explanation": {
+      "vi_question": "Hai cách để ngăn chặn tấn công SOQL Injection là gì?",
+      "why_correct": "A: Dùng Static SOQL với biến `:var` (Binding) là cách an toàn nhất vì Salesforce tự xử lý. B: Nếu bắt buộc dùng Dynamic SOQL, phải dùng hàm `String.escapeSingleQuotes()` để vô hiệu hóa các ký tự điều khiển mà hacker nhập vào.",
+      "why_wrong": {
+        "D": "with sharing và @ReadOnly không liên quan gì đến việc chống Injection."
+      },
+      "tip": "Security Keywords: Chống SOQL Injection -> Static SOQL / escapeSingleQuotes."
+    }
+  }
+]
