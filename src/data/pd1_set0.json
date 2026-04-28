@@ -1,0 +1,1802 @@
+[
+  {
+    "id": 213,
+    "question": "A developer is alerted to an issue with a custom Apex trigger that is causing records to be duplicated.\nWhat is the most appropriate debugging approach to troubleshoot the issue?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Disable the trigger in production and test to see if the issue still occurs."
+      },
+      {
+        "key": "B",
+        "text": "Add system.debug statements to the code to track the execution flow and identify the issue."
+      },
+      {
+        "key": "C",
+        "text": "Review the Historical Event logs to identify the source of the issue.\n- **D. ✅ Use the Apex Interactive Debugger to step through the code and identify the issue.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một developer được thông báo về một vấn đề với một Apex trigger tùy chỉnh đang gây ra việc tạo bản ghi trùng lặp. Đâu là cách tiếp cận debug phù hợp nhất để khắc phục sự cố?",
+      "why_correct": "D đúng vì Apex Interactive Debugger cho phép developer đặt breakpoint, chạy từng dòng code (step through), và quan sát trực tiếp giá trị biến, luồng thực thi — đây là công cụ chính xác và hiệu quả nhất để tìm nguyên nhân tạo bản ghi trùng.",
+      "why_wrong": {
+        "A": "vì vô hiệu hóa trigger trên production là hành động nguy hiểm, ảnh hưởng đến người dùng thật và không phải là cách debug — đây là workaround, không phải troubleshooting.",
+        "B": "vì `System.debug` chỉ ghi log ra debug log, không cho phép tương tác real-time hay dừng lại kiểm tra từng bước. Hữu ích nhưng không phải \"most appropriate\" khi đã có Interactive Debugger.",
+        "C": "vì \"Historical Event logs\" không phải tính năng có trong Salesforce — đây là thuật ngữ bịa, không tồn tại."
+      },
+      "tip": "\"Step through = Interactive Debugger\" — Bất cứ khi nào đề hỏi về debug từng bước (step through, breakpoint), đáp án là Apex Interactive Debugger."
+    }
+  },
+  {
+    "id": 214,
+    "question": "While writing an Apex class, a developer wants to make sure that all functionality being developed is handled as specified by the requirements.\nWhich approach should the developer use to be sure that the Apex class is working according to specifications?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a test class to execute the business logic and run the test in the Developer Console."
+      },
+      {
+        "key": "B",
+        "text": "Run the code in an Execute Anonymous block in the Developer Console."
+      },
+      {
+        "key": "C",
+        "text": "Include a savepoint and `Database.rollback()`.\n- **D. ✅ Include a try/catch block to the Apex class.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Khi viết một Apex class, developer muốn đảm bảo tất cả chức năng đang được phát triển hoạt động đúng như yêu cầu. Developer nên dùng cách tiếp cận nào để chắc chắn Apex class hoạt động theo đúng specification? > ⚠️ **Lưu ý:** Câu này có vẻ gây tranh cãi — đáp án D (try/catch) là đáp án được đánh dấu đúng trong bộ đề, nhưng về mặt best practice thực tế, tao sẽ giải thích rõ tại sao mỗi lựa chọn.",
+      "why_correct": "D đúng (theo đề) vì try/catch giúp handle các exception, đảm bảo code không crash và xử lý lỗi theo đúng spec — đây là cách \"ensure the class works according to specifications\" trong ngữ cảnh production-ready code.",
+      "why_wrong": {
+        "A": "vì đây mô tả việc tạo test class để *chạy* business logic, không phải để *verify* rằng logic hoạt động đúng spec theo cách có cấu trúc. Hơn nữa, \"run test in Developer Console\" là cách thực thi, không phải xác minh specification.",
+        "B": "vì Execute Anonymous chỉ dùng để chạy code nhanh, không có cơ chế xác minh kết quả một cách có hệ thống.",
+        "C": "vì Savepoint + Database.rollback() dùng cho transaction control, không liên quan đến việc verify business logic."
+      },
+      "tip": "Câu hỏi hỏi \"ensure working according to specifications\" → try/catch đảm bảo class xử lý đúng exception theo spec. Đây là dạng câu bẫy — đọc kỹ context!"
+    }
+  },
+  {
+    "id": 215,
+    "question": "A developer has identified a method in an Apex class that performs resource intensive actions in memory by iterating over the result set of a SOQL statement on the account. The method also performs a DML statement to save the changes to the database.\nWhich two techniques should the developer implement as a best practice to ensure transaction control and avoid exceeding governor limits?",
+    "options": [
+      {
+        "key": "C",
+        "text": "Use the `@ReadOnly` annotation to bypass the number of rows returned by a SOQL."
+      },
+      {
+        "key": "D",
+        "text": "Use partial DML statements to ensure only valid data is committed."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một developer đã xác định một method trong Apex class thực hiện các thao tác tốn nhiều tài nguyên trong bộ nhớ bằng cách lặp qua kết quả của một câu lệnh SOQL trên Account. Method này cũng thực hiện DML để lưu thay đổi vào database. Hai kỹ thuật nào developer nên áp dụng như best practice để đảm bảo transaction control và tránh vượt quá governor limits?",
+      "why_correct": "A đúng vì `Database.Savepoint` cho phép tạo điểm khôi phục trong transaction — nếu có lỗi xảy ra, có thể rollback về trạng thái trước đó, đảm bảo tính toàn vẹn dữ liệu (database integrity). B đúng vì `System.Limits` class cho phép kiểm tra mức tiêu thụ CPU limit hiện tại (e.g., `Limits.getCpuTime()`, `Limits.getLimitCpuTime()`), giúp tránh vượt quá governor limit trong các vòng lặp tốn tài nguyên.",
+      "why_wrong": {
+        "C": "vì `@ReadOnly` annotation chỉ áp dụng cho các Visualforce page/Remote Action, không dùng trong Apex class thông thường, và nó giới hạn DML — mà method này cần thực hiện DML.",
+        "D": "vì \"partial DML statements\" (tức là `Database.insert(records, false)`) không phải là giải pháp cho transaction control hay governor limit — nó chỉ cho phép tiếp tục khi có lỗi trên một số record, nhưng không kiểm soát transaction hay CPU."
+      },
+      "tip": "\"Resource intensive + DML\" → nhớ 2 thứ: Savepoint (bảo vệ data) + System.Limits (kiểm tra limit). Cặp đôi hoàn hảo cho transaction control!"
+    }
+  },
+  {
+    "id": 216,
+    "question": "A developer wants to get access to the standard price book in the org while writing a test class that covers an OpportunityLineItem trigger.\nWhich method allows access to the price book?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Use `@TestVisible` to allow the test method to see the standard price book."
+      },
+      {
+        "key": "C",
+        "text": "Use `Test.loadData()` and a static resource to load a standard price book."
+      },
+      {
+        "key": "D",
+        "text": "Use `@IsTest(SeeAllData=true)` and delete the existing standard price book."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một developer muốn truy cập standard price book trong org khi viết test class cho một OpportunityLineItem trigger. Method nào cho phép truy cập price book?",
+      "why_correct": "A đúng vì `Test.getStandardPricebookId()` là method chính thức được Salesforce cung cấp để lấy ID của Standard Pricebook trong môi trường test — đây là cách duy nhất được khuyến nghị vì test context không thể truy cập real data.",
+      "why_wrong": {
+        "B": "vì `@TestVisible` chỉ dùng để expose private method/field của Apex class ra cho test class, không liên quan đến Price Book.",
+        "C": "vì `Test.loadData()` dùng để nạp dữ liệu từ static resource (CSV), không phải để lấy Standard Pricebook — Standard Pricebook không thể tạo bằng CSV.",
+        "D": "vì `@IsTest(SeeAllData=true)` là cách tệ nhất — nó truy cập dữ liệu thật của org, có thể gây lỗi không ổn định; hơn nữa \"delete the existing standard price book\" là sai hoàn toàn, không thể xóa Standard Pricebook."
+      },
+      "tip": "\"Standard Pricebook trong test\" = luôn dùng `Test.getStandardPricebookId()`. Nhớ: Test class → Test method!"
+    }
+  },
+  {
+    "id": 217,
+    "question": "Assuming that `name` is a String obtained by an `<apex:inputText>` tag on a Visualforce page, which two SOQL queries performed are safe from SOQL injection?",
+    "options": [
+      {
+        "key": "A",
+        "text": "```apex\n  String query = '%' + name + '%';\n  List<Account> results = [SELECT Id FROM Account WHERE Name LIKE :query];\n  ```"
+      },
+      {
+        "key": "B",
+        "text": "```apex\n  String query = 'SELECT Id FROM Account WHERE Name LIKE \\'%' + name + '%\\'';\n  List<Account> results = Database.query(query);\n  ```"
+      },
+      {
+        "key": "C",
+        "text": "```apex\n  String query = 'SELECT Id FROM Account WHERE Name LIKE \\'%' + name.noQuotes() + '%\\'';\n  List<Account> results = Database.query(query);\n  ```"
+      },
+      {
+        "key": "D",
+        "text": "```apex\n  String query = 'SELECT Id FROM Account WHERE Name LIKE \\'%' +\n      String.escapeSingleQuotes(name) + '%\\'';\n  List<Account> results = Database.query(query);\n  ```"
+      }
+    ],
+    "correct": [
+      "A",
+      "D"
+    ],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Giả sử `name` là một String lấy từ tag `<apex:inputText>` trên Visualforce page, hai câu SOQL nào được thực hiện an toàn khỏi SOQL injection?",
+      "why_correct": "A đúng vì dùng bind variable (`:query`) trong static SOQL — Salesforce tự động escape giá trị khi dùng dấu `:`, không thể inject code. D đúng vì dùng `String.escapeSingleQuotes(name)` để sanitize input trước khi đưa vào dynamic query — escape ký tự đặc biệt, ngăn injection.",
+      "why_wrong": {
+        "B": "vì string được nối trực tiếp vào dynamic query (`+name+`) mà không có escape hay bind variable — đây là lỗ hổng SOQL injection điển hình.",
+        "C": "vì `name.noQuotes()` không phải method tồn tại trong Apex String class — đây là method bịa, không compile được."
+      },
+      "tip": "2 cách chống SOQL injection: (1) Bind variable dấu `:` trong static SOQL, (2) `escapeSingleQuotes()` cho dynamic SOQL. Nhớ: Bind hoặc Escape!"
+    }
+  },
+  {
+    "id": 218,
+    "question": "A developer created a Lightning web component called `statusComponent` to be inserted into the Account record page.\nWhich two things should the developer do to make this component available?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Add `<target>lightning__RecordPage</target>` to the `statusComponent.js` file.\n- **B. ✅ Add `<target>lightning__RecordPage</target>` to the `statusComponent.js-meta.xml` file.**\n- **C. ✅ Set `isExposed` to true in the `statusComponent.js-meta.xml` file.**"
+      },
+      {
+        "key": "D",
+        "text": "Add `<masterLabel>Account</masterLabel>` to the `statusComponent.js-meta.xml` file."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một developer tạo một Lightning Web Component tên `statusComponent` để nhúng vào trang record của Account. Developer cần làm hai việc gì để component này khả dụng?",
+      "why_correct": "B đúng vì `<target>lightning__RecordPage</target>` phải được khai báo trong file metadata `statusComponent.js-meta.xml` để chỉ định component có thể dùng trên Record Page. C đúng vì `isExposed` phải được set `true` trong `js-meta.xml` thì component mới hiển thị trong App Builder để admin có thể kéo thả vào trang.",
+      "why_wrong": {
+        "A": "vì `<target>` khai báo trong file `.js` là sai — `.js` là file JavaScript logic, không phải nơi khai báo metadata. Cấu hình deployment metadata luôn nằm trong `.js-meta.xml`.",
+        "D": "vì `<masterLabel>Account</masterLabel>` không phải thuộc tính hợp lệ để chỉ định trang. Để giới hạn theo object type, dùng `<targetConfig>` với `objects`, không dùng `masterLabel`."
+      },
+      "tip": "LWC xuất hiện trên App Builder cần 2 điều kiện: `isExposed=true` + `<target` đúng loại trang — đều trong file `.js-meta.xml`. Nhớ: Meta = Meta file!"
+    }
+  },
+  {
+    "id": 219,
+    "question": "Given the following Anonymous block:\n```apex\nList<Case> casesToUpdate = new List<Case>();\nfor(Case thisCase : [SELECT Id, Status FROM Case LIMIT 50000]){\n    thisCase.Status = 'Working';\n    casesToUpdate.add(thisCase);\n}\ntry{\n    Database.update(casesToUpdate,false);\n}catch(Exception e){\n    System.debug(e.getMessage());\n}\n```\nWhat should a developer consider for an environment that has over 10,000 Case records?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The try-catch block will handle exceptions thrown by governor limits."
+      },
+      {
+        "key": "B",
+        "text": "The try-catch block will handle any DML exceptions thrown."
+      },
+      {
+        "key": "C",
+        "text": "The transaction will succeed and changes will be committed.\n- **D. ✅ The transaction will fail due to exceeding the governor limit.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Xem đoạn code sau (truy vấn Case với LIMIT 50000, dùng Database.update với allOrNone=false). Developer cần lưu ý điều gì khi môi trường có hơn 10,000 bản ghi Case?",
+      "why_correct": "D đúng vì SOQL governor limit cho phép tối đa 50,000 rows trong một transaction — nhưng giới hạn cho DML là 10,000 records trong một lần DML. Khi có hơn 10,000 Case, list `casesToUpdate` sẽ có hơn 10,000 phần tử → DML vượt limit → transaction fail. `Database.update(list, false)` chỉ bỏ qua lỗi trên từng record, không bypass governor limits.",
+      "why_wrong": {
+        "A": "vì try/catch **không thể** bắt governor limit exceptions — `LimitException` là uncatchable exception trong Apex.",
+        "B": "vì try/catch bắt được DML exceptions thông thường (e.g., validation rule, required field), nhưng **không bắt được** governor limit exception. Câu hỏi hỏi về môi trường 10,000+ records → governor limit là vấn đề.",
+        "C": "vì với hơn 10,000 records, governor limit sẽ bị vượt và transaction fail — không thể commit thành công."
+      },
+      "tip": "`LimitException` = UNCATCHABLE — try/catch vô dụng với governor limits! DML limit = 10,000 records per transaction."
+    }
+  },
+  {
+    "id": 220,
+    "question": "An Apex method, `getAccounts`, that returns a list of Accounts given a `searchTerm`, is available for Lightning Web Components to use.\nWhat is the correct definition of a Lightning Web Component property that uses the `getAccounts` method?",
+    "options": [
+      {
+        "key": "A",
+        "text": "`@wire(getAccounts, '$searchTerm') accountList;`\n- **B. ✅ `@wire(getAccounts, { searchTerm: '$searchTerm' }) accountList;`**"
+      },
+      {
+        "key": "C",
+        "text": "`@AuraEnabled(getAccounts, { searchTerm: '$searchTerm' }) accountList;`"
+      },
+      {
+        "key": "D",
+        "text": "`@AuraEnabled(getAccounts, '$searchTerm') accountList;`"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một Apex method tên `getAccounts`, trả về danh sách Account với tham số `searchTerm`, có thể dùng trong Lightning Web Component. Cú pháp đúng để định nghĩa property dùng `@wire` với method này là gì?",
+      "why_correct": "B đúng vì cú pháp `@wire` đúng là: `@wire(apexMethod, { paramName: '$reactiveVar' }) property;` — tham số phải được truyền dưới dạng object với key-value, và dùng dấu `$` trước tên property để chỉ reactive variable.",
+      "why_wrong": {
+        "A": "vì truyền `'$searchTerm'` trực tiếp không phải dạng object — sai cú pháp `@wire`, tham số phải là `{ key: value }`.",
+        "C": "vì `@AuraEnabled` là annotation cho **Apex method**, không phải decorator cho LWC property. Nhầm lẫn giữa Apex và LWC.",
+        "D": "vì tương tự C, `@AuraEnabled` sai hoàn toàn trong context LWC property."
+      },
+      "tip": "`@wire` syntax: `@wire(method, { param: '$value' }) prop;` — nhớ curly braces `{}` và dollar sign `$` cho reactive!"
+    }
+  },
+  {
+    "id": 221,
+    "question": "When a user edits the Postal Code on an Account, a custom Account text field named \"Timezone\" must be updated based on the values in another custom object called `PostalCodeToTimezone__c`.\nWhat is the optimal way to implement this feature?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Build an account assignment rule."
+      },
+      {
+        "key": "B",
+        "text": "Create a formula field.\n- **C. ✅ Build a flow with Flow Builder.**"
+      },
+      {
+        "key": "D",
+        "text": "Create an account approval process."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Khi người dùng sửa Postal Code trên Account, một trường text tùy chỉnh \"Timezone\" phải được cập nhật dựa trên giá trị trong custom object `PostalCodeToTimezone__c`. Cách tối ưu để implement tính năng này là gì?",
+      "why_correct": "C đúng vì yêu cầu cần: (1) trigger khi Postal Code thay đổi, (2) tra cứu dữ liệu từ custom object khác, (3) cập nhật field. Flow Builder hỗ trợ đầy đủ: Record-triggered flow có thể detect field change, query related object và update field — không cần code.",
+      "why_wrong": {
+        "A": "vì Account Assignment Rule dùng để assign record cho user/queue, không dùng để update field dựa trên logic tra cứu.",
+        "B": "vì Formula field là **read-only và computed** — không thể tra cứu qua custom object khác bằng cross-object formula đơn giản khi cần lookup logic phức tạp, và không thể \"store\" giá trị.",
+        "D": "vì Approval Process dùng để phê duyệt record qua các bước, không phải để cập nhật field tự động khi dữ liệu thay đổi."
+      },
+      "tip": "Lookup sang object khác + auto-update = Flow (không phải Formula, vì Formula không thể lookup custom object tùy ý). Từ khóa \"optimal\" thường gợi ý declarative (Flow  Apex)."
+    }
+  },
+  {
+    "id": 222,
+    "question": "As part of new feature development, a developer is asked to build a responsive application capable of responding to touch events, that will be executed on stateful clients.\nWhich two technologies are built on a framework that fully supports the business requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Visualforce Pages\n- **B. ✅ Lightning Web Components**"
+      },
+      {
+        "key": "C",
+        "text": "Visualforce Components\n- **D. ✅ Aura Components**"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một developer được yêu cầu xây dựng một ứng dụng responsive có khả năng phản hồi touch events, chạy trên stateful clients. Hai công nghệ nào được xây dựng trên framework hỗ trợ đầy đủ yêu cầu này?",
+      "why_correct": "B đúng vì Lightning Web Components (LWC) là modern web standard, hỗ trợ responsive design, touch events, và stateful client-side rendering. D đúng vì Aura Components cũng được xây dựng trên Salesforce Lightning framework, hỗ trợ responsive và touch — là thế hệ trước của LWC nhưng vẫn đáp ứng yêu cầu.",
+      "why_wrong": {
+        "A": "vì **Visualforce** (Pages và Components) là công nghệ server-side rendering truyền thống, không được thiết kế cho responsive/touch-first experience và không hỗ trợ stateful client-side framework đầy đủ.",
+        "C": "vì **Visualforce** (Pages và Components) là công nghệ server-side rendering truyền thống, không được thiết kế cho responsive/touch-first experience và không hỗ trợ stateful client-side framework đầy đủ."
+      },
+      "tip": "Responsive + Touch + Stateful client = Lightning framework (LWC hoặc Aura). Visualforce = server-side = không phù hợp!"
+    }
+  },
+  {
+    "id": 223,
+    "question": "A software company is using Salesforce to track the companies they sell their software to in the Account object. They also use Salesforce to track bugs in their software with a custom object, `Bug__c`.\nAs part of a process improvement initiative, they want to be able to report on which companies have reported which bugs. Each company should be able to report multiple bugs and bugs can also be reported by multiple companies.\nWhat is needed to allow this reporting?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Master-detail field on `Bug__c` to Account\n- **B. ✅ Junction object between `Bug__c` and Account**"
+      },
+      {
+        "key": "C",
+        "text": "Roll-up summary field of `Bug__c` on Account"
+      },
+      {
+        "key": "D",
+        "text": "Lookup field on `Bug__c` to Account"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Một công ty phần mềm muốn report về việc công ty nào đã báo cáo bug nào. Mỗi công ty có thể báo cáo nhiều bug và một bug có thể được báo cáo bởi nhiều công ty. Cần gì để cho phép reporting này?",
+      "why_correct": "B đúng vì đây là quan hệ Many-to-Many (nhiều công ty — nhiều bug). Salesforce giải quyết Many-to-Many bằng Junction Object — một object trung gian có Master-Detail đến cả hai object cha, cho phép report across cả hai.",
+      "why_wrong": {
+        "A": "vì Master-Detail từ Bug__c đến Account chỉ là quan hệ One-to-Many (một Account nhiều Bug) — không thể một Bug thuộc nhiều Account.",
+        "C": "vì Roll-up Summary field chỉ dùng để tổng hợp số liệu (COUNT, SUM...) trong quan hệ Master-Detail, không tạo quan hệ Many-to-Many.",
+        "D": "vì Lookup field từ Bug__c đến Account cũng chỉ là One-to-Many, không phải Many-to-Many."
+      },
+      "tip": "Many-to-Many = Junction Object. Nhớ công thức: khi đề có \"multiple... và... multiple\" → Junction Object!"
+    }
+  },
+  {
+    "id": 224,
+    "question": "What are two ways a developer can get the status of an enqueued job for a class that implements the queueable interface?",
+    "options": [
+      {
+        "key": "B",
+        "text": "View the Apex Status page\n- **C. ✅ View the Apex Flex Queue**"
+      },
+      {
+        "key": "D",
+        "text": "Query the `AsyncApexJob` object"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Hai cách nào developer có thể kiểm tra trạng thái (status) của một enqueued job cho class implement Queueable interface?",
+      "why_correct": "A đúng vì Apex Jobs page (Setup → Apex Jobs) hiển thị trạng thái của tất cả các async jobs bao gồm Queueable jobs. C đúng vì Apex Flex Queue hiển thị các jobs đang chờ trong hàng đợi (queued/holding status) — đặc biệt hữu ích cho Queueable jobs chưa bắt đầu chạy.",
+      "why_wrong": {
+        "B": "vì \"Apex Status page\" **không tồn tại** trong Salesforce Setup — đây là tên bịa.",
+        "D": "vì query `AsyncApexJob` object **là cách đúng** về mặt kỹ thuật, nhưng đề hỏi 2 đáp án và cả A, C đều đúng hơn D trong context \"check status\" qua UI. Tuy nhiên, lưu ý đây có thể là trick — một số version của câu hỏi này có D là đúng thay C."
+      },
+      "tip": "Async job monitoring = Apex Jobs + Apex Flex Queue. Nhớ: Flex Queue dành cho jobs *đang chờ*, Apex Jobs cho jobs *đang/đã chạy*."
+    }
+  },
+  {
+    "id": 225,
+    "question": "A developer is creating a page that allows users to create multiple Opportunities. The developer is asked to verify the current user's default Opportunity record type, and set certain default values based on the record type before inserting the record.\nHow can the developer find the current user's default record type?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Query the Profile where the ID equals `userInfo.getProfileID()` and then use the `profile.Opportunity.getDefaultRecordType()` method."
+      },
+      {
+        "key": "B",
+        "text": "Create the opportunity and check the `opportunity.recordType`, which will have the record ID of the current user's default record type, before inserting.\n- **C. ✅ Use `Opportunity.SObjectType.getDescribe().getRecordTypeInfos()` to get a list of record types, and iterate through them until `isDefaultRecordTypeMapping()` is true.**"
+      },
+      {
+        "key": "D",
+        "text": "Use the `Schema.userInfo.Opportunity.getDefaultRecordType()` method."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer tạo trang cho phép tạo nhiều Opportunity. Developer cần tìm record type mặc định của người dùng hiện tại cho Opportunity. Cách nào để tìm default record type của user hiện tại?",
+      "why_correct": "C đúng vì `SObjectType.getDescribe().getRecordTypeInfos()` trả về danh sách tất cả Record Type Info, và method `isDefaultRecordTypeMapping()` trả về `true` cho record type mặc định của user hiện tại. Đây là cách chính thức dùng Schema Describe.",
+      "why_wrong": {
+        "A": "vì `profile.Opportunity.getDefaultRecordType()` **không phải method tồn tại** trong Salesforce API — đây là cú pháp bịa.",
+        "B": "vì khi mới tạo Opportunity object trong Apex (chưa insert), `recordType` field chưa được gán tự động — giá trị này không phản ánh default record type của user.",
+        "D": "vì `Schema.userInfo.Opportunity.getDefaultRecordType()` **không phải method tồn tại** — đây là cú pháp bịa."
+      },
+      "tip": "Default Record Type = Schema Describe → `getRecordTypeInfos()` + loop + `isDefaultRecordTypeMapping()`. Nhớ: \"Describe để lấy metadata!\""
+    }
+  },
+  {
+    "id": 226,
+    "question": "Which Lightning Web Component custom event property settings enable the event to bubble up the containment hierarchy and cross the Shadow DOM boundary?",
+    "options": [
+      {
+        "key": "A",
+        "text": "bubbles: false, composed: true"
+      },
+      {
+        "key": "B",
+        "text": "bubbles: false, composed: false\n- **C. ✅ bubbles: true, composed: true**"
+      },
+      {
+        "key": "D",
+        "text": "bubbles: true, composed: false"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Thuộc tính nào của LWC custom event cho phép event vừa bubble lên containment hierarchy vừa vượt qua ranh giới Shadow DOM?",
+      "why_correct": "C đúng vì: - `bubbles: true` → event lan lên DOM tree (bubble up qua containment hierarchy). - `composed: true` → event vượt qua Shadow DOM boundary, tức là có thể được nghe bởi component bên ngoài Shadow DOM. - Cần cả hai để event đi xa nhất.",
+      "why_wrong": {
+        "A": "vì `bubbles: false` nghĩa là event không bubble lên — chỉ `composed: true` thôi thì event không đi đâu được.",
+        "B": "vì cả hai đều false — event chỉ tồn tại tại nơi dispatch, không đi đâu cả.",
+        "D": "vì `bubbles: true, composed: false` — event bubble lên trong cùng Shadow DOM tree nhưng **dừng lại ở ranh giới Shadow DOM**, không vượt qua được."
+      },
+      "tip": "\"Bubble + Cross Shadow DOM\" = `bubbles: true` + `composed: true`. Nhớ: Bubble = đi lên, Composed = vượt tường!"
+    }
+  },
+  {
+    "id": 227,
+    "question": "A developer is asked to prevent anyone other than a user with Sales Manager profile from changing the Opportunity Status to Closed Lost if the lost reason is blank.\nWhich automation allows the developer to satisfy this requirement in the most efficient manner?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A record trigger flow on the Opportunity object"
+      },
+      {
+        "key": "B",
+        "text": "An approval process on the Opportunity object"
+      },
+      {
+        "key": "C",
+        "text": "An Apex trigger on the Opportunity object\n- **D. ✅ An error condition formula on a validation rule on Opportunity**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer cần ngăn không cho ai (trừ Sales Manager profile) thay đổi Opportunity Status thành \"Closed Lost\" nếu trường lost reason trống. Automation nào cho phép developer thỏa mãn yêu cầu này hiệu quả nhất?",
+      "why_correct": "D đúng vì Validation Rule là cách hiệu quả nhất — có thể check `$Profile.Name != 'Sales Manager'` và `Status = 'Closed Lost'` và `Lost_Reason__c = null`, sau đó hiển thị error message. Không cần code, declarative hoàn toàn, và enforce ở mọi nơi (UI, API, trigger).",
+      "why_wrong": {
+        "A": "vì Record-triggered Flow có thể làm được nhưng phức tạp hơn — cần nhiều bước để validate và throw error, không \"efficient\" bằng Validation Rule cho use case này.",
+        "B": "vì Approval Process dùng để phê duyệt record qua workflow, không dùng để block field value change dựa trên profile.",
+        "C": "vì Apex Trigger có thể làm được nhưng **không phải cách hiệu quả nhất** — cần viết code, deploy, test. Validation Rule đơn giản hơn nhiều."
+      },
+      "tip": "Chặn field value + điều kiện phức tạp = Validation Rule (dùng `$Profile.Name` để kiểm tra profile). Từ khóa \"most efficient\" = ưu tiên declarative!"
+    }
+  },
+  {
+    "id": 228,
+    "question": "The values 'High', 'Medium', and 'Low' are identified as common values for multiple picklists across different objects.\nWhat is an approach a developer can take to streamline maintenance of the picklists and their values, while also restricting the values to the ones mentioned above?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create the Picklist on each object as a required field and select \"Display values alphabetically, not in the order entered\"."
+      },
+      {
+        "key": "B",
+        "text": "Create the Picklist on each object and add a validation rule to ensure data integrity."
+      },
+      {
+        "key": "C",
+        "text": "Create the Picklist on each object and select \"Restrict picklist to the values defined in the value set\".\n- **D. ✅ Create the Picklist on each object and use a Global Picklist Value Set containing the values.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Giá trị 'High', 'Medium', 'Low' là các giá trị phổ biến cho nhiều picklist trên các object khác nhau. Cách tiếp cận nào giúp đơn giản hóa việc bảo trì picklist và giá trị, đồng thời giới hạn chỉ những giá trị đã đề cập?",
+      "why_correct": "D đúng vì Global Picklist Value Set cho phép định nghĩa một bộ giá trị tập trung, tái sử dụng trên nhiều object/field khác nhau. Khi cập nhật Global Value Set, tất cả fields dùng nó đều tự động cập nhật — dễ bảo trì. Đồng thời, giá trị bị giới hạn chỉ trong value set đó.",
+      "why_wrong": {
+        "A": "vì \"Display values alphabetically\" chỉ là tùy chọn hiển thị, không giới hạn giá trị và không giúp streamline maintenance qua nhiều object.",
+        "B": "vì tạo validation rule trên mỗi object là cách phức tạp và phải bảo trì từng rule riêng lẻ — không \"streamline\" gì.",
+        "C": "vì \"Restrict picklist to the values defined in the value set\" là tùy chọn đúng về giới hạn giá trị, nhưng nếu mỗi field/object có value set riêng thì vẫn phải cập nhật từng cái — không đáp ứng yêu cầu bảo trì tập trung như Global Value Set."
+      },
+      "tip": "Giá trị dùng chung nhiều object = Global Picklist Value Set. Nhớ: \"Global\" = dùng được ở mọi nơi!"
+    }
+  },
+  {
+    "id": 229,
+    "question": "A software company uses the following objects and relationships:\n- **Case**: to handle customer support issues\n- **Defect__c**: a custom object to represent known issues with the company's software\n- **Case_Defect__c**: a junction object between Case and Defect__c to represent that a defect is a cause of a customer issue\nCase and `Defect__c` have Private organization-wide defaults.\nWhat should be done to share a specific `Case_Defect__c` record with a user?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Share the `Case_Defect__c` record.\n- **B. ✅ Share the parent Case and `Defect__c` records.**"
+      },
+      {
+        "key": "C",
+        "text": "Share the parent Case record."
+      },
+      {
+        "key": "D",
+        "text": "Share the parent `Defect__c` record."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Junction object `Case_Defect__c` có hai Master-Detail đến Case và Defect__c. Cả Case và Defect__c đều có OWD là Private. Cần làm gì để chia sẻ một bản ghi `Case_Defect__c` cụ thể với một user?",
+      "why_correct": "B đúng vì trong quan hệ Master-Detail, junction object record kế thừa access từ cả hai parent. Với OWD Private, để user có thể xem `Case_Defect__c`, user phải có quyền truy cập vào cả Case cha và Defect__c cha — vì quyền truy cập junction record phụ thuộc vào quyền trên cả hai Master.",
+      "why_wrong": {
+        "A": "vì junction object với Master-Detail **không có sharing rules riêng** — không thể share trực tiếp junction record, phải share qua parent.",
+        "C": "vì chỉ share Case (một parent) là chưa đủ — user cần access cả Defect__c cha.",
+        "D": "vì tương tự C, chỉ share Defect__c (một parent) là chưa đủ."
+      },
+      "tip": "Junction object = kế thừa access từ CẢ HAI parent. Muốn truy cập junction record → phải có quyền trên cả hai master records!"
+    }
+  },
+  {
+    "id": 230,
+    "question": "A developer has the following requirements:\n- Calculate the total amount on an Order.\n- Calculate the line amount for each Line Item based on quantity selected and price.\n- Move Line Items to a different Order if a Line Item is not in stock.\nWhich relationship implementation supports these requirements on its own?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Line Item has a re-parentable lookup field to Order."
+      },
+      {
+        "key": "C",
+        "text": "Order has a re-parentable master-detail field to Line Item."
+      },
+      {
+        "key": "D",
+        "text": "Order has a re-parentable lookup field to Line Item."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Yêu cầu: tính tổng amount trên Order (roll-up), tính line amount cho Line Item, và có thể di chuyển Line Item sang Order khác. Relationship implementation nào hỗ trợ tất cả yêu cầu này?",
+      "why_correct": "A đúng vì Line Item có re-parentable Master-Detail đến Order hỗ trợ: 1. Roll-up summary (tính tổng amount trên Order) — chỉ có trong Master-Detail. 2. Re-parentable — cho phép đổi Order cha, tức là di chuyển Line Item sang Order khác. 3. Tính line amount = formula field → có thể dùng với bất kỳ relationship nào.",
+      "why_wrong": {
+        "B": "vì Lookup field **không hỗ trợ Roll-up Summary** — không tính được tổng Amount trên Order.",
+        "C": "vì \"Order có Master-Detail đến Line Item\" là sai chiều — Master nên là Order (cha), Detail là Line Item (con). Cú pháp này đặt quan hệ ngược.",
+        "D": "vì tương tự B, Lookup không hỗ trợ Roll-up Summary."
+      },
+      "tip": "Roll-up Summary = bắt buộc Master-Detail. Re-parentable = có thể đổi cha. Khi cần cả hai → Re-parentable Master-Detail!"
+    }
+  },
+  {
+    "id": 231,
+    "question": "Considering the following code snippet:\n```apex\npublic static void insertAccounts(List<Account> theseAccounts){\n    for(Account thisAccount : theseAccounts){\n        if(thisAccount.website == null){\n            thisAccount.website = 'https://www.demo.com';\n        }\n    }\n    update theseAccounts;\n}\n```\nWhen the code executes, a DML exception is thrown.\nHow should a developer modify the code to ensure exceptions are handled gracefully?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Implement the `upsert` DML statement."
+      },
+      {
+        "key": "B",
+        "text": "Remove null items from the list of Accounts.\n- **C. ✅ Implement a try/catch block for the DML.**"
+      },
+      {
+        "key": "D",
+        "text": "Implement Change Data Capture."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Đoạn code dùng `update theseAccounts` bên trong method `insertAccounts`. Khi thực thi, DML exception được throw. Developer nên sửa code như thế nào để xử lý exception một cách graceful?",
+      "why_correct": "C đúng vì bọc DML trong try/catch block cho phép bắt `DmlException`, xử lý lỗi (log, rollback, notify) mà không làm crash toàn bộ transaction — đây là cách graceful exception handling chuẩn.",
+      "why_wrong": {
+        "A": "vì `upsert` chỉ thay đổi hành vi DML (insert hoặc update), không xử lý exception. Nếu exception vẫn xảy ra, nó vẫn bubble up.",
+        "B": "vì \"remove null items\" giải quyết một trường hợp cụ thể (NullPointerException), không phải giải pháp tổng quát cho mọi DML exception.",
+        "D": "vì Change Data Capture là tính năng streaming events khi data thay đổi, hoàn toàn không liên quan đến xử lý DML exception."
+      },
+      "tip": "\"Handle exceptions gracefully\" = try/catch. Đây là keyword cần nhớ trong mọi câu hỏi liên quan đến error handling!"
+    }
+  },
+  {
+    "id": 232,
+    "question": "Which two statements are true about using the `@testSetup` annotation in an Apex test class?",
+    "options": [
+      {
+        "key": "C",
+        "text": "Records created in the test setup method cannot be updated in individual test methods."
+      },
+      {
+        "key": "D",
+        "text": "In a test setup method, test data is inserted once and made available for all test methods in the test class."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Hai phát biểu nào đúng về việc dùng annotation `@testSetup` trong Apex test class?",
+      "why_correct": "A đúng vì `@testSetup` không tương thích với `@isTest(SeeAllData=true)` — khi SeeAllData=true, test truy cập data thật của org nên không cần setup riêng, và Salesforce không cho phép kết hợp hai annotation này. B đúng vì method có `@testSetup` chạy một lần trước mỗi test method (không phải một lần cho cả class) và được tính vào governor limits của từng test method.",
+      "why_wrong": {
+        "C": "vì records tạo trong `@testSetup` **CÓ THỂ được update/modify** trong từng test method riêng lẻ — mỗi test method nhận một bản copy fresh của data từ @testSetup.",
+        "D": "vì mô tả trong D gần đúng nhưng không chính xác — data không được \"made available for all test methods\" theo nghĩa dùng chung một bản. Thực ra mỗi test method nhận **bản copy riêng** được rollback sau mỗi test."
+      },
+      "tip": "@testSetup: Không dùng được với SeeAllData=true, chạy trước MỖI test method, data rollback sau mỗi test. Nhớ: Setup = Fresh start mỗi test!"
+    }
+  },
+  {
+    "id": 233,
+    "question": "Flow Builder uses an Apex action to provide additional information about multiple Contacts, stored in a custom class, `ContactInfo`.\nWhich is the correct definition of the Apex method that gets the additional information?",
+    "options": [
+      {
+        "key": "A",
+        "text": "```apex\n  @InvocableMethod(label='Additional Info')\n  public List<ContactInfo> getInfo(List<Id> contactIds)\n  { /*implementation*/ }\n  ```"
+      },
+      {
+        "key": "B",
+        "text": "```apex\n  @InvocableMethod(label='Additional Info')\n  public static ContactInfo getInfo(Id contactId)\n  { /*implementation*/ }\n  ```"
+      },
+      {
+        "key": "C",
+        "text": "```apex\n  @InvocableMethod(label='Additional Info')\n  public ContactInfo getInfo(Id contactId)\n  { /*implementation*/ }\n  ```"
+      },
+      {
+        "key": "D",
+        "text": "```apex\n  @InvocableMethod(label='Additional Info')\n  public static List<ContactInfo> getInfo(List<Id> contactIds)\n  { /*implementation*/ }\n  ```"
+      }
+    ],
+    "correct": [
+      "D"
+    ],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Flow Builder dùng Apex action để lấy thêm thông tin về nhiều Contact, lưu trong class `ContactInfo`. Định nghĩa đúng của Apex method được gọi từ Flow là gì?",
+      "why_correct": "D đúng vì `@InvocableMethod` bắt buộc: 1. Method phải là `static`. 2. Nhận tham số kiểu `List` (vì Flow xử lý theo bulk). 3. Trả về kiểu `List` (bulk output). Vì vậy: `public static List<ContactInfo> getInfo(List<Id> contactIds)` là đúng hoàn toàn.",
+      "why_wrong": {
+        "A": "vì thiếu `static` — `@InvocableMethod` yêu cầu method là static.",
+        "B": "vì tham số là `Id` (đơn) thay vì `List<Id>` — Flow luôn gửi List, method phải nhận List.",
+        "C": "vì vừa thiếu `static`, vừa nhận tham số đơn thay vì List."
+      },
+      "tip": "@InvocableMethod = static + List in + List out. Nhớ: \"Flow nói chuyện theo List, phải dùng List!\""
+    }
+  },
+  {
+    "id": 234,
+    "question": "Universal Containers has a large number of custom applications that were built using a third-party JavaScript framework and exposed using Visualforce pages. The company wants to update these applications to apply styling that resembles the look and feel of Lightning Experience.\nWhat should the developer do to fulfill the business request in the quickest and most effective manner?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Rewrite all Visualforce pages as Lightning components."
+      },
+      {
+        "key": "B",
+        "text": "Set the attribute `enableLightning` to true in the definition.\n- **C. ✅ Incorporate the Salesforce Lightning Design System CSS stylesheet into the JavaScript applications.**"
+      },
+      {
+        "key": "D",
+        "text": "Enable Available for Lightning Experience, Lightning Communities, and the mobile app on Visualforce pages used by the custom application."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Universal Containers có nhiều app được xây bằng third-party JavaScript framework trên Visualforce. Họ muốn cập nhật các app này để có giao diện giống Lightning Experience. Developer nên làm gì nhanh và hiệu quả nhất?",
+      "why_correct": "C đúng vì Salesforce Lightning Design System (SLDS) là CSS framework của Salesforce — chỉ cần nhúng CSS stylesheet của SLDS vào các ứng dụng JavaScript hiện có là có ngay giao diện Lightning, không cần viết lại code.",
+      "why_wrong": {
+        "A": "vì rewrite toàn bộ Visualforce sang Lightning components là cực kỳ tốn thời gian — trái với yêu cầu \"quickest and most effective\".",
+        "B": "vì `enableLightning` **không phải thuộc tính tồn tại** trong Visualforce page definition — đây là cú pháp bịa.",
+        "D": "vì enable \"Available for Lightning Experience\" chỉ là cài đặt cho phép Visualforce page chạy trong Lightning, không thay đổi visual appearance/styling."
+      },
+      "tip": "Lightning look & feel nhanh nhất = SLDS CSS. Không cần rewrite — chỉ cần import stylesheet!"
+    }
+  },
+  {
+    "id": 235,
+    "question": "The following code snippet is executed by a Lightning web component in an environment with more than 2,000 lead records:\n```apex\n@AuraEnabled\npublic void static updateLeads(){\n    for(Lead thisLead : [SELECT Origin__c FROM Lead]){\n        thisLead.LeadSource = thisLead.Origin__c;\n        update thisLead;\n    }\n}\n```\nWhich governor limit will likely be exceeded within the Apex transaction?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Total number of DML statements issued"
+      },
+      {
+        "key": "B",
+        "text": "Total number of SOQL queries issued\n- **C. ✅ Total number of records retrieved by SOQL queries**"
+      },
+      {
+        "key": "D",
+        "text": "Total number of records processed as a result of DML statements"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Code truy vấn tất cả Lead (`SELECT Origin__c FROM Lead`) và update từng record trong vòng lặp trong môi trường có hơn 2,000 Lead. Governor limit nào có khả năng bị vượt?",
+      "why_correct": "C đúng vì giới hạn SOQL rows = 50,000 records per transaction. Với hơn 2,000 Lead và query không có LIMIT, khi số Lead vượt 50,000 thì governor limit \"Total number of records retrieved by SOQL queries\" bị vượt. Trong môi trường 2,000+ lead, nếu có nhiều hơn 50,000 thì fail; nhưng ngay cả 2,000 thì DML trong loop cũng là vấn đề. > ⚠️ Thực ra với chính xác \"hơn 2,000\" thì DML statements (giới hạn 150) bị vượt trước (mỗi iteration là 1 DML). Tuy nhiên đáp án đề là C — có thể đề muốn nhấn mạnh SOQL rows limit khi số lượng lớn hơn.",
+      "why_wrong": {
+        "A": "vì chỉ có **1 SOQL query** được thực thi (query ngoài loop) — không vượt limit 100 SOQL queries.",
+        "B": "vì tương tự A, chỉ có 1 SOQL statement.",
+        "D": "vì \"Total records processed as a result of DML\" — giới hạn này là 10,000 records per DML call, nhưng ở đây mỗi DML chỉ update 1 record."
+      },
+      "tip": "SOQL trong loop = DML trong loop = BAD PRACTICE. Khi đề hỏi môi trường \"hơn X records\", nghĩ ngay đến row limit (50,000) hoặc DML limit (150 statements)."
+    }
+  },
+  {
+    "id": 236,
+    "question": "What should a developer do to check the code coverage of a class after running all tests?",
+    "options": [
+      {
+        "key": "A",
+        "text": "View the Class Test Percentage tab on the Apex Class list view in Salesforce Setup.\n- **B. ✅ View the Code Coverage column in the list view on the Apex Classes page.**"
+      },
+      {
+        "key": "C",
+        "text": "View the code coverage percentage for the class using the Overall Code Coverage panel in the Developer Console Tests tab."
+      },
+      {
+        "key": "D",
+        "text": "Select and run the class on the Apex Test Execution page in the Developer Console."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer nên làm gì để kiểm tra code coverage của một class sau khi đã run all tests?",
+      "why_correct": "B đúng vì sau khi run tests, cột \"Code Coverage\" xuất hiện trong danh sách Apex Classes tại Setup → Apex Classes — đây là cách nhanh và trực tiếp nhất.",
+      "why_wrong": {
+        "A": "vì \"Class Test Percentage tab\" **không tồn tại** trong Apex Class list view — đây là tên bịa.",
+        "C": "vì \"Overall Code Coverage panel\" trong Developer Console Tests tab hiển thị tổng coverage của toàn org, không phải coverage riêng của từng class.",
+        "D": "vì \"Select and run the class on Apex Test Execution page\" dùng để **chạy test**, không phải để xem code coverage của một class cụ thể."
+      },
+      "tip": "Code coverage của class → xem cột \"Code Coverage\" trên Apex Classes page trong Setup. Đơn giản, trực tiếp!"
+    }
+  },
+  {
+    "id": 237,
+    "question": "A developer must troubleshoot to pinpoint the causes of performance issues when a custom page loads in their org.\nWhich tool should the developer use to troubleshoot query performance?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Visual Studio Code IDE"
+      },
+      {
+        "key": "B",
+        "text": "AppExchange\n- **C. ✅ Developer Console**"
+      },
+      {
+        "key": "D",
+        "text": "Setup Menu"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer cần troubleshoot để tìm nguyên nhân performance issues khi custom page load, đặc biệt là query performance. Developer nên dùng tool nào?",
+      "why_correct": "C đúng vì Developer Console có tab \"Query Editor\" và \"Query Plan\" cho phép phân tích SOQL query performance, xem execution plan, và identify slow queries — đây là công cụ tích hợp sẵn cho query troubleshooting.",
+      "why_wrong": {
+        "A": "vì VS Code IDE là editor cho code, không có built-in query performance analyzer cho Salesforce queries.",
+        "B": "vì AppExchange là marketplace để tải app/components, không phải tool debug.",
+        "D": "vì Setup Menu là nơi cấu hình org, không có tính năng query performance analysis."
+      },
+      "tip": "Query performance = Developer Console (Query Plan tool). Nhớ: Console = công cụ debug/analyze tại chỗ!"
+    }
+  },
+  {
+    "id": 238,
+    "question": "Consider the following code snippet:\n```apex\npublic static List<Lead> obtainAllFields(Set<Id> leadIds){\n    List<Lead> result = new List<Lead>();\n    for(Id leadId : leadIds){\n        result.add([SELECT FIELDS(STANDARD) FROM Lead WHERE Id = :leadId]);\n    }\n    return result;\n}\n```\nGiven the multi-tenant architecture of the Salesforce platform, what is a best practice a developer should implement and ensure successful execution of the method?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Avoid returning an empty List of records."
+      },
+      {
+        "key": "B",
+        "text": "Avoid using variables as query filters.\n- **C. ✅ Avoid performing queries inside for loops.**"
+      },
+      {
+        "key": "D",
+        "text": "Avoid executing queries without a limit clause."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Code snippet thực hiện SOQL query bên trong vòng lặp `for` (mỗi leadId query một lần). Best practice nào developer cần áp dụng trong kiến trúc multi-tenant của Salesforce?",
+      "why_correct": "C đúng vì SOQL inside for loop là anti-pattern nghiêm trọng trong Salesforce — mỗi iteration tốn 1 SOQL query, với 100+ items sẽ vượt limit 100 SOQL queries/transaction. Best practice là bulkify: query một lần bên ngoài loop với `WHERE Id IN :leadIds`.",
+      "why_wrong": {
+        "A": "vì \"avoid returning empty list\" không phải best practice liên quan đến multi-tenant hay governor limit.",
+        "B": "vì \"avoid using variables as query filters\" là ngược lại best practice — dùng bind variable (`:variable`) là **được khuyến khích** để tránh SOQL injection.",
+        "D": "vì \"avoid queries without LIMIT\" là best practice đúng trong một số context, nhưng không phải vấn đề chính của code này."
+      },
+      "tip": "SOQL/DML trong for loop = LUÔN SAI. Nguyên tắc vàng: \"Bulkify everything!\" — query ngoài loop, DML ngoài loop."
+    }
+  },
+  {
+    "id": 239,
+    "question": "A developer needs to prevent the creation of `Request__c` records when certain conditions exist in the system. A `RequestLogic` class exists that checks the conditions.\nWhat is the correct implementation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "```apex\n  trigger RequestTrigger on Request__c (before insert) {\n      if (RequestLogic.isValid(Request__c))\n          Request.addError('Your request cannot be created at this time.');\n  }\n  ```"
+      },
+      {
+        "key": "B",
+        "text": "```apex\n  trigger RequestTrigger on Request__c (after insert) {\n      if (RequestLogic.isValid(Request__c))\n          Request.addError('Your request cannot be created at this time.');\n  }\n  ```"
+      },
+      {
+        "key": "C",
+        "text": "```apex\n  trigger RequestTrigger on Request__c (before insert) {\n      RequestLogic.validateRecords(trigger.new);\n  }\n  ```"
+      },
+      {
+        "key": "D",
+        "text": "```apex\n  trigger RequestTrigger on Request__c (after insert) {\n      RequestLogic.validateRecords(trigger.new);\n  }\n  ```"
+      }
+    ],
+    "correct": [
+      "C"
+    ],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer cần ngăn tạo bản ghi `Request__c` khi một số điều kiện tồn tại. Class `RequestLogic` đã có method kiểm tra điều kiện. Implementation đúng là gì?",
+      "why_correct": "C đúng vì: 1. Trigger dùng `before insert` — đúng! Để ngăn tạo record, phải dùng before trigger (before insert chạy trước khi record được save vào DB). 2. Truyền `Trigger.new` vào `RequestLogic.validateRecords()` — đúng! Bulkified pattern. 3. Logic xử lý nằm trong class riêng (separation of concerns).",
+      "why_wrong": {
+        "A": "vì `Request__c` (tên object) không thể dùng trực tiếp để gọi `.addError()` — phải gọi trên từng record trong Trigger.new. Hơn nữa, `RequestLogic.isValid(Request__c)` truyền class type thay vì list records — sai cú pháp.",
+        "B": "vì dùng **`after insert`** — sau khi record đã được insert vào DB, không thể ngăn tạo record nữa. Phải dùng **before insert** để block.",
+        "D": "vì tương tự B, dùng `after insert` — không thể ngăn record creation sau khi đã insert."
+      },
+      "tip": "Ngăn tạo/sửa record = BEFORE trigger (`before insert`, `before update`). AFTER trigger dùng khi cần ID đã được tạo hoặc thao tác sau khi commit."
+    }
+  },
+  {
+    "id": 240,
+    "question": "Which two characteristics are true for Lightning Web Component custom events?",
+    "options": [
+      {
+        "key": "C",
+        "text": "Data may be passed in the payload of a custom event using @wire decorated properties."
+      },
+      {
+        "key": "D",
+        "text": "Data may be passed in the payload of a custom event using a property called detail."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Hai đặc điểm nào đúng về LWC custom events? > ⚠️ Đây là câu hỏi tricky — cả A và B đều được đánh dấu đúng, nhưng có vẻ mâu thuẫn. Giải thích bên dưới.",
+      "why_correct": "A đúng vì mô tả behavior khi `bubbles: true, composed: false` — event bubble lên DOM tree nhưng dừng ở Shadow boundary, chỉ đến được immediate container và immediate child trong cùng Shadow DOM. B đúng vì mô tả behavior mặc định (`bubbles: false, composed: false`) — event chỉ dispatch tại component tạo ra nó, chỉ đến immediate container (parent component listening trực tiếp). > Hai đáp án này mô tả hai default behavior khác nhau tùy context. B là default hoàn toàn (không bubbles).",
+      "why_wrong": {
+        "C": "vì `@wire` decorated properties dùng để **nhận data từ server**, không liên quan đến việc pass data trong custom event payload.",
+        "D": "vì đây là đáp án đúng về cú pháp! Data truyền trong custom event qua property `detail` — `new CustomEvent('myevent', { detail: data })`. Tuy nhiên, câu hỏi đang hỏi \"characteristics\" và đề đánh D là sai — đây có thể là lỗi của đề hoặc câu D được hiểu khác."
+      },
+      "tip": "LWC Custom Event mặc định: `bubbles: false, composed: false` → chỉ parent trực tiếp nghe được. Dùng `{ detail: data }` để truyền data."
+    }
+  },
+  {
+    "id": 241,
+    "question": "Which annotation should a developer use on an Apex method to make it available to be wired to a property in a Lightning web component?",
+    "options": [
+      {
+        "key": "A",
+        "text": "`@RemoteAction(cacheable=true)`"
+      },
+      {
+        "key": "B",
+        "text": "`@AuraEnabled`\n- **C. ✅ `@AuraEnabled(cacheable=true)`**"
+      },
+      {
+        "key": "D",
+        "text": "`@RemoteAction`"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Annotation nào developer nên dùng trên Apex method để nó có thể được wire vào property trong LWC?",
+      "why_correct": "C đúng vì để wire một Apex method vào LWC property dùng `@wire`, method bắt buộc phải có `@AuraEnabled(cacheable=true)` — `cacheable=true` là yêu cầu bắt buộc cho `@wire` (vì wire là reactive và cache kết quả).",
+      "why_wrong": {
+        "A": "vì `@RemoteAction(cacheable=true)` — `@RemoteAction` là annotation cho Visualforce Remote Action, không dùng trong LWC.",
+        "B": "vì `@AuraEnabled` không có `cacheable=true` — không thể wire, chỉ có thể dùng với `imperative call` (gọi trực tiếp).",
+        "D": "vì `@RemoteAction` là annotation Visualforce, không phải LWC."
+      },
+      "tip": "`@wire` = `@AuraEnabled(cacheable=true)` — nhớ: wire cần cache, không có `cacheable=true` thì không wire được!"
+    }
+  },
+  {
+    "id": 242,
+    "question": "What is an example of a polymorphic lookup field in Salesforce?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The ParentId field on the standard Account object\n- **B. ✅ The WhatId field on the standard Event object**"
+      },
+      {
+        "key": "C",
+        "text": "The LeadId and ContactId fields on the standard Campaign Member object"
+      },
+      {
+        "key": "D",
+        "text": "A custom field, `Link__c`, on the standard Contact object that looks up to an Account or a Campaign"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Ví dụ nào là polymorphic lookup field trong Salesforce?",
+      "why_correct": "B đúng vì `WhatId` trên Event object là polymorphic lookup — nó có thể trỏ đến nhiều loại object khác nhau như Account, Opportunity, Case, v.v. Đây là ví dụ điển hình của polymorphic relationship trong Salesforce.",
+      "why_wrong": {
+        "A": "vì `ParentId` trên Account chỉ trỏ đến **Account** (self-referential lookup), không phải polymorphic (chỉ một type).",
+        "C": "vì `LeadId` và `ContactId` trên Campaign Member là hai field lookup **riêng biệt**, mỗi field chỉ trỏ đến một object — không phải một field trỏ đến nhiều object type.",
+        "D": "vì custom field `Link__c` lookup đến Account **hoặc** Campaign mô tả polymorphic, nhưng **custom polymorphic lookup không thể tạo trong Salesforce** — đây là tính năng chỉ có trên standard fields."
+      },
+      "tip": "Polymorphic = một field trỏ đến NHIỀU object type. Standard examples: `WhatId` (Event/Task), `WhoId` (Event/Task). Nhớ: What/Who = Polymorphic!"
+    }
+  },
+  {
+    "id": 243,
+    "question": "Universal Containers recently transitioned from Classic to Lightning Experience.\nOne of its business processes requires certain values from the Opportunity object to be sent via an HTTP REST callout to its external order management system when the user presses a custom button on the Opportunity detail page. Example values are: Name, Amount, Account.\nWhich two methods should the developer implement to fulfill the business requirement?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create a Remote Action on the Opportunity object that executes an Apex immediate action to perform the HTTP REST callout whenever the Opportunity is updated.\n- **B. ✅ Create a custom Visualforce quick action that performs the HTTP REST callout, and use a Visualforce quick action to expose the component on the Opportunity detail page.**\n- **C. ✅ Create a Lightning component quick action that performs the HTTP REST callout, and use a Lightning Action to expose the component on the Opportunity detail page.**"
+      },
+      {
+        "key": "D",
+        "text": "Create an after update trigger on the Opportunity object that calls a helper method using `@Future(Callout=true)` to perform the HTTP REST callout."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Universal Containers đã chuyển từ Classic sang Lightning. Yêu cầu: khi user nhấn custom button trên Opportunity detail page, gửi HTTP REST callout đến hệ thống quản lý đơn hàng bên ngoài. Hai method nào developer nên implement?",
+      "why_correct": "B đúng vì Visualforce quick action có thể thực hiện callout và được expose trên trang dưới dạng button — vẫn hoạt động trong Lightning Experience. C đúng vì Lightning component quick action là cách hiện đại nhất trong Lightning — tạo LWC/Aura component, expose qua Lightning Action, gắn vào trang.",
+      "why_wrong": {
+        "A": "vì \"Remote Action... immediate action\" và \"whenever the Opportunity is updated\" — Remote Action không fire tự động khi Opportunity update, nó chỉ fire khi được gọi từ UI. Hơn nữa callout không thể thực hiện trực tiếp từ trigger/synchronous context.",
+        "D": "vì `@Future(Callout=true)` là cách để thực hiện callout từ trigger/async context — nhưng câu hỏi yêu cầu button press, không phải after update trigger. Hơn nữa, trigger fires tự động khi update record, không phải khi nhấn button."
+      },
+      "tip": "Button press → callout = Quick Action (Visualforce hoặc Lightning Component). Nhớ: button = action, không phải trigger!"
+    }
+  },
+  {
+    "id": 244,
+    "question": "How can a developer check the test coverage of autolaunched Flows before deploying them in a change set?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Use the Flow Properties page.\n- **B. ✅ Use SOQL and the Tooling API.**"
+      },
+      {
+        "key": "C",
+        "text": "Use the `ApexTestResult` class."
+      },
+      {
+        "key": "D",
+        "text": "Use the Code Coverage Setup page."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer cần kiểm tra test coverage của autolaunched Flows trước khi deploy trong change set. Developer nên dùng gì?",
+      "why_correct": "B đúng vì Flow test coverage không hiển thị trực tiếp trong UI như Apex. Để query coverage của Flow, developer cần dùng Tooling API với SOQL để query object như `FlowTestCoverage` hoặc `FlowVersionView`.",
+      "why_wrong": {
+        "A": "vì Flow Properties page hiển thị metadata của flow (version, status, description), không hiển thị test coverage.",
+        "C": "vì `ApexTestResult` là object dùng để query kết quả test của **Apex**, không phải Flow.",
+        "D": "vì \"Code Coverage Setup page\" **không tồn tại** như một trang riêng cho Flow — đây là tên bịa."
+      },
+      "tip": "Flow test coverage = Tooling API + SOQL. Nhớ: Flow coverage không có UI riêng, phải dùng Tooling API để query!"
+    }
+  },
+  {
+    "id": 245,
+    "question": "A developer wants to mark each Account in a `List<Account>` as either Active or Inactive, based on the value in the `LastModifiedDate` field of each Account being greater than 90 days in the past.\nWhich Apex technique should the developer use?",
+    "options": [
+      {
+        "key": "A",
+        "text": "A `for` loop, with a `switch` statement inside"
+      },
+      {
+        "key": "B",
+        "text": "A `switch` statement, with a `for` loop inside"
+      },
+      {
+        "key": "C",
+        "text": "An if-else statement, with a `for` loop inside\n- **D. ✅ A `for` loop, with an if or if/else statement inside**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer muốn đánh dấu mỗi Account trong `List<Account>` là Active hoặc Inactive dựa trên `LastModifiedDate` so với 90 ngày trước. Kỹ thuật Apex nào developer nên dùng?",
+      "why_correct": "D đúng vì: 1. `for` loop để duyệt qua từng Account trong List. 2. `if/else` bên trong để check điều kiện ngày và gán Active/Inactive. Đây là pattern đúng và đơn giản nhất cho yêu cầu \"iterate and conditionally assign\".",
+      "why_wrong": {
+        "A": "vì `switch` statement trong Apex không hỗ trợ so sánh date/range condition — `switch` dùng cho giá trị cụ thể (Integer, String, SObject type), không dùng để so sánh `>` hay `<`.",
+        "B": "vì tương tự A — `switch` bên ngoài, `for` bên trong là ngược logic. Không iterate được qua List với `switch` làm outer.",
+        "C": "vì `if-else` bên ngoài, `for` bên trong cũng là ngược — không thể iterate qua toàn bộ List với pattern này."
+      },
+      "tip": "Duyệt list + điều kiện = for loop + if/else. `switch` chỉ dùng khi có giá trị cụ thể để match (không dùng được với comparison operators ``, `<`)."
+    }
+  },
+  {
+    "id": 246,
+    "question": "Which three steps allow a custom Scalable Vector Graphic (SVG) to be included in a Lightning web component?",
+    "options": [
+      {
+        "key": "D",
+        "text": "Reference the import in the HTML template."
+      },
+      {
+        "key": "E",
+        "text": "Import the SVG as a content asset file."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Ba bước nào cho phép nhúng SVG tùy chỉnh vào Lightning Web Component?",
+      "why_correct": "A đúng vì sau khi upload static resource, cần import vào JS file: `import myIcon from '@salesforce/resourceUrl/myIcon'` và tạo JS property để dùng trong template. B đúng vì sau khi có property, cần reference trong HTML template: `<img src={iconUrl}>` hoặc dùng trong `lwc:ref`. C đúng vì SVG phải được upload lên Static Resource trước — đây là bước đầu tiên và bắt buộc.",
+      "why_wrong": {
+        "D": "vì \"Reference the import directly in HTML template\" — không thể reference import module trực tiếp trong HTML, phải qua JS property.",
+        "E": "vì SVG dùng **Static Resource**, không phải **Content Asset File** (Content Asset Files dùng cho Salesforce CMS/Experience Cloud)."
+      },
+      "tip": "SVG trong LWC: Upload → Static Resource → Import trong JS → Reference qua property trong HTML. Flow: Resource → JS → HTML."
+    }
+  },
+  {
+    "id": 247,
+    "question": "A developer creates a batch Apex job to update a large number of records, and receives reports of the job timing out and not completing.\nWhat is the first step towards troubleshooting the issue?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Check the debug logs for the batch job."
+      },
+      {
+        "key": "B",
+        "text": "Decrease the batch size to reduce the load on the system.\n- **C. ✅ Check the asynchronous job monitoring page to view the job status and logs.**"
+      },
+      {
+        "key": "D",
+        "text": "Disable the batch job and recreate it with a smaller number of records."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer tạo batch Apex job để update nhiều record nhưng job bị timeout và không hoàn thành. Bước đầu tiên để troubleshoot là gì?",
+      "why_correct": "C đúng vì Asynchronous Job Monitoring page (Setup → Apex Jobs) cho thấy status, số records processed, số failures, và có thể xem job logs — đây là điểm đầu tiên cần kiểm tra để hiểu job đang làm gì và fail ở đâu.",
+      "why_wrong": {
+        "A": "vì kiểm tra debug logs là bước thứ hai — nhưng debug logs của batch job cần được enable trước và có thể không capture được nếu job timeout. Hơn nữa, chưa biết job status thì check log ở đâu?",
+        "B": "vì giảm batch size là **giải pháp**, không phải **troubleshooting** — phải hiểu vấn đề trước, sau đó mới điều chỉnh.",
+        "D": "vì disable và tạo lại job là hành động quá drastic khi chưa biết nguyên nhân."
+      },
+      "tip": "Batch job troubleshoot = Async Job Monitoring page TRƯỚC TIÊN. Nhớ: \"Check status before action!\""
+    }
+  },
+  {
+    "id": 248,
+    "question": "A credit card company needs to implement the functionality for a service agent to process damaged or stolen credit cards. When the customers call in, the service agent must gather many pieces of information. A developer is tasked to implement this functionality.\nWhat should the developer use to satisfy this requirement in the most efficient manner?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Apex trigger\n- **B. ✅ Lightning Component**"
+      },
+      {
+        "key": "C",
+        "text": "Approval process"
+      },
+      {
+        "key": "D",
+        "text": "Screen-based flow"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Công ty thẻ tín dụng cần service agent xử lý thẻ hỏng/mất cắp, thu thập nhiều thông tin từ khách hàng. Developer nên dùng gì để implement hiệu quả nhất?",
+      "why_correct": "B đúng vì Lightning Component (LWC hoặc Aura) cho phép tạo custom UI phức tạp với nhiều form fields, validation logic, dynamic behavior — phù hợp khi cần \"gather many pieces of information\" với UX tùy chỉnh cao.",
+      "why_wrong": {
+        "A": "vì Apex trigger là server-side logic, không có UI để agent nhập thông tin.",
+        "C": "vì Approval Process dùng để phê duyệt record qua workflow, không phải để nhập nhiều thông tin.",
+        "D": "vì Screen Flow cũng là option hợp lý, nhưng Lightning Component cho phép tùy chỉnh UI phức tạp hơn cho nghiệp vụ \"gather many pieces of information\" từ service agent."
+      },
+      "tip": "Custom UI phức tạp + Service agent = Lightning Component. Screen Flow tốt cho wizard đơn giản; LWC tốt cho UI cần logic phức tạp hơn."
+    }
+  },
+  {
+    "id": 249,
+    "question": "A company decides to implement a new process where every time an Opportunity is created, a follow up Task should be created and assigned to the Opportunity Owner.\nWhat is the most efficient way for a developer to implement this?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Apex trigger on Task"
+      },
+      {
+        "key": "C",
+        "text": "Task actions"
+      },
+      {
+        "key": "D",
+        "text": "Auto-launched flow on Task"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Mỗi khi Opportunity được tạo, cần tạo một Task follow-up và assign cho Opportunity Owner. Cách hiệu quả nhất để implement là gì?",
+      "why_correct": "A đúng vì Record-triggered Flow trên Opportunity là cách declarative, không cần code, và được trigger tự động khi Opportunity được tạo — hoàn toàn phù hợp và là best practice Salesforce hiện tại.",
+      "why_wrong": {
+        "B": "vì Apex trigger trên Task là sai object — Task chưa tồn tại để trigger. Hơn nữa, cần trigger trên Opportunity creation, không phải Task.",
+        "C": "vì \"Task actions\" không phải thuật ngữ chuẩn Salesforce cho use case này.",
+        "D": "vì \"Auto-launched flow on Task\" — flow trên Task, nhưng Task chưa tồn tại để launch flow; và cần fire khi Opportunity tạo, không phải Task tạo."
+      },
+      "tip": "\"Khi A xảy ra, tạo B\" = Record-triggered Flow trên A. Nhớ: trigger đặt trên object gây ra hành động, không phải object được tạo ra!"
+    }
+  },
+  {
+    "id": 250,
+    "question": "A developer is tasked to perform a security review of the `ContactSearch` Apex class that exists in the system. Within the class, the developer identifies the following method as a security threat:\n```apex\nList<Contact> performSearch(String lastName){\n    return Database.query('SELECT Id, FirstName, LastName FROM Contact WHERE LastName Like\n    %'+lastName+'%');\n}\n```\nWhat are two ways the developer can update the method to prevent a SOQL injection attack?",
+    "options": [
+      {
+        "key": "C",
+        "text": "Use the `@ReadOnly` annotation and the `with sharing` keyword on the class."
+      },
+      {
+        "key": "D",
+        "text": "Use a regular expression on the parameter to remove special characters."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Method `performSearch` nối trực tiếp `lastName` vào dynamic query — đây là lỗ hổng SOQL injection. Hai cách nào để fix?",
+      "why_correct": "A đúng vì thay dynamic query bằng static SOQL với bind variable: `[SELECT Id,... FROM Contact WHERE LastName LIKE :searchPattern]` — Salesforce tự escape, không thể inject. B đúng vì dùng `String.escapeSingleQuotes(lastName)` để sanitize input trước khi đưa vào dynamic query — escape các ký tự đặc biệt.",
+      "why_wrong": {
+        "C": "vì `@ReadOnly` và `with sharing` liên quan đến data access control, không phải SOQL injection prevention. Chúng không sanitize input.",
+        "D": "vì dùng **regex để remove special characters** có thể quá aggressive (loại bỏ các ký tự hợp lệ), không phải best practice — `escapeSingleQuotes()` là cách đúng hơn."
+      },
+      "tip": "Chống SOQL Injection = Bind Variable `:` hoặc `escapeSingleQuotes()`. Hai vũ khí chính — nhớ cả hai!"
+    }
+  },
+  {
+    "id": 251,
+    "question": "A developer wants to improve runtime performance of Apex calls by caching results on the client.\nWhat is the most efficient way to implement this and follow best practices?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Set a cookie in the browser for use upon return to the page.\n- **B. ✅ Decorate the server-side method with `@AuraEnabled(cacheable=true)`.**"
+      },
+      {
+        "key": "C",
+        "text": "Decorate the server-side method with `@AuraEnabled(storable=true)`."
+      },
+      {
+        "key": "D",
+        "text": "Call the `setStorable()` method on the action in the JavaScript client-side code."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer muốn cải thiện runtime performance của Apex calls bằng cách cache kết quả trên client. Cách hiệu quả nhất là gì?",
+      "why_correct": "B đúng vì `@AuraEnabled(cacheable=true)` là annotation chính thức để enable client-side caching cho Apex method trong LWC/Aura. Khi được đánh dấu cacheable, Lightning framework sẽ cache kết quả trên client, tránh gọi server lần sau.",
+      "why_wrong": {
+        "A": "vì browser cookies là cơ chế cũ, không phải Salesforce best practice, và không tích hợp với Lightning data caching system.",
+        "C": "vì `@AuraEnabled(storable=true)` — `storable` **không phải thuộc tính hợp lệ** của `@AuraEnabled`. Đây là tên bịa.",
+        "D": "vì `setStorable()` là method của Aura framework (không phải LWC) và không phải cách tiêu chuẩn — `cacheable=true` trên server method là cách đúng."
+      },
+      "tip": "Cache trên client = `@AuraEnabled(cacheable=true)`. Nhớ: cacheable (không phải storable, không phải cookie)!"
+    }
+  },
+  {
+    "id": 252,
+    "question": "In the following example, which sharing context will `myMethod` execute when it is invoked?\n```apex\npublic Class myClass {\n    public void myMethod() { /* implementation */ }\n}\n```",
+    "options": [
+      {
+        "key": "A",
+        "text": "Sharing rules will be enforced by the instantiating class."
+      },
+      {
+        "key": "B",
+        "text": "Sharing rules will not be enforced for the running user."
+      },
+      {
+        "key": "C",
+        "text": "Sharing rules will be enforced for the running user.\n- **D. ✅ Sharing rules will be inherited from the calling context.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Class `myClass` không có keyword `with sharing` hay `without sharing`. Method `myMethod` sẽ thực thi trong sharing context nào?",
+      "why_correct": "D đúng vì khi một class không khai báo `with sharing` hay `without sharing`, nó sẽ kế thừa sharing context từ calling context — tức là inherited sharing behavior. Nếu class gọi dùng `with sharing`, myClass cũng chạy với sharing.",
+      "why_wrong": {
+        "A": "vì \"enforced by the instantiating class\" không hoàn toàn đúng — class không khai báo sharing kế thừa từ calling context, không phải từ instantiating class cụ thể.",
+        "B": "vì \"sharing rules will NOT be enforced\" — điều này đúng với `without sharing`, không phải với class không khai báo gì.",
+        "C": "vì \"sharing rules WILL be enforced\" — điều này đúng với `with sharing`, không phải với class không khai báo gì."
+      },
+      "tip": "Không khai báo sharing = kế thừa từ caller. Nhớ bảng: `with sharing` = enforce, `without sharing` = không enforce, không khai báo = inherit từ context!"
+    }
+  },
+  {
+    "id": 253,
+    "question": "A developer creates a Lightning web component that imports a method within an Apex class. When a Validate button is pressed, the method runs to execute complex validations.\nIn this implementation scenario, which two options are part of the Controller according to the MVC architecture?",
+    "options": [
+      {
+        "key": "B",
+        "text": "HTML file\n- **C. ✅ JavaScript file**"
+      },
+      {
+        "key": "D",
+        "text": "XML file"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer tạo LWC với Apex class. Khi nhấn nút Validate, Apex method chạy để thực hiện validation phức tạp. Hai phần nào là **Controller** theo kiến trúc MVC?",
+      "why_correct": "A đúng vì Apex class là server-side controller — xử lý business logic, data access. C đúng vì JavaScript file là client-side controller — xử lý user interactions, gọi Apex, cập nhật UI state. - Trong LWC MVC: Model = data/Apex, View = HTML, Controller = JS + Apex.",
+      "why_wrong": {
+        "B": "vì **HTML file** là **View** trong MVC — hiển thị data, không xử lý logic.",
+        "D": "vì **XML file** (`js-meta.xml`) là **configuration/metadata**, không phải phần của MVC pattern."
+      },
+      "tip": "LWC MVC: View = HTML, Controller = JS + Apex, Model = Data/SObject. Nhớ: JS và Apex đều là Controller!"
+    }
+  },
+  {
+    "id": 254,
+    "question": "A development team wants to use a deployment script to automatically deploy to a sandbox during their development cycles.\nWhich two tools can they use to run a script that deploys to a sandbox?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Change Sets\n- **C. ✅ VSCode**"
+      },
+      {
+        "key": "D",
+        "text": "Developer Console"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Development team muốn dùng deployment script để tự động deploy lên sandbox. Hai tool nào có thể dùng để chạy script deploy?",
+      "why_correct": "A đúng vì SFDX CLI (Salesforce DX CLI) là command-line tool chính thức, có thể dùng trong script để deploy (`sf project deploy start`), tích hợp vào CI/CD pipeline. C đúng vì VS Code với Salesforce Extension Pack cho phép deploy từ IDE và có thể kết hợp với tasks/scripts. Tuy nhiên VS Code dùng SFDX CLI bên dưới — nhưng đề vẫn tính là đúng.",
+      "why_wrong": {
+        "B": "vì **Change Sets** là manual process trong browser UI — không thể chạy trong script tự động.",
+        "D": "vì **Developer Console** là web-based IDE trong Salesforce, không thể chạy trong deployment script."
+      },
+      "tip": "Automated deployment script = CLI-based tools. SFDX CLI và VS Code (dùng CLI bên dưới) hỗ trợ scripting. Change Sets = manual, Developer Console = web UI."
+    }
+  },
+  {
+    "id": 255,
+    "question": "Which two Agentforce limitations should a developer consider when building an agent?",
+    "options": [
+      {
+        "key": "C",
+        "text": "Inbound messages sent via messaging channels have character limits."
+      },
+      {
+        "key": "D",
+        "text": "Version control is supported for agents."
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Hai giới hạn nào của Agentforce developer cần cân nhắc khi xây dựng agent?",
+      "why_correct": "A đúng vì Agentforce custom actions tham chiếu đến Apex class hoặc Flow chỉ hỗ trợ primitive data types (String, Integer, Boolean, Decimal, Date) — không hỗ trợ complex objects, SObjects, hoặc custom classes. B đúng vì Agent API có timeout 90 giây — các action phức tạp cần hoàn thành trong 90 giây, nếu không sẽ bị timeout.",
+      "why_wrong": {
+        "C": "vì \"inbound messages có character limits\" — đây là limitation của messaging channels (SMS, WhatsApp), không phải limitation đặc thù của Agentforce agent building.",
+        "D": "vì \"version control is supported for agents\" là statement ngược lại — **version control KHÔNG được hỗ trợ** đầy đủ cho Agentforce agents (đây sẽ là limitation, nhưng đề đánh D là \"sai\" vì phát biểu D nói supported = đúng, mà thực tế không fully supported)."
+      },
+      "tip": "Agentforce limits: Primitive types only cho Apex/Flow actions + 90-second timeout cho Agent API. Nhớ hai con số: primitive và 90s!"
+    }
+  },
+  {
+    "id": 256,
+    "question": "A developer must create a `DrawList` class that provides capabilities defined in the `Sortable` and `Drawable` interfaces.\n```apex\npublic interface Sortable {\n    void sort();\n}\npublic interface Drawable {\n    void draw();\n}\n```\nWhich is the correct implementation?",
+    "options": [
+      {
+        "key": "A",
+        "text": "```apex\n  public class DrawList implements Sortable, implements Drawable {\n      public void sort() { /*implementation*/}\n      public void draw() { /*implementation*/}\n  }\n  ```"
+      },
+      {
+        "key": "B",
+        "text": "```apex\n  public class DrawList extends Sortable, Drawable {\n      public void sort() { /*implementation*/}\n      public void draw() { /*implementation*/}\n  }\n  ```"
+      },
+      {
+        "key": "C",
+        "text": "```apex\n  public class DrawList implements Sortable, Drawable {\n      public void sort() { /*implementation*/}\n      public void draw() { /*implementation*/}\n  }\n  ```"
+      }
+    ],
+    "correct": [
+      "C"
+    ],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Class `DrawList` cần implement cả interface `Sortable` và `Drawable`. Cú pháp Apex đúng là gì?",
+      "why_correct": "C đúng vì cú pháp đúng trong Apex để implement nhiều interface: `public class DrawList implements Sortable, Drawable { }` — dùng một từ khóa `implements` và liệt kê các interface cách nhau bằng dấu phẩy.",
+      "why_wrong": {
+        "A": "vì dùng `implements Sortable, implements Drawable` — **không được viết `implements` hai lần**. Chỉ cần một `implements` rồi liệt kê.",
+        "B": "vì dùng `extends Sortable, Drawable` — `extends` dùng để **kế thừa class**, không dùng cho interface. Interface phải dùng `implements`. Hơn nữa Apex không hỗ trợ multiple inheritance qua `extends`."
+      },
+      "tip": "Interface = `implements`, Class kế thừa = `extends`. Nhiều interface: `implements A, B` (một `implements`, nhiều tên cách nhau bằng dấu phẩy)."
+    }
+  },
+  {
+    "id": 257,
+    "question": "A Salesforce administrator used Flow Builder to create a flow named \"accountOnboarding\". The flow must be used inside an Aura component.\nWhich tag should a developer use to display the flow in the component?",
+    "options": [
+      {
+        "key": "A",
+        "text": "`lightning-flow`"
+      },
+      {
+        "key": "B",
+        "text": "`aura-flow`\n- **C. ✅ `lightning:flow`**"
+      },
+      {
+        "key": "D",
+        "text": "`aura:flow`"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Flow tên \"accountOnboarding\" được tạo bằng Flow Builder và cần dùng trong Aura component. Tag nào developer dùng để hiển thị flow trong component?",
+      "why_correct": "C đúng vì trong Aura Component, tag để embed flow là `<lightning:flow>` — đây là cú pháp namespace `lightning:` của Aura framework.",
+      "why_wrong": {
+        "A": "vì `lightning-flow` là cú pháp **LWC** (kebab-case), không phải Aura component (camelCase với colon).",
+        "B": "vì `aura-flow` **không tồn tại** — đây là cú pháp bịa.",
+        "D": "vì `aura:flow` **không tồn tại** — đây cũng là tên bịa."
+      },
+      "tip": "Aura = `lightning:componentName` (colon), LWC = `lightning-component-name` (hyphen). Flow trong Aura = `<lightning:flow`, Flow trong LWC = `<lightning-flow`."
+    }
+  },
+  {
+    "id": 258,
+    "question": "Which statement describes the execution order when triggers are associated to the same object and event?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Triggers are executed in the order they are modified."
+      },
+      {
+        "key": "C",
+        "text": "Triggers are executed alphabetically by trigger name."
+      },
+      {
+        "key": "D",
+        "text": "Triggers are executed in the order they are created."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Phát biểu nào mô tả đúng thứ tự thực thi khi có nhiều trigger trên cùng một object và event?",
+      "why_correct": "A đúng vì Salesforce không đảm bảo thứ tự thực thi khi có nhiều trigger trên cùng object và event. Đây là lý do tại sao best practice là chỉ nên có một trigger per object (với handler class pattern).",
+      "why_wrong": {
+        "B": "vì \"theo thứ tự modified\" — Salesforce không đảm bảo điều này.",
+        "C": "vì \"theo thứ tự alphabetical\" — Salesforce cũng không đảm bảo điều này.",
+        "D": "vì \"theo thứ tự created\" — Salesforce cũng không đảm bảo điều này."
+      },
+      "tip": "Nhiều trigger = thứ tự KHÔNG đảm bảo! Best practice: \"One Trigger Per Object\" để tránh vấn đề về thứ tự."
+    }
+  },
+  {
+    "id": 259,
+    "question": "A Lightning component has a wired property, `searchResults`, that stores a list of Opportunities.\nWhich definition of the Apex method, to which the `searchResults` property is wired, should be used?",
+    "options": [
+      {
+        "key": "A",
+        "text": "```apex\n  @AuraEnabled(cacheable=false)\n  public List<Opportunity> search(String term) { /*implementation*/ }\n  ```"
+      },
+      {
+        "key": "B",
+        "text": "```apex\n  @AuraEnabled(cacheable=true)\n  public static List<Opportunity> search(String term) { /*implementation*/ }\n  ```"
+      },
+      {
+        "key": "C",
+        "text": "```apex\n  @AuraEnabled(cacheable=false)\n  public static List<Opportunity> search(String term) { /*implementation*/ }\n  ```"
+      },
+      {
+        "key": "D",
+        "text": "```apex\n  @AuraEnabled(cacheable=true)\n  public List<Opportunity> search(String term) { /*implementation*/ }\n  ```"
+      }
+    ],
+    "correct": [
+      "B"
+    ],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "LWC có wired property `searchResults` lưu danh sách Opportunity. Apex method để wire phải định nghĩa như thế nào?",
+      "why_correct": "B đúng vì để wired property hoạt động: 1. `@AuraEnabled(cacheable=true)` — bắt buộc để wire. 2. `public static` — bắt buộc cho Apex method được gọi từ LWC. 3. Trả về `List<Opportunity>` — đúng kiểu dữ liệu.",
+      "why_wrong": {
+        "A": "vì `cacheable=false` — `@wire` yêu cầu `cacheable=true`. Không có `cacheable=true` thì không wire được.",
+        "C": "vì `cacheable=false` — tương tự A, không wire được.",
+        "D": "vì `cacheable=true` nhưng thiếu `static` — Apex method được gọi từ LWC phải là `static`."
+      },
+      "tip": "`@wire` Apex method checklist: ✅ `@AuraEnabled(cacheable=true)` ✅ `public static` ✅ return đúng type. Thiếu một trong ba = FAIL!"
+    }
+  },
+  {
+    "id": 260,
+    "question": "Developers at Universal Containers (UC) use version control to share their code changes, but they notice that when they deploy their code to different environments they often have failures. They decide to set up Continuous Integration (CI).\nWhat should the UC development team use to automatically run tests as part of their CI process?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Visual Studio Code\n- **B. ✅ Salesforce CLI**"
+      },
+      {
+        "key": "C",
+        "text": "Developer Console"
+      },
+      {
+        "key": "D",
+        "text": "Force.com Toolkit"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "UC muốn setup CI để tự động chạy tests khi deploy code. Development team nên dùng gì?",
+      "why_correct": "B đúng vì Salesforce CLI là công cụ command-line chính thức, có thể tích hợp vào CI/CD pipeline (Jenkins, GitHub Actions, etc.) để tự động chạy tests: `sf apex run test` hoặc `sf project deploy start --test-level RunLocalTests`.",
+      "why_wrong": {
+        "A": "vì VS Code là IDE, không phải CI tool — không thể chạy tự động trong pipeline không có người dùng.",
+        "C": "vì Developer Console là web-based, không thể tích hợp vào automated CI pipeline.",
+        "D": "vì **Force.com Toolkit đã bị deprecated** — không còn được Salesforce support."
+      },
+      "tip": "CI/CD automation = Salesforce CLI. Nhớ: CLI = command-line = có thể script = có thể automate!"
+    }
+  },
+  {
+    "id": 261,
+    "question": "A custom object `Trainer__c` has a lookup field to another custom object `Gym__c`.\nWhich SOQL query will get the record for the Viridian City Gym and all its trainers?",
+    "options": [
+      {
+        "key": "A",
+        "text": "`SELECT ID FROM Trainer__c WHERE Gym__r.Name = 'Viridian City Gym'`\n- **B. ✅ `SELECT Id, (SELECT Id FROM Trainers__r) FROM Gym__c WHERE Name = 'Viridian City Gym'`**"
+      },
+      {
+        "key": "C",
+        "text": "`SELECT Id, (SELECT Id FROM Trainer__c) FROM Gym__c WHERE Name = 'Viridian City Gym'`"
+      },
+      {
+        "key": "D",
+        "text": "`SELECT Id, (SELECT Id FROM Trainers__c) FROM Gym__c WHERE Name = 'Viridian City Gym'`"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Custom object `Trainer__c` có lookup field đến `Gym__c`. SOQL nào lấy record Viridian City Gym và tất cả Trainer của nó?",
+      "why_correct": "B đúng vì: 1. Query từ Gym__c (parent) dùng subquery để lấy Trainers. 2. Subquery dùng relationship name: `Trainers__r` — đây là plural form của `Trainer__c` với `__r` suffix dùng trong subquery từ parent. 3. `WHERE Name = 'Viridian City Gym'` để lọc đúng Gym.",
+      "why_wrong": {
+        "A": "vì query từ `Trainer__c` WHERE `Gym__r.Name = ...` chỉ lấy trainers, không lấy Gym record.",
+        "C": "vì `(SELECT Id FROM Trainer__c)` — trong subquery SOQL, phải dùng **relationship name** (`Trainers__r`), không dùng object API name (`Trainer__c`).",
+        "D": "vì `(SELECT Id FROM Trainers__c)` — sai suffix. Phải là `Trainers__r` (relationship name dùng `__r`), không phải `__c`."
+      },
+      "tip": "Parent-to-child subquery dùng relationship name + `__r`: `(SELECT Id FROM ChildObjects__r)`. Nhớ: `__c` = object, `__r` = relationship!"
+    }
+  },
+  {
+    "id": 262,
+    "question": "What should a developer use to fix a Lightning web component bug in a sandbox?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Execute Anonymous"
+      },
+      {
+        "key": "C",
+        "text": "Developer Console"
+      },
+      {
+        "key": "D",
+        "text": "Force.com IDE"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer nên dùng gì để fix LWC bug trong sandbox?",
+      "why_correct": "A đúng vì VS Code với Salesforce Extension Pack là công cụ chính thức và hiện đại nhất để develop và debug LWC — hỗ trợ syntax highlighting, local dev server, deploy, và debug LWC.",
+      "why_wrong": {
+        "B": "vì **Execute Anonymous** dùng để chạy Apex code, không thể dùng để debug/edit LWC.",
+        "C": "vì **Developer Console** có hỗ trợ cơ bản nhưng **không được khuyến nghị** cho LWC development — Salesforce đã deprecate nhiều tính năng LWC trong Developer Console.",
+        "D": "vì **Force.com IDE đã bị deprecated** hoàn toàn — không còn được support."
+      },
+      "tip": "LWC development = VS Code (không phải Developer Console, không phải Force.com IDE). \"Modern LWC → VS Code!\""
+    }
+  },
+  {
+    "id": 263,
+    "question": "A developer creates a custom exception as shown below:\n```apex\npublic class ParityException extends Exception {}\n```\nWhat are two ways the developer can fire the exception in Apex?",
+    "options": [
+      {
+        "key": "C",
+        "text": "`new ParityException('parity does not match');`"
+      },
+      {
+        "key": "D",
+        "text": "`new ParityException();`"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer tạo custom exception `ParityException extends Exception`. Hai cách nào để throw exception này trong Apex?",
+      "why_correct": "A đúng vì `throw new ParityException('message')` — throw với constructor message, cú pháp đúng. B đúng vì `throw new ParityException()` — throw không có message, cú pháp đúng. - Cả hai đều dùng từ khóa `throw` — bắt buộc để fire exception.",
+      "why_wrong": {
+        "C": "vì `new ParityException('message')` thiếu từ khóa `throw` — chỉ tạo object exception nhưng không throw nó, exception không được fire.",
+        "D": "vì tương tự C — thiếu `throw`."
+      },
+      "tip": "Fire exception = `throw new ExceptionClass()`. Không có `throw` thì chỉ là tạo object, không fire gì cả!"
+    }
+  },
+  {
+    "id": 264,
+    "question": "What are two characteristics related to formulas?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Formulas can reference themselves.\n- **B. ✅ Formulas can reference values in related objects.**"
+      },
+      {
+        "key": "C",
+        "text": "Fields that are used in a formula field can be deleted or edited without editing the formula.\n- **D. ✅ Formulas are calculated at runtime and are not stored in the database.**"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Hai đặc điểm nào đúng về Formula fields trong Salesforce?",
+      "why_correct": "B đúng vì Formula fields có thể tham chiếu đến fields trên related objects — đây gọi là cross-object formula (e.g., `Account.Name` từ Contact). D đúng vì Formula fields là computed at runtime — giá trị được tính khi record được load, không được lưu trữ vật lý trong database (không chiếm storage).",
+      "why_wrong": {
+        "A": "vì Formula fields **KHÔNG thể tự reference bản thân** (circular reference) — Salesforce sẽ báo lỗi nếu formula tham chiếu chính field đó.",
+        "C": "vì nếu xóa hoặc sửa một field được dùng trong formula, Salesforce sẽ báo lỗi và **không cho phép** — phải chỉnh sửa formula trước."
+      },
+      "tip": "Formula = Cross-object ✅, Calculated at runtime ✅, Self-reference ❌, Delete dependency ❌. Nhớ: Formula là \"tính toán lúc xem\", không lưu DB!"
+    }
+  },
+  {
+    "id": 265,
+    "question": "The sales management team at Universal Containers requires that the Lead Source field of the Lead record be populated when a Lead is converted.\nWhat should be done to ensure that a user populates the Lead Source field prior to converting a Lead?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Create an after trigger on Lead."
+      },
+      {
+        "key": "B",
+        "text": "Use a formula field."
+      },
+      {
+        "key": "C",
+        "text": "Use Lead Conversion field mapping.\n- **D. ✅ Use a validation rule.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Sales management yêu cầu trường Lead Source phải có giá trị khi Lead được chuyển đổi (Convert). Cần làm gì để đảm bảo user điền Lead Source trước khi convert?",
+      "why_correct": "D đúng vì Validation Rule là cách chính xác nhất — có thể check `ISBLANK(LeadSource)` và block khi user cố convert (convert cũng trigger validation rule). Hiển thị error message rõ ràng.",
+      "why_wrong": {
+        "A": "vì After trigger trên Lead chạy **sau khi** record đã saved, không thể block convert. Hơn nữa, trigger không tương tác tốt với Lead conversion flow.",
+        "B": "vì Formula field là read-only, không thể enforce data entry.",
+        "C": "vì **Lead Conversion Field Mapping** dùng để ánh xạ Lead fields sang Contact/Account/Opportunity khi convert — không dùng để enforce required field trước khi convert."
+      },
+      "tip": "Bắt buộc điền field trước khi action = Validation Rule. Lead Conversion Mapping = ánh xạ dữ liệu SAU convert, không phải block TRƯỚC."
+    }
+  },
+  {
+    "id": 266,
+    "question": "Cloud Kicks Fitness, an ISV Salesforce partner, is developing a managed package application. One of the application modules allows the user to calculate body fat using the Apex class, `BodyFat`, and its method, `calculateBodyFat()`. The product owner wants to ensure this method is accessible by the consumer of the application when developing customizations outside the ISV's package namespace.\nWhich approach should a developer take to ensure `calculateBodyFat()` is accessible outside the package namespace?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Declare the class and method using the public access modifier."
+      },
+      {
+        "key": "B",
+        "text": "Declare the class as public and use the global access modifier on the method."
+      },
+      {
+        "key": "C",
+        "text": "Declare the class as global and use the public access modifier on the method.\n- **D. ✅ Declare the class and method using the global access modifier.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "ISV Salesforce partner xây dựng managed package. Method `calculateBodyFat()` trong class `BodyFat` cần có thể truy cập bởi consumer bên ngoài package namespace. Developer nên dùng gì?",
+      "why_correct": "D đúng vì trong managed package, để code có thể truy cập từ bên ngoài package namespace, cả class và method đều phải dùng `global` access modifier. `global` = accessible từ mọi nơi, kể cả bên ngoài namespace.",
+      "why_wrong": {
+        "A": "vì `public` trong managed package chỉ accessible trong **cùng namespace/package**, không accessible từ bên ngoài namespace.",
+        "B": "vì nếu class là `public` (không phải `global`), method dù là `global` cũng không accessible từ bên ngoài — class phải là `global` trước.",
+        "C": "vì tương tự B nhưng ngược lại — class `global` nhưng method `public` thì method vẫn không accessible từ bên ngoài namespace (method phải đồng cấp hoặc cao hơn visibility của class)."
+      },
+      "tip": "Managed package + cross-namespace access = `global` cho CẢ class VÀ method. Nhớ: \"Global = toàn cầu = bên ngoài được truy cập!\""
+    }
+  },
+  {
+    "id": 267,
+    "question": "Given the following Apex statement:\n```apex\nAccount myAccount = [SELECT Id, Name FROM Account];\n```\nWhat occurs when more than one Account is returned by the SOQL query?",
+    "options": [
+      {
+        "key": "A",
+        "text": "The variable, `myAccount`, is automatically cast to the List data type."
+      },
+      {
+        "key": "B",
+        "text": "The first Account returned is assigned to `myAccount`."
+      },
+      {
+        "key": "C",
+        "text": "The query fails and an error is written to the debug log.\n- **D. ✅ An unhandled exception is thrown and the code terminates.**"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Câu lệnh Apex gán kết quả SOQL trực tiếp vào `Account myAccount = [SELECT...]`. Chuyện gì xảy ra khi query trả về nhiều hơn một Account?",
+      "why_correct": "D đúng vì khi SOQL query gán vào một single SObject variable (không phải List) mà trả về nhiều records, Apex sẽ throw `QueryException: List has more than 1 row for assignment to SObject` — đây là unhandled exception nếu không có try/catch, và code sẽ terminate.",
+      "why_wrong": {
+        "A": "vì Apex **không tự động cast** sang List — sẽ throw exception ngay.",
+        "B": "vì Apex **không lấy record đầu tiên** khi có nhiều results trong single-object assignment — đây là behavior của một số ngôn ngữ khác, không phải Apex.",
+        "C": "vì lỗi không chỉ \"write to debug log\" — nó throw exception và terminate code."
+      },
+      "tip": "Single SObject assignment + nhiều results = `QueryException` thrown! Luôn dùng `List<` hoặc thêm `LIMIT 1` khi không chắc số lượng kết quả."
+    }
+  },
+  {
+    "id": 268,
+    "question": "While developing an Apex class with custom search functionality that will be launched from a Lightning Web Component, how can the developer ensure only records accessible to the currently logged in user are displayed?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Use the `inherited sharing` keyword."
+      },
+      {
+        "key": "C",
+        "text": "Use the `without sharing` keyword."
+      },
+      {
+        "key": "D",
+        "text": "Use the `WITH SECURITY_ENFORCED` clause within the SOQL."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer viết Apex class với custom search functionality được gọi từ LWC. Cần đảm bảo chỉ hiển thị records mà user hiện tại có quyền truy cập. Developer nên dùng gì?",
+      "why_correct": "A đúng vì `with sharing` enforce sharing rules của running user — Apex chỉ trả về records mà user có quyền xem theo sharing settings. Đây là cách đúng để đảm bảo record-level security.",
+      "why_wrong": {
+        "B": "vì `inherited sharing` kế thừa sharing context từ caller — nếu caller dùng `without sharing`, class vẫn không enforce sharing. Không đảm bảo chắc chắn sharing được enforce.",
+        "C": "vì `without sharing` **bypass hoàn toàn** sharing rules — user có thể thấy tất cả records dù không có quyền.",
+        "D": "vì `WITH SECURITY_ENFORCED` trong SOQL kiểm tra **field-level security** (FLS), không phải record-level sharing. Đây là hai khái niệm khác nhau."
+      },
+      "tip": "Record-level access = `with sharing`. Field-level access = `WITH SECURITY_ENFORCED` hoặc `Security.stripInaccessible()`. Nhớ phân biệt hai loại!"
+    }
+  },
+  {
+    "id": 269,
+    "question": "Which two actions may cause triggers to fire?",
+    "options": [
+      {
+        "key": "B",
+        "text": "Renaming or replacing a picklist entry"
+      },
+      {
+        "key": "C",
+        "text": "Cascading delete operations\n- **D. ✅ Changing a user's default division when the transfer division option is checked**"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Hai hành động nào có thể khiến trigger fire?",
+      "why_correct": "A đúng vì Updates to FeedItem (Chatter posts) có thể fire trigger nếu trigger được setup trên FeedItem object. D đúng vì Changing a user's default division when transfer division option is checked trigger update trên các records liên quan đến division — điều này có thể fire triggers trên những records bị update.",
+      "why_wrong": {
+        "B": "vì **Renaming or replacing a picklist entry** là **metadata change**, không phải data change — không fire triggers trên records.",
+        "C": "vì **Cascading delete operations** (khi master bị xóa, child bị cascade delete) **KHÔNG fire** delete triggers trên child records — đây là hành vi đặc biệt của Salesforce để tránh governor limit."
+      },
+      "tip": "Cascading delete = KHÔNG fire trigger trên child! Picklist rename = metadata, không fire trigger. Đây là hai điểm hay bị nhầm!"
+    }
+  },
+  {
+    "id": 270,
+    "question": "A developer is using Agentforce Dev Assistant and noticed that the output from their prompt resembles proprietary code.\nWhich model training considerations should the developer be aware of when utilizing the extension?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Dev Assistant can reference the developer's prior prompts to generate output in near real time."
+      },
+      {
+        "key": "B",
+        "text": "Dev Assistant can reference other developers' code and train the model in near real time.\n- **C. ✅ Dev Assistant generated output that resembles the code that was used to train the model.**"
+      },
+      {
+        "key": "D",
+        "text": "Dev Assistant anonymized PII data in customer code that was used to train the model."
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer dùng Agentforce Dev Assistant và nhận thấy output giống proprietary code. Developer cần biết gì về model training khi dùng extension này?",
+      "why_correct": "C đúng vì AI/LLM models học từ training data — nếu output giống proprietary code thì đó là vì code đó (hoặc code tương tự) đã được dùng để train model. Đây là giải thích kỹ thuật đúng về behavior của LLM.",
+      "why_wrong": {
+        "A": "vì \"reference prior prompts in near real time\" — models không học từ prompts của user trong inference time (không có real-time training).",
+        "B": "vì \"reference other developers' code and train in near real time\" — model không train in near real time từ code của developer khác.",
+        "D": "vì \"anonymized PII data\" — không phải giải thích cho việc output giống code; hơn nữa, anonymization không liên quan đến code generation."
+      },
+      "tip": "AI output giống existing code = training data influence. LLM không học real-time — nó phản ánh patterns từ training data."
+    }
+  },
+  {
+    "id": 271,
+    "question": "Universal Containers decides to use purely declarative development to build out a new Salesforce application.\nWhich two options can be used to build out the business logic layer for this application?",
+    "options": [
+      {
+        "key": "A",
+        "text": "Remote Actions\n- **B. ✅ Validation Rules**\n- **C. ✅ Record-Triggered Flow**"
+      },
+      {
+        "key": "D",
+        "text": "Batch Jobs"
+      }
+    ],
+    "correct": [],
+    "type": "multi",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Universal Containers muốn dùng **thuần declarative development** để xây dựng business logic layer. Hai option nào có thể dùng?",
+      "why_correct": "B đúng vì Validation Rules là declarative tool — tạo bằng formula trong UI, không cần code, là phần của business logic layer (enforce data quality rules). C đúng vì Record-Triggered Flow là declarative automation tool mạnh nhất — xây bằng Flow Builder, không cần code, có thể implement complex business logic.",
+      "why_wrong": {
+        "A": "vì **Remote Actions** là Apex annotation (`@RemoteAction`) — cần viết code, không phải declarative.",
+        "D": "vì **Batch Jobs** là Apex code (implement `Database.Batchable`) — cần viết code, không phải declarative."
+      },
+      "tip": "Declarative business logic = Validation Rules + Flow. Remote Actions và Batch Jobs = code = không declarative!"
+    }
+  },
+  {
+    "id": 272,
+    "question": "A developer receives an error when compiling the following code.\n```apex\nswitch on sobject {\n    when Account a, Contact c {\n        System.debug('account ' + a);\n        System.debug('contact ' + c);\n    }\n    when null {\n        System.debug('null');\n    }\n    when else {\n        System.debug('default');\n    }\n}\n```\nWhat is the error?",
+    "options": [
+      {
+        "key": "B",
+        "text": "There is incompatible variable binding."
+      },
+      {
+        "key": "C",
+        "text": "Switch statements cannot contain multiple when values.\n\n\n## Exam Result Summary\n\n**EXAM:** Salesforce Certified Platform Developer  \n**GRADE:** Pass\n\n| Section Name                        |\n|-------------------------------------|\n| Developer Fundamentals              |\n| Process Automation and Logic        |\n| User Interface                      |\n| Testing, Debugging, and Deployment  |"
+      }
+    ],
+    "correct": [],
+    "type": "single",
+    "topic": "",
+    "explanation": {
+      "vi_question": "Developer nhận lỗi khi compile đoạn code `switch on sobject` với `when Account a, Contact c` (hai SObject types trong một `when` block). Lỗi là gì?",
+      "why_correct": "A đúng vì trong Apex `switch` statement trên SObject type, mỗi `when` block chỉ được phép có MỘT SObject type — không thể viết `when Account a, Contact c` trong cùng một block. Mỗi type phải có `when` block riêng.",
+      "why_wrong": {
+        "B": "vì \"incompatible variable binding\" không phải lỗi ở đây — vấn đề không phải type mismatch mà là số lượng SObject types trong một `when`.",
+        "C": "vì \"switch cannot contain multiple when values\" không chính xác — `switch` **có thể** có nhiều `when` blocks, và `when` trên **integer/string** có thể có nhiều values (`when 1, 2, 3`). Nhưng với SObject type thì chỉ được một type per `when`."
+      },
+      "tip": "`switch on SObject`: mỗi `when` = CHỈ MỘT SObject type. Ngược lại với `switch on Integer/String` có thể có nhiều values trong một `when`. --- *Tài liệu này bổ sung giải thích tiếng Việt cho PD1 SET0 — 60 câu hỏi.*"
+    }
+  }
+]
