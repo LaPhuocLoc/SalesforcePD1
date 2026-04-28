@@ -1,0 +1,1 @@
+Application Events tuân theo mô hình publish-subscribe truyền thống. Phương thức nào được sử dụng để kích hoạt (fire) một event?
