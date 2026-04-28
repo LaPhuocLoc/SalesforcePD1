@@ -12,9 +12,9 @@ from docling.document_converter import PdfFormatOption
 
 # ─── Paths ───────────────────────────────────────────────────────────────────
 SCRIPT_DIR = Path(__file__).parent
-PDF_PATH   = SCRIPT_DIR.parent / "docs" / "Salesforce_PD1_Questions.pdf.pdf"
+PDF_PATH   = SCRIPT_DIR.parent / "docs" / "PD1_SET0.pdf"
 OUTPUT_DIR = SCRIPT_DIR / "output"
-OUTPUT_MD  = OUTPUT_DIR / "questions_raw.md"
+OUTPUT_MD  = OUTPUT_DIR / "PD1_SET0.md"
 
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -25,10 +25,10 @@ def main():
     print(f"[*] Converting PDF: {PDF_PATH.name}")
     print("[~] Mode: text extraction only (no OCR, no table analysis - faster)...")
 
-    # Disable OCR and heavy models - PDF is text-based, not scanned
+    # Enable OCR and heavy models - PDF might be scanned
     pipeline_options = PdfPipelineOptions()
-    pipeline_options.do_ocr = False
-    pipeline_options.do_table_structure = False
+    pipeline_options.do_ocr = True
+    pipeline_options.do_table_structure = True
 
     converter = DocumentConverter(
         format_options={

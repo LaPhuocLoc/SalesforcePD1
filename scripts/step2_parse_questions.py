@@ -54,16 +54,17 @@ def parse_questions(text: str) -> list[dict]:
             if not line:
                 continue
                 
-            # Check if line starts with ● or bullet point or similar marker
-            # pdfplumber extracted it as ● (U+25CF) or maybe other bullets
-            if line.startswith('●') or line.startswith('○'):
+            # Check if line starts with ● (U+25CF) - NEW OPTION
+            if line.startswith('●'):
                 in_options = True
                 option_lines.append(line)
+            # Check if line starts with ○ (U+25CB) or is already in options - CONTINUATION
             elif in_options:
-                # If we are in options and a line doesn't start with a bullet,
+                # If we are in options and a line doesn't start with a black bullet,
                 # it's likely a continuation of the previous option
                 if option_lines:
-                    option_lines[-1] += " " + line
+                    # Use newline for code blocks
+                    option_lines[-1] += "\n" + line
                 else:
                     # Fallback
                     option_lines.append(line)
@@ -76,8 +77,10 @@ def parse_questions(text: str) -> list[dict]:
         correct = []
 
         for i, opt_line in enumerate(option_lines):
-            # Remove leading bullet
-            opt_text = re.sub(r'^[●○]\s*', '', opt_line).strip()
+            # Remove leading bullets (both types) and strip each line if multi-line
+            lines = opt_line.split('\n')
+            clean_lines = [re.sub(r'^[●○]\s*', '', l).strip() for l in lines]
+            opt_text = '\n'.join(clean_lines).strip()
             
             # Check if this is correct answer
             is_correct = False

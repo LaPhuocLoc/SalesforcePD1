@@ -1,38 +1,53 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, Suspense } from "react";
 import QuestionCard from "@/components/QuestionCard";
-import questionsData from "@/data/questions.json";
+import questionsDataRaw from "@/data/questions.json";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 
-export default function StudyPage() {
+function StudyPageContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, boolean>>({});
   const [mounted, setMounted] = useState(false);
+  const searchParams = useSearchParams();
+  const setParam = searchParams.get("set");
+
+  const questionsData = useMemo(() => {
+    if (setParam === "0") {
+      return questionsDataRaw.filter((q: any) => q.id >= 213);
+    }
+    return questionsDataRaw;
+  }, [setParam]);
 
   useEffect(() => {
     setMounted(true);
-    const savedIndex = localStorage.getItem("pd1-study-index");
+    const storageKeySuffix = setParam === "0" ? "-set0" : "";
+    const savedIndex = localStorage.getItem(`pd1-study-index${storageKeySuffix}`);
     if (savedIndex) {
       setCurrentIndex(parseInt(savedIndex, 10));
     }
-    const savedAnswered = localStorage.getItem("pd1-answered");
+    const savedAnswered = localStorage.getItem(`pd1-answered${storageKeySuffix}`);
     if (savedAnswered) {
       try {
         setAnsweredQuestions(JSON.parse(savedAnswered));
       } catch (e) {}
     }
-  }, []);
+  }, [setParam]);
 
   useEffect(() => {
-    localStorage.setItem("pd1-study-index", currentIndex.toString());
-  }, [currentIndex]);
+    if (!mounted) return;
+    const storageKeySuffix = setParam === "0" ? "-set0" : "";
+    localStorage.setItem(`pd1-study-index${storageKeySuffix}`, currentIndex.toString());
+  }, [currentIndex, mounted, setParam]);
 
   useEffect(() => {
-    localStorage.setItem("pd1-answered", JSON.stringify(answeredQuestions));
-  }, [answeredQuestions]);
+    if (!mounted) return;
+    const storageKeySuffix = setParam === "0" ? "-set0" : "";
+    localStorage.setItem(`pd1-answered${storageKeySuffix}`, JSON.stringify(answeredQuestions));
+  }, [answeredQuestions, mounted, setParam]);
 
   const handleNext = () => {
     if (currentIndex < questionsData.length - 1) {
@@ -54,6 +69,10 @@ export default function StudyPage() {
 
   if (!mounted) {
     return <main className="container" style={{ padding: '4rem', textAlign: 'center' }}>Đang tải...</main>;
+  }
+
+  if (questionsData.length === 0) {
+     return <main className="container" style={{ padding: '4rem', textAlign: 'center' }}>Không tìm thấy câu hỏi nào.</main>;
   }
 
   return (
@@ -88,7 +107,7 @@ export default function StudyPage() {
       <section style={{ maxWidth: '900px', margin: '3rem auto 0' }}>
         <h3 style={{ marginBottom: '1.5rem', fontSize: '1.25rem', color: 'var(--color-text-primary)' }}>Trạng thái câu hỏi ({Object.keys(answeredQuestions).length}/{questionsData.length})</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(40px, 1fr))', gap: '8px' }}>
-          {questionsData.map((q, idx) => {
+          {questionsData.map((q: any, idx: number) => {
             const isCurrent = idx === currentIndex;
             const isAnswered = answeredQuestions[q.id];
             
@@ -130,5 +149,13 @@ export default function StudyPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function StudyPage() {
+  return (
+    <Suspense fallback={<main className="container" style={{ padding: '4rem', textAlign: 'center' }}>Đang tải...</main>}>
+      <StudyPageContent />
+    </Suspense>
   );
 }
