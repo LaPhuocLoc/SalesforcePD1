@@ -13,10 +13,16 @@
       },
       {
         "key": "C",
-        "text": "Review the Historical Event logs to identify the source of the issue.\n- **D. ✅ Use the Apex Interactive Debugger to step through the code and identify the issue.**"
+        "text": "Review the Historical Event logs to identify the source of the issue."
+      },
+      {
+        "key": "D",
+        "text": "Use the Apex Interactive Debugger to step through the code and identify the issue."
       }
     ],
-    "correct": [],
+    "correct": [
+      "D"
+    ],
     "type": "single",
     "topic": "",
     "explanation": {
@@ -44,10 +50,16 @@
       },
       {
         "key": "C",
-        "text": "Include a savepoint and `Database.rollback()`.\n- **D. ✅ Include a try/catch block to the Apex class.**"
+        "text": "Include a savepoint and `Database.rollback()`."
+      },
+      {
+        "key": "D",
+        "text": "Include a try/catch block to the Apex class."
       }
     ],
-    "correct": [],
+    "correct": [
+      "D"
+    ],
     "type": "single",
     "topic": "",
     "explanation": {
@@ -66,6 +78,14 @@
     "question": "A developer has identified a method in an Apex class that performs resource intensive actions in memory by iterating over the result set of a SOQL statement on the account. The method also performs a DML statement to save the changes to the database.\nWhich two techniques should the developer implement as a best practice to ensure transaction control and avoid exceeding governor limits?",
     "options": [
       {
+        "key": "A",
+        "text": "Use the `Database.Savepoint` method to enforce database integrity."
+      },
+      {
+        "key": "B",
+        "text": "Use the `System.Limit` class to monitor the current CPU governor limit consumption."
+      },
+      {
         "key": "C",
         "text": "Use the `@ReadOnly` annotation to bypass the number of rows returned by a SOQL."
       },
@@ -74,7 +94,10 @@
         "text": "Use partial DML statements to ensure only valid data is committed."
       }
     ],
-    "correct": [],
+    "correct": [
+      "A",
+      "B"
+    ],
     "type": "multi",
     "topic": "",
     "explanation": {
@@ -92,6 +115,10 @@
     "question": "A developer wants to get access to the standard price book in the org while writing a test class that covers an OpportunityLineItem trigger.\nWhich method allows access to the price book?",
     "options": [
       {
+        "key": "A",
+        "text": "Use `Test.getStandardPricebookId()` to get the standard price book ID."
+      },
+      {
         "key": "B",
         "text": "Use `@TestVisible` to allow the test method to see the standard price book."
       },
@@ -104,7 +131,9 @@
         "text": "Use `@IsTest(SeeAllData=true)` and delete the existing standard price book."
       }
     ],
-    "correct": [],
+    "correct": [
+      "A"
+    ],
     "type": "single",
     "topic": "",
     "explanation": {

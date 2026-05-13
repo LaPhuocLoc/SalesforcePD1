@@ -294,20 +294,25 @@ export default function ExamPage() {
                     </div>
                   </div>
 
-                  {q.explanation.why_wrong && Object.keys(q.explanation.why_wrong).length > 0 && (
+                  {q.options.filter(opt => !q.correct.includes(opt.key)).length > 0 && (
                     <div className="explanation-block" style={{ marginBottom: '1.5rem' }}>
                       <div className="explanation-title" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--color-error)', fontWeight: '600', marginBottom: '0.5rem' }}>
                         <XCircle size={18} /> Tại sao các đáp án khác sai?
                       </div>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-                        {Object.entries(q.explanation.why_wrong).map(([key, reason]) => (
-                          <li key={key} style={{ marginBottom: '1rem' }}>
-                            <strong style={{ color: 'var(--color-error)' }}>{key}:</strong>
-                            <div style={{ marginTop: '0.5rem' }} className="explanation-content">
-                              <FormattedText text={reason} />
-                            </div>
-                          </li>
-                        ))}
+                        {q.options
+                          .filter(opt => !q.correct.includes(opt.key))
+                          .map((opt) => {
+                            const reason = q.explanation.why_wrong?.[opt.key] || "Không có giải thích chi tiết cho đáp án này.";
+                            return (
+                              <li key={opt.key} style={{ marginBottom: '1rem' }}>
+                                <strong style={{ color: 'var(--color-error)' }}>{opt.key}:</strong>
+                                <div style={{ marginTop: '0.5rem' }} className="explanation-content">
+                                  <FormattedText text={reason} />
+                                </div>
+                              </li>
+                            );
+                          })}
                       </ul>
                     </div>
                   )}

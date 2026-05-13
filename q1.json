@@ -1,0 +1,37 @@
+{
+  "id": 1,
+  "question": "Application Events follow the traditional publish-subscribe model.\nWhich method is used to fire an event?",
+  "options": [
+    {
+      "key": "A",
+      "text": "fire( )"
+    },
+    {
+      "key": "B",
+      "text": "registerEvent( )"
+    },
+    {
+      "key": "C",
+      "text": "emit( )"
+    },
+    {
+      "key": "D",
+      "text": "fireEvent( )"
+    }
+  ],
+  "correct": [
+    "A"
+  ],
+  "type": "single",
+  "topic": "",
+  "explanation": {
+    "vi_question": "Application Events tuân theo mô hình publish-subscribe truyền thống. Phương thức nào được sử dụng để kích hoạt (fire) một event?",
+    "why_correct": "Trong lập trình Aura Component, sau khi lấy được instance của event bằng $A.getEvt()$, ta sử dụng phương thức .fire() để đẩy event đó vào hệ thống.",
+    "why_wrong": {
+      "B": "registerEvent() dùng trong component để khai báo event chứ không phải để kích hoạt.",
+      "C": "emit() là từ khóa thường dùng trong Node.js hoặc Vue, không tồn tại trong Aura/LWC.",
+      "D": "fireEvent() là một cái tên gây nhầm lẫn, Salesforce chỉ dùng .fire()."
+    },
+    "tip": "Keywords: Aura Event -> .fire(). Nhớ nhé: 'Fire' là bắn, 'Event' là đạn."
+  }
+}

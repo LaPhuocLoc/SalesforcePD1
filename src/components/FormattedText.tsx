@@ -18,7 +18,13 @@ export default function FormattedText({ text, isOption }: FormattedTextProps) {
     return <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{processedText}</div>;
   }
 
-  const lines = text.split('\n');
+  let processedText = text;
+  if (!isOption) {
+    // Tách các mục như "A: ... B: ..." ra các dòng riêng biệt
+    processedText = processedText.replace(/\s+([A-F]):\s/g, '\n\n$1: ');
+  }
+
+  const lines = processedText.split('\n');
   const blocks: { type: 'text' | 'code'; lines: string[] }[] = [];
   let currentBlock: { type: 'text' | 'code'; lines: string[] } = { type: 'text', lines: [] };
 
@@ -77,7 +83,7 @@ export default function FormattedText({ text, isOption }: FormattedTextProps) {
       {blocks.map((block, i) => {
         if (block.type === 'text') {
           return (
-            <p key={i} className="text-block">
+            <p key={i} className="text-block" style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', marginBottom: '0.75rem', lineHeight: '1.6' }}>
               {block.lines.join('\n')}
             </p>
           );

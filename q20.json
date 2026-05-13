@@ -1,0 +1,35 @@
+{
+  "id": 20,
+  "question": "What should a developer do to check the code coverage of a class after running all\ntests?",
+  "options": [
+    {
+      "key": "A",
+      "text": "View the Overall Code Coverage panel of the Tests tab in the Developer\nConsole."
+    },
+    {
+      "key": "B",
+      "text": "View the Class Test Coverage tab on the Apex Class record in Salesforce Setup."
+    },
+    {
+      "key": "C",
+      "text": "Select and run the class on the Apex Test Execution page."
+    },
+    {
+      "key": "D",
+      "text": "View the Code Coverage column in the list view on the Apex Classes page."
+    }
+  ],
+  "correct": [
+    "A"
+  ],
+  "type": "single",
+  "topic": "",
+  "explanation": {
+    "vi_question": "Lập trình viên nên làm gì để kiểm tra độ bao phủ mã (code coverage) của một class sau khi chạy tất cả các test?",
+    "why_correct": "Developer Console là tool 'quốc dân'. Tab Test -> Overall Code Coverage sẽ cho mày cái nhìn tổng quát nhất từng dòng code nào đã được chạy qua.",
+    "why_wrong": {
+      "D": "List view trên Apex Classes page chỉ cho biết con số tổng quát, không xem được chi tiết dòng nào chưa cover."
+    },
+    "tip": "Code Coverage: Dev Console hoặc VS Code. Tối thiểu 75% mới được lên Pro."
+  }
+}
