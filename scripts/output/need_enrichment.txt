@@ -1,0 +1,182 @@
+======================================================================
+ID: 17 | Num: 17 | Correct: ['B', 'C']
+MISSING keys: ['A']
+Question: Given: Map<ID, Account> accountMap = new Map<ID, Account> ([SELECT Id, Name FROM Account]); What are three valid Apex loop structures for iterating through items in the collection? (Choose three.)
+Options:
+  A: for (ID accountID : accountMap.keySet()) { } [WRONG] [NEED EXPLANATION]
+  B: for (Account accountRecord : accountMap.values()) { } [CORRECT] 
+  C: for (Integer i = 0; i < accountMap.size(); i++) { } [CORRECT] 
+  D: for (ID accountID : accountMap) { } [WRONG] 
+  E: for (Account accountRecord : accountMap.keySet()) { } [WRONG] 
+why_correct: A: keySet() trả về Set<ID>, nên duyệt bằng biến kiểu ID là chuẩn. B: values() trả về List<Account>, duyệt bằng biến kiểu Account là quá đẹp. C: Vòng lặp for truyền thống dùng chỉ số chạy từ 0 đến size() của map hoàn toàn hợp lệ về mặt cú pháp.
+Existing why_wrong:
+  D: Apex cấm duyệt trực tiếp trên đối tượng Map (accountMap) như một collection. Mày phải gọi keySet() hoặc values().
+  E: keySet() trả về Set<ID>, nhưng biến chạy lại khai báo kiểu Account thì compiler nó đập vào mặt ngay lập tức.
+======================================================================
+ID: 63 | Num: 3 | Correct: ['A']
+MISSING keys: ['D']
+Question: A team of many developers work in their own individual orgs that have the same configuration as the production org. Which type of org is best suited for this scenario?
+Options:
+  A: Developer Sandbox [CORRECT] 
+  B: Developer Edition [WRONG] 
+  C: Full Sandbox [WRONG] 
+  D: Partner Developer Edition [WRONG] [NEED EXPLANATION]
+why_correct: Developer Sandbox copy toàn bộ Metadata (cấu hình) từ Production, miễn phí (với hầu hết license) và khởi tạo cực nhanh, phù hợp cho cá nhân dev.
+Existing why_wrong:
+  B: Developer Edition là org cá nhân trống rỗng, không tự động có cấu hình giống Production của khách hàng.
+  C: Full Sandbox cực kỳ đắt đỏ, dung lượng lớn và thời gian refresh rất lâu, không ai cấp Full Sandbox cho từng dev làm việc lẻ tẻ.
+======================================================================
+ID: 71 | Num: 11 | Correct: ['C']
+MISSING keys: ['B']
+Question: How many Accounts will be inserted by the following block of code?
+for(Integer i = 0; i 500; i++){
+Account a = new Account(Name = 'New Account ' + i);
+insert a;
+}
+Options:
+  A: 100 [WRONG] 
+  B: 150 [WRONG] [NEED EXPLANATION]
+  C: 0 [CORRECT] 
+  D: 500 [WRONG] 
+why_correct: Đáp án là 0. Đến vòng lặp thứ 151, hệ thống bắn lỗi `LimitException: Too many DML statements: 151`. Toàn bộ transaction bị rollback, không có account nào được lưu.
+Existing why_wrong:
+  D: Dù limit là 150, nhưng vì transaction là atomic (nguyên tử), lỗi xảy ra làm hủy hết mọi kết quả trước đó.
+  A: Vượt xa giới hạn cho phép của Salesforce.
+======================================================================
+ID: 80 | Num: 20 | Correct: ['A']
+MISSING keys: ['B']
+Question: Refer to the following code snippet for an environment has more than 200 Accounts belonging to the ‘Technology’ industry:
+for(Account thisAccount : [SELECT Id, Industry FROM Account LIMIT 150]){
+if(thisAccount.Industry == 'Technology'){
+thisAccount.Is_Tech__c = true;
+}
+update thisAccount;
+}
+When the code executes, what happens as a result of the Apex transaction?
+Options:
+  A: The Apex transaction succeeds regardless of any uncaught exception and all processed accounts are updated. [CORRECT] 
+  B: If executed in a synchronous context, the Apex transaction is likely to fail by exceeding the DML governor limit. [WRONG] [NEED EXPLANATION]
+  C: The Apex transaction fails with the following message: SObject row was retrieved via SOQL without querying the requested field: Account.Is_Tech__c. [WRONG] 
+  D: If executed in an asynchronous context, the Apex transaction is likely to fail by exceeding the DML governor limit. [WRONG] 
+why_correct: Đáp án thực tế đúng về mặt kỹ thuật là B: Nếu chạy đồng bộ (synchronous), transaction chắc chắn sẽ OẰNG vì chạm giới hạn DML row hoặc DML statement. Lệnh 'update thisAccount;' nằm TRONG vòng lặp For chạy tới 150 lần, vượt quá giới hạn 150 DML statements cực nhanh chỉ với một vài tác vụ trigger kèm theo. (Mẹo thi: Đề bài gốc đánh dấu đáp án A là đúng, đây là một lỗi đề thi phổ biến cần cực kỳ lưu ý).
+Existing why_wrong:
+  C: Trường Is_Tech__c được gán bình thường, không gây ra lỗi thiếu query field vì đây là lệnh gán trị ghi chứ không phải đọc giá trị chưa query.
+  D: Asynchronous context có giới hạn DML statement vẫn là 150, nên nó vẫn oẳng bình thường.
+======================================================================
+ID: 154 | Num: 34 | Correct: ['D']
+MISSING keys: ['B']
+Question: Which Apex class contains methods to return the amount of resources that have been used for a particular governor, such as the number of DML statements?
+Options:
+  A: Exception [WRONG] 
+  B: Messaging [WRONG] [NEED EXPLANATION]
+  C: OrgLimits [WRONG] 
+  D: Limits [CORRECT] 
+why_correct: Class `System.Limits` chứa các phương thức như `getDmlStatements()` (đã dùng) và `getLimitDmlStatements()` (tổng cho phép). Nó là 'đồng hồ đo' tài nguyên cho dev.
+Existing why_wrong:
+  A: Messaging dùng để gửi email.
+  C: OrgLimits dùng để check giới hạn của toàn bộ Org (như số lượng API call trong 24h), không phải giới hạn của 1 transaction cụ thể như DML.
+======================================================================
+ID: 162 | Num: 42 | Correct: ['C']
+MISSING keys: ['B']
+Question: When using SalesforceDX, what does a developer need to enable to create and manage scratch orgs?
+Options:
+  A: Production [WRONG] 
+  B: Environment Hub [WRONG] [NEED EXPLANATION]
+  C: Dev Hub [CORRECT] 
+  D: Sandbox [WRONG] 
+why_correct: Mày phải bật 'Dev Hub' trong một Org xịn (Production hoặc Business). Org này sẽ quản lý việc 'đẻ' ra và kiểm soát các Scratch Orgs con.
+Existing why_wrong:
+  A: Sandbox là Org truyền thống, không có chức năng tạo Scratch Org.
+  D: Environment Hub dùng để quản lý nhiều Org khác nhau nhưng không phải là điều kiện tiên quyết để tạo scratch org cho SFDX.
+======================================================================
+ID: 167 | Num: 47 | Correct: ['B']
+MISSING keys: ['C']
+Question: Universal Containers wants a list button to display a Visualforce page that allows users to edit multiple records. Which Visualforce feature supports this requirement?
+Options:
+  A: <apex:listButton> tag [WRONG] 
+  B: recordSetVar page attribute [CORRECT] 
+  C: custom controller [WRONG] [NEED EXPLANATION]
+  D: controller extension [WRONG] 
+why_correct: Đó là thuộc tính recordSetVar. Khi mày khai báo nó, Standard Controller sẽ biến hình thành Standard List Controller, cho phép mày hốt trọn danh sách các bản ghi được chọn từ List View.
+Existing why_wrong:
+  A: Custom controller phải tự viết logic lấy list cực khổ, không có sẵn như recordSetVar.
+  D: <apex:listButton> chỉ để hiện cái nút, không xử lý data cho mày.
+======================================================================
+ID: 171 | Num: 51 | Correct: ['A', 'E']
+MISSING keys: ['B']
+Question: Which three statements are true regarding the @isTest annotation? (Choose three.)
+Options:
+  A: A method annotated @isTest(SeeAllData=true) in a class annotated @isTest(SeeAllData=false) has access to all org data. [CORRECT] 
+  B: A method annotated @isTest(SeeAllData=false) in a class annotated @isTest(SeeAllData=true) has access to all org data. [WRONG] [NEED EXPLANATION]
+  C: A class containing test methods counts toward the Apex code limit regardless of any @isTest annotation. [WRONG] 
+  D: Products and Pricebooks are visible in a test even if a class is annotated @isTest(SeeAllData=false). [WRONG] 
+  E: Profiles are visible in a test even if a class is annotated @isTest(SeeAllData=false). [CORRECT] 
+why_correct: A: Cấu hình SeeAllData=true cấp phương thức sẽ override cấu hình SeeAllData=false cấp class để truy cập dữ liệu thật. B: Lớp cha đã mở SeeAllData=true thì phương thức con không thể đóng lại bằng SeeAllData=false (bị ignore và vẫn có quyền truy cập dữ liệu thực). E: Các đối tượng Metadata/Setup hệ thống như Profile, User, RecordType luôn hiển thị trong test class bất kể SeeAllData là true hay false.
+Existing why_wrong:
+  C: Các test class có gắn @isTest hoàn toàn được MIỄN PHÍ dung lượng lưu trữ, không hề bị tính vào giới hạn 3 MB code Apex của Org.
+  D: Products và Pricebooks trong các phiên bản Salesforce hiện đại đã bị cô lập dữ liệu, bắt buộc phải tạo data test giả lập hoặc bật SeeAllData=true mới thấy.
+======================================================================
+ID: 216 | Num: 36 | Correct: ['D']
+MISSING keys: ['C']
+Question: A developer needs to confirm that a Contact trigger works correctly without changing the organization's data. What should the developer do to test the Contact trigger?
+Options:
+  A: Use Deploy from the VSCode IDE to deploy an 'Insert Contact' Apex class. [WRONG] 
+  B: Use the New button on the Salesforce Contacts Tab to create a new Contact record. [WRONG] 
+  C: Use the Open Execute Anonymous feature on the Developer Console to run an 'Insert Contact' DML statement. [WRONG] [NEED EXPLANATION]
+  D: Use the Test menu on the Developer Console to run all test classes for the Contact trigger. [CORRECT] 
+why_correct: Chỉ có chạy Unit Test (A) mới đảm bảo an toàn. Salesforce Unit Test chạy trong môi trường cô lập, dữ liệu tạo ra sẽ bị Rollback hoàn toàn sau khi test xong, Org vẫn sạch bóng quân thù.
+Existing why_wrong:
+  B: Execute Anonymous sẽ insert data THẬT vào Org, hỏng hết data.
+  A: Tạo tay trên giao diện cũng là tạo data THẬT, làm sao mà 'không thay đổi dữ liệu' được.
+======================================================================
+ID: 222 | Num: 42 | Correct: ['D']
+MISSING keys: ['B']
+Question: A developer needs to have records with specific field values in order to test a new Apex class. What should the developer do to ensure the data is available to the test?
+Options:
+  A: Use SOQL to query the org for the required data. [WRONG] 
+  B: Use Anonymous Apex to create the required data. [WRONG] [NEED EXPLANATION]
+  C: Use Test.loadData() and reference a CSV file. [WRONG] 
+  D: Use Test.loadData() and reference a static resource. [CORRECT] 
+why_correct: Sử dụng `Test.loadData(SObjectType, 'StaticResourceName')`. Mày chuẩn bị file CSV, đẩy lên Static Resource, rồi gọi hàm này trong code test để nó tự nạp data vào, vừa sạch vừa nhanh.
+Existing why_wrong:
+  C: Hàm loadData nhận vào tên 'Static Resource', không phải đường dẫn trực tiếp tới file CSV trên máy mày.
+  A: Anonymous Apex không giúp ích gì cho việc chạy Unit Test tự động.
+======================================================================
+ID: 226 | Num: 46 | Correct: ['B']
+MISSING keys: ['D']
+Question: Which process automation can be used to calculate the shipping cost for an Order when the Order is placed and apply a percentage of the shipping cost to some of the related Order Products?
+Options:
+  A: Lightning Component [WRONG] 
+  B: Flow Builder [CORRECT] 
+  C: Entitlement Rules [WRONG] 
+  D: Approval Process [WRONG] [NEED EXPLANATION]
+why_correct: Cả Flow và Process Builder đều có khả năng thực hiện logic tính toán và duyệt qua các bản ghi liên quan (Child records) để cập nhật dữ liệu.
+Existing why_wrong:
+  A: Workflow chỉ update được field của chính bản ghi đó hoặc Parent (Master-Detail).
+  C: Approval Process dùng để phê duyệt, không phải để tính toán logic phức tạp cho record con.
+======================================================================
+ID: 274 | Num: 36 | Correct: ['D']
+MISSING keys: ['C']
+Question: In the Lightning UI, where should a developer look to find information about a Paused Flow Interview?
+Options:
+  A: On the Paused Flow Interviews related list for a given record [WRONG] 
+  B: In the system debug log by filtering on Paused Flow Interview [WRONG] 
+  C: In the Paused Interviews section of the Apex Flex Queue [WRONG] [NEED EXPLANATION]
+  D: On the Paused Flow Interviews component on the Home page [CORRECT] 
+why_correct: Salesforce cung cấp một Standard Component tên là 'Paused Flow Interviews'. Admin có thể kéo nó vào trang Home hoặc bất kỳ trang nào để user thấy và tiếp tục công việc.
+Existing why_wrong:
+  B: Apex Flex Queue chỉ dành cho Batch Apex, không dành cho Flow.
+  A: Không có Related List mặc định nào tên như vậy trên mọi record.
+======================================================================
+ID: 330 | Num: 34 | Correct: ['D']
+MISSING keys: ['C']
+Question: What does the Lightning Component framework provide to developers?
+Options:
+  A: Support for Classic and Lightning UIs [WRONG] 
+  B: Templates to create custom components [WRONG] 
+  C: Extended governor limits for applications [WRONG] [NEED EXPLANATION]
+  D: Prebuilt components that can be reused [CORRECT] 
+why_correct: Salesforce cung cấp sẵn một thư viện đồ sộ các component (Base Lightning Components) để mày lắp ghép, giúp tăng tốc độ phát triển.
+Existing why_wrong:
+  A: Lightning component sinh ra cho Lightning Experience, việc hỗ trợ Classic khá hạn chế và không phải là mục tiêu chính của framework.
+  B: Framework UI không làm thay đổi các giới hạn Governor Limits của hệ thống Apex/Database.

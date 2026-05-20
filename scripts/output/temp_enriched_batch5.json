@@ -1,0 +1,163 @@
+[
+  {
+    "id": 121,
+    "vi_question": "Universal Containers muốn khóa các Opportunity không cho phép chỉnh sửa khi đã chuyển sang trạng thái Closed/Won. Hai chiến lược nào lập trình viên nên sử dụng để thực hiện việc này? (Chọn 2)",
+    "why_correct": "B: Sử dụng Validation Rule kiểm tra nếu StageName chuyển sang Closed/Won thì chặn chỉnh sửa toàn bộ trường. D: Đánh dấu các trường là Read-only trên Page Layout tương ứng với Record Type trạng thái Closed/Won để khóa giao diện người dùng.",
+    "why_wrong": {
+      "A": "Flow Builder không thể khóa cứng giao diện nhập liệu trực tiếp của người dùng một cách tối ưu như Validation Rule.",
+      "C": "Process Automation Settings dùng để thiết lập chung cho hệ thống tự động hóa, không hỗ trợ logic khóa bản ghi cụ thể."
+    },
+    "tip": "Khóa bản ghi (Read-only) -> 1. Validation Rule (Chặn lưu); 2. Page Layout Read-only (Khóa UI)."
+  },
+  {
+    "id": 122,
+    "vi_question": "Hành động nào giúp lập trình viên tối ưu hóa và giảm thời gian thực thi của đoạn mã lặp lồng nhau dưới đây? [Code Nested Loops]",
+    "why_correct": "Sử dụng một Map<Id, List<Contact>> (D) gom nhóm toàn bộ Contact theo AccountId trước. Khi đó, thay vì duyệt vòng lặp O(N*M) lồng nhau cực kỳ chậm chạp, ta chỉ cần duyệt Account và gọi map.get(a.Id) trong O(1) để lấy ngay danh sách Contact con liên quan.",
+    "why_wrong": {
+      "A": "Đảo ngược vị trí hai vòng lặp lồng nhau vẫn giữ nguyên độ phức tạp thuật toán O(N*M), không giải quyết được vấn đề.",
+      "B": "Tạo helper class chỉ làm sạch code chứ không làm thay đổi bản chất thuật toán và thời gian thực thi của CPU.",
+      "C": "Thêm GROUP BY vào SOQL không giúp giải quyết thuật toán so khớp danh sách trong RAM."
+    },
+    "tip": "Tối ưu For lồng nhau -> Gom danh sách con vào MAP theo ID cha để lấy cực nhanh O(1)."
+  },
+  {
+    "id": 123,
+    "vi_question": "Ba công cụ nào sau đây hỗ trợ deploy metadata (cấu hình/code) lên môi trường Production? (Chọn 3)",
+    "why_correct": "B: Force.com IDE (môi trường phát triển tích hợp dựa trên Eclipse dù đã cũ nhưng đề vẫn tính). D: Change Set gửi từ môi trường Sandbox lên Production. E: Metadata API dùng để deploy programmatic thông qua các công cụ như Ant Migration Tool hoặc Salesforce CLI.",
+    "why_wrong": {
+      "A": "Không thể gửi Change Set trực tiếp từ một Developer Org (Org cá nhân) lên một Production Org thật được (chỉ Sandbox gửi được cho Production liên kết).",
+      "C": "Data Loader chỉ dùng để import/export DỮ LIỆU bản ghi (Data), tuyệt đối không dùng để deploy METADATA (cấu hình/code)."
+    },
+    "tip": "Deploy Metadata -> Change Set Sandbox, Metadata API, CLI. Data Loader chỉ dùng cho DATA bản ghi."
+  },
+  {
+    "id": 124,
+    "vi_question": "Universal Containers xây dựng app tuyển dụng gồm object Applicant (ứng viên) và Job (công việc). Một ứng viên có thể nộp nhiều Job, một Job có nhiều ứng viên ứng tuyển. Thiết kế mối quan hệ nào là phù hợp nhất?",
+    "why_correct": "Mối quan hệ là Nhiều-Nhiều (Many-to-Many). Giải pháp chuẩn là tạo một đối tượng trung gian gọi là Junction Object (B) liên kết giữa Applicant và Job thông qua hai trường Master-Detail trỏ về hai phía.",
+    "why_wrong": {
+      "A": "Tạo Lookup trực tiếp từ Applicant đến Job làm giới hạn mỗi ứng viên chỉ được ứng tuyển tối đa 1 Job tại 1 thời điểm.",
+      "C": "Tương tự A, Master-Detail trực tiếp từ Applicant đến Job giới hạn nghiêm trọng quan hệ 1-Nhiều một chiều.",
+      "D": "Formula field chỉ để hiển thị giá trị đọc, không thể đại diện cho mối quan hệ dữ liệu vật lý Nhiều-Nhiều phức tạp."
+    },
+    "tip": "Mối quan hệ Nhiều-Nhiều (Many-to-Many) -> Bắt buộc tạo đối tượng trung gian JUNCTION OBJECT."
+  },
+  {
+    "id": 125,
+    "vi_question": "Sales team muốn hiển thị biểu tượng cảnh báo trực quan trên giao diện Account và Opportunity để báo khi Account bị nợ quá hạn hoặc rơi vào trạng thái đòi nợ. Giải pháp nào đáp ứng không cần viết code?",
+    "why_correct": "Sử dụng Formula Field (A) kiểu Text kết hợp với hàm IMAGE() để kiểm tra điều kiện nợ và hiển thị các icon cảnh báo (đỏ, vàng, xanh) cực kỳ sinh động trên page layout hoàn toàn no-code.",
+    "why_wrong": {
+      "B": "Workflow Rule chỉ dùng để chạy hành động tự động ngầm, không có khả năng hiển thị giao diện hay hình ảnh cảnh báo trực quan.",
+      "C": "Quick Action dùng để tạo nút bấm thao tác nhanh, không phải công cụ hiển thị chỉ báo trạng thái.",
+      "D": "Roll-up Summary Field chỉ dùng để tính tổng số lượng/tiền từ con lên cha, không có tính năng hiển thị hình ảnh."
+    },
+    "tip": "Hiển thị icon/ảnh cảnh báo động không code -> Sử dụng Formula Field chứa hàm IMAGE()."
+  },
+  {
+    "id": 126,
+    "vi_question": "Giới hạn (governor limit) nào sau đây áp dụng chung cho TOÀN BỘ mã code thực thi trong một transaction Apex?",
+    "why_correct": "Tổng thời gian CPU xử lý - Elapsed CPU time (D) (giới hạn 10 giây cho transaction đồng bộ) áp dụng chung cho toàn bộ trigger, class Apex, validation rules, flows,... chạy trong transaction đó.",
+    "why_wrong": {
+      "A": "Thời gian SOQL chỉ tính riêng cho các câu lệnh truy vấn, không bao quát toàn bộ xử lý logic của CPU.",
+      "B": "Không có giới hạn cụ thể về số lượng class Apex được gọi trong một transaction.",
+      "C": "Giới hạn DML row (10,000 bản ghi) tính trên số lượng bản ghi được thao tác, không phải giới hạn thời gian chạy chung."
+    },
+    "tip": "Giới hạn bao trùm toàn bộ transaction Apex -> Tổng thời gian xử lý CPU (10 giây đồng bộ)."
+  },
+  {
+    "id": 128,
+    "vi_question": "Để ghi đè (override) một nút bấm chuẩn (standard button) của một Object bằng trang Visualforce, trang đó có yêu cầu bắt buộc gì?",
+    "why_correct": "Trang Visualforce đó bắt buộc phải khai báo thuộc tính standardController trỏ đến đúng API Name của Object đó (B) để hệ thống nhận diện và truyền ngữ cảnh bản ghi khi bấm nút.",
+    "why_wrong": {
+      "A": "Controller không bắt buộc phải có phương thức trả về PageReference mới ghi đè được.",
+      "C": "Thuộc tính action trên thẻ apex:page dùng để tự kích hoạt hàm khi trang load, không phải điều kiện bắt buộc để override nút.",
+      "D": "Không cần khởi tạo thủ công bản ghi trong code vì standard controller đã tự động làm việc này."
+    },
+    "tip": "Override nút chuẩn bằng Visualforce -> Bắt buộc trang phải khai báo standardController='ObjectName'."
+  },
+  {
+    "id": 129,
+    "vi_question": "Một trang Visualforce hiển thị và chỉnh sửa Case kết hợp tính năng chuẩn của Case và các hàm tùy chỉnh viết trong class Apex 'myControllerExtension'. Trang Visualforce cần khai báo thuộc tính nào?",
+    "why_correct": "Khai báo kết hợp standardController='Case' đi kèm extensions='myControllerExtension' (D). Đây là mô hình Controller Extension chuẩn để vừa dùng được các hàm lưu/sửa mặc định của Case vừa gọi được logic custom của extension class.",
+    "why_wrong": {
+      "A": "Case là đối tượng tiêu chuẩn, cấm khai báo bằng từ khóa 'controller' (từ khóa này chỉ dành cho Custom Controller class).",
+      "B": "Thiếu standardController thì extensions không thể chạy độc lập được.",
+      "C": "Khai báo extension class vào thuộc tính 'controller' là sai vai trò của lớp mở rộng."
+    },
+    "tip": "Visualforce mở rộng tính năng Standard -> standardController='ObjectName' + extensions='ExtensionClass'."
+  },
+  {
+    "id": 130,
+    "vi_question": "Object Lead có trường Prior_Email__c. Trigger dưới đây viết ở sự kiện 'before update', lặp qua trigger.new và gọi lệnh 'Update Id;' [Code Trigger]. Trigger này sẽ gây ra loại lỗi (exception) nào?",
+    "why_correct": "Gây ra lỗi DML Exception (C). Salesforce cấm tuyệt đối việc thực hiện câu lệnh DML Update trên chính các bản ghi đang nằm trong trigger xử lý 'before' (trigger.new), vì việc này sẽ gây ra vòng lặp vô hạn (recursive) vô phương cứu chữa và làm sập hệ thống.",
+    "why_wrong": {
+      "A": "Biến Id được duyệt qua trigger.new luôn tồn tại bản ghi, không gây ra lỗi tham chiếu null.",
+      "B": "Code viết đúng cú pháp Apex nên biên dịch thành công, lỗi chỉ nổ ra khi thực thi (runtime).",
+      "D": "Lỗi xảy ra ngay lập tức ở bản ghi đầu tiên khi gọi lệnh Update chứ không đợi đến khi bulk update chạm limit."
+    },
+    "tip": "Cấm kỵ tối thượng: Gọi lệnh DML (insert/update/delete) trên chính danh sách trigger.new trong trigger!"
+  },
+  {
+    "id": 132,
+    "vi_question": "Trigger 'after' trên Account thực hiện DML update toàn bộ Opportunity con liên quan. Không có trigger nào trên Opportunity, nhưng lỗi 'maximum trigger depth exceeded' (vượt quá độ sâu đệ quy) vẫn xảy ra. Hai lý do nào giải thích việc này? (Chọn 2)",
+    "why_correct": "A: Cập nhật Opportunity kích hoạt Cross-object Workflow Field Update cập nhật ngược trường lên Account cha -> nổ trigger Account lần nữa. B: Cập nhật Opportunity làm thay đổi trường Roll-up Summary trên Account cha -> kích hoạt vòng Save Account và nổ trigger Account lần nữa.",
+    "why_wrong": {
+      "C": "Lưu song song không liên quan không tạo ra chuỗi đệ quy tuần hoàn khép kín làm vượt độ sâu trigger.",
+      "D": "Criteria Based Sharing chỉ tính toán phân quyền chia sẻ, không kích hoạt tiến trình Save hay chạy trigger."
+    },
+    "tip": "Lỗi đệ quy chéo Cha-Con: Do 1. Roll-up Summary trên Cha; 2. Cross-object Workflow cập nhật ngược lên Cha."
+  },
+  {
+    "id": 133,
+    "vi_question": "Cho class InsuranceRates chứa biến tĩnh 'public static final Decimal smokerCharge = 0.01;'. Trong trigger ContactTrigger dưới đây, lập trình viên điền gì vào XXX để gán giá trị của smokerCharge cho biến baseCost? [Code Trigger]",
+    "why_correct": "Vì smokerCharge là một biến tĩnh (static variable), nó thuộc về class chứ không thuộc về đối tượng instance. Ta truy cập trực tiếp bằng cú pháp: ClassName.staticVariableName -> InsuranceRates.smokerCharge (A).",
+    "why_wrong": {
+      "B": "Biến smokerCharge là public trực tiếp, không cần hàm getter để lấy và class cũng không định nghĩa hàm này.",
+      "C": "Sai đường dẫn tham chiếu lớp hệ thống.",
+      "D": "Cố gắng gọi biến tĩnh thông qua đối tượng instance 'rates' là sai nguyên tắc lập trình hướng đối tượng trong Apex."
+    },
+    "tip": "Biến Static -> Luôn truy cập thông qua tên Class: ClassName.VariableName."
+  },
+  {
+    "id": 134,
+    "vi_question": "Phương pháp nào lập trình viên nên sử dụng để ngăn chặn lỗi trigger chạy đệ quy vô hạn (recursive trigger)?",
+    "why_correct": "Sử dụng một biến tĩnh kiểu Boolean - static Boolean variable (B) trong một class helper (ví dụ: public static Boolean isFirstRun = true). Check biến này ở đầu trigger, chạy xong gán bằng false để chặn các vòng sau.",
+    "why_wrong": {
+      "A": "Mô hình một trigger trên một object giúp quản lý code sạch sẽ, không giúp ngăn đệ quy chéo giữa các object khác nhau.",
+      "C": "Trigger Handler pattern là kiến trúc tách code xử lý, không có cơ chế tự chặn đệ quy nếu thiếu biến tĩnh.",
+      "D": "Biến private Boolean sẽ bị khởi tạo lại từ đầu mỗi khi trigger kích hoạt, hoàn toàn vô dụng để chặn đệ quy."
+    },
+    "tip": "Chặn Trigger đệ quy (Recursive) -> Luôn sử dụng biến STATIC BOOLEAN trong class helper."
+  },
+  {
+    "id": 135,
+    "vi_question": "Ba khả năng nổi bật của thẻ <ltng:require> dùng để tải các thư viện JavaScript bên ngoài trong Aura Component là gì? (Chọn 3)",
+    "why_correct": "B: Cơ chế One-time loading chỉ tải script duy nhất một lần dù khai báo ở nhiều component khác nhau. C: Cho phép chỉ định thứ tự tải (loading order) các script theo danh sách liệt kê. D: Tải song song (parallel) các bộ script độc lập bằng các thẻ riêng biệt để tối ưu tốc độ.",
+    "why_wrong": {
+      "A": "Thẻ này tải file từ Static Resource chứ không tải trực tiếp từ thư mục Documents cũ kỹ.",
+      "E": "Vì lý do bảo mật CSP, <ltng:require> cấm tải trực tiếp các script lưu trữ bên ngoài Salesforce, bắt buộc phải upload vào Static Resource."
+    },
+    "tip": "ltng:require (Aura) / lightning/platformResourceLoader (LWC): Tải script từ STATIC RESOURCE, hỗ trợ thứ tự tải và chạy duy nhất 1 lần."
+  },
+  {
+    "id": 136,
+    "vi_question": "Universal Containers muốn tạo Custom Object 'Global Address' chứa các địa chỉ mặc định dùng chung cho nhiều Account. Mối quan hệ nào là tối ưu nhất giữa Account và Global Address?",
+    "why_correct": "Thêm trường Lookup trên Account trỏ đến đối tượng Global Address (D). Mối quan hệ này cho phép nhiều Account dùng chung 1 địa chỉ (1-Nhiều từ Global Address đến Account) và Account là Standard Object nên cấm làm con trong quan hệ Master-Detail với Custom Object.",
+    "why_wrong": {
+      "A": "Master-Detail trên Global Address trỏ đến Account làm giới hạn mỗi địa chỉ chỉ thuộc về 1 Account duy nhất, không dùng chung được.",
+      "B": "Account là đối tượng tiêu chuẩn của Salesforce, cấm ngặt việc làm con (detail) trong quan hệ Master-Detail với Custom Object.",
+      "C": "Lookup trên Global Address trỏ đến Account giới hạn quan hệ ngược chiều, không đáp ứng chia sẻ địa chỉ."
+    },
+    "tip": "Standard Object (như Account) -> CẤM làm con (detail) trong mối quan hệ Master-Detail!"
+  },
+  {
+    "id": 139,
+    "vi_question": "Trường tùy chỉnh PrimaryId__c trên Candidate__c dùng để lưu ID ứng viên và được đánh dấu Unique. Để nạp dữ liệu cập nhật từ file CSV một cách nhanh nhất, đảm bảo các bản ghi được khớp đúng, developer nên làm gì?",
+    "why_correct": "Sửa định nghĩa trường PrimaryId__c và đánh dấu nó là trường External ID (A). Khi đó, các công cụ như Data Loader có thể sử dụng trường này làm khóa đối chiếu để thực hiện thao tác Upsert (chèn/cập nhật) cực kỳ nhanh chóng và an toàn.",
+    "why_wrong": {
+      "B": "Nạp vào custom object phụ rồi viết code map làm tăng độ phức tạp và tốn tài nguyên xử lý dữ liệu.",
+      "C": "Flow before save không hỗ trợ đối chiếu khóa ngoài trực tiếp lúc nạp file bằng công cụ.",
+      "D": "Trigger before insert viết code map thủ công rất cồng kềnh và dễ lỗi hơn nhiều so với tính năng External ID có sẵn của hệ thống."
+    },
+    "tip": "Nạp file CSV khớp dữ liệu nhanh gọn no-code -> Đánh dấu trường đối chiếu là EXTERNAL ID."
+  }
+]

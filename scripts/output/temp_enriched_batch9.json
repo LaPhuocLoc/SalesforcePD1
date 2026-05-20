@@ -1,0 +1,163 @@
+[
+  {
+    "id": 206,
+    "vi_question": "Một công ty phần mềm sử dụng các đối tượng và mối quan hệ sau: Case (Private OWD), Defect__c (Private OWD, custom object), và Case_Defect__c (junction object Nhiều-Nhiều giữa Case và Defect__c). Làm thế nào để chia sẻ quyền truy cập một bản ghi Case_Defect__c cụ thể cho một người dùng?",
+    "why_correct": "Vì Case_Defect__c là đối tượng trung gian (Junction Object) được liên kết bằng hai mối quan hệ Master-Detail trỏ về hai cha Case và Defect__c. Quyền bảo mật chia sẻ của nó hoàn toàn kế thừa trực tiếp từ hai cha. Do đó, người dùng bắt buộc phải có quyền truy cập (xem) đối với cả hai bản ghi cha là Case và Defect__c (B) thì mới có thể nhìn thấy bản ghi liên kết con Case_Defect__c.",
+    "why_wrong": {
+      "A": "Chỉ chia sẻ bản ghi Defect__c cha là chưa đủ quyền đối với cha bên kia (Case), người dùng vẫn bị chặn xem bản ghi junction.",
+      "C": "Không thể thiết lập Sharing Rules hay chia sẻ trực tiếp trên bản ghi Case_Defect__c con được vì đối tượng con trong mối quan hệ Master-Detail không sở hữu trường Owner riêng và không có nút chia sẻ thủ công.",
+      "D": "Chỉ chia sẻ bản ghi Case cha tương tự lỗi của câu A, vẫn thiếu quyền xem Defect__c."
+    },
+    "tip": "Chia sẻ bản ghi Junction (Many-to-Many) -> Bắt buộc phải có quyền truy cập đối với CẢ HAI bản ghi cha!"
+  },
+  {
+    "id": 207,
+    "vi_question": "Kết quả hiển thị trong debug log của đoạn mã Apex sau là gì? [Code Decimal theValue]",
+    "why_correct": "Kết quả debug in ra là 'null' (B). Trong ngôn ngữ Apex, mọi biến số (Decimal, Double, Integer,...) khi mới khai báo mà không khởi tạo giá trị cụ thể sẽ luôn luôn nhận giá trị mặc định là null để bảo vệ bộ nhớ.",
+    "why_wrong": {
+      "A": "0.0 không phải là giá trị mặc định của kiểu Decimal trong Apex.",
+      "C": "Không tồn tại khái niệm giá trị 'Undefined' giống JavaScript trong ngôn ngữ lập trình Apex.",
+      "D": "0 là giá trị mặc định của kiểu số nguyên trong một số ngôn ngữ khác nhưng với Apex vẫn là null."
+    },
+    "tip": "Mẹo Apex: Mọi biến số khai báo không gán trị mặc định -> Luôn nhận giá trị NULL!"
+  },
+  {
+    "id": 208,
+    "vi_question": "Ứng viên được đánh giá bởi 4 người phỏng vấn khác nhau. Điểm số từ 1 (thấp nhất) đến 5 (cao nhất) được lưu trên bản ghi Review (là bản ghi con Detail của đối tượng Candidate). Cách tốt nhất để hiển thị tổng điểm đánh giá từ 15 trở lên để đề xuất phỏng vấn tiếp theo là gì?",
+    "why_correct": "Tạo một trường Roll-up Summary trên đối tượng cha Candidate để tự động tính tổng (SUM) điểm số từ các bản ghi Review con liên quan (B). Đây là giải pháp hoàn toàn no-code cực kỳ sạch sẽ và tối ưu hiệu năng của hệ thống.",
+    "why_wrong": {
+      "A": "Validation Rule chỉ dùng để chặn lưu dữ liệu sai logic chứ không thể tự động tính toán tổng điểm từ con lên cha.",
+      "C": "Sử dụng Visual Flow để set đề xuất là phương án quá phức tạp và thừa thãi khi ta hoàn toàn có thể giải quyết nhanh bằng công cụ Roll-up no-code có sẵn.",
+      "D": "Workflow Rule đời cũ không hỗ trợ tính tổng SUM các bản ghi con ngược lên cha một cách trực tiếp như Roll-up."
+    },
+    "tip": "Tính tổng điểm từ các bản ghi con Detail lên cha Master -> Tạo trường ROLL-UP SUMMARY kiểu SUM."
+  },
+  {
+    "id": 214,
+    "vi_question": "Lập trình viên được yêu cầu tự động gán một trường picklist thành giá trị 'Monitor' đối với bất kỳ bản ghi Lead mới nào được sở hữu bởi một nhóm nhỏ người dùng (Users subnet). Giải pháp thiết kế nào là tối ưu và phù hợp nhất?",
+    "why_correct": "Tạo một Record-triggered Flow (C). Đây là công cụ tự động hóa no-code hiện đại được Salesforce khuyến nghị tối cao hiện nay thay cho code trigger, có khả năng so khớp chủ sở hữu và cập nhật giá trị trường cực kỳ mượt mà trước khi bản ghi lưu xuống DB.",
+    "why_wrong": {
+      "A": "after insert trigger là quá muộn để cập nhật trường trên chính bản ghi đó, vì dữ liệu đã ghi xuống ổ cứng, bắt buộc phải dùng thêm câu lệnh DML update gây lãng phí tài nguyên.",
+      "B": "before insert trigger viết code giải quyết tốt nhưng tốn công bảo trì hơn nhiều so với Flow no-code tiện lợi.",
+      "D": "Formula field chỉ hiển thị giá trị dạng đọc (Read-only), người dùng không thể chỉnh sửa và không thể gán giá trị cứng cố định như picklist."
+    },
+    "tip": "Tự động gán trị khi lưu bản ghi no-code -> Luôn chọn RECORD-TRIGGERED FLOW."
+  },
+  {
+    "id": 215,
+    "vi_question": "Ba công cụ tự động hóa quy trình nào sau đây có thể lập tức gửi một thông báo email (email notification) cho chủ sở hữu Opportunity khi trường Amount bị thay đổi lớn hơn $10,000? (Chọn 3)",
+    "why_correct": "A: Process Builder. C: Flow Builder (hiện đại). E: Workflow Rule (cổ điển). Cả 3 công cụ no-code này đều hỗ trợ bắt sự kiện thay đổi dữ liệu và kích hoạt hành động gửi Email Alert ngay lập tức.",
+    "why_wrong": {
+      "B": "Escalation Rule chỉ dùng riêng cho đối tượng Case để tự động chuyển tiếp vụ việc quá hạn hỗ trợ, không dùng cho Opportunity.",
+      "D": "Approval Process dùng cho quy trình duyệt bản ghi, không dùng cho việc tự động gửi email cảnh báo thông thường khi cập nhật trường."
+    },
+    "tip": "Tự động gửi Email cảnh báo khi đổi trường -> Dùng Flow Builder, Process Builder, hoặc Workflow Rule."
+  },
+  {
+    "id": 217,
+    "vi_question": "Cấu trúc vòng lặp điều khiển nào giúp lập trình viên đảm bảo rằng phần thân của vòng lặp (loop body) sẽ được thực thi ít nhất một lần?",
+    "why_correct": "Cú pháp do {...} while (condition) (B). Vòng lặp do-while sẽ thực hiện toàn bộ khối mã lệnh trong thân trước rồi mới tiến hành kiểm tra điều kiện lặp ở cuối, do đó bảo đảm chạy ít nhất 1 lần bất chấp điều kiện đúng hay sai.",
+    "why_wrong": {
+      "A": "Vòng lặp for cơ bản kiểm tra điều kiện thoát ngay ở đầu, nếu sai từ đầu sẽ không chạy lần nào.",
+      "C": "Vòng lặp while kiểm tra điều kiện lặp trước khi chạy thân vòng lặp nên có thể không chạy lần nào.",
+      "D": "Vòng lặp for-each (duyệt list/set) sẽ hoàn toàn không chạy lần nào nếu danh sách truyền vào bị rỗng."
+    },
+    "tip": "Muốn chạy loop ít nhất 1 lần -> Chọn ngay cấu trúc DO - WHILE!"
+  },
+  {
+    "id": 218,
+    "vi_question": "Hai tính năng tự động hóa quy trình dạng khai báo no-code nào có thể được kích hoạt trực tiếp ngay khi giá trị một trường trên bản ghi bị thay đổi? (Chọn 2)",
+    "why_correct": "B: Process Builder processes. D: Workflow rules. Cả hai công cụ này đều có bộ lọc tiêu chí kích hoạt chạy ngay khi bản ghi được tạo hoặc cập nhật sửa đổi trường dữ liệu.",
+    "why_wrong": {
+      "A": "Cloud Flow Designer là trình thiết kế Flow đời cũ bằng Flash đã bị Salesforce khai tử hoàn toàn từ lâu.",
+      "C": "Validation rules chỉ dùng để chặn lưu bản ghi sai logic và ném ra thông báo lỗi, không phải là công cụ thực thi hành động tự động hóa."
+    },
+    "tip": "Tự động hóa kích hoạt khi đổi trường no-code -> Dùng Flow/Process Builder hoặc Workflow Rule."
+  },
+  {
+    "id": 219,
+    "vi_question": "Hai chiến lược nào lập trình viên nên sử dụng để tránh bị chạm giới hạn governor limits khi lập trình trên môi trường đa khách thuê (multi-tenant) của Salesforce? (Chọn 2)",
+    "why_correct": "B: Sử dụng các phương thức từ lớp Limits (như Limits.getQueries()) để theo dõi lượng tài nguyên đã ngốn và có logic ứng biến. C: Sử dụng cú pháp vòng lặp SOQL For Loop (for(Account a : [SELECT ...])) để Salesforce tự động chia lô nhỏ 200 bản ghi xử lý, tối ưu bộ nhớ heap tuyệt đối.",
+    "why_wrong": {
+      "A": "Lấy thừa thãi các trường không cần thiết vào collection làm phình to bộ nhớ heap cực nhanh, tăng nguy cơ dính lỗi LimitException.",
+      "D": "Lưu trữ lượng dữ liệu khổng lồ vào các biến tĩnh trong Apex class dễ gây tràn bộ nhớ heap (Heap limit exception)."
+    },
+    "tip": "Tránh giới hạn Governor Limits -> Dùng lớp Limits để theo dõi + Sử dụng SOQL For Loop tối ưu bộ nhớ."
+  },
+  {
+    "id": 220,
+    "vi_question": "Tính năng nào lập trình viên nên sử dụng để tự động cập nhật số lượng tồn kho trên Product records liên quan khi trạng thái của Order thay đổi thành 'Fulfilled'?",
+    "why_correct": "Sử dụng Process Builder process (A) (hoặc Flow Builder hiện đại). Mối quan hệ từ Product sang Order có thể là nhiều chiều, việc cập nhật chéo đối tượng từ Order sang Product cha/con có thể thực hiện no-code dễ dàng bằng Process/Flow.",
+    "why_wrong": {
+      "B": "Lightning Component xây dựng giao diện tương tác người dùng, không phải công cụ tự động hóa chạy ngầm dưới database layer.",
+      "C": "Visualforce page tương tự LWC, chỉ phục vụ hiển thị giao diện.",
+      "D": "Workflow rule đời cũ cấm cập nhật chéo đối tượng đi ngang/xuống (chỉ hỗ trợ cập nhật chéo từ con lên cha trong lookup đặc biệt)."
+    },
+    "tip": "Cập nhật chéo đối tượng con-cha-cháu no-code -> Dùng Flow Builder hoặc Process Builder."
+  },
+  {
+    "id": 221,
+    "vi_question": "Một công ty xây dựng dùng custom object Machinery để quản lý máy móc. Manager muốn gán máy móc cho các Construction Jobs khác nhau để theo dõi ngày và chi phí. Một Construction Job có thể dùng nhiều máy móc, một máy móc dùng cho nhiều Job. Lập trình viên nên làm gì?",
+    "why_correct": "Tạo một Junction Object (C) trung gian có hai mối quan hệ Master-Detail trỏ về hai đối tượng Machinery và Construction Job. Đây là thiết kế chuẩn mực cho mối quan hệ Nhiều-Nhiều (Many-to-Many) để theo dõi các thông số riêng của mỗi lần gán.",
+    "why_wrong": {
+      "A": "Đặt lookup trên Job trỏ đến Machinery giới hạn mỗi Job chỉ được gán tối đa 1 máy móc tại một thời điểm.",
+      "B": "Đặt lookup trên Machinery trỏ đến Job giới hạn mỗi máy móc chỉ được tham gia tối đa 1 Job tại một thời điểm.",
+      "D": "Master-Detail Lookup là khái niệm bị ghép sai thuật ngữ, không tồn tại loại trường này trong Salesforce."
+    },
+    "tip": "Mối quan hệ Nhiều-Nhiều (Many-to-Many) -> Bắt buộc tạo đối tượng trung gian JUNCTION OBJECT."
+  },
+  {
+    "id": 223,
+    "vi_question": "Developer tạo một component Lightning hiển thị văn bản tóm tắt ngắn gọn và muốn dùng chung component này với nhiều class Apex khác nhau. Lập trình viên nên thiết kế các class Apex này như thế nào?",
+    "why_correct": "Cho mỗi class Apex implements chung một Interface (C). Interface này định nghĩa phương thức ký mẫu 'getTextSummary()' trả về chuỗi văn bản tóm tắt. Component chỉ việc gọi hàm thông qua Interface, đạt tính đa hình tối cao trong lập trình.",
+    "why_wrong": {
+      "A": "Hàm getObject trả về sObject thô không giải quyết được tính đồng bộ hóa logic định dạng tóm tắt văn bản tùy chỉnh của từng class.",
+      "B": "Apex chỉ hỗ trợ đơn kế thừa (single inheritance) từ lớp cha base class, việc bắt ép kế thừa base class làm hạn chế khả năng mở rộng của các class sau này.",
+      "D": "Tự định nghĩa hàm không qua Interface làm mất đi tính ràng buộc biên dịch mạnh, component không thể gọi động một cách an toàn."
+    },
+    "tip": "Linh hoạt dùng chung LWC với nhiều Apex Class khác nhau -> Thiết kế các class implements chung một INTERFACE."
+  },
+  {
+    "id": 225,
+    "vi_question": "Số lượng câu truy vấn SOQL tối đa sẽ được thực thi khi chạy đoạn mã Apex dưới đây là bao nhiêu? [Code SOQL inside For]",
+    "why_correct": "Số lượng SOQL tối đa là 6 (C). Câu truy vấn SOQL đầu tiên lấy ra danh sách tối đa 5 bản ghi Account (LIMIT 5). Vòng lặp for chạy đúng 5 lần, mỗi lần nổ thêm 1 câu truy vấn SOQL con bên trong. Tổng cộng tối đa là 1 + 5 = 6 câu lệnh.",
+    "why_wrong": {
+      "A": "Sai số lượng tính toán thực tế.",
+      "B": "Quên tính câu lệnh SOQL query Account nằm ngoài vòng lặp.",
+      "D": "Tính toán sai số vòng chạy của list Account."
+    },
+    "tip": "Mẹo đếm SOQL: Số SOQL = (SOQL ngoài loop) + (Số vòng lặp * SOQL trong loop)."
+  },
+  {
+    "id": 228,
+    "vi_question": "Hai best practices (thực hành tốt nhất) nào khi truyền nhận các sự kiện (Events) trong Lightning Web Components (LWC)? (Chọn 2)",
+    "why_correct": "B: Sử dụng CustomEvent để truyền dữ liệu và thông báo từ component con ngược lên component cha. D: Sử dụng cấu hình mặc định an toàn: 'bubbles: false' và 'composed: false' để ngăn chặn event nổi loạn ra ngoài shadow DOM. (Lưu ý: Đáp án C trong ngân hàng đề thi gốc thỉnh thoảng có sai sót lý thuyết, tuy nhiên B và D mới là best practice chuẩn nhất của LWC).",
+    "why_wrong": {
+      "A": "event.detail dùng để truyền data đi, chứ bản thân nó không quyết định phạm vi giao tiếp trong shadow tree.",
+      "C": "Sai bảo mật shadow DOM vì event.target bị retargeted khi đi xuyên ranh giới shadow tree để tránh rò rỉ cấu trúc linh kiện nội bộ."
+    },
+    "tip": "LWC Events: Luôn dùng CustomEvent từ con lên cha. Cấu hình bubbles: false và composed: false để bảo mật shadow DOM!"
+  },
+  {
+    "id": 229,
+    "vi_question": "Developer di chuyển một tính năng từ JavaScript Remoting cũ sang Lightning Web Component (LWC) mới và muốn sử dụng lại phương thức Apex getOpportunities() có sẵn. Lập trình viên bắt buộc phải chỉnh sửa gì đối với phương thức này?",
+    "why_correct": "Phương thức Apex đó bắt buộc phải được gắn annotation @AuraEnabled (C) ở đầu để LWC có thể nhận diện, kết nối và gọi lấy dữ liệu thành công.",
+    "why_wrong": {
+      "A": "Apex tự động serialize các đối tượng sObject thành JSON khi trả về cho LWC, lập trình viên cấm tự viết code serialize thành String JSON Array thủ công gây nặng nề.",
+      "B": "cacheable=true là tùy chọn khuyến khích để tăng tốc độ lưu cache dữ liệu, không phải điều kiện bắt buộc để LWC kết nối được.",
+      "D": "LWC nhận kiểu sObject chuẩn trực tiếp từ Apex, không bắt buộc phải trả về kiểu đối tượng JSON."
+    },
+    "tip": "Muốn LWC gọi được method trong Apex Class -> Bắt buộc gắn annotation @AuraEnabled."
+  },
+  {
+    "id": 230,
+    "vi_question": "Developer cần cung cấp giao diện người dùng tùy chỉnh khi người dùng Edit một Contact. Giao diện này phải hoạt động được trên cả hai môi trường Salesforce Classic và Lightning Experience. Lập trình viên nên làm gì?",
+    "why_correct": "Ghi đè (Override) nút Edit của Contact bằng một trang Visualforce trong môi trường Salesforce Classic, và ghi đè bằng một Lightning component trong môi trường Lightning Experience (A) để tối ưu giao diện trên cả hai môi trường.",
+    "why_wrong": {
+      "B": "Lightning Page dùng để xây dựng trang tổng quan chứ không phải thành phần đóng gói có thể dùng để ghi đè trực tiếp nút Edit.",
+      "C": "Salesforce Classic đời cũ không hỗ trợ biên dịch và hiển thị trực tiếp Lightning Component nguyên bản mượt mà bằng Visualforce.",
+      "D": "Bị đảo ngược sai vị trí công nghệ giữa Classic (dùng Visualforce) và Lightning (dùng Lightning Component)."
+    },
+    "tip": "Ghi đè action chuẩn (Override button) -> Classic dùng Visualforce Page. Lightning Experience dùng Lightning Component."
+  }
+]

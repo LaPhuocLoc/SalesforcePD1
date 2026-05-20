@@ -1,0 +1,298 @@
+============================================================
+ID: 36 | Num: 36
+Question text:
+A developer must create a ShippingCalculator class that cannot be instantiated and must include a working default implementation of a calculate method, that sub-classes can override. What is the correct implementation of the ShippingCalculator class?
+A.
+public abstract class ShippingCalculator{
+public abstract calculate() { /*implementation*/}
+}
+B.
+public abstract class ShippingCalculator{
+public virtual void calculate() { /*implementation*/}
+}
+C.
+public abstract class ShippingCalculator{
+public void calculate() { /*implementation*/}
+}
+D.
+public abstract class ShippingCalculator{
+public override calculate() { /*implementation*/}
+}
+Explanation why_correct: Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).
+  C: calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.
+  D: Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu.
+============================================================
+ID: 40 | Num: 40
+Question text:
+A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored in a custom class, ContactInfo. Which is the correct definition of the Apex method that gets the additional information?
+A.
+@InvocableMethod(label='Additional Info')
+public ContactInfo getInfo(Id contactId) { /*implementation*/ }
+B.
+@InvocableMethod(label='Additional Info')
+public List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }
+C.
+@InvocableMethod(label='Additional Info')
+public static ContactInfo getInfo(Id contactId) { /*implementation*/ }
+D.
+@InvocableMethod(label='Additional Info')
+public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }
+Explanation why_correct: Phương thức gắn @InvocableMethod bắt buộc phải là 'static' để Salesforce gọi được trực tiếp. Đồng thời, để hỗ trợ xử lý hàng loạt (bulkified), tham số đầu vào và kiểu trả về phải là List. Do đó, câu D là hoàn toàn chính xác.
+Explanation why_wrong keys: ['A', 'B', 'C']
+  A: Thiếu từ khóa 'static' và tham số đầu vào không phải là List.
+  B: Thiếu từ khóa 'static' (bắt buộc phải có để Flow gọi).
+  C: Tham số đầu vào không ở dạng List, không hỗ trợ bulkification.
+============================================================
+ID: 72 | Num: 12
+Question text:
+A developer needs to implement a custom SOAP Web Service that is used by an external Web Application. The developer chooses to Include helper methods that are not used by the Web Application in the implementation of the Web Service Class. Which code segment shows the correct declaration of the class and methods?
+A.
+Webservice class WebserviceClass{
+private Boolean helperMethod(){ /*implementation ...*/}
+global static String updateRecords(){ /*implementation ...*/}
+}
+B.
+global class WebserviceClass{
+private Boolean helperMethod(){ /*implementation ...*/}
+webservice static String updateRecords(){ /*implementation ...*/}
+}
+C.
+Webservice class WebserviceClass{
+private Boolean helperMethod(){ /*implementation ...*/}
+Webservice static String updateRecords(){ /*implementation ...*/}
+}
+D.
+global class WebserviceClass{
+private Boolean helperMethod(){ /*implementation ...*/}
+global String updateRecords(){ /*implementation ...*/}
+}
+Explanation why_correct: Class chứa SOAP Web Service bắt buộc phải khai báo là 'global'. Phương thức phơi ra cho bên ngoài gọi phải dùng annotation 'webservice static'. Các phương thức helper nội bộ có thể để 'private' bình thường (B).
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: Cú pháp 'Webservice class' ở đầu định nghĩa class là sai hoàn toàn, class phải khai báo bằng 'global class'.
+  C: Sai cú pháp khai báo class giống câu A.
+  D: Phương thức phơi ra làm API SOAP thiếu từ khóa 'webservice' và thiếu 'static'.
+============================================================
+ID: 74 | Num: 14
+Question text:
+A developer needs to prevent the creation of Request records when certain conditions exist in the system. A RequestLogic class exists that checks the conditions. What is the correct implementation?
+A.
+trigger RequestTrigger on Request(before insert){
+if(RequestLogic.isValid(Request))
+Request.addError('Your request cannot be created at this time.');
+}
+B.
+trigger RequestTrigger on Request(after insert){
+if(RequestLogic.isValid(Request))
+Request.addError('Your request cannot be created at this time.');
+}
+C.
+trigger RequestTrigger on Request(after insert){
+RequestLogic.validateRecords(trigger.new)
+}
+D.
+trigger RequestTrigger on Request(before insert){
+RequestLogic.validateRecords(trigger.new)
+}
+Explanation why_correct: Để CHẶN (prevent) việc lưu dữ liệu, ta bắt buộc phải dùng sự kiện 'before insert' (D) để gọi hàm addError() trước khi dữ liệu chạm xuống ổ cứng. Đồng thời, truyền toàn bộ 'trigger.new' vào class helper để xử lý bulkified là chuẩn bài nhất.
+Explanation why_wrong keys: ['A', 'B', 'C']
+  A: Trigger này viết loop gọi addError thủ công nhưng cú pháp sai hoàn toàn (Request là tên đối tượng chứ không phải biến chạy).
+  B: after insert là quá muộn để chặn tạo bản ghi, vì dữ liệu đã ghi xuống database rồi, gọi addError lúc này sẽ tốn tài nguyên rollback.
+  C: after insert là sai thời điểm giống câu B.
+============================================================
+ID: 165 | Num: 45
+Question text:
+A developer must create a CreditCardPayment class that provides an implementation of an existing Payment class.
+public virtual class Payment{
+public virtual void makePayment(Decimal amount){ /*implementation*/}
+}
+Which is the correct implementation?
+A.
+public class CreditCardPayment extends Payment{
+public virtual void makePayment(Decimal amount){ /*implementation*/}
+}
+B.
+public class CreditCardPayment extends Payment{
+public override void makePayment(Decimal amount){ /*implementation*/}
+}
+C.
+public class CreditCardPayment implements Payment{
+public virtual void makePayment(Decimal amount){ /*implementation*/}
+}
+D.
+public class CreditCardPayment implements Payment{
+public override void makePayment(Decimal amount){ /*implementation*/}
+}
+Explanation why_correct: Vì lớp cha Payment là một class thông thường được gắn từ khóa 'virtual class' chứ không phải Interface, nên class con bắt buộc phải dùng từ khóa 'extends' để kế thừa. Để ghi đè phương thức makePayment(), class con phải dùng từ khóa 'override' (B).
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: Dùng lại từ khóa 'virtual' ở class con là sai cú pháp ghi đè phương thức.
+  C: Dùng từ khóa 'implements' chỉ dành cho việc hiện thực hóa các lớp Interface, dùng cho class thường sẽ báo lỗi biên dịch.
+  D: Tương tự C, sử dụng sai từ khóa implements.
+============================================================
+ID: 168 | Num: 48
+Question text:
+Which code in a Visualforce page and/or controller might present a security vulnerability?
+A . <apex:outputField value="{!ctrl.userInput}" />
+B . <apex:outputText escape="false" value=" {!$CurrentPage.parameters.userInput}" />
+C . <apex:outputText value="{!£CurrentPage.parameters.userInput}" />
+D . <apex:outputField escape="false" value="{!ctrl.userInput}" />
+Explanation why_correct: Cú pháp B: <apex:outputText escape='false' value=' {!$CurrentPage.parameters.userInput}' />. Thuộc tính escape='false' tắt cơ chế tự động mã hóa ký tự độc hại của Visualforce, kết hợp với việc in trực tiếp dữ liệu thô do người dùng nhập từ URL parameter ($CurrentPage.parameters.userInput) sẽ tạo ra lỗ hổng tấn công Cross-Site Scripting (XSS) cực kỳ nguy hiểm.
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: Thẻ <apex:outputField> mặc định cực kỳ an toàn, tự động mã hóa XSS và tôn trọng phân quyền FLS của người dùng.
+  C: Thẻ <apex:outputText> mặc định không khai báo escape='false' sẽ tự động mã hóa an toàn tất cả ký tự HTML/JS do người dùng nhập.
+  D: Tắt escape trên thẻ <apex:outputField> tuy không khuyến khích nhưng an toàn hơn nhiều so với <apex:outputText> vì outputField chỉ hiển thị dữ liệu của trường đã được lưu trữ và có kiểm duyệt kiểu dữ liệu trong DB.
+============================================================
+ID: 231 | Num: 51
+Question text:
+Which Lightning code segment should be written to declare dependencies on a Lightning component, c:accountList, that is used in a Visualforce page?
+A.
+<aura:application access="GLOBAL">
+<aura:dependency resource="c:accountList"/>
+</aura:application>
+B.
+<aura:application access="GLOBAL" extends="ltng:outApp">
+<aura:dependency resource="c:accountList"/>
+</aura:application>
+C.
+<aura:component access="GLOBAL">
+<aura:dependency resource="c:accountList">
+</aura:component>
+D.
+<aura:component access="GLOBAL" extends="ltng:outApp">
+<aura:dependency resource="c:accountList"/>
+</aura:component>
+Explanation why_correct: Cú pháp B: <aura:application access='GLOBAL' extends='ltng:outApp'> <aura:dependency resource='c:accountList'/> </aura:application>. Để chạy được Lightning Out (nhúng component Lightning vào trang Visualforce hoặc app ngoài), bắt buộc phải tạo một standalone Aura App dùng từ khóa extends='ltng:outApp' và khai báo phụ thuộc bằng thẻ <aura:dependency>.
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: Thiếu thuộc tính extends='ltng:outApp' làm ứng dụng độc lập thông thường, không thể kích hoạt được chế độ kết nối Lightning Out.
+  C: Thẻ <aura:component> cấm khai báo thuộc tính extends='ltng:outApp' và không thể đóng vai trò làm app cầu nối cho Lightning Out.
+  D: Tương tự C, Aura component không hỗ trợ làm app container kết nối cho Lightning Out.
+============================================================
+ID: 236 | Num: 56
+Question text:
+A developer must create a DrawList class that provides capabilities defined in the Sortable and Drawable interfaces.
+public interface Sortable{
+void sort();
+}
+public interface Drawable{
+void draw();
+}
+Which is the correct implementation?
+A.
+public class DrawList implements Sortable, implements Drawable{
+public void sort(){ /*implementation*/}
+public void draw(){ /*implementation*/}
+}
+B.
+public class DrawList implements Sortable, Drawable{
+public void sort(){ /*implementation*/}
+public void draw(){ /*implementation*/}
+}
+C.
+public class DrawList extends Sortable, extends Drawable{
+public void sort(){ /*implementation*/}
+public void draw(){ /*implementation*/}
+}
+D.
+public class DrawList extends Sortable, Drawable {
+public void sort(){ /*implementation*/}
+public void draw(){ /*implementation*/}
+}
+Explanation why_correct: Cú pháp B: 'public class DrawList implements Sortable, Drawable'. Trong Apex, một lớp thông thường có thể hiện thực hóa nhiều interface cùng lúc bằng cách liệt kê tên các interface ngăn cách nhau bằng dấu phẩy sau một từ khóa 'implements' duy nhất.
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: Sử dụng lặp lại từ khóa 'implements' hai lần độc lập là sai cú pháp biên dịch nghiêm trọng.
+  C: Dùng từ khóa 'extends' đối với Interface là hoàn toàn sai, extends chỉ dùng khi một class kế thừa class khác.
+  D: Tương tự C, không được phép extends interface trực tiếp ở khai báo class.
+============================================================
+ID: 240 | Num: 2
+Question text:
+A developer has the controller class below.
+Public with sharing class myFooController{
+public integer prop{get; private set;}
+}
+Which code block will run successfully in an execute anonymous window?
+A.
+myFooController m = new myFooController();
+System.assert(m.prop != null);
+B.
+myFooController m = new myFooController();
+System.assert(m.prop == 0);
+C.
+myFooController m = new myFooController();
+System.assert(m.prop == null);
+D.
+myFooController m = new myFooController();
+System.assert(m.prop == 1);
+Explanation why_correct: Khối lệnh C: myFooController m = new myFooController(); System.assert(m.prop == null);. Vì thuộc tính 'prop' kiểu Integer không được gán bất kỳ giá trị khởi tạo nào trong class, nên theo quy định mặc định của Apex, nó sẽ tự động nhận giá trị null.
+Explanation why_wrong keys: ['A', 'B', 'D']
+  A: Báo lỗi AssertException vì prop đang là null chứ không phải khác null.
+  B: Báo lỗi assert vì prop là null chứ không phải bằng 0.
+  D: Báo lỗi assert vì prop là null chứ không phải bằng 1.
+============================================================
+ID: 290 | Num: 52
+Question text:
+A developer must implement a CheckPaymentProcessor class that provides check processing payment capabilities that adhere to what is defined for payments in the PaymentProcessor interface.
+public interface PaymentProcessor {
+void pay(Decimal amount);
+}
+Which is the correct implementation to use the PaymentProcessor interface class?
+A.
+public class CheckPaymentProcessor implements PaymentProcessor{
+public void pay(Decimal amount);
+}
+B.
+public class CheckPaymentProcessor implements PaymentProcessor{
+public void pay(Decimal amount){}
+}
+C.
+public class CheckPaymentProcessor extends PaymentProcessor{
+public void pay(Decimal amount){}
+}
+D.
+public class CheckPaymentProcessor extends PaymentProcessor{
+public void pay(Decimal amount);
+}
+Explanation why_correct: Cú pháp B: public class CheckPaymentProcessor implements PaymentProcessor { public void pay(Decimal amount){} }. Class con bắt buộc dùng từ khóa 'implements' và phải viết phần thân hàm cụ thể chứa cặp dấu ngoặc nhọn {} để hiện thực hóa phương thức.
+Explanation why_wrong keys: ['A', 'C', 'D']
+  A: Hàm pay kết thúc bằng dấu chấm phẩy mà không có ngoặc nhọn chỉ được dùng ở định nghĩa Interface, dùng ở class thường sẽ bị lỗi biên dịch.
+  C: Sử dụng từ khóa 'extends' đối với Interface là hoàn toàn sai cú pháp lập trình.
+  D: Sai cú pháp vì vừa dùng từ khóa extends vừa thiếu cặp dấu ngoặc nhọn thân hàm.
+============================================================
+ID: 343 | Num: 47
+Question text:
+The following Apex method is part of the ContactService class that is called from a trigger:
+public static void setBusinessUnitToEMEA(Contact thisContact){
+thisContact.Business_Unit__c = 'EMEA';
+update thisContact;
+}
+How should the developer modify the code to ensure best practices are met?
+A.
+Public void setBusinessUnitToEMEA(List<Contact> contatcs){
+contacts[0].Business_Unit__c = 'EMEA' ;
+update contacts[0];
+}
+B.
+Public static void setBusinessUnitToEMEA(Contact thisContact){
+List<Contact> contacts = new List<Contact>();
+contacts.add(thisContact.Business_Unit__c = 'EMEA');
+update contacts;
+}
+C.
+Public static void setBusinessUnitToEMEA(List<Contact> contacts){
+for(Contact thisContact : contacts){
+thisContact.Business_Unit__c = 'EMEA' ;
+update contacts[0];
+}
+}
+D.
+Public static void setBusinessUnitToEMEA(List<Contact> contacts){
+for(Contact thisContact : contacts) {
+thisContact.Business_Unit__c = 'EMEA' ;
+}
+update contacts;
+}
+Explanation why_correct: Cú pháp D: Public static void setBusinessUnitToEMEA(List<Contact> contacts) { for(Contact thisContact : contacts) { thisContact.Business_Unit__c = 'EMEA' ; } update contacts; }. Phương thức nhận tham số là danh sách List<Contact> để xử lý bulkified và đưa câu lệnh DML update ra NGOÀI vòng lặp for để tránh đụng trần 150 DML limit.
+Explanation why_wrong keys: ['A', 'B', 'C']
+  A: Sai vì chỉ xử lý phần tử đầu tiên của danh sách (contacts[0]) và thực hiện DML đơn lẻ, làm mất đi tính xử lý hàng loạt.
+  B: Cú pháp gán trị chèn vào list sai ngữ pháp nghiêm trọng.
+  C: Vẫn giữ nguyên câu lệnh DML update bên trong thân vòng lặp for (update contacts[0]), gây nguy cơ crash DML Limit cực cao.

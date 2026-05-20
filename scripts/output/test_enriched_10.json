@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "vi_question": "Hai thành phần nào có thể được triển khai bằng Metadata API? (Chọn hai.)",
+    "why_correct": "Lead Conversion Settings và Case Settings là các loại metadata cấu hình hệ thống quan trọng trong Salesforce. Chúng định nghĩa cách các Lead được chuyển đổi thành Account, Contact, Opportunity và các thiết lập chung cho Case management. Vì là cấu hình hệ thống, chúng có thể được quản lý và triển khai qua Metadata API để đảm bảo tính nhất quán giữa các môi trường phát triển và sản xuất.",
+    "why_wrong": {
+      "B": "Mặc dù là một tính năng cấu hình quan trọng, Web-to-Case không được hỗ trợ triển khai trực tiếp qua Metadata API. Cấu hình của nó thường được thực hiện thủ công trong giao diện người dùng Salesforce.",
+      "C": "Tương tự như Web-to-Case, Web-to-Lead cũng không phải là một loại metadata có thể triển khai bằng Metadata API. Bạn cần cấu hình nó trực tiếp trong Setup của Salesforce."
+    },
+    "tip": "Các loại 'Settings' như Lead Conversion Settings, Case Settings thường deploy được qua Metadata API. Web-to-Case và Web-to-Lead thì không."
+  },
+  {
+    "id": 2,
+    "vi_question": "Một developer đã tạo một ứng dụng quản lý đơn hàng tùy chỉnh sử dụng một Apex class. Đơn hàng được biểu diễn bởi một Order object và một OrderItem object có mối quan hệ master-detail với Order. Trong quá trình xử lý đơn hàng, một đơn hàng có thể được chia thành nhiều đơn hàng. Developer nên làm gì để cho phép code của họ di chuyển một số OrderItem records hiện có sang một Order record mới?",
+    "why_correct": "Trong mối quan hệ master-detail, theo mặc định, bạn không thể thay đổi parent record của một detail record sau khi nó đã được tạo. Để cho phép di chuyển các OrderItem records hiện có từ một Order sang một Order khác (tức là reparenting), developer cần chọn tùy chọn 'Allow reparenting' trên trường mối quan hệ master-detail của OrderItem. Điều này cho phép thay đổi parent của detail record, đáp ứng yêu cầu chia tách đơn hàng.",
+    "why_wrong": {
+      "B": "Thay đổi mối quan hệ master-detail thành external lookup relationship không giải quyết được vấn đề reparenting mà thay vào đó sẽ thay đổi hoàn toàn bản chất của mối quan hệ, thường dùng để liên kết với dữ liệu bên ngoài Salesforce.",
+      "C": "Thêm `without sharing` vào khai báo Apex class chỉ ảnh hưởng đến việc thực thi các quy tắc chia sẻ (sharing rules) của người dùng trong code, nó không liên quan đến khả năng cấu trúc của việc thay đổi parent trong mối quan hệ master-detail.",
+      "D": "Tạo một junction object giữa OrderItem và Order là để thiết lập mối quan hệ many-to-many, trong khi ở đây đã có mối quan hệ one-to-many (master-detail) và vấn đề là cần cho phép reparenting trong mối quan hệ đó."
+    },
+    "tip": "Để di chuyển detail records giữa các master records trong master-detail relationship, hãy chọn 'Allow reparenting' trên trường mối quan hệ."
+  },
+  {
+    "id": 3,
+    "vi_question": "Một nhà phát triển đang triển khai một Apex class cho một hệ thống tài chính. Trong class này, các biến 'creditAmount' và 'debitAmount' không được phép thay đổi sau khi một giá trị được gán. Bằng hai cách nào nhà phát triển có thể khai báo các biến để đảm bảo giá trị của chúng chỉ có thể được gán một lần? (Chọn hai.)",
+    "why_correct": "Từ khóa `final` trong Apex được sử dụng để khai báo một biến mà giá trị của nó chỉ có thể được gán một lần duy nhất. Sau khi được gán, giá trị này không thể thay đổi. Biến `final` có thể được khởi tạo ngay tại thời điểm khai báo hoặc trong constructor của class (đối với biến instance).",
+    "why_wrong": {
+      "A": "Từ khóa `static` chỉ định biến thuộc về class chứ không phải instance, nhưng không ngăn cản việc gán lại giá trị cho biến đó sau khi khởi tạo. `static` initializer chỉ là nơi khởi tạo ban đầu.",
+      "D": "Biến `static` thuộc về class và được khởi tạo khi class được tải, không phải trong constructor. Constructor dùng để khởi tạo biến instance. Hơn nữa, `static` không đảm bảo biến chỉ được gán một lần."
+    },
+    "tip": "Biến chỉ gán một lần? Dùng `final`. Khởi tạo khi khai báo hoặc trong constructor."
+  },
+  {
+    "id": 4,
+    "vi_question": "Ba công nghệ web nào có thể được tích hợp vào một trang Visualforce? (Chọn ba.)",
+    "why_correct": "Các trang Visualforce được render thành HTML trên trình duyệt, cho phép chúng ta sử dụng các công nghệ web tiêu chuẩn phía client. HTML cung cấp cấu trúc, CSS định dạng giao diện, và JavaScript thêm tương tác động. Đây là ba thành phần cơ bản của mọi ứng dụng web hiện đại và hoàn toàn tương thích với Visualforce.",
+    "why_wrong": {
+      "C": "Java là một ngôn ngữ lập trình phía server và không thể được viết hoặc tích hợp trực tiếp vào mã client-side của một trang Visualforce. Mặc dù Salesforce được xây dựng bằng Java, bạn không thể nhúng code Java vào Visualforce.",
+      "D": "PHP cũng là một ngôn ngữ lập trình phía server và không phải là công nghệ được hỗ trợ để tích hợp trực tiếp vào client-side của Visualforce. Visualforce tập trung vào việc sử dụng Apex cho logic phía server."
+    },
+    "tip": "Visualforce là HTML, CSS, JavaScript. Không phải server-side languages như Java hay PHP."
+  },
+  {
+    "id": 5,
+    "vi_question": "Phép gán Apex nào sau đây là hợp lệ?",
+    "why_correct": "Trong Apex, việc gán một giá trị kiểu `Integer` cho một biến kiểu `Double` là hợp lệ. Đây là một phép chuyển đổi mở rộng (widening conversion), nơi kiểu dữ liệu `Double` có thể chứa tất cả các giá trị của `Integer` mà không mất độ chính xác. Apex cho phép các phép chuyển đổi mở rộng ngầm định (implicit widening conversions).",
+    "why_wrong": {
+      "A": "Biểu thức `5*1.0` cho kết quả là một giá trị `Double` (`5.0`). Apex không cho phép gán một giá trị `Double` trực tiếp vào một biến `Integer` vì đây là một phép chuyển đổi thu hẹp (narrowing conversion) có thể gây mất dữ liệu.",
+      "B": "`5.0` là một literal kiểu `Double`. Apex không cho phép gán một giá trị `Double` trực tiếp vào một biến `Integer` mà không có ép kiểu tường minh (explicit casting).",
+      "D": "Apex không có kiểu dữ liệu nguyên thủy `Float`. Thay vào đó, Apex sử dụng `Double` cho số dấu phẩy động 64-bit hoặc `Decimal` cho độ chính xác tùy ý."
+    },
+    "tip": "Apex: Integer sang Double (mở rộng) là hợp lệ. Double sang Integer (thu hẹp) cần ép kiểu. Không có kiểu Float."
+  }
+]

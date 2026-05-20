@@ -1,0 +1,164 @@
+[
+  {
+    "id": 17,
+    "vi_question": "Cho khai báo: Map<ID, Account> accountMap = new Map<ID, Account> ([SELECT Id, Name FROM Account]); Ba cấu trúc vòng lặp Apex nào sau đây là hợp lệ để duyệt qua các phần tử trong collection này? (Chọn 3)",
+    "why_correct": "A: keySet() trả về Set<ID>, nên duyệt bằng biến kiểu ID là chuẩn. B: values() trả về List<Account>, duyệt bằng biến kiểu Account là quá đẹp. C: Vòng lặp for truyền thống dùng chỉ số chạy từ 0 đến size() của map hoàn toàn hợp lệ về mặt cú pháp.",
+    "why_wrong": {
+      "D": "Apex cấm duyệt trực tiếp trên đối tượng Map (accountMap) như một collection. Mày phải gọi keySet() hoặc values().",
+      "E": "keySet() trả về Set<ID>, nhưng biến chạy lại khai báo kiểu Account thì compiler nó đập vào mặt ngay lập tức."
+    },
+    "tip": "Duyệt Map: keySet() cho ID, values() cho sObject. Tuyệt đối không duyệt trực tiếp Map!"
+  },
+  {
+    "id": 21,
+    "vi_question": "Một lập trình viên viết đoạn mã sau:\nList<Account> acc = [Select Id From Account Limit 10];\nDelete acc;\nDatabase.emptyRecyclebin(acc);\nSystem.Debug(Limits.getDMLStatements() +', ' + Limits.getLimitDMLStatements());\nKết quả hiển thị trong debug log là gì?",
+    "why_correct": "Cả hai lệnh 'Delete' và 'Database.emptyRecyclebin()' đều được tính là 1 câu lệnh DML riêng biệt. Do đó Limits.getDMLStatements() trả về 2. Giới hạn tổng số lệnh DML trong 1 transaction đồng bộ là 150.",
+    "why_wrong": {
+      "A": "Sai số lượng lệnh DML đã chạy và sai giới hạn tối đa.",
+      "B": "Sai số lượng lệnh DML đã chạy (lệnh emptyRecyclebin cũng bị tính là DML).",
+      "D": "Sai giới hạn tối đa (150 chứ không phải 200)."
+    },
+    "tip": "DML Limit = 150. Cả 'Delete' và 'emptyRecyclebin' đều ngốn 1 DML statement."
+  },
+  {
+    "id": 22,
+    "vi_question": "Lập trình viên nên thực hiện cách nào để tự động thêm một 'Maintenance Plan' vào mỗi Opportunity có chứa 'Annual Subscription' khi opportunity đó được đóng?",
+    "why_correct": "OpportunityLineItem là sản phẩm trong Opportunity. Để thêm một sản phẩm mới tự động khi Opportunity đóng (sự kiện trên Opportunity), mày phải viết trigger trên Opportunity để chèn bản ghi OpportunityLineItem (D).",
+    "why_wrong": {
+      "A": "Trigger trên OpportunityLineItem không kích hoạt khi Opportunity chính bị đóng.",
+      "B": "Tương tự A, trigger ở con không dùng để lắng nghe sự kiện thay đổi trạng thái ở cha.",
+      "C": "PriceBookEntry định nghĩa giá sản phẩm trong bảng giá, chứ không phải bản ghi sản phẩm của Opportunity."
+    },
+    "tip": "Sự kiện xảy ra ở đâu -> Viết Trigger ở đó. Đóng Opportunity -> Trigger trên Opportunity."
+  },
+  {
+    "id": 25,
+    "vi_question": "Một org có data model gồm object Buyer__c có quan hệ lookup với Region__c, và object Supplier__c cũng có quan hệ lookup với Region__c. Làm thế nào để hiển thị dữ liệu từ các bản ghi Supplier__c liên quan trên một trang Visualforce sử dụng standard controller của Buyer__c?",
+    "why_correct": "Vì Buyer__c và Supplier__c không có quan hệ trực tiếp mà chỉ 'bắc cầu' qua Region__c, standard controller của Buyer không thể tự lấy data của Supplier. Lập trình viên phải dùng Controller Extension viết SOQL để query danh sách Supplier liên quan theo Region (B).",
+    "why_wrong": {
+      "A": "Roll-up summary chỉ dùng cho mối quan hệ Master-Detail, không chơi với quan hệ Lookup.",
+      "C": "Visualforce không cho phép khai báo hai standard controller song song trên cùng một trang.",
+      "D": "Merge field syntax chỉ đi lên từ con đến cha (quan hệ trực tiếp), không đi vòng qua Region rồi xuống Supplier được."
+    },
+    "tip": "Quan hệ bắc cầu / Không trực tiếp -> Phải dùng Controller Extension viết SOQL query."
+  },
+  {
+    "id": 26,
+    "vi_question": "Lập trình viên được yêu cầu tạo một trang Visualforce tùy chỉnh để dùng làm dashboard component. Ba lựa chọn controller nào sau đây là hợp lệ cho trang này? (Chọn 3)",
+    "why_correct": "Để trang Visualforce dùng được làm dashboard component, nó KHÔNG ĐƯỢC PHÉP dùng Standard Controller đơn lẻ (vì dashboard cần hiển thị dữ liệu tổng hợp từ nhiều nguồn). Các tùy chọn hợp lệ là: C (Custom với Extension), D (Không dùng controller), E (Custom Controller).",
+    "why_wrong": {
+      "A": "Dùng Standard Controller thuần túy sẽ khóa trang vào một bản ghi cụ thể, cấm dùng làm Dashboard.",
+      "B": "Tương tự A, Standard Controller có thêm Extension vẫn bị giới hạn bởi record context của Standard Controller."
+    },
+    "tip": "Visualforce Dashboard Component = KHÔNG dùng Standard Controller."
+  },
+  {
+    "id": 27,
+    "vi_question": "Object Job__c là Master, Job_Application__c là Detail. Job_Application__c cũng có quan hệ Master-Detail với Contact. Trên Job__c có trường multi-select picklist Preferred_Locations__c. Recruiters muốn xem Contact Mailing State có khớp với Preferred_Locations__c trên Job_Application__c hay không và phải đồng bộ tự động khi một trong hai thay đổi. Công cụ khai báo nào là tối ưu nhất?",
+    "why_correct": "Yêu cầu đòi hỏi theo dõi thay đổi ở cả hai đầu (Contact hoặc Job) và cập nhật bản ghi trung gian Job_Application__c. Record-triggered flow (C) là công cụ low-code mạnh mẽ nhất hiện nay để xử lý logic đồng bộ phức tạp này.",
+    "why_wrong": {
+      "A": "Apex Trigger giải quyết tốt nhưng tốn công viết code và deploy, không phải công cụ khai báo (declarative) được ưu tiên.",
+      "B": "Process Builder đã bị Salesforce khai tử (deprecated) và hiệu năng kém hơn nhiều so với Flow.",
+      "D": "Formula field không thể tự động so sánh giá trị Mailing State với một trường Multi-select Picklist và giữ đồng bộ hai chiều phức tạp."
+    },
+    "tip": "Đồng bộ phức tạp + Low-code = Record-triggered flow."
+  },
+  {
+    "id": 28,
+    "vi_question": "Một lập trình viên khai báo một class như sau:\npublic class wysiwyg {\n//properties and methods including DML\n}\nCách gọi phương thức nào của class này sẽ tuân thủ OWD và sharing settings của user đang chạy trong Salesforce org?",
+    "why_correct": "Vì class không khai báo từ khóa sharing, mặc định nó sẽ chạy ở 'system mode' (bỏ qua sharing). Tuy nhiên, khi gọi code từ Anonymous Block (B), Salesforce luôn ép buộc tuân thủ quyền hạn và sharing của user đang đăng nhập.",
+    "why_wrong": {
+      "A": "Trigger luôn chạy ở system mode, nên gọi class helper cũng sẽ bỏ qua sharing rules.",
+      "C": "Visualforce controller chạy ở system mode mặc định, trừ khi class controller khai báo 'with sharing'.",
+      "D": "API call từ hệ thống ngoài vào Salesforce chạy với ngữ cảnh tích hợp, mặc định cũng bỏ qua sharing nếu class không khai báo rõ ràng."
+    },
+    "tip": "Execute Anonymous = Luôn tuân thủ quyền hạn của User đang đăng nhập."
+  },
+  {
+    "id": 29,
+    "vi_question": "Universal Containers sử dụng một ứng dụng quản lý đơn hàng đơn giản. Trên OpportunityLineItem (sản phẩm), tổng tiền được tính bằng cách nhân đơn giá với số lượng. Có quan hệ Master-Detail giữa Opportunity (Order) và OpportunityLineItem. Cách tốt nhất để tính tổng tiền của tất cả các dòng sản phẩm lên Opportunity là gì?",
+    "why_correct": "Vì mối quan hệ là Master-Detail, sử dụng Roll-Up Summary field (B) là giải pháp 'chân ái' nhất: không cần viết code, cực kỳ tối ưu, tự động cập nhật real-time và đúng chuẩn Salesforce Best Practice.",
+    "why_wrong": {
+      "A": "Hệ thống đã có sẵn tính năng Roll-Up Summary field rồi, không cần cài thêm app ngoài làm gì cho mệt.",
+      "C": "Process Builder không hỗ trợ tính toán tổng hợp (SUM, COUNT) trên danh sách con một cách trực tiếp.",
+      "D": "Apex Trigger hoạt động tốt nhưng viết code cho một tính năng đã có sẵn no-code là vi phạm nguyên tắc tối ưu."
+    },
+    "tip": "Master-Detail + Sum/Count lên Cha = Roll-Up Summary Field."
+  },
+  {
+    "id": 31,
+    "vi_question": "Hai phát biểu nào sau đây là đúng về mã Apex được thực thi trong Anonymous Block? (Chọn 2)",
+    "why_correct": "B: Code chạy hoàn toàn dưới quyền hạn và phân quyền (Sharing/FLS/CRUD) của user đang đăng nhập. E: Mọi thao tác DML thành công trong Anonymous Block sẽ được commit vĩnh viễn vào database (không tự rollback như unit test).",
+    "why_wrong": {
+      "A": "System.runAs() chỉ dùng được trong unit test class, cấm dùng trong Anonymous Block.",
+      "C": "Ngược lại, Anonymous Block chạy ở User mode chứ không phải System mode.",
+      "D": "Thao tác DML thành công sẽ được lưu thật, không hề tự động rollback."
+    },
+    "tip": "Anonymous Block = Chạy dưới quyền User đang chạy + Lưu thật vào database."
+  },
+  {
+    "id": 32,
+    "vi_question": "Sử dụng DescribeSObjectResult, phương thức Apex nào giúp lập trình viên xác định xem user hiện tại có quyền chỉnh sửa các bản ghi của một object hay không?",
+    "why_correct": "isUpdateable() (C) là hàm chuẩn của lớp DescribeSObjectResult để kiểm tra xem user hiện tại có quyền Edit (Update) đối với sObject đó hay không.",
+    "why_wrong": {
+      "A": "Hàm canUpdate() không tồn tại trong lớp DescribeSObjectResult.",
+      "B": "Hàm canEdit() cũng là hàng giả tưởng.",
+      "D": "isEditable() nghe rất xuôi tai nhưng thực tế Salesforce dùng thuật ngữ 'Updateable' cho quyền Edit."
+    },
+    "tip": "Quyền Sửa (Edit/Update) trong Apex Describe = isUpdateable()."
+  },
+  {
+    "id": 33,
+    "vi_question": "Cho đoạn code sau:\npublic class MyController {\nprivate Integer recordCount;\n}\nCần làm gì để recordCount có thể được truy cập bởi một class test, nhưng cấm truy cập từ các class thông thường khác?",
+    "why_correct": "Annotation @TestVisible (C) cho phép các class test nhìn thấy và thao tác được với các biến/phương thức private hoặc protected mà vẫn giữ nguyên tính đóng gói bảo mật đối với bên ngoài.",
+    "why_wrong": {
+      "A": "Chuyển sang public sẽ làm lộ biến ra ngoài toàn hệ thống, phá vỡ tính đóng gói.",
+      "B": "SeeAllData liên quan đến việc truy cập dữ liệu bản ghi thật trong Org, không liên quan đến biến private.",
+      "D": "@TestVisible phải gắn trực tiếp lên biến recordCount, gắn lên cấp class MyController là sai cú pháp."
+    },
+    "tip": "Test muốn soi đồ Private -> Gắn @TestVisible."
+  },
+  {
+    "id": 34,
+    "vi_question": "Hai biểu thức khai báo số nào sau đây được biên dịch thành công? (Chọn 2)",
+    "why_correct": "A: Số thập phân literal mặc định được gán rất mượt cho kiểu Double. C: Kiểu Decimal trong Apex cũng chấp nhận gán trực tiếp số thập phân.",
+    "why_wrong": {
+      "B": "Integer chỉ chứa số nguyên, nhét số thập phân 3.14159 vào compiler sẽ báo lỗi.",
+      "D": "Long cũng chỉ chứa số nguyên lớn, không chấp nhận số thập phân literal trực tiếp."
+    },
+    "tip": "Số thập phân -> Gán cho Double hoặc Decimal. Cấm gán cho Integer / Long."
+  },
+  {
+    "id": 36,
+    "vi_question": "Lập trình viên cần tạo class ShippingCalculator không được phép khởi tạo trực tiếp (cannot be instantiated) nhưng phải chứa một phương thức calculate có sẵn mã xử lý mặc định để các class con có thể ghi đè (override). Khai báo nào sau đây là đúng?",
+    "why_correct": "Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).",
+    "why_wrong": {
+      "A": "calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).",
+      "C": "calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.",
+      "D": "Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu."
+    },
+    "tip": "Cấm new (instantiate) -> abstract class. Cho phép con ghi đè -> virtual method."
+  },
+  {
+    "id": 40,
+    "vi_question": "Một Screen Flow gọi một Apex Action để lấy thông tin chi tiết cho nhiều bản ghi Contact, kết quả lưu trong một custom class ContactInfo. Định nghĩa phương thức Apex nào sau đây là đúng tiêu chuẩn?",
+    "why_correct": "Phương thức gắn @InvocableMethod bắt buộc phải là 'static' để Salesforce gọi được trực tiếp. Đồng thời, để hỗ trợ xử lý hàng loạt (bulkified), tham số đầu vào và kiểu trả về phải là List. Do đó, câu D là hoàn toàn chính xác.",
+    "why_wrong": {
+      "A": "Thiếu từ khóa 'static' và tham số đầu vào không phải là List.",
+      "B": "Thiếu từ khóa 'static' (bắt buộc phải có để Flow gọi).",
+      "C": "Tham số đầu vào không ở dạng List, không hỗ trợ bulkification."
+    },
+    "tip": "@InvocableMethod: Luôn có STATIC, input và output luôn ở dạng LIST."
+  },
+  {
+    "id": 43,
+    "vi_question": "Lập trình viên nên sử dụng phương pháp nào để thêm tính năng phân trang (pagination) vào một trang Visualforce?",
+    "why_correct": "StandardSetController (D) là lớp có sẵn cực xịn của Salesforce, cung cấp toàn bộ các hàm phân trang như next(), previous(), setPageSize() giúp lập trình viên code cực nhàn.",
+    "why_wrong": {
+      "A": "StandardController chỉ quản lý duy nhất 1 bản ghi cụ thể, không hỗ trợ danh sách và phân trang.",
+      "B": "Action attribute dùng để gọi method khi trang load, không liên quan phân trang.",
+      "C": "Extensions dùng để mở rộng tính năng chung, không phải class chuyên dụng cho phân trang như StandardSetController."
+    },
+    "tip": "Phân trang (Pagination) trên Visualforce -> StandardSetController."
+  }
+]

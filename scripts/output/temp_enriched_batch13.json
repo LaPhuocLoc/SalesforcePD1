@@ -1,0 +1,163 @@
+[
+  {
+    "id": 311,
+    "vi_question": "Hai điều kiện nào sau đây sẽ kích hoạt (fire) các quy tắc Workflow Rules hoạt động bình thường? (Chọn 2)",
+    "why_correct": "A: Một tiến trình chạy lô Apex Batch thay đổi các giá trị trường. B: Thực hiện cập nhật các bản ghi sử dụng công cụ Bulk API. Cả hai trường hợp này đều thực thi DML update thông thường nên Salesforce sẽ chạy đầy đủ Save Order of Execution bao gồm kích hoạt Workflow Rules.",
+    "why_wrong": {
+      "C": "Chuyển đổi lead sang Person Account nằm trong danh sách cấm tự động hóa, Salesforce chặn không kích hoạt Workflow Rule để tránh xung đột vòng lặp dữ liệu.",
+      "D": "Thay đổi gán Territory của Accounts và Opportunities cũng bị Salesforce loại trừ hoàn toàn khỏi danh sách hành động kích hoạt Workflow Rule."
+    },
+    "tip": "Mẹo thi Workflow: Batch Apex (DML) và Bulk API (DML) -> Vẫn kích hoạt Workflow bình thường. Convert Lead -> Không kích hoạt!"
+  },
+  {
+    "id": 314,
+    "vi_question": "Developer đã tạo một trang Visualforce và một custom controller chứa các hàm xử lý nút bấm nghiệp vụ. Lập trình viên bắt buộc phải làm gì để có thể deploy (triển khai) thành công các thành phần này lên Production?",
+    "why_correct": "Tạo một Test Class kiểm thử bao phủ toàn bộ các dòng mã logic của lớp Custom Controller (D). Đây là điều kiện bắt buộc của Salesforce: mọi Apex Class (bao gồm custom controller) phải có độ phủ code (code coverage) tối thiểu đạt 75% thì mới được phép deploy lên môi trường Production.",
+    "why_wrong": {
+      "A": "Visualforce page chỉ là trang thẻ markup giao diện hiển thị, Salesforce tuyệt đối không yêu cầu viết test class cho bản thân trang Visualforce.",
+      "B": "Không tồn tại khái niệm 'Test Page' để phủ sóng mã nguồn Visualforce.",
+      "C": "Không thể viết 'Test Page' để đo đạc và phủ sóng logic code trong Apex Custom Controller."
+    },
+    "tip": "Deploy lên Production -> Bắt buộc viết TEST CLASS kiểm thử bao phủ Apex Class đạt tối thiểu 75% code coverage!"
+  },
+  {
+    "id": 315,
+    "vi_question": "Universal Containers có một hệ thống quản lý đơn hàng sử dụng trường Order Number để định danh đơn hàng cho khách hàng và nhân viên hỗ trợ. Các bản ghi này sẽ được nạp (import) hàng loạt vào Salesforce. Trường Order Number nên được định nghĩa thế nào trong Salesforce?",
+    "why_correct": "Định nghĩa trường Order Number kiểu Number (hoặc Text) và chọn thuộc tính 'External ID' (C). Vì dữ liệu được import từ hệ thống bên ngoài vào Salesforce, việc cấu hình External ID giúp Salesforce làm khóa đối chiếu để so khớp nạp dữ liệu và liên kết bản ghi chính xác.",
+    "why_wrong": {
+      "A": "Direct Lookup không phải là kiểu trường dữ liệu có sẵn trong Salesforce.",
+      "B": "Lookup field dùng để tạo liên kết quan hệ cha con giữa 2 bảng, không giúp định danh duy nhất bản ghi từ file import ngoài.",
+      "D": "Indirect Lookup dùng cho đối tượng ngoài (External Object) của Salesforce Connect, không phù hợp cho trường hợp nạp dữ liệu vật lý vào Sandbox."
+    },
+    "tip": "Định danh duy nhất bản ghi import từ hệ thống ngoài -> Luôn cấu hình trường là EXTERNAL ID."
+  },
+  {
+    "id": 316,
+    "vi_question": "Trường tiêu chuẩn (standard field) nào bắt buộc phải có giá trị khi khởi tạo một bản ghi Contact mới trong Salesforce?",
+    "why_correct": "LastName (Họ) (A). Ở mức cơ sở dữ liệu hệ thống (Database Layer) của Salesforce, trường LastName là trường bắt buộc (required) duy nhất của đối tượng Contact.",
+    "why_wrong": {
+      "B": "Trường Name là trường ghép tự động giữa FirstName và LastName trên UI, bản thân nó không tồn tại độc lập để bắt buộc nhập.",
+      "C": "AccountId (mã liên kết Account cha) là tùy chọn (optional), người dùng có thể tạo một Contact mồ côi không trực thuộc Account nào.",
+      "D": "FirstName (Tên) là tùy chọn, người dùng hoàn toàn có thể bỏ trống trường này."
+    },
+    "tip": "Trường bắt buộc duy nhất của Contact -> Bắt buộc là LastName!"
+  },
+  {
+    "id": 317,
+    "vi_question": "Developer viết một unit test để xác nhận một custom exception (ngoại lệ tùy chỉnh) hoạt động chính xác trong custom controller, nhưng bài test bị báo FAIL do có lỗi exception thực sự bị ném ra. Lập trình viên nên làm gì để giải quyết vấn đề và test exception đúng cách?",
+    "why_correct": "Bọc khối code test trong khối try-catch để chủ động hứng exception bị ném ra trong test class (A). Việc này giúp ngăn chặn exception làm crash luồng chạy của Test Framework, sau đó dùng System.assert để xác thực loại lỗi ném ra là chính xác.",
+    "why_wrong": {
+      "B": "Khối finally chỉ chạy dọn dẹp tài nguyên ở cuối, không có khả năng hứng và triệt tiêu lỗi crash của Exception.",
+      "C": "Sử dụng allOrNone=false của Database method chỉ áp dụng cho DML chèn bản ghi, không giải quyết được việc hứng ngoại lệ tùy chỉnh ném ra từ logic Apex controller.",
+      "D": "Test.isRunningTest() giúp bỏ qua code khi chạy test, chứ không giúp kiểm tra tính chính xác của logic ném Exception."
+    },
+    "tip": "Kiểm thử ngoại lệ (Test Exception) -> Bắt buộc dùng khối TRY - CATCH trong Test Class để hứng lỗi!"
+  },
+  {
+    "id": 319,
+    "vi_question": "Đoạn code sau được kích hoạt bởi một LWC trong môi trường chứa hơn 2,000 bản ghi Lead: [Code for update in loop]. Giới hạn governor limit nào của Apex transaction sẽ có nguy cơ cao bị vượt quá (exceeded)?",
+    "why_correct": "Tổng số câu lệnh DML được thực thi (Total number of DML statements issued) (B). Salesforce giới hạn nghiêm ngặt mỗi transaction chỉ được thực thi tối đa 150 câu lệnh DML. Do câu lệnh 'update thisLead;' bị đặt bên trong thân vòng lặp for chạy 2000 lần, hệ thống sẽ thực hiện DML 2000 lần dẫn đến crash limit tức thì ở lần chạy thứ 151.",
+    "why_wrong": {
+      "A": "Hệ thống chỉ thực thi duy nhất 1 câu lệnh SOQL query Lead ở vòng lặp for, hoàn toàn không chạm giới hạn 100 SOQL queries.",
+      "C": "Giới hạn tổng số bản ghi DML trong transaction là 10,000 bản ghi, con số 2000 vẫn nằm trong tầm an toàn.",
+      "D": "Giới hạn số bản ghi retrieve từ SOQL là 50,000 bản ghi, con số 2000 vẫn rất nhỏ."
+    },
+    "tip": "Mẹo governor limits: DML nằm trong vòng lặp FOR -> Luôn vượt quá giới hạn DML STATEMENTS (Limit 150 DML)!"
+  },
+  {
+    "id": 320,
+    "vi_question": "Làm thế nào để lập trình viên chủ động cảnh báo người dùng về việc vi phạm giới hạn governor limits SOQL ngay trong một Apex Trigger?",
+    "why_correct": "Sử dụng phương thức Limits.getQueries() để theo dõi lượng SOQL đã nổ và chủ động ném ra thông báo lỗi chặn lại trước khi số lượng SOQL vượt quá giới hạn 100 câu truy vấn (C).",
+    "why_wrong": {
+      "A": "Khi số lượng SOQL đã thực sự vượt quá giới hạn 100, Salesforce sẽ lập tức rollback transaction và kill tiến trình ngay tức khắc, cấm và không thể gửi email hay thực thi thêm bất cứ dòng code nào sau đó.",
+      "B": "PageReference.setRedirect() là hàm điều hướng trang của Visualforce Controller, hoàn toàn cấm sử dụng trong môi trường Apex Trigger.",
+      "D": "ApexPages.Message chỉ dùng hiển thị trên giao diện Visualforce Page, và tương tự câu A, không thể chạy sau khi lỗi LimitException đã nổ ra."
+    },
+    "tip": "Chủ động kiểm soát và ngăn chặn đụng trần SOQL Limits -> Luôn dùng hàm LIMITS.GETQUERIES() để check!"
+  },
+  {
+    "id": 321,
+    "vi_question": "Hai tùy chọn nào sau đây là đúng cú pháp Apex để duyệt qua từng bản ghi Account trong danh sách List<Account> có tên là AccountList? (Chọn 2)",
+    "why_correct": "A: 'for(Account theAccount : AccountList){ }' (Vòng lặp for nâng cao duyệt trực tiếp phần tử). D: 'for(Integer i=0; i < AccountList.Size(); i++){ }' (Vòng lặp for truyền thống duyệt qua chỉ số index).",
+    "why_wrong": {
+      "B": "Thiếu biến khai báo phần tử chạy trong vòng lặp, sai cú pháp biên dịch.",
+      "C": "Khai báo kiểu biến chạy là List L thay vì đối tượng đơn lẻ Account là hoàn toàn sai cú pháp."
+    },
+    "tip": "Duyệt List trong Apex -> Dùng for(Type var : List) hoặc dùng for(Integer i=0; i < List.size(); i++)."
+  },
+  {
+    "id": 322,
+    "vi_question": "Developer đã tạo 3 trường Rollup Summary trên Project__c. Lập trình viên được yêu cầu tạo một trường mới hiển thị tỷ lệ giữa Timesheets bị từ chối và được phê duyệt nhằm giảm thiểu tối đa công sức bảo trì hệ thống. Giải pháp tối ưu là gì?",
+    "why_correct": "Tạo một trường công thức (Formula Field) (C). Việc sử dụng trường công thức giúp hoàn toàn no-code, tự động tính toán tức thì khi các trường Rollup thay đổi và không cần viết mã nguồn hay kiểm thử bảo trì.",
+    "why_wrong": {
+      "A": "Viết trigger Apex tính toán bằng code là giải pháp cồng kềnh, tốn công bảo trì và tốn tài nguyên CPU.",
+      "B": "Record-triggered Flow cũng là giải pháp tự động hóa phức tạp hơn so với trường công thức tự tính toán đơn giản.",
+      "D": "Field Update của Workflow rule đời cũ cồng kềnh và đòi hỏi quy tắc kích hoạt phức tạp hơn nhiều."
+    },
+    "tip": "Tính tỷ lệ dựa trên các trường có sẵn no-code -> Giải pháp tốt nhất luôn là FORMULA FIELD."
+  },
+  {
+    "id": 323,
+    "vi_question": "Ba phát biểu nào sau đây là ĐÚNG khi nói về trường công thức chéo đối tượng (Cross-object formulas) trong Salesforce? (Chọn 3)",
+    "why_correct": "A: Cross-object formulas có khả năng tham chiếu đến các trường thuộc các đối tượng cách xa tối đa lên tới 10 mối quan hệ liên kết (10 relationships away). B: Cross-object formulas hỗ trợ tham chiếu trường chéo qua các mối quan hệ Master-Detail hoặc Lookup. D: Cross-object formulas hiển thị giá trị bình thường trên trang dù người dùng không có quyền truy cập trực tiếp (sharing) vào bản ghi cha hoặc trường gốc.",
+    "why_wrong": {
+      "C": "Trường công thức chéo đối tượng chỉ hỗ trợ đi ngược lên cha (parent), tuyệt đối cấm và không thể tham chiếu đi xuống danh sách con để thực hiện hàm trung bình AVERAGE.",
+      "E": "Salesforce cấm không cho phép tham chiếu trường công thức chéo đối tượng làm bộ lọc hoặc giá trị cộng dồn trong các trường Roll-up Summary."
+    },
+    "tip": "Đặc tính Cross-Object Formula -> Tham chiếu tối đa 10 cấp quan hệ đi lên Cha (Lookup/Master-Detail) + Expose được data bỏ qua Sharing User."
+  },
+  {
+    "id": 324,
+    "vi_question": "Một ứng dụng quản lý thời gian yêu cầu hiển thị tổng số giờ của tất cả các bản ghi Timecard Entry con lên bản ghi Timecard cha. Timecard Entry liên kết với Timecard bằng quan hệ Master-Detail. Lập trình viên nên làm gì để giải quyết yêu cầu hoàn toàn bằng cấu hình khai báo (declarative)?",
+    "why_correct": "Tạo một trường Roll-Up Summary trên đối tượng cha Timecard thực hiện tính SUM số giờ làm của các bản ghi Timecard Entry con (B). Đây là cách giải quyết no-code chuẩn mực và tối ưu hiệu năng tuyệt đối.",
+    "why_wrong": {
+      "A": "Sử dụng trang Visualforce đòi hỏi phải viết code và chỉ hiển thị trên trang đó chứ không lưu trữ giá trị vào database để báo cáo.",
+      "C": "Process Builder không hỗ trợ trực tiếp hàm cộng dồn SUM các bản ghi con ngược lên cha một cách mượt mà.",
+      "D": "Apex trigger đòi hỏi phải viết code lập trình và viết test class phủ 75%, đi ngược lại yêu cầu giải quyết bằng cấu hình khai báo (declarative)."
+    },
+    "tip": "Tính tổng bản ghi con lên cha ở mối quan hệ Master-Detail -> Luôn dùng ROLL-UP SUMMARY."
+  },
+  {
+    "id": 325,
+    "vi_question": "Thành phần nào sau đây có thể được sử dụng để ghi đè (Override) nút bấm Edit tiêu chuẩn của Account trong môi trường Lightning Experience?",
+    "why_correct": "Sử dụng một Lightning Component (Aura Component hoặc LWC được bọc trong Aura) (D). Salesforce cho phép ghi đè các hành động chuẩn của đối tượng bằng Lightning Component để tùy biến giao diện và logic chỉnh sửa dữ liệu của người dùng.",
+    "why_wrong": {
+      "A": "Lightning action (Quick Action) chỉ là nút bấm thêm hành động nhanh trên UI, không thể dùng để ghi đè nút Edit tiêu chuẩn của hệ thống.",
+      "B": "Lightning Flow chỉ dùng để chạy luồng quy trình, không thể gán trực tiếp làm component ghi đè nút Edit trong Lightning chuẩn.",
+      "C": "Lightning Page đại diện cho trang hoàn chỉnh (Home Page/Record Page) chứ không phải linh kiện con có thể dùng để ghi đè nút Edit."
+    },
+    "tip": "Ghi đè nút chuẩn (Override standard button) trong Lightning Experience -> Chỉ dùng LIGHTNING COMPONENT."
+  },
+  {
+    "id": 326,
+    "vi_question": "Yêu cầu: Cho phép user điền form trên Account để tạo bản ghi mới. Form phải hiển thị các trường khác nhau tùy theo vai trò (job role) của user. Tính năng này chỉ hiển thị cho một nhóm nhỏ người dùng đặc biệt. Lập trình viên nên làm ba việc gì để đáp ứng yêu cầu no-code tối ưu nhất? (Chọn 3)",
+    "why_correct": "C: Tạo một Dynamic Form (để kiểm soát hiển thị trường theo điều kiện vai trò). D: Thêm một Dynamic Action vào trang chi tiết Account record page (để hiển thị nút bấm gọi form dựa trên điều kiện đặc biệt). E: Tạo một Custom Permission dành riêng cho nhóm người dùng đó (để làm điều kiện phân quyền hiển thị nút).",
+    "why_wrong": {
+      "A": "Page Layout truyền thống không hỗ trợ cấu hình động hiển thị trường linh hoạt theo vai trò người dùng mượt mà bằng Dynamic Form.",
+      "B": "Tạo LWC đòi hỏi phải viết code lập trình phức tạp, đi ngược lại xu hướng sử dụng tính năng no-code hiện đại có sẵn của Salesforce."
+    },
+    "tip": "Ẩn hiện trường/nút động theo vai trò & quyền hạn no-code -> Dùng bộ ba DYNAMIC FORM + DYNAMIC ACTION + CUSTOM PERMISSION."
+  },
+  {
+    "id": 327,
+    "vi_question": "Trong quá trình viết class Apex, lập trình viên muốn đảm bảo toàn bộ các tính năng được phát triển hoạt động chính xác và trơn tru theo đúng tài liệu đặc tả yêu cầu nghiệp vụ. Lập trình viên nên áp dụng phương pháp kiểm thử nào?",
+    "why_correct": "Xây dựng một lớp kiểm thử (Test Class) chuyên biệt để chạy kiểm tra toàn bộ logic nghiệp vụ và bấm chạy test trực tiếp trong Developer Console hoặc qua Setup (C). Khối kiểm thử sẽ dùng System.assert để xác thực kết quả chạy thực tế trùng khớp với mong đợi.",
+    "why_wrong": {
+      "A": "try/catch chỉ giúp bắt ngoại lệ tại runtime để chương trình không bị crash đột ngột, chứ không có tính năng tự động hóa đo đạc độ chính xác của logic nghiệp vụ.",
+      "B": "Chạy code trong cửa sổ Execute Anonymous là phương pháp test thủ công một lần, không thể tái sử dụng để làm quy trình kiểm thử tự động của hệ thống.",
+      "D": "Savepoint và rollback dùng để quản lý giao dịch DB (transaction) rollback khi gặp lỗi, không phải công cụ kiểm thử đặc tả."
+    },
+    "tip": "Đảm bảo code Apex chạy đúng theo đặc tả nghiệp vụ -> Xây dựng hệ thống tự động hóa qua TEST CLASS."
+  },
+  {
+    "id": 328,
+    "vi_question": "Developer muốn tìm kiếm và lấy ra Id và Name của tất cả các bản ghi Leads, Accounts, và Contacts có chứa tên công ty 'Universal Containers'. Cú pháp truy vấn nào là đúng?",
+    "why_correct": "Cú pháp SOSL B: FIND 'Universal Containers' IN Name Fields RETURNING lead(id, name), account(Id, name), contact(Id, name). Đây là truy vấn tìm kiếm toàn văn chuẩn của Salesforce, hỗ trợ quét từ khóa trên trường Name và trả về danh sách đối tượng mong muốn.",
+    "why_wrong": {
+      "A": "Mệnh đề 'IN CompanyName Fields' là sai cú pháp nghiêm trọng, Salesforce chỉ hỗ trợ các nhóm tìm kiếm chuẩn như Name Fields, All Fields, Email Fields, Phone Fields.",
+      "C": "Truy vấn SOQL cấm không cho phép khai báo nhiều bảng độc lập ở mệnh đề FROM (FROM Lead, Account, Contact là sai ngữ pháp SOQL hoàn toàn).",
+      "D": "Tương tự C, SOQL cấm truy vấn kết hợp nhiều bảng độc lập không cùng mối quan hệ trực hệ."
+    },
+    "tip": "SOSL syntax: FIND 'Từ khóa' IN Name Fields RETURNING object1(fields), object2(fields)... (Không bao giờ dùng SOQL FROM nhiều bảng độc lập!)."
+  }
+]

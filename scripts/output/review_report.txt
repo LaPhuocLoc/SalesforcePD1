@@ -1,0 +1,548 @@
+=== REVIEW REPORT ===
+MD source questions: 349
+JSON questions: 349
+Successfully matched: 98
+Issues found: 251
+
+--- CORRECT_ANSWER_MISMATCH (251 issues) ---
+  ID 1 (Num 1): JSON correct=['A', 'D'], MD correct=['D']
+    Q: Which two components are available to deploy using the Metadata API? (Choose two.)
+  ID 2 (Num 2): JSON correct=['A'], MD correct=['C', 'D']
+    Q: A developer created a custom order management app that uses an Apex class. The order is represented 
+  ID 3 (Num 3): JSON correct=['B', 'C'], MD correct=['B']
+    Q: A developer is implementing an Apex class for a financial system. Within the class, the variables 'c
+  ID 4 (Num 4): JSON correct=['A', 'B', 'E'], MD correct=['A', 'B']
+    Q: Which three web technologies can be integrated into a Visualforce page? (Choose three.)
+  ID 5 (Num 5): JSON correct=['C'], MD correct=['B']
+    Q: Which is a valid Apex assignment?
+  ID 6 (Num 6): JSON correct=['A', 'B'], MD correct=['B']
+    Q: A developer completed modifications to a customized feature that is comprised of two elements: 1. Ap
+  ID 7 (Num 7): JSON correct=['C'], MD correct=['A', 'B', 'D']
+    Q: How many levels of child records can be returned in a single SOQL query from one parent object?
+  ID 8 (Num 8): JSON correct=['A', 'B'], MD correct=['D']
+    Q: When an Account's custom picklist field called Customer Sentiment is changed to a value of 'Confused
+  ID 9 (Num 9): JSON correct=['D'], MD correct=['A', 'B', 'D']
+    Q: Which statement results in an Apex compiler error?
+  ID 10 (Num 10): JSON correct=['C'], MD correct=['B', 'C', 'D']
+    Q: A developer has a Visualforce page and custom controller to save Account records. The developer want
+  ID 11 (Num 11): JSON correct=['C', 'D'], MD correct=['C', 'D', 'E']
+    Q: A developer encounters APEX heap limit errors in a trigger. Which two methods should the developer u
+  ID 12 (Num 12): JSON correct=['A', 'B'], MD correct=['A', 'B', 'E']
+    Q: Which two are phases in the Salesforce Application Event propagation framework? (Choose two.)
+  ID 13 (Num 13): JSON correct=['D'], MD correct=['A']
+    Q: A custom object Trainer__c has a lookup field to another custom object Gym__c. Which SOQL query will
+  ID 15 (Num 15): JSON correct=['B', 'C'], MD correct=['A', 'B']
+    Q: Where are two locations a developer can look to find information about the status of asynchronous or
+  ID 17 (Num 17): JSON correct=['B', 'C'], MD correct=['A', 'C', 'E']
+    Q: Given: Map<ID, Account> accountMap = new Map<ID, Account> ([SELECT Id, Name FROM Account]); What are
+  ID 18 (Num 18): JSON correct=['C'], MD correct=['D']
+    Q: What is the order of operations when a record is saved in Salesforce?
+  ID 19 (Num 19): JSON correct=['A', 'C', 'E'], MD correct=['C']
+    Q: Which three options can be accomplished with formula fields? (Choose three.)
+  ID 20 (Num 20): JSON correct=['B', 'D'], MD correct=['A']
+    Q: A developer is tasked to perform a security review of the ContactSearch Apex class that exists in th
+  ID 21 (Num 21): JSON correct=['C'], MD correct=['A']
+    Q: A developer writes the following code:
+List<Account> acc = [Select Id From Account Limit 10];
+Delete
+  ID 22 (Num 22): JSON correct=['D'], MD correct=['C']
+    Q: Which approach should a developer take to automatically add a 'Maintenance Plan' to each Opportunity
+  ID 24 (Num 24): JSON correct=['C', 'D'], MD correct=['C']
+    Q: Management asked for opportunities to be automatically created for accounts with annual revenue grea
+  ID 25 (Num 25): JSON correct=['B'], MD correct=['A', 'D']
+    Q: An org has a data model with a Buyer__c object that has a lookup relationship to Region__c and a Sup
+  ID 26 (Num 26): JSON correct=['C', 'D', 'E'], MD correct=['C']
+    Q: A developer is asked to create a custom Visualforce page that will be used as a dashboard component.
+  ID 27 (Num 27): JSON correct=['C'], MD correct=['A', 'B', 'D']
+    Q: Universal Hiring is using Salesforce to capture job applications. A salesforce administrator created
+  ID 29 (Num 29): JSON correct=['B'], MD correct=['D']
+    Q: Universal Containers uses a simple Order Management app. On the Order Lines, the order line total is
+  ID 30 (Num 30): JSON correct=['D'], MD correct=['C', 'D', 'E']
+    Q: Given the following Apex statement: Account myAccount = [SELECT Id, Name FROM Account]; What occurs 
+  ID 31 (Num 31): JSON correct=['B', 'E'], MD correct=['C']
+    Q: Which two statements are true about Apex code executed in Anonymous Blocks? (Choose two.)
+  ID 32 (Num 32): JSON correct=['C'], MD correct=['B']
+    Q: Using DescribeSObjectResult, which Apex method can a developer use to determine if the current user 
+  ID 34 (Num 34): JSON correct=['A', 'C'], MD correct=['D']
+    Q: Which two number expressions evaluate correctly? (Choose two.)
+  ID 35 (Num 35): JSON correct=['A', 'C'], MD correct=['B', 'C']
+    Q: Assuming that name is a String obtained by an a Visualforce page.
+which two SOQL Queries performed a
+  ID 36 (Num 36): JSON correct=['A'], MD correct=['B', 'D']
+    Q: A developer must create a ShippingCalculator class that cannot be instantiated and must include a wo
+  ID 37 (Num 37): JSON correct=['B'], MD correct=['C']
+    Q: Given the following Anonymous block:
+List<Case> casesToUpdate = new List<Case>();
+for(Case thisCase 
+  ID 38 (Num 38): JSON correct=['C'], MD correct=['B']
+    Q: Which process automation should be used to send an outbound message without using Apex code?
+  ID 39 (Num 39): JSON correct=['B'], MD correct=['D']
+    Q: A developer has an Apex controller for a Visualforce page that takes an ID as a URL parameter. How s
+  ID 40 (Num 40): JSON correct=['B', 'C'], MD correct=['C']
+    Q: A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored 
+  ID 41 (Num 41): JSON correct=['B'], MD correct=['B', 'D']
+    Q: Which aspect of Apex programming is limited due to multitenancy?
+  ID 42 (Num 42): JSON correct=['B'], MD correct=['A', 'D']
+    Q: A developer is migrating a Visualforce page into a Lightning web component. The Visualforce page sho
+  ID 43 (Num 43): JSON correct=['D'], MD correct=['A']
+    Q: Which approach should a developer use to add pagination to a Visualforce page?
+  ID 44 (Num 44): JSON correct=['C'], MD correct=['A']
+    Q: Which message is logged by the code below?
+  ID 46 (Num 46): JSON correct=['A', 'C'], MD correct=['D']
+    Q: What are two ways that a controller and extension can be specified for a custom object named “Notice
+  ID 47 (Num 47): JSON correct=['C'], MD correct=[]
+    Q: A developer creates a custom controller and custom Visualforce page by using the code block below.
+p
+  ID 49 (Num 49): JSON correct=['C', 'D'], MD correct=['A', 'B', 'D']
+    Q: Which two settings must be defined in order to update a record of a junction object? (Choose two.)
+  ID 51 (Num 51): JSON correct=['B'], MD correct=['A']
+    Q: Which declarative process automation feature supports iterating over multiple records?
+  ID 52 (Num 52): JSON correct=['A', 'B'], MD correct=['A']
+    Q: The Account object in an organization has a master detail relationship to a child object called Bran
+  ID 53 (Num 53): JSON correct=['D'], MD correct=['A', 'C', 'E']
+    Q: How can a developer set up a debug log on a specific user?
+  ID 54 (Num 54): JSON correct=['D'], MD correct=['C', 'D']
+    Q: A developer has an integer variable called maxAttempts. The developer needs to ensure that once maxA
+  ID 55 (Num 55): JSON correct=['B'], MD correct=['A', 'D']
+    Q: Universal Containers (UC) decided it will not send emails to support personnel directly from Salesfo
+  ID 57 (Num 57): JSON correct=['C'], MD correct=['A', 'D', 'E']
+    Q: A developer must create a Lightning component that allows users to input Contact record information 
+  ID 58 (Num 58): JSON correct=['B', 'C'], MD correct=['A', 'C']
+    Q: Which two statements are acceptable for a developer to use inside procedural loops? (Choose two.)
+  ID 59 (Num 59): JSON correct=['C', 'D'], MD correct=['C']
+    Q: A developer needs to display all of the available fields for an object. In which two ways can the de
+  ID 60 (Num 60): JSON correct=['D'], MD correct=['A', 'C']
+    Q: A newly hired developer discovers that there are multiple triggers on the case object. What should t
+  ID 62 (Num 2): JSON correct=['B'], MD correct=['C', 'D']
+    Q: When a user edits the Postal Code on an Account, a custom Account text field named 'Timezone' must b
+  ID 63 (Num 3): JSON correct=['A'], MD correct=['B']
+    Q: A team of many developers work in their own individual orgs that have the same configuration as the 
+  ID 64 (Num 4): JSON correct=['A', 'D'], MD correct=['A', 'B']
+    Q: Universal Containers uses Service Cloud with a custom field, Stage__c, on the Case object. Managemen
+  ID 65 (Num 5): JSON correct=['D'], MD correct=['B']
+    Q: A developer observes that an Apex test method fails in the Sandbox. To identify the issue, the devel
+  ID 66 (Num 6): JSON correct=['C'], MD correct=['B']
+    Q: A developer is writing tests for a class and needs to insert records to validate functionality. Whic
+  ID 67 (Num 7): JSON correct=['A'], MD correct=['A', 'B', 'D']
+    Q: In the following example, which sharing context myMethod execute when it is invoked?
+public Class my
+  ID 68 (Num 8): JSON correct=['C'], MD correct=['D']
+    Q: A developer created a new after insert trigger on the Lead object that creates Task records for each
+  ID 69 (Num 9): JSON correct=['C'], MD correct=['A', 'B', 'D']
+    Q: A developer needs to join data received from an integration with an external system with parent reco
+  ID 70 (Num 10): JSON correct=['D'], MD correct=['B', 'C', 'D']
+    Q: A developer creates a new Apex trigger with a helper class, and writes a test class that only exerci
+  ID 71 (Num 11): JSON correct=['C'], MD correct=['C', 'D', 'E']
+    Q: How many Accounts will be inserted by the following block of code?
+for(Integer i = 0; i 500; i++){
+A
+  ID 72 (Num 12): JSON correct=['C'], MD correct=['A', 'B', 'E']
+    Q: A developer needs to implement a custom SOAP Web Service that is used by an external Web Application
+  ID 74 (Num 14): JSON correct=['B', 'D'], MD correct=['A']
+    Q: A developer needs to prevent the creation of Request records when certain conditions exist in the sy
+  ID 75 (Num 15): JSON correct=['B'], MD correct=['A', 'B']
+    Q: Which annotation exposes an Apex class as a RESTful web service?
+  ID 76 (Num 16): JSON correct=['C'], MD correct=['A', 'B', 'E']
+    Q: A developer must troubleshoot to pinpoint the causes of performance issues when a custom page loads 
+  ID 77 (Num 17): JSON correct=['C'], MD correct=['A', 'C', 'E']
+    Q: What should a developer use to implement an automatic Approval Process submission for Cases?
+  ID 78 (Num 18): JSON correct=['A', 'C'], MD correct=['D']
+    Q: What are two ways a developer can get the status of an enqueued job for a class that implements the 
+  ID 79 (Num 19): JSON correct=['B'], MD correct=['C']
+    Q: The Review_c object has a lookup relationship up to the Job_Application_c object. The Job_Applicatio
+  ID 81 (Num 21): JSON correct=['C'], MD correct=['A']
+    Q: What is the data type returned by the following SOSL search?
+[FIND 'Acme*' IN NAME FIELDS RETURNING 
+  ID 82 (Num 22): JSON correct=['A'], MD correct=['C']
+    Q: A change set deployment from a sandbox to production fails due to a failure in a managed package uni
+  ID 85 (Num 25): JSON correct=['A'], MD correct=['A', 'D']
+    Q: A developer wants multiple test classes to use the same set of test data. How should the developer c
+  ID 86 (Num 26): JSON correct=['A', 'B'], MD correct=['C']
+    Q: Which two statements are true about using the @testSetup annotation in an Apex test class? (Choose t
+  ID 87 (Num 27): JSON correct=['A', 'B'], MD correct=['A', 'B', 'D']
+    Q: Which two platform features align to the Controller portion of MVC architecture? (Choose two.)
+  ID 89 (Num 29): JSON correct=['B'], MD correct=['D']
+    Q: Which statement generates a list of Leads and Contacts that have a field with the phrase 'ACME'?
+  ID 90 (Num 30): JSON correct=['A'], MD correct=['C', 'D', 'E']
+    Q: A custom picklist field, Food_Preference__c, exists on a custom object. The picklist contains the fo
+  ID 91 (Num 31): JSON correct=['B'], MD correct=['C']
+    Q: As part of a data cleanup strategy, AW Computing wants to proactively delete associated opportunity 
+  ID 93 (Num 33): JSON correct=['B', 'C'], MD correct=['C']
+    Q: Which two statements are true about Getter and Setter methods? (Choose two.)
+  ID 94 (Num 34): JSON correct=['C', 'D'], MD correct=['D']
+    Q: A Platform Developer needs to write an Apex method that will only perform an action if a record is a
+  ID 95 (Num 35): JSON correct=['B'], MD correct=['B', 'C']
+    Q: Which situation prevents a developer from setting sharing rules for a custom object?
+  ID 96 (Num 36): JSON correct=['D'], MD correct=['B', 'D']
+    Q: What will be the output in the debug log in the event of a QueryException during a call to the aQuer
+  ID 97 (Num 37): JSON correct=['B', 'D'], MD correct=['C']
+    Q: Universal Containers wants Opportunities to no longer be editable when reaching the Closed/Won stage
+  ID 99 (Num 39): JSON correct=['A'], MD correct=['D']
+    Q: The values 'High', 'Medium', and 'Low' are identified as common values for multiple picklists across
+  ID 101 (Num 41): JSON correct=['D'], MD correct=['B', 'D']
+    Q: How should a developer write unit tests for a private method in an Apex class?
+  ID 102 (Num 42): JSON correct=['C'], MD correct=['A', 'D']
+    Q: A company has a custom object named Region. Each Account in Salesforce can only be related to one Re
+  ID 104 (Num 44): JSON correct=['A', 'C', 'D'], MD correct=['A']
+    Q: A developer wants to invoke an outbound message when a record meets a specific criteria. Which three
+  ID 105 (Num 45): JSON correct=['D'], MD correct=['C']
+    Q: What is the result of the following code snippet?
+public void doWork(Account acct){
+for(Integer i = 
+  ID 107 (Num 47): JSON correct=['C'], MD correct=[]
+    Q: A developer must provide custom user interfaces when users edit a Contact in either Salesforce Class
+  ID 108 (Num 48): JSON correct=['C'], MD correct=['A']
+    Q: What is the result of the debug statements in testMethod3 when you create test data using testSetup 
+  ID 109 (Num 49): JSON correct=['C'], MD correct=['A', 'B', 'D']
+    Q: Which type of code represents the Model in the MVC architecture when using Apex and Visualforce page
+  ID 110 (Num 50): JSON correct=['B'], MD correct=['D']
+    Q: An org has a single account named 'NoContacts' that has no related contacts. Given the query: List<A
+  ID 111 (Num 51): JSON correct=['B'], MD correct=['A']
+    Q: Which SOQL query successfully returns the Accounts grouped by name?
+  ID 112 (Num 52): JSON correct=['D'], MD correct=['A']
+    Q: For which example task should a developer use a trigger rather than a workflow rule?
+  ID 113 (Num 53): JSON correct=['A'], MD correct=['A', 'C', 'E']
+    Q: A developer must build an application that tracks which Accounts have purchased specific pieces of e
+  ID 114 (Num 54): JSON correct=['D'], MD correct=['C', 'D']
+    Q: A developer is creating a page that allows users to create multiple Opportunities. The developer is 
+  ID 115 (Num 55): JSON correct=['A'], MD correct=['A', 'D']
+    Q: Requirements state that a child record is deleted when its parent is deleted, and a child can be mov
+  ID 116 (Num 56): JSON correct=['C'], MD correct=['A']
+    Q: A developer must modify the following code snippet to prevent the number of SOQL queries issued from
+  ID 117 (Num 57): JSON correct=['A'], MD correct=['A', 'D', 'E']
+    Q: A developer must write an Apex method that will be called from a Lightning component. The method may
+  ID 119 (Num 59): JSON correct=['B'], MD correct=['C']
+    Q: What is a benefit of using an after insert trigger over using a before insert trigger?
+  ID 120 (Num 60): JSON correct=['A'], MD correct=['A', 'C']
+    Q: An org has an existing Visual Flow that creates an Opportunity with an Update Records element. A dev
+  ID 121 (Num 1): JSON correct=['B', 'D'], MD correct=['D']
+    Q: Universal Containers wants Opportunities to be locked from editing when reaching the Closed/Won stag
+  ID 122 (Num 2): JSON correct=['D'], MD correct=['C', 'D']
+    Q: Which action can a developer take to reduce the execution time of the following code?
+List<Account> 
+  ID 123 (Num 3): JSON correct=['B', 'D', 'E'], MD correct=['B']
+    Q: Which three tools can deploy metadata to production? (Choose three.)
+  ID 124 (Num 4): JSON correct=['B'], MD correct=['A', 'B']
+    Q: Universal Containers is building a recruiting app with an Applicant object that stores information a
+  ID 125 (Num 5): JSON correct=['A'], MD correct=['B']
+    Q: The sales team at Universal Containers would like to see a visual indicator appear on both Account a
+  ID 126 (Num 6): JSON correct=['D'], MD correct=['B']
+    Q: Which governor limit applies to all the code in an Apex transaction?
+  ID 127 (Num 7): JSON correct=['B', 'C'], MD correct=['A', 'B', 'D']
+    Q: Which two sfdx commands can be used to add testing data to a Developer sandbox? (Choose two.)
+  ID 128 (Num 8): JSON correct=['B'], MD correct=['D']
+    Q: A developer wants to override a button using Visualforce on an object. What is the requirement?
+  ID 129 (Num 9): JSON correct=['D'], MD correct=['A', 'B', 'D']
+    Q: A Visualforce page is required for displaying and editing Case records that includes both standard a
+  ID 130 (Num 10): JSON correct=['C'], MD correct=['B', 'C', 'D']
+    Q: A lead object has a custom field Prior_Email__c.
+The following trigger is intended to copy the curre
+  ID 131 (Num 11): JSON correct=['B'], MD correct=['C', 'D', 'E']
+    Q: What is the result of the following code?
+Account a = new Account();
+Database.insert(a, false);
+  ID 132 (Num 12): JSON correct=['A', 'B'], MD correct=['A', 'B', 'E']
+    Q: An after trigger on the Account object performs a DML update operation on all of the child Opportuni
+  ID 134 (Num 14): JSON correct=['B'], MD correct=['A']
+    Q: How should a developer prevent a recursive trigger?
+  ID 135 (Num 15): JSON correct=['B', 'C', 'D'], MD correct=['A', 'B']
+    Q: What is a capability of the tag that is used for loading external Javascript libraries in Lightning 
+  ID 136 (Num 16): JSON correct=['D'], MD correct=['A', 'B', 'E']
+    Q: Universal Containers (UC) wants to lower its shipping cost while making the shipping process more ef
+  ID 137 (Num 17): JSON correct=['D'], MD correct=['A', 'C', 'E']
+    Q: A developer is creating a Lightning web component to show a list of sales records. The Sales Represe
+  ID 138 (Num 18): JSON correct=['B'], MD correct=['D']
+    Q: The sales management team at Universal Containers requires that the Lead Source field of the Lead re
+  ID 139 (Num 19): JSON correct=['A'], MD correct=['C']
+    Q: A PrimaryId__c custom field exists on the Candidate__c custom object. The field is used to store eac
+  ID 141 (Num 21): JSON correct=['C'], MD correct=['A']
+    Q: What is the requirement for a class to be used as a custom Visualforce controller?
+  ID 142 (Num 22): JSON correct=['D'], MD correct=['C']
+    Q: In order to override a standard action with a Visualforce page, which attribute must be defined in t
+  ID 143 (Num 23): JSON correct=['A', 'B'], MD correct=['B']
+    Q: A developer needs to provide a way to mass edit, update, and delete records from a list view. In whi
+  ID 144 (Num 24): JSON correct=['D'], MD correct=['C']
+    Q: What is a benefit of using a trigger framework?
+  ID 145 (Num 25): JSON correct=['B'], MD correct=['A', 'D']
+    Q: The sales management team at Universal Containers requires that the Lead Source field of the Lead re
+  ID 146 (Num 26): JSON correct=['A', 'B'], MD correct=['C']
+    Q: A company has been adding data to Salesforce and has not done a good job of limiting the creation of
+  ID 147 (Num 27): JSON correct=['D'], MD correct=['A', 'B', 'D']
+    Q: A developer created this Apex trigger that calls MyClass.myStaticMethod:
+trigger myTrigger on Contac
+  ID 148 (Num 28): JSON correct=['A', 'B', 'E'], MD correct=['B']
+    Q: What are three considerations when using the @InvocableMethod annotation in Apex? (Choose three.)
+  ID 150 (Num 30): JSON correct=['B', 'D'], MD correct=['C', 'D', 'E']
+    Q: A developer executes the following query in Apex to retrieve a list of contacts for each account: Li
+  ID 151 (Num 31): JSON correct=['B', 'D'], MD correct=['C']
+    Q: Universal Containers wants to assess the advantages of declarative development versus programmatic c
+  ID 152 (Num 32): JSON correct=['A', 'B'], MD correct=['B']
+    Q: A developer is asked to create a PDF quote document formatted using the company's branding guideline
+  ID 153 (Num 33): JSON correct=['B'], MD correct=['C']
+    Q: What should be used to create scratch orgs?
+  ID 155 (Num 35): JSON correct=['A', 'C'], MD correct=['B', 'C']
+    Q: If Apex code executes inside the execute() method of an Apex class when implementing the Batchable i
+  ID 156 (Num 36): JSON correct=['A', 'C', 'E'], MD correct=['B', 'D']
+    Q: What are three characteristics of change set deployments? (Choose three.)
+  ID 157 (Num 37): JSON correct=['A'], MD correct=['C']
+    Q: Consider the following code snippet:
+public static List<Lead> obtainAllFields(Set<Id> leadIds){
+List
+  ID 158 (Num 38): JSON correct=['C'], MD correct=['B']
+    Q: Refer to the following Apex code:
+Integer x = 0;
+do{
+x = 1;
+x++;
+}
+while(x < 1);
+System.debug(x);
+Wh
+  ID 159 (Num 39): JSON correct=['B', 'D'], MD correct=['D']
+    Q: A developer needs to test an Invoicing system integration. After reviewing the number of transaction
+  ID 160 (Num 40): JSON correct=['A', 'B'], MD correct=['C']
+    Q: Universal Containers hires a developer to build a custom search page to help users find the Accounts
+  ID 161 (Num 41): JSON correct=['D'], MD correct=['B', 'D']
+    Q: Considering the following code snippet:
+public static void insertAccounts(ListAccount theseAccounts)
+  ID 162 (Num 42): JSON correct=['C'], MD correct=['A', 'D']
+    Q: When using SalesforceDX, what does a developer need to enable to create and manage scratch orgs?
+  ID 163 (Num 43): JSON correct=['B', 'C'], MD correct=['A']
+    Q: Where are two locations a developer can look to find information about the status of batch or future
+  ID 164 (Num 44): JSON correct=['C'], MD correct=['A']
+    Q: A Salesforce Administrator used Flow Builder to create a flow named 'accountOnboarding'. The flow mu
+  ID 165 (Num 45): JSON correct=['D'], MD correct=['C']
+    Q: A developer must create a CreditCardPayment class that provides an implementation of an existing Pay
+  ID 167 (Num 47): JSON correct=['B'], MD correct=[]
+    Q: Universal Containers wants a list button to display a Visualforce page that allows users to edit mul
+  ID 168 (Num 48): JSON correct=['A', 'C'], MD correct=['A']
+    Q: Which code in a Visualforce page and/or controller might present a security vulnerability?
+A . <apex
+  ID 169 (Num 49): JSON correct=['B'], MD correct=['A', 'B', 'D']
+    Q: What should a developer do to check the code coverage of a class after running all tests?
+  ID 170 (Num 50): JSON correct=['B', 'D', 'E'], MD correct=['D']
+    Q: Universal Containers decides to use exclusively declarative development to build out a new Salesforc
+  ID 171 (Num 51): JSON correct=['A', 'E'], MD correct=['A']
+    Q: Which three statements are true regarding the @isTest annotation? (Choose three.)
+  ID 173 (Num 53): JSON correct=['B', 'C'], MD correct=['A', 'C', 'E']
+    Q: Which two SOSL searches will return records matching search criteria contained in any of the searcha
+  ID 174 (Num 54): JSON correct=['A', 'C'], MD correct=['C', 'D']
+    Q: A developer needs to save a List of existing Account records named myAccounts to the database, but t
+  ID 175 (Num 55): JSON correct=['D'], MD correct=['A', 'D']
+    Q: How should a developer avoid hitting the governor limits in test methods?
+  ID 176 (Num 56): JSON correct=['B', 'D'], MD correct=['A']
+    Q: Universal Containers wants Opportunities to be locked from editing when reaching the Closed/Won stag
+  ID 177 (Num 57): JSON correct=['A', 'D'], MD correct=['A', 'D', 'E']
+    Q: A developer wants to display all of the picklist entries for the Opportunity StageName field and all
+  ID 178 (Num 58): JSON correct=['B'], MD correct=['A', 'C']
+    Q: An org has two custom objects: Plan__c, that has a master-detail relationship to the Account object 
+  ID 181 (Num 1): JSON correct=['B'], MD correct=['D']
+    Q: What is the impact of declaring an Apex class using the `without sharing` keywords?
+  ID 182 (Num 2): JSON correct=['B'], MD correct=['C', 'D']
+    Q: A developer needs to find information about @future methods that were invoked. From which system mon
+  ID 184 (Num 4): JSON correct=['C'], MD correct=['A', 'B']
+    Q: Universal Containers has a Visualforce page that displays a table of every Container__c being rented
+  ID 185 (Num 5): JSON correct=['A', 'C', 'D'], MD correct=['B']
+    Q: What are three techniques that a developer can use to invoke an anonymous block of code? (Choose thr
+  ID 186 (Num 6): JSON correct=['A'], MD correct=['B']
+    Q: A developer has two custom controller extensions where each has a save() method.
+<Apex:page standard
+  ID 187 (Num 7): JSON correct=['A'], MD correct=['A', 'B', 'D']
+    Q: A developer needs to create a Visualforce page that displays Case data. The page will be used by bot
+  ID 188 (Num 8): JSON correct=['A', 'B', 'D'], MD correct=['D']
+    Q: Which three steps allow a custom SVG to be included in a Lightning web component? (Choose three.)
+  ID 189 (Num 9): JSON correct=['D'], MD correct=['A', 'B', 'D']
+    Q: A custom Visualforce controller calls the ApexPages.addMessage() method, but no messages are renderi
+  ID 190 (Num 10): JSON correct=['A', 'B'], MD correct=['B', 'C', 'D']
+    Q: A Licensed_Professional__c custom object exists in the system with two Master-Detail fields for the 
+  ID 191 (Num 11): JSON correct=['D'], MD correct=['C', 'D', 'E']
+    Q: A developer considers the following snippet of code:
+Boolean isOK;
+integer x;
+String theString = 'He
+  ID 192 (Num 12): JSON correct=['A'], MD correct=['A', 'B', 'E']
+    Q: A developer needs to include a Visualforce page in the detail section of a page layout for the Accou
+  ID 193 (Num 13): JSON correct=['C', 'D'], MD correct=['A']
+    Q: Which two operations can be performed using a formula field? (Choose two.)
+  ID 194 (Num 14): JSON correct=['D'], MD correct=['A']
+    Q: Application Events follow the traditional publish-subscribe model. Which method is used to fire an e
+  ID 195 (Num 15): JSON correct=['B'], MD correct=['A', 'B']
+    Q: A developer needs to implement the functionality for a service agent to gather multiple pieces of in
+  ID 196 (Num 16): JSON correct=['B', 'C', 'D'], MD correct=['A', 'B', 'E']
+    Q: Einstein Next Best Action is configured at Universal Containers to display recommendations to intern
+  ID 197 (Num 17): JSON correct=['D'], MD correct=['A', 'C', 'E']
+    Q: An Opportunity needs to have an amount rolled up from a custom object that is not in a master-detail
+  ID 198 (Num 18): JSON correct=['A', 'C', 'E'], MD correct=['D']
+    Q: A developer at Universal Containers is tasked with implementing a new Salesforce application that mu
+  ID 200 (Num 20): JSON correct=['D'], MD correct=['A']
+    Q: When is an Apex Trigger required instead of a Process Builder Process?
+  ID 201 (Num 21): JSON correct=['A', 'B'], MD correct=['A']
+    Q: A company wants to create an employee rating program that allows employees to rate each other. An em
+  ID 202 (Num 22): JSON correct=['B'], MD correct=['C']
+    Q: What is a benefit of developing applications in a multi-tenant environment?
+  ID 203 (Num 23): JSON correct=['C'], MD correct=['B']
+    Q: When viewing a Quote, the sales representative wants to easily see how many discounted items are inc
+  ID 204 (Num 24): JSON correct=['A', 'B'], MD correct=['C']
+    Q: In terms of the MVC paradigm, what are two advantages of implementing the view layer of a Salesforce
+  ID 205 (Num 25): JSON correct=['D'], MD correct=['A', 'D']
+    Q: Cloud Kicks Fitness, an ISV Salesforce partner, is developing a managed package application. One of 
+  ID 206 (Num 26): JSON correct=['B'], MD correct=['C']
+    Q: A software company uses the following objects and relationships:
+Case: to handle customer support is
+  ID 207 (Num 27): JSON correct=['B'], MD correct=['A', 'B', 'D']
+    Q: What is the debug output of the following Apex code?
+Decimal theValue;
+System.debug(theValue);
+  ID 210 (Num 30): JSON correct=['D'], MD correct=['C', 'D', 'E']
+    Q: Which Salesforce org has a complete duplicate copy of the production org including data and configur
+  ID 211 (Num 31): JSON correct=['D'], MD correct=['C']
+    Q: Universal Containers stores Orders and Line Items in Salesforce. For security reasons, financial rep
+  ID 212 (Num 32): JSON correct=['B', 'C'], MD correct=['B']
+    Q: Which two events need to happen when deploying to a production org? (Choose two.)
+  ID 214 (Num 34): JSON correct=['C'], MD correct=['D']
+    Q: A developer is asked to set a picklist field to 'Monitor' on any new Leads owned by a subnet of User
+  ID 215 (Num 35): JSON correct=['A', 'C', 'E'], MD correct=['B', 'C']
+    Q: Which three process automations can immediately send an email notification to the owner of an Opport
+  ID 216 (Num 36): JSON correct=['D'], MD correct=['B', 'D']
+    Q: A developer needs to confirm that a Contact trigger works correctly without changing the organizatio
+  ID 217 (Num 37): JSON correct=['B'], MD correct=['C']
+    Q: Which control statement should a developer use to ensure that a loop body executes at least once?
+  ID 218 (Num 38): JSON correct=['B', 'D'], MD correct=['B']
+    Q: Which two declarative process automation features can be directly invoked when a field value changes
+  ID 219 (Num 39): JSON correct=['B', 'C'], MD correct=['D']
+    Q: Which two strategies should a developer use to avoid hitting governor limits when developing in a mu
+  ID 220 (Num 40): JSON correct=['A'], MD correct=['C']
+    Q: Which feature should a developer use to update an inventory count on related Product records when th
+  ID 221 (Num 41): JSON correct=['C'], MD correct=['B', 'D']
+    Q: The operation manager at a construction company uses a custom object called Machinery to manage the 
+  ID 222 (Num 42): JSON correct=['D'], MD correct=['A', 'D']
+    Q: A developer needs to have records with specific field values in order to test a new Apex class. What
+  ID 223 (Num 43): JSON correct=['C'], MD correct=['A']
+    Q: A developer created a Lightning component to display a short text summary for an object and wants to
+  ID 226 (Num 46): JSON correct=['B'], MD correct=['D']
+    Q: Which process automation can be used to calculate the shipping cost for an Order when the Order is p
+  ID 227 (Num 47): JSON correct=['A', 'C'], MD correct=[]
+    Q: A developer created a child Lightning web component nested inside a parent Lightning web component. 
+  ID 228 (Num 48): JSON correct=['B', 'C'], MD correct=['A']
+    Q: What are two best practices when it comes to Lightning Web Component events? (Choose two.)
+  ID 229 (Num 49): JSON correct=['C'], MD correct=['A', 'B', 'D']
+    Q: A developer migrated functionality from JavaScript Remoting to a Lightning web component and wants t
+  ID 230 (Num 50): JSON correct=['A'], MD correct=['D']
+    Q: A developer must provide a custom user interface when users edit a Contact. Users must be able to us
+  ID 231 (Num 51): JSON correct=['B'], MD correct=['A']
+    Q: Which Lightning code segment should be written to declare dependencies on a Lightning component, c:a
+  ID 232 (Num 52): JSON correct=['A', 'B', 'C'], MD correct=['A']
+    Q: A developer can use the debug log to see which three types of information? (Choose three.)
+  ID 233 (Num 53): JSON correct=['B', 'D'], MD correct=['A', 'C', 'E']
+    Q: A developer created a trigger on the Account object and wants to test if the trigger is properly bul
+  ID 234 (Num 54): JSON correct=['D'], MD correct=['C', 'D']
+    Q: What can be developed using the Lightning Component framework?
+  ID 235 (Num 55): JSON correct=['B', 'D'], MD correct=['A', 'D']
+    Q: A developer must create an Apex class, ContactController, that a Lightning component can use to sear
+  ID 236 (Num 56): JSON correct=['B'], MD correct=['A']
+    Q: A developer must create a DrawList class that provides capabilities defined in the Sortable and Draw
+  ID 237 (Num 57): JSON correct=['A', 'B', 'E'], MD correct=['A', 'D', 'E']
+    Q: Which three options allow a developer to use custom styling in a Visualforce page? (Choose three.)
+  ID 238 (Num 58): JSON correct=['C'], MD correct=['A', 'C']
+    Q: When a user edits the Postal Code on an Account, a custom Account text field named 'Timezone' must b
+  ID 239 (Num 1): JSON correct=['C'], MD correct=['D']
+    Q: Where can a developer identify the time taken by each process in a transaction using Developer Conso
+  ID 240 (Num 2): JSON correct=['C'], MD correct=['C', 'D']
+    Q: A developer has the controller class below.
+Public with sharing class myFooController{
+public intege
+  ID 241 (Num 3): JSON correct=['C', 'D', 'E'], MD correct=['B']
+    Q: Which three statements are true regarding trace flags? (Choose three.)
+  ID 242 (Num 4): JSON correct=['C'], MD correct=['A', 'B']
+    Q: How can a developer check the test coverage of Autolaunched Flows before deploying them in a change 
+  ID 243 (Num 5): JSON correct=['D'], MD correct=['B']
+    Q: A developer has the following requirements: Calculate the total amount on an Order. Calculate the li
+  ID 245 (Num 7): JSON correct=['B', 'D'], MD correct=['A', 'B', 'D']
+    Q: Which two Apex data types can be used to reference a Salesforce record ID dynamically? (Choose two.)
+  ID 246 (Num 8): JSON correct=['B'], MD correct=['D']
+    Q: A developer is debugging the following code to determine why Accounts are not being created. List<Ac
+  ID 247 (Num 9): JSON correct=['C'], MD correct=['A', 'B', 'D']
+    Q: Why would a developer consider using a custom controller over a controller extension?
+  ID 248 (Num 10): JSON correct=['C'], MD correct=['B', 'C', 'D']
+    Q: Which approach should be used to provide test data for a test class?
+  ID 249 (Num 11): JSON correct=['C', 'D'], MD correct=['C', 'D', 'E']
+    Q: A developer created these three roll-up summary fields on the custom object Project__c: - Total_Time
+  ID 250 (Num 12): JSON correct=['A', 'D'], MD correct=['A', 'B', 'E']
+    Q: A developer needs to update an unrelated object when a record gets saved. Which two trigger types sh
+  ID 251 (Num 13): JSON correct=['D'], MD correct=['A']
+    Q: Which feature allows a developer to create test records for use in test classes?
+  ID 252 (Num 14): JSON correct=['D'], MD correct=['A']
+    Q: An org tracks customer orders on an Order object and the line items of an Order on the Line Item obj
+  ID 253 (Num 15): JSON correct=['C'], MD correct=['A', 'B']
+    Q: A Lightning component has a wired property, searchResults, that stores a list of Opportunities. Whic
+  ID 254 (Num 16): JSON correct=['A'], MD correct=['A', 'B', 'E']
+    Q: A lead developer creates an Apex interface called Laptop. Consider the following code snippet: publi
+  ID 255 (Num 17): JSON correct=['B'], MD correct=['A', 'C', 'E']
+    Q: A method is passed a list of generic sObjects as a parameter. What should the developer do to determ
+  ID 256 (Num 18): JSON correct=['A', 'C'], MD correct=['D']
+    Q: What are two use cases for executing Anonymous Apex code? (Choose two.)
+  ID 257 (Num 19): JSON correct=['A'], MD correct=['C']
+    Q: A Developer wants to get access to the standard price book in the org while writing a test class tha
+  ID 258 (Num 20): JSON correct=['A', 'D'], MD correct=['A']
+    Q: A development team wants to use a deployment script to automatically deploy to a sandbox during thei
+  ID 259 (Num 21): JSON correct=['A', 'C', 'E'], MD correct=['A']
+    Q: A platform developer at Universal Containers needs to create a custom button for the Account object 
+  ID 261 (Num 23): JSON correct=['A'], MD correct=['B']
+    Q: Which exception type cannot be caught?
+  ID 263 (Num 25): JSON correct=['B', 'D'], MD correct=['A', 'D']
+    Q: When importing and exporting data into Salesforce, which two statements are true? (Choose two.)
+  ID 265 (Num 27): JSON correct=['C', 'D', 'E'], MD correct=['A', 'B', 'D']
+    Q: Which three code lines are required to create a Lightning component on a Visualforce page? (Choose t
+  ID 266 (Num 28): JSON correct=['C'], MD correct=['B']
+    Q: A developer is integrating with a legacy on-premise SQL database. What should the developer use to e
+  ID 267 (Num 29): JSON correct=['B'], MD correct=['D']
+    Q: A developer is asked to create a Visualforce page that displays some Account fields as well as field
+  ID 268 (Num 30): JSON correct=['D'], MD correct=['C', 'D', 'E']
+    Q: While working in a sandbox, an Apex test falls when run in the Test Framework. However, running the 
+  ID 269 (Num 31): JSON correct=['B', 'C', 'E'], MD correct=['C']
+    Q: A developer has a single custom controller class that works with a Visualforce Wizard to support cre
+  ID 270 (Num 32): JSON correct=['B', 'D', 'E'], MD correct=['B']
+    Q: Which three Salesforce resources can be accessed from a Lightning web component? (Choose three.)
+  ID 271 (Num 33): JSON correct=['B', 'C'], MD correct=['C']
+    Q: Which two events need to happen when deploying to a production org? (Choose two.)
+  ID 272 (Num 34): JSON correct=['C', 'D'], MD correct=['D']
+    Q: Universal Containers recently transitioned from Classic to Lightning Experience. One of its business
+  ID 273 (Num 35): JSON correct=['C'], MD correct=['B', 'C']
+    Q: Which statement describes the execution order when triggers are associated to the same object and ev
+  ID 274 (Num 36): JSON correct=['D'], MD correct=['B', 'D']
+    Q: In the Lightning UI, where should a developer look to find information about a Paused Flow Interview
+  ID 275 (Num 37): JSON correct=['D'], MD correct=['C']
+    Q: An Opportunity needs to have an amount rolled up from a custom object that is not in a master-detail
+  ID 276 (Num 38): JSON correct=['C'], MD correct=['B']
+    Q: How does the Lightning Component framework help developers implement solutions faster?
+  ID 277 (Num 39): JSON correct=['A'], MD correct=['D']
+    Q: Which Salesforce feature allows a developer to see when a user last logged in to Salesforce if real-
+  ID 278 (Num 40): JSON correct=['B', 'C'], MD correct=['C']
+    Q: Which two are best practices when it comes to component and application event handling? (Choose two.
+  ID 279 (Num 41): JSON correct=['C', 'D'], MD correct=['B', 'D']
+    Q: From which two locations can a developer determine the overall code coverage for a sandbox? (Choose 
+  ID 280 (Num 42): JSON correct=['A'], MD correct=['A', 'D']
+    Q: A SSN__c custom field exists on the Candidate__c custom object. The field is used to store each cand
+  ID 281 (Num 43): JSON correct=['B'], MD correct=['A']
+    Q: A developer created a Visualforce page and custom controller to display the account type field as sh
+  ID 283 (Num 45): JSON correct=['A'], MD correct=['C']
+    Q: How should a developer create a new custom exception class?
+  ID 284 (Num 46): JSON correct=['B', 'D'], MD correct=['D']
+    Q: A developer identifies the following triggers on the Expense__c object: deteleExpense, applyDefaults
+  ID 285 (Num 47): JSON correct=['A'], MD correct=[]
+    Q: Universal Containers has implemented an order management application. Each Order can have one or mor
+  ID 286 (Num 48): JSON correct=['B', 'C', 'E'], MD correct=['A']
+    Q: Which three statements are accurate about debug logs? (Choose three.)
+  ID 287 (Num 49): JSON correct=['D'], MD correct=['A', 'B', 'D']
+    Q: The Account object has a custom Percent field, Rating, defined with a length of 2 with 0 decimal pla
+  ID 288 (Num 50): JSON correct=['C'], MD correct=['D']
+    Q: Which statement is true about developing in a multi-tenant environment?
+  ID 289 (Num 51): JSON correct=['B', 'D', 'E'], MD correct=['A']
+    Q: Universal Containers decides to use exclusively declarative development to build out a new Salesforc
+  ID 290 (Num 52): JSON correct=['B'], MD correct=['A']
+    Q: A developer must implement a CheckPaymentProcessor class that provides check processing payment capa
+  ID 291 (Num 53): JSON correct=['C'], MD correct=['A', 'C', 'E']
+    Q: Universal Containers has a large number of custom applications that were built using a third-party J
+  ID 343 (Num 47): JSON correct=['D'], MD correct=[]
+    Q: The following Apex method is part of the ContactService class that is called from a trigger:
+public 

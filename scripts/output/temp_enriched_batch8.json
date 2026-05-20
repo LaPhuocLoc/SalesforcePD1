@@ -1,0 +1,161 @@
+[
+  {
+    "id": 185,
+    "vi_question": "Ba kỹ thuật nào mà lập trình viên có thể sử dụng để kích hoạt thực thi một khối mã nguồn vô danh (Anonymous Apex Block)? (Chọn 3)",
+    "why_correct": "A: Sử dụng SOAP API gọi hàm executeAnonymous từ bên ngoài. C: Chạy code bằng tính năng Anonymous Apex trên các công cụ IDE của lập trình viên (như VS Code). D: Nhập trực tiếp code Apex vào cửa sổ Execute Anonymous của Developer Console để chạy.",
+    "why_wrong": {
+      "B": "Trang Visualforce chỉ hiển thị giao diện, không phải là công cụ gọi khối lệnh anonymous tùy ý.",
+      "E": "Chạy test class là để kiểm thử các phương thức test cụ thể trong hệ thống, không liên quan đến việc thực thi khối lệnh anonymous tự do."
+    },
+    "tip": "Chạy Anonymous Apex -> 1. Developer Console; 2. IDE (VS Code); 3. SOAP API call."
+  },
+  {
+    "id": 186,
+    "vi_question": "Một trang Visualforce khai báo hai class Controller Extension đều chứa phương thức save(): [Code apex:page]. Phương thức save() của class nào sẽ được gọi khi bấm nút Save?",
+    "why_correct": "Khi trang Visualforce chứa nhiều controller extensions có các phương thức trùng tên nhau, Salesforce sẽ giải quyết xung đột bằng cách ưu tiên thực thi phương thức của class khai báo đầu tiên từ trái qua phải (A) (ở đây là ExtensionA).",
+    "why_wrong": {
+      "B": "ExtensionB xếp ở sau nên phương thức trùng tên của nó bị ExtensionA ghi đè (override) và bỏ qua.",
+      "C": "Phương thức save chuẩn của Standard Controller bị class extension ExtensionA ghi đè hoàn toàn.",
+      "D": "Không có runtime error nào xảy ra vì Salesforce xử lý thứ tự ưu tiên rất mượt mà theo cấu hình khai báo."
+    },
+    "tip": "Visualforce đa Extension trùng method -> Ưu tiên gọi class khai báo đầu tiên (từ trái qua phải)."
+  },
+  {
+    "id": 187,
+    "vi_question": "Trang Visualforce hiển thị dữ liệu Case dùng cho cả Support Rep và Support Manager. Support Rep không có quyền xem trường Customer_Satisfaction__c còn Support Manager thì có. Làm thế nào để thực thi đúng FLS và tốn ít công bảo trì nhất?",
+    "why_correct": "Tạo duy nhất MỘT trang Visualforce dùng chung cho cả hai profile (A). Các thẻ Visualforce chuẩn (như <apex:outputField>) tích hợp sẵn tính năng tự động tôn trọng bảo mật cấp trường FLS của user hiện tại, tự ẩn trường nếu user không có quyền xem mà không cần viết code.",
+    "why_wrong": {
+      "B": "Permission Set giúp cấp thêm quyền chứ không phải giải pháp thiết kế trang Visualforce tối ưu FLS.",
+      "C": "Tạo nhiều trang Visualforce riêng biệt cho từng profile làm nhân đôi công sức phát triển và cực kỳ khó khăn bảo trì sau này.",
+      "D": "with sharing chỉ kiểm soát quyền truy cập bản ghi (Record-level sharing), hoàn toàn không có tác dụng phân quyền bảo mật cấp trường (FLS)."
+    },
+    "tip": "Visualforce FLS -> Dùng duy nhất 1 trang Visualforce + thẻ chuẩn (outputField) tự động ẩn/hiển thị theo quyền User."
+  },
+  {
+    "id": 189,
+    "vi_question": "Một Custom Visualforce Controller gọi hàm 'ApexPages.addMessage()' để báo lỗi nhưng không thấy thông báo nào hiển thị trên giao diện trang. Lập trình viên nên thêm thành phần nào vào trang Visualforce?",
+    "why_correct": "Thêm thành phần <apex:pageMessages /> (D). Thẻ này đóng vai trò là phễu thu thập và hiển thị toàn bộ danh sách thông báo lỗi/cảnh báo được ném ra từ ApexPages.addMessage() theo đúng giao diện tiêu chuẩn của Salesforce.",
+    "why_wrong": {
+      "A": "<apex:message> chỉ hiển thị lỗi cho duy nhất một trường dữ liệu cụ thể được chỉ định, không hiển thị lỗi chung từ addMessage.",
+      "B": "<apex:facet> dùng để cấu hình layout/header của bảng dữ liệu, không có tính năng hiển thị thông báo lỗi.",
+      "C": "<apex:pageMessage> hiển thị một thông báo tĩnh cố định do lập trình viên viết cứng trên trang, không hiển thị động các lỗi từ code Apex ném ra."
+    },
+    "tip": "Hiển thị lỗi từ ApexPages.addMessage() ra giao diện -> Luôn dùng thẻ <apex:pageMessages />."
+  },
+  {
+    "id": 190,
+    "vi_question": "Object Licensed_Professional__c có 2 quan hệ Master-Detail với Certification__c và Contact. User có role 'Certification Rep' xem được các bản ghi con, nhưng user 'Sales Rep' dù là chủ sở hữu Contact lại báo không xem được bất kỳ bản ghi con nào. Hai nguyên nhân nào gây ra việc này? (Chọn 2)",
+    "why_correct": "A: OWD của Certification__c là Private và nó là Primary Relationship (quan hệ Master được tạo đầu tiên). Khi đó, quyền bảo mật chia sẻ của con hoàn toàn kế thừa từ Primary Master. Sales Rep không có quyền xem Certification cha nên bị chặn xem con. B: Các Sharing Rules của Licensed_Professional__c đang trong quá trình tính toán lại (recalculation) nên quyền chưa được phân phối.",
+    "why_wrong": {
+      "C": "Chỉnh sửa role phân quyền CRUD trên đối tượng không giải quyết được vấn đề phân quyền chia sẻ (Sharing) thực tế của bản ghi con.",
+      "D": "Nếu Contact là Primary Relationship thì Sales Rep (chủ Contact) phải xem được con, trái ngược với thực trạng lỗi của đề bài."
+    },
+    "tip": "Custom con có 2 Master-Detail -> Bảo mật con kế thừa hoàn toàn từ Primary Master (Master đầu tiên)."
+  },
+  {
+    "id": 191,
+    "vi_question": "Cho đoạn code sau thực thi trong Apex: [Code Boolean isOK]. Hỏi sau khi chạy xong, giá trị của biến x là bao nhiêu?",
+    "why_correct": "Giá trị của x là 4 (D). Biến Boolean isOK chỉ được khai báo và không được khởi tạo giá trị nên nó nhận giá trị mặc định là null. Do đó, các điều kiện check so sánh isOK == false, isOK == true và isOK != null đều trả về false. Luồng chạy rơi vào block else và gán x = 4.",
+    "why_wrong": {
+      "A": "Sai vì isOK là null chứ không phải false.",
+      "B": "Sai vì isOK là null chứ không phải true.",
+      "C": "Sai vì isOK là null nên điều kiện check khác null bị loại."
+    },
+    "tip": "Mẹo Apex: Biến khai báo không gán trị -> Mặc định luôn là NULL!"
+  },
+  {
+    "id": 192,
+    "vi_question": "Lập trình viên muốn nhúng một trang Visualforce vào phần chi tiết (detail section) của Page Layout đối tượng Account, nhưng không tìm thấy trang này trong trình biên tập Layout. Thuộc tính nào bắt buộc phải khai báo?",
+    "why_correct": "Khai báo thuộc tính standardController='Account' (A) trong thẻ <apex:page>. Chỉ những trang Visualforce sử dụng Standard Controller của đối tượng tương ứng mới đủ điều kiện hiển thị trong danh sách nhúng layout của đối tượng đó.",
+    "why_wrong": {
+      "B": "extensions chỉ để khai báo lớp Apex mở rộng, không quyết định khả năng nhúng layout.",
+      "C": "controller dùng để khai báo Custom Controller class, trang dùng custom controller cấm nhúng trực tiếp vào layout chuẩn.",
+      "D": "action dùng để gọi hàm khi tải trang, không liên quan đến cấu hình nhúng layout."
+    },
+    "tip": "Muốn nhúng trang Visualforce vào Page Layout của sObject -> Bắt buộc dùng standardController='sObjectName'."
+  },
+  {
+    "id": 196,
+    "vi_question": "Einstein Next Best Action hiển thị gợi ý trên Account. Khi gợi ý bị từ chối (rejected), một phương thức Apex phải được thực thi để gọi API ra ngoài. Ba yếu tố nào lập trình viên cần lưu ý khi viết phương thức Apex này? (Chọn 3)",
+    "why_correct": "B: Phương thức bắt buộc phải sử dụng annotation @InvokableMethod để Flow/Next Best Action nhận diện và gọi được. C: Phương thức bắt buộc phải khai báo là static. D: Phương thức bắt buộc phải là public (hoặc global) để bên ngoài truy cập.",
+    "why_wrong": {
+      "A": "@AuraEnabled chỉ dùng để phơi hàm cho Lightning Component (Aura/LWC) gọi, không dùng cho Next Best Action gọi trực tiếp.",
+      "E": "@Future là annotation chạy bất đồng bộ chung, phương thức invokable có thể gọi hàm future bên trong chứ chính nó không bắt buộc phải là @Future."
+    },
+    "tip": "Invokable Method tiêu chuẩn -> @InvokableMethod + public static void name(List<T> input)."
+  },
+  {
+    "id": 198,
+    "vi_question": "Universal Containers muốn xây dựng một ứng dụng Salesforce mới mà toàn bộ logic nghiệp vụ sau này có thể được bảo trì hoàn toàn no-code bởi Quản trị viên (Admin). Ba công cụ nào nên được xem xét? (Chọn 3)",
+    "why_correct": "A: Process Builder (no-code tự động hóa nghiệp vụ). C: Invocable Actions (gọi các tiến trình đóng gói sẵn từ Flow/Process). E: Validation Rules (quy tắc chặn dữ liệu hoàn toàn no-code). Các công cụ này giúp admin dễ dàng chỉnh sửa mà không cần đụng đến code Apex.",
+    "why_wrong": {
+      "B": "Scheduled Jobs yêu cầu lập trình class Apex implements Schedulable, admin không thể viết code bảo trì được.",
+      "D": "Workflows tuy no-code nhưng tính năng quá nghèo nàn và đã bị Salesforce ngừng phát triển nâng cấp (deprecated)."
+    },
+    "tip": "Logic no-code cho Admin dễ bảo trì -> Process Builder/Flow Builder, Invocable Actions, Validation Rules."
+  },
+  {
+    "id": 199,
+    "vi_question": "Admin của Universal Containers cố gắng chuyển đổi trường quan hệ Master-Detail trên đối tượng Vendor thành quan hệ Lookup với Account nhưng bị hệ thống báo lỗi không cho phép. Nguyên nhân khả thi nhất là gì?",
+    "why_correct": "Trên đối tượng cha Account đang tồn tại các trường Roll-up Summary (C) tính toán dữ liệu của Vendor con. Đây là ràng buộc cứng của Salesforce, ta bắt buộc phải xóa hoàn toàn các trường Roll-up Summary này trước khi đổi kiểu quan hệ.",
+    "why_wrong": {
+      "A": "Việc bản ghi Vendor có giá trị liên kết Account hoàn toàn không cản trở việc đổi sang Lookup (chỉ có chiều ngược lại từ Lookup sang Master-Detail mới yêu cầu Vendor không được có dữ liệu trống).",
+      "B": "Workflow không chặn việc chuyển đổi kiểu trường quan hệ cơ bản.",
+      "D": "Không có ràng buộc hệ thống nào bắt buộc Vendor phải dùng Master-Detail chỉ để phục vụ báo cáo."
+    },
+    "tip": "Đổi Master-Detail sang Lookup -> Bắt buộc phải XÓA hết các trường Roll-up Summary trên cha trước!"
+  },
+  {
+    "id": 200,
+    "vi_question": "Trong trường hợp nào lập trình viên bắt buộc phải sử dụng Apex Trigger thay vì sử dụng một Process Builder Process?",
+    "why_correct": "Khi cần thực hiện hành động khi bản ghi bị XÓA (delete), KHÔI PHỤC (undelete), hoặc cần can thiệp xử lý dữ liệu ở giai đoạn BEFORE DML (D) trước khi lưu xuống database. Các sự kiện này Process Builder/Flow đời cũ hoàn toàn không hỗ trợ.",
+    "why_wrong": {
+      "A": "Tạo mới bản ghi là thế mạnh cơ bản của Process Builder với hành động Create Record.",
+      "B": "Cập nhật hàng loạt bản ghi con liên quan hoàn toàn thực hiện được no-code bằng Process Builder.",
+      "C": "Đăng bài viết lên Chatter (Post to Chatter) là hành động tích hợp sẵn cực kỳ trực quan của Process Builder."
+    },
+    "tip": "Bắt buộc dùng Trigger khi -> Muốn bắt sự kiện Before DML, hoặc sự kiện Delete/Undelete."
+  },
+  {
+    "id": 201,
+    "vi_question": "Công ty muốn tạo tính năng đánh giá nhân viên (Rating). Điểm đánh giá trung bình của nhân viên (Employee's average rating) phải được hiển thị trên Employee record. Nhân viên được phép tạo Rating nhưng cấm sửa Employee. Hai hành động nào developer nên chọn? (Chọn 2)",
+    "why_correct": "A: Viết trigger trên đối tượng Rating để tự động tính trung bình cộng và update lên trường của Employee. B: Tạo mối quan hệ Lookup giữa Rating và Employee. (Vì sao không dùng Master-Detail và Roll-up? Vì hàm tổng hợp AVG không hề được hỗ trợ trong trường Roll-up Summary chuẩn của Salesforce!).",
+    "why_wrong": {
+      "C": "Hàm tổng hợp AVG (Average) KHÔNG HỀ TỒN TẠI trong tính năng Roll-up Summary Field của Salesforce (chỉ có SUM, COUNT, MIN, MAX).",
+      "D": "Mối quan hệ Master-Detail sẽ kế thừa bảo mật nghiêm ngặt từ cha Employee, gây khó khăn cho quyền tạo bản ghi của nhân viên."
+    },
+    "tip": "Salesforce Roll-up Summary: Cấm dùng hàm tính trung bình AVG. Muốn tính trung bình -> Dùng Lookup + Trigger!"
+  },
+  {
+    "id": 203,
+    "vi_question": "Khi xem Quote, sales rep muốn thấy nhanh tổng số lượng các mặt hàng được chiết khấu (discounted) có trong Quote Line Items. Lập trình viên nên làm gì?",
+    "why_correct": "Tạo trường Roll-up Summary trên Quote thực hiện tính SUM trường Quantity của Quote Line Item, đồng thời cấu hình bộ lọc filter criteria chỉ tính các dòng Quote Line Item có chiết khấu (C). Đây là giải pháp no-code chuẩn và tối ưu nhất.",
+    "why_wrong": {
+      "A": "Viết trigger Apex là giải pháp code cồng kềnh và tốn tài nguyên bảo trì không cần thiết cho một tác vụ có thể làm no-code.",
+      "B": "Workflow rule field update không thể thực hiện tính tổng và cập nhật ngược dòng dữ liệu hiệu quả bằng Roll-up Summary.",
+      "D": "Formula field chỉ có thể tính toán trên chính bản ghi đó hoặc từ cha xuống con, cấm thực hiện hàm tổng hợp (SUM) đi ngược từ con lên cha."
+    },
+    "tip": "Đếm/Tổng con có điều kiện lên Cha (ở quan hệ Master-Detail) -> Luôn dùng Roll-up Summary Field bật filter!"
+  },
+  {
+    "id": 204,
+    "vi_question": "Xét về mô hình MVC, hai ưu điểm vượt trội của việc xây dựng tầng View bằng Lightning Web Components (LWC) so với Visualforce là gì? (Chọn 2)",
+    "why_correct": "A: LWCs được thiết kế dưới dạng các khối thành phần độc lập và có khả năng tái sử dụng cực cao (reusable units). B: LWC sở hữu một hệ sinh thái linh kiện phong phú, hiện đại giúp xây dựng giao diện động mượt mà hơn nhiều.",
+    "why_wrong": {
+      "C": "LWC chạy và debug chủ yếu dưới Client-side (trình duyệt JavaScript), không phải server-side.",
+      "D": "LWC không có tính năng tự động sinh mã nguồn (automatic code generation) kỳ diệu nào cả."
+    },
+    "tip": "Ưu thế LWC so với Visualforce -> Độc lập, tái sử dụng cao và hệ sinh thái hiện đại mượt mà."
+  },
+  {
+    "id": 205,
+    "vi_question": "Cloud Kicks Fitness phát triển một managed package. Một module cho phép khách hàng gọi hàm calculateBodyFat() trong Apex class BodyFat để tùy biến. Developer nên khai báo class và method như thế nào để khách hàng ngoài package có thể gọi được?",
+    "why_correct": "Khai báo cả class và method sử dụng từ khóa truy cập global (D). Trong managed package, chỉ các class và method khai báo global mới có thể được truy cập và gọi từ bên ngoài namespace của gói.",
+    "why_wrong": {
+      "A": "public chỉ cho phép các class khác trong cùng một namespace của package truy cập, khách hàng ở ngoài cấm gọi.",
+      "B": "Phương thức khai báo public sẽ bị chặn truy cập từ ngoài namespace bất kể class cha có là global.",
+      "C": "Class khai báo public sẽ khóa cứng toàn bộ các thành phần bên trong nó đối với bên ngoài bất chấp method khai báo global."
+    },
+    "tip": "Managed Package phơi code cho khách hàng ngoài gọi -> Bắt buộc dùng từ khóa GLOBAL!"
+  }
+]

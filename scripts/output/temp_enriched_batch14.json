@@ -1,0 +1,163 @@
+[
+  {
+    "id": 329,
+    "vi_question": "Khi người dùng chọn nhiều giá trị trong một trường Multi-Select Picklist trên giao diện, các giá trị này được lưu trữ và đại diện dưới dạng kiểu dữ liệu gì trong ngôn ngữ Apex?",
+    "why_correct": "Được đại diện dưới dạng một chuỗi String duy nhất, trong đó các giá trị được phân tách với nhau bằng dấu chấm phẩy (semicolon ';') (C) (ví dụ: 'Red;Green;Blue').",
+    "why_wrong": {
+      "A": "Apex không tự động ánh xạ Multi-Select Picklist thành List<String> ở sObject layer.",
+      "B": "Dấu phẩy ',' không phải là ký tự phân cách chuẩn của Multi-Select Picklist trong Salesforce.",
+      "D": "Apex không tự động ánh xạ Multi-Select Picklist thành Set<String>."
+    },
+    "tip": "Mẹo thi Multi-Select Picklist: Trong Apex, giá trị luôn được trả về dạng String phân cách bằng DẤU CHẤM PHẨY (;)."
+  },
+  {
+    "id": 331,
+    "vi_question": "Hai lợi ích nổi bật nhất của kiến trúc lập trình Lightning Component Framework là gì? (Chọn 2)",
+    "why_correct": "B: Cung cấp kiến trúc hướng sự kiện (event-driven architecture) giúp tăng tính độc lập (decoupling) và khả năng tái sử dụng giữa các components. C: Thúc đẩy tiến độ phát triển nhanh nhờ kho component chuẩn có sẵn (out-of-box) tự động tương thích tốt trên cả máy tính để bàn (desktop) và thiết bị di động (mobile).",
+    "why_wrong": {
+      "A": "Lightning Component đơn giản hóa độ phức tạp cho việc xây dựng cả các trang đơn lẫn toàn bộ hệ thống ứng dụng quy mô lớn.",
+      "D": "Không có tính năng nào hỗ trợ tăng tốc độ sinh file PDF trong lõi của Lightning component framework."
+    },
+    "tip": "Lợi ích Lightning Framework -> Kiến trúc hướng sự kiện (Event-driven) + Tương thích đa thiết bị di động và desktop (Out-of-box)."
+  },
+  {
+    "id": 332,
+    "vi_question": "Cho đoạn code cập nhật Contact trong Custom Controller của Visualforce Page: [Code updateContact]. Lập trình viên nên bọc khối lệnh try/catch bằng những điều kiện nào sau đây để kiểm tra quyền hạn cấp đối tượng (object-level permissions) của người dùng hiện tại trước khi thực thi DML? (Chọn 2)",
+    "why_correct": "B: 'Schema.sObjectType.Contact.isAccessible()' để kiểm tra xem người dùng hiện tại có quyền Xem (Read) đối tượng Contact hay không. D: 'Schema.sObjectType.Contact.isUpdateable()' để kiểm tra xem người dùng hiện tại có quyền Sửa (Update) đối tượng Contact hay không.",
+    "why_wrong": {
+      "A": "So khớp OwnerId chỉ kiểm tra quyền sở hữu bản ghi cụ thể, không kiểm tra quyền phân quyền hệ thống cấp đối tượng (Object-level) của Profile/Permission Set.",
+      "C": "Schema...fields.Is_Active__c.isUpdateable() dùng để kiểm tra quyền hạn cấp trường (Field-level security - FLS) chứ không phải cấp đối tượng (Object-level) theo yêu cầu đề bài."
+    },
+    "tip": "Kiểm tra quyền hạn cấp Đối tượng (Object-level permission) -> Dùng isAccessible() (Xem) và isUpdateable() (Sửa) trực tiếp trên sObjectType."
+  },
+  {
+    "id": 333,
+    "vi_question": "Công cụ/Phương pháp nào sau đây có thể được sử dụng để xóa bỏ hoàn toàn các thành phần metadata (như Apex class, trường tùy chỉnh) khỏi môi trường Production?",
+    "why_correct": "Thực hiện deploy bằng bộ công cụ Ant Migration Tool (hoặc SFDX CLI) chứa một tệp cấu hình xóa 'destructiveChanges.xml' và một tệp 'package.xml' trống không chứa khai báo deploy mới (C).",
+    "why_wrong": {
+      "A": "Bộ công cụ Change Sets tiêu chuẩn trên giao diện web hoàn toàn không hỗ trợ tệp destructiveChanges.xml để xóa metadata.",
+      "B": "Change Sets không có nút chọn nào tên là 'delete option checked' để xóa các thành phần metadata đã triển khai.",
+      "D": "Nếu khai báo các thành phần cần xóa vào tệp package.xml, hệ thống sẽ cố gắng deploy/update chúng thay vì thực thi lệnh xóa bỏ."
+    },
+    "tip": "Xóa metadata khỏi Production -> Dùng Ant/SFDX CLI với tệp DESTRUCTIVECHANGES.XML đi kèm tệp PACKAGE.XML TRỐNG!"
+  },
+  {
+    "id": 335,
+    "vi_question": "Managed Packages (Gói ứng dụng được quản lý) có thể được khởi tạo và phát triển trong loại môi trường tổ chức (Org) nào sau đây?",
+    "why_correct": "Developer Edition (D). Đây là quy định cứng của Salesforce: chỉ có môi trường Developer Edition mới hỗ trợ đăng ký Namespace độc quyền và cho phép đóng gói, phát hành Managed Package lên AppExchange.",
+    "why_wrong": {
+      "A": "Developer Sandbox chỉ dùng để dev code nội bộ doanh nghiệp, cấm đóng gói Managed Package.",
+      "B": "Partial Copy Sandbox tương tự A, không hỗ trợ tạo namespace độc quyền để đóng gói phát hành ngoại sàn.",
+      "C": "Unlimited Edition là môi trường Production thực tế của doanh nghiệp, không hỗ trợ tính năng đóng gói Managed Package."
+    },
+    "tip": "Nơi duy nhất tạo được Managed Package -> Bắt buộc là DEVELOPER EDITION Org!"
+  },
+  {
+    "id": 336,
+    "vi_question": "Developer cần hiển thị ngày thắng cơ hội thành công gần nhất ('Closed Won' date) của toàn bộ các Opportunity liên quan lên bản ghi Account cha bằng công cụ no-code. Trường nào cần cấu hình để đạt được điều này?",
+    "why_correct": "Tạo trường Roll-up Summary trên đối tượng Account thực hiện hàm MAX trỏ vào trường CloseDate của Opportunity con với điều kiện lọc Stage = 'Closed Won' (C). Do Salesforce hỗ trợ quan hệ đặc biệt giữa Account và Opportunity, ta có thể dùng Roll-up Summary no-code vô cùng tiện lợi.",
+    "why_wrong": {
+      "A": "Đặt trường Roll-up Summary ở phía Opportunity con là sai chiều thiết kế cơ sở dữ liệu.",
+      "B": "Cross-object formula field chỉ hỗ trợ đi từ con tham chiếu lên cha chứ không thể tính toán tổng hợp dồn từ dưới lên cha được.",
+      "D": "Tương tự B, trường công thức chéo đối tượng trên Account cấm đi xuống Opportunity con để tính toán tổng hợp."
+    },
+    "tip": "Cộng dồn hoặc lấy ngày lớn nhất/nhỏ nhất của bản ghi con lên cha -> Luôn tạo trường ROLL-UP SUMMARY trên đối tượng CHA."
+  },
+  {
+    "id": 337,
+    "vi_question": "Universal Containers muốn khóa không cho phép người dùng chỉnh sửa Opportunity khi cơ hội đạt trạng thái 'Closed/Won'. Hai giải pháp nào lập trình viên nên chọn? (Chọn 2)",
+    "why_correct": "B: Sử dụng một Validation Rule để chặn lưu dữ liệu khi Stage đã đóng. D: Sử dụng một Apex Trigger before update gọi hàm addError() để chặn lưu dữ liệu.",
+    "why_wrong": {
+      "A": "Visual Workflow (Flow) dùng để hướng dẫn người dùng nhập liệu, không có tính năng khóa cứng database ngăn cản sửa đổi từ các công cụ khác như API/Data Loader.",
+      "C": "Process Automation Settings chứa các cấu hình chung của hệ thống, không có tùy chọn nào hỗ trợ khóa bản ghi Opportunity thông thường khi đổi Stage."
+    },
+    "tip": "Khóa bản ghi ngăn chặn sửa đổi -> Giải pháp tốt nhất luôn là VALIDATION RULE hoặc APEX TRIGGER dùng addError()."
+  },
+  {
+    "id": 339,
+    "vi_question": "Thông qua công cụ Schema Builder, lập trình viên cố gắng thay đổi API Name (tên định danh hệ thống) của một trường tùy chỉnh đang được tham chiếu sử dụng trong một lớp Apex Test Class. Kết quả nhận được là gì?",
+    "why_correct": "API Name của trường sẽ không bị thay đổi và hệ thống chặn đứng hành động này để đảm bảo tính an toàn dữ liệu, không gây ra ảnh hưởng nào khác (A). Salesforce cấm sửa tên API Name của trường/object khi nó đang được tham chiếu trong code metadata để tránh lỗi biên dịch.",
+    "why_wrong": {
+      "B": "Salesforce không tự động sửa đổi code trong Apex class khi đổi tên trường trên Schema Builder.",
+      "C": "Hệ thống cấm sửa đổi trực tiếp chứ không cho phép đổi rồi ném ra cảnh báo cập nhật class sau.",
+      "D": "Không tự động cập nhật được code tham chiếu."
+    },
+    "tip": "Sửa API Name của trường đang có code tham chiếu -> Salesforce CẤM TUYỆT ĐỐI và chặn đứng hành động!"
+  },
+  {
+    "id": 340,
+    "vi_question": "Một chiến lược Next Best Action sử dụng Enhance Element để gọi một Apex method nhằm xác định mức chiết khấu cho Contact. Khai báo nào sau đây của Apex method là đúng quy chuẩn?",
+    "why_correct": "Cú pháp A: @InvocableMethod global static List<List<Recommendation>> getLevel(List<ContactWrapper> input). Phương thức invocable bắt buộc phải là static, nhận tham số dạng List và kiểu trả về cũng bắt buộc là List of List (ở đây là List<List<Recommendation>>) để hỗ trợ xử lý hàng loạt bulkified.",
+    "why_wrong": {
+      "B": "Sai vì thiếu từ khóa 'static', invocable method bắt buộc phải là static.",
+      "C": "Kiểu trả về ListRecommendation (không có List bao ngoài) là sai định dạng danh sách bulkified.",
+      "D": "Thiếu static và tham số truyền vào là ContactWrapper thô không bọc trong List là sai quy tắc bulkified."
+    },
+    "tip": "Invocable Method -> Luôn bắt đầu bằng @InvocableMethod, bắt buộc phải là STATIC, nhận vào List và trả về List/List of List!"
+  },
+  {
+    "id": 341,
+    "vi_question": "Một Apex transaction thực hiện: Chèn thành công 100 Accounts (bằng Database.insert(accts, false)). Chèn thành công 2,000 Contacts (bằng lệnh insert standalone). Cuối cùng bị báo lỗi DML Exception khi cố chèn 500 Opportunities (bằng lệnh insert standalone). Hỏi tổng cộng có bao nhiêu bản ghi thực sự được lưu (commit) thành công vào cơ sở dữ liệu sau transaction này?",
+    "why_correct": "Tổng số bản ghi committed thành công là 0 (C). Vì toàn bộ các câu lệnh diễn ra trong cùng một Transaction (Giao dịch). Một khi xảy ra lỗi runtime không được xử lý (DML Exception ở bước Opportunity), Salesforce sẽ lập tức hủy bỏ (rollback) toàn bộ giao dịch, xóa sạch mọi dữ liệu đã chèn tạm trước đó để đảm bảo tính toàn vẹn dữ liệu.",
+    "why_wrong": {
+      "A": "Sai tính toán do nghĩ Contacts không bị rollback.",
+      "B": "Sai tính toán.",
+      "D": "Lầm tưởng 100 Accounts dùng Database.insert(..., false) sẽ được giữ lại. Thực tế, allOrNone=false chỉ bỏ qua lỗi trong chính câu lệnh chèn Account đó, chứ không thể bảo vệ Account khỏi đợt rollback toàn cục của cả Transaction khi có exception nổ ra ở câu lệnh sau."
+    },
+    "tip": "Mẹo Transaction: Có lỗi Exception không được bắt xảy ra ở bất cứ đâu trong Transaction -> TOÀN BỘ BẢN GHI ĐỀU BỊ ROLLBACK VỀ 0!"
+  },
+  {
+    "id": 342,
+    "vi_question": "Universal Containers lưu trữ ngày có hàng (availability date) trên từng Line Item con của Order. Đơn hàng chỉ được phép giao khi tất cả các Line Items đều có hàng. Phương pháp no-code nào tối ưu nhất để tự động xác định ngày giao hàng ước tính của Order cha?",
+    "why_correct": "Tạo một trường Roll-Up Summary trên đối tượng cha Order thực hiện tính MAX trường availability date của các Line Items con (D). Ngày giao hàng khi tất cả có sẵn bắt buộc phải là ngày có hàng muộn nhất (lớn nhất - MAX) trong số các bản ghi con.",
+    "why_wrong": {
+      "A": "Không tồn tại hàm LATEST trong cấu trúc trường công thức của Salesforce.",
+      "B": "Hàm CEILING chỉ dùng để làm tròn lên một số thực decimal, không liên quan đến việc tính toán ngày tháng.",
+      "C": "Sử dụng hàm DAYS và đếm số lượng bản ghi con COUNT không giúp xác định được ngày có hàng lớn nhất của các bản ghi con."
+    },
+    "tip": "Tìm ngày muộn nhất của bản ghi con đưa lên cha -> Tạo trường Roll-up Summary sử dụng hàm MAX."
+  },
+  {
+    "id": 343,
+    "vi_question": "Cho phương thức Apex sau được gọi từ một Trigger: [Code setBusinessUnitToEMEA]. Developer nên sửa đổi code như thế nào để đảm bảo tuân thủ best practices (thực hành tốt nhất) của Salesforce trigger?",
+    "why_correct": "Cú pháp D: Public static void setBusinessUnitToEMEA(List<Contact> contacts) { for(Contact thisContact : contacts) { thisContact.Business_Unit__c = 'EMEA' ; } update contacts; }. Phương thức nhận tham số là danh sách List<Contact> để xử lý bulkified và đưa câu lệnh DML update ra NGOÀI vòng lặp for để tránh đụng trần 150 DML limit.",
+    "why_wrong": {
+      "A": "Sai vì chỉ xử lý phần tử đầu tiên của danh sách (contacts[0]) và thực hiện DML đơn lẻ, làm mất đi tính xử lý hàng loạt.",
+      "B": "Cú pháp gán trị chèn vào list sai ngữ pháp nghiêm trọng.",
+      "C": "Vẫn giữ nguyên câu lệnh DML update bên trong thân vòng lặp for (update contacts[0]), gây nguy cơ crash DML Limit cực cao."
+    },
+    "tip": "Trigger Best Practice thần thánh -> Luôn nhận tham số dạng LIST + Tuyệt đối cấm tiệt đặt câu lệnh DML (insert, update, delete) bên trong vòng lặp FOR!"
+  },
+  {
+    "id": 347,
+    "vi_question": "Developer đang xây dựng một ứng dụng chứa nhiều Lightning Web Components. Một component con được dùng để định hướng trang. Khi user click nút 'Next' trên component con, component cha phải được thông báo để chuyển trang. Cách giải quyết chuẩn xác nhất là gì?",
+    "why_correct": "Tạo và bắn ra một sự kiện tùy chỉnh (Custom Event) từ component con (A). Component cha sẽ đăng ký lắng nghe sự kiện này (onnext) để thực thi logic chuyển trang, đảm bảo đúng cơ chế đóng gói và truyền thông tin ngược dòng từ con lên cha trong LWC.",
+    "why_wrong": {
+      "B": "Apex controller chạy dưới database server layer, không thể can thiệp điều hướng giao diện trực quan client-side của component cha.",
+      "C": "Component con cấm và không thể trực tiếp thay đổi thuộc tính (property) của component cha để bảo toàn tính đóng gói dữ liệu.",
+      "D": "Fire notification chỉ hiển thị thông báo toast nổi trên màn hình, không giúp truyền thông tin điều khiển giữa hai component."
+    },
+    "tip": "Giao tiếp ngược dòng từ Component Con lên Component Cha trong LWC -> Luôn sử dụng CUSTOM EVENT!"
+  },
+  {
+    "id": 348,
+    "vi_question": "Làm thế nào để lập trình viên lấy được toàn bộ danh sách các Record Types khả dụng đối với người dùng hiện tại trên đối tượng Case?",
+    "why_correct": "Sử dụng lớp Schema.DescribeSObjectResult của đối tượng Case (A). Lập trình viên gọi hàm Case.SObjectType.getDescribe().getRecordTypeInfos() để lấy danh sách chi tiết các Record Type khả dụng của user một cách động và chính xác nhất.",
+    "why_wrong": {
+      "B": "Sử dụng SOQL lấy toàn bộ Case chỉ trả về các bản ghi Case cụ thể, không trả về thông tin cấu hình Record Types khả dụng của Org.",
+      "C": "DescribeFieldResult của trường RecordType chỉ trả về thông tin metadata mô tả của trường, không trả về danh sách các Record Type Info thực tế của đối tượng.",
+      "D": "Không tồn tại phương thức getRecordTypes() trực tiếp trên đối tượng Case."
+    },
+    "tip": "Truy xuất danh sách Record Types động khả dụng của user -> Luôn dùng Schema.DescribeSObjectResult (SObjectType.getDescribe())."
+  },
+  {
+    "id": 349,
+    "vi_question": "Ba đặc trưng nổi bật của các phương thức tĩnh (static methods) trong ngôn ngữ Apex của Salesforce là gì? (Chọn 3)",
+    "why_correct": "A: Chỉ được khởi tạo duy nhất 1 lần khi class được nạp vào bộ nhớ (class loaded). C: Chỉ được phép định nghĩa và khai báo trong các lớp cha ngoài cùng (outer classes), cấm khai báo trong inner classes. E: Hoàn toàn được loại trừ (excluded) khỏi View State của trang Visualforce, giúp tối ưu hóa dung lượng truyền tải dữ liệu của trang.",
+    "why_wrong": {
+      "B": "Biến tĩnh static trong Apex chỉ tồn tại trong phạm vi của 1 single Apex Transaction chứ không thể tồn tại vượt ra ngoài scope của transaction.",
+      "D": "Ngược lại với câu C, static methods hoàn toàn bị cấm khai báo trong các inner classes."
+    },
+    "tip": "Đặc tính static Apex -> Khởi tạo khi load class + Chỉ có ở Outer class + Không bị truyền vào Visualforce View State!"
+  }
+]

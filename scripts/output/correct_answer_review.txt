@@ -1,0 +1,64 @@
+=== CORRECT MATCH REVIEW ===
+Total MD questions: 349
+Matched pairs: 349
+Correct answer matches: 338
+Correct answer MISMATCHES: 11
+
+JSON ID 36 (MD Q36, match=1.0)
+  MD correct:   []
+  JSON correct: ['A']
+  Q: A developer must create a ShippingCalculator class that cannot be instantiated and must include a wo
+
+JSON ID 40 (MD Q40, match=1.0)
+  MD correct:   []
+  JSON correct: ['B', 'C']
+  Q: A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored 
+
+JSON ID 72 (MD Q12, match=1.0)
+  MD correct:   []
+  JSON correct: ['C']
+  Q: A developer needs to implement a custom SOAP Web Service that is used by an external Web Application
+
+JSON ID 74 (MD Q14, match=1.0)
+  MD correct:   []
+  JSON correct: ['B', 'D']
+  Q: A developer needs to prevent the creation of Request records when certain conditions exist in the sy
+
+JSON ID 165 (MD Q45, match=1.0)
+  MD correct:   []
+  JSON correct: ['D']
+  Q: A developer must create a CreditCardPayment class that provides an implementation of an existing Pay
+
+JSON ID 168 (MD Q48, match=1.0)
+  MD correct:   []
+  JSON correct: ['A', 'C']
+  Q: Which code in a Visualforce page and/or controller might present a security vulnerability?
+A . <apex
+
+JSON ID 231 (MD Q51, match=0.99)
+  MD correct:   []
+  JSON correct: ['B']
+  Q: Which Lightning code segment should be written to declare dependencies on a Lightning component, c:a
+
+JSON ID 236 (MD Q56, match=1.0)
+  MD correct:   []
+  JSON correct: ['B']
+  Q: A developer must create a DrawList class that provides capabilities defined in the Sortable and Draw
+
+JSON ID 240 (MD Q2, match=1.0)
+  MD correct:   []
+  JSON correct: ['C']
+  Q: A developer has the controller class below.
+Public with sharing class myFooController{
+public intege
+
+JSON ID 290 (MD Q52, match=1.0)
+  MD correct:   []
+  JSON correct: ['B']
+  Q: A developer must implement a CheckPaymentProcessor class that provides check processing payment capa
+
+JSON ID 343 (MD Q47, match=1.0)
+  MD correct:   []
+  JSON correct: ['D']
+  Q: The following Apex method is part of the ContactService class that is called from a trigger:
+public 

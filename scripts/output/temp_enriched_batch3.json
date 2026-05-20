@@ -1,0 +1,162 @@
+[
+  {
+    "id": 68,
+    "vi_question": "Lập trình viên tạo trigger 'after insert' trên Lead để tạo Task cho mỗi Lead. Khi deploy lên Production, một hệ thống tích hợp bên ngoài nạp Lead theo lô (batch) thỉnh thoảng báo lỗi cả lô do câu lệnh insert Task thất bại. Việc này làm dừng tiến trình của hệ thống ngoài và yêu cầu restart thủ công. Thay đổi nào giúp tiến trình tiếp tục chạy khi một vài bản ghi trong lô bị lỗi?",
+    "why_correct": "Sử dụng phương thức Database.insert(tasks, false) (C) với tham số allOrNone = false. Khi đó, những bản ghi Task hợp lệ vẫn được insert thành công, còn bản ghi lỗi sẽ được ghi nhận vào SaveResult mà không bắn ra unhandled exception làm oẳng cả transaction của hệ thống tích hợp.",
+    "why_wrong": {
+      "A": "Deactivate trigger là giải pháp trốn tránh, làm mất đi tính năng tạo Task tự động rất quan trọng.",
+      "B": "Dùng try-catch sau khi insert không giúp cứu vãn các bản ghi khác trong lô nếu lệnh DML insert chuẩn thất bại (vì nó sẽ rollback toàn bộ lô nếu dính lỗi DML).",
+      "D": "Xóa quyền truy cập class sẽ làm hệ thống tích hợp lỗi 100% thay vì chạy tiếp."
+    },
+    "tip": "Muốn lô chạy tiếp dù có vài bản ghi lỗi -> Database.insert(..., false)."
+  },
+  {
+    "id": 72,
+    "vi_question": "Lập trình viên cần tạo một SOAP Web Service tùy chỉnh để ứng dụng ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn?",
+    "why_correct": "Class chứa SOAP Web Service bắt buộc phải khai báo là 'global'. Phương thức phơi ra cho bên ngoài gọi phải dùng annotation 'webservice static'. Các phương thức helper nội bộ có thể để 'private' bình thường (B).",
+    "why_wrong": {
+      "A": "Cú pháp 'Webservice class' ở đầu định nghĩa class là sai hoàn toàn, class phải khai báo bằng 'global class'.",
+      "C": "Sai cú pháp khai báo class giống câu A.",
+      "D": "Phương thức phơi ra làm API SOAP thiếu từ khóa 'webservice' và thiếu 'static'."
+    },
+    "tip": "SOAP Web Service: Class phải GLOBAL, Method phải WEBSERVICE STATIC."
+  },
+  {
+    "id": 74,
+    "vi_question": "Lập trình viên cần chặn việc tạo bản ghi Request khi có một số điều kiện nhất định xảy ra trong hệ thống. Một class RequestLogic đã có sẵn hàm kiểm tra. Khai báo trigger nào là đúng chuẩn để thực hiện việc này?",
+    "why_correct": "Để CHẶN (prevent) việc lưu dữ liệu, ta bắt buộc phải dùng sự kiện 'before insert' (D) để gọi hàm addError() trước khi dữ liệu chạm xuống ổ cứng. Đồng thời, truyền toàn bộ 'trigger.new' vào class helper để xử lý bulkified là chuẩn bài nhất.",
+    "why_wrong": {
+      "A": "Trigger này viết loop gọi addError thủ công nhưng cú pháp sai hoàn toàn (Request là tên đối tượng chứ không phải biến chạy).",
+      "B": "after insert là quá muộn để chặn tạo bản ghi, vì dữ liệu đã ghi xuống database rồi, gọi addError lúc này sẽ tốn tài nguyên rollback.",
+      "C": "after insert là sai thời điểm giống câu B."
+    },
+    "tip": "Muốn CHẶN tạo bản ghi -> Dùng trigger BEFORE INSERT + addError()."
+  },
+  {
+    "id": 77,
+    "vi_question": "Công cụ nào nên được sử dụng để tự động gửi yêu cầu phê duyệt (Approval Process submission) cho Case khi thỏa mãn điều kiện?",
+    "why_correct": "Process Builder (C) hoặc Flow Builder (hiện đại) hỗ trợ hành động gọi 'Submit for Approval' cực kỳ trực quan và hoàn toàn không cần code.",
+    "why_wrong": {
+      "A": "Assignment Rule chỉ dùng để chia Case/Lead cho Owner/Queue, không có tính năng gửi phê duyệt.",
+      "B": "Scheduled Apex dùng để lập lịch chạy định kỳ, không mang tính tức thời khi Case thỏa mãn điều kiện như Process Builder.",
+      "D": "Workflow Rule đời cũ không hề hỗ trợ hành động gửi bản ghi vào Approval Process."
+    },
+    "tip": "Tự động gửi phê duyệt (Approval) -> Gọi tên Process Builder hoặc Flow."
+  },
+  {
+    "id": 79,
+    "vi_question": "Review__c có quan hệ lookup với Job_Application__c. Job_Application__c lại có quan hệ Master-Detail với Position__c. Cách tốt nhất để hiển thị thông tin của Position__c trên trang Visualforce của một bản ghi Review__c là gì?",
+    "why_correct": "Visualforce cho phép hiển thị dữ liệu từ các object cha thông qua cú pháp merge field đi xuyên mối quan hệ (cross-object) lên tới 5 cấp. Do đó, cách tốt nhất không cần viết code là dùng Standard Controller của Review__c và gọi trực tiếp {!Review__c.Job_Application__r.Position__r.Name} trên trang (D). (Lưu ý: Đáp án B trong đề gốc là một sai sót dữ liệu vì nó đòi viết code extension rất cồng kềnh).",
+    "why_wrong": {
+      "A": "Viết Formula Field trên Position__c để hiển thị data của chính nó là vô nghĩa.",
+      "B": "Dùng controller của Job_Application__c là sai ngữ cảnh của trang Review__c, viết extension query là quá phức tạp.",
+      "C": "Dùng controller của Job_Application__c là sai ngữ cảnh trang Review__c."
+    },
+    "tip": "VF hiển thị cha của cha -> Dùng Standard Controller của con + cú pháp chấm '.' đi xuyên quan hệ."
+  },
+  {
+    "id": 80,
+    "vi_question": "Cho đoạn code sau thực thi trên môi trường có hơn 200 Account thuộc ngành 'Technology': [Code For Loop]. Khi code chạy, điều gì sẽ xảy ra với transaction Apex này?",
+    "why_correct": "Đáp án thực tế đúng về mặt kỹ thuật là B: Nếu chạy đồng bộ (synchronous), transaction chắc chắn sẽ OẰNG vì chạm giới hạn DML row hoặc DML statement. Lệnh 'update thisAccount;' nằm TRONG vòng lặp For chạy tới 150 lần, vượt quá giới hạn 150 DML statements cực nhanh chỉ với một vài tác vụ trigger kèm theo. (Mẹo thi: Đề bài gốc đánh dấu đáp án A là đúng, đây là một lỗi đề thi phổ biến cần cực kỳ lưu ý).",
+    "why_wrong": {
+      "C": "Trường Is_Tech__c được gán bình thường, không gây ra lỗi thiếu query field vì đây là lệnh gán trị ghi chứ không phải đọc giá trị chưa query.",
+      "D": "Asynchronous context có giới hạn DML statement vẫn là 150, nên nó vẫn oẳng bình thường."
+    },
+    "tip": "Mẹo thi PD1: Thấy DML trong For -> 100% dính Limit Exception. Đề thi thỉnh thoảng lỗi đáp án, cứ nhớ quy tắc bulkify!"
+  },
+  {
+    "id": 81,
+    "vi_question": "Kiểu dữ liệu nào được trả về bởi câu lệnh truy vấn SOSL sau đây?\n[FIND 'Acme*' IN NAME FIELDS RETURNING Account, Opportunity];",
+    "why_correct": "SOSL dùng để tìm kiếm trên nhiều Object cùng lúc. Kết quả trả về luôn luôn là một List chứa các List của sObject: `List<List<sObject>>` (C). List ngoài chứa các object, mỗi List trong chứa các bản ghi của từng object cụ thể.",
+    "why_wrong": {
+      "A": "Cú pháp định nghĩa kiểu dữ liệu lồng nhau sai quy chuẩn Apex.",
+      "B": "SOSL không trả về kiểu Map.",
+      "D": "SOSL trả về danh sách kết quả nhiều đối tượng chứ không trả về Map theo Id."
+    },
+    "tip": "Thần chú SOSL: FIND -> Trả về List<List<sObject>>."
+  },
+  {
+    "id": 82,
+    "vi_question": "Khi deploy Change Set từ Sandbox lên Production bị thất bại do một lỗi test class nằm trong một Managed Package của bên thứ ba. Developer và đối tác xác định đây là lỗi cảnh báo giả và có thể bỏ qua. Developer nên làm gì để deploy thành công?",
+    "why_correct": "Khi thực hiện deploy, chọn chế độ Test Level là 'Run local tests' (A). Chế độ này sẽ chạy toàn bộ các test class tự viết trong Org (local) và bỏ qua hoàn toàn các test class nằm trong các Managed Package cài thêm, giúp vượt qua lỗi.",
+    "why_wrong": {
+      "B": "Fast Deploy chỉ dùng khi change set đã được validate thành công trước đó trong vòng 4 ngày, không giúp bỏ qua lỗi test.",
+      "C": "Run local tests chạy toàn bộ test local trong Org chứ không chỉ chạy riêng test có trong change set.",
+      "D": "Managed Package là code đã đóng gói và khóa, developer không có quyền chỉnh sửa test class của họ."
+    },
+    "tip": "Lỗi test của Managed Package cài thêm -> Chọn Test Level = 'Run local tests' để bỏ qua."
+  },
+  {
+    "id": 85,
+    "vi_question": "Developer muốn nhiều class test khác nhau có thể dùng chung một bộ dữ liệu test mẫu. Developer nên tạo dữ liệu test này bằng cách nào?",
+    "why_correct": "Tạo một 'Test Utility Class' (A) chứa các hàm public static chuyên tạo dữ liệu mẫu (ví dụ: createAccounts()). Mỗi class test chỉ cần gọi hàm từ class utility này để lấy data test cực kỳ sạch sẽ và dễ bảo trì.",
+    "why_wrong": {
+      "B": "Khai báo thủ công ở mỗi class test gây lặp code, cực kỳ khó bảo trì khi schema thay đổi.",
+      "C": "@TestSetup chỉ tạo dữ liệu dùng chung trong NỘI BỘ 1 class test đó, các class test khác không 'với' tới được.",
+      "D": "SeeAllData=true làm test truy cập dữ liệu thật của Org, cực kỳ không khuyến khích vì làm test mất tính độc lập và dễ tạch."
+    },
+    "tip": "Dùng chung data test giữa các Class -> Tạo Test Utility Class."
+  },
+  {
+    "id": 87,
+    "vi_question": "Hai tính năng nào của Salesforce đóng vai trò là tầng 'Controller' trong kiến trúc MVC? (Chọn 2)",
+    "why_correct": "Trong mô hình MVC của Salesforce, tầng Controller xử lý logic nghiệp vụ và điều khiển dữ liệu. Cả Process Builder actions (A) và Workflow rules (B) đều chứa các logic điều khiển, tự động hóa cập nhật dữ liệu nên thuộc tầng Controller.",
+    "why_wrong": {
+      "C": "Standard objects đại diện cho bảng dữ liệu vật lý lưu trữ, thuộc tầng Model.",
+      "D": "Fields (các trường dữ liệu) định nghĩa cấu trúc dữ liệu, thuộc tầng Model."
+    },
+    "tip": "MVC Salesforce: Model = Objects/Fields. View = Visualforce/LWC. Controller = Apex/Workflows/Flows."
+  },
+  {
+    "id": 93,
+    "vi_question": "Hai phát biểu nào sau đây là đúng về các phương thức Getter và Setter trong Visualforce? (Chọn 2)",
+    "why_correct": "B: Phương thức Setter là bắt buộc để truyền dữ liệu người dùng nhập từ giao diện (VF Page) ngược về Controller xử lý. C: Salesforce không hề đảm bảo thứ tự thực thi giữa các phương thức Getter hay Setter khi trang tải, do đó cấm viết code logic phụ thuộc vào thứ tự chạy của chúng.",
+    "why_wrong": {
+      "A": "Setter chỉ cần khai báo public hoặc global tùy thuộc vào phạm vi sử dụng của controller, không bắt buộc luôn là global.",
+      "D": "Ngược lại, Getter dùng để truyền dữ liệu từ Controller ra hiển thị trên giao diện (Page), chứ không phải ngược lại."
+    },
+    "tip": "Getter = Đẩy dữ liệu RA Page. Setter = Hốt dữ liệu VÀO Controller. Thứ tự chạy ngẫu nhiên!"
+  },
+  {
+    "id": 94,
+    "vi_question": "Developer cần viết code Apex chỉ thực hiện hành động khi bản ghi thuộc một Record Type cụ thể. Hai cách nào giúp lấy Record Type ID động theo Tên (Name) của nó? (Chọn 2)",
+    "why_correct": "C: Sử dụng hàm getRecordTypeInfosByName() của lớp DescribeSObjectResult để lấy mô tả Record Type trực tiếp từ bộ nhớ RAM cực nhanh. D: Thực hiện câu truy vấn SOQL trên đối tượng hệ thống RecordType lọc theo DeveloperName hoặc Name để lấy ID.",
+    "why_wrong": {
+      "A": "Gọi API SOAP ra ngoài chỉ để lấy 1 cái ID Record Type là quá cồng kềnh và điên rồ.",
+      "B": "Hardcode ID là tối kỵ vì ID ở Sandbox và Production sẽ khác nhau, gây lỗi khi deploy."
+    },
+    "tip": "Lấy Record Type ID: 1. Schema Describe (getRecordTypeInfosByName) - Khuyến nghị; 2. SOQL RecordType."
+  },
+  {
+    "id": 95,
+    "vi_question": "Trường hợp nào sau đây ngăn cản developer thiết lập Sharing Rules (luật chia sẻ quyền truy cập) cho một Custom Object?",
+    "why_correct": "Khi Custom Object đó nằm ở bên Detail (con) của mối quan hệ Master-Detail (B). Thằng con sẽ bị tước quyền tự quyết và bắt buộc phải kế thừa hoàn toàn cấu hình bảo mật Sharing từ thằng cha (Master).",
+    "why_wrong": {
+      "A": "Public Read/Write là cấu hình OWD mặc định, hoàn toàn không ngăn cản việc viết sharing rule sau đó nếu cần thu hẹp/mở rộng.",
+      "C": "Chỉ cần có quyền Customize Application (thường là Admin hoặc Dev có quyền) là set được, không bắt buộc phải là System Admin tối cao.",
+      "D": "Không có khái niệm 'Owner field' của mối quan hệ Master-Detail vì bản ghi Detail không hề có trường Owner riêng."
+    },
+    "tip": "Detail trong Master-Detail = Ký sinh bảo mật. Không có Owner riêng, không có Sharing Rule riêng!"
+  },
+  {
+    "id": 96,
+    "vi_question": "Cho ví dụ xử lý Exception sau: [Class myClass]. Kết quả hiển thị trong debug log khi có lỗi QueryException xảy ra trong hàm aQuery là gì?",
+    "why_correct": "Khi truy vấn SOQL thất bại (QueryException), hệ thống ném ra QueryException chuẩn. Lỗi sẽ đi qua block catch đầu tiên (CustomException - không khớp vì đây là class con tự viết) và rơi trúng block catch thứ hai catch(QueryException eX), in ra 'Query Exception.'. Cuối cùng, block finally luôn luôn chạy và in ra 'Done.' (D).",
+    "why_wrong": {
+      "A": "Thiếu chữ 'Done.' của block finally vốn dĩ bắt buộc phải chạy.",
+      "B": "QueryException chuẩn của hệ thống không thể bị bắt bởi lớp CustomException tự chế được.",
+      "C": "Bị bắt sai block catch."
+    },
+    "tip": "Finally block: Dù code chạy ngon hay oẳng dính Exception, block finally VẪN PHẢI CHẠY!"
+  },
+  {
+    "id": 97,
+    "vi_question": "Universal Containers muốn các Opportunity khi đã chuyển sang trạng thái Closed/Won thì KHÔNG cho phép người dùng chỉnh sửa nữa. Hai giải pháp nào hỗ trợ việc này? (Chọn 2)",
+    "why_correct": "B: Sử dụng Validation Rule kiểm tra điều kiện IsWon = true và PRIORVALUE(StageName) = 'Closed/Won' để chặn lưu mọi thay đổi. D: Viết trigger 'before update' trên Opportunity check trạng thái cũ và mới để gọi addError() chặn lưu.",
+    "why_wrong": {
+      "A": "After-save flow chỉ chạy sau khi bản ghi đã lưu thành công vào database, không có tính năng chặn (block) cập nhật như Validation Rule.",
+      "C": "Process Automation Settings cấu hình chung cho hệ thống tự động hóa, không chứa logic chặn chỉnh sửa bản ghi cụ thể."
+    },
+    "tip": "Chặn chỉnh sửa bản ghi (Read-only khóa cứng) -> 1. Validation Rule (No-code); 2. Trigger addError (Code)."
+  }
+]

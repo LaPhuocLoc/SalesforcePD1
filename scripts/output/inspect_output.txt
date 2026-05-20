@@ -1,0 +1,98 @@
+============================================================
+ID: 3 | Num: 3
+Question: A developer is implementing an Apex class for a financial system. Within the class, the variables 'creditAmount' and 'debitAmount' should not be able to change once a value is assigned. In which two ways can the developer declare the variables to ensure their value can only be assigned one time? (Choose two.)
+Options:
+  A: Use the static keyword and assign its value in a static initializer.
+  B: Use the final keyword and assign its value when declaring the variable.
+  C: Use the final keyword and assign its value in the class constructor.
+  D: Use the static keyword and assign its value in the class constructor.
+Correct: ['B', 'C']
+Type: multi
+Explanation:
+  vi_question: Trong một class Apex, làm sao để đảm bảo các biến 'creditAmount' và 'debitAmount' chỉ được gán giá trị một lần duy nhất? (Chọn 2)
+  why_correct: Từ khóa 'final' trong Apex dùng để tạo hằng số cho instance. Mày có thể gán giá trị ngay lúc khai báo (A) hoặc gán duy nhất 1 lần trong Constructor (B). Sau đó đố ai sửa được.
+  why_wrong keys: ['C', 'D']
+    C: Static đơn thuần chỉ là biến dùng chung, vẫn sửa giá trị bình thường.
+    D: Static initializer gán giá trị cho biến static, nhưng nếu không có 'final' thì vẫn bị ghi đè sau đó.
+============================================================
+ID: 12 | Num: 12
+Question: Which two are phases in the Salesforce Application Event propagation framework? (Choose two.)
+Options:
+  A: Bubble
+  B: Default
+  C: Control
+  D: Emit
+Correct: ['A', 'B']
+Type: multi
+Explanation:
+  vi_question: Hai giai đoạn nào nằm trong khung lan truyền Aura Application Event của Salesforce? (Chọn 2)
+  why_correct: Application Event trong Aura có 3 phase: Capture, Bubble (lan tỏa từ con lên cha) và Default (chạy các handler đã đăng ký). Trong đáp án này, A và C là đúng quy chuẩn.
+  why_wrong keys: ['B', 'D']
+    B: Emit là thuật ngữ thường dùng trong các JS Framework khác như Vue, Aura không sử dụng phase này.
+    D: Control không phải là một giai đoạn trong vòng đời lan truyền event của Aura.
+============================================================
+ID: 13 | Num: 13
+Question: A custom object Trainer__c has a lookup field to another custom object Gym__c. Which SOQL query will get the record for the Viridian City Gym and all its trainers?
+Options:
+  A: SELECT ID FROM Trainer__c WHERE Gym__r.Name = 'Viridian City Gym'
+  B: SELECT Id, (SELECT Id FROM Trainers__c) FROM Gym__c WHERE Name = 'Viridian City Gym'
+  C: SELECT Id, (SELECT Id FROM Trainer__c) FROM Gym__c WHERE Name = 'Viridian City Gym'
+  D: SELECT Id, (SELECT Id FROM Trainers__r) FROM Gym__c WHERE Name = 'Viridian City Gym'
+Correct: ['D']
+Type: single
+Explanation:
+  vi_question: Câu query SOQL nào lấy được bản ghi Gym và tất cả các Trainer liên quan của nó?
+  why_correct: Đây là 'Parent-to-Child' query. Khi truy vấn từ cha xuống con của Custom Object, mày phải dùng Child Relationship Name kèm hậu tố __r. Ở đây là (SELECT Id FROM Trainers__r).
+  why_wrong keys: ['B', 'C', 'D']
+    B: Dùng __c là tên object, trong sub-query bắt buộc phải dùng tên quan hệ (Relationship Name).
+    C: Gym__r là sai, Gym là cha thì phải dùng Gym__c. Ngoài ra sub-query phải nằm trong ngoặc.
+    D: Câu này là Child-to-Parent query, nó chỉ lấy Trainer chứ không lấy theo kiểu 'Gym và các Trainer của nó'.
+============================================================
+ID: 36 | Num: 36
+Question: A developer must create a ShippingCalculator class that cannot be instantiated and must include a working default implementation of a calculate method, that sub-classes can override. What is the correct implementation of the ShippingCalculator class?
+A.
+public abstract class ShippingCalculator{
+public abstract calculate() { /*implementation*/}
+}
+B.
+public abstract class ShippingCalculator{
+public virtual void calculate() { /*implementation*/}
+}
+C.
+public abstract class ShippingCalculator{
+public void calculate() { /*implementation*/}
+}
+D.
+public abstract class ShippingCalculator{
+public override calculate() { /*implementation*/}
+}
+Options:
+Correct: []
+Type: single
+Explanation:
+  vi_question: Lập trình viên cần tạo class ShippingCalculator không được phép khởi tạo trực tiếp (cannot be instantiated) nhưng phải chứa một phương thức calculate có sẵn mã xử lý mặc định để các class con có thể ghi đè (override). Khai báo nào sau đây là đúng?
+  why_correct: Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).
+  why_wrong keys: ['A', 'C', 'D']
+    A: calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).
+    C: calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.
+    D: Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu.
+============================================================
+ID: 71 | Num: 11
+Question: How many Accounts will be inserted by the following block of code?
+for(Integer i = 0; i 500; i++){
+Account a = new Account(Name = 'New Account ' + i);
+insert a;
+}
+Options:
+  A: 100
+  B: 150
+  C: 0
+  D: 500
+Correct: ['C']
+Type: single
+Explanation:
+  vi_question: Có bao nhiêu Account sẽ được insert thành công bởi đoạn mã trên?
+  why_correct: Đáp án là 0. Đến vòng lặp thứ 151, hệ thống bắn lỗi `LimitException: Too many DML statements: 151`. Toàn bộ transaction bị rollback, không có account nào được lưu.
+  why_wrong keys: ['D', 'A']
+    D: Dù limit là 150, nhưng vì transaction là atomic (nguyên tử), lỗi xảy ra làm hủy hết mọi kết quả trước đó.
+    A: Vượt xa giới hạn cho phép của Salesforce.

@@ -1,0 +1,15 @@
+============================================================
+ID: 202 | Num: 22
+Question: What is a benefit of developing applications in a multi-tenant environment?
+Options:
+  A: Access to predefined computing resources
+  B: Enforced best practices for development
+  C: Unlimited processing power and memory
+  D: Default out-of-the-box configuration
+Correct: ['B']
+Explanation:
+  why_correct: Để đảm bảo một khách hàng không làm sập server dùng chung, Salesforce ép buộc các giới hạn Governor Limits, từ đó hình thành các Best Practices (như bulkify code) mà mọi dev phải tuân theo.
+  why_wrong keys: ['B', 'C', 'D']
+    B: Cấu hình mặc định có sẵn ở mọi môi trường, không phải lợi ích riêng biệt của multi-tenancy.
+    C: Sai bét! Multi-tenant là tài nguyên có hạn (Limits), làm gì có chuyện vô hạn (unlimited).
+    D: Truy cập tài nguyên định sẵn là đặc tính kỹ thuật, không phải là 'lợi ích' lớn nhất về mặt chất lượng app như ý A.

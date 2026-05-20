@@ -1,0 +1,16 @@
+ID: 71 | Correct: ['C']
+Question: How many Accounts will be inserted by the following block of code?
+for(Integer i = 0; i 500; i++){
+Account a = new Account(Name = 'New Account ' + i);
+insert a;
+}
+Options:
+  A: 100
+  B: 150
+  C: 0
+  D: 500
+why_correct: Đáp án là 0. Đến vòng lặp thứ 151, hệ thống bắn lỗi `LimitException: Too many DML statements: 151`. Toàn bộ transaction bị rollback, không có account nào được lưu.
+why_wrong:
+  D: Dù limit là 150, nhưng vì transaction là atomic (nguyên tử), lỗi xảy ra làm hủy hết mọi kết quả trước đó.
+  A: Vượt xa giới hạn cho phép của Salesforce.
+  B: 150 là con số giới hạn DML statements trong một transaction, không phải số bản ghi được tạo thành công. Khi vòng lặp chạy đến lần thứ 151, Salesforce bắn lỗi `LimitException: Too many DML statements: 151`. Vì tính nguyên tử (atomicity) của transaction, toàn bộ quá trình bị rollback hoàn toàn - kể cả 150 bản ghi đã insert thành công trước đó cũng bị xóa sạch. Kết quả cuối cùng là 0, không phải 150.

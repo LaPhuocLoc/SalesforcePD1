@@ -1,0 +1,160 @@
+[
+  {
+    "id": 168,
+    "vi_question": "Đoạn code nào trong trang Visualforce hoặc Controller dưới đây có thể gây ra lỗ hổng bảo mật nghiêm trọng?",
+    "why_correct": "Cú pháp B: <apex:outputText escape='false' value=' {!$CurrentPage.parameters.userInput}' />. Thuộc tính escape='false' tắt cơ chế tự động mã hóa ký tự độc hại của Visualforce, kết hợp với việc in trực tiếp dữ liệu thô do người dùng nhập từ URL parameter ($CurrentPage.parameters.userInput) sẽ tạo ra lỗ hổng tấn công Cross-Site Scripting (XSS) cực kỳ nguy hiểm.",
+    "why_wrong": {
+      "A": "Thẻ <apex:outputField> mặc định cực kỳ an toàn, tự động mã hóa XSS và tôn trọng phân quyền FLS của người dùng.",
+      "C": "Thẻ <apex:outputText> mặc định không khai báo escape='false' sẽ tự động mã hóa an toàn tất cả ký tự HTML/JS do người dùng nhập.",
+      "D": "Tắt escape trên thẻ <apex:outputField> tuy không khuyến khích nhưng an toàn hơn nhiều so với <apex:outputText> vì outputField chỉ hiển thị dữ liệu của trường đã được lưu trữ và có kiểm duyệt kiểu dữ liệu trong DB."
+    },
+    "tip": "Visualforce dính XSS bảo mật -> Tìm thẻ có 'escape=false' + tham số URL đầu vào người dùng."
+  },
+  {
+    "id": 170,
+    "vi_question": "Universal Containers quyết định sử dụng hoàn toàn các tính năng khai báo no-code để xây dựng một ứng dụng Salesforce mới. Ba lựa chọn nào nên được sử dụng để xây dựng lớp Cơ sở dữ liệu (Database Layer) cho ứng dụng này? (Chọn 3)",
+    "why_correct": "B: Roll-up summaries (tính tổng/đếm từ con lên cha). D: Relationships (các trường quan hệ lookup/master-detail). E: Custom objects and fields (các đối tượng và trường dữ liệu tùy chỉnh). Đây là các khối xây dựng cơ sở dữ liệu vật lý hoàn toàn no-code trong Salesforce.",
+    "why_wrong": {
+      "A": "Flows thuộc về tầng xử lý logic nghiệp vụ và tự động hóa quy trình (Logic/Controller Layer), không thuộc lớp định nghĩa cấu trúc cơ sở dữ liệu.",
+      "C": "Triggers là code Apex thuộc tầng xử lý logic (programmatic controller), không phải khai báo no-code."
+    },
+    "tip": "Database Layer dạng khai báo (No-code) -> Objects/Fields, Relationships, Roll-up Summaries."
+  },
+  {
+    "id": 171,
+    "vi_question": "Ba phát biểu nào sau đây là ĐÚNG khi nói về annotation @isTest trong lập trình Apex? (Chọn 3)",
+    "why_correct": "A: Cấu hình SeeAllData=true cấp phương thức sẽ override cấu hình SeeAllData=false cấp class để truy cập dữ liệu thật. B: Lớp cha đã mở SeeAllData=true thì phương thức con không thể đóng lại bằng SeeAllData=false (bị ignore và vẫn có quyền truy cập dữ liệu thực). E: Các đối tượng Metadata/Setup hệ thống như Profile, User, RecordType luôn hiển thị trong test class bất kể SeeAllData là true hay false.",
+    "why_wrong": {
+      "C": "Các test class có gắn @isTest hoàn toàn được MIỄN PHÍ dung lượng lưu trữ, không hề bị tính vào giới hạn 3 MB code Apex của Org.",
+      "D": "Products và Pricebooks trong các phiên bản Salesforce hiện đại đã bị cô lập dữ liệu, bắt buộc phải tạo data test giả lập hoặc bật SeeAllData=true mới thấy."
+    },
+    "tip": "Mẹo @isTest: Class test được miễn phí dung lượng code 3MB. SeeAllData=true cha mở thì con không thể đóng!"
+  },
+  {
+    "id": 172,
+    "vi_question": "Job_Application__c có quan hệ Master-Detail với Contact (Contact là Master). Developer cần truy vấn toàn bộ bản ghi Contact có Account Industry là 'Technology', đồng thời lấy kèm danh sách Job_Application__c con liên quan. Cú pháp SOQL nào là tối ưu nhất?",
+    "why_correct": "Cú pháp A: [SELECT Id, (SELECT Id FROM Job_Applications__r) FROM Contact WHERE Account.Industry = 'Technology']. Cú pháp này sử dụng đúng tên mối quan hệ con ở dạng số nhiều và có đuôi '__r' (Job_Applications__r), đồng thời đi xuyên lên cha Account ở dạng số ít cực kỳ chính xác.",
+    "why_wrong": {
+      "B": "Sử dụng tên cha dạng số nhiều 'Accounts.Industry' là sai cú pháp truy vấn mối quan hệ.",
+      "C": "Dùng đuôi '__c' (Job_Applications_c) cho subquery con là sai, quan hệ con bắt buộc dùng đuôi '__r'.",
+      "D": "Dùng tên quan hệ con dạng số ít 'Job_Application_c' vừa thiếu chữ 's' vừa sai đuôi '__r'."
+    },
+    "tip": "SOQL con lên cha -> Tên cha số ít (Account.Name). SOQL cha xuống con -> subquery số nhiều đuôi '__r' (Job_Applications__r)."
+  },
+  {
+    "id": 173,
+    "vi_question": "Hai câu lệnh tìm kiếm SOSL nào sẽ thực hiện tìm kiếm từ khóa trên tất cả các trường văn bản được hỗ trợ tìm kiếm của một đối tượng? (Chọn 2)",
+    "why_correct": "B: [FIND 'Acme*' RETURNING Account, Opportunity] - khi không khai báo phạm vi, hệ thống tự động ngầm định tìm trên toàn bộ các trường text. C: [FIND 'Acme*' IN ALL FIELDS RETURNING Account, Opportunity] - khai báo tường minh phạm vi tìm kiếm trên tất cả các trường.",
+    "why_wrong": {
+      "A": "Không tồn tại từ khóa 'IN ANY FIELDS' trong cú pháp chuẩn của ngôn ngữ SOSL.",
+      "D": "Không có từ khóa 'IN TEXT FIELDS' trong cú pháp của SOSL, chỉ có ALL FIELDS, NAME FIELDS, EMAIL FIELDS, PHONE FIELDS, SIDEBAR FIELDS."
+    },
+    "tip": "SOSL mặc định tìm kiếm -> IN ALL FIELDS (hoặc không viết gì)."
+  },
+  {
+    "id": 174,
+    "vi_question": "Developer cần upsert một danh sách Account tên myAccounts nhưng không có ID Salesforce. Các bản ghi chỉ có một trường text Unique đóng vai trò External ID tên là Foreign_Key__c. Hai câu lệnh nào thực thi thành công? (Chọn 2)",
+    "why_correct": "A: Sử dụng cú pháp DML truyền thống: 'upsert myAccounts Foreign_Key__c;'. C: Sử dụng phương thức của lớp Database: 'Database.upsert(myAccounts, Foreign_Key__c);'. Đây là hai cách chuẩn mực để chỉ định trường External ID làm khóa đối chiếu khi thực hiện Upsert.",
+    "why_wrong": {
+      "B": "Cú pháp DML truyền thống dùng dấu ngoặc đơn quanh tên trường là sai quy chuẩn biên dịch của Apex.",
+      "D": "Gọi thuộc tính Foreign_Key__c chấm phía sau phương thức Database.upsert là hoàn toàn sai cú pháp lập trình."
+    },
+    "tip": "Cú pháp Upsert bằng External ID -> 1. upsert list ExternalField__c; 2. Database.upsert(list, ExternalField__c);"
+  },
+  {
+    "id": 175,
+    "vi_question": "Lập trình viên nên làm gì để tránh việc bị chạm giới hạn governor limits (như SOQL/DML) trong các phương thức test?",
+    "why_correct": "Sử dụng phương thức Test.startTest() và Test.stopTest() (D). Hàm startTest() sẽ cấp riêng một bộ đếm giới hạn governor limit mới tinh và độc lập cho đoạn code chạy bên trong nó, giúp cô lập hoàn toàn giới hạn của khâu chuẩn bị dữ liệu mẫu.",
+    "why_wrong": {
+      "A": "@TestVisible chỉ giúp test class nhìn thấy các biến/method private của class chính, không giúp reset hay tối ưu hóa giới hạn limit.",
+      "B": "Test.loadData() giúp nạp nhanh dữ liệu test từ Static Resource CSV, không có tính năng reset hay cấp mới bộ đếm limit.",
+      "C": "SeeAllData=true làm test truy cập dữ liệu thật, không có tác động gì đến việc nới rộng hay reset giới hạn governor limit."
+    },
+    "tip": "Muốn reset cấp mới giới hạn governor limit trong test class -> Bọc code vào Test.startTest() và Test.stopTest()."
+  },
+  {
+    "id": 176,
+    "vi_question": "Universal Containers muốn khóa Opportunities không cho phép chỉnh sửa khi đã chuyển sang trạng thái Closed/Won. Hai chiến lược nào lập trình viên nên sử dụng để thực hiện việc này? (Chọn 2)",
+    "why_correct": "B: Tạo một Validation Rule kiểm tra nếu trạng thái cũ là Closed/Won thì chặn chỉnh sửa. D: Cấu hình Page Layout với tất cả các trường là Read-only đối với Record Type thuộc trạng thái Closed/Won.",
+    "why_wrong": {
+      "A": "Flow Builder không thể khóa cứng các thao tác chỉnh sửa trực tiếp trên giao diện người dùng một cách tối ưu như Validation Rule.",
+      "C": "Process Automation Settings dùng để cấu hình chung cho hệ thống tự động hóa, không hỗ trợ logic khóa bản ghi cụ thể."
+    },
+    "tip": "Khóa bản ghi (Read-only) -> 1. Validation Rule (Chặn lưu); 2. Page Layout Read-only (Khóa UI)."
+  },
+  {
+    "id": 177,
+    "vi_question": "Developer muốn hiển thị toàn bộ giá trị picklist của trường StageName trên Opportunity và toàn bộ Record Types hiện có của Opportunity lên trang Visualforce. Hai hành động nào giúp lấy các thông tin này trong controller? (Chọn 2)",
+    "why_correct": "A: Lấy Record Types bằng cách describe đối tượng Opportunity: 'Opportunity.SObjectType.getDescribe().getRecordTypeInfos()'. D: Lấy các giá trị picklist bằng cách describe trực tiếp trường StageName của Opportunity: 'Opportunity.StageName.getDescribe().getPicklistValues()'.",
+    "why_wrong": {
+      "B": "Không thể gọi getPicklistValues() từ mô tả sObject Opportunity cấp cao được, bắt buộc phải describe cấp trường (Field).",
+      "C": "Describe đối tượng RecordType hệ thống chỉ trả về Record Type của chính bảng RecordType đó chứ không trả về danh sách Record Type của đối tượng Opportunity."
+    },
+    "tip": "Lấy Record Types -> Đối tượng.getDescribe().getRecordTypeInfos(). Lấy Picklist -> Trường.getDescribe().getPicklistValues()."
+  },
+  {
+    "id": 178,
+    "vi_question": "Org có 2 custom object: Plan__c (quan hệ Master-Detail với Account) và Plan_Item__c (quan hệ Master-Detail với Plan__c). Lập trình viên nên sử dụng gì để tạo một section Visualforce hiển thị Plan__c của Account và toàn bộ Plan_Item__c liên quan trực tiếp trên trang Account layout?",
+    "why_correct": "Sử dụng một Standard Controller kết hợp với một Controller Extension (B). Vì trang này được nhúng trực tiếp trên Account Layout nên bắt buộc phải dùng standardController='Account'. Để xử lý hiển thị cấu trúc dữ liệu cha-con-cháu phức tạp, ta viết thêm Controller Extension class để query dữ liệu.",
+    "why_wrong": {
+      "A": "Không thể khai báo đồng thời cả Custom Controller và Standard Controller độc lập trong cùng một trang Visualforce.",
+      "C": "Controller extension bắt buộc phải đi kèm với một standardController hoặc custom controller chứ không thể đi kèm custom controller độc lập.",
+      "D": "Dùng Custom Controller đơn lẻ sẽ làm mất khả năng nhúng trực tiếp trang Visualforce vào page layout chuẩn của Account."
+    },
+    "tip": "Nhúng trang Visualforce vào Layout chuẩn + Viết thêm logic query nâng cao -> Dùng Standard Controller + Controller Extension."
+  },
+  {
+    "id": 179,
+    "vi_question": "Lập trình viên sử dụng vòng lặp để kiểm tra danh sách Contact. Khi gặp Contact có Title là 'Boss', phương thức Apex cần dừng lặp lập tức và nhảy xuống dòng code đầu tiên bên ngoài vòng lặp. Cú pháp nào đáp ứng yêu cầu?",
+    "why_correct": "Sử dụng câu lệnh break; (C). Lệnh break sẽ lập tức chấm dứt vòng lặp for/while hiện tại và chuyển quyền thực thi xuống câu lệnh đầu tiên ngay sau khối lặp.",
+    "why_wrong": {
+      "A": "return; sẽ thoát hoàn toàn khỏi phương thức hiện tại, không chạy bất kỳ dòng code nào tiếp theo bên dưới vòng lặp nữa.",
+      "B": "continue; chỉ bỏ qua lượt lặp hiện tại của phần tử đó và tiếp tục nhảy sang duyệt phần tử tiếp theo trong danh sách chứ không thoát loop.",
+      "D": "System.assert(false) sẽ ngay lập tức làm sập transaction và ném ra lỗi kiểm thử AssertException, cấm dùng trong code chạy thật."
+    },
+    "tip": "Thoát vòng lặp ngay lập tức -> Dùng BREAK. Bỏ qua lượt lặp hiện tại -> Dùng CONTINUE."
+  },
+  {
+    "id": 180,
+    "vi_question": "Hệ thống quản lý đơn hàng ngoài (OMS) tạo và xử lý đơn hàng. Tích hợp tạo Order trong Salesforce dựa trên Email của Contact. Mỗi lần OMS gửi cập nhật trạng thái đơn hàng, Salesforce lại tạo mới một bản ghi Order trùng lặp. Hai hành động nào giúp ngăn chặn việc này? (Chọn 2)",
+    "why_correct": "A: Đánh dấu mã đơn hàng từ OMS là trường External ID trong Salesforce. C: Đảm bảo mã đơn hàng OMS là duy nhất (Unique). Khi đó, hệ thống tích hợp gọi lệnh Upsert dựa trên khóa này để tự động cập nhật bản ghi có sẵn thay vì chèn mới trùng lặp.",
+    "why_wrong": {
+      "B": "Viết trigger delete bản ghi trùng sau khi insert là giải pháp tồi tệ, làm lãng phí ID bản ghi và tiêu tốn cực nhiều tài nguyên hệ thống.",
+      "D": "Email của Contact làm External ID chỉ giúp liên kết Contact với Order, không thể giúp định danh duy nhất cho từng bản ghi Order cụ thể được."
+    },
+    "tip": "Tránh tạo bản ghi trùng lặp từ hệ thống ngoài -> Sử dụng mã hệ thống ngoài làm EXTERNAL ID + Gọi lệnh UPSERT."
+  },
+  {
+    "id": 181,
+    "vi_question": "Ảnh hưởng thực tế của việc khai báo một class Apex sử dụng từ khóa 'without sharing' là gì?",
+    "why_correct": "Lớp Apex đó sẽ chạy dưới quyền hệ thống (System Mode), bỏ qua hoàn toàn các giới hạn chia sẻ dữ liệu (Sharing Rules, OWD) đối với user hiện tại (B), cho phép truy cập toàn bộ dữ liệu của Org.",
+    "why_wrong": {
+      "A": "Apex chạy ở chế độ without sharing cho phép update tất cả các bản ghi thỏa mãn điều kiện chứ không bị giới hạn chỉ bản ghi của user hiện tại sở hữu.",
+      "C": "Từ khóa sharing trên class không hề ảnh hưởng đến khả năng thiết lập sharing rules trên các bản ghi được tạo ra.",
+      "D": "Class không bị giới hạn quyền gọi theo vai trò developer, mọi user thông thường có quyền truy cập class đều chạy được."
+    },
+    "tip": "without sharing -> Chạy quyền hệ thống (System Mode), BỎ QUA Sharing Rules của User!"
+  },
+  {
+    "id": 182,
+    "vi_question": "Developer cần tìm thông tin và theo dõi nhật ký thực thi của các phương thức bất đồng bộ @future đã được gọi. Lập trình viên có thể xem thông tin này ở mục giám sát nào của hệ thống?",
+    "why_correct": "Trang Apex Jobs (B) trong Setup hiển thị danh sách toàn bộ các tác vụ xử lý bất đồng bộ bao gồm @future, Batch Apex, Queueable Apex, và Scheduled Apex kèm trạng thái chi tiết.",
+    "why_wrong": {
+      "A": "Scheduled Jobs chỉ hiển thị các tác vụ được lập lịch chạy định kỳ (Cron trigger), không hiển thị phương thức @future chạy tức thời.",
+      "C": "Background Jobs không phải là tên một trang quản trị chuẩn mực để giám sát code Apex bất đồng bộ trong Salesforce.",
+      "D": "Asynchronous Jobs là thuật ngữ mô tả chung chung, trang Setup thực tế tên là Apex Jobs."
+    },
+    "tip": "Giám sát tiến trình bất đồng bộ (@future, Batch, Queueable) -> Vào Setup gõ APEX JOBS."
+  },
+  {
+    "id": 183,
+    "vi_question": "Yêu cầu nghiệp vụ: Tự động tạo mới một bản ghi Order khi Opportunity chuyển sang trạng thái 'Closed-Won'. Công cụ nào tốt nhất và chuẩn mực nhất của Salesforce nên được sử dụng?",
+    "why_correct": "Sử dụng Apex Trigger (B) (hoặc Flow Builder hiện đại). Apex Trigger hỗ trợ xử lý hàng loạt cực tốt (bulkified), đảm bảo hệ thống không bị oẳng khi cập nhật đồng thời nhiều Opportunity sang Closed-Won. (Mẹo thi: Trong các đề thi Salesforce cũ, Apex Trigger hoặc Process Builder thường được chọn làm đáp án đúng tùy theo ngữ cảnh, tuy nhiên Trigger là lựa chọn an toàn nhất về mặt kỹ thuật code).",
+    "why_wrong": {
+      "A": "Lightning Component là công cụ xây dựng giao diện người dùng, không phải công cụ tự động hóa ngầm ở database layer.",
+      "C": "Flow Builder rất mạnh nhưng trắc nghiệm PD1 thời kỳ đầu chưa cập nhật Flow làm đáp án chuẩn tối thượng hoặc trong đề thi gốc đánh dấu Trigger (B) là lựa chọn tối ưu.",
+      "D": "Process Builder hiện tại đã bị Salesforce khai tử (deprecated) do hiệu năng kém và không khuyến khích sử dụng nữa."
+    },
+    "tip": "Tự động tạo bản ghi liên quan khi lưu -> Dùng Apex Trigger (hoặc Flow Builder hiện đại)."
+  }
+]

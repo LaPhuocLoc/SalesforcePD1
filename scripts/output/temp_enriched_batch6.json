@@ -1,0 +1,161 @@
+[
+  {
+    "id": 140,
+    "vi_question": "Khi một Task được tạo cho một Contact, làm thế nào để lập trình viên ngăn chặn việc Task này tự động hiển thị trên mục Activity Timeline (Dòng thời gian hoạt động) của Account cha liên quan?",
+    "why_correct": "Trong Salesforce, có một cấu hình hệ thống là 'Roll up activities to a contact's primary account'. Nếu tính năng này được bật, mọi hoạt động của con sẽ bị hiển thị dồn lên cha. Để ngăn chặn điều này, chỉ cần vào Setup -> Activity Settings và bỏ chọn (uncheck) tùy chọn này (A).",
+    "why_wrong": {
+      "B": "Set Account field về null trên Task trigger sẽ ngắt kết nối hoàn toàn của Task đó với Account, làm mất dữ liệu quan hệ rất quan trọng chứ không chỉ đơn giản là ẩn timeline.",
+      "C": "Sử dụng Process Builder để xóa trắng trường Account trên Task cũng phá vỡ quan hệ dữ liệu thô bạo như phương án B.",
+      "D": "Ngược lại, theo mặc định của Salesforce, các hoạt động của Contact luôn được hiển thị dồn lên timeline của Account cha nếu OWD của Activity bật roll-up."
+    },
+    "tip": "Ẩn Task con trên Timeline của Account cha -> Bỏ chọn 'Roll up activities to a contact's primary account' trong Setup."
+  },
+  {
+    "id": 141,
+    "vi_question": "Yêu cầu bắt buộc để một lớp Apex có thể được sử dụng làm custom controller cho trang Visualforce là gì?",
+    "why_correct": "Class đó bắt buộc phải là một top-level Apex class (lớp ngoài cùng, không phải inner class) và bắt buộc phải định nghĩa một hàm khởi tạo mặc định không tham số (default, no-argument constructor) (C) để Visualforce có thể tự động instanciate khi trang tải.",
+    "why_wrong": {
+      "A": "Hàm khởi tạo (constructor) của class Apex cấm khai báo kiểu trả về (kể cả PageReference), nó chỉ trùng tên class và không có giá trị trả về.",
+      "B": "Class Apex làm controller không cần và không thể kế thừa lớp PageReference.",
+      "D": "Không tồn tại một 'controller interface' cụ thể nào bắt buộc Apex class phải implements để làm controller cả."
+    },
+    "tip": "Custom Visualforce Controller -> Class bắt buộc có hàm khởi tạo không tham số mặc định (no-argument constructor)."
+  },
+  {
+    "id": 142,
+    "vi_question": "Để ghi đè (override) một nút bấm chuẩn (standard action) bằng một trang Visualforce, thuộc tính nào bắt buộc phải được khai báo trong thẻ <apex:page>?",
+    "why_correct": "Thuộc tính standardController (D) bắt buộc phải được định nghĩa để trang Visualforce nhận đúng ngữ cảnh dữ liệu của đối tượng chứa nút bấm đó (ví dụ standardController='Account' để ghi đè nút Edit của Account).",
+    "why_wrong": {
+      "A": "pageReference là kiểu trả về trong Apex, không phải thuộc tính của thẻ <apex:page>.",
+      "B": "Không có thuộc tính 'override' trong thẻ khai báo <apex:page>.",
+      "C": "controller dùng để khai báo Custom Controller class, không thể dùng để ghi đè nút bấm chuẩn của đối tượng."
+    },
+    "tip": "Ghi đè action chuẩn (Override button) bằng Visualforce -> Bắt buộc dùng standardController."
+  },
+  {
+    "id": 143,
+    "vi_question": "Lập trình viên cần cung cấp giải pháp cho phép chỉnh sửa, cập nhật và xóa hàng loạt (mass edit, update, delete) các bản ghi trực tiếp từ một danh sách (list view). Hai cách nào giúp thực hiện việc này? (Chọn 2)",
+    "why_correct": "A: Tạo một trang Visualforce tùy chỉnh sử dụng StandardSetController kết hợp với Apex custom button trên list view để xử lý danh sách. B: Cài đặt một managed package từ AppExchange cung cấp sẵn các nút bấm và Enhanced List Views có khả năng chỉnh sửa và xóa hàng loạt cực mạnh.",
+    "why_wrong": {
+      "C": "Unmanaged package không được bảo trì nâng cấp và có thể gây xung đột code trong Org, không phải giải pháp tối ưu và an toàn.",
+      "D": "Tính năng inline editing chuẩn trên list view chỉ hỗ trợ chỉnh sửa và cập nhật hàng loạt, tuyệt đối không hỗ trợ xóa hàng loạt (mass delete) bản ghi."
+    },
+    "tip": "Mass Edit + Update + Delete trên List View -> Visualforce Page (StandardSetController) hoặc AppExchange Package."
+  },
+  {
+    "id": 144,
+    "vi_question": "Lợi ích nổi bật của việc áp dụng mô hình Trigger Framework (khung thiết kế trigger) trong Salesforce là gì?",
+    "why_correct": "Áp dụng trigger framework giúp đơn giản hóa việc bổ sung các logic nghiệp vụ theo từng ngữ cảnh sự kiện cụ thể (before insert, after update,...) (D) nhờ việc phân chia code khoa học vào các class Trigger Handler chuyên biệt, giúp code gọn gàng và cực kỳ dễ bảo trì.",
+    "why_wrong": {
+      "A": "Trigger framework không làm giảm thời gian thực thi của CPU, thậm chí có thể tăng nhẹ một chút do phải chạy qua các lớp bọc trung gian.",
+      "B": "Code trigger thông thường không dùng framework vẫn được phủ test bình thường bởi test class.",
+      "C": "Framework không hề và không thể làm tăng giới hạn governor limit cứng của nền tảng Salesforce."
+    },
+    "tip": "Trigger Framework -> Tổ chức code khoa học, dễ bảo trì và viết logic theo ngữ cảnh sự kiện."
+  },
+  {
+    "id": 146,
+    "vi_question": "Một Org gặp tình trạng tích tụ nhiều bản ghi Lead bị trùng lặp do quản lý dữ liệu kém. Lập trình viên định viết code Apex gộp (merge) chúng lại. Hai lưu ý quan trọng nào khi sử dụng phương thức merge trong Apex? (Chọn 2)",
+    "why_correct": "A: Lệnh merge cho phép gộp tối đa 3 bản ghi (gồm 1 master chính và tối đa 2 bản ghi phụ cùng loại sObject) vào bản ghi master. B: Thao tác DML merge chỉ hỗ trợ chính thức đối với 4 đối tượng tiêu chuẩn là Accounts, Contacts, Cases và Leads.",
+    "why_wrong": {
+      "C": "Không thể dùng các trường External ID làm đối số truyền trực tiếp vào phương thức merge, phương thức này bắt buộc nhận vào đối tượng sObject hoặc Id thật.",
+      "D": "Ngược lại, các giá trị trường trên bản ghi master được giữ lại, các bản ghi phụ bị gộp sẽ bị xóa và đưa vào Recycle Bin."
+    },
+    "tip": "DML Merge: Chỉ hỗ trợ Account, Contact, Case, Lead. Gộp tối đa 3 bản ghi (1 master + 2 phụ)."
+  },
+  {
+    "id": 147,
+    "vi_question": "Developer viết một trigger gọi phương thức static của MyClass. Trong test class, developer chỉ viết test method gọi trực tiếp phương thức static đó của class mà không chèn bản ghi mới, đạt 81% tổng code coverage. Điều gì xảy ra khi deploy trigger và 2 class này lên Production?",
+    "why_correct": "Đợt deployment sẽ thất bại hoàn toàn vì trigger có 0% code coverage (D). Quy tắc bắt buộc của Salesforce khi deploy là: **Mỗi file trigger riêng biệt bắt buộc phải có coverage lớn hơn 0%** (ít nhất 1 dòng trigger được chạy thử trong test). Vì test class chỉ gọi trực tiếp class helper mà không tạo bản ghi để kích hoạt trigger nổ, trigger bị 0% coverage nên oẳng.",
+    "why_wrong": {
+      "A": "Salesforce không chặn deploy vì thiếu câu lệnh assert (dù viết assert là best practice).",
+      "B": "Deploy vẫn thất bại vì vi phạm luật 0% coverage của trigger bất kể có gom chung file hay không.",
+      "C": "Dù tổng coverage org đạt 81% (vượt 75%), trigger bị 0% coverage vẫn là lỗi chí tử chặn deploy."
+    },
+    "tip": "Deploy Trigger -> Bắt buộc phải viết test tạo bản ghi để trigger nổ (Coverage trigger > 0%)."
+  },
+  {
+    "id": 150,
+    "vi_question": "Lập trình viên thực hiện câu truy vấn SOQL: List<account> accounts = [Select ID, Name, (Select ID, Name from Contacts) from Account]; Hai ngoại lệ (exception) giới hạn nào có thể xảy ra khi chạy? (Chọn 2)",
+    "why_correct": "B: Lỗi vượt quá giới hạn hàng SOQL (SOQL query row limit) do số lượng Contact quá lớn. D: Lỗi vượt quá giới hạn hàng SOQL do số lượng Account quá lớn. (Vì tổng số hàng tối đa được query trong 1 transaction là 50,000 bản ghi, và trong subquery mỗi bản ghi con Contact được lấy ra cũng bị tính là 1 hàng vào giới hạn này).",
+    "why_wrong": {
+      "A": "SOQL query đơn giản không tiêu tốn quá nhiều CPU time của transaction để ném ra CPU limit exception trước khi chạm giới hạn hàng.",
+      "C": "SOQL query limit exception chỉ xảy ra khi mày gọi lệnh SELECT quá 100 lần trong transaction, ở đây chỉ có duy nhất 1 câu SELECT."
+    },
+    "tip": "SOQL Row Limit = 50,000 hàng. Mỗi bản ghi con trong Subquery cũng ngốn 1 hàng!"
+  },
+  {
+    "id": 151,
+    "vi_question": "Universal Containers muốn đánh giá lợi thế của phát triển dạng khai báo (declarative - no code) so với lập trình code (programmatic). Hai ưu điểm nổi bật của declarative là gì? (Chọn 2)",
+    "why_correct": "B: Cấu hình dạng khai báo hoàn toàn không yêu cầu viết class test để phủ coverage, tiết kiệm nhiều công sức. D: Admin có thể sửa đổi và cập nhật trực tiếp các công cụ khai báo (như Flow, Workflow) ngay trên môi trường Production thông qua giao diện Setup UI cực nhanh.",
+    "why_wrong": {
+      "A": "Cả hai hình thức đều phải chịu chung các giới hạn thiết kế và giới hạn nền tảng của Salesforce.",
+      "C": "Declarative vẫn cần bảo trì bình thường khi các quy trình nghiệp vụ thay đổi."
+    },
+    "tip": "Lợi thế Declarative (No-code) -> Không cần viết test class + Cho phép chỉnh sửa nóng trực tiếp trên Production."
+  },
+  {
+    "id": 152,
+    "vi_question": "Lập trình viên được yêu cầu tạo một file PDF báo giá có định dạng tuân thủ quy chuẩn thương hiệu của công ty, và tự động lưu file đó vào bản ghi Opportunity liên quan. Hai cách nào giúp hiện thực hóa yêu cầu này? (Chọn 2)",
+    "why_correct": "A: Cài đặt một ứng dụng chuyên tạo tài liệu từ AppExchange (như Conga Composer). B: Tạo một trang Visualforce sử dụng custom styling CSS và thiết lập thuộc tính renderAs='pdf' để xuất file PDF, viết code Apex tự động lưu file vào Opportunity.",
+    "why_wrong": {
+      "C": "Email template không có khả năng tự sinh file PDF định dạng thương hiệu phức tạp và tự lưu vào Opportunity.",
+      "D": "Flow Builder thuần túy không hỗ trợ thiết kế bố cục tài liệu PDF tùy chỉnh và xuất file trực tiếp no-code."
+    },
+    "tip": "Tạo PDF thương hiệu chuyên nghiệp trong Salesforce -> Dùng Visualforce (renderAs='pdf') hoặc AppExchange Document App."
+  },
+  {
+    "id": 157,
+    "vi_question": "Cho đoạn code sau thực thi trên nền tảng đa khách thuê (multi-tenant) của Salesforce: [Code SOQL in For]. Lập trình viên nên thực hiện best practice nào để đảm bảo phương thức chạy thành công không bị lỗi giới hạn?",
+    "why_correct": "Tránh hoàn toàn việc thực hiện truy vấn SOQL bên trong vòng lặp For (A). Việc này sẽ nhanh chóng làm sập hệ thống do vượt giới hạn 100 câu truy vấn SOQL cho phép trong một transaction khi danh sách Id lớn hơn 100.",
+    "why_wrong": {
+      "B": "Thêm LIMIT clause không giải quyết được lỗi nổ 100 SOQL query nếu vòng lặp lặp quá nhiều lần.",
+      "C": "Sử dụng biến truyền làm bộ lọc (:leadId) là cú pháp bind biến vô cùng an toàn và được khuyến khích để chống SOQL Injection.",
+      "D": "Trả về List rỗng khi không có kết quả là hoàn toàn bình thường, không gây ra lỗi hệ thống."
+    },
+    "tip": "Best Practice SOQL tối thượng: Tuyệt đối không bao giờ viết truy vấn SOQL bên trong vòng lặp For!"
+  },
+  {
+    "id": 159,
+    "vi_question": "Developer cần test hệ thống tích hợp hóa đơn. Số lượng giao dịch giả lập ước tính ngốn khoảng 2 GB dung lượng lưu trữ dữ liệu (data storage). Không cần dữ liệu thật từ Production. Hai môi trường Sandbox nào đáp ứng yêu cầu lưu trữ này? (Chọn 2)",
+    "why_correct": "B: Full Sandbox (có dung lượng lưu trữ tương đương Org Production thật). D: Partial Sandbox (có dung lượng lưu trữ dữ liệu lên tới 5 GB, thừa sức chứa 2 GB dữ liệu test).",
+    "why_wrong": {
+      "A": "Developer Sandbox chỉ có giới hạn lưu trữ dữ liệu cực kỳ ít ỏi là 200 MB, không đủ nhét kẽ răng.",
+      "C": "Developer Edition là môi trường phát triển cá nhân miễn phí chỉ có 20 MB bộ nhớ dữ liệu.",
+      "E": "Developer Pro Sandbox chỉ hỗ trợ tối đa 1 GB bộ nhớ dữ liệu, vẫn không đủ chứa 2 GB."
+    },
+    "tip": "Dung lượng dữ liệu Sandbox: Developer (200MB) -> Dev Pro (1GB) -> Partial (5GB) -> Full (Bằng Production)."
+  },
+  {
+    "id": 160,
+    "vi_question": "Universal Containers muốn xây dựng trang tìm kiếm Account tùy chỉnh cho phép tìm kiếm theo Name, Description và custom comments field. Lập trình viên nên lưu ý hai điều nào khi cân nhắc lựa chọn giữa SOQL và SOSL? (Chọn 2)",
+    "why_correct": "A: SOSL tìm kiếm chuỗi văn bản tự do (text search) nhanh hơn nhiều nhờ cơ chế lập chỉ mục từ khóa chuyên dụng. B: SOQL có khả năng trả về nhiều bản ghi hơn trong một lần truy vấn (giới hạn SOQL tối đa 50,000 hàng, trong khi SOSL giới hạn trả về tối đa 2,000 hàng cho mỗi sObject).",
+    "why_wrong": {
+      "C": "Ngược lại, SOQL tìm kiếm các trường text lớn (như Description, Comments) bằng toán tử LIKE sẽ rất chậm vì phải quét toàn bộ bảng dữ liệu vật lý.",
+      "D": "SOSL bị giới hạn trả về tối đa 2,000 bản ghi, ít hơn nhiều so với 50,000 của SOQL."
+    },
+    "tip": "So sánh: Tìm kiếm từ khóa tự do trên trường text lớn -> Dùng SOSL (Nhanh hơn). Cần lấy nhiều bản ghi -> Dùng SOQL (Giới hạn lớn hơn)."
+  },
+  {
+    "id": 165,
+    "vi_question": "Developer cần tạo class CreditCardPayment kế thừa từ class Payment ảo có sẵn: [Payment Class]. Khai báo nào sau đây là đúng cú pháp?",
+    "why_correct": "Vì lớp cha Payment là một class thông thường được gắn từ khóa 'virtual class' chứ không phải Interface, nên class con bắt buộc phải dùng từ khóa 'extends' để kế thừa. Để ghi đè phương thức makePayment(), class con phải dùng từ khóa 'override' (B).",
+    "why_wrong": {
+      "A": "Dùng lại từ khóa 'virtual' ở class con là sai cú pháp ghi đè phương thức.",
+      "C": "Dùng từ khóa 'implements' chỉ dành cho việc hiện thực hóa các lớp Interface, dùng cho class thường sẽ báo lỗi biên dịch.",
+      "D": "Tương tự C, sử dụng sai từ khóa implements."
+    },
+    "tip": "Kế thừa Class -> Dùng EXTENDS + OVERRIDE. Hiện thực hóa Interface -> Dùng IMPLEMENTS."
+  },
+  {
+    "id": 166,
+    "vi_question": "Làm thế nào để lập trình viên đảm bảo một bản ghi con tùy chỉnh (có trường Lookup trỏ đến Account) luôn có chung quyền hạn chia sẻ (sharing access) giống hệt với Account cha liên quan?",
+    "why_correct": "Đảm bảo rằng mối quan hệ giữa hai đối tượng là mối quan hệ Master-Detail (D). Trong Salesforce, bản ghi con Detail luôn tự động kế thừa 100% cấu hình bảo mật và chia sẻ (Sharing/Security) từ bản ghi cha Master mà không cần viết code.",
+    "why_wrong": {
+      "A": "Viết sharing rule đối chiếu owner rất phức tạp, dễ lỗi và không tự động cập nhật mượt mà khi đổi chủ như Master-Detail.",
+      "B": "Validation rule chỉ dùng để chặn lưu bản ghi sai điều kiện, không có khả năng phân phối quyền chia sẻ bảo mật.",
+      "C": "Thêm Sharing Related List chỉ để hiển thị nút phân quyền thủ công trên giao diện, không giúp tự động đồng bộ bảo mật."
+    },
+    "tip": "Con muốn thừa kế hoàn hảo quyền bảo mật của Cha -> Bắt buộc thiết lập quan hệ MASTER-DETAIL."
+  }
+]

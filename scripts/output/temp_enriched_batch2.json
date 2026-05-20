@@ -1,0 +1,162 @@
+[
+  {
+    "id": 44,
+    "vi_question": "Thông báo lỗi (exception) nào sẽ được ghi lại trong log bởi đoạn mã dưới đây? (Giả định đoạn code cố tình thực hiện thao tác trên một đối tượng chưa được khởi tạo - null)",
+    "why_correct": "Trong Salesforce, khi mày cố gắng truy cập thuộc tính hoặc gọi phương thức từ một biến đối tượng đang có giá trị null (chưa được khởi tạo bằng từ khóa 'new'), hệ thống sẽ ném ra lỗi 'NullPointerException' (C). Đây là lỗi kinh điển của mọi lập trình viên.",
+    "why_wrong": {
+      "A": "Generic Exception là lớp cha chung (Exception), hệ thống sẽ ghi nhận lỗi cụ thể nhất là NullPointerException.",
+      "B": "List Exception chỉ xảy ra khi mày thao tác sai với List (ví dụ truy cập chỉ số vượt quá độ dài danh sách).",
+      "D": "Chắc chắn có lỗi và log sẽ được ghi lại khi code chạy dính null."
+    },
+    "tip": "Đụng vào biến null mà đòi gọi method/field -> Ăn ngay NullPointerException."
+  },
+  {
+    "id": 46,
+    "vi_question": "Có hai cách nào để khai báo Controller và Extension cho một custom object tên là 'Notice__c' trên trang Visualforce? (Chọn 2)",
+    "why_correct": "A: Khai báo sử dụng standardController cho custom object Notice__c kèm theo extensions là cách làm chuẩn mực nhất khi muốn mở rộng tính năng mặc định. C: Khai báo custom controller cho Notice__c (nếu Notice__c trùng tên với 1 class Apex custom controller) kèm extensions cũng là cú pháp hợp lệ của thẻ <apex:page>.",
+    "why_wrong": {
+      "B": "Cú pháp sai hoàn toàn, thẻ <apex:page> không có thuộc tính 'extends' viết kiểu gán trực tiếp như thế.",
+      "D": "Không có thuộc tính 'controllers' (dạng số nhiều) trong thẻ <apex:page>."
+    },
+    "tip": "Visualforce Page: standardController hoặc controller kết hợp với extensions (dạng số nhiều)."
+  },
+  {
+    "id": 47,
+    "vi_question": "Lập trình viên tạo một custom controller và trang Visualforce bằng đoạn code dưới đây: [Controller & Page]. Người dùng sẽ thấy gì khi truy cập vào trang tùy chỉnh này?",
+    "why_correct": "Đáp án là 'a, a, a' (C). Do cơ chế render của Visualforce, hệ thống sẽ giải quyết và nạp giá trị cho các biến được bind (myString) trước để dựng View State. Khi myString được gọi lần đầu, getter chạy và gán myString = 'a'. Đến khi {!StringMethod} được gọi, myString đã có giá trị 'a' (không còn null nữa) nên lệnh gán 'b' bị bỏ qua, kết quả cả 3 chỗ đều hiển thị 'a'.",
+    "why_wrong": {
+      "A": "Nếu {!StringMethod} chạy trước và gán 'b' thì kết quả sẽ là b, b, b chứ không nửa nọ nửa kia.",
+      "B": "Biến myString được gán trực tiếp chữ chứ không trỏ đến tên phương thức getMyString().",
+      "D": "Sai thứ tự giải quyết biến và cơ chế chạy của getter."
+    },
+    "tip": "Visualforce Lifecycle: Getter chạy trước để dựng View State -> Gán 'a' từ đầu nên mãi là 'a'."
+  },
+  {
+    "id": 50,
+    "vi_question": "Thẻ nào mà lập trình viên nên sử dụng khi cần nhúng CSS từ file bên ngoài (external CSS) vào một trang Visualforce?",
+    "why_correct": "Thẻ <apex:stylesheet> (D) sinh ra là để nhúng các file CSS (từ Static Resource hoặc URL ngoài) vào trang Visualforce, giúp định dạng giao diện một cách chuyên nghiệp.",
+    "why_wrong": {
+      "A": "Thẻ <apex:includeStyles> là thẻ không tồn tại trong thư viện Visualforce của Salesforce.",
+      "B": "Thẻ <apex:includeScript> dùng để nhúng file JavaScript chứ không dùng cho CSS.",
+      "C": "Thẻ <apex:require> dùng để tải các thư viện JS ngoài theo dạng RequireJS, không dùng để nạp stylesheet."
+    },
+    "tip": "Visualforce: Nhúng CSS -> Dùng <apex:stylesheet>. Nhúng JS -> Dùng <apex:includeScript>."
+  },
+  {
+    "id": 51,
+    "vi_question": "Tính năng tự động hóa dạng khai báo (declarative) nào hỗ trợ duyệt (lặp) qua nhiều bản ghi cùng lúc?",
+    "why_correct": "Flows (B) - cụ thể là Flow Builder - cung cấp phần tử 'Loop' cực kỳ mạnh mẽ, cho phép admin và dev duyệt qua danh sách nhiều bản ghi để xử lý logic hoàn toàn không cần code.",
+    "why_wrong": {
+      "A": "Workflow rules chỉ chạy trên từng bản ghi đơn lẻ khi nó được save, không thể duyệt danh sách.",
+      "C": "Validation rules chỉ kiểm tra điều kiện trên bản ghi hiện tại để chặn lưu, không có khả năng lặp.",
+      "D": "Approval processes dùng để gửi duyệt bản ghi hiện tại theo từng bước, không hỗ trợ duyệt danh sách con."
+    },
+    "tip": "Low-code duyệt qua danh sách bản ghi = LOOP trong FLOW."
+  },
+  {
+    "id": 52,
+    "vi_question": "Object Account có quan hệ Master-Detail với con là Branch. Khi viết trigger trên Account, hai điều nào lập trình viên bắt buộc phải lưu ý khi viết code test? (Chọn 2)",
+    "why_correct": "A: Một transaction trong Salesforce rất dễ bị chạy đè/chạy lại do workflow update hoặc trigger đệ quy, nên trigger có thể chạy nhiều lần. B: Trường Roll-up Summary trên Account (tính tổng từ con Branch) khi có thay đổi ở con sẽ tự động kích hoạt tiến trình Save và chạy trigger của Account cha.",
+    "why_wrong": {
+      "C": "Duplicate rules chạy ngay trong tiến trình save trước khi DML commit chứ không phải sau khi commit xong.",
+      "D": "Validation rules chạy trước trigger after và sau trigger before, nó chỉ chặn lưu chứ không tự làm nổ trigger lại từ đầu."
+    },
+    "tip": "Rollup Summary ở Cha = Chạm vào Con là nổ Trigger Cha. Trigger có thể nổ nhiều lần."
+  },
+  {
+    "id": 53,
+    "vi_question": "Làm thế nào để một lập trình viên có thể thiết lập debug log cho một user cụ thể trong hệ thống?",
+    "why_correct": "Lập trình viên chỉ cần vào Setup -> Debug Logs, tạo một 'Trace Flag' cho user đó (D), chọn mức độ chi tiết (Logging Level) và khoảng thời gian theo dõi. Mọi thao tác của user đó sẽ được ghi log lại.",
+    "why_wrong": {
+      "A": "Admin/Dev hoàn toàn có quyền setup debug log cho bất kỳ user nào trong Org.",
+      "B": "Đòi mật khẩu của user khác là vi phạm nghiêm trọng chính sách bảo mật thông tin.",
+      "C": "Viết code log vào custom object quá cồng kềnh, tốn tài nguyên DML và hoàn toàn không cần thiết khi đã có tool hệ thống."
+    },
+    "tip": "Debug log cho User = Tạo Trace Flag trong Setup -> Debug Logs."
+  },
+  {
+    "id": 55,
+    "vi_question": "Universal Containers quyết định KHÔNG gửi email báo lỗi trực tiếp từ Salesforce khi có ngoại lệ chưa được xử lý (unhandled exception). Thay vào đó, họ muốn báo lỗi sang hệ thống ngoài. Logic publish/subscribe nào là phù hợp?",
+    "why_correct": "Giải pháp chuẩn hiện đại là dùng Platform Event. Lập trình viên gọi 'EventBus.publish()' để đẩy event lỗi lên bus, hệ thống ngoài sẽ subscribe (đăng ký nhận tin) thời gian thực thông qua giao thức CometD (B).",
+    "why_wrong": {
+      "A": "Phương thức addError() chỉ dùng để hiển thị lỗi chặn lưu trên UI chứ không phải để publish Platform Event.",
+      "C": "BatchApexError chỉ dành riêng cho Batch Apex, không bao quát được mọi unhandled exception trong toàn hệ thống.",
+      "D": "addError() không đẩy được tin nhắn đi và CometD không thể nghe trực tiếp từ hàm addError()."
+    },
+    "tip": "Bắn lỗi ra hệ thống ngoài real-time -> Publish Platform Event + CometD."
+  },
+  {
+    "id": 56,
+    "vi_question": "Lập trình viên có đoạn mã JavaScript dùng chung cần được gọi bởi các hàm controller trong nhiều Aura Component khác nhau thông qua việc kế thừa một abstract component mới. Tài nguyên nào trong abstract Aura component bundle hỗ trợ việc này?",
+    "why_correct": "Trong Aura Component, file helper.js (A) là nơi lý tưởng để viết các hàm JavaScript dùng chung. Khi các component con kế thừa (extends) abstract component cha, chúng có thể gọi trực tiếp các hàm helper của cha.",
+    "why_wrong": {
+      "B": "controller.js chỉ xử lý trực tiếp các action của riêng component đó, không kế thừa tốt như helper.",
+      "C": "superRender.js là một cái tên tự chế, không tồn tại trong Aura bundle.",
+      "D": "renderer.js dùng để can thiệp vào quá trình render HTML/DOM, không dùng để chứa business logic dùng chung."
+    },
+    "tip": "Aura Kế thừa / Dùng chung code JS -> Đút hết vào helper.js."
+  },
+  {
+    "id": 57,
+    "vi_question": "Lập trình viên cần tạo LWC cho phép nhập thông tin Contact bao gồm trường lương Salary__c. Cần dùng thẻ nào đi kèm lightning-record-edit-form để trường Salary__c tự động hiển thị dạng tiền tệ và chỉ cho phép xem/sửa đối với user có quyền FLS phù hợp?",
+    "why_correct": "Thẻ <lightning-input-field> (C) là 'vũ khí hạng nặng' của LWC. Khi đặt trong lightning-record-edit-form, nó tự động đọc metadata của trường để render đúng UI (tiền tệ) và tự động ẩn/hiển thị/khóa dựa trên quyền FLS của user đó mà không cần viết 1 dòng code logic nào.",
+    "why_wrong": {
+      "A": "lightning-input bắt buộc phải tự code kiểm tra quyền FLS, không tự động bảo mật theo metadata được.",
+      "B": "lightning-formatted-number chỉ để hiển thị dạng read-only, không cho phép người dùng nhập liệu.",
+      "D": "Thẻ <lightning-input-currency> là thẻ không tồn tại trong bộ component chuẩn của Salesforce LWC."
+    },
+    "tip": "LWC Form tự động FLS + Tự động định dạng -> Cứ lightning-input-field mà vã!"
+  },
+  {
+    "id": 58,
+    "vi_question": "Hai câu lệnh nào sau đây là hoàn toàn chấp nhận được khi viết bên trong vòng lặp (loop) trong Apex? (Chọn 2)",
+    "why_correct": "B: Phương thức remove() trên List chỉ thao tác trên bộ nhớ RAM nên chạy cực nhanh trong vòng lặp. C: Khởi tạo instance mới của sObject bằng từ khóa 'new' trong RAM cũng hoàn toàn vô hại và thường xuyên được sử dụng.",
+    "why_wrong": {
+      "A": "delete contactList thực hiện lệnh DML xóa dữ liệu, cấm nhét vào vòng lặp vì sẽ nhanh chóng làm sập giới hạn 150 DML.",
+      "D": "Viết câu truy vấn SOQL [SELECT...] trong vòng lặp là tội ác lớn nhất vì sẽ chạm giới hạn 100 SOQL cực nhanh."
+    },
+    "tip": "Governor Limit: Cấm tuyệt đối SOQL Query và DML Statement nằm trong vòng lặp (For/While)."
+  },
+  {
+    "id": 59,
+    "vi_question": "Để lấy danh sách tất cả các trường khả dụng của một đối tượng có tên nằm trong biến chuỗi myObject, hai cách nào sau đây giúp lập trình viên lấy được Map các trường? (Chọn 2)",
+    "why_correct": "C: Schema.describeSObjects() nhận vào mảng tên object và trả về mô tả chi tiết, từ đó gọi fields.getMap() để lấy map các trường. D: Schema.getGlobalDescribe() trả về map toàn bộ object trong Org, lấy theo tên biến myObject, describe nó rồi lấy map các trường.",
+    "why_wrong": {
+      "A": "Biến chuỗi String (myObject) không có thuộc tính con '.sObjectType' để gọi trực tiếp như vậy.",
+      "B": "Cú pháp mySObject.myObject.fields... là hoàn toàn sai và không biên dịch được."
+    },
+    "tip": "Lấy Map trường động bằng String tên Object: GlobalDescribe hoặc describeSObjects."
+  },
+  {
+    "id": 60,
+    "vi_question": "Một lập trình viên mới phát hiện ra có rất nhiều trigger cùng tồn tại trên đối tượng Case. Lập trình viên nên lưu ý điều gì về các trigger này?",
+    "why_correct": "Quy tắc vàng của Salesforce: Thứ tự thực thi của các trigger cùng viết trên một đối tượng (sObject) là KHÔNG ĐƯỢC ĐẢM BẢO (D). Hệ thống thích chạy thằng nào trước là quyền của nó.",
+    "why_wrong": {
+      "A": "Lập trình viên không thể tự định đoạt thứ tự chạy nếu viết nhiều file trigger riêng lẻ.",
+      "B": "Thứ tự chạy không hề phụ thuộc vào ngày giờ tạo của trigger.",
+      "C": "Unit test chạy tất cả các trigger nổ khi có DML, không cần và không thể chỉ định đích danh trigger nào chạy."
+    },
+    "tip": "One Trigger Per Object: Viết nhiều trigger trên 1 Object -> Thứ tự chạy ngẫu nhiên, dễ lỗi logic!"
+  },
+  {
+    "id": 64,
+    "vi_question": "Universal Containers muốn gửi email nhắc nhở tự động sau 6 giờ kể từ khi trường Stage__c trên Case chuyển sang 'Waiting on Customer'. Giải pháp nào vừa tối ưu, không code và đảm bảo an toàn xử lý hàng loạt (bulk safe)? (Chọn 2)",
+    "why_correct": "A: Record-Triggered Flow hỗ trợ tính năng Scheduled Paths, cho phép lên lịch chạy sau 6 giờ cực kỳ bulk-safe. D: Scheduled Flow cũng là công cụ chuyên dụng để quét định kỳ và gửi mail hàng loạt rất an toàn.",
+    "why_wrong": {
+      "B": "Entitlement Process dùng để quản lý SLA/Milestone của Case hỗ trợ gửi mail nhưng phức tạp và không chuyên dụng bằng Flow cho yêu cầu này.",
+      "C": "Einstein Next Best Action dùng để hiển thị gợi ý cho nhân viên trên màn hình, không phải tự động gửi email ngầm."
+    },
+    "tip": "Tự động hóa theo thời gian (Time-dependent) + Low-code = Scheduled Path trong Flow."
+  },
+  {
+    "id": 65,
+    "vi_question": "Lập trình viên thấy một test method bị FAIL trong Sandbox. Nhưng khi copy toàn bộ code đó chạy thử ở Execute Anonymous trong Dev Console thì lại PASS không lỗi gì. Tại sao có sự kỳ lạ này?",
+    "why_correct": "Khi chạy unit test, Salesforce mặc định cô lập dữ liệu (SeeAllData=false), không thấy được bản ghi thật. Còn Execute Anonymous thì chạy trên data thật của Org. Lỗi xảy ra vì code test phụ thuộc vào dữ liệu thật có sẵn trong Sandbox mà class test chưa tự tạo ra (D).",
+    "why_wrong": {
+      "A": "Nếu có lỗi cú pháp (syntax error) thì cả Test Class và Execute Anonymous đều cấm biên dịch thành công.",
+      "B": "Thiếu runAs chỉ làm sai ngữ cảnh phân quyền chứ không làm thay đổi sự khác biệt về cô lập dữ liệu giữa 2 môi trường.",
+      "C": "Gọi phương thức @future trong test bắt buộc phải bọc trong Test.startTest() / stopTest(), chạy Execute Anonymous vẫn nổ lỗi nếu sai quy tắc."
+    },
+    "tip": "Test FAIL nhưng Execute Anonymous PASS -> Chắc chắn do thiếu dữ liệu giả lập (Test Data isolation)."
+  }
+]

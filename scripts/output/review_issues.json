@@ -1,0 +1,3535 @@
+[
+  {
+    "id": 1,
+    "original_num": 1,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'D'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which two components are available to deploy using the Metadata API? (Choose two.)"
+  },
+  {
+    "id": 2,
+    "original_num": 2,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer created a custom order management app that uses an Apex class. The order is represented "
+  },
+  {
+    "id": 3,
+    "original_num": 3,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['B']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer is implementing an Apex class for a financial system. Within the class, the variables 'c"
+  },
+  {
+    "id": 4,
+    "original_num": 4,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B', 'E'], MD correct=['A', 'B']",
+    "json_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "Which three web technologies can be integrated into a Visualforce page? (Choose three.)"
+  },
+  {
+    "id": 5,
+    "original_num": 5,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which is a valid Apex assignment?"
+  },
+  {
+    "id": 6,
+    "original_num": 6,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['B']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer completed modifications to a customized feature that is comprised of two elements: 1. Ap"
+  },
+  {
+    "id": 7,
+    "original_num": 7,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "How many levels of child records can be returned in a single SOQL query from one parent object?"
+  },
+  {
+    "id": 8,
+    "original_num": 8,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "When an Account's custom picklist field called Customer Sentiment is changed to a value of 'Confused"
+  },
+  {
+    "id": 9,
+    "original_num": 9,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which statement results in an Apex compiler error?"
+  },
+  {
+    "id": 10,
+    "original_num": 10,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B', 'C', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer has a Visualforce page and custom controller to save Account records. The developer want"
+  },
+  {
+    "id": 11,
+    "original_num": 11,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer encounters APEX heap limit errors in a trigger. Which two methods should the developer u"
+  },
+  {
+    "id": 12,
+    "original_num": 12,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "Which two are phases in the Salesforce Application Event propagation framework? (Choose two.)"
+  },
+  {
+    "id": 13,
+    "original_num": 13,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A custom object Trainer__c has a lookup field to another custom object Gym__c. Which SOQL query will"
+  },
+  {
+    "id": 15,
+    "original_num": 15,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A', 'B']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "Where are two locations a developer can look to find information about the status of asynchronous or"
+  },
+  {
+    "id": 17,
+    "original_num": 17,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "Given: Map<ID, Account> accountMap = new Map<ID, Account> ([SELECT Id, Name FROM Account]); What are"
+  },
+  {
+    "id": 18,
+    "original_num": 18,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "What is the order of operations when a record is saved in Salesforce?"
+  },
+  {
+    "id": 19,
+    "original_num": 19,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'E'], MD correct=['C']",
+    "json_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which three options can be accomplished with formula fields? (Choose three.)"
+  },
+  {
+    "id": 20,
+    "original_num": 20,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer is tasked to perform a security review of the ContactSearch Apex class that exists in th"
+  },
+  {
+    "id": 21,
+    "original_num": 21,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer writes the following code:\nList<Account> acc = [Select Id From Account Limit 10];\nDelete"
+  },
+  {
+    "id": 22,
+    "original_num": 22,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which approach should a developer take to automatically add a 'Maintenance Plan' to each Opportunity"
+  },
+  {
+    "id": 24,
+    "original_num": 24,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['C']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Management asked for opportunities to be automatically created for accounts with annual revenue grea"
+  },
+  {
+    "id": 25,
+    "original_num": 25,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "An org has a data model with a Buyer__c object that has a lookup relationship to Region__c and a Sup"
+  },
+  {
+    "id": 26,
+    "original_num": 26,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D', 'E'], MD correct=['C']",
+    "json_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A developer is asked to create a custom Visualforce page that will be used as a dashboard component."
+  },
+  {
+    "id": 27,
+    "original_num": 27,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Universal Hiring is using Salesforce to capture job applications. A salesforce administrator created"
+  },
+  {
+    "id": 29,
+    "original_num": 29,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Universal Containers uses a simple Order Management app. On the Order Lines, the order line total is"
+  },
+  {
+    "id": 30,
+    "original_num": 30,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "Given the following Apex statement: Account myAccount = [SELECT Id, Name FROM Account]; What occurs "
+  },
+  {
+    "id": 31,
+    "original_num": 31,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'E'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "E"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which two statements are true about Apex code executed in Anonymous Blocks? (Choose two.)"
+  },
+  {
+    "id": 32,
+    "original_num": 32,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Using DescribeSObjectResult, which Apex method can a developer use to determine if the current user "
+  },
+  {
+    "id": 34,
+    "original_num": 34,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which two number expressions evaluate correctly? (Choose two.)"
+  },
+  {
+    "id": 35,
+    "original_num": 35,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['B', 'C']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "C"
+    ],
+    "question_preview": "Assuming that name is a String obtained by an a Visualforce page.\nwhich two SOQL Queries performed a"
+  },
+  {
+    "id": 36,
+    "original_num": 36,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['B', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer must create a ShippingCalculator class that cannot be instantiated and must include a wo"
+  },
+  {
+    "id": 37,
+    "original_num": 37,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Given the following Anonymous block:\nList<Case> casesToUpdate = new List<Case>();\nfor(Case thisCase "
+  },
+  {
+    "id": 38,
+    "original_num": 38,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which process automation should be used to send an outbound message without using Apex code?"
+  },
+  {
+    "id": 39,
+    "original_num": 39,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer has an Apex controller for a Visualforce page that takes an ID as a URL parameter. How s"
+  },
+  {
+    "id": 40,
+    "original_num": 40,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored "
+  },
+  {
+    "id": 41,
+    "original_num": 41,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['B', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "Which aspect of Apex programming is limited due to multitenancy?"
+  },
+  {
+    "id": 42,
+    "original_num": 42,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "A developer is migrating a Visualforce page into a Lightning web component. The Visualforce page sho"
+  },
+  {
+    "id": 43,
+    "original_num": 43,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which approach should a developer use to add pagination to a Visualforce page?"
+  },
+  {
+    "id": 44,
+    "original_num": 44,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which message is logged by the code below?"
+  },
+  {
+    "id": 46,
+    "original_num": 46,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "What are two ways that a controller and extension can be specified for a custom object named “Notice"
+  },
+  {
+    "id": 47,
+    "original_num": 47,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=[]",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [],
+    "question_preview": "A developer creates a custom controller and custom Visualforce page by using the code block below.\np"
+  },
+  {
+    "id": 49,
+    "original_num": 49,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which two settings must be defined in order to update a record of a junction object? (Choose two.)"
+  },
+  {
+    "id": 51,
+    "original_num": 51,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which declarative process automation feature supports iterating over multiple records?"
+  },
+  {
+    "id": 52,
+    "original_num": 52,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "The Account object in an organization has a master detail relationship to a child object called Bran"
+  },
+  {
+    "id": 53,
+    "original_num": 53,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "How can a developer set up a debug log on a specific user?"
+  },
+  {
+    "id": 54,
+    "original_num": 54,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer has an integer variable called maxAttempts. The developer needs to ensure that once maxA"
+  },
+  {
+    "id": 55,
+    "original_num": 55,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "Universal Containers (UC) decided it will not send emails to support personnel directly from Salesfo"
+  },
+  {
+    "id": 57,
+    "original_num": 57,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'D', 'E']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer must create a Lightning component that allows users to input Contact record information "
+  },
+  {
+    "id": 58,
+    "original_num": 58,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A', 'C']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "C"
+    ],
+    "question_preview": "Which two statements are acceptable for a developer to use inside procedural loops? (Choose two.)"
+  },
+  {
+    "id": 59,
+    "original_num": 59,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['C']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A developer needs to display all of the available fields for an object. In which two ways can the de"
+  },
+  {
+    "id": 60,
+    "original_num": 60,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "C"
+    ],
+    "question_preview": "A newly hired developer discovers that there are multiple triggers on the case object. What should t"
+  },
+  {
+    "id": 62,
+    "original_num": 2,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "When a user edits the Postal Code on an Account, a custom Account text field named 'Timezone' must b"
+  },
+  {
+    "id": 63,
+    "original_num": 3,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['B']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A team of many developers work in their own individual orgs that have the same configuration as the "
+  },
+  {
+    "id": 64,
+    "original_num": 4,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'D'], MD correct=['A', 'B']",
+    "json_correct": [
+      "A",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "Universal Containers uses Service Cloud with a custom field, Stage__c, on the Case object. Managemen"
+  },
+  {
+    "id": 65,
+    "original_num": 5,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer observes that an Apex test method fails in the Sandbox. To identify the issue, the devel"
+  },
+  {
+    "id": 66,
+    "original_num": 6,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer is writing tests for a class and needs to insert records to validate functionality. Whic"
+  },
+  {
+    "id": 67,
+    "original_num": 7,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "In the following example, which sharing context myMethod execute when it is invoked?\npublic Class my"
+  },
+  {
+    "id": 68,
+    "original_num": 8,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer created a new after insert trigger on the Lead object that creates Task records for each"
+  },
+  {
+    "id": 69,
+    "original_num": 9,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer needs to join data received from an integration with an external system with parent reco"
+  },
+  {
+    "id": 70,
+    "original_num": 10,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B', 'C', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer creates a new Apex trigger with a helper class, and writes a test class that only exerci"
+  },
+  {
+    "id": 71,
+    "original_num": 11,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "How many Accounts will be inserted by the following block of code?\nfor(Integer i = 0; i 500; i++){\nA"
+  },
+  {
+    "id": 72,
+    "original_num": 12,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "A developer needs to implement a custom SOAP Web Service that is used by an external Web Application"
+  },
+  {
+    "id": 74,
+    "original_num": 14,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer needs to prevent the creation of Request records when certain conditions exist in the sy"
+  },
+  {
+    "id": 75,
+    "original_num": 15,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'B']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "Which annotation exposes an Apex class as a RESTful web service?"
+  },
+  {
+    "id": 76,
+    "original_num": 16,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "A developer must troubleshoot to pinpoint the causes of performance issues when a custom page loads "
+  },
+  {
+    "id": 77,
+    "original_num": 17,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "What should a developer use to implement an automatic Approval Process submission for Cases?"
+  },
+  {
+    "id": 78,
+    "original_num": 18,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "What are two ways a developer can get the status of an enqueued job for a class that implements the "
+  },
+  {
+    "id": 79,
+    "original_num": 19,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "The Review_c object has a lookup relationship up to the Job_Application_c object. The Job_Applicatio"
+  },
+  {
+    "id": 81,
+    "original_num": 21,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "What is the data type returned by the following SOSL search?\n[FIND 'Acme*' IN NAME FIELDS RETURNING "
+  },
+  {
+    "id": 82,
+    "original_num": 22,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A change set deployment from a sandbox to production fails due to a failure in a managed package uni"
+  },
+  {
+    "id": 85,
+    "original_num": 25,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "A developer wants multiple test classes to use the same set of test data. How should the developer c"
+  },
+  {
+    "id": 86,
+    "original_num": 26,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['C']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which two statements are true about using the @testSetup annotation in an Apex test class? (Choose t"
+  },
+  {
+    "id": 87,
+    "original_num": 27,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which two platform features align to the Controller portion of MVC architecture? (Choose two.)"
+  },
+  {
+    "id": 89,
+    "original_num": 29,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which statement generates a list of Leads and Contacts that have a field with the phrase 'ACME'?"
+  },
+  {
+    "id": 90,
+    "original_num": 30,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "A custom picklist field, Food_Preference__c, exists on a custom object. The picklist contains the fo"
+  },
+  {
+    "id": 91,
+    "original_num": 31,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "As part of a data cleanup strategy, AW Computing wants to proactively delete associated opportunity "
+  },
+  {
+    "id": 93,
+    "original_num": 33,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which two statements are true about Getter and Setter methods? (Choose two.)"
+  },
+  {
+    "id": 94,
+    "original_num": 34,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['D']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A Platform Developer needs to write an Apex method that will only perform an action if a record is a"
+  },
+  {
+    "id": 95,
+    "original_num": 35,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['B', 'C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "B",
+      "C"
+    ],
+    "question_preview": "Which situation prevents a developer from setting sharing rules for a custom object?"
+  },
+  {
+    "id": 96,
+    "original_num": 36,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "What will be the output in the debug log in the event of a QueryException during a call to the aQuer"
+  },
+  {
+    "id": 97,
+    "original_num": 37,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Universal Containers wants Opportunities to no longer be editable when reaching the Closed/Won stage"
+  },
+  {
+    "id": 99,
+    "original_num": 39,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "The values 'High', 'Medium', and 'Low' are identified as common values for multiple picklists across"
+  },
+  {
+    "id": 101,
+    "original_num": 41,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "How should a developer write unit tests for a private method in an Apex class?"
+  },
+  {
+    "id": 102,
+    "original_num": 42,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "A company has a custom object named Region. Each Account in Salesforce can only be related to one Re"
+  },
+  {
+    "id": 104,
+    "original_num": 44,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'D'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer wants to invoke an outbound message when a record meets a specific criteria. Which three"
+  },
+  {
+    "id": 105,
+    "original_num": 45,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "What is the result of the following code snippet?\npublic void doWork(Account acct){\nfor(Integer i = "
+  },
+  {
+    "id": 107,
+    "original_num": 47,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=[]",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [],
+    "question_preview": "A developer must provide custom user interfaces when users edit a Contact in either Salesforce Class"
+  },
+  {
+    "id": 108,
+    "original_num": 48,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "What is the result of the debug statements in testMethod3 when you create test data using testSetup "
+  },
+  {
+    "id": 109,
+    "original_num": 49,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which type of code represents the Model in the MVC architecture when using Apex and Visualforce page"
+  },
+  {
+    "id": 110,
+    "original_num": 50,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "An org has a single account named 'NoContacts' that has no related contacts. Given the query: List<A"
+  },
+  {
+    "id": 111,
+    "original_num": 51,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which SOQL query successfully returns the Accounts grouped by name?"
+  },
+  {
+    "id": 112,
+    "original_num": 52,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "For which example task should a developer use a trigger rather than a workflow rule?"
+  },
+  {
+    "id": 113,
+    "original_num": 53,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "A developer must build an application that tracks which Accounts have purchased specific pieces of e"
+  },
+  {
+    "id": 114,
+    "original_num": 54,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer is creating a page that allows users to create multiple Opportunities. The developer is "
+  },
+  {
+    "id": 115,
+    "original_num": 55,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "Requirements state that a child record is deleted when its parent is deleted, and a child can be mov"
+  },
+  {
+    "id": 116,
+    "original_num": 56,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer must modify the following code snippet to prevent the number of SOQL queries issued from"
+  },
+  {
+    "id": 117,
+    "original_num": 57,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'D', 'E']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer must write an Apex method that will be called from a Lightning component. The method may"
+  },
+  {
+    "id": 119,
+    "original_num": 59,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "What is a benefit of using an after insert trigger over using a before insert trigger?"
+  },
+  {
+    "id": 120,
+    "original_num": 60,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "C"
+    ],
+    "question_preview": "An org has an existing Visual Flow that creates an Opportunity with an Update Records element. A dev"
+  },
+  {
+    "id": 121,
+    "original_num": 1,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['D']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Universal Containers wants Opportunities to be locked from editing when reaching the Closed/Won stag"
+  },
+  {
+    "id": 122,
+    "original_num": 2,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "Which action can a developer take to reduce the execution time of the following code?\nList<Account> "
+  },
+  {
+    "id": 123,
+    "original_num": 3,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D', 'E'], MD correct=['B']",
+    "json_correct": [
+      "B",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which three tools can deploy metadata to production? (Choose three.)"
+  },
+  {
+    "id": 124,
+    "original_num": 4,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'B']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "Universal Containers is building a recruiting app with an Applicant object that stores information a"
+  },
+  {
+    "id": 125,
+    "original_num": 5,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['B']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "The sales team at Universal Containers would like to see a visual indicator appear on both Account a"
+  },
+  {
+    "id": 126,
+    "original_num": 6,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which governor limit applies to all the code in an Apex transaction?"
+  },
+  {
+    "id": 127,
+    "original_num": 7,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which two sfdx commands can be used to add testing data to a Developer sandbox? (Choose two.)"
+  },
+  {
+    "id": 128,
+    "original_num": 8,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer wants to override a button using Visualforce on an object. What is the requirement?"
+  },
+  {
+    "id": 129,
+    "original_num": 9,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "A Visualforce page is required for displaying and editing Case records that includes both standard a"
+  },
+  {
+    "id": 130,
+    "original_num": 10,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B', 'C', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "question_preview": "A lead object has a custom field Prior_Email__c.\nThe following trigger is intended to copy the curre"
+  },
+  {
+    "id": 131,
+    "original_num": 11,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "What is the result of the following code?\nAccount a = new Account();\nDatabase.insert(a, false);"
+  },
+  {
+    "id": 132,
+    "original_num": 12,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "An after trigger on the Account object performs a DML update operation on all of the child Opportuni"
+  },
+  {
+    "id": 134,
+    "original_num": 14,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "How should a developer prevent a recursive trigger?"
+  },
+  {
+    "id": 135,
+    "original_num": 15,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C', 'D'], MD correct=['A', 'B']",
+    "json_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "What is a capability of the tag that is used for loading external Javascript libraries in Lightning "
+  },
+  {
+    "id": 136,
+    "original_num": 16,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "Universal Containers (UC) wants to lower its shipping cost while making the shipping process more ef"
+  },
+  {
+    "id": 137,
+    "original_num": 17,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "A developer is creating a Lightning web component to show a list of sales records. The Sales Represe"
+  },
+  {
+    "id": 138,
+    "original_num": 18,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "The sales management team at Universal Containers requires that the Lead Source field of the Lead re"
+  },
+  {
+    "id": 139,
+    "original_num": 19,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A PrimaryId__c custom field exists on the Candidate__c custom object. The field is used to store eac"
+  },
+  {
+    "id": 141,
+    "original_num": 21,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "What is the requirement for a class to be used as a custom Visualforce controller?"
+  },
+  {
+    "id": 142,
+    "original_num": 22,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "In order to override a standard action with a Visualforce page, which attribute must be defined in t"
+  },
+  {
+    "id": 143,
+    "original_num": 23,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['B']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer needs to provide a way to mass edit, update, and delete records from a list view. In whi"
+  },
+  {
+    "id": 144,
+    "original_num": 24,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "What is a benefit of using a trigger framework?"
+  },
+  {
+    "id": 145,
+    "original_num": 25,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "The sales management team at Universal Containers requires that the Lead Source field of the Lead re"
+  },
+  {
+    "id": 146,
+    "original_num": 26,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['C']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A company has been adding data to Salesforce and has not done a good job of limiting the creation of"
+  },
+  {
+    "id": 147,
+    "original_num": 27,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer created this Apex trigger that calls MyClass.myStaticMethod:\ntrigger myTrigger on Contac"
+  },
+  {
+    "id": 148,
+    "original_num": 28,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B', 'E'], MD correct=['B']",
+    "json_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "What are three considerations when using the @InvocableMethod annotation in Apex? (Choose three.)"
+  },
+  {
+    "id": 150,
+    "original_num": 30,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer executes the following query in Apex to retrieve a list of contacts for each account: Li"
+  },
+  {
+    "id": 151,
+    "original_num": 31,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Universal Containers wants to assess the advantages of declarative development versus programmatic c"
+  },
+  {
+    "id": 152,
+    "original_num": 32,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['B']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer is asked to create a PDF quote document formatted using the company's branding guideline"
+  },
+  {
+    "id": 153,
+    "original_num": 33,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "What should be used to create scratch orgs?"
+  },
+  {
+    "id": 155,
+    "original_num": 35,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['B', 'C']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "C"
+    ],
+    "question_preview": "If Apex code executes inside the execute() method of an Apex class when implementing the Batchable i"
+  },
+  {
+    "id": 156,
+    "original_num": 36,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'E'], MD correct=['B', 'D']",
+    "json_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "What are three characteristics of change set deployments? (Choose three.)"
+  },
+  {
+    "id": 157,
+    "original_num": 37,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Consider the following code snippet:\npublic static List<Lead> obtainAllFields(Set<Id> leadIds){\nList"
+  },
+  {
+    "id": 158,
+    "original_num": 38,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Refer to the following Apex code:\nInteger x = 0;\ndo{\nx = 1;\nx++;\n}\nwhile(x < 1);\nSystem.debug(x);\nWh"
+  },
+  {
+    "id": 159,
+    "original_num": 39,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['D']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer needs to test an Invoicing system integration. After reviewing the number of transaction"
+  },
+  {
+    "id": 160,
+    "original_num": 40,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['C']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Universal Containers hires a developer to build a custom search page to help users find the Accounts"
+  },
+  {
+    "id": 161,
+    "original_num": 41,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "Considering the following code snippet:\npublic static void insertAccounts(ListAccount theseAccounts)"
+  },
+  {
+    "id": 162,
+    "original_num": 42,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "When using SalesforceDX, what does a developer need to enable to create and manage scratch orgs?"
+  },
+  {
+    "id": 163,
+    "original_num": 43,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Where are two locations a developer can look to find information about the status of batch or future"
+  },
+  {
+    "id": 164,
+    "original_num": 44,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A Salesforce Administrator used Flow Builder to create a flow named 'accountOnboarding'. The flow mu"
+  },
+  {
+    "id": 165,
+    "original_num": 45,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A developer must create a CreditCardPayment class that provides an implementation of an existing Pay"
+  },
+  {
+    "id": 167,
+    "original_num": 47,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=[]",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [],
+    "question_preview": "Universal Containers wants a list button to display a Visualforce page that allows users to edit mul"
+  },
+  {
+    "id": 168,
+    "original_num": 48,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which code in a Visualforce page and/or controller might present a security vulnerability?\nA . <apex"
+  },
+  {
+    "id": 169,
+    "original_num": 49,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "What should a developer do to check the code coverage of a class after running all tests?"
+  },
+  {
+    "id": 170,
+    "original_num": 50,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D', 'E'], MD correct=['D']",
+    "json_correct": [
+      "B",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Universal Containers decides to use exclusively declarative development to build out a new Salesforc"
+  },
+  {
+    "id": 171,
+    "original_num": 51,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'E'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "E"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which three statements are true regarding the @isTest annotation? (Choose three.)"
+  },
+  {
+    "id": 173,
+    "original_num": 53,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "Which two SOSL searches will return records matching search criteria contained in any of the searcha"
+  },
+  {
+    "id": 174,
+    "original_num": 54,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['C', 'D']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer needs to save a List of existing Account records named myAccounts to the database, but t"
+  },
+  {
+    "id": 175,
+    "original_num": 55,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "How should a developer avoid hitting the governor limits in test methods?"
+  },
+  {
+    "id": 176,
+    "original_num": 56,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Universal Containers wants Opportunities to be locked from editing when reaching the Closed/Won stag"
+  },
+  {
+    "id": 177,
+    "original_num": 57,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'D'], MD correct=['A', 'D', 'E']",
+    "json_correct": [
+      "A",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer wants to display all of the picklist entries for the Opportunity StageName field and all"
+  },
+  {
+    "id": 178,
+    "original_num": 58,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "C"
+    ],
+    "question_preview": "An org has two custom objects: Plan__c, that has a master-detail relationship to the Account object "
+  },
+  {
+    "id": 181,
+    "original_num": 1,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "What is the impact of declaring an Apex class using the `without sharing` keywords?"
+  },
+  {
+    "id": 182,
+    "original_num": 2,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer needs to find information about @future methods that were invoked. From which system mon"
+  },
+  {
+    "id": 184,
+    "original_num": 4,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "Universal Containers has a Visualforce page that displays a table of every Container__c being rented"
+  },
+  {
+    "id": 185,
+    "original_num": 5,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'D'], MD correct=['B']",
+    "json_correct": [
+      "A",
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "What are three techniques that a developer can use to invoke an anonymous block of code? (Choose thr"
+  },
+  {
+    "id": 186,
+    "original_num": 6,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['B']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer has two custom controller extensions where each has a save() method.\n<Apex:page standard"
+  },
+  {
+    "id": 187,
+    "original_num": 7,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer needs to create a Visualforce page that displays Case data. The page will be used by bot"
+  },
+  {
+    "id": 188,
+    "original_num": 8,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B', 'D'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which three steps allow a custom SVG to be included in a Lightning web component? (Choose three.)"
+  },
+  {
+    "id": 189,
+    "original_num": 9,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "A custom Visualforce controller calls the ApexPages.addMessage() method, but no messages are renderi"
+  },
+  {
+    "id": 190,
+    "original_num": 10,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['B', 'C', 'D']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "question_preview": "A Licensed_Professional__c custom object exists in the system with two Master-Detail fields for the "
+  },
+  {
+    "id": 191,
+    "original_num": 11,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer considers the following snippet of code:\nBoolean isOK;\ninteger x;\nString theString = 'He"
+  },
+  {
+    "id": 192,
+    "original_num": 12,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "A developer needs to include a Visualforce page in the detail section of a page layout for the Accou"
+  },
+  {
+    "id": 193,
+    "original_num": 13,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['A']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which two operations can be performed using a formula field? (Choose two.)"
+  },
+  {
+    "id": 194,
+    "original_num": 14,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Application Events follow the traditional publish-subscribe model. Which method is used to fire an e"
+  },
+  {
+    "id": 195,
+    "original_num": 15,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'B']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "A developer needs to implement the functionality for a service agent to gather multiple pieces of in"
+  },
+  {
+    "id": 196,
+    "original_num": 16,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C', 'D'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "Einstein Next Best Action is configured at Universal Containers to display recommendations to intern"
+  },
+  {
+    "id": 197,
+    "original_num": 17,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "An Opportunity needs to have an amount rolled up from a custom object that is not in a master-detail"
+  },
+  {
+    "id": 198,
+    "original_num": 18,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'E'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer at Universal Containers is tasked with implementing a new Salesforce application that mu"
+  },
+  {
+    "id": 200,
+    "original_num": 20,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "When is an Apex Trigger required instead of a Process Builder Process?"
+  },
+  {
+    "id": 201,
+    "original_num": 21,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A company wants to create an employee rating program that allows employees to rate each other. An em"
+  },
+  {
+    "id": 202,
+    "original_num": 22,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "What is a benefit of developing applications in a multi-tenant environment?"
+  },
+  {
+    "id": 203,
+    "original_num": 23,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "When viewing a Quote, the sales representative wants to easily see how many discounted items are inc"
+  },
+  {
+    "id": 204,
+    "original_num": 24,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B'], MD correct=['C']",
+    "json_correct": [
+      "A",
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "In terms of the MVC paradigm, what are two advantages of implementing the view layer of a Salesforce"
+  },
+  {
+    "id": 205,
+    "original_num": 25,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "Cloud Kicks Fitness, an ISV Salesforce partner, is developing a managed package application. One of "
+  },
+  {
+    "id": 206,
+    "original_num": 26,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A software company uses the following objects and relationships:\nCase: to handle customer support is"
+  },
+  {
+    "id": 207,
+    "original_num": 27,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "What is the debug output of the following Apex code?\nDecimal theValue;\nSystem.debug(theValue);"
+  },
+  {
+    "id": 210,
+    "original_num": 30,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "Which Salesforce org has a complete duplicate copy of the production org including data and configur"
+  },
+  {
+    "id": 211,
+    "original_num": 31,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Universal Containers stores Orders and Line Items in Salesforce. For security reasons, financial rep"
+  },
+  {
+    "id": 212,
+    "original_num": 32,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['B']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which two events need to happen when deploying to a production org? (Choose two.)"
+  },
+  {
+    "id": 214,
+    "original_num": 34,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer is asked to set a picklist field to 'Monitor' on any new Leads owned by a subnet of User"
+  },
+  {
+    "id": 215,
+    "original_num": 35,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'E'], MD correct=['B', 'C']",
+    "json_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "B",
+      "C"
+    ],
+    "question_preview": "Which three process automations can immediately send an email notification to the owner of an Opport"
+  },
+  {
+    "id": 216,
+    "original_num": 36,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer needs to confirm that a Contact trigger works correctly without changing the organizatio"
+  },
+  {
+    "id": 217,
+    "original_num": 37,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['C']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which control statement should a developer use to ensure that a loop body executes at least once?"
+  },
+  {
+    "id": 218,
+    "original_num": 38,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['B']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which two declarative process automation features can be directly invoked when a field value changes"
+  },
+  {
+    "id": 219,
+    "original_num": 39,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['D']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which two strategies should a developer use to avoid hitting governor limits when developing in a mu"
+  },
+  {
+    "id": 220,
+    "original_num": 40,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which feature should a developer use to update an inventory count on related Product records when th"
+  },
+  {
+    "id": 221,
+    "original_num": 41,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "The operation manager at a construction company uses a custom object called Machinery to manage the "
+  },
+  {
+    "id": 222,
+    "original_num": 42,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "A developer needs to have records with specific field values in order to test a new Apex class. What"
+  },
+  {
+    "id": 223,
+    "original_num": 43,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer created a Lightning component to display a short text summary for an object and wants to"
+  },
+  {
+    "id": 226,
+    "original_num": 46,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which process automation can be used to calculate the shipping cost for an Order when the Order is p"
+  },
+  {
+    "id": 227,
+    "original_num": 47,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=[]",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [],
+    "question_preview": "A developer created a child Lightning web component nested inside a parent Lightning web component. "
+  },
+  {
+    "id": 228,
+    "original_num": 48,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "What are two best practices when it comes to Lightning Web Component events? (Choose two.)"
+  },
+  {
+    "id": 229,
+    "original_num": 49,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer migrated functionality from JavaScript Remoting to a Lightning web component and wants t"
+  },
+  {
+    "id": 230,
+    "original_num": 50,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer must provide a custom user interface when users edit a Contact. Users must be able to us"
+  },
+  {
+    "id": 231,
+    "original_num": 51,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which Lightning code segment should be written to declare dependencies on a Lightning component, c:a"
+  },
+  {
+    "id": 232,
+    "original_num": 52,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B', 'C'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer can use the debug log to see which three types of information? (Choose three.)"
+  },
+  {
+    "id": 233,
+    "original_num": 53,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "A developer created a trigger on the Account object and wants to test if the trigger is properly bul"
+  },
+  {
+    "id": 234,
+    "original_num": 54,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "What can be developed using the Lightning Component framework?"
+  },
+  {
+    "id": 235,
+    "original_num": 55,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A', 'D']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "A developer must create an Apex class, ContactController, that a Lightning component can use to sear"
+  },
+  {
+    "id": 236,
+    "original_num": 56,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer must create a DrawList class that provides capabilities defined in the Sortable and Draw"
+  },
+  {
+    "id": 237,
+    "original_num": 57,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'B', 'E'], MD correct=['A', 'D', 'E']",
+    "json_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "md_correct": [
+      "A",
+      "D",
+      "E"
+    ],
+    "question_preview": "Which three options allow a developer to use custom styling in a Visualforce page? (Choose three.)"
+  },
+  {
+    "id": 238,
+    "original_num": 58,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'C']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "C"
+    ],
+    "question_preview": "When a user edits the Postal Code on an Account, a custom Account text field named 'Timezone' must b"
+  },
+  {
+    "id": 239,
+    "original_num": 1,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Where can a developer identify the time taken by each process in a transaction using Developer Conso"
+  },
+  {
+    "id": 240,
+    "original_num": 2,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['C', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "C",
+      "D"
+    ],
+    "question_preview": "A developer has the controller class below.\nPublic with sharing class myFooController{\npublic intege"
+  },
+  {
+    "id": 241,
+    "original_num": 3,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D', 'E'], MD correct=['B']",
+    "json_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which three statements are true regarding trace flags? (Choose three.)"
+  },
+  {
+    "id": 242,
+    "original_num": 4,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "How can a developer check the test coverage of Autolaunched Flows before deploying them in a change "
+  },
+  {
+    "id": 243,
+    "original_num": 5,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer has the following requirements: Calculate the total amount on an Order. Calculate the li"
+  },
+  {
+    "id": 245,
+    "original_num": 7,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which two Apex data types can be used to reference a Salesforce record ID dynamically? (Choose two.)"
+  },
+  {
+    "id": 246,
+    "original_num": 8,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer is debugging the following code to determine why Accounts are not being created. List<Ac"
+  },
+  {
+    "id": 247,
+    "original_num": 9,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Why would a developer consider using a custom controller over a controller extension?"
+  },
+  {
+    "id": 248,
+    "original_num": 10,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B', 'C', 'D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "C",
+      "D"
+    ],
+    "question_preview": "Which approach should be used to provide test data for a test class?"
+  },
+  {
+    "id": 249,
+    "original_num": 11,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "A developer created these three roll-up summary fields on the custom object Project__c: - Total_Time"
+  },
+  {
+    "id": 250,
+    "original_num": 12,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'D'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "A",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "A developer needs to update an unrelated object when a record gets saved. Which two trigger types sh"
+  },
+  {
+    "id": 251,
+    "original_num": 13,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which feature allows a developer to create test records for use in test classes?"
+  },
+  {
+    "id": 252,
+    "original_num": 14,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "An org tracks customer orders on an Order object and the line items of an Order on the Line Item obj"
+  },
+  {
+    "id": 253,
+    "original_num": 15,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "B"
+    ],
+    "question_preview": "A Lightning component has a wired property, searchResults, that stores a list of Opportunities. Whic"
+  },
+  {
+    "id": 254,
+    "original_num": 16,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'B', 'E']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "E"
+    ],
+    "question_preview": "A lead developer creates an Apex interface called Laptop. Consider the following code snippet: publi"
+  },
+  {
+    "id": 255,
+    "original_num": 17,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "A method is passed a list of generic sObjects as a parameter. What should the developer do to determ"
+  },
+  {
+    "id": 256,
+    "original_num": 18,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C'], MD correct=['D']",
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "What are two use cases for executing Anonymous Apex code? (Choose two.)"
+  },
+  {
+    "id": 257,
+    "original_num": 19,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A Developer wants to get access to the standard price book in the org while writing a test class tha"
+  },
+  {
+    "id": 258,
+    "original_num": 20,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'D'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "D"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A development team wants to use a deployment script to automatically deploy to a sandbox during thei"
+  },
+  {
+    "id": 259,
+    "original_num": 21,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A', 'C', 'E'], MD correct=['A']",
+    "json_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A platform developer at Universal Containers needs to create a custom button for the Account object "
+  },
+  {
+    "id": 261,
+    "original_num": 23,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['B']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which exception type cannot be caught?"
+  },
+  {
+    "id": 263,
+    "original_num": 25,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['A', 'D']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "When importing and exporting data into Salesforce, which two statements are true? (Choose two.)"
+  },
+  {
+    "id": 265,
+    "original_num": 27,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D', 'E'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "Which three code lines are required to create a Lightning component on a Visualforce page? (Choose t"
+  },
+  {
+    "id": 266,
+    "original_num": 28,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "A developer is integrating with a legacy on-premise SQL database. What should the developer use to e"
+  },
+  {
+    "id": 267,
+    "original_num": 29,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['D']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer is asked to create a Visualforce page that displays some Account fields as well as field"
+  },
+  {
+    "id": 268,
+    "original_num": 30,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C', 'D', 'E']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C",
+      "D",
+      "E"
+    ],
+    "question_preview": "While working in a sandbox, an Apex test falls when run in the Test Framework. However, running the "
+  },
+  {
+    "id": 269,
+    "original_num": 31,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C', 'E'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "A developer has a single custom controller class that works with a Visualforce Wizard to support cre"
+  },
+  {
+    "id": 270,
+    "original_num": 32,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D', 'E'], MD correct=['B']",
+    "json_correct": [
+      "B",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "Which three Salesforce resources can be accessed from a Lightning web component? (Choose three.)"
+  },
+  {
+    "id": 271,
+    "original_num": 33,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which two events need to happen when deploying to a production org? (Choose two.)"
+  },
+  {
+    "id": 272,
+    "original_num": 34,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['D']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Universal Containers recently transitioned from Classic to Lightning Experience. One of its business"
+  },
+  {
+    "id": 273,
+    "original_num": 35,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B', 'C']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B",
+      "C"
+    ],
+    "question_preview": "Which statement describes the execution order when triggers are associated to the same object and ev"
+  },
+  {
+    "id": 274,
+    "original_num": 36,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "In the Lightning UI, where should a developer look to find information about a Paused Flow Interview"
+  },
+  {
+    "id": 275,
+    "original_num": 37,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['C']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "An Opportunity needs to have an amount rolled up from a custom object that is not in a master-detail"
+  },
+  {
+    "id": 276,
+    "original_num": 38,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['B']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "B"
+    ],
+    "question_preview": "How does the Lightning Component framework help developers implement solutions faster?"
+  },
+  {
+    "id": 277,
+    "original_num": 39,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which Salesforce feature allows a developer to see when a user last logged in to Salesforce if real-"
+  },
+  {
+    "id": 278,
+    "original_num": 40,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C'], MD correct=['C']",
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "Which two are best practices when it comes to component and application event handling? (Choose two."
+  },
+  {
+    "id": 279,
+    "original_num": 41,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C', 'D'], MD correct=['B', 'D']",
+    "json_correct": [
+      "C",
+      "D"
+    ],
+    "md_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "From which two locations can a developer determine the overall code coverage for a sandbox? (Choose "
+  },
+  {
+    "id": 280,
+    "original_num": 42,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['A', 'D']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "A",
+      "D"
+    ],
+    "question_preview": "A SSN__c custom field exists on the Candidate__c custom object. The field is used to store each cand"
+  },
+  {
+    "id": 281,
+    "original_num": 43,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer created a Visualforce page and custom controller to display the account type field as sh"
+  },
+  {
+    "id": 283,
+    "original_num": 45,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=['C']",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [
+      "C"
+    ],
+    "question_preview": "How should a developer create a new custom exception class?"
+  },
+  {
+    "id": 284,
+    "original_num": 46,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D'], MD correct=['D']",
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "A developer identifies the following triggers on the Expense__c object: deteleExpense, applyDefaults"
+  },
+  {
+    "id": 285,
+    "original_num": 47,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['A'], MD correct=[]",
+    "json_correct": [
+      "A"
+    ],
+    "md_correct": [],
+    "question_preview": "Universal Containers has implemented an order management application. Each Order can have one or mor"
+  },
+  {
+    "id": 286,
+    "original_num": 48,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'C', 'E'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "C",
+      "E"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Which three statements are accurate about debug logs? (Choose three.)"
+  },
+  {
+    "id": 287,
+    "original_num": 49,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=['A', 'B', 'D']",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [
+      "A",
+      "B",
+      "D"
+    ],
+    "question_preview": "The Account object has a custom Percent field, Rating, defined with a length of 2 with 0 decimal pla"
+  },
+  {
+    "id": 288,
+    "original_num": 50,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['D']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "D"
+    ],
+    "question_preview": "Which statement is true about developing in a multi-tenant environment?"
+  },
+  {
+    "id": 289,
+    "original_num": 51,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B', 'D', 'E'], MD correct=['A']",
+    "json_correct": [
+      "B",
+      "D",
+      "E"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "Universal Containers decides to use exclusively declarative development to build out a new Salesforc"
+  },
+  {
+    "id": 290,
+    "original_num": 52,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['B'], MD correct=['A']",
+    "json_correct": [
+      "B"
+    ],
+    "md_correct": [
+      "A"
+    ],
+    "question_preview": "A developer must implement a CheckPaymentProcessor class that provides check processing payment capa"
+  },
+  {
+    "id": 291,
+    "original_num": 53,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['C'], MD correct=['A', 'C', 'E']",
+    "json_correct": [
+      "C"
+    ],
+    "md_correct": [
+      "A",
+      "C",
+      "E"
+    ],
+    "question_preview": "Universal Containers has a large number of custom applications that were built using a third-party J"
+  },
+  {
+    "id": 343,
+    "original_num": 47,
+    "type": "CORRECT_ANSWER_MISMATCH",
+    "detail": "JSON correct=['D'], MD correct=[]",
+    "json_correct": [
+      "D"
+    ],
+    "md_correct": [],
+    "question_preview": "The following Apex method is part of the ContactService class that is called from a trigger:\npublic "
+  }
+]

@@ -1,0 +1,159 @@
+[
+  {
+    "id": 287,
+    "vi_question": "Trường tùy chỉnh Rating__c kiểu Percent (phần trăm) trên Account được cấu hình độ dài 2 ký tự, không lấy chữ số thập phân. Bản ghi Account chứa giá trị 50% ở trường Rating__c được query lên và xử lý bằng đoạn code Apex sau: [Code acctScore]. Hỏi giá trị của acctScore sau khi chạy xong là bao nhiêu?",
+    "why_correct": "Giá trị của acctScore là 5000 (D). Trong Salesforce, các trường Percent được lưu trữ và truy vấn trong code Apex dưới dạng giá trị thực tế không chia cho 100 (tức là 50% thì Rating__c có giá trị là số thực 50 chứ không phải 0.50). Do đó, phép toán 50 * 100 = 5000.",
+    "why_wrong": {
+      "A": "Tính toán sai lệch hoàn toàn.",
+      "B": "Sai vì nghĩ Percent trong code Apex tự động chia cho 100 thành 0.50 để nhân với 100 ra 50.",
+      "C": "Sai do nhầm lẫn thứ tự tính toán thập phân."
+    },
+    "tip": "Mẹo thi Percent Salesforce: Trong Apex code, trường % được lấy giá trị thô không chia 100 (ví dụ 50% = 50, 75% = 75)."
+  },
+  {
+    "id": 288,
+    "vi_question": "Phát biểu nào sau đây là ĐÚNG khi nói về việc lập trình phát triển ứng dụng trong môi trường đa khách thuê (multi-tenant) của Salesforce?",
+    "why_correct": "Các giới hạn governor limits giúp ngăn chặn việc code Apex của một khách thuê gây ảnh hưởng xấu hoặc làm tê liệt hiệu năng của các khách thuê khác chạy chung trên cùng một máy chủ vật lý (C).",
+    "why_wrong": {
+      "A": "Apex Sharing chỉ giúp chia sẻ bản ghi bảo mật trong nội bộ một Org (tenant) cụ thể chứ không thể chia sẻ dữ liệu chéo Org giữa các khách thuê độc lập được.",
+      "B": "Bảo mật cấp Org kiểm soát quyền truy cập của người dùng trong Org đó, không kiểm soát chéo dữ liệu đa khách thuê vật lý.",
+      "D": "Từ khóa global trên Apex class chỉ hỗ trợ kết nối chéo namespace nội bộ Org chứ không cho phép Org khác truy cập trực tiếp."
+    },
+    "tip": "Bản chất Multi-tenancy -> Governor Limits sinh ra để bảo vệ tài nguyên dùng chung, tránh các Org ảnh hưởng hiệu năng lẫn nhau."
+  },
+  {
+    "id": 289,
+    "vi_question": "Universal Containers quyết định sử dụng hoàn toàn phát triển dạng khai báo (declarative) để xây dựng ứng dụng mới. Ba tùy chọn nào nên được sử dụng để thiết lập lớp Cơ sở dữ liệu (Database Layer)? (Chọn 3)",
+    "why_correct": "B: Roll-up summaries. D: Relationships. E: Custom objects and fields. Đây là các thành phần cấu tạo nên cấu trúc lớp lưu trữ dữ liệu vật lý hoàn toàn no-code trong Salesforce.",
+    "why_wrong": {
+      "A": "Process Builder là công cụ tự động hóa xử lý logic (Logic Layer), không phải cấu trúc lưu trữ cơ sở dữ liệu.",
+      "C": "Triggers là code Apex dùng để xử lý logic, không thuộc lớp khai báo no-code."
+    },
+    "tip": "Database Layer no-code -> Object/Fields, Relationships, Roll-up Summaries."
+  },
+  {
+    "id": 290,
+    "vi_question": "Lập trình viên cần tạo class CheckPaymentProcessor để thực hiện xử lý thanh toán tuân thủ đúng các phương thức ký mẫu được định nghĩa trong Interface PaymentProcessor: [Interface Code]. Cách viết nào sau đây là đúng cú pháp Apex?",
+    "why_correct": "Cú pháp B: public class CheckPaymentProcessor implements PaymentProcessor { public void pay(Decimal amount){} }. Class con bắt buộc dùng từ khóa 'implements' và phải viết phần thân hàm cụ thể chứa cặp dấu ngoặc nhọn {} để hiện thực hóa phương thức.",
+    "why_wrong": {
+      "A": "Hàm pay kết thúc bằng dấu chấm phẩy mà không có ngoặc nhọn chỉ được dùng ở định nghĩa Interface, dùng ở class thường sẽ bị lỗi biên dịch.",
+      "C": "Sử dụng từ khóa 'extends' đối với Interface là hoàn toàn sai cú pháp lập trình.",
+      "D": "Sai cú pháp vì vừa dùng từ khóa extends vừa thiếu cặp dấu ngoặc nhọn thân hàm."
+    },
+    "tip": "Hiện thực hóa Interface -> Bắt buộc dùng IMPLEMENTS + Viết đầy đủ thân hàm chứa cặp ngoặc nhọn {}."
+  },
+  {
+    "id": 291,
+    "vi_question": "Universal Containers sở hữu một loạt các ứng dụng tùy chỉnh được xây dựng bằng thư viện JavaScript của bên thứ ba nhúng trong trang Visualforce. Công ty muốn cập nhật nhanh nhất giao diện của các app này theo chuẩn giao diện Lightning Experience. Lập trình viên nên làm gì?",
+    "why_correct": "Tích hợp trực tiếp file CSS của Salesforce Lightning Design System (SLDS) vào ứng dụng JavaScript của bên thứ ba đó (C). Vì ứng dụng dùng thư viện JS ngoài (như React/Angular) render HTML tùy chỉnh, việc bật tính năng đổi style tự động của Salesforce sẽ vô tác dụng, bắt buộc phải import SLDS CSS để tự áp dụng các class giao diện chuẩn của Salesforce.",
+    "why_wrong": {
+      "A": "Không tồn tại thuộc tính enableLightning trong thẻ khai báo Visualforce page.",
+      "B": "Tùy chọn Available for Lightning chỉ giúp hiển thị trang Visualforce trên menu Lightning chứ không có khả năng tự động đổi CSS của JS framework ngoài.",
+      "D": "Viết lại toàn bộ trang Visualforce thành Lightning component là giải pháp cực kỳ tốn công sức và thời gian, không đáp ứng yêu cầu 'nhanh nhất'."
+    },
+    "tip": "Đổi giao diện JS App ngoài sang Lightning chuẩn nhanh nhất -> Nhúng bộ CSS Salesforce Lightning Design System (SLDS) vào ứng dụng."
+  },
+  {
+    "id": 292,
+    "vi_question": "Khi người dùng sửa trường Postal Code trên Account, một trường text tùy chỉnh tên 'Timezone' phải được tự động cập nhật dựa trên bảng tra cứu đối tượng PostalCodeToTimezone__c. Hai công cụ tự động hóa nào thực hiện được việc này? (Chọn 2)",
+    "why_correct": "C: Record-triggered flow (công cụ no-code hiện đại hỗ trợ query bảng tra cứu động). D: Account trigger (code Apex trigger xử lý hoàn hảo khâu query và map dữ liệu).",
+    "why_wrong": {
+      "A": "Quick actions chỉ hiển thị nút bấm hành động nhanh trên giao diện để người dùng nhập liệu, không tự động chạy ngầm cập nhật trường chéo bảng được.",
+      "B": "Approval Process dùng cho quy trình xét duyệt hồ sơ chứng từ, không dùng để tự động cập nhật trường tra cứu chéo bảng khi sửa Postal Code."
+    },
+    "tip": "Tự động cập nhật trường bằng cách truy vấn (query) bảng đối tượng khác -> Chỉ dùng Record-triggered Flow hoặc Apex Trigger."
+  },
+  {
+    "id": 293,
+    "vi_question": "Hai vai trò nổi bật của việc sử dụng trường External ID trong Salesforce là gì? (Chọn 2)",
+    "why_correct": "A: Thiết lập nhanh các mối quan hệ liên kết (relationships) giữa các bản ghi con-cha khi import từ hệ thống ngoài. D: Làm khóa đối chiếu giúp ngăn chặn việc tạo mới bản ghi trùng lặp khi chạy lệnh nạp dữ liệu Upsert.",
+    "why_wrong": {
+      "B": "Salesforce ID do hệ thống tự sinh ngẫu nhiên khi insert và là duy nhất trên từng Org, cấm và không thể ép bản ghi ở Sandbox có chung ID với Production bằng External ID.",
+      "C": "External ID không dùng để xác định kiểu sObject (Account, Contact) của bản ghi."
+    },
+    "tip": "External ID: Dùng làm khóa ngoài liên kết dữ liệu khi nạp + Làm bộ lọc so khớp độc nhất cho lệnh DML UPSERT tránh trùng."
+  },
+  {
+    "id": 295,
+    "vi_question": "Ba kiểu trường khai báo (declarative fields) nào sau đây được ánh xạ (map) hoàn toàn ĐÚNG sang các kiểu dữ liệu tương ứng trong Apex? (Chọn 3)",
+    "why_correct": "A: Trường Number của Salesforce được map sang kiểu Decimal trong Apex (để chứa số thập phân an toàn). D: Trường Date/Time được map sang kiểu DateTime trong Apex. E: Trường Checkbox (chỉ có True/False) được ánh xạ sang kiểu Boolean trong Apex.",
+    "why_wrong": {
+      "B": "Trường Number có thể chứa phần thập phân, nếu map cứng sang Integer sẽ bị crash lỗi hoặc mất mát dữ liệu số lẻ.",
+      "C": "Trường TextArea chỉ đơn giản là một String lớn chứa các ký tự xuống dòng, cấm tự động map thành List<String>."
+    },
+    "tip": "Mẹo Ánh Xạ Apex: Checkbox -> Boolean. Date/Time -> DateTime. Number -> Decimal."
+  },
+  {
+    "id": 296,
+    "vi_question": "Hai thực hành tốt nhất (best practices) nào lập trình viên nên tuân thủ khi xử lý danh sách bản ghi trong một Apex Trigger để đảm bảo chạy mượt mà bulkified? (Chọn 2)",
+    "why_correct": "A: Sử dụng cấu trúc Map để lưu kết quả query theo ID, giúp loại bỏ việc gọi SOQL trùng lặp trong các vòng lặp. C: Sử dụng cấu trúc Set để lưu danh sách ID lọc duy nhất, tối ưu hóa bộ lọc WHERE IN trong các câu lệnh truy vấn SOQL.",
+    "why_wrong": {
+      "B": "Không dùng @future bừa bãi chỉ để chạy DML update vì phương thức future chạy bất đồng bộ không kiểm soát được thứ tự lưu và dễ gây khóa bản ghi (record locking).",
+      "D": "Không thể khai báo callout trực tiếp trong trigger (kể cả dùng callout=true), bắt buộc trigger phải gọi qua helper method bất đồng bộ @future(callout=true) để tránh treo transaction."
+    },
+    "tip": "Tối ưu hóa Trigger (Bulkification) -> Luôn sử dụng bộ đôi SET (để lọc duy nhất) và MAP (để lưu cache đối chiếu SOQL)."
+  },
+  {
+    "id": 297,
+    "vi_question": "Developer muốn duyệt qua danh sách Account và đánh dấu trạng thái Active hoặc Inactive cho từng bản ghi dựa trên việc trường LastModifiedDate có lớn hơn 90 ngày trước hay không. Kỹ thuật Apex nào là tối ưu?",
+    "why_correct": "Sử dụng một vòng lặp for để duyệt qua danh sách Account, và viết một câu lệnh điều kiện if-else ở bên trong thân vòng lặp để so sánh ngày và gán nhãn trạng thái tương ứng cho từng bản ghi (D).",
+    "why_wrong": {
+      "A": "Switch statement chỉ dùng để so khớp các giá trị hằng số rời rạc cụ thể, không hỗ trợ so sánh toán tử điều kiện lớn hơn/nhỏ hơn phức tạp của ngày tháng.",
+      "B": "Đặt switch ngoài for lặp là hoàn toàn sai trình tự logic xử lý danh sách.",
+      "C": "Đặt if-else ngoài for lặp không thể can thiệp xử lý điều kiện cho từng bản ghi độc lập bên trong danh sách được."
+    },
+    "tip": "Xử lý điều kiện động cho từng phần tử trong List -> Dùng vòng lặp FOR, bọc khối lệnh điều kiện IF - ELSE bên trong."
+  },
+  {
+    "id": 301,
+    "vi_question": "Công cụ nào cho phép lập trình viên dễ dàng gửi thử nghiệm các yêu cầu REST API đến Salesforce và xem trực tiếp các phản hồi JSON trả về ngay trên giao diện?",
+    "why_correct": "Workbench REST Explorer (B). Đây là tính năng cực kỳ mạnh mẽ tích hợp trong Workbench giúp lập trình viên test nhanh các API Endpoint của Salesforce (như /services/data/vXX.X/) rất trực quan.",
+    "why_wrong": {
+      "A": "REST resource path URL chỉ là chuỗi địa chỉ endpoint tĩnh, không phải công cụ gửi nhận và hiển thị phản hồi API.",
+      "C": "Developer Console không có tab nào chuyên biệt để test REST API thủ công giống REST Explorer.",
+      "D": "Force.com IDE là công cụ viết code cổ điển trên Eclipse đã bị khai tử, không chứa REST Explorer chuyên biệt."
+    },
+    "tip": "Test thử nghiệm REST API Salesforce nhanh chóng -> Sử dụng công cụ WORKBENCH REST EXPLORER."
+  },
+  {
+    "id": 306,
+    "vi_question": "Ba kiểu dữ liệu nào sau đây có thể được trả về trực tiếp từ một câu lệnh truy vấn SOQL trong Apex? (Chọn 3)",
+    "why_correct": "B: Trả về một danh sách các bản ghi (List<sObject>). C: Trả về một bản ghi đơn duy nhất (Single sObject) khi query giới hạn LIMIT 1. D: Trả về một số nguyên (Integer) khi sử dụng hàm đếm COUNT() trực tiếp (ví dụ: Integer cnt = [SELECT COUNT() FROM Account]).",
+    "why_wrong": {
+      "A": "SOQL không bao giờ trả về trực tiếp giá trị Boolean.",
+      "E": "SOQL cấm và không thể trả về trực tiếp kiểu dữ liệu String thô (muốn lấy string phải lấy qua thuộc tính của sObject)."
+    },
+    "tip": "Kiểu trả về của SOQL -> 1. List<sObject>; 2. Single sObject; 3. Integer (khi dùng COUNT())."
+  },
+  {
+    "id": 307,
+    "vi_question": "Ba khu vực/trang nào lập trình viên có thể trực tiếp nhúng và sử dụng Lightning Components trong giao diện Lightning Experience? (Chọn 3)",
+    "why_correct": "C: Lightning Record Page (Trang chi tiết bản ghi). D: Lightning Community Page (Trang cộng đồng/Experience Cloud). E: Lightning Home page (Trang chủ hệ thống). Đây là các khu vực hỗ trợ kéo thả component bằng App Builder cực kỳ linh hoạt.",
+    "why_wrong": {
+      "A": "Lightning Report page là trang báo cáo tiêu chuẩn của hệ thống, cấm nhúng component tự thiết kế bừa bãi.",
+      "B": "Không tồn tại khái niệm 'Lightning Connect page' để kéo thả nhúng component trực tiếp trên UI."
+    },
+    "tip": "Nhúng LWC trên Lightning UI -> Nhúng tại Record Page, Home Page, hoặc Community (Experience Cloud) Page."
+  },
+  {
+    "id": 308,
+    "vi_question": "Ba phương thức/công cụ nào cho phép lập trình viên trực tiếp kích hoạt chạy toàn bộ các lớp test class (execute tests) trong một Salesforce Org? (Chọn 3)",
+    "why_correct": "A: Gọi thông qua Tooling API. B: Thực thi lệnh CLI từ bộ công cụ Salesforce DX (SFDX). E: Click chạy trực tiếp trong trang quản trị Setup Menu (Apex Test Execution).",
+    "why_wrong": {
+      "C": "Metadata API dùng để deploy/retrieve cấu trúc code và cấu hình Org, không dùng để kích hoạt tiến trình chạy test độc lập.",
+      "D": "Bulk API dùng để nạp/xử lý hàng triệu bản ghi dữ liệu cực lớn, hoàn toàn không liên quan đến việc chạy test code."
+    },
+    "tip": "Chạy Apex Test -> 1. Setup Menu (Apex Test Execution); 2. CLI Salesforce DX; 3. Tooling API."
+  },
+  {
+    "id": 309,
+    "vi_question": "Tập hợp các hàm tổng hợp (roll-up types) nào có sẵn và được hỗ trợ đầy đủ khi khởi tạo một trường Roll-up Summary Field trong Salesforce?",
+    "why_correct": "Tập hợp COUNT, SUM, MIN, MAX (A). Đây là 4 hàm toán học duy nhất được Salesforce hỗ trợ để tính toán dồn dữ liệu từ các bản ghi con lên cha trong mối quan hệ Master-Detail.",
+    "why_wrong": {
+      "B": "Hàm tính trung bình AVERAGE hoàn toàn không được hỗ trợ trong Roll-up Summary Field của Salesforce.",
+      "C": "Tập hợp này bị thiếu mất hàm đếm số lượng COUNT rất quan trọng.",
+      "D": "Chứa hàm AVERAGE sai lệch cấu hình hệ thống."
+    },
+    "tip": "Bốn hàm Roll-up Summary thần thánh -> Luôn ghi nhớ: COUNT, SUM, MIN, MAX (Tuyệt đối không có AVERAGE!)."
+  }
+]

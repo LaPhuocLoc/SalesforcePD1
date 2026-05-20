@@ -1,0 +1,126 @@
+[
+  {
+    "json_id": 36,
+    "json_original_num": 36,
+    "md_num": 36,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "A"
+    ],
+    "question_preview": "A developer must create a ShippingCalculator class that cannot be instantiated and must include a wo"
+  },
+  {
+    "json_id": 40,
+    "json_original_num": 40,
+    "md_num": 40,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "B",
+      "C"
+    ],
+    "question_preview": "A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored "
+  },
+  {
+    "json_id": 72,
+    "json_original_num": 12,
+    "md_num": 12,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "C"
+    ],
+    "question_preview": "A developer needs to implement a custom SOAP Web Service that is used by an external Web Application"
+  },
+  {
+    "json_id": 74,
+    "json_original_num": 14,
+    "md_num": 14,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "B",
+      "D"
+    ],
+    "question_preview": "A developer needs to prevent the creation of Request records when certain conditions exist in the sy"
+  },
+  {
+    "json_id": 165,
+    "json_original_num": 45,
+    "md_num": 45,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "D"
+    ],
+    "question_preview": "A developer must create a CreditCardPayment class that provides an implementation of an existing Pay"
+  },
+  {
+    "json_id": 168,
+    "json_original_num": 48,
+    "md_num": 48,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "A",
+      "C"
+    ],
+    "question_preview": "Which code in a Visualforce page and/or controller might present a security vulnerability?\nA . <apex"
+  },
+  {
+    "json_id": 231,
+    "json_original_num": 51,
+    "md_num": 51,
+    "match_score": 0.99,
+    "md_correct": [],
+    "json_correct": [
+      "B"
+    ],
+    "question_preview": "Which Lightning code segment should be written to declare dependencies on a Lightning component, c:a"
+  },
+  {
+    "json_id": 236,
+    "json_original_num": 56,
+    "md_num": 56,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "B"
+    ],
+    "question_preview": "A developer must create a DrawList class that provides capabilities defined in the Sortable and Draw"
+  },
+  {
+    "json_id": 240,
+    "json_original_num": 2,
+    "md_num": 2,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "C"
+    ],
+    "question_preview": "A developer has the controller class below.\nPublic with sharing class myFooController{\npublic intege"
+  },
+  {
+    "json_id": 290,
+    "json_original_num": 52,
+    "md_num": 52,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "B"
+    ],
+    "question_preview": "A developer must implement a CheckPaymentProcessor class that provides check processing payment capa"
+  },
+  {
+    "json_id": 343,
+    "json_original_num": 47,
+    "md_num": 47,
+    "match_score": 1.0,
+    "md_correct": [],
+    "json_correct": [
+      "D"
+    ],
+    "question_preview": "The following Apex method is part of the ContactService class that is called from a trigger:\npublic "
+  }
+]

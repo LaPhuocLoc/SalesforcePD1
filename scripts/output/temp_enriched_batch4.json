@@ -1,0 +1,167 @@
+[
+  {
+    "id": 100,
+    "vi_question": "Lựa chọn nào mà lập trình viên nên sử dụng để tạo mới 500 Account và đảm bảo rằng không tạo ra các bản ghi trùng lặp đối với các Account Site đã tồn tại?",
+    "why_correct": "Data Import Wizard (C) là công cụ no-code chuẩn của Salesforce, tích hợp sẵn tính năng đối chiếu và chặn bản ghi trùng lặp (Duplicate Management) dựa trên các tiêu chí như Name, Site cực kỳ tiện lợi cho số lượng bản ghi dưới 50,000.",
+    "why_wrong": {
+      "A": "Sandbox template dùng để chọn lọc dữ liệu khi tạo/refesh Sandbox, không liên quan đến việc nạp và chặn trùng.",
+      "B": "Data Loader hỗ trợ nạp số lượng lớn nhưng không có tính năng so khớp và tự động chặn trùng lặp trực tiếp lúc import như Wizard.",
+      "D": "Salesforce-to-Salesforce là tính năng kết nối chia sẻ dữ liệu giữa 2 Org khác nhau, không phải công cụ import dữ liệu thông thường."
+    },
+    "tip": "Import dưới 50k bản ghi + Chặn trùng lặp không code -> Data Import Wizard."
+  },
+  {
+    "id": 102,
+    "vi_question": "Một công ty có đối tượng tùy chỉnh tên là Region. Mỗi Account trong Salesforce chỉ có thể liên kết với một Region tại một thời điểm, nhưng liên kết này là không bắt buộc (tùy chọn). Loại mối quan hệ nào nên được sử dụng?",
+    "why_correct": "Mối quan hệ Lookup (C) là lựa chọn hoàn hảo vì nó liên kết hai đối tượng một cách lỏng lẻo và cho phép trường liên kết bị bỏ trống (optional). Nếu dùng Master-Detail, trường liên kết sẽ bị bắt buộc phải điền giá trị.",
+    "why_wrong": {
+      "A": "Parent-Child là tên gọi chung của mối quan hệ cha-con, không phải là tên một kiểu trường quan hệ trong Salesforce.",
+      "B": "Hierarchical (mối quan hệ phân cấp) là một loại Lookup đặc biệt chỉ dùng riêng cho đối tượng User để liên kết User này với User khác.",
+      "D": "Master-Detail là quan hệ chặt chẽ, bắt buộc phải có giá trị ở con và không cho phép để trống trường liên kết."
+    },
+    "tip": "Mối quan hệ 1-Nhiều + Tùy chọn (Optional) cho phép trống -> Dùng Lookup Relationship."
+  },
+  {
+    "id": 103,
+    "vi_question": "Một trigger trên Account cập nhật tất cả các Contact và Case liên quan mỗi khi Account được lưu bằng 2 câu lệnh DML: 'update allContacts;' và 'update allCases;'. Điều gì xảy ra nếu việc cập nhật Case vượt quá giới hạn (governor limit) về số lượng bản ghi DML tối đa?",
+    "why_correct": "Trong Salesforce, mọi hành động diễn ra trong cùng một transaction. Nếu có bất kỳ lỗi Governor Limit nào xảy ra ở bất kỳ bước nào (ví dụ ở lệnh update Case), toàn bộ transaction sẽ bị rollback (hủy bỏ) hoàn toàn (A). Không có Account, Contact hay Case nào được lưu hết để đảm bảo toàn vẹn dữ liệu.",
+    "why_wrong": {
+      "B": "Account lưu thất bại hoàn toàn chứ không phải lưu thành công.",
+      "C": "Salesforce không cho phép lưu một nửa (Contacts được lưu còn Cases thì không) khi có unhandled exception xảy ra trong transaction.",
+      "D": "Hệ thống không tự động thử lại (retry) với kích thước lô nhỏ hơn khi dính lỗi Governor Limit."
+    },
+    "tip": "Transaction Rule: Một thằng oẳng -> Cả lũ oẳng theo (Rollback sạch sẽ)!"
+  },
+  {
+    "id": 106,
+    "vi_question": "Lập trình viên viết một trigger duy nhất trên Account ở hai sự kiện 'after insert' và 'after update'. Một workflow rule sẽ thay đổi giá trị một trường mỗi khi Account được tạo hoặc cập nhật. Hỏi trigger sẽ nổ bao nhiêu lần khi chèn mới 1 Account (không có tự động hóa nào khác)?",
+    "why_correct": "Trigger sẽ nổ đúng 2 lần (D). Lần 1: Khi Account mới được chèn vào, trigger nổ ở sự kiện 'after insert'. Lần 2: Sau khi insert, workflow rule kích hoạt cập nhật trường, hệ thống thực hiện save ngầm khiến trigger nổ lần 2 ở sự kiện 'after update'.",
+    "why_wrong": {
+      "A": "Số lần nổ quá nhiều, không khớp với số vòng đời lưu bản ghi.",
+      "B": "Sai vì workflow update trường sẽ kích hoạt trigger nổ thêm một lần nữa.",
+      "C": "Sai số lượng vòng đời thực tế."
+    },
+    "tip": "Insert mới -> Trigger after insert nổ -> Workflow chạy -> Trigger after update nổ lần nữa (Tổng cộng = 2)."
+  },
+  {
+    "id": 108,
+    "vi_question": "Kết quả của các câu debug log trong testMethod3 là gì khi tạo dữ liệu test bằng phương thức @testSetup trong đoạn code dưới đây? [Code @testSetup]",
+    "why_correct": "Kết quả là 'Account0.Phone=333-8780, Account1.Phone=333-8781' (C). Dữ liệu tạo trong `@testSetup` là bất biến đối với các phương thức test. Mỗi phương thức testMethod1 và testMethod2 khi chạy sẽ được cấp một bản sao dữ liệu ảo riêng và mọi thay đổi sẽ bị rollback sạch sẽ khi method đó kết thúc, nên testMethod3 hoàn toàn không bị ảnh hưởng.",
+    "why_wrong": {
+      "A": "Giá trị số điện thoại bị đảo ngược sai lệch so với lúc insert trong vòng lặp setup.",
+      "B": "Hiển thị các số điện thoại đã bị sửa đổi ở testMethod1 và testMethod2 là sai cơ chế cô lập dữ liệu của test setup.",
+      "D": "Tương tự B, dữ liệu sửa đổi ở các test method khác không hề được lưu lại sang testMethod3."
+    },
+    "tip": "Dữ liệu @testSetup: Mỗi Test Method chạy xong đều rollback, không bao giờ ảnh hưởng đến nhau!"
+  },
+  {
+    "id": 109,
+    "vi_question": "Loại mã code nào đại diện cho tầng 'Model' trong kiến trúc MVC khi sử dụng Apex và Visualforce?",
+    "why_correct": "Tầng Model đại diện cho cấu trúc và dữ liệu. Danh sách các bản ghi Account được trả về từ Controller Extension (C) chính là dữ liệu thực tế sẽ được hiển thị ra giao diện (View), đóng vai trò là tầng Model.",
+    "why_wrong": {
+      "A": "Phương thức thực hiện lưu bản ghi (DML) thuộc tầng xử lý logic nghiệp vụ - Controller.",
+      "B": "JavaScript tùy chỉnh xử lý giao diện người dùng thuộc tầng View.",
+      "D": "Phương thức thực hiện SOQL query dữ liệu thuộc tầng xử lý logic - Controller."
+    },
+    "tip": "MVC: Dữ liệu bản ghi (sObject/List sObject) = Model. Giao diện (VF/LWC/JS) = View. Apex Class/Logic = Controller."
+  },
+  {
+    "id": 110,
+    "vi_question": "Một org chỉ có duy nhất một Account tên là 'NoContacts' và không có bất kỳ Contact liên quan nào. Chạy câu lệnh SOQL: List<Account> accounts = [Select ID, (Select ID, Name from Contacts) from Account where Name = 'NoContacts']; Kết quả của biến accounts[0].contacts là gì?",
+    "why_correct": "Trong Salesforce, câu truy vấn quan hệ con (subquery) khi không tìm thấy bản ghi con nào sẽ trả về một Danh sách rỗng (empty list) (B), chứ tuyệt đối không bao giờ trả về giá trị null.",
+    "why_wrong": {
+      "A": "Cú pháp truy cập list con hoàn toàn hợp lệ trong Apex.",
+      "C": "Không phải Null, Salesforce luôn khởi tạo List rỗng để tránh lỗi NullPointerException.",
+      "D": "Không có lỗi QueryException nào bị ném ra vì câu lệnh SOQL hoàn toàn đúng cú pháp và bản ghi cha vẫn tồn tại."
+    },
+    "tip": "SOQL Subquery không có con -> Trả về EMPTY LIST, không bao giờ trả về NULL!"
+  },
+  {
+    "id": 111,
+    "vi_question": "Câu lệnh SOQL nào sau đây thực hiện nhóm các Account theo tên (GROUP BY Name) thành công?",
+    "why_correct": "Khi sử dụng GROUP BY Name, mọi trường nằm trong mệnh đề SELECT bắt buộc phải là trường được nhóm (Name) hoặc phải nằm trong một hàm tổng hợp (Aggregate Function) như Max(CreatedDate). Do đó, câu B là hoàn toàn đúng cú pháp.",
+    "why_wrong": {
+      "A": "Trường 'Type' nằm trong SELECT nhưng không có trong GROUP BY và không dùng hàm tổng hợp, gây lỗi biên dịch.",
+      "C": "Trường 'Id' và 'Type' vi phạm nghiêm trọng luật GROUP BY.",
+      "D": "Trường 'Type' vi phạm luật GROUP BY giống câu A."
+    },
+    "tip": "Quy tắc GROUP BY: Trường nào trong SELECT thì bắt buộc phải nằm trong GROUP BY hoặc phải nằm trong HÀM TỔNG HỢP (SUM, MAX, MIN, COUNT)."
+  },
+  {
+    "id": 112,
+    "vi_question": "Trong trường hợp nào sau đây lập trình viên bắt buộc phải sử dụng Trigger thay vì sử dụng Workflow Rule?",
+    "why_correct": "Để cập nhật trường 'Primary Contact' (trường lookup trỏ đến con Contact) trên Account cha khi nó được lưu (D). Workflow Rule đời cũ cấm ngặt việc cập nhật chéo đối tượng đi xuống đối tượng con (từ Cha cập nhật xuống Con).",
+    "why_wrong": {
+      "A": "Gán tên Expense Report có thể thực hiện cực kỳ dễ dàng bằng Workflow Rule field update.",
+      "B": "Gửi email nhắc nhở cho Hiring Manager là tính năng thế mạnh cơ bản của Workflow Email Alert.",
+      "C": "Gửi thông báo sang hệ thống ngoài có thể thực hiện thông qua Workflow Outbound Message không cần viết code."
+    },
+    "tip": "Workflow Rule: Cấm cập nhật chéo đối tượng từ Cha xuống Con. Muốn làm -> Phải dùng Trigger / Flow."
+  },
+  {
+    "id": 113,
+    "vi_question": "Developer cần xây dựng ứng dụng theo dõi các Account đã mua các thiết bị cụ thể (được định nghĩa trong bảng Products). Mỗi Account có thể mua nhiều thiết bị. Lập trình viên nên làm gì để theo dõi việc mua bán này?",
+    "why_correct": "Sử dụng đối tượng tiêu chuẩn Asset (A). Đối tượng Asset trong Salesforce sinh ra là để theo dõi các sản phẩm (Products) cụ thể đã được khách hàng (Account/Contact) mua và đang sở hữu thực tế, hỗ trợ tốt quản lý bảo hành.",
+    "why_wrong": {
+      "B": "Quan hệ Master-Detail trực tiếp giữa Product và Account là sai logic vì một Product có thể được bán cho nhiều Account khác nhau.",
+      "C": "Sử dụng Custom Object hoạt động được nhưng tốn công tự thiết kế và bỏ phí đối tượng tiêu chuẩn Asset rất tối ưu có sẵn.",
+      "D": "Đặt Lookup từ Account lên Product làm giới hạn 1 Account chỉ mua được tối đa 1 sản phẩm, trái yêu cầu mua nhiều thiết bị."
+    },
+    "tip": "Khách hàng mua Sản phẩm thực tế -> Dùng đối tượng tiêu chuẩn ASSET."
+  },
+  {
+    "id": 115,
+    "vi_question": "Yêu cầu nghiệp vụ: Khi bản ghi cha bị xóa thì bản ghi con phải tự động bị xóa theo, và bản ghi con có thể chuyển sang bản ghi cha khác khi cần thiết (reparented). Loại quan hệ nào giữa cha và con hỗ trợ yêu cầu này?",
+    "why_correct": "Mối quan hệ Master-Detail (A). Mối quan hệ này có tính năng tự động xóa con khi cha bị xóa (cascade delete). Đồng thời, ta chỉ cần tích chọn tùy chọn 'Allow reparenting' trên cấu hình trường để cho phép con chuyển đổi cha tự do.",
+    "why_wrong": {
+      "B": "Child relationship không phải là một kiểu trường quan hệ vật lý trong Salesforce Schema Builder.",
+      "C": "Tạo lookup từ cha đến con là ngược chiều quan hệ, không đúng thiết kế dữ liệu.",
+      "D": "Mối quan hệ Lookup từ con lên cha mặc định không tự động xóa con khi cha bị xóa (trừ khi tự cấu hình thêm) và không có tính chất Master-Detail chặt chẽ."
+    },
+    "tip": "Cha xóa -> Con tự xóa + Cho phép đổi Cha = Master-Detail Relationship bật 'Allow reparenting'."
+  },
+  {
+    "id": 116,
+    "vi_question": "Developer cần sửa đoạn code dưới đây để tránh lỗi vượt quá giới hạn (governor limit) về số lượng SOQL queries: [Code SOQL in For Loop]. Kỹ thuật nào nên được áp dụng?",
+    "why_correct": "Refactor đoạn code để chỉ thực hiện duy nhất MỘT câu truy vấn SOQL nằm ngoài vòng lặp (C), sử dụng từ khóa 'IN :opportunityIds' để lọc toàn bộ danh sách sản phẩm cùng một lúc cực kỳ tối ưu (Bulkification).",
+    "why_wrong": {
+      "A": "Giới hạn 100 SOQL vẫn sẽ bị chạm nếu số lượng ID lớn hơn 100, cách này không giải quyết triệt để gốc rễ vấn đề.",
+      "B": "getLimitQueries() chỉ dùng để kiểm tra giới hạn còn lại, không giúp tối ưu hóa code hay ngăn chặn lỗi thực sự.",
+      "D": "getQueries() cũng chỉ để đếm số câu lệnh đã chạy, không có tác dụng refactor mã nguồn."
+    },
+    "tip": "Quy tắc Bulkify tối thượng: Đưa câu truy vấn SOQL ra ngoài vòng lặp For và dùng toán tử IN!"
+  },
+  {
+    "id": 117,
+    "vi_question": "Developer viết phương thức Apex xóa Account được gọi từ Lightning Component. Hàm nào giúp kiểm tra xem user hiện tại có quyền xóa Account hay không trước khi thực hiện xóa?",
+    "why_correct": "Sử dụng Schema.sObjectType.Account.isDeletable() (A). Đây là phương thức mô tả (describe) chuẩn của Salesforce để kiểm tra phân quyền CRUD (Delete) của user hiện tại trên đối tượng Account.",
+    "why_wrong": {
+      "B": "Cú pháp Account.isDeletable() sai cấu trúc gọi của lớp Schema Describe.",
+      "C": "Biến bản ghi accountRec không có phương thức trực tiếp .isDeletable().",
+      "D": "Cú pháp accountRec.sObjectType.isDeletable() là hàng giả tưởng, không biên dịch được."
+    },
+    "tip": "Kiểm tra quyền Xóa (Delete) của sObject -> Dùng Schema.sObjectType.ObjectName.isDeletable()."
+  },
+  {
+    "id": 119,
+    "vi_question": "Lợi ích nổi bật của việc sử dụng trigger 'after insert' so với trigger 'before insert' là gì?",
+    "why_correct": "Trigger after insert cho phép lập trình viên chèn các bản ghi đối tượng khác có liên quan tham chiếu đến bản ghi mới (B). Vì ở sự kiện 'after', bản ghi mới đã được cấp ID chính thức từ hệ thống, ta có thể lấy ID đó gán vào trường Lookup của bản ghi liên quan.",
+    "why_wrong": {
+      "A": "Trigger không thể giúp bypass validation rules của hệ thống bất kể là before hay after.",
+      "C": "Cả hai loại trigger đều cấm gọi API (callout) trực tiếp, bắt buộc phải dùng phương thức bất đồng bộ @future(callout=true).",
+      "D": "Ngược lại, chỉ có trigger 'before insert' mới cho phép thay đổi giá trị các trường của chính bản ghi đó mà không cần thực hiện lệnh DML Update bổ sung."
+    },
+    "tip": "Cần ID của bản ghi để tạo dữ liệu liên quan -> Bắt buộc dùng AFTER INSERT Trigger."
+  },
+  {
+    "id": 120,
+    "vi_question": "Một Visual Flow đã có sẵn logic cập nhật Opportunity. Developer cần nâng cấp Flow này để tạo thêm mới 1 Contact và lưu ID của Contact mới đó lên Opportunity. Lập trình viên nên thêm phần tử nào vào Flow?",
+    "why_correct": "Thêm phần tử 'Create Records' mới (A). Phần tử này cho phép Flow tạo mới bản ghi Contact và tự động xuất (output) ID của Contact vừa tạo vào một biến để dùng cập nhật cho Opportunity ở bước sau.",
+    "why_wrong": {
+      "B": "Quick Action Create dùng để kích hoạt action trên giao diện, không linh hoạt và đúng chuẩn bằng Create Records trong Flow xử lý ngầm.",
+      "C": "Update Records chỉ dùng để sửa bản ghi đã tồn tại, không thể dùng để tạo mới bản ghi Contact.",
+      "D": "Get Records dùng để tìm kiếm truy vấn bản ghi có sẵn, không có khả năng tạo mới."
+    },
+    "tip": "Muốn tạo mới bản ghi trong Flow -> Gọi tên Create Records Element."
+  }
+]

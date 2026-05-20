@@ -1,0 +1,161 @@
+[
+  {
+    "id": 231,
+    "vi_question": "Đoạn code Lightning nào dưới đây được viết đúng cú pháp để khai báo các thành phần phụ thuộc (dependencies) cho một component c:accountList khi nhúng vào trang Visualforce?",
+    "why_correct": "Cú pháp B: <aura:application access='GLOBAL' extends='ltng:outApp'> <aura:dependency resource='c:accountList'/> </aura:application>. Để chạy được Lightning Out (nhúng component Lightning vào trang Visualforce hoặc app ngoài), bắt buộc phải tạo một standalone Aura App dùng từ khóa extends='ltng:outApp' và khai báo phụ thuộc bằng thẻ <aura:dependency>.",
+    "why_wrong": {
+      "A": "Thiếu thuộc tính extends='ltng:outApp' làm ứng dụng độc lập thông thường, không thể kích hoạt được chế độ kết nối Lightning Out.",
+      "C": "Thẻ <aura:component> cấm khai báo thuộc tính extends='ltng:outApp' và không thể đóng vai trò làm app cầu nối cho Lightning Out.",
+      "D": "Tương tự C, Aura component không hỗ trợ làm app container kết nối cho Lightning Out."
+    },
+    "tip": "Lightning Out kết nối Visualforce -> App cầu nối bắt buộc phải dùng <aura:application extends='ltng:outApp'>."
+  },
+  {
+    "id": 232,
+    "vi_question": "Lập trình viên có thể sử dụng Debug Log (Nhật ký gỡ lỗi) trong Salesforce để theo dõi ba loại thông tin nào sau đây? (Chọn 3)",
+    "why_correct": "A: Các cuộc gọi API HTTP callouts ra hệ thống ngoài. B: Các thay đổi cơ sở dữ liệu (DML operations). C: Mức độ tiêu thụ tài nguyên và giới hạn governor limits của transaction. Đây là các dữ liệu cốt lõi ghi nhận cực kỳ tường tận trong debug log.",
+    "why_wrong": {
+      "D": "Thông tin đăng nhập của người dùng được quản lý và theo dõi ở trang Login History riêng biệt, không hiển thị trong Apex transaction debug log.",
+      "E": "Các hành động kích hoạt bởi time-based workflow được giám sát riêng ở mục Time-Based Workflow Queue trong Setup."
+    },
+    "tip": "Debug Log Salesforce hiển thị -> DML (Database), Callouts (HTTP), Resource & Limits."
+  },
+  {
+    "id": 236,
+    "vi_question": "Lập trình viên cần tạo một class DrawList hiện thực hóa các chức năng được định nghĩa trong hai Interface Sortable và Drawable: [Interface Code]. Cách viết nào sau đây là đúng cú pháp Apex?",
+    "why_correct": "Cú pháp B: 'public class DrawList implements Sortable, Drawable'. Trong Apex, một lớp thông thường có thể hiện thực hóa nhiều interface cùng lúc bằng cách liệt kê tên các interface ngăn cách nhau bằng dấu phẩy sau một từ khóa 'implements' duy nhất.",
+    "why_wrong": {
+      "A": "Sử dụng lặp lại từ khóa 'implements' hai lần độc lập là sai cú pháp biên dịch nghiêm trọng.",
+      "C": "Dùng từ khóa 'extends' đối với Interface là hoàn toàn sai, extends chỉ dùng khi một class kế thừa class khác.",
+      "D": "Tương tự C, không được phép extends interface trực tiếp ở khai báo class."
+    },
+    "tip": "Apex Class implements nhiều Interface -> Chỉ dùng duy nhất 1 từ khóa 'implements', ngăn cách các interface bằng dấu phẩy."
+  },
+  {
+    "id": 237,
+    "vi_question": "Ba tùy chọn nào cho phép lập trình viên nhúng và sử dụng các định dạng CSS tùy chỉnh (custom styling) trong một trang Visualforce? (Chọn 3)",
+    "why_correct": "A: Thẻ <apex:stylesheet> để import file CSS. B: Viết mã CSS nội tuyến (Inline CSS) trực tiếp trong thẻ <style> của trang. E: Tải file CSS lên Static Resources và liên kết sử dụng trong trang. Đây là các kỹ thuật chuẩn để làm đẹp trang Visualforce.",
+    "why_wrong": {
+      "C": "Không tồn tại thẻ nào tên là <apex:style> trong thư viện thành phần chuẩn của Visualforce.",
+      "D": "Không có thẻ dạng số nhiều <apex:stylesheets> trong hệ thống Visualforce."
+    },
+    "tip": "Styling Visualforce -> 1. Thẻ <apex:stylesheet>; 2. Thẻ HTML <style> (inline); 3. File CSS trong Static Resource."
+  },
+  {
+    "id": 239,
+    "vi_question": "Trong trình giám sát log (Log Inspector) của Developer Console, lập trình viên có thể xác định thời gian thực thi cụ thể của từng tiến trình trong transaction ở tab nào?",
+    "why_correct": "Tab Timeline nằm trong bảng điều khiển Execution Overview (C). Tab này cung cấp một biểu đồ dạng thanh trực quan hiển thị chi tiết thời gian chạy và tỷ lệ % tiêu tốn tài nguyên của từng loại tiến trình (Apex, Database, Workflow, Validation) trong transaction.",
+    "why_wrong": {
+      "A": "Performance Tree chỉ hiển thị cây phân cấp cuộc gọi các phương thức, không hiển thị tổng quan dòng thời gian phân bổ tài nguyên.",
+      "B": "Execution Tree tương tự A, hiển thị sơ đồ phân cấp thực thi hàm.",
+      "D": "Save Order hiển thị trình tự ghi bản ghi (Save Order of Execution), không hiển thị thời gian chạy thực tế của từng tiến trình."
+    },
+    "tip": "Xem phân bổ dòng thời gian thực thi của các tiến trình trong Developer Console -> Vào tab TIMELINE."
+  },
+  {
+    "id": 240,
+    "vi_question": "Cho class controller sau: [Code myFooController]. Khối lệnh nào dưới đây sẽ chạy thành công không báo lỗi khi thực thi trong cửa sổ Execute Anonymous?",
+    "why_correct": "Khối lệnh C: myFooController m = new myFooController(); System.assert(m.prop == null);. Vì thuộc tính 'prop' kiểu Integer không được gán bất kỳ giá trị khởi tạo nào trong class, nên theo quy định mặc định của Apex, nó sẽ tự động nhận giá trị null.",
+    "why_wrong": {
+      "A": "Báo lỗi AssertException vì prop đang là null chứ không phải khác null.",
+      "B": "Báo lỗi assert vì prop là null chứ không phải bằng 0.",
+      "D": "Báo lỗi assert vì prop là null chứ không phải bằng 1."
+    },
+    "tip": "Mẹo Assert Apex: Thuộc tính không gán trị mặc định -> Luôn assert bằng NULL."
+  },
+  {
+    "id": 241,
+    "vi_question": "Ba phát biểu nào sau đây là ĐÚNG khi nói về Trace Flags (cờ theo dõi log) trong Salesforce? (Chọn 3)",
+    "why_correct": "C: Trace flags ghi đè và có độ ưu tiên cao hơn Logging Levels cấu hình mặc định. D: Nếu không có trace flags nào đang kích hoạt, các bài test Apex sẽ tự động chạy với Logging Levels mặc định của hệ thống. E: Trace flags có thể được thiết lập linh hoạt thông qua Developer Console, mục Setup hệ thống, hoặc sử dụng Tooling API.",
+    "why_wrong": {
+      "A": "Chỉ bật trace flags không tự động sinh log nếu không có user action hoặc code thực thi chạy qua đối tượng được cắm cờ.",
+      "B": "Sai vì Trace flags có mức ưu tiên cao nhất, nó ghi đè chứ không bị ghi đè bởi Logging Levels."
+    },
+    "tip": "Trace Flags -> Thiết lập qua Setup/Dev Console/Tooling API. Bất chấp tất cả, Trace Flags luôn ghi đè Logging Levels!"
+  },
+  {
+    "id": 243,
+    "vi_question": "Yêu cầu nghiệp vụ: Tính tổng tiền trên Order. Tính tiền cho mỗi Line Item theo số lượng và giá. Cho phép di chuyển Line Items sang Order khác nếu hết hàng. Mối quan hệ nào đáp ứng trọn vẹn các yêu cầu trên?",
+    "why_correct": "Đối tượng Line Item chứa một trường Master-Detail trỏ lên Order và được cấu hình cho phép đổi cha ('Allow reparenting' hay re-parentable) (D). Thiết kế này giúp vừa dùng được trường Roll-up Summary để tính tổng tiền no-code lên cha Order, vừa cho phép linh hoạt cập nhật đổi cha cho Line Item khi cần.",
+    "why_wrong": {
+      "A": "Đặt trường Master-Detail ở phía Order trỏ xuống Line Item làm đảo ngược cấu trúc cha-con, không thể tạo được quan hệ 1-nhiều chuẩn xác.",
+      "B": "Đặt quan hệ ở Order tương tự A, sai chiều thiết kế dữ liệu.",
+      "C": "Dùng quan hệ Lookup (C) sẽ làm mất đi khả năng sử dụng trường Roll-up Summary để tự động tính tổng tiền no-code từ con lên cha."
+    },
+    "tip": "Tính tổng con lên cha + Cho phép đổi cha -> Dùng MASTER-DETAIL ở phía con trỏ lên cha + Bật 'Allow reparenting'."
+  },
+  {
+    "id": 245,
+    "vi_question": "Hai kiểu dữ liệu Apex nào sau đây có thể được sử dụng để tham chiếu linh hoạt và động đến một ID bản ghi Salesforce? (Chọn 2)",
+    "why_correct": "B: sObject (đối tượng Apex sObject dùng chung đại diện cho mọi bản ghi, truy cập ID qua obj.Id). D: String (chuỗi ký tự lưu mã ID 15/18 ký tự và có thể tự động ép kiểu sang Id cực kỳ linh hoạt).",
+    "why_wrong": {
+      "A": "ENUM là kiểu liệt kê tập hợp các hằng số cố định, không thể dùng để đại diện dynamic cho ID bản ghi.",
+      "C": "External ID là thuộc tính cấu hình của trường dữ liệu trong Database, không phải là một kiểu dữ liệu (data type) độc lập trong ngôn ngữ lập trình Apex."
+    },
+    "tip": "Tham chiếu dynamic ID bản ghi trong code Apex -> Dùng kiểu sObject hoặc String."
+  },
+  {
+    "id": 246,
+    "vi_question": "Developer chạy đoạn code sau: 'Database.insert(accts, false);' và nhận thấy Account không được tạo nhưng hệ thống không báo lỗi gì. Nên thay đổi code thế nào để gỡ lỗi hiệu quả?",
+    "why_correct": "Hứng giá trị trả về của phương thức insert vào một mảng đối tượng SaveResult: 'Database.SaveResult[] results = Database.insert(accts, false);' và duyệt qua mảng để in debug thông tin lỗi cụ thể (B). Do tham số allOrNone = false, Salesforce sẽ bỏ qua bản ghi lỗi và chạy tiếp mà không ném ra exception, làm cho khối try/catch hoàn toàn vô dụng.",
+    "why_wrong": {
+      "A": "Đổi sang lệnh DML insert thông thường sẽ làm dừng transaction lập tức khi gặp bản ghi lỗi đầu tiên, phá vỡ logic xử lý chấp nhận lỗi một phần của hệ thống.",
+      "C": "Đặt tham số thứ hai thành TRUE sẽ bắt hệ thống rollback toàn bộ nếu có lỗi, nhưng không giúp lấy chi tiết danh sách lỗi cụ thể của từng bản ghi để debug mượt mà.",
+      "D": "Bọc khối try/catch vô tác dụng vì hàm Database.insert(list, false) tuyệt đối không bao giờ ném ra Exception khi gặp lỗi dữ liệu bản ghi."
+    },
+    "tip": "Sử dụng Database.insert(list, false) -> Bắt buộc phải hứng và duyệt qua Database.SaveResult[] để kiểm tra lỗi!"
+  },
+  {
+    "id": 247,
+    "vi_question": "Tại sao lập trình viên nên cân nhắc sử dụng một Custom Controller độc lập thay vì sử dụng một Controller Extension mở rộng cho trang Visualforce?",
+    "why_correct": "Để tự xây dựng 100% logic nghiệp vụ của riêng mình cho trang và chạy hoàn toàn dưới quyền hệ thống (System Mode), bỏ qua hoàn toàn các chức năng xử lý mặc định của Salesforce (B). (Lưu ý: Đáp án C của đề gốc bị gắn sai đáp án chuẩn, trong thực tế Custom Controller dùng để bypass mặc định Salesforce).",
+    "why_wrong": {
+      "A": "Sử dụng custom controller không hề giúp tăng giới hạn governor limits SOQL cứng của transaction.",
+      "C": "Để tận dụng chức năng có sẵn của Standard Controller, lập trình viên bắt buộc phải dùng Controller Extension chứ không dùng Custom Controller độc lập.",
+      "D": "Custom Controller mặc định chạy không có chia sẻ (without sharing) bỏ qua sharing rules của user trừ khi khai báo tường minh."
+    },
+    "tip": "Custom Controller -> Tự viết 100% logic, chạy quyền hệ thống (System Mode) và bypass hoàn toàn tính năng mặc định của Salesforce."
+  },
+  {
+    "id": 248,
+    "vi_question": "Phương pháp chuẩn mực và tốt nhất nào nên được áp dụng để cung cấp dữ liệu test mẫu cho một Apex Test Class?",
+    "why_correct": "Sử dụng một class Test Data Factory chuyên biệt để tạo lập dữ liệu test mẫu (C). Kỹ thuật này giúp tái sử dụng code tạo dữ liệu, giảm thiểu trùng lặp mã nguồn và dễ bảo trì khi Org thay đổi validation rules hay schema trường.",
+    "why_wrong": {
+      "A": "Query dữ liệu thật trong DB là tối kỵ vì test class bị cô lập dữ liệu mặc định (SeeAllData=false) sẽ trả về danh sách rỗng.",
+      "B": "Execute Anonymous chỉ chạy thủ công trên Developer Console, không thể nhúng tự động hóa vào quá trình chạy test của Org được.",
+      "D": "Khai báo biến tĩnh có gắn @TestVisible chỉ giúp truyền biến, không giúp chèn vật lý các bản ghi test cần thiết vào database."
+    },
+    "tip": "Best Practice tạo dữ liệu test -> Xây dựng class tiện ích chung dạng TEST DATA FACTORY."
+  },
+  {
+    "id": 249,
+    "vi_question": "Developer tạo 3 trường Roll-up Summary trên Project__c để tính tổng số lượng Timesheets theo trạng thái. Yêu cầu tạo thêm trường hiển thị tỷ lệ giữa Timesheets bị từ chối và được duyệt. Hai lợi ích của việc chọn trường công thức (Formula Field) thay vì viết Trigger là gì? (Chọn 2)",
+    "why_correct": "C: Sử dụng trường công thức giúp loại bỏ hoàn toàn mã nguồn, giảm tải công sức bảo trì và không cần viết test class phủ coverage. D: Trường công thức tự động tính toán giá trị hồi tố (retroactively) cho toàn bộ các bản ghi đã tồn tại từ trước trong hệ thống ngay khi vừa được tạo.",
+    "why_wrong": {
+      "A": "Hệ thống không yêu cầu hay thực hiện chạy test class để validate trường công thức khi deploy.",
+      "B": "Trường công thức không tự động kích hoạt lại các tiến trình tự động hóa (Workflow/Flow) khác khi deploy trường mới."
+    },
+    "tip": "Lợi ích tối thượng của Formula Field -> Không tốn công viết code bảo trì (No-code) + Tự động tính toán dữ liệu lịch sử lịch trình."
+  },
+  {
+    "id": 250,
+    "vi_question": "Developer cần viết code tự động cập nhật một đối tượng khác không có quan hệ liên quan (unrelated object) mỗi khi một bản ghi được lưu thành công. Lập trình viên nên tạo Trigger ở hai sự kiện nào? (Chọn 2)",
+    "why_correct": "A: after insert (sau khi chèn mới thành công). D: after update (sau khi cập nhật thành công). Vì đối tượng không liên quan cần thông tin ID và dữ liệu đã được ghi an toàn xuống database ở sự kiện after để tránh lỗi tham chiếu dữ liệu chéo.",
+    "why_wrong": {
+      "B": "before update chạy trước khi dữ liệu lưu vào DB, không an toàn và dễ bị rollback gây mất mát đồng bộ dữ liệu.",
+      "C": "before insert chạy khi bản ghi chưa hề có ID Salesforce thực tế, cấm thực hiện cập nhật chéo đối tượng khác."
+    },
+    "tip": "Cập nhật chéo đối tượng khác không liên quan -> Bắt buộc thực hiện ở sự kiện AFTER (after insert, after update)."
+  },
+  {
+    "id": 251,
+    "vi_question": "Tính năng nào cho phép lập trình viên dễ dàng khởi tạo hàng loạt bản ghi dữ liệu test mẫu lớn từ file để dùng trong các test classes?",
+    "why_correct": "Static Resources (D). Lập trình viên có thể upload file dữ liệu CSV lên Static Resources, sau đó trong test class dùng hàm 'Test.loadData(SObjectType, ResourceName)' để nạp nhanh toàn bộ bản ghi cực kỳ tiện lợi.",
+    "why_wrong": {
+      "A": "Documents là nơi lưu trữ tài liệu giao diện Classic, không hỗ trợ tính năng nạp dữ liệu test tự động.",
+      "B": "WebServiceTests dùng để kiểm thử Web service, không có chức năng nạp dữ liệu mẫu.",
+      "C": "HttpCalloutMocks dùng để giả lập phản hồi của API cuộc gọi ngoài (callout), không dùng để chèn bản ghi dữ liệu mẫu."
+    },
+    "tip": "Nạp nhanh dữ liệu test giả lập từ file CSV -> Upload lên STATIC RESOURCES + Sử dụng Test.loadData()."
+  }
+]

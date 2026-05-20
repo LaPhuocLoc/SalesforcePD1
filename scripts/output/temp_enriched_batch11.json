@@ -1,0 +1,162 @@
+[
+  {
+    "id": 254,
+    "vi_question": "Developer định nghĩa một Apex Interface tên là Laptop. Làm thế nào để sử dụng và triển khai interface này trong class SilverLaptop?",
+    "why_correct": "Cú pháp A: public class SilverLaptop implements Laptop{}. Trong Apex, để một class kế thừa và hiện thực hóa các phương thức ký mẫu được khai báo trong một Interface, ta bắt buộc phải sử dụng từ khóa 'implements'.",
+    "why_wrong": {
+      "B": "Cú pháp @Extends là chú thích giả, hoàn toàn không tồn tại trong ngôn ngữ Apex.",
+      "C": "Từ khóa 'extends' chỉ dành riêng cho việc một class kế thừa một class cha khác (kế thừa đơn), dùng cho Interface là sai ngữ pháp.",
+      "D": "Chú thích @Interface là cú pháp sai lệch, không tồn tại trong Salesforce Apex."
+    },
+    "tip": "Hiện thực hóa Interface -> Bắt buộc dùng từ khóa IMPLEMENTS."
+  },
+  {
+    "id": 255,
+    "vi_question": "Một phương thức nhận tham số đầu vào là một danh sách sObject chung chung (List<sObject>). Developer nên làm gì để xác định chính xác kiểu dữ liệu cụ thể (như Account, Lead, hay Contact) của từng bản ghi để thực hiện ép kiểu (cast) dữ liệu an toàn?",
+    "why_correct": "Sử dụng phương thức getSObjectType() trên từng đối tượng sObject thô để lấy về đối tượng Token Schema.SObjectType tương ứng (B). Cách này giúp so khớp chuẩn xác kiểu dữ liệu (ví dụ: obj.getSObjectType() == Account.sObjectType) trước khi tiến hành cast, tránh được lỗi Runtime Exception.",
+    "why_wrong": {
+      "A": "Lấy 3 ký tự đầu của ID để phân biệt (ví dụ: 001 là Account, 003 là Contact) tuy chạy được nhưng là bad practice cực kỳ nguy hiểm, không an toàn và không chính thống vì Salesforce cấm hardcode ID prefix.",
+      "C": "Không tồn tại phương thức getSObjectName() trên lớp sObject chuẩn của Salesforce.",
+      "D": "Sử dụng try-catch để ép kiểu thử nghiệm mù quáng (blind casting) làm code chạy cực kỳ chậm và gây gánh nặng rất lớn cho CPU."
+    },
+    "tip": "Xác định kiểu đối tượng sObject động trong code Apex -> Luôn dùng hàm getSObjectType()!"
+  },
+  {
+    "id": 259,
+    "vi_question": "Lập trình viên cần tạo một nút bấm tùy chỉnh (custom button) cho đối tượng Account. Khi click, hệ thống thực hiện một loạt các phép tính toán nâng cao rồi redirect user sang một trang Visualforce. Ba thuộc tính nào cần khai báo giá trị trong thẻ <apex:page>? (Chọn 3)",
+    "why_correct": "A: action (chứa phương thức Apex thực hiện tính toán và định hướng chuyển trang). C: standardController (bắt buộc cấu hình là 'Account' để nút bấm hiển thị được trên Page Layout). E: extensions (khai báo lớp Apex Controller Extension chứa logic tính toán).",
+    "why_wrong": {
+      "B": "renderAs chỉ dùng để chỉ định xuất trang sang định dạng PDF, không liên quan đến việc tính toán chuyển trang.",
+      "D": "readOnly dùng để tối ưu hóa trang chế độ đọc dữ liệu (tăng giới hạn SOQL), không hỗ trợ cho thao tác tính toán ghi đè nút bấm nghiệp vụ."
+    },
+    "tip": "Ghi đè action nút bấm chuẩn + tính toán phức tạp -> standardController + extensions + action."
+  },
+  {
+    "id": 262,
+    "vi_question": "Developer muốn import 500 bản ghi Opportunity vào môi trường Sandbox. Tại sao lập trình viên nên chọn công cụ Data Loader thay vì công cụ Data Import Wizard?",
+    "why_correct": "Vì Data Import Wizard hoàn toàn không hỗ trợ import đối tượng Opportunity (C). Đây là giới hạn cứng của Salesforce: Data Import Wizard chỉ hỗ trợ một số đối tượng tiêu chuẩn cơ bản như Accounts, Contacts, Leads, Solutions và Campaign Members, còn các đối tượng khác như Opportunity hay Case bắt buộc phải dùng Data Loader.",
+    "why_wrong": {
+      "A": "Data Import Wizard mới là công cụ chạy trực tiếp trên trình duyệt web, còn Data Loader là phần mềm cài đặt độc lập trên máy tính client.",
+      "B": "Data Import Wizard mới là công cụ hỗ trợ so khớp tự động thông minh hơn khi liên kết Account con-cha.",
+      "D": "Data Import Wizard hỗ trợ import tối đa lên tới 50,000 bản ghi, thừa sức xử lý con số 500 đơn giản."
+    },
+    "tip": "Giới hạn Data Import Wizard -> Không hỗ trợ Opportunity và Case. Muốn import Opp/Case -> Bắt buộc dùng DATA LOADER."
+  },
+  {
+    "id": 266,
+    "vi_question": "Developer đang thực hiện tích hợp dữ liệu với một hệ thống cơ sở dữ liệu SQL cũ của doanh nghiệp (on-premise). Lập trình viên nên sử dụng cấu hình gì để đảm bảo dữ liệu tích hợp được so khớp và cập nhật chính xác vào các bản ghi tương ứng trong Salesforce?",
+    "why_correct": "Sử dụng trường External ID (Khóa ngoài) (C). Việc cấu hình một trường text trong Salesforce làm External ID giúp lưu trữ mã khóa định danh duy nhất của hệ thống SQL ngoài, cho phép hệ thống tích hợp gọi lệnh Upsert so khớp tự động cực kỳ nhanh chóng.",
+    "why_wrong": {
+      "A": "Formula field chỉ hiển thị giá trị dạng đọc tĩnh dựa trên công thức, không thể nhận dữ liệu lưu trữ trực tiếp từ hệ thống ngoài.",
+      "B": "Lookup field dùng để tạo quan hệ liên kết giữa các bảng dữ liệu trong Salesforce, không hỗ trợ lưu trữ mã đối chiếu ngoài để map.",
+      "D": "External Object dùng để truy cập xem dữ liệu realtime qua Salesforce Connect, không dùng để map nạp dữ liệu vật lý vào Org."
+    },
+    "tip": "So khớp và đồng bộ dữ liệu với hệ thống ngoài -> Luôn tạo trường EXTERNAL ID!"
+  },
+  {
+    "id": 267,
+    "vi_question": "Developer được yêu cầu tạo một trang Visualforce hiển thị một số trường dữ liệu của Account, đồng thời phải hiển thị đầy đủ các trường của danh sách Contact liên quan giống hệt như Page Layout chuẩn. Giải pháp tối ưu nhất là gì?",
+    "why_correct": "Sử dụng thẻ <apex:relatedList list='Contacts' /> (B). Thẻ này là thành phần Visualforce chuẩn cực mạnh, tự động vẽ bảng dữ liệu chứa đầy đủ các trường của danh sách Contact con liên quan theo đúng cấu hình layout mà Admin đã thiết lập trên Account cha mà không cần viết code.",
+    "why_wrong": {
+      "A": "<apex:include> dùng để nhúng trực tiếp một trang Visualforce hoàn chỉnh khác vào trang hiện tại, không tự động render được layout related list.",
+      "C": "Không thể thêm một phương thức vào Standard Controller của hệ thống vì nó là lớp đóng của Salesforce.",
+      "D": "Viết Controller Extension là giải pháp code cồng kềnh, tốn công query dữ liệu và vẽ bảng HTML thủ công không cần thiết."
+    },
+    "tip": "Hiển thị nhanh danh sách bản ghi con theo đúng Page Layout của Cha -> Dùng thẻ <apex:relatedList>."
+  },
+  {
+    "id": 268,
+    "vi_question": "Trong quá trình chạy kiểm thử, một test class bị báo FAIL trên Test Framework. Tuy nhiên, khi developer copy logic đó và chạy trong cửa sổ Execute Anonymous của Developer Console thì lại SUCCESS không báo lỗi nào. Nguyên nhân tại sao?",
+    "why_correct": "Vì phương thức test đang dựa dẫm vào dữ liệu thật có sẵn trong Sandbox (D). Khi chạy qua Test Framework, hệ thống mặc định cô lập hoàn toàn dữ liệu (SeeAllData=false) làm DB trống rỗng dẫn đến crash test. Trong khi Execute Anonymous chạy trên database thật nhìn thấy mọi bản ghi nên chạy qua mượt mà.",
+    "why_wrong": {
+      "A": "Lỗi gọi phương thức @future không làm thành công Execute Anonymous nếu logic code bị sai.",
+      "B": "Nếu có lỗi cú pháp (syntax error), hệ thống sẽ báo lỗi biên dịch ngay lập tức ở cả hai công cụ chứ không cho phép chạy thành công.",
+      "C": "System.runAs giúp test phân quyền user, không phải lý do chính tạo sự khác biệt dữ liệu giữa hai môi trường."
+    },
+    "tip": "Test FAIL mà Execute Anonymous SUCCESS -> Do test class chưa tự tạo dữ liệu test mà đi dựa dẫm dữ liệu có sẵn trong Org!"
+  },
+  {
+    "id": 269,
+    "vi_question": "Một trang Visualforce Wizard phức tạp sử dụng duy nhất một custom controller để hỗ trợ tạo và sửa đổi nhiều đối tượng sObjects khác nhau. Wizard nhận dữ liệu từ các input trên nhiều trang độc lập và từ tham số trên URL ban đầu. Ba câu lệnh nào hữu ích khi viết test class cho controller này? (Chọn 3)",
+    "why_correct": "B: 'String nextPage = controller.save().getUrl();' để test chuyển trang sau khi lưu. C: 'ApexPages.currentPage().getParameters().put('Input', 'TestValue');' để giả lập truyền tham số URL đầu vào. E: 'Test.setCurrentPage(pageRef);' để thiết lập ngữ cảnh trang chạy test.",
+    "why_wrong": {
+      "A": "Cú pháp DML 'Insert pageRef;' là hoàn toàn sai, đối tượng PageReference đại diện URL trang chứ không phải sObject để lưu xuống DB.",
+      "D": "Khai báo hàm khởi tạo Controller Extension 'public ExtendedController...' là code định nghĩa class, không phải câu lệnh thực thi kiểm thử."
+    },
+    "tip": "Viết test cho Visualforce Controller -> Dùng Test.setCurrentPage() để set trang + getParameters().put() để truyền tham số URL."
+  },
+  {
+    "id": 272,
+    "vi_question": "Universal Containers chuyển đổi sang Lightning Experience. Nghiệp vụ yêu cầu: Khi user bấm nút trên trang chi tiết Opportunity, hệ thống phải lấy thông tin Name, Amount gửi REST Callout sang hệ thống OMS ngoài. Hai giải pháp nào lập trình viên nên chọn? (Chọn 2)",
+    "why_correct": "C: Tạo một Lightning Component thực hiện Callout và bọc vào một Lightning Action (Quick Action) hiển thị trên page chi tiết. D: Tạo một trigger after update Opportunity gọi helper method có gắn @future(callout=true) để gửi API bất đồng bộ sau khi cập nhật trường đánh dấu của user.",
+    "why_wrong": {
+      "A": "Visualforce Quick Action là công nghệ cũ cho Classic, không tối ưu cho giao diện Lightning Experience hiện đại.",
+      "B": "Process Builder không hỗ trợ thực hiện trực tiếp các cuộc gọi REST HTTP callout, bắt buộc phải viết thêm Apex code trung gian cực kỳ cồng kềnh."
+    },
+    "tip": "Gọi API từ giao diện Lightning -> Tạo Lightning Component kết hợp Lightning Quick Action, hoặc Trigger + @future(callout=true)."
+  },
+  {
+    "id": 278,
+    "vi_question": "Hai thực hành tốt nhất (best practices) nào khi thiết kế và xử lý các sự kiện Component Event và Application Event trong lập trình Aura Components? (Chọn 2)",
+    "why_correct": "A: Gom toàn bộ logic xử lý phức tạp của sự kiện từ file Controller vào lớp Helper của component để tái sử dụng mã nguồn hiệu quả. C: Xử lý các sự kiện cấp thấp (low-level HTML events) trong trình xử lý và bắn lại chúng thành các sự kiện nghiệp vụ cấp cao (higher-level custom events).",
+    "why_wrong": {
+      "B": "Sai vì các hành động ở tầm ứng dụng (Application level) bắt buộc phải dùng Application Events, Component Events bị giới hạn trong ranh giới cha-con không thể bắt được.",
+      "D": "Ngược lại, Salesforce khuyến nghị tối cao nên ưu tiên sử dụng Component Events thay vì Application Events bất cứ khi nào có thể để tăng hiệu năng và tính đóng gói."
+    },
+    "tip": "Aura Event Best Practice -> Gom logic vào lớp HELPER + Chuyển đổi low-level event thành high-level custom event."
+  },
+  {
+    "id": 279,
+    "vi_question": "Hai địa điểm chính thống nào trong Salesforce giúp lập trình viên xác định tỷ lệ phủ code kiểm thử tổng thể (overall code coverage) của môi trường Sandbox? (Chọn 2)",
+    "why_correct": "C: Trang Apex Classes trong Setup (click vào link 'Estimate your organization's code coverage'). D: Tab Tests của trình biên dịch Developer Console (hiển thị bảng tỷ lệ % chi tiết ở góc dưới bên phải).",
+    "why_wrong": {
+      "A": "Trang Apex Test Execution chỉ hiển thị trạng thái Pass/Fail của các lượt chạy test cụ thể, không hiển thị tổng lượng phủ sóng code toàn bộ Org.",
+      "B": "Bảng điều khiển Test Suite Run chỉ hiển thị kết quả gom nhóm bộ test, không hiển thị số liệu overall coverage."
+    },
+    "tip": "Xem tỷ lệ phủ test (Overall Code Coverage) toàn Org -> Vào Setup gõ APEX CLASSES hoặc vào tab TESTS trong Developer Console."
+  },
+  {
+    "id": 280,
+    "vi_question": "Candidate__c có trường SSN__c (Social Security Number) là duy nhất. Công ty muốn nạp dữ liệu cập nhật từ file CSV vào hệ thống sao cho các bản ghi CSV tự động khớp với các Candidate có sẵn. Developer nên áp dụng kỹ thuật gì để tối ưu hóa quá trình upload?",
+    "why_correct": "Cập nhật định nghĩa trường SSN__c, đánh dấu chọn thuộc tính 'External ID' cho trường này (A). Khi đó, các công cụ nạp dữ liệu như Data Loader sẽ nhận diện trường này làm khóa đối chiếu để so khớp trực tiếp với CSV để tự động cập nhật bản ghi mà không cần Salesforce ID.",
+    "why_wrong": {
+      "B": "Tạo đối tượng trung gian phụ gây phình to cấu trúc cơ sở dữ liệu và nhân đôi công sức tích hợp thừa thãi.",
+      "C": "Viết trigger map dữ liệu là giải pháp code cồng kềnh, làm lãng phí năng lực tính toán của CPU và tốn công bảo trì.",
+      "D": "Process Builder không hỗ trợ so khớp và cập nhật hàng loạt bản ghi từ tệp tin CSV đầu vào."
+    },
+    "tip": "So khớp nạp dữ liệu tự động từ CSV không cần ID -> Đánh dấu trường unique đó là EXTERNAL ID."
+  },
+  {
+    "id": 282,
+    "vi_question": "Developer muốn tạo một trường mô tả sản phẩm cho phép user nhập xuống dòng hiển thị trên Visualforce, đồng thời trường này bắt buộc phải tìm kiếm lọc được bằng mệnh đề WHERE LIKE trong các câu truy vấn SOQL tùy chỉnh. Chọn kiểu trường nào?",
+    "why_correct": "Chọn kiểu trường Text Area (A). Trường Text Area cho phép nhập tối đa 255 ký tự hiển thị trên nhiều dòng độc lập, và đặc biệt là nó HỖ TRỢ tìm kiếm bình thường trong các câu SOQL query.",
+    "why_wrong": {
+      "B": "Text thường giới hạn hiển thị trên 1 dòng duy nhất, không đáp ứng yêu cầu xuống dòng của người dùng.",
+      "C": "Text Area (Long) cho phép nhập dữ liệu cực lớn nhưng Salesforce cấm tiệt sử dụng trường text lớn ở mệnh đề lọc WHERE của câu lệnh SOQL.",
+      "D": "Text Area (Rich) chứa định dạng HTML phức tạp và tương tự câu C, bị Salesforce chặn hoàn toàn khỏi khả năng so khớp lọc WHERE trong SOQL."
+    },
+    "tip": "Vừa xuống được dòng vừa lọc được trong SOQL WHERE -> Bắt buộc dùng kiểu trường TEXT AREA (không dùng Long/Rich)."
+  },
+  {
+    "id": 283,
+    "vi_question": "Làm thế nào để lập trình viên tự định nghĩa một custom exception class (lớp ngoại lệ tùy chỉnh) trong Apex?",
+    "why_correct": "Định nghĩa class kế thừa Exception chuẩn và tên lớp bắt buộc phải kết thúc bằng từ khóa Exception (A): 'public class CustomException extends Exception{}'.",
+    "why_wrong": {
+      "B": "Cú pháp ép kiểu ngược ngạo, hoàn toàn sai ngữ pháp cơ bản của ngôn ngữ Apex.",
+      "C": "Dùng từ khóa 'implements' là sai lệch nghiêm trọng, Exception là lớp cha (Class) chứ không phải Interface để implements.",
+      "D": "Cú pháp gán biến sai ngữ pháp, gây lỗi biên dịch compiler ngay lập tức."
+    },
+    "tip": "Tạo Custom Exception -> class bắt buộc có đuôi 'Exception' và dùng từ khóa EXTENDS EXCEPTION."
+  },
+  {
+    "id": 285,
+    "vi_question": "Ứng dụng Order Management có quan hệ Master-Detail giữa Order (Master) và Order Line (Detail). Yêu cầu tính tổng số tiền của toàn bộ các dòng Order Line con và hiển thị lên Order cha. Thực hành tốt nhất là gì?",
+    "why_correct": "Tạo một trường Roll-up Summary trên đối tượng cha Order thực hiện tính SUM trường tổng tiền của Order Line con (A). Đây là cách tối ưu hoàn hảo hoàn toàn no-code.",
+    "why_wrong": {
+      "B": "Quick Action chỉ dùng để mở giao diện hành động nhanh, không có tính năng tính toán cộng dồn cơ sở dữ liệu.",
+      "C": "Viết trigger Apex tính toán bằng code là giải pháp cồng kềnh, lãng phí CPU limit và tốn công viết code phủ test.",
+      "D": "Formula field cấm thực hiện hàm tổng hợp (SUM) đi ngược từ con lên cha trong Salesforce."
+    },
+    "tip": "Tính tổng bản ghi con lên cha ở mối quan hệ Master-Detail -> Luôn luôn dùng ROLL-UP SUMMARY."
+  }
+]
