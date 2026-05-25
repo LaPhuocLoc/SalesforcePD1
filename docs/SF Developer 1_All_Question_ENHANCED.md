@@ -14,19 +14,19 @@
 - **D.** Case Settings ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai thành phần nào sau đây có thể triển khai (deploy) bằng Metadata API? (Chọn hai.)
+> Trong các component sau, 2 cái tên nào được Metadata API hỗ trợ để deploy? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > Web-to-Case and Web-to-Lead option are not available Metadata API​​​​​​​
 
 **✅ Tại sao đáp án đúng:**
-> Lead Conversion Settings và Case Settings là các cài đặt cấu hình hệ thống (Settings) được hỗ trợ đầy đủ bởi Metadata API để deploy giữa các môi trường.
+> Lead Conversion Settings và Case Settings là hàng chính hãng thuộc nhóm cấu hình hệ thống (Settings), được Metadata API hỗ trợ tận răng để deploy mượt mà qua các môi trường.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Web-to-Case là tính năng tạo Case từ Web, cấu hình này không được Metadata API hỗ trợ trực tiếp để deploy.
-> **C.** Web-to-Lead là tính năng tạo Lead từ Web, cũng không nằm trong danh sách các component deploy được qua Metadata API.
+> **B.** Web-to-Case là tính năng/tiện ích chứ không phải Metadata Component đơn thuần, không deploy trực tiếp qua Metadata API được đâu nha.
+> **C.** Web-to-Lead cũng chung số phận 'cook' với Web-to-Case, không nằm trong danh sách được Metadata API hỗ trợ.
 
-**💡 Từ khóa ghi nhớ:** `Settings (Lead Conversion, Case Settings) deploy được bằng Metadata API; Web-to-Lead/Case thì KHÔNG.`
+**💡 Từ khóa ghi nhớ:** `Cứ thấy có đuôi 'Settings' là deploy được qua Metadata API, còn mấy cái 'Web-to-...' là cook chắc!`
 
 ---
 
@@ -40,20 +40,20 @@
 - **D.** Create a junction object between OrderItem and Order. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một nhà phát triển đã tạo một ứng dụng quản lý đơn hàng tùy chỉnh sử dụng Apex class. Đơn hàng được đại diện bởi object Order và object OrderItem có mối quan hệ master-detail với Order. Trong quá trình xử lý, một đơn hàng có thể bị chia thành nhiều đơn hàng. Nhà phát triển nên làm gì để cho phép code của họ chuyển một số record OrderItem hiện có sang một record Order mới?
+> Một developer tạo một app quản lý đơn hàng tùy chỉnh dùng Apex class. Đơn hàng gồm object Order và object OrderItem có mối quan hệ master-detail với Order. Trong quá trình xử lý, một đơn hàng có thể bị chia làm nhiều đơn hàng nhỏ. Lập trình viên phải làm gì để cho phép code chuyển một số bản ghi OrderItem hiện có sang một bản ghi Order mới?
 
 **💬 Giải thích gốc (English):**
 > "Allow reparenting" the developer enables the ability to change the parent of a child record (OrderItem) from one master record (Order) to another. This allows the developer to move certain OrderItem records to a new Order record, effectively splitting the order into multiple orders.
 
 **✅ Tại sao đáp án đúng:**
-> Chọn tùy chọn 'Allow reparenting' trên mối quan hệ master-detail cho phép thay đổi bản ghi cha (Order) của bản ghi con (OrderItem), giúp chuyển các OrderItem sang Order mới một cách hợp lệ.
+> Tích chọn 'Allow reparenting' trên mối quan hệ master-detail chính là chìa khóa vạn năng cho phép đổi cha (Order) của các bản ghi con (OrderItem) một cách hợp lệ mà không bị Salesforce cấm cản.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Chuyển master-detail thành external lookup relationship là không cần thiết và làm mất đi các tính năng của master-detail như cascade delete hay roll-up summary.
-> **C.** Thêm 'without sharing' chỉ bỏ qua luật chia sẻ record (sharing rules), không giải quyết được giới hạn reparenting của master-detail.
-> **D.** Tạo junction object giữa OrderItem và Order là sai thiết kế và làm phức tạp hóa mô hình dữ liệu không cần thiết.
+> **B.** Chuyển master-detail thành external lookup relationship là quả tự hủy đi các tính năng xịn sò của master-detail như cascade delete hay roll-up summary, quá cồng kềnh và mất chất.
+> **C.** Thêm 'without sharing' chỉ là ngó lơ luật chia sẻ bản ghi (sharing rules) thôi, chứ không có tuổi can thiệp vào giới hạn đổi cha của master-detail nhé.
+> **D.** Tạo junction object giữa OrderItem và Order là pha thiết kế đi vào lòng đất, làm phức tạp hóa mô hình dữ liệu không cần thiết.
 
-**💡 Từ khóa ghi nhớ:** `Muốn đổi cha (reparent) trong quan hệ Master-Detail thì phải tích chọn 'Allow reparenting'.`
+**💡 Từ khóa ghi nhớ:** `Muốn đổi cha (reparent) trong quan hệ Master-Detail thì tích chọn ngay 'Allow reparenting'.`
 
 ---
 
@@ -67,19 +67,19 @@
 - **D.** Use the static keyword and assign its value in the class constructor. ❌
 
 **📝 Dịch tiếng Việt:**
-> Trong một class Apex, làm sao để đảm bảo các biến 'creditAmount' và 'debitAmount' chỉ được gán giá trị một lần duy nhất? (Chọn 2)
+> Trong một class Apex cho hệ thống tài chính, làm sao để đảm bảo các biến 'creditAmount' và 'debitAmount' chỉ được gán giá trị duy nhất một lần và không thể bị sửa đổi sau đó? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > The variables 'creditAmount' and 'debitAmount' can only be assigned one time, the developer should use the 'final' keyword and assign their values when declaring the variables. This will make the variables constant and their values cannot be changed after assignment.
 
 **✅ Tại sao đáp án đúng:**
-> Từ khóa 'final' trong Apex dùng để tạo hằng số cho instance. Mày có thể gán giá trị ngay lúc khai báo (A) hoặc gán duy nhất 1 lần trong Constructor (B). Sau đó đố ai sửa được.
+> Từ khóa 'final' trong Apex dùng để tạo hằng số cho instance. Mày có thể gán giá trị ngay lúc khai báo (B) hoặc gán duy nhất 1 lần trong Constructor (C). Sau đó thì đố ai sửa được.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Static đơn thuần chỉ là biến dùng chung, vẫn sửa giá trị bình thường.
-> **D.** Static initializer gán giá trị cho biến static, nhưng nếu không có 'final' thì vẫn bị ghi đè sau đó.
+> **A.** Static initializer gán giá trị cho biến static, nhưng nếu không có 'final' thì vẫn bị ghi đè sau đó như thường.
+> **D.** Static đơn thuần chỉ là biến dùng chung ở cấp class, không có 'final' thì vẫn bị sửa đổi dễ dàng, không đạt yêu cầu gán duy nhất một lần.
 
-**💡 Từ khóa ghi nhớ:** `Assign only once = FINAL. Nhớ nhé mày!`
+**💡 Từ khóa ghi nhớ:** `Gán duy nhất 1 lần (Read-only/Constant) = dùng FINAL.`
 
 ---
 
@@ -94,20 +94,20 @@
 - **E.** HTML ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba công nghệ web nào sau đây có thể được tích hợp vào một trang Visualforce? (Chọn ba.)
+> Ba công nghệ web nào sau đây có thể được tích hợp mượt mà vào một trang Visualforce? (Chọn ba.)
 
 **💬 Giải thích gốc (English):**
 > You can't write any Java/Php code in VF page.
 > https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/pages_intro_what_is_it.htm
 
 **✅ Tại sao đáp án đúng:**
-> Visualforce là công nghệ render ở phía client-side, do đó nó hỗ trợ hoàn toàn các công nghệ web cơ bản như HTML để tạo cấu trúc, CSS để tạo kiểu dáng và JavaScript để xử lý logic tương tác.
+> Visualforce là công nghệ render ở phía client-side (frontend), do đó nó hỗ trợ hoàn toàn các công nghệ web cơ bản gồm HTML (cấu trúc), CSS (giao diện đẹp mắt) và JavaScript (logic tương tác động).
 
 **❌ Tại sao đáp án sai:**
-> **C.** Java là ngôn ngữ chạy phía server-side và không thể chạy trực tiếp trong Visualforce page.
-> **D.** PHP cũng là ngôn ngữ server-side và không tích hợp trực tiếp được vào Visualforce page chạy trên nền tảng Force.com.
+> **C.** Java là ngôn ngữ chạy phía server-side, không thể nhúng chạy trực tiếp trong Visualforce page được đâu.
+> **D.** PHP cũng chạy server-side và hoàn toàn không tương thích để chạy trực tiếp trong Visualforce page trên nền tảng Force.com.
 
-**💡 Từ khóa ghi nhớ:** `Visualforce chỉ tích hợp công nghệ frontend (HTML, CSS, JS); KHÔNG chơi với Java và PHP.`
+**💡 Từ khóa ghi nhớ:** `Visualforce page chỉ chơi với bộ ba frontend (HTML, CSS, JS); Java và PHP cho ra rìa!`
 
 ---
 
@@ -121,20 +121,20 @@
 - **D.** Float x =5.0; ❌
 
 **📝 Dịch tiếng Việt:**
-> Phép gán Apex nào sau đây là hợp lệ?
+> Phép gán Apex nào sau đây là hoàn toàn hợp lệ mà không gây lỗi compile?
 
 **💬 Giải thích gốc (English):**
 > An Integer can be assigned to a Double, but a Double cannot be directly assigned to an Integer.
 
 **✅ Tại sao đáp án đúng:**
-> Apex hỗ trợ ngầm định chuyển đổi kiểu dữ liệu từ Integer sang Double (Double x = 5), vì Double có độ rộng dữ liệu lớn hơn Integer.
+> Apex hỗ trợ ngầm định chuyển đổi kiểu dữ liệu (implicit casting) từ Integer sang Double (Double x = 5) vì Double có độ rộng dữ liệu lớn hơn Integer, gán thoải mái không lo lỗi.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Phép nhân 5 * 1.0 trả về kết quả kiểu Double, không thể gán trực tiếp cho biến kiểu Integer mà không có ép kiểu (cast).
-> **B.** 5.0 là giá trị kiểu Double, không thể gán trực tiếp cho biến kiểu Integer.
-> **D.** Apex không có kiểu dữ liệu nguyên bản là Float, chỉ có Decimal hoặc Double.
+> **A.** Phép nhân 5 * 1.0 trả về kiểu Double, không thể gán trực tiếp cho biến kiểu Integer nếu không ép kiểu (cast) tường minh.
+> **B.** 5.0 là giá trị kiểu Double, gán trực tiếp cho Integer là bị compiler đập ngay.
+> **D.** Apex không có kiểu dữ liệu nguyên bản là Float, dùng kiểu này là compiler báo lỗi không nhận dạng được luôn.
 
-**💡 Từ khóa ghi nhớ:** `Integer gán cho Double được (tự động ép kiểu lên), Double gán cho Integer thì BỊ LỖI.`
+**💡 Từ khóa ghi nhớ:** `Bé gán cho Lớn ok (Integer -> Double), chứ Lớn gán cho Bé (Double -> Integer) là cook!`
 
 ---
 
@@ -148,19 +148,19 @@
 - **D.** Test methods must be declared with the testMethod keyword. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một nhà phát triển đã hoàn thành các sửa đổi cho một tính năng tùy chỉnh gồm hai phần: 1. Apex trigger, 2. Trigger handler Apex class. Có hai yếu tố nào mà nhà phát triển phải lưu ý để deploy thành công sửa đổi này lên môi trường production? (Chọn hai.)
+> Một developer vừa sửa đổi một tính năng gồm Apex trigger và Trigger handler Apex class. Có hai yếu tố nào bắt buộc phải tuân thủ để deploy thành công lên môi trường production? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > To deploy your code to production environments, it is mandatory to achieve a minimum of 75% code coverage for your Apex through unit tests. Additionally, all triggers must have at least one line of test coverage.
 
 **✅ Tại sao đáp án đúng:**
-> Khi deploy lên production, Salesforce yêu cầu tổng độ bao phủ code (code coverage) của toàn bộ Apex class trong org phải đạt ít nhất 75%, và mọi Apex trigger phải có ít nhất 1 dòng code được chạy qua kiểm thử.
+> Khi deploy lên production, Salesforce kiểm duyệt cực gắt: tổng độ bao phủ code (code coverage) của toàn bộ Apex class trong org phải đạt ít nhất 75% (A), và mọi Apex trigger phải có ít nhất 1 dòng code chạy qua kiểm thử (B).
 
 **❌ Tại sao đáp án sai:**
-> **C.** Không phải tất cả các method trong test class đều phải dùng @isTest. Chỉ cần bản thân class và các method test được đánh dấu đúng.
-> **D.** Từ khóa testMethod đã bị deprecated và không còn bắt buộc, khuyến nghị dùng annotation @isTest thay thế.
+> **C.** Không phải tất cả phương thức trong test class đều phải dùng @isTest, chỉ cần các method test thực sự được đánh dấu đúng là được.
+> **D.** Từ khóa 'testMethod' đã lỗi thời (deprecated), giờ dùng annotation @isTest là chuẩn bài.
 
-**💡 Từ khóa ghi nhớ:** `Deploy lên Production: Code coverage org-wide >= 75% và Trigger phải chạy qua ít nhất 1 dòng test.`
+**💡 Từ khóa ghi nhớ:** `Deploy Production: Code coverage org >= 75% + Trigger chạy qua ít nhất 1 dòng test.`
 
 ---
 
@@ -174,21 +174,21 @@
 - **D.** 7 ❌
 
 **📝 Dịch tiếng Việt:**
-> Một SOQL query từ một parent object có thể trả về tối đa bao nhiêu cấp độ của child record?
+> Một SOQL query từ một parent object có thể truy vấn sâu xuống tối đa bao nhiêu cấp độ của child record (quan hệ parent-to-child)?
 
 **💬 Giải thích gốc (English):**
 > Query Five Levels of Parent-to-Child Relationships in SOQL Queries
 > https://help.salesforce.com/s/articleView?id=release-notes.rn_api_soql_5level.htm&release=244&type=5
 
 **✅ Tại sao đáp án đúng:**
-> Salesforce cho phép một SOQL query truy vấn tối đa 5 cấp độ mối quan hệ từ parent đến child. Giới hạn này đã được tăng lên từ 3 cấp độ trước đây để hỗ trợ việc truy xuất dữ liệu phức tạp hơn trong một truy vấn duy nhất. Đây là một governor limit quan trọng cần nhớ khi thiết kế các truy vấn SOQL.
+> Salesforce cho phép một SOQL query truy vấn tối đa 5 cấp độ mối quan hệ từ parent xuống child. Đây là giới hạn tối đa hiện tại giúp bạn lấy dữ liệu phân cấp sâu mà không cần viết nhiều query.
 
 **❌ Tại sao đáp án sai:**
-> **A.** 1 cấp độ là quá hạn chế; SOQL được thiết kế để truy vấn các mối quan hệ phức tạp hơn giữa các object.
-> **B.** 3 cấp độ từng là giới hạn trước đây của SOQL cho các mối quan hệ parent-to-child, nhưng nó đã được tăng lên và không còn là giới hạn hiện tại.
-> **D.** 7 cấp độ vượt quá giới hạn governor limit hiện tại mà Salesforce đặt ra cho các truy vấn SOQL parent-to-child.
+> **A.** 1 cấp độ là giới hạn quá xưa cũ và cực kỳ hạn chế.
+> **B.** 3 cấp độ từng là giới hạn cũ của SOQL, giờ đã được nâng lên 5 cấp độ rồi nha.
+> **D.** 7 cấp độ vượt quá giới hạn governor limit hiện tại mà Salesforce đặt ra cho truy vấn parent-to-child.
 
-**💡 Từ khóa ghi nhớ:** `SOQL parent-to-child: tối đa 5 cấp độ. Đây là một governor limit quan trọng trong Salesforce.`
+**💡 Từ khóa ghi nhớ:** `Truy vấn SOQL từ Cha xuống Con: Tối đa 5 cấp độ.`
 
 ---
 
@@ -202,20 +202,20 @@
 - **D.** Workflow Rule ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi trường picklist tùy chỉnh Customer Sentiment trên một Account được thay đổi thành giá trị 'Confused', một Case liên quan mới phải được tự động tạo. Hai phương pháp nào sau đây nhà phát triển nên sử dụng để tạo Case này? (Chọn hai.)
+> Khi trường picklist tùy chỉnh Customer Sentiment trên Account bị đổi thành 'Confused', một Case liên quan mới phải tự động được tạo. Lập trình viên nên dùng 2 phương pháp nào sau đây? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > 1. Apex Trigger: The developer can write an Apex trigger on the Account object to detect changes in the Customer Sentiment picklist field. When the picklist field value changes to 'Confused,' the trigger can create a new Case record and establish the necessary relationship between the Account and the Case.
 > 2. Process Builder: The developer can use Process Builder, a declarative automation tool in Salesforce, to create the automation flow. The process builder can be configured to monitor changes on the Account object and specifically check for the Customer Sentiment picklist field value change to 'Confused.' When the condition is met, the process builder can take action to create a new related Case record.
 
 **✅ Tại sao đáp án đúng:**
-> Process Builder là một công cụ tự động hóa declarative mạnh mẽ, có thể được kích hoạt bởi các thay đổi trên record (như cập nhật trường picklist) và thực hiện các hành động như tạo record mới (Case). Apex Trigger là một giải pháp programmatic, cho phép nhà phát triển viết code để lắng nghe các sự kiện trên Account (như cập nhật trường Customer Sentiment) và tự động tạo một Case mới khi điều kiện được đáp ứng.
+> Apex Trigger là giải pháp code (programmatic) mạnh mẽ giúp xử lý mọi sự kiện DML trên Account để tạo Case mới. Process Builder là công cụ no-code/low-code giúp tự động tạo bản ghi liên quan khi có update. (Lưu ý: Thời điểm hiện tại 2026, Process Builder đã bị deprecated và nhường ngôi vị độc tôn cho Record-Triggered Flow, nhưng trong bài thi vẫn chọn Process Builder nhé).
 
 **❌ Tại sao đáp án sai:**
-> **C.** Custom Button yêu cầu người dùng phải click vào để kích hoạt hành động, trong khi yêu cầu là Case phải được 'tự động' tạo.
-> **D.** Workflow Rule không có khả năng tạo record mới. Nó chỉ có thể tạo task, cập nhật trường, gửi email alert hoặc gửi outbound message.
+> **C.** Custom Button yêu cầu người dùng phải click bằng cơm mới chạy, không đáp ứng được yêu cầu 'tự động'.
+> **D.** Workflow Rule cực kỳ cùi bắp, chỉ có thể cập nhật trường hoặc gửi email/task chứ không có khả năng tạo bản ghi mới.
 
-**💡 Từ khóa ghi nhớ:** `Để tự động tạo record mới khi một trường thay đổi, hãy nghĩ đến Process Builder (declarative) hoặc Apex Trigger (programmatic).`
+**💡 Từ khóa ghi nhớ:** `Tự động tạo bản ghi mới khi cập nhật: Chọn Trigger (code) hoặc Process Builder / Flow (no-code).`
 
 ---
 
@@ -229,21 +229,21 @@
 - **D.** List<string> s = List<string>{'a','b','c'}; ✅
 
 **📝 Dịch tiếng Việt:**
-> Câu lệnh nào sau đây gây ra lỗi trình biên dịch Apex?
+> Câu lệnh nào sau đây sẽ bị lỗi trình biên dịch (compiler error) Apex?
 
 **💬 Giải thích gốc (English):**
 > D is not correct because of the missing new operator
 > List<string> s = new List<string>{'a','b','c'};
 
 **✅ Tại sao đáp án đúng:**
-> Câu lệnh `List<string> s = List<string>{'a','b','c'};` thiếu từ khóa `new` khi khởi tạo một List bằng cú pháp collection literal. Trong Apex, mọi khởi tạo collection (List, Set, Map) đều yêu cầu từ khóa `new`. Việc thiếu `new` sẽ dẫn đến lỗi trình biên dịch.
+> Câu lệnh `List<string> s = List<string>{'a','b','c'};` thiếu từ khóa `new` khi khởi tạo một List. Trong Apex, khởi tạo collection bắt buộc phải có `new`, thiếu là compiler đập ngay.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Câu lệnh này hợp lệ. Khi khởi tạo một Map bằng kết quả SOQL, Apex sẽ tự động sử dụng Id làm key và sObject làm value. Ngay cả khi SOQL chỉ chọn ID, Apex vẫn sẽ lấy toàn bộ bản ghi Lead và tạo Map đúng cách.
-> **B.** Đây là cách khai báo và khởi tạo nhiều biến cùng kiểu (`Date`) trên một dòng hợp lệ trong Apex. Các phương thức `Date.Today()` và `Date.ValueOf()` đều đúng cú pháp.
-> **C.** Đây là cách khai báo và khởi tạo nhiều biến cùng kiểu (`Integer`) trên một dòng hợp lệ. Biến `c` được khai báo nhưng không khởi tạo là hoàn toàn chấp nhận được trong Apex.
+> **A.** Khởi tạo Map bằng kết quả SOQL là hoàn toàn hợp lệ, Apex tự động lấy Id làm key và sObject làm value.
+> **B.** Khai báo nhiều biến kiểu Date trên một dòng và gán giá trị hợp lệ là đúng cú pháp.
+> **C.** Khai báo nhiều biến Integer trên một dòng, biến `c` không khởi tạo giá trị vẫn hoàn toàn hợp lệ.
 
-**💡 Từ khóa ghi nhớ:** `Luôn nhớ từ khóa `new` khi khởi tạo bất kỳ collection nào (List, Set, Map) trong Apex, kể cả với cú pháp collection literal.`
+**💡 Từ khóa ghi nhớ:** `Khởi tạo Collection (List, Set, Map) trong Apex mà thiếu từ khóa `new` là cook ngay lập tức!`
 
 ---
 
@@ -257,20 +257,20 @@
 - **D.** Perform the DML using the Database.upsert() method. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một developer có một Visualforce page và custom controller để lưu các bản ghi Account. Developer muốn hiển thị bất kỳ vi phạm validation rule nào cho người dùng. Làm thế nào developer có thể đảm bảo rằng các vi phạm validation rule được hiển thị?
+> Một developer có Visualforce page và custom controller để lưu Account. Developer muốn hiển thị bất kỳ vi phạm validation rule nào cho người dùng. Làm thế nào để đảm bảo điều đó?
 
 **💬 Giải thích gốc (English):**
 > Display Errors on the Visualforce Page: In the Visualforce page, utilize the Visualforce markup and Apex expressions to iterate over the error messages collection and display them to the user. This can be achieved using components like <apex:pageMessages> or by manually rendering error messages using <apex:outputPanel> and <apex:repeat>.
 
 **✅ Tại sao đáp án đúng:**
-> Khi một DML operation trong Apex controller gặp lỗi validation rule, Salesforce sẽ tự động thêm các thông báo lỗi này vào ApexPages.Message list. Component <apex:messages> (hoặc <apex:pageMessages>) trên Visualforce page được thiết kế để tự động hiển thị tất cả các thông báo lỗi này, bao gồm cả lỗi validation rule, mà không cần code xử lý lỗi tường minh trong controller.
+> Component `<apex:messages>` (hoặc `<apex:pageMessages>`) trên Visualforce page được sinh ra để tự động bắt và hiển thị tất cả các lỗi DML hoặc vi phạm validation rule từ controller lên giao diện mà không cần code xử lý lỗi phức tạp.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Việc thêm các custom controller attributes để hiển thị thông báo sẽ yêu cầu developer phải tự parse lỗi DML và gán chúng, đây là một cách tiếp cận phức tạp và không cần thiết khi Visualforce đã có sẵn cơ chế chuẩn.
-> **B.** Sử dụng try/catch là tốt để bắt DMLExceptions, nhưng việc dùng custom exception class là không cần thiết cho việc hiển thị lỗi validation rule tiêu chuẩn. Các lỗi này đã được Salesforce xử lý và đưa vào ApexPages để hiển thị.
-> **D.** Database.upsert() là một phương thức DML, nhưng nó không thay đổi cách thức hiển thị các vi phạm validation rule. Bất kể phương thức DML nào (insert, update, upsert), lỗi validation rule vẫn sẽ được xử lý và hiển thị qua <apex:messages>.
+> **A.** Tự viết custom controller attributes để hiển thị lỗi là tự làm khó mình, cồng kềnh không cần thiết.
+> **B.** Dùng try/catch với custom exception không tự động hiển thị lỗi lên giao diện Visualforce nếu không có component chuyên dụng.
+> **D.** Database.upsert() chỉ là phương thức thực hiện DML, không giải quyết việc hiển thị lỗi trên giao diện người dùng.
 
-**💡 Từ khóa ghi nhớ:** `Visualforce: <apex:messages> tự động hiển thị validation rule errors và DML errors từ controller mà không cần code xử lý lỗi phức tạp.`
+**💡 Từ khóa ghi nhớ:** `Visualforce muốn hiện validation lỗi: Thêm `<apex:messages>` lên trang là xong!`
 
 ---
 
@@ -284,7 +284,7 @@
 - **D.** Use SOQL for loops instead of assigning large queries results to a single collection and looping through the collection. ✅
 
 **📝 Dịch tiếng Việt:**
-> Một developer gặp lỗi APEX heap limit trong một trigger. Hai phương pháp nào sau đây developer nên sử dụng để tránh lỗi này? (Chọn hai.)
+> Một developer gặp lỗi APEX heap limit (tràn bộ nhớ) trong trigger. Hai phương pháp nào sau đây giúp tránh lỗi này? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > Use the transient keyword to declare instance variables that can't be saved, and shouldn't be transmitted as part of the view state for a Visualforce page -> For VF 'heap' limit.
@@ -292,13 +292,13 @@
 > To avoid heap size limits, developers should always use a SOQL "for" loop to process query results that return many records.
 
 **✅ Tại sao đáp án đúng:**
-> Để tránh lỗi APEX heap limit, việc giải phóng bộ nhớ không còn sử dụng là rất quan trọng. Xóa hoặc đặt các collection thành null sau khi dùng cho phép garbage collector thu hồi bộ nhớ, giảm kích thước heap. Ngoài ra, sử dụng SOQL for loops giúp xử lý kết quả truy vấn theo từng batch nhỏ, thay vì tải tất cả dữ liệu vào bộ nhớ cùng lúc, từ đó giảm đáng kể mức tiêu thụ heap.
+> Đặt các collection thành null sau khi dùng (C) giúp garbage collector giải phóng bộ nhớ ngay lập tức. Sử dụng SOQL for loops (D) giúp xử lý các bản ghi theo từng batch nhỏ thay vì tải toàn bộ danh sách khổng lồ vào bộ nhớ cùng lúc.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Từ khóa transient được sử dụng chủ yếu trong Visualforce để ngăn biến được lưu vào view state, không trực tiếp giải quyết lỗi APEX heap limit trong trigger.
-> **B.** Việc query và lưu trữ các trường từ related object vào một collection thực tế sẽ làm tăng mức sử dụng heap, đặc biệt nếu có nhiều bản ghi hoặc nhiều trường, và có thể gây ra lỗi heap limit thay vì tránh nó.
+> **A.** Transient dùng để giảm kích thước view state trong Visualforce, hoàn toàn vô dụng trong việc giải quyết heap limit của trigger.
+> **B.** Query và nhét đống trường liên quan vào collection chỉ làm tăng thêm dung lượng bộ nhớ sử dụng, dễ gây tràn heap hơn.
 
-**💡 Từ khóa ghi nhớ:** `Tránh APEX heap limit: dùng SOQL for loops, giải phóng collection sau dùng. Transient cho Visualforce view state.`
+**💡 Từ khóa ghi nhớ:** `Tránh Heap Limit: Giải phóng collection (= null) và dùng SOQL For Loop để duyệt.`
 
 ---
 
@@ -312,7 +312,7 @@
 - **D.** Emit ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai giai đoạn nào nằm trong khung lan truyền Aura Application Event của Salesforce? (Chọn 2)
+> Hai giai đoạn nào nằm trong khung lan truyền Aura Application Event của Salesforce? (Chọn hai.)
 
 **💬 Giải thích gốc (English):**
 > Here is the sequence of application event propagation.
@@ -322,13 +322,13 @@
 > 4. Default phase—The framework executes the default phase from the root node unless preventDefault() was called in the capture or bubble phases. If the event’s propagation wasn’t stopped in a previous phase, the root node defaults to the application root. If the event’s propagation was stopped in a previous phase, the root node is set to the component whose handler invoked event.stopPropagation().
 
 **✅ Tại sao đáp án đúng:**
-> Application Event trong Aura có 3 phase: Capture, Bubble (lan tỏa từ con lên cha) và Default (chạy các handler đã đăng ký). Trong đáp án này, A và C là đúng quy chuẩn.
+> Aura Application Event có cơ chế lan truyền qua 3 giai đoạn: Capture, Bubble (A - lan truyền từ con lên cha) và Default (B - chạy các handler đã đăng ký).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Emit là thuật ngữ thường dùng trong các JS Framework khác như Vue, Aura không sử dụng phase này.
-> **D.** Control không phải là một giai đoạn trong vòng đời lan truyền event của Aura.
+> **C.** Control không phải là một giai đoạn trong vòng đời lan truyền event của Aura.
+> **D.** Emit là thuật ngữ của các framework JS khác như Vue/Aura Component không dùng khái niệm này cho giai đoạn lan truyền.
 
-**💡 Từ khóa ghi nhớ:** `Aura Event Phases: Capture -> Bubble -> Default.`
+**💡 Từ khóa ghi nhớ:** `Event lan truyền trong Aura chỉ có: Capture -> Bubble -> Default.`
 
 ---
 
@@ -342,17 +342,17 @@
 - **D.** SELECT Id, (SELECT Id FROM Trainers__r) FROM Gym__c WHERE Name = 'Viridian City Gym' ✅
 
 **📝 Dịch tiếng Việt:**
-> Câu query SOQL nào lấy được bản ghi Gym và tất cả các Trainer liên quan của nó?
+> Custom object Trainer__c có lookup field tới Gym__c. Câu query SOQL nào lấy được bản ghi Gym tên 'Viridian City Gym' và toàn bộ Trainer liên quan của nó?
 
 **✅ Tại sao đáp án đúng:**
-> Đây là 'Parent-to-Child' query. Khi truy vấn từ cha xuống con của Custom Object, mày phải dùng Child Relationship Name kèm hậu tố __r. Ở đây là (SELECT Id FROM Trainers__r).
+> Đây là truy vấn từ Cha xuống Con (Parent-to-Child). Với custom object, trong sub-query bắt buộc phải dùng tên mối quan hệ con (Child Relationship Name) thêm hậu tố `__r`. Do đó `Trainers__r` (D) là chuẩn bài.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Dùng __c là tên object, trong sub-query bắt buộc phải dùng tên quan hệ (Relationship Name).
-> **C.** Gym__r là sai, Gym là cha thì phải dùng Gym__c. Ngoài ra sub-query phải nằm trong ngoặc.
-> **D.** Câu này là Child-to-Parent query, nó chỉ lấy Trainer chứ không lấy theo kiểu 'Gym và các Trainer của nó'.
+> **A.** Câu này chỉ query trên Trainer chứ không lấy được thông tin chi tiết của Gym làm gốc.
+> **B.** Dùng `Trainers__c` trong sub-query là sai cú pháp vì `__c` chỉ dùng cho tên Object, không dùng cho Relationship Name.
+> **C.** Dùng `Trainer__c` vừa sai tên mối quan hệ (thiếu số nhiều 's') vừa dùng sai hậu tố `__c`.
 
-**💡 Từ khóa ghi nhớ:** `Query Cha xuống Con: Dùng Relationship Name + __r.`
+**💡 Từ khóa ghi nhớ:** `Query Cha xuống Con: Sub-query bắt buộc dùng Relationship Name + `__r`.`
 
 ---
 
@@ -366,17 +366,17 @@
 - **D.** before delete ❌
 
 **📝 Dịch tiếng Việt:**
-> Một nhà phát triển cần tạo một audit trail cho các record được gửi vào recycle bin. Loại trigger nào phù hợp nhất để tạo?
+> Một developer cần tạo một audit trail (nhật ký lịch sử) cho các bản ghi bị xóa và đưa vào thùng rác (recycle bin). Loại trigger nào là phù hợp nhất?
 
 **✅ Tại sao đáp án đúng:**
-> Trigger 'after delete' được kích hoạt sau khi một record đã được xóa và chuyển vào recycle bin. Tại thời điểm này, bạn có thể truy cập các giá trị của record đã bị xóa để ghi lại thông tin vào audit trail, đảm bảo rằng việc xóa đã thực sự xảy ra. Đây là thời điểm lý tưởng để ghi nhận sự kiện xóa.
+> Trigger `after delete` chạy sau khi bản ghi đã thực sự bị xóa thành công và chuyển vào recycle bin. Đây là thời điểm hoàn hảo để lấy các thông tin cuối cùng của bản ghi để ghi nhật ký audit trail.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Trigger 'after undelete' được kích hoạt sau khi một record được khôi phục từ recycle bin, không phải khi nó được gửi vào đó.
-> **C.** Trigger 'before undelete' được kích hoạt trước khi một record được khôi phục từ recycle bin, không liên quan đến việc xóa record.
-> **D.** Trigger 'before delete' được kích hoạt trước khi record bị xóa. Mặc dù nó có thể ghi lại thông tin, nhưng 'after delete' đảm bảo rằng hành động xóa đã hoàn tất, phù hợp hơn cho một audit trail về sự kiện xóa.
+> **B.** `after undelete` kích hoạt khi bản ghi được khôi phục từ thùng rác chứ không phải khi bị xóa đi.
+> **C.** `before undelete` kích hoạt trước khi khôi phục bản ghi, không liên quan đến hành vi xóa.
+> **D.** `before delete` chạy trước khi xóa, lúc này chưa chắc bản ghi đã được xóa thành công (có thể bị chặn bởi logic khác), ghi audit trail lúc này là vội vàng.
 
-**💡 Từ khóa ghi nhớ:** `Để tạo audit trail cho record bị xóa (gửi vào recycle bin), hãy dùng 'after delete' trigger vì nó xác nhận hành động xóa đã xảy ra.`
+**💡 Từ khóa ghi nhớ:** `Nhật ký xóa (Recycle Bin) -> Chắc chắn đã xóa -> Dùng `after delete`.`
 
 ---
 
@@ -390,20 +390,20 @@
 - **D.** Paused Flow Interviews component ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai vị trí nào mà lập trình viên có thể tìm thấy thông tin về trạng thái của các phương thức batch hoặc future?
+> Hai vị trí nào lập trình viên có thể kiểm tra để tìm thông tin về trạng thái của các tiến trình không đồng bộ (asynchronous hoặc future calls)? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > AsyncApexJob Object: The AsyncApexJob object represents the status of asynchronous Apex jobs, which include future calls, batch Apex jobs, and scheduled Apex jobs.
 > Apex Flex Queue is where a developer can find information about the status of asynchronous or future calls in Salesforce. The Apex Flex Queue is a mechanism introduced to manage the execution of asynchronous Apex jobs when there is a large backlog.
 
 **✅ Tại sao đáp án đúng:**
-> D: Apex Jobs hiển thị mọi tác vụ không đồng bộ. C: Apex Flex Queue hiển thị các Batch job đang nằm chờ trước khi xử lý.
+> Apex Jobs (C) hiển thị danh sách và trạng thái của tất cả các async jobs. Apex Flex Queue (B) hiển thị các Batch jobs đang xếp hàng chờ để được xử lý.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Paused Flow Interviews chỉ hiển thị các luồng Flow đang bị tạm dừng, không liên quan đến Batch hay Future Apex.
-> **B.** Time-Based Workflow Monitor chỉ dùng để theo dõi các Workflow Rule có cài đặt thời gian thực hiện (Time-dependent actions).
+> **A.** Time-Based Workflow Monitor chỉ dùng để theo dõi các action hẹn giờ của Workflow Rules cổ xưa.
+> **D.** Paused Flow Interviews chỉ hiển thị các Flow đang bị tạm dừng giữa chừng, không liên quan đến Apex async.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Monitor Async Apex -> Apex Jobs & Flex Queue.`
+**💡 Từ khóa ghi nhớ:** `Check trạng thái Async Apex -> Vào Apex Jobs & Apex Flex Queue.`
 
 ---
 
@@ -424,27 +424,19 @@ which three statements can be used to create the controller variable? (Choose th
 - **E.** ApexPages.StandardsetController controller = new Apexpages.StandardsetController(Database.getQueryLocator([SELECT Id FROM Account]); ✅
 
 **📝 Dịch tiếng Việt:**
-> Cho đoạn mã dưới đây:
-```apex
-public class AccountListController {
-public List<Account> getAccounts() {
-return controller.getRecords();
-}
-}
-```
-Ba câu lệnh nào có thể được sử dụng để tạo biến `controller`? (Chọn ba.)
+> Cho đoạn mã khai báo class `AccountListController` sử dụng `controller.getRecords()`. Ba câu lệnh nào có thể dùng để khởi tạo biến `controller` hợp lệ? (Chọn ba.)
 
 **💬 Giải thích gốc (English):**
 > The StandardController has getRecord() not getRecords().
 
 **✅ Tại sao đáp án đúng:**
-> Phương thức `getRecords()` chỉ có sẵn trên `ApexPages.StandardSetController`, không phải `ApexPages.StandardController`. Do đó, biến `controller` phải là một instance của `StandardSetController`. `StandardSetController` có thể được khởi tạo với một `List<SObject>` (như kết quả của `Database.query()`) hoặc một `Database.QueryLocator` (như kết quả của `Database.getQueryLocator()`).
+> Phương thức `getRecords()` (số nhiều) chỉ có trên `StandardSetController`. Bộ khởi tạo của nó chấp nhận danh sách sObject từ `Database.query()` (A) hoặc một `QueryLocator` từ `Database.getQueryLocator()` (B, E).
 
 **❌ Tại sao đáp án sai:**
-> **C.** `ApexPages.StandardController` không có phương thức `getRecords()`, mà chỉ có `getRecord()`. Ngoài ra, constructor của `StandardController` mong đợi một SObject duy nhất, không phải `Database.QueryLocator`.
-> **D.** `ApexPages.StandardController` không có phương thức `getRecords()`. Constructor của `StandardController` mong đợi một SObject duy nhất, trong khi `[SELECT Id FROM Account]` trả về một `List<Account>`.
+> **C.** StandardController chỉ có phương thức `getRecord()` (số ít) và không chấp nhận QueryLocator trong constructor.
+> **D.** StandardController không có phương thức `getRecords()`, truyền một danh sách bản ghi vào constructor của nó là lỗi ngay.
 
-**💡 Từ khóa ghi nhớ:** `Nhớ `getRecords()` cho `StandardSetController` và `getRecord()` cho `StandardController`. `StandardSetController` chấp nhận `List<SObject>` hoặc `QueryLocator`.`
+**💡 Từ khóa ghi nhớ:** `getRecords() (số nhiều) = StandardSetController. Chấp nhận List sObject hoặc QueryLocator.`
 
 ---
 
@@ -452,14 +444,14 @@ Ba câu lệnh nào có thể được sử dụng để tạo biến `controlle
 
 **🔵 Given: Map<ID, Account> accountMap = new Map<ID, Account> ([SELECT Id, Name FROM Account]); What are three valid Apex loop structures for iterating through items in the collection? (Choose three.)**
 
-- **A.** for (ID accountID : accountMap.keySet()) { } ❌
+- **A.** for (ID accountID : accountMap.keySet()) { } ✅
 - **B.** for (Account accountRecord : accountMap.values()) { } ✅
 - **C.** for (Integer i = 0; i < accountMap.size(); i++) { } ✅
 - **D.** for (ID accountID : accountMap) { } ❌
 - **E.** for (Account accountRecord : accountMap.keySet()) { } ❌
 
 **📝 Dịch tiếng Việt:**
-> Cho khai báo: Map<ID, Account> accountMap = new Map<ID, Account> ([SELECT Id, Name FROM Account]); Ba cấu trúc vòng lặp Apex nào sau đây là hợp lệ để duyệt qua các phần tử trong collection này? (Chọn 3)
+> Cho khai báo Map<ID, Account> accountMap. Ba cấu trúc vòng lặp Apex nào sau đây là hợp lệ để duyệt qua collection này? (Chọn ba.)
 
 **💬 Giải thích gốc (English):**
 > Problem:
@@ -467,13 +459,13 @@ Ba câu lệnh nào có thể được sử dụng để tạo biến `controlle
 > E: Invalid loop variable type expected Id was Account.
 
 **✅ Tại sao đáp án đúng:**
-> A: keySet() trả về Set<ID>, nên duyệt bằng biến kiểu ID là chuẩn. B: values() trả về List<Account>, duyệt bằng biến kiểu Account là quá đẹp. C: Vòng lặp for truyền thống dùng chỉ số chạy từ 0 đến size() của map hoàn toàn hợp lệ về mặt cú pháp.
+> Duyệt qua Set các ID bằng `keySet()` (A). Duyệt qua danh sách các Account bằng `values()` (B). Duyệt bằng vòng lặp `for` cổ điển dùng index chạy từ 0 đến `size()` của Map (C). Cả 3 đều chạy mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **D.** Apex cấm duyệt trực tiếp trên đối tượng Map (accountMap) như một collection. Mày phải gọi keySet() hoặc values().
-> **E.** keySet() trả về Set<ID>, nhưng biến chạy lại khai báo kiểu Account thì compiler nó đập vào mặt ngay lập tức.
+> **D.** Apex cấm duyệt trực tiếp trên đối tượng Map (`for (ID accountID : accountMap)` là lỗi cú pháp).
+> **E.** `keySet()` trả về Set kiểu ID, nhưng biến chạy lại khai báo kiểu `Account` là râu ông nọ cắm cằm bà kia, compiler báo lỗi ngay.
 
-**💡 Từ khóa ghi nhớ:** `Duyệt Map: keySet() cho ID, values() cho sObject. Tuyệt đối không duyệt trực tiếp Map!`
+**💡 Từ khóa ghi nhớ:** `Duyệt Map: keySet() cho ID, values() cho sObject, cấm duyệt trực tiếp Map!`
 
 ---
 
@@ -487,7 +479,7 @@ Ba câu lệnh nào có thể được sử dụng để tạo biến `controlle
 - **D.** workflow, triggers, process flows, commit ❌
 
 **📝 Dịch tiếng Việt:**
-> Thứ tự các thao tác khi một record được lưu trong Salesforce là gì?
+> Thứ tự thực thi (Order of Operations) khi một bản ghi được lưu (save) trong Salesforce là gì?
 
 **💬 Giải thích gốc (English):**
 > When a record is saved in Salesforce, the following order of operations occurs:
@@ -506,14 +498,14 @@ Ba câu lệnh nào có thể được sử dụng để tạo biến `controlle
 > 13. Post-Commit Logic: Any logic that needs to be executed after the record is saved and committed to the database is processed. This includes sending emails, making additional API calls, or performing other actions.
 
 **✅ Tại sao đáp án đúng:**
-> Khi một record được lưu, Salesforce tuân theo một thứ tự thực thi cụ thể. Triggers (cả before và after) chạy trước tiên để xử lý logic cấp thấp. Sau đó, các Workflow Rules được thực thi, tiếp theo là Process Builders hoặc Flows (được gọi chung là 'process flows' trong các tùy chọn). Cuối cùng, các thay đổi được commit vào database.
+> Quy trình chuẩn chỉnh của Salesforce khi lưu bản ghi: Các Triggers (before/after) sẽ nổ súng trước để xử lý logic, sau đó đến lượt Workflow Rules quét qua, tiếp theo là Process Flows (Flow/Process Builder) chạy các tự động hóa, và cuối cùng mới commit ghi dữ liệu vào database.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Workflow Rules và Process Flows luôn chạy SAU Triggers trong thứ tự thực thi khi một record được lưu.
-> **B.** Process Flows và Workflow Rules luôn chạy SAU Triggers trong thứ tự thực thi khi một record được lưu.
-> **D.** Workflow Rules luôn chạy SAU Triggers trong thứ tự thực thi khi một record được lưu.
+> **A.** Workflow Rules không thể chạy trước Triggers được, thế là đi ngược quy trình.
+> **B.** Process flows và Workflow Rules xếp hàng chạy trước Triggers là sai bét quy chuẩn.
+> **D.** Workflow Rules chạy trước Triggers là hoàn toàn không chính xác.
 
-**💡 Từ khóa ghi nhớ:** `Thứ tự thực thi cơ bản: Triggers -> Workflow Rules -> Process Flows (Flow/Process Builder) -> Commit.`
+**💡 Từ khóa ghi nhớ:** `Trật tự thực thi cốt lõi: Triggers -> Workflow Rules -> Process Flows -> Commit.`
 
 ---
 
@@ -531,13 +523,13 @@ Ba câu lệnh nào có thể được sử dụng để tạo biến `controlle
 > Ba tùy chọn nào sau đây có thể được thực hiện bằng formula fields? (Chọn ba.)
 
 **✅ Tại sao đáp án đúng:**
-> Formula fields rất linh hoạt, cho phép tạo các liên kết động đến record (sử dụng hàm HYPERLINK), thực hiện các phép so sánh ngày giờ sử dụng hàm NOW() để kiểm tra thời gian đã qua, và hiển thị nội dung có điều kiện như văn bản hoặc hình ảnh (kết hợp hàm IF và IMAGE).
+> Formula fields hỗ trợ hàm `HYPERLINK` để tạo link động đến bản ghi (A), hàm `NOW` để so sánh và kiểm tra thời gian đã qua (C), và hàm `IF` kết hợp `IMAGE` để hiển thị hình ảnh động theo điều kiện (E).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Hàm PRIORVALUE() được sử dụng trong validation rules, Workflow Rules, Process Builder hoặc Flow để so sánh giá trị hiện tại với giá trị trước đó, không phải để hiển thị giá trị trước đó trực tiếp trong formula field.
-> **D.** Formula fields trong Salesforce không hỗ trợ hàm VLOOKUP() như trong Excel. Để truy xuất giá trị từ các object liên quan, bạn sử dụng dot notation (ví dụ: `RelatedObject__r.FieldName__c`).
+> **B.** Hàm `PRIORVALUE` chỉ dùng được trong validation rules hoặc workflow/flow, cấm dùng trong formula fields.
+> **D.** Formula field trong Salesforce không hỗ trợ hàm `VLOOKUP` để tìm kiếm dữ liệu chéo giữa các object không liên quan trực tiếp.
 
-**💡 Từ khóa ghi nhớ:** `Formula fields: HYPERLINK, NOW, IF/IMAGE. Không PRIORVALUE (chỉ validation/workflow/flow), không VLOOKUP (dùng dot notation).`
+**💡 Từ khóa ghi nhớ:** `Formula field ngon nghẻ: HYPERLINK, NOW, IF. Không chơi với PRIORVALUE và VLOOKUP!`
 
 ---
 
@@ -555,16 +547,16 @@ What are two ways the developer can update the method to prevent a SOQL injectio
 - **D.** Use variable binding and replace the dynamic query with a static SOQL. ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai cách cập nhật phương thức để ngăn chặn cuộc tấn công SOQL Injection? (Chọn 2)
+> Để ngăn chặn tấn công SOQL Injection cho phương thức query động `Database.query('... WHERE Lastname like %'+lastName+'%')`, hai cách nào sau đây là tối ưu nhất? (Chọn hai)
 
 **✅ Tại sao đáp án đúng:**
-> A: Variable Binding (:var) trong Static SOQL là cách an toàn nhất. B: escapeSingleQuotes() giúp vô hiệu hóa các ký tự điều khiển trong Dynamic SOQL.
+> Sử dụng `escapeSingleQuotes()` (B) giúp vô hiệu hóa mọi ký tự nháy đơn nguy hiểm trong tham số truyền vào. Sử dụng variable binding (D) chuyển query động thành static SOQL giúp Salesforce tự động dọn dẹp và bảo vệ truy vấn an toàn tuyệt đối.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Dùng regex tự viết rất dễ sai sót và không bao quát được mọi kiểu tấn công như hàm chuẩn của Salesforce.
-> **D.** @ReadOnly và with sharing liên quan đến hiệu suất và quyền truy cập bản ghi, không chống được lỗi bảo mật Injection.
+> **A.** Quyền chia sẻ class `with sharing` hay `@ReadOnly` chỉ giới hạn truy cập dữ liệu và tăng hiệu suất, không có tính năng chống SOQL Injection.
+> **C.** Tự viết Regex để lọc ký tự đặc biệt vừa cồng kềnh vừa dễ sót lỗ hổng bảo mật, không an toàn bằng hàm chuẩn của Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Chống SOQL Injection -> Static SOQL / escapeSingleQuotes.`
+**💡 Từ khóa ghi nhớ:** `Chống SOQL Injection: Dùng escapeSingleQuotes hoặc Variable Binding (:var).`
 
 ---
 
@@ -583,26 +575,21 @@ What is the result of the debug statement?**
 - **D.** 2, 200 ❌
 
 **📝 Dịch tiếng Việt:**
-> Một lập trình viên viết đoạn mã sau:
-List<Account> acc = [Select Id From Account Limit 10];
-Delete acc;
-Database.emptyRecyclebin(acc);
-System.Debug(Limits.getDMLStatements() +', ' + Limits.getLimitDMLStatements());
-Kết quả hiển thị trong debug log là gì?
+> Một developer chạy đoạn code xóa và dọn thùng rác Account, sau đó in debug statements hiển thị số lượng DML đã dùng và giới hạn DML. Kết quả in ra là gì?
 
 **💬 Giải thích gốc (English):**
 > getDMLStatements() Returns the number of DML statements (such as insert, update or the database.EmptyRecycleBin method) that have been called.
 > getLimitDMLStatements() Returns the total number of DML statements or the database.EmptyRecycleBin methods that can be called.
 
 **✅ Tại sao đáp án đúng:**
-> Cả hai lệnh 'Delete' và 'Database.emptyRecyclebin()' đều được tính là 1 câu lệnh DML riêng biệt. Do đó Limits.getDMLStatements() trả về 2. Giới hạn tổng số lệnh DML trong 1 transaction đồng bộ là 150.
+> Cả hai lệnh `Delete` và `Database.emptyRecyclebin()` đều tiêu tốn 1 câu lệnh DML riêng biệt, tổng cộng là 2 DML. Giới hạn số câu lệnh DML tối đa cho một transaction đồng bộ trong Salesforce là 150. Kết quả in ra là `2, 150`.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai số lượng lệnh DML đã chạy và sai giới hạn tối đa.
-> **B.** Sai số lượng lệnh DML đã chạy (lệnh emptyRecyclebin cũng bị tính là DML).
-> **D.** Sai giới hạn tối đa (150 chứ không phải 200).
+> **A.** Tính sai số câu lệnh DML và sai giới hạn tối đa.
+> **B.** Số câu lệnh DML bị tính thiếu (Database.emptyRecyclebin vẫn ngốn 1 DML statement).
+> **D.** Giới hạn DML tối đa của transaction đồng bộ là 150 chứ không phải 200.
 
-**💡 Từ khóa ghi nhớ:** `DML Limit = 150. Cả 'Delete' và 'emptyRecyclebin' đều ngốn 1 DML statement.`
+**💡 Từ khóa ghi nhớ:** `DML Limit = 150. Xóa (Delete) và Dọn rác (emptyRecyclebin) ngốn tổng 2 DML.`
 
 ---
 
@@ -616,20 +603,20 @@ Kết quả hiển thị trong debug log là gì?
 - **D.** Build an Opportunity trigger that adds an OpportunityLineItem record. ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên nên thực hiện cách nào để tự động thêm một 'Maintenance Plan' vào mỗi Opportunity có chứa 'Annual Subscription' khi opportunity đó được đóng?
+> Lập trình viên nên dùng cách nào để tự động thêm một 'Maintenance Plan' (Sản phẩm) vào mỗi Opportunity có chứa 'Annual Subscription' khi Opportunity đó được đóng?
 
 **💬 Giải thích gốc (English):**
 > Write an Apex trigger on the Opportunity object that fires when an Opportunity is closed.
 
 **✅ Tại sao đáp án đúng:**
-> OpportunityLineItem là sản phẩm trong Opportunity. Để thêm một sản phẩm mới tự động khi Opportunity đóng (sự kiện trên Opportunity), mày phải viết trigger trên Opportunity để chèn bản ghi OpportunityLineItem (D).
+> Sự kiện kích hoạt khi Opportunity bị đóng, do đó trigger phải nằm trên Opportunity. Vì sản phẩm của Opportunity được đại diện bởi object OpportunityLineItem, trigger này sẽ chèn một bản ghi OpportunityLineItem mới (D).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Trigger trên OpportunityLineItem không kích hoạt khi Opportunity chính bị đóng.
-> **B.** Tương tự A, trigger ở con không dùng để lắng nghe sự kiện thay đổi trạng thái ở cha.
-> **C.** PriceBookEntry định nghĩa giá sản phẩm trong bảng giá, chứ không phải bản ghi sản phẩm của Opportunity.
+> **A.** Trigger trên con (OpportunityLineItem) không thể tự bắt được sự kiện đóng ở cha (Opportunity) một cách hợp lý.
+> **B.** Viết trigger trên con để chèn chính nó khi cha thay đổi trạng thái là đi sai luồng thiết kế.
+> **C.** PriceBookEntry chỉ định nghĩa đơn giá sản phẩm trong bảng giá, không phải sản phẩm được thêm vào Opportunity cụ thể.
 
-**💡 Từ khóa ghi nhớ:** `Sự kiện xảy ra ở đâu -> Viết Trigger ở đó. Đóng Opportunity -> Trigger trên Opportunity.`
+**💡 Từ khóa ghi nhớ:** `Sự kiện xảy ra ở đâu -> Trigger ở đó. Đóng Opportunity -> Trigger trên Opportunity chèn OpportunityLineItem.`
 
 ---
 
@@ -643,20 +630,20 @@ Kết quả hiển thị trong debug log là gì?
 - **D.** Changing a user's default division when the transfer division option is checked ❌
 
 **📝 Dịch tiếng Việt:**
-> Hành động nào sau đây có thể khiến các trigger được kích hoạt?
+> Hành động nào sau đây có thể khiến cho các trigger trong hệ thống bị kích hoạt?
 
 **💬 Giải thích gốc (English):**
 > Record Update: When an existing record is updated, triggers associated with the object can fire. This includes both before and after update triggers.
 
 **✅ Tại sao đáp án đúng:**
-> FeedItem là một sObject (Chatter post). Khi cập nhật bài đăng, trigger trên FeedItem sẽ nổ như bao object khác.
+> FeedItem là một sObject đại diện cho bài viết Chatter. Khi có bất kỳ cập nhật nào trên bài viết (Feed Items), trigger trên FeedItem sẽ được kích hoạt hoạt động bình thường.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thay đổi giá trị trong Picklist setup không làm nổ trigger của các bản ghi đang sử dụng giá trị đó.
-> **B.** Cascading delete (ví dụ xóa Parent làm bay màu Child) thường không kích hoạt trigger của bản ghi con.
-> **D.** Thay đổi division của user là thao tác quản trị tài khoản, không kích hoạt trigger dữ liệu thông thường.
+> **A.** Đổi tên hoặc thay thế một giá trị picklist trong Setup chỉ là thao tác cấu hình, không kích hoạt trigger của bản ghi.
+> **C.** Xóa bắc cầu (Cascading delete - ví dụ cha bị xóa kéo theo con bị xóa) mặc định không làm nổ trigger trên bản ghi con.
+> **D.** Thay đổi Division mặc định của user là hành động quản trị hệ thống, không kích hoạt trigger DML dữ liệu.
 
-**💡 Từ khóa ghi nhớ:** `Trigger: Cứ đụng đến thao tác dữ liệu (Insert/Update/Delete) trên sObject là trigger nổ.`
+**💡 Từ khóa ghi nhớ:** `Cứ có thao tác dữ liệu (Insert/Update/Delete) trên sObject là Trigger nổ. FeedItem cũng là sObject!`
 
 ---
 
@@ -684,7 +671,7 @@ Which two actions should the developer take to fix the code segment shown above?
 - **D.** Query for existing opportunities outside the for loop. ✅
 
 **📝 Dịch tiếng Việt:**
-> Sửa trigger Account để load được 179 bản ghi qua Data Loader mà không bị Exception?
+> Một trigger tự động tạo Opportunity cho Account có doanh thu lớn hơn 1 triệu USD bị lỗi System.Exception khi admin load 179 Account bằng Data Loader. Lập trình viên cần làm gì để sửa lỗi này? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > The two actions the developer should take to fix the code segment are:
@@ -692,13 +679,13 @@ Which two actions should the developer take to fix the code segment shown above?
 > 2. Query for existing opportunities outside of the for loop.
 
 **✅ Tại sao đáp án đúng:**
-> 179 > 100 (Limit SOQL), nên phải đưa Query (A) và DML (D) ra ngoài vòng lặp (Bulkification).
+> 179 bản ghi vượt quá giới hạn 100 SOQL query trong một transaction. Cần phải đưa câu query SOQL ra ngoài vòng lặp (D) và chuyển câu lệnh chèn DML `insert` ra ngoài vòng lặp `for` (C) để gom dữ liệu xử lý hàng loạt (Bulkification).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Đây là lỗi logic về Governor Limit, không phải thiếu field.
-> **C.** Database.query vẫn tốn 1 query, không giải quyết được việc gọi lặp lại.
+> **A.** Lỗi ở đây là đụng trần Governor Limit do viết code không tối ưu, không phải do thiếu trường bắt buộc của Opportunity.
+> **B.** Sử dụng `Database.query` động vẫn tốn số lượng SOQL query y hệt, không giải quyết được gốc rễ vấn đề.
 
-**💡 Từ khóa ghi nhớ:** `Bulkification: No Query/DML in For loop. Nhớ con số 179 > 100 (Limit SOQL).`
+**💡 Từ khóa ghi nhớ:** `Bulkification: Tuyệt đối không để SOQL query hoặc câu lệnh DML (insert, update...) bên trong vòng lặp FOR!`
 
 ---
 
@@ -712,21 +699,21 @@ Which two actions should the developer take to fix the code segment shown above?
 - **D.** Use merge field syntax to retrieve the Supplier__c records related to the Buyer__c record through the Region__c. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một org có data model gồm object Buyer__c có quan hệ lookup với Region__c, và object Supplier__c cũng có quan hệ lookup với Region__c. Làm thế nào để hiển thị dữ liệu từ các bản ghi Supplier__c liên quan trên một trang Visualforce sử dụng standard controller của Buyer__c?
+> Object Buyer__c có lookup với Region__c, Supplier__c cũng có lookup với Region__c. Làm thế nào để hiển thị dữ liệu từ các bản ghi Supplier__c liên quan trên trang Visualforce có standard controller của Buyer__c?
 
 **💬 Giải thích gốc (English):**
 > 1. Create a Custom Controller Extension: Create a custom Apex controller extension for the Visualforce page. The controller extension allows you to add custom logic to the standard controller's functionality.
 > 2. Query Related Supplier__c Records: In the custom controller extension, use a SOQL query to retrieve the Supplier__c records related to the Buyer__c record being displayed on the Visualforce page. This can be achieved by using the Buyer__c object's lookup relationship field (e.g., Region__c) to traverse to the related Supplier__c records.
 
 **✅ Tại sao đáp án đúng:**
-> Vì Buyer__c và Supplier__c không có quan hệ trực tiếp mà chỉ 'bắc cầu' qua Region__c, standard controller của Buyer không thể tự lấy data của Supplier. Lập trình viên phải dùng Controller Extension viết SOQL để query danh sách Supplier liên quan theo Region (B).
+> Buyer__c và Supplier__c không có quan hệ trực tiếp mà chỉ kết nối gián tiếp qua Region__c. Standard controller của Buyer không thể tự đi vòng để lấy dữ liệu. Lập trình viên bắt buộc phải dùng Controller Extension viết SOQL truy vấn danh sách Supplier liên quan dựa trên Region ID (B).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Roll-up summary chỉ dùng cho mối quan hệ Master-Detail, không chơi với quan hệ Lookup.
-> **C.** Visualforce không cho phép khai báo hai standard controller song song trên cùng một trang.
-> **D.** Merge field syntax chỉ đi lên từ con đến cha (quan hệ trực tiếp), không đi vòng qua Region rồi xuống Supplier được.
+> **A.** Roll-up summary chỉ hoạt động trên quan hệ Master-Detail, quan hệ Lookup ở đây là vô dụng.
+> **C.** Salesforce cấm khai báo hai Standard Controller đồng thời trên cùng một trang Visualforce.
+> **D.** Merge field syntax chỉ có thể truy xuất dữ liệu từ con lên cha trực tiếp, không thể đi vòng từ Buyer lên Region rồi vòng xuống Supplier.
 
-**💡 Từ khóa ghi nhớ:** `Quan hệ bắc cầu / Không trực tiếp -> Phải dùng Controller Extension viết SOQL query.`
+**💡 Từ khóa ghi nhớ:** `Không có quan hệ trực tiếp (bắc cầu qua trung gian) -> Bắt buộc dùng Controller Extension viết SOQL query.`
 
 ---
 
@@ -741,16 +728,16 @@ Which two actions should the developer take to fix the code segment shown above?
 - **E.** Use a custom controller. ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên được yêu cầu tạo một trang Visualforce tùy chỉnh để dùng làm dashboard component. Ba lựa chọn controller nào sau đây là hợp lệ cho trang này? (Chọn 3)
+> Một developer được yêu cầu tạo một trang Visualforce tùy chỉnh để dùng làm dashboard component. Ba tùy chọn controller nào sau đây là hợp lệ cho trang này? (Chọn ba.)
 
 **✅ Tại sao đáp án đúng:**
-> Để trang Visualforce dùng được làm dashboard component, nó KHÔNG ĐƯỢC PHÉP dùng Standard Controller đơn lẻ (vì dashboard cần hiển thị dữ liệu tổng hợp từ nhiều nguồn). Các tùy chọn hợp lệ là: C (Custom với Extension), D (Không dùng controller), E (Custom Controller).
+> Trang Visualforce dùng làm dashboard component không được phép dùng Standard Controller độc lập vì dashboard cần hiển thị dữ liệu tổng hợp đa dạng. Các tùy chọn hợp lệ là dùng Custom Controller kết hợp Extensions (C), không khai báo controller nào (D), hoặc dùng Custom Controller đơn lẻ (E).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng Standard Controller thuần túy sẽ khóa trang vào một bản ghi cụ thể, cấm dùng làm Dashboard.
-> **B.** Tương tự A, Standard Controller có thêm Extension vẫn bị giới hạn bởi record context của Standard Controller.
+> **A.** Dùng Standard Controller thuần túy sẽ trói buộc trang vào ngữ cảnh của một bản ghi đơn lẻ, không thể làm dashboard component.
+> **B.** Dùng Standard Controller kèm Extension vẫn bị giới hạn bởi record context, không dùng làm dashboard được.
 
-**💡 Từ khóa ghi nhớ:** `Visualforce Dashboard Component = KHÔNG dùng Standard Controller.`
+**💡 Từ khóa ghi nhớ:** `Làm Dashboard Component: Tuyệt đối KHÔNG dùng Standard Controller!`
 
 ---
 
@@ -764,17 +751,17 @@ Which two actions should the developer take to fix the code segment shown above?
 - **D.** Formula field ❌
 
 **📝 Dịch tiếng Việt:**
-> Object Job__c là Master, Job_Application__c là Detail. Job_Application__c cũng có quan hệ Master-Detail với Contact. Trên Job__c có trường multi-select picklist Preferred_Locations__c. Recruiters muốn xem Contact Mailing State có khớp với Preferred_Locations__c trên Job_Application__c hay không và phải đồng bộ tự động khi một trong hai thay đổi. Công cụ khai báo nào là tối ưu nhất?
+> Quy trình tuyển dụng yêu cầu xem bang Mailing State của Contact có khớp với Preferred_Locations__c trên Job__c hay không và giữ đồng bộ tự động khi một trong hai thay đổi. Công cụ khai báo (declarative) nào được khuyến nghị sử dụng?
 
 **✅ Tại sao đáp án đúng:**
-> Yêu cầu đòi hỏi theo dõi thay đổi ở cả hai đầu (Contact hoặc Job) và cập nhật bản ghi trung gian Job_Application__c. Record-triggered flow (C) là công cụ low-code mạnh mẽ nhất hiện nay để xử lý logic đồng bộ phức tạp này.
+> Để theo dõi thay đổi ở cả hai đối tượng đầu vào (Contact hoặc Job) và cập nhật đồng bộ bản ghi trung gian Job_Application__c, Record-triggered flow (C) là công cụ low-code mạnh mẽ, trực quan và tối ưu nhất của Salesforce hiện nay.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Apex Trigger giải quyết tốt nhưng tốn công viết code và deploy, không phải công cụ khai báo (declarative) được ưu tiên.
-> **B.** Process Builder đã bị Salesforce khai tử (deprecated) và hiệu năng kém hơn nhiều so với Flow.
-> **D.** Formula field không thể tự động so sánh giá trị Mailing State với một trường Multi-select Picklist và giữ đồng bộ hai chiều phức tạp.
+> **A.** Apex Trigger viết bằng code phức tạp, khó bảo trì hơn và không được ưu tiên khi có thể giải quyết bằng công cụ declarative (low-code).
+> **B.** Process Builder là công nghệ cũ đã bị khai tử (deprecated), hiệu năng và tính năng kém xa so với Flow.
+> **D.** Formula field chỉ hiển thị dữ liệu một chiều từ cha lên con, không thể tự động đồng bộ hai chiều phức tạp giữa các object.
 
-**💡 Từ khóa ghi nhớ:** `Đồng bộ phức tạp + Low-code = Record-triggered flow.`
+**💡 Từ khóa ghi nhớ:** `Đồng bộ dữ liệu đa chiều + Low-code chuẩn chỉnh 2026 -> Chọn ngay Record-triggered flow!`
 
 ---
 
@@ -792,21 +779,17 @@ Which invocation of a class method will obey the organization-wide defaults and 
 - **D.** A user on an external system that has an API call into Salesforce that invokes a method in this class ❌
 
 **📝 Dịch tiếng Việt:**
-> Một lập trình viên khai báo một class như sau:
-public class wysiwyg {
-//properties and methods including DML
-}
-Cách gọi phương thức nào của class này sẽ tuân thủ OWD và sharing settings của user đang chạy trong Salesforce org?
+> Một class khai báo đơn giản `public class wysiwyg` chứa các phương thức DML. Cách gọi phương thức nào của class này sẽ tuân thủ OWD và sharing settings của user đang chạy?
 
 **✅ Tại sao đáp án đúng:**
-> Vì class không khai báo từ khóa sharing, mặc định nó sẽ chạy ở 'system mode' (bỏ qua sharing). Tuy nhiên, khi gọi code từ Anonymous Block (B), Salesforce luôn ép buộc tuân thủ quyền hạn và sharing của user đang đăng nhập.
+> Mặc định class không khai báo từ khóa sharing sẽ chạy ở chế độ hệ thống (system mode - bỏ qua sharing). Tuy nhiên, khi gọi code từ cửa sổ Anonymous Block (B) trong Developer Console, Salesforce luôn ép buộc tuân thủ tuyệt đối phân quyền và sharing settings của user đang thao tác.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Trigger luôn chạy ở system mode, nên gọi class helper cũng sẽ bỏ qua sharing rules.
-> **C.** Visualforce controller chạy ở system mode mặc định, trừ khi class controller khai báo 'with sharing'.
-> **D.** API call từ hệ thống ngoài vào Salesforce chạy với ngữ cảnh tích hợp, mặc định cũng bỏ qua sharing nếu class không khai báo rõ ràng.
+> **A.** Trigger luôn chạy ở chế độ hệ thống (system mode), nên gọi helper class này cũng sẽ bỏ qua sharing rules của user.
+> **C.** Visualforce controller chạy ở system mode mặc định, bỏ qua sharing rules trừ khi class được khai báo rõ ràng là 'with sharing'.
+> **D.** API call từ hệ thống bên ngoài chạy dưới ngữ cảnh tài khoản tích hợp, cũng bỏ qua sharing rules nếu class không chỉ định.
 
-**💡 Từ khóa ghi nhớ:** `Execute Anonymous = Luôn tuân thủ quyền hạn của User đang đăng nhập.`
+**💡 Từ khóa ghi nhớ:** `Execute Anonymous = Luôn tuân thủ quyền hạn và sharing rules của user đang chạy.`
 
 ---
 
@@ -820,20 +803,20 @@ Cách gọi phương thức nào của class này sẽ tuân thủ OWD và shari
 - **D.** Apex Trigger ❌
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers sử dụng một ứng dụng quản lý đơn hàng đơn giản. Trên OpportunityLineItem (sản phẩm), tổng tiền được tính bằng cách nhân đơn giá với số lượng. Có quan hệ Master-Detail giữa Opportunity (Order) và OpportunityLineItem. Cách tốt nhất để tính tổng tiền của tất cả các dòng sản phẩm lên Opportunity là gì?
+> Có mối quan hệ Master-Detail giữa Order (Master) và Order Line (Detail). Cách tốt nhất để tính tổng giá trị của tất cả các dòng Order Lines lên bản ghi Order cha là gì?
 
 **💬 Giải thích gốc (English):**
 > Roll-Up Summary Fields are a powerful feature in Salesforce that allow you to calculate and display aggregate values (such as sum, count, max, min, etc.) from child records on a parent record. In this case, you can create a Roll-Up Summary Field on the Order object to calculate the total order amount by summing up the order line totals from all related Order Line records.
 
 **✅ Tại sao đáp án đúng:**
-> Vì mối quan hệ là Master-Detail, sử dụng Roll-Up Summary field (B) là giải pháp 'chân ái' nhất: không cần viết code, cực kỳ tối ưu, tự động cập nhật real-time và đúng chuẩn Salesforce Best Practice.
+> Vì mối quan hệ ở đây là Master-Detail, sử dụng Roll-Up Summary field (B) là giải pháp hoàn hảo nhất: không tốn một dòng code, tự động tính toán chính xác real-time và đúng chuẩn Salesforce Best Practice.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Hệ thống đã có sẵn tính năng Roll-Up Summary field rồi, không cần cài thêm app ngoài làm gì cho mệt.
-> **C.** Process Builder không hỗ trợ tính toán tổng hợp (SUM, COUNT) trên danh sách con một cách trực tiếp.
-> **D.** Apex Trigger hoạt động tốt nhưng viết code cho một tính năng đã có sẵn no-code là vi phạm nguyên tắc tối ưu.
+> **A.** Hệ thống đã hỗ trợ sẵn Roll-Up Summary field, cài đặt thêm App ngoài (Declarative Roll-Up Summaries) là thừa thãi và cồng kềnh.
+> **C.** Process Builder không hỗ trợ tính toán tổng hợp (SUM, COUNT) danh sách con một cách trực tiếp.
+> **D.** Apex Trigger hoạt động tốt nhưng viết code cho một tính năng đã có sẵn no-code là vi phạm nguyên tắc tối ưu hóa hệ thống.
 
-**💡 Từ khóa ghi nhớ:** `Master-Detail + Sum/Count lên Cha = Roll-Up Summary Field.`
+**💡 Từ khóa ghi nhớ:** `Quan hệ Master-Detail + Tính tổng/Đếm lên Cha = dùng ngay Roll-Up Summary Field!`
 
 ---
 
@@ -847,20 +830,20 @@ Cách gọi phương thức nào của class này sẽ tuân thủ OWD và shari
 - **D.** An unhandled exception is thrown and the code terminates. ✅
 
 **📝 Dịch tiếng Việt:**
-> Điều gì xảy ra khi câu query trả về nhiều hơn một bản ghi và được gán cho một biến đơn?
+> Điều gì xảy ra khi câu query SOQL `Account myAccount = [SELECT Id, Name FROM Account];` trả về nhiều hơn một bản ghi Account trong hệ thống?
 
 **💬 Giải thích gốc (English):**
 > When the query returns multiple records (multiple Accounts in this case), Salesforce will raise a QueryException because you cannot assign a list of records to a single record variable.
 
 **✅ Tại sao đáp án đúng:**
-> Bắn lỗi `QueryException: List has more than 1 row for assignment`. Nếu không bắt lỗi bằng try/catch, code sẽ dừng đột ngột.
+> Apex sẽ ném ra một ngoại lệ không được xử lý (unhandled exception) là `QueryException: List has more than 1 row for assignment` và dừng ngay lập tức việc thực thi code (D).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Apex không tự động đổi kiểu dữ liệu từ sObject sang List cho mày.
-> **B.** Hệ thống không tự ý lấy bản ghi đầu tiên, trừ khi mày thêm `LIMIT 1` vào câu query.
-> **C.** Không chỉ ghi log, nó còn dừng thực thi và rollback transaction nếu là exception không được xử lý.
+> **A.** Apex cực kỳ nghiêm khắc, không bao giờ tự động ép kiểu từ sObject sang List cho bạn.
+> **B.** Hệ thống không tự ý lấy bản ghi đầu tiên, muốn lấy bản ghi đầu tiên bạn phải thêm từ khóa `LIMIT 1` vào câu truy vấn.
+> **C.** Nó không chỉ ghi lỗi vào debug log mà còn chặn đứng tiến trình và rollback toàn bộ transaction.
 
-**💡 Từ khóa ghi nhớ:** `An toàn: Luôn query vào List.`
+**💡 Từ khóa ghi nhớ:** `Query gán cho biến đơn mà trả về nhiều bản ghi -> Báo lỗi vỡ trận (QueryException) ngay lập tức!`
 
 ---
 
@@ -1003,7 +986,7 @@ which two SOQL Queries performed are safe from SOQL injection? (Choose two.)**
 > B: Sử dụng hàm escapeSingleQuotes() để vô hiệu hóa các ký tự điều khiển trong chuỗi. C: Sử dụng Static SOQL với Variable Binding (dấu hai chấm ':') là cách an toàn nhất vì Salesforce tự xử lý việc sanitize.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cộng chuỗi trực tiếp từ user input là con đường nhanh nhất để bị hack.
+> **B.** Cộng chuỗi trực tiếp từ user input là con đường nhanh nhất để bị hack.
 > **D.** Database.query() với chuỗi được cộng trực tiếp mà không qua sanitize cực kỳ nguy hiểm và dễ bị injection.
 
 **💡 Từ khóa ghi nhớ:** `Chống SOQL Injection: 1. Static SOQL (:bind), 2. escapeSingleQuotes().`
@@ -1030,6 +1013,10 @@ public abstract class ShippingCalculator{
 public override calculate() { /*implementation*/}
 }**
 
+- **A.** @TestSetup ✅
+- **B.** @isTest (SeeAllData=true) ❌
+- **C.** @isTest (SeeAllData=true) ❌
+- **D.** @PreTest ❌
 
 **📝 Dịch tiếng Việt:**
 > Lập trình viên cần tạo class ShippingCalculator không được phép khởi tạo trực tiếp (cannot be instantiated) nhưng phải chứa một phương thức calculate có sẵn mã xử lý mặc định để các class con có thể ghi đè (override). Khai báo nào sau đây là đúng?
@@ -1041,7 +1028,7 @@ public override calculate() { /*implementation*/}
 > Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).
 
 **❌ Tại sao đáp án sai:**
-> **A.** calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).
+> **B.** calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).
 > **C.** calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.
 > **D.** Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu.
 
@@ -1107,7 +1094,7 @@ What should a developer consider for an environment that has over 10,000 Case re
 
 **❌ Tại sao đáp án sai:**
 > **B.** Process Builder không hỗ trợ gửi Outbound Message trực tiếp.
-> **C.** Strategy Builder dùng để đề xuất ưu đãi/hành động trong Next Best Action, không hỗ trợ gửi Outbound Message.
+> **A.** Strategy Builder dùng để đề xuất ưu đãi/hành động trong Next Best Action, không hỗ trợ gửi Outbound Message.
 > **D.** Flow Builder muốn gửi Outbound Message phải gọi Apex hoặc dùng External Service (cần cấu hình thêm).
 
 **💡 Từ khóa ghi nhớ:** `Outbound Message = Workflow Rule. (Mẹo thi: Flow giờ là vua, nhưng câu hỏi về OM thì cứ nhớ Workflow).`
@@ -1134,7 +1121,7 @@ What should a developer consider for an environment that has over 10,000 Case re
 
 **❌ Tại sao đáp án sai:**
 > **A.** String.valueOf() chỉ ép kiểu, không có tác dụng khử khuẩn mã độc.
-> **B.** escapeSingleQuotes() dùng cho SOQL Injection (SQL), không phải XSS (HTML).
+> **C.** escapeSingleQuotes() dùng cho SOQL Injection (SQL), không phải XSS (HTML).
 > **D.** Lấy trực tiếp mà không xử lý là dâng "tận miệng" cho hacker hack XSS.
 
 **💡 Từ khóa ghi nhớ:** `XSS = Hacker nhồi script vào UI. Cách chống: .escapeHtml() hoặc dùng <apex:outputText> mặc định.`
@@ -1157,6 +1144,14 @@ D.
 @InvocableMethod(label='Additional Info')
 public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }**
 
+- **A.** @InvocableMethod(label='Additional Info')
+public ContactInfo getInfo(Id contactId) { /*implementation*/ } ❌
+- **B.** @InvocableMethod(label='Additional Info')
+public List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ } ❌
+- **C.** @InvocableMethod(label='Additional Info')
+public static ContactInfo getInfo(Id contactId) { /*implementation*/ } ❌
+- **D.** @InvocableMethod(label='Additional Info')
+public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ } ✅
 
 **📝 Dịch tiếng Việt:**
 > Một Screen Flow gọi một Apex Action để lấy thông tin chi tiết cho nhiều bản ghi Contact, kết quả lưu trong một custom class ContactInfo. Định nghĩa phương thức Apex nào sau đây là đúng tiêu chuẩn?
@@ -1199,14 +1194,14 @@ public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementa
 > }
 
 **✅ Tại sao đáp án đúng:**
-> Phương thức gắn @InvocableMethod bắt buộc phải là 'static' để Salesforce gọi được trực tiếp. Đồng thời, để hỗ trợ xử lý hàng loạt (bulkified), tham số đầu vào và kiểu trả về phải là List. Do đó, câu D là hoàn toàn chính xác.
+> D đúng vì: 1. Phương thức đính kèm `@InvocableMethod` phải là `static`. 2. Để hỗ trợ xử lý hàng loạt (bulkification), cả tham số đầu vào và giá trị trả về của phương thức `@InvocableMethod` phải ở dạng `List` (ví dụ: `List<Contact>` hoặc `List<Id>`).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thiếu từ khóa 'static' và tham số đầu vào không phải là List.
-> **B.** Thiếu từ khóa 'static' (bắt buộc phải có để Flow gọi).
-> **C.** Tham số đầu vào không ở dạng List, không hỗ trợ bulkification.
+> **A.** Thiếu từ khóa `static` (bắt buộc phải có để Flow gọi) và không sử dụng danh sách `List` cho input/output.
+> **B.** Thiếu từ khóa `static` (bắt buộc phải có) mặc dù đã sử dụng danh sách `List` cho input/output.
+> **C.** Đã sử dụng từ khóa `static` nhưng không sử dụng danh sách `List` cho input/output để hỗ trợ bulkification.
 
-**💡 Từ khóa ghi nhớ:** `@InvocableMethod: Luôn có STATIC, input và output luôn ở dạng LIST.`
+**💡 Từ khóa ghi nhớ:** `@InvocableMethod: Luôn đính kèm STATIC, input và output bắt buộc phải ở dạng LIST.`
 
 ---
 
@@ -1230,7 +1225,7 @@ public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementa
 
 **❌ Tại sao đáp án sai:**
 > **A.** Số lượng method trong class không phải là một Governor Limit chính yếu bị ảnh hưởng trực tiếp bởi multitenancy.
-> **B.** Org giới hạn tổng dung lượng code (6MB cho Apex), chứ không giới hạn cứng số lượng class theo kiểu transaction limit.
+> **D.** Org giới hạn tổng dung lượng code (6MB cho Apex), chứ không giới hạn cứng số lượng class theo kiểu transaction limit.
 > **C.** Vòng lặp không bị giới hạn số lần, mà bị giới hạn bởi thời gian CPU thực thi (CPU Time).
 
 **💡 Từ khóa ghi nhớ:** `Multitenancy = Governor Limits. Nhớ mốc 50,000 query rows.`
@@ -1256,7 +1251,7 @@ public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementa
 > LDS tự động xử lý Sharing và FLS cực kỳ an toàn.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Ngược lại, LDS rất tôn trọng FLS.
+> **A.** Ngược lại, LDS rất tôn trọng FLS.
 > **C.** with sharing dùng cho Apex, không liên quan LDS.
 > **D.** isAccessible() là kiểm tra thủ công trong Apex, LDS tự làm rồi.
 
@@ -1335,7 +1330,7 @@ public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementa
 
 **❌ Tại sao đáp án sai:**
 > **B.** Schema describe chỉ check quyền Object (CRUD), không check được quyền trên từng bản ghi (Sharing).
-> **C.** Without sharing là 'mở toang' hết, ai cũng thấy hết mọi thứ.
+> **A.** Without sharing là 'mở toang' hết, ai cũng thấy hết mọi thứ.
 > **D.** Filter theo Owner chỉ là một phần nhỏ của Sharing, không bao quát hết các luật Sharing phức tạp.
 
 **💡 Từ khóa ghi nhớ:** `Security: Always start with 'with sharing'.`
@@ -1446,7 +1441,7 @@ What should the developer do to ensure a successful deployment?**
 > Lỗi cực kỳ cơ bản của lính mới là Hardcode ID. RecordType ID ở Sandbox và Production thường khác nhau. Dùng Schema.Describe (ví dụ: SObjectType.Lead.getRecordTypeInfosByDeveloperName()) giúp lấy ID động dựa trên tên, đảm bảo chạy đúng ở mọi môi trường.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Admin validate không giải quyết được lỗi logic code.
+> **B.** Admin validate không giải quyết được lỗi logic code.
 > **C.** RecordType ID không phải là thứ có thể 'push' để giữ nguyên giá trị ID giữa các Org.
 > **D.** Dù có tạo tay trên Pro cũng không ai dám chắc ID nó sẽ giống hệt Sandbox.
 
@@ -1474,7 +1469,7 @@ What should the developer do to ensure a successful deployment?**
 
 **❌ Tại sao đáp án sai:**
 > **B.** Chỉ có quyền Read ở cha là không đủ để thực hiện lệnh Update trên bản ghi con.
-> **C.** Bản ghi Junction kiểu MD không có quyền Sharing độc lập để mày set riêng.
+> **A.** Bản ghi Junction kiểu MD không có quyền Sharing độc lập để mày set riêng.
 
 **💡 Từ khóa ghi nhớ:** `Junction Security: Sửa con = R/W cả 2 Cha.`
 
@@ -1610,7 +1605,7 @@ What should the developer do to ensure a successful deployment?**
 **❌ Tại sao đáp án sai:**
 > **A.** Private static thì trigger bên ngoài không 'với' tới được.
 > **C.** Biến trong trigger sẽ chết ngắc khi trigger chạy xong lần đó.
-> **D.** Thiếu static thì mỗi lần gọi class nó lại tạo ra instance mới, không giữ được state.
+> **B.** Thiếu static thì mỗi lần gọi class nó lại tạo ra instance mới, không giữ được state.
 
 **💡 Từ khóa ghi nhớ:** `Static = Sống trọn transaction.`
 
@@ -1786,20 +1781,20 @@ What should the developer do to ensure a successful deployment?**
 - **D.** Master-detail field from Engineering_Support__c to Opportunity ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers có quy trình cho phép người dùng yêu cầu hỗ trợ từ đội kỹ thuật qua object tùy chỉnh Engineering_Support__c. Một Opportunity có thể có nhiều bản ghi hỗ trợ liên quan, và thông tin tổng hợp (aggregate) của các bản ghi hỗ trợ này phải được hiển thị trên Opportunity. Developer nên làm gì?
+> Universal Containers có một quy trình hỗ trợ cho phép người dùng yêu cầu sự giúp đỡ từ đội kỹ thuật thông qua một custom object tên là Engineering_Support__c. Người dùng phải có khả năng liên kết nhiều bản ghi Engineering_Support__c với một bản ghi Opportunity duy nhất. Đồng thời, thông tin tổng hợp (aggregate information) của các bản ghi Engineering_Support__c phải được hiển thị trên Opportunity. Developer nên hiện thực hóa yêu cầu này như thế nào?
 
 **💬 Giải thích gốc (English):**
 > Implementing a Master-detail relationship from the Engineering_Support__c custom object to the Opportunity standard object ensures that the support records are tightly associated with specific Opportunities. This relationship allows for automatic aggregation of information and cascading behavior, which is essential for displaying aggregate data on the Opportunity record.
 
 **✅ Tại sao đáp án đúng:**
-> Để hiển thị thông tin tổng hợp (như Sum, Count, Min, Max) bằng công cụ Roll-up Summary field mà không cần code, mày bắt buộc phải thiết lập quan hệ Master-Detail. Trong đó, Engineering_Support__c là con (Detail) trỏ về Opportunity là cha (Master).
+> Để hiển thị thông tin tổng hợp (như Sum, Count, Min, Max) của các bản ghi con lên bản ghi cha mà không cần viết một dòng code nào, giải pháp tối ưu và duy nhất là dùng trường Roll-up Summary. Mà điều kiện tiên quyết để tạo được Roll-up Summary field trên Opportunity là Opportunity phải đóng vai trò là Master trong mối quan hệ Master-Detail. Do đó, ta phải tạo một trường Master-Detail trên đối tượng con Engineering_Support__c trỏ về đối tượng cha Opportunity (D).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Lookup trỏ từ cha sang con là sai hoàn toàn về logic quan hệ.
-> **C.** Master-detail trỏ từ cha sang con cũng sai, field quan hệ phải nằm ở bên 'Nhiều' (phía con).
-> **D.** Lookup field không hỗ trợ tính năng Roll-up Summary để lấy thông tin tổng hợp lên bản ghi cha.
+> **A.** Tạo trường Master-Detail từ Opportunity sang Engineering_Support__c sẽ biến Opportunity thành con và Engineering_Support__c thành cha. Lúc này, thông tin tổng hợp sẽ hiển thị ở con chứ cha chẳng được xơ múi gì, sai logic nghiêm trọng!
+> **B.** Mối quan hệ Lookup không hỗ trợ tính năng Roll-up Summary. Muốn tính tổng hợp qua Lookup là phải viết Apex Trigger cồng kềnh, mệt người.
+> **C.** Vừa sai chiều quan hệ (trỏ từ cha sang con), vừa dùng Lookup không hỗ trợ Roll-up Summary, cook gấp!
 
-**💡 Từ khóa ghi nhớ:** `Mẹo thi: Thấy chữ 'Aggregate information' + 'Related records' -> Nghĩ ngay đến Roll-up Summary -> Chọn Master-Detail.`
+**💡 Từ khóa ghi nhớ:** `Thấy 'aggregate information' (thông tin tổng hợp) trên Cha -> Cần dùng Roll-up Summary -> Auto chọn Master-Detail từ Con trỏ về Cha!`
 
 ---
 
@@ -1813,21 +1808,21 @@ What should the developer do to ensure a successful deployment?**
 - **D.** Create a formula field. ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi user sửa mã bưu điện (Postal Code) trên Account, một trường text tùy chỉnh tên 'Timezone' phải được update tự động dựa trên data từ custom object `PostalCodeToTimezone__c`. Cách nào là tối ưu nhất để làm vụ này?
+> Khi một người dùng chỉnh sửa trường Postal Code trên Account, một trường text tùy chỉnh tên 'Timezone' trên Account phải được cập nhật tự động dựa trên giá trị trong một custom object khác tên là PostalCodeToTimezone__c. Cách tối ưu nhất để hiện thực hóa tính năng này là gì?
 
 **💬 Giải thích gốc (English):**
 > The flow can then perform actions such as querying the PostalCodeToTimezone__c custom object, retrieving the relevant timezone value, and updating the ‘Timezone’ field on the Account.
 > Formula fields are used to calculate values based on other fields on the same object or related objects, but they cannot perform lookups to other custom objects.
 
 **✅ Tại sao đáp án đúng:**
-> C là chân ái vì Flow Builder xử lý ngon ơ các vụ: (1) Trigger khi field thay đổi, (2) Query data từ object khác (Get Records), (3) Update field — tất cả đều là low-code, đúng chuẩn 'optimal'.
+> Flow Builder (B) là 'ông trùm' tự động hóa low-code của Salesforce hiện tại! Khi Postal Code trên Account thay đổi, Record-Triggered Flow sẽ tự động kích hoạt, dùng phần tử Get Records để tra cứu (lookup) sang bảng độc lập PostalCodeToTimezone__c rồi lấy giá trị Timezone cập nhật lại cho Account. Vừa mượt mà, vừa an toàn lại không tốn một dòng code.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Account Assignment Rule chỉ dùng để chia lead/case hoặc gán owner cho Account dựa trên territory, không dùng để update field kiểu lookup data thế này.
-> **B.** Formula field chỉ chơi được 'Cross-object formula' hướng từ con lên cha (Lookup/Master-Detail), không thể đi query một object 'người dưng' như `PostalCodeToTimezone__c` được.
-> **D.** Approval Process dùng để duyệt đơn, duyệt lương... chứ ai rảnh đi duyệt cái Postal Code để update field.
+> **A.** Account Assignment Rule chỉ dùng để tự động gán chủ sở hữu (Owner) hoặc phân vùng Territory cho Account dựa trên các tiêu chí địa lý, hoàn toàn không có cửa đi tra cứu bảng khác để update text field.
+> **C.** Approval Process là quy trình phê duyệt (duyệt lương, duyệt nghỉ phép...), đem đi áp dụng cho một vụ tự động cập nhật ngầm thế này là cồng kềnh quá mức cần thiết.
+> **D.** Formula field (trường công thức) chỉ có thể tham chiếu trực tiếp đến các Object cha có mối quan hệ trực tiếp (Lookup/Master-Detail). Bảng PostalCodeToTimezone__c là một object độc lập, không có quan hệ trực tiếp nên Formula field hoàn toàn bất lực, cook!
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Cứ thấy update field mà cần 'tra cứu' (Lookup) sang object khác không có quan hệ trực tiếp thì gọi tên Flow ngay và luôn.`
+**💡 Từ khóa ghi nhớ:** `Cập nhật field cần tra cứu (Get Records) từ một Object độc lập không có quan hệ trực tiếp -> Flow Builder là chân ái!`
 
 ---
 
@@ -1841,19 +1836,20 @@ What should the developer do to ensure a successful deployment?**
 - **D.** Partner Developer Edition ❌
 
 **📝 Dịch tiếng Việt:**
-> Loại tổ chức (org) nào phù hợp nhất cho nhiều dev làm việc độc lập với cấu hình giống Production?
+> Một đội ngũ gồm nhiều lập trình viên làm việc trên các org cá nhân của riêng họ nhưng phải có cấu hình (metadata) giống hệt với production org. Loại org nào phù hợp nhất cho kịch bản này?
 
 **💬 Giải thích gốc (English):**
 > A Developer Sandbox is a copy of the production org with the same configuration and data. Each developer can have their own Developer Sandbox, which allows them to work independently without interfering with each other's work.
 
 **✅ Tại sao đáp án đúng:**
-> Developer Sandbox copy toàn bộ Metadata (cấu hình) từ Production, miễn phí (với hầu hết license) và khởi tạo cực nhanh, phù hợp cho cá nhân dev.
+> Developer Sandbox (A) sinh ra là để dành cho các cá nhân dev 'quậy phá'. Nó sao chép toàn bộ cấu hình (metadata) từ Production, hoàn toàn miễn phí, khởi tạo cực nhanh và cô lập hoàn toàn giúp dev tha hồ viết code, thử nghiệm mà không sợ đụng chạm hay ảnh hưởng đến tiến độ của các dev khác.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Developer Edition là org cá nhân trống rỗng, không tự động có cấu hình giống Production của khách hàng.
-> **C.** Full Sandbox cực kỳ đắt đỏ, dung lượng lớn và thời gian refresh rất lâu, không ai cấp Full Sandbox cho từng dev làm việc lẻ tẻ.
+> **B.** Developer Edition là một org cá nhân trống rỗng hoàn toàn độc lập, không được liên kết hay tự động sao chép cấu hình từ Production org của khách hàng. Dùng cái này là dev phải tự tay import metadata bằng cơm, siêu gà!
+> **C.** Full Sandbox copy toàn bộ dữ liệu thật lẫn cấu hình của Production. Nó cực kỳ đắt đỏ và thời gian refresh rất lâu (thường là 29 ngày). Không ai đi cấp Full Sandbox cho từng dev để code lẻ tẻ cả, quá lãng phí tài nguyên!
+> **D.** Partner Developer Edition dành cho các đối tác ISV để build package thương mại, tuy có giới hạn tài nguyên lớn hơn Developer Edition thông thường nhưng nó vẫn không tự động đồng bộ cấu hình từ Production org của khách hàng, cook!
 
-**💡 Từ khóa ghi nhớ:** `Sandbox: Developer (Metadata only), Full (All Data).`
+**💡 Từ khóa ghi nhớ:** `Org cá nhân cho Dev + Cấu hình giống Prod = Developer Sandbox. Chạy nhanh, miễn phí, an toàn!`
 
 ---
 
@@ -1867,19 +1863,19 @@ What should the developer do to ensure a successful deployment?**
 - **D.** Scheduled Flow ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn gửi email nhắc nhở tự động sau 6 giờ kể từ khi trường Stage__c trên Case chuyển sang 'Waiting on Customer'. Giải pháp nào vừa tối ưu, không code và đảm bảo an toàn xử lý hàng loạt (bulk safe)? (Chọn 2)
+> Universal Containers sử dụng Service Cloud với một custom field tên là Stage__c trên Case object. Ban quản lý muốn tự động gửi một email nhắc nhở sau 6 giờ kể từ khi trường Stage__c chuyển sang giá trị 'Waiting on Customer'. Salesforce Administrator muốn đảm bảo giải pháp này phải an toàn khi xử lý hàng loạt (bulk safe). Công cụ tự động hóa nào lập trình viên nên khuyến nghị? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > A Record-Triggered Flow can be used to detect when the Stage__c field is updated to ‘Waiting on Customer’. Then, a Scheduled Flow can be set to execute 6 hours later to send the follow-up email.
 
 **✅ Tại sao đáp án đúng:**
-> A: Record-Triggered Flow hỗ trợ tính năng Scheduled Paths, cho phép lên lịch chạy sau 6 giờ cực kỳ bulk-safe. D: Scheduled Flow cũng là công cụ chuyên dụng để quét định kỳ và gửi mail hàng loạt rất an toàn.
+> Record-Triggered Flow (A) hỗ trợ tính năng Scheduled Paths cực kỳ mạnh mẽ, cho phép lên lịch thực hiện hành động gửi email sau đúng 6 giờ kể từ khi bản ghi thỏa mãn điều kiện, cơ chế này cực kỳ tối ưu và an toàn khi xử lý hàng loạt (bulk safe). Đồng thời, Scheduled Flow (D) chạy theo lịch định kỳ cũng là một giải pháp bulk-safe cực tốt, nó có thể được lên lịch quét định kỳ hàng ngày để tìm các Case có trạng thái 'Waiting on Customer' quá 6 giờ và gửi email hàng loạt.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Entitlement Process dùng để quản lý SLA/Milestone của Case hỗ trợ gửi mail nhưng phức tạp và không chuyên dụng bằng Flow cho yêu cầu này.
-> **C.** Einstein Next Best Action dùng để hiển thị gợi ý cho nhân viên trên màn hình, không phải tự động gửi email ngầm.
+> **B.** Entitlement Process dùng để quản lý SLA và Milestone của Case. Dù nó có thể gửi mail nhưng cấu hình của nó rất phức tạp, nặng nề và không chuyên dụng cho một yêu cầu gửi mail nhắc nhở đơn giản thế này.
+> **C.** Einstein Next Best Action chỉ dùng để hiển thị các gợi ý/hành động tiếp theo cho nhân viên hỗ trợ xem trực tiếp trên màn hình, hoàn toàn không phải công cụ tự động gửi email chạy ngầm.
 
-**💡 Từ khóa ghi nhớ:** `Tự động hóa theo thời gian (Time-dependent) + Low-code = Scheduled Path trong Flow.`
+**💡 Từ khóa ghi nhớ:** `Tự động hóa theo thời gian (Time-dependent) + Không code + An toàn hàng loạt = Scheduled Path trong Flow hoặc Scheduled Flow!`
 
 ---
 
@@ -1893,20 +1889,20 @@ What should the developer do to ensure a successful deployment?**
 - **D.** The test method relies on existing data in the sandbox. ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên thấy một test method bị FAIL trong Sandbox. Nhưng khi copy toàn bộ code đó chạy thử ở Execute Anonymous trong Dev Console thì lại PASS không lỗi gì. Tại sao có sự kỳ lạ này?
+> Developer phát hiện một Apex test method bị FAIL trong Sandbox. Để tìm lỗi, anh ta copy toàn bộ code bên trong test method đó rồi chạy bằng công cụ Execute Anonymous trong Developer Console. Kỳ lạ thay, code chạy mượt mà, không hề xảy ra lỗi hay exception nào. Tại sao test method thì FAIL mà Execute Anonymous lại chạy thành công?
 
 **💬 Giải thích gốc (English):**
 > When running the same code in the Execute Anonymous tool in the Developer Console, it executes within the current user's context and can access the existing data, which might result in successful execution.
 
 **✅ Tại sao đáp án đúng:**
-> Khi chạy unit test, Salesforce mặc định cô lập dữ liệu (SeeAllData=false), không thấy được bản ghi thật. Còn Execute Anonymous thì chạy trên data thật của Org. Lỗi xảy ra vì code test phụ thuộc vào dữ liệu thật có sẵn trong Sandbox mà class test chưa tự tạo ra (D).
+> Khi chạy Unit Test, Salesforce áp dụng cơ chế cô lập dữ liệu cực kỳ nghiêm ngặt (mặc định SeeAllData=false). Class test sẽ không nhìn thấy bất kỳ bản ghi thật nào trong Sandbox mà bắt buộc phải tự tạo dữ liệu giả lập (test data). Trong khi đó, Execute Anonymous lại có quyền truy cập trực tiếp vào toàn bộ dữ liệu thật của Org. Sự khác biệt này chứng tỏ code test đã lười tạo dữ liệu giả lập mà lại đi phụ thuộc vào dữ liệu thật có sẵn trong Sandbox (D). Khi chạy test thật, hệ thống không tìm thấy dữ liệu nên bị FAIL!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Nếu có lỗi cú pháp (syntax error) thì cả Test Class và Execute Anonymous đều cấm biên dịch thành công.
-> **B.** Thiếu runAs chỉ làm sai ngữ cảnh phân quyền chứ không làm thay đổi sự khác biệt về cô lập dữ liệu giữa 2 môi trường.
-> **C.** Gọi phương thức @future trong test bắt buộc phải bọc trong Test.startTest() / stopTest(), chạy Execute Anonymous vẫn nổ lỗi nếu sai quy tắc.
+> **A.** If there's a syntax error, the compiler stops it at the door. Cả Test Class và Execute Anonymous đều không thể compile hay chạy được chứ đừng nói là pass.
+> **B.** System.runAs dùng để giả lập quyền hạn của một User cụ thể trong unit test, việc thiếu nó chỉ làm sai lệch logic phân quyền chứ không tạo ra sự khác biệt về khả năng truy cập dữ liệu giữa Test và Anonymous.
+> **C.** Gọi phương thức @future trong unit test chỉ cần bọc trong Test.startTest() và Test.stopTest(). Nếu viết sai quy tắc này thì chạy ở Execute Anonymous hay Test Class cũng đều oẳng như nhau.
 
-**💡 Từ khóa ghi nhớ:** `Test FAIL nhưng Execute Anonymous PASS -> Chắc chắn do thiếu dữ liệu giả lập (Test Data isolation).`
+**💡 Từ khóa ghi nhớ:** `Test FAIL nhưng Execute Anonymous PASS -> Chắc chắn do lười tạo dữ liệu test, code bị phụ thuộc vào dữ liệu thật trong Org (Data Isolation)!`
 
 ---
 
@@ -1920,21 +1916,21 @@ What should the developer do to ensure a successful deployment?**
 - **D.** @isTest(SeeAllData=true) ❌
 
 **📝 Dịch tiếng Việt:**
-> Dùng annotation nào để tạo dữ liệu dùng chung cho tất cả các test method trong class?
+> Developer đang viết test cho một class và cần insert các bản ghi để kiểm tra tính năng. Annotation nào nên được sử dụng để tạo dữ liệu dùng chung cho tất cả các test method trong class test đó?
 
 **💬 Giải thích gốc (English):**
 > @TestSetup annotation
 > Can create common test data once, which will be available for all test methods in the test class. This helps reduce duplicate code and ensures that the test data is consistent across all test methods.
 
 **✅ Tại sao đáp án đúng:**
-> @TestSetup giúp tạo dữ liệu một lần duy nhất cho cả class test, giúp tiết kiệm thời gian chạy đáng kể.
+> @TestSetup (C) is the gold standard annotation to create common test data. Nó sẽ chạy duy nhất một lần trước khi bất kỳ test method nào trong class được thực thi. Sau mỗi test method, trạng thái dữ liệu sẽ tự động rollback về ban đầu, giúp tiết kiệm thời gian chạy test cực kỳ nhiều so với việc tạo dữ liệu thủ công ở từng method.
 
 **❌ Tại sao đáp án sai:**
-> **B.** SeeAllData=true là 'tối kỵ' vì nó làm test bị phụ thuộc vào data thật của Org.
-> **C.** Giống B, cực kỳ không khuyến khích trừ trường hợp bất khả kháng.
-> **D.** @PreTest là annotation 'pha kè', Salesforce không có cái này.
+> **A.** @StartTest là cái tên tự chế, không hề tồn tại trong Salesforce Apex. Cú pháp chuẩn chỉ là Test.startTest() (phương thức chứ không phải annotation).
+> **B.** @PreTest cũng là một annotation 'pha kè', gà mờ mới chọn.
+> **D.** @isTest(SeeAllData=true) cho phép test class nhìn thấy dữ liệu thật của hệ thống. Đây là một 'bad practice' cực kỳ nguy hiểm, làm test class dễ bị tạch khi dữ liệu thật thay đổi, và nó cũng không phải là phương pháp tự tay tạo dữ liệu test mẫu.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Common test data -> @TestSetup. Chạy 1 lần, dùng cả đời (class).`
+**💡 Từ khóa ghi nhớ:** `Dữ liệu test dùng chung cho toàn bộ Class -> Khắc cốt ghi tâm `@TestSetup`!`
 
 ---
 
@@ -1951,20 +1947,20 @@ public void myMethod() { /* implementation */ }
 - **D.** Sharing rules will be enforced by the instantiating class. ❌
 
 **📝 Dịch tiếng Việt:**
-> Trong ví dụ trên, phương thức myMethod sẽ thực thi trong ngữ cảnh chia sẻ (sharing context) nào?
+> Trong ví dụ trên, phương thức myMethod sẽ thực thi trong ngữ cảnh chia sẻ (sharing context) nào khi nó được gọi?
 
 **💬 Giải thích gốc (English):**
 > Since the class myClass does not explicitly specify a sharing context (using with sharing or without sharing), it defaults to “without sharing”. This means that the method myMethod will execute without enforcing the sharing rules of the running user.
 
 **✅ Tại sao đáp án đúng:**
-> Nếu một class không khai báo rõ 'with sharing' hay 'without sharing', nó sẽ ở trạng thái mặc định: kế thừa ngữ cảnh từ class gọi nó (Calling context). Nếu thằng gọi có sharing, nó có; nếu không, nó không.
+> Ủa alo? Lại một pha ra đề hại não của Salesforce! Định nghĩa một class không có từ khóa 'with sharing' hay 'without sharing' thì về mặt kỹ thuật, nó sẽ kế thừa ngữ cảnh từ lớp gọi nó (calling context). Tuy nhiên, Salesforce lại thích chấm đáp án A (Sharing rules sẽ không được áp dụng cho running user) là ĐÚNG! Tại sao? Vì mặc định nếu class này là điểm xuất phát (entry point) chạy độc lập (như khi gọi từ trigger hoặc Anonymous Block) mà không qua class nào khác gọi, nó sẽ chạy ở System Mode (tức là không áp dụng Sharing Rules). Đi thi thì cứ nhắm mắt chọn A để có điểm tuyệt đối nhé các homie!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đây là hành vi của 'without sharing', không phải mặc định khi omit từ khóa.
-> **C.** Đây là hành vi của 'with sharing'.
-> **D.** Instantiating class chính là calling context trong nhiều trường hợp, nhưng thuật ngữ 'inherited from calling context' là chuẩn nhất của Salesforce.
+> **B.** Mặc dù về mặt lý thuyết Apex, omit từ khóa sẽ kế thừa ngữ cảnh của calling class, nhưng trong hệ thống đề thi PD1 câu này, Salesforce lại coi phát biểu kế thừa này không phải đáp án đúng chính thức, ra rìa!
+> **C.** Phát biểu này chỉ đúng khi class được khai báo tường minh bằng từ khóa 'with sharing'.
+> **D.** Quyền sharing không bị kiểm soát bởi class thực hiện new (instantiating class) nếu nó không trực tiếp gọi phương thức.
 
-**💡 Từ khóa ghi nhớ:** `No keyword = Inherited sharing. Như kiểu con nhà tông, không giống lông cũng giống cánh.`
+**💡 Từ khóa ghi nhớ:** `Đề thi hỏi Class mặc định không ghi từ khóa chạy ở chế độ nào -> Chọn ngay: 'Sharing rules will not be enforced' (Không áp dụng Sharing Rules)!`
 
 ---
 
@@ -1978,20 +1974,20 @@ public void myMethod() { /* implementation */ }
 - **D.** Remove the Apex class from the integration user’s profile. ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên tạo trigger 'after insert' trên Lead để tạo Task cho mỗi Lead. Khi deploy lên Production, một hệ thống tích hợp bên ngoài nạp Lead theo lô (batch) thỉnh thoảng báo lỗi cả lô do câu lệnh insert Task thất bại. Việc này làm dừng tiến trình của hệ thống ngoài và yêu cầu restart thủ công. Thay đổi nào giúp tiến trình tiếp tục chạy khi một vài bản ghi trong lô bị lỗi?
+> Developer viết một after insert trigger trên Lead để tự động tạo Task cho mỗi Lead. Khi deploy lên Production, một hệ thống tích hợp bên ngoài nạp Lead theo lô (batch) thỉnh thoảng báo lỗi hỏng cả lô do câu lệnh insert Task thất bại. Việc này làm dừng tiến trình của hệ thống ngoài và yêu cầu khởi động lại thủ công. Thay đổi nào giúp tiến trình tiếp tục chạy mượt mà khi một vài bản ghi trong lô bị lỗi do insert Task mà không cần restart thủ công?
 
 **💬 Giải thích gốc (English):**
 > When using the Database.insert() method with allOrNone set to false, if there are any errors during the insert operation (such as validation rule failures or triggers that cause an exception), the successful records will be committed, and the failed records will generate errors but won't cause the entire batch to fail. This way, the integration process will continue without requiring a manual restart.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng phương thức Database.insert(tasks, false) (C) với tham số allOrNone = false. Khi đó, những bản ghi Task hợp lệ vẫn được insert thành công, còn bản ghi lỗi sẽ được ghi nhận vào SaveResult mà không bắn ra unhandled exception làm oẳng cả transaction của hệ thống tích hợp.
+> Khi dùng DML thông thường (như insert tasks;), chỉ cần 1 bản ghi trong lô bị lỗi là Salesforce sẽ kích hoạt cơ chế rollback, làm sập cả lô (all-or-none = true mặc định) và ném ra unhandled exception làm dừng hệ thống tích hợp ngoài. Giải pháp tối ưu là dùng phương thức Database.insert(tasks, false) (C) với tham số allOrNone = false. Khi đó, các bản ghi hợp lệ vẫn được insert bình thường, bản ghi lỗi sẽ bị bỏ qua và ghi nhận kết quả vào danh sách SaveResult để hệ thống ngoài tự xử lý sau mà không làm sập cả transaction.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Deactivate trigger là giải pháp trốn tránh, làm mất đi tính năng tạo Task tự động rất quan trọng.
-> **B.** Dùng try-catch sau khi insert không giúp cứu vãn các bản ghi khác trong lô nếu lệnh DML insert chuẩn thất bại (vì nó sẽ rollback toàn bộ lô nếu dính lỗi DML).
-> **D.** Xóa quyền truy cập class sẽ làm hệ thống tích hợp lỗi 100% thay vì chạy tiếp.
+> **A.** Deactivate trigger là giải pháp trốn tránh trách nhiệm, làm mất luôn tính năng tạo Task tự động vô cùng quan trọng của hệ thống.
+> **B.** Dùng khối try-catch bọc quanh câu lệnh insert thông thường chỉ giúp bắt lỗi chứ không cứu vãn được các bản ghi khác trong lô, vì DML chuẩn đã rollback là rollback sạch sành sanh cả lô rồi.
+> **D.** Xóa class Apex khỏi profile của user tích hợp sẽ khiến 100% các cuộc gọi tích hợp bị lỗi phân quyền, tự hủy cực mạnh!
 
-**💡 Từ khóa ghi nhớ:** `Muốn lô chạy tiếp dù có vài bản ghi lỗi -> Database.insert(..., false).`
+**💡 Từ khóa ghi nhớ:** `Muốn cứu những thằng đúng, bỏ qua những thằng sai trong lô -> Dùng ngay Database.insert(records, false) (allOrNone = false)!`
 
 ---
 
@@ -2005,20 +2001,20 @@ public void myMethod() { /* implementation */ }
 - **D.** Create a custom field on the child object of type Foreign Key. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để liên kết bản ghi mà không cần Salesforce ID?
+> Developer cần liên kết dữ liệu nhận được từ hệ thống bên ngoài với các bản ghi cha (parent records) trong Salesforce. Dữ liệu nhận về không hề có Salesforce ID của bản ghi cha, nhưng lại có một trường khóa ngoại (foreign key) từ hệ thống ngoài để định danh. Hành động nào giúp liên kết các bản ghi này mà không cần biết Salesforce ID?
 
 **💬 Giải thích gốc (English):**
 > An External ID field is used to store unique identifiers from an external system and allows the developer to use this external identifier to match records in Salesforce with records in the external system.
 
 **✅ Tại sao đáp án đúng:**
-> External ID cho phép Salesforce map bản ghi dựa trên mã định danh từ hệ thống bên ngoài.
+> Trường External ID (C) sinh ra chính là để giải quyết kiếp nạn này! Bằng cách tạo một custom field trên object cha, đánh dấu nó là External ID và lưu mã định danh từ hệ thống ngoài vào đó. Khi thực hiện nạp dữ liệu cho con, Salesforce cho phép chúng ta tham chiếu trực tiếp đến bản ghi cha thông qua External ID này mà không cần biết Salesforce ID 18 ký tự là gì. Quá xịn sò và đúng chuẩn tích hợp!
 
 **❌ Tại sao đáp án sai:**
-> **A.** External Relationship dùng cho External Objects (Salesforce Connect).
-> **C.** Unique chỉ chống trùng, không giúp map bản ghi khi Upsert/Insert.
-> **D.** Lookup field bình thường vẫn 'đòi' ID của Salesforce.
+> **A.** Đánh dấu Unique chỉ giúp chống trùng lặp dữ liệu trên Object cha chứ không có tính năng giúp Salesforce hiểu để tự động mapping mối quan hệ khi thực hiện nạp dữ liệu (Upsert/Insert), cook!
+> **B.** Tạo trường kiểu External Relationship trên object con chỉ dùng cho External Objects (khi kết nối qua Salesforce Connect), không áp dụng cho các custom/standard object thông thường của Salesforce.
+> **D.** Trong Salesforce không có kiểu dữ liệu nào tên là 'Foreign Key' để tạo trực tiếp cả, chỉ có Lookup hoặc Master-Detail thôi.
 
-**💡 Từ khóa ghi nhớ:** `No ID? -> Use External ID.`
+**💡 Từ khóa ghi nhớ:** `Liên kết dữ liệu hệ thống ngoài + Không có Salesforce ID -> Auto gọi tên External ID!`
 
 ---
 
@@ -2032,20 +2028,20 @@ public void myMethod() { /* implementation */ }
 - **D.** Create a test class and methods to cover the Apex trigger. ✅
 
 **📝 Dịch tiếng Việt:**
-> Helper class đạt 95% nhưng Trigger 0% làm deployment thất bại. Phải làm gì?
+> Developer tạo một Apex trigger mới cùng với một helper class đi kèm, sau đó viết test class giúp phủ sóng (coverage) 95% dòng code của helper class. Tuy nhiên, khi deploy bằng Change Set lên Production thì bị từ chối thẳng thừng với cảnh báo: 'Test coverage của Apex Trigger là 0%, yêu cầu tối thiểu phải đạt 1%'. Developer phải làm gì để deploy thành công?
 
 **💬 Giải thích gốc (English):**
 > To successfully deploy the new Apex trigger and helper class, the developer needs to create a test class that provides test coverage for both the trigger and the helper class.
 
 **✅ Tại sao đáp án đúng:**
-> Trigger bắt buộc phải được kích hoạt trong code test (qua lệnh DML) để có coverage > 0%. Dù helper 100% mà trigger không chạy thì vẫn tạch.
+> Luật thép của Salesforce khi deploy lên Production: Tổng test coverage toàn hệ thống phải đạt tối thiểu 75%, helper class đạt 95% là quá ngon, NHƯNG riêng đối với Apex Trigger, mỗi trigger bắt buộc phải có test coverage lớn hơn 0% (tức là tối thiểu 1% - phải chạy qua trigger ít nhất 1 dòng) (D). Trigger của bạn đang bị 0% vì trong test class bạn chỉ trực tiếp gọi hàm của helper class mà quên thực hiện lệnh DML (như Insert, Update, Delete) trên sObject để kích hoạt trigger nổ. Bạn phải sửa test class để thực hiện hành động DML kích hoạt trigger.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Tăng coverage cho helper không giúp gì cho việc trigger đang 0%.
-> **C.** Xóa test method hỏng không giúp trigger có thêm phần trăm coverage nào.
-> **D.** Run All Tests chỉ là chạy lại đống cũ, nếu chưa viết code test cho trigger thì kết quả vẫn là 0%.
+> **A.** Tăng test coverage của helper class lên 100% cũng vô ích vì trigger vẫn đang nằm im thin thít với con số 0% tròn trĩnh.
+> **B.** Xóa các test method bị lỗi không hề giúp tăng coverage cho trigger, chỉ tổ làm mất công test logic.
+> **C.** Chạy 'Run All Tests' chỉ là bấm nút chạy lại đống test cũ trong hệ thống, nếu bạn chưa viết dòng code nào kích hoạt trigger chạy trong môi trường test thì kết quả vẫn là 0% thôi.
 
-**💡 Từ khóa ghi nhớ:** `Deployment Rule: Toàn Org 75%, nhưng mỗi Trigger phải > 0%.`
+**💡 Từ khóa ghi nhớ:** `Điều kiện deploy Production: Tổng local tests >= 75% + Mọi Trigger bắt buộc coverage > 0% (phải gọi DML trong test để trigger nổ)!`
 
 ---
 
@@ -2063,19 +2059,20 @@ insert a;
 - **D.** 500 ❌
 
 **📝 Dịch tiếng Việt:**
-> Có bao nhiêu Account sẽ được insert thành công bởi đoạn mã trên?
+> Có bao nhiêu bản ghi Account sẽ được insert thành công vào cơ sở dữ liệu sau khi chạy đoạn code trên?
 
 **💬 Giải thích gốc (English):**
 > DML Exception
 
 **✅ Tại sao đáp án đúng:**
-> Đáp án là 0. Đến vòng lặp thứ 151, hệ thống bắn lỗi `LimitException: Too many DML statements: 151`. Toàn bộ transaction bị rollback, không có account nào được lưu.
+> Đáp án chắc chắn là 0 (C)! Tại sao? Bởi vì Salesforce giới hạn nghiêm ngặt tối đa 150 lệnh DML (DML statements) trong một transaction đồng bộ. Đoạn code này cố tình ném lệnh 'insert a;' vào bên trong vòng lặp For chạy tới 500 lần. Khi vòng lặp chạy đến lần thứ 151, Salesforce sẽ ngay lập tức 'tuýt còi' ném ra lỗi LimitException: Too many DML statements: 151 và dừng cuộc chơi lập tức. Vì tính chất nguyên tử (Atomicity) của transaction, toàn bộ 150 bản ghi đã insert thành công trước đó cũng sẽ bị rollback sạch sẽ như chưa từng tồn tại!
 
 **❌ Tại sao đáp án sai:**
-> **D.** Dù limit là 150, nhưng vì transaction là atomic (nguyên tử), lỗi xảy ra làm hủy hết mọi kết quả trước đó.
-> **A.** Vượt xa giới hạn cho phép của Salesforce.
+> **A.** Vượt giới hạn DML 150 sẽ gây ra rollback toàn bộ dữ liệu, không có chuyện insert thành công 100 bản ghi.
+> **B.** Mặc dù 150 là giới hạn DML, nhưng do transaction mang tính nguyên tử, lỗi ở lần 151 làm toàn bộ 150 bản ghi trước bị xóa sạch.
+> **D.** Không bao giờ đạt được con số 500 khi viết DML trong vòng lặp như thế này.
 
-**💡 Từ khóa ghi nhớ:** `DML Limit = 150. Nhét DML vào For là 'cook'!`
+**💡 Từ khóa ghi nhớ:** `Nhét SOQL hoặc DML vào trong vòng lặp For -> 100% dính Limit Exception -> Kết quả rollback về 0 bản ghi!`
 
 ---
 
@@ -2103,23 +2100,28 @@ private Boolean helperMethod(){ /*implementation ...*/}
 global String updateRecords(){ /*implementation ...*/}
 }**
 
+- **A.** Use lazy loading and a transient List variable. ❌
+- **B.** Implement pagination with an OffsetController. ❌
+- **C.** Implement pagination with a StandardSetController. ✅
+- **D.** Use JavaScript remoting with SOQL Offset. ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên cần tạo một SOAP Web Service tùy chỉnh để ứng dụng ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn?
+> Developer cần tạo một custom SOAP Web Service để ứng dụng web bên ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn? (Ủa khoan, nhìn xuống đống đáp án kìa... Ơ kìa Salesforce! Lại một pha 'râu ông nọ cắm cằm bà kia' đi vào lịch sử! Câu hỏi thì hỏi về SOAP Web Service, mà đáp án lại nói về phân trang Visualforce! Đúng là 'bug game' kinh điển. Thôi thì để thầy giải thích cả hai cho các em đắc đạo nhé!)
 
 **💬 Giải thích gốc (English):**
 > The class must be declared as global to be accessible by external applications.
 > The method that is exposed as a web service must be declared with the webservice keyword.
 
 **✅ Tại sao đáp án đúng:**
-> Class chứa SOAP Web Service bắt buộc phải khai báo là 'global'. Phương thức phơi ra cho bên ngoài gọi phải dùng annotation 'webservice static'. Các phương thức helper nội bộ có thể để 'private' bình thường (B).
+> 1. Nếu theo đề bài gốc (SOAP Web Service): Class chứa SOAP Web Service bắt buộc phải khai báo là global class. Phương thức API phơi ra cho bên ngoài gọi phải dùng từ khóa webservice static. Các phương thức helper nội bộ có thể để private hoặc public bình thường. 
+2. Nếu theo đống đáp án thực tế: Đáp án đúng được chấm điểm là C (Implement pagination with a StandardSetController). Lớp StandardSetController trong Apex là công cụ chuẩn chỉnh nhất để xử lý hiển thị danh sách bản ghi và phân trang (pagination) trên trang Visualforce cực kỳ mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cú pháp 'Webservice class' ở đầu định nghĩa class là sai hoàn toàn, class phải khai báo bằng 'global class'.
-> **C.** Sai cú pháp khai báo class giống câu A.
-> **D.** Phương thức phơi ra làm API SOAP thiếu từ khóa 'webservice' và thiếu 'static'.
+> **A.** Dùng lazy loading và biến transient chỉ giúp tối ưu bộ nhớ View State của trang Visualforce chứ không giải quyết được tính năng phân trang chuẩn.
+> **B.** OffsetController là cái tên tự chế, không tồn tại trong Salesforce SDK.
+> **D.** Dùng JS Remoting kết hợp SOQL Offset cũng phân trang được nhưng viết code mệt mỏi, cồng kềnh, không phải cách khai báo đơn giản, sẵn có như StandardSetController.
 
-**💡 Từ khóa ghi nhớ:** `SOAP Web Service: Class phải GLOBAL, Method phải WEBSERVICE STATIC.`
+**💡 Từ khóa ghi nhớ:** `Đi thi gặp câu hỏi SOAP Web Service mà đáp án toàn phân trang -> Nhắm mắt chọn StandardSetController để giật điểm nhé! Phân trang VF = StandardSetController.`
 
 ---
 
@@ -2133,7 +2135,7 @@ global String updateRecords(){ /*implementation ...*/}
 - **D.** An approval process on the Opportunity object ❌
 
 **📝 Dịch tiếng Việt:**
-> Ngăn không cho ai (ngoại trừ Sales Manager) chuyển Status Opportunity sang 'Closed Lost' mà lại để trống lý do (Lost Reason). Dùng cái gì nhanh gọn lẹ nhất?
+> Lập trình viên được yêu cầu ngăn chặn bất kỳ ai (ngoại trừ user có Profile là Sales Manager) chuyển Opportunity Status sang 'Closed Lost' nếu trường lý do thất bại (Lost Reason) bị để trống. Công cụ tự động hóa nào giúp giải quyết yêu cầu này một cách hiệu quả nhất?
 
 **💬 Giải thích gốc (English):**
 > Using a validation rule is the most efficient way to enforce this requirement. The validation rule can be set up to check if the Opportunity Status is being changed to “Closed Lost” and if the “Lost Reason” field is blank.
@@ -2145,14 +2147,14 @@ global String updateRecords(){ /*implementation ...*/}
 > )
 
 **✅ Tại sao đáp án đúng:**
-> D là đỉnh nhất. Validation Rule sinh ra là để chặn data sai format/điều kiện. Vừa nhanh, vừa không tốn code, vừa dễ bảo trì.
+> Để thực hiện các nghiệp vụ ngăn chặn (prevent/block) lưu dữ liệu sai logic hoặc thiếu thông tin, Validation Rule (A) là giải pháp nhanh gọn lẹ, hiệu quả nhất! Viết một công thức kiểm tra điều kiện lỗi (error condition formula) trên Opportunity cực kỳ trực quan, hoàn toàn không cần code, dễ bảo trì và chạy cực nhanh ở tầng database trước khi lưu bản ghi.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flow cũng làm được nhưng nó giống như dùng dao mổ trâu để giết gà, phức tạp hơn Validation Rule nhiều.
-> **B.** Approval Process dùng để duyệt, không phải để check logic field đơn giản thế này.
-> **C.** Apex Trigger thì thôi, viết mớ code chỉ để check một cái field thì quá là lãng phí tài nguyên và thời gian deploy.
+> **B.** Apex Trigger làm được nhưng viết code chỉ để check trống một field thì quá phí phạm, tốn thời gian viết test class và deploy phức tạp, 'gà' vô cùng.
+> **C.** Record-Triggered Flow cũng làm được (bằng Custom Error element) nhưng giống như cầm dao mổ trâu để giết gà, cồng kềnh hơn Validation Rule rất nhiều.
+> **D.** Approval Process dùng để chạy quy trình phê duyệt nhiều bước, không liên quan gì đến việc tự động check dữ liệu khi lưu.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Cứ thấy 'Prevent', 'Block', 'Validation' là nghĩ ngay đến Validation Rule đầu tiên. Đừng ham code!`
+**💡 Từ khóa ghi nhớ:** `Thấy chữ 'Prevent' (Ngăn chặn) hoặc 'Validation' (Xác thực dữ liệu) -> Nghĩ ngay đến Validation Rule trước tiên!`
 
 ---
 
@@ -2178,22 +2180,36 @@ trigger RequestTrigger on Request(before insert){
 RequestLogic.validateRecords(trigger.new)
 }**
 
+- **A.** trigger RequestTrigger on Request(before insert){
+if(RequestLogic.isValid(Request))
+Request.addError('Your request cannot be created at this time.');
+} ❌
+- **B.** trigger RequestTrigger on Request(after insert){
+if(RequestLogic.isValid(Request))
+Request.addError('Your request cannot be created at this time.');
+} ❌
+- **C.** trigger RequestTrigger on Request(after insert){
+RequestLogic.validateRecords(trigger.new)
+} ❌
+- **D.** trigger RequestTrigger on Request(before insert){
+RequestLogic.validateRecords(trigger.new)
+} ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên cần chặn việc tạo bản ghi Request khi có một số điều kiện nhất định xảy ra trong hệ thống. Một class RequestLogic đã có sẵn hàm kiểm tra. Khai báo trigger nào là đúng chuẩn để thực hiện việc này?
+> Developer cần ngăn chặn việc tạo bản ghi Request khi có một số điều kiện nhất định xảy ra trong hệ thống. Một class RequestLogic đã có sẵn hàm kiểm tra điều kiện. Khai báo nào sau đây là đúng chuẩn?
 
 **💬 Giải thích gốc (English):**
 > This implementation ensures that the validation logic is applied before the records are inserted into the database, allowing the trigger to prevent the creation of invalid records.
 
 **✅ Tại sao đáp án đúng:**
-> Để CHẶN (prevent) việc lưu dữ liệu, ta bắt buộc phải dùng sự kiện 'before insert' (D) để gọi hàm addError() trước khi dữ liệu chạm xuống ổ cứng. Đồng thời, truyền toàn bộ 'trigger.new' vào class helper để xử lý bulkified là chuẩn bài nhất.
+> D đúng vì: 1. Để ngăn chặn việc tạo bản ghi (prevent creation), ta phải viết trigger sự kiện `before insert` để chặn trước khi dữ liệu được ghi xuống database. 2. Ta sử dụng `Trigger.new` truyền vào hàm xử lý của `RequestLogic` để kiểm tra và gọi hàm `addError()` trên từng bản ghi cụ thể có lỗi.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Trigger này viết loop gọi addError thủ công nhưng cú pháp sai hoàn toàn (Request là tên đối tượng chứ không phải biến chạy).
-> **B.** after insert là quá muộn để chặn tạo bản ghi, vì dữ liệu đã ghi xuống database rồi, gọi addError lúc này sẽ tốn tài nguyên rollback.
-> **C.** after insert là sai thời điểm giống câu B.
+> **A.** Sai cú pháp vì dùng tên Object `Request` trực tiếp để gọi hàm và phương thức `addError()`. Phải gọi trên đối tượng cụ thể trong Trigger Context (ví dụ duyệt `Trigger.new`).
+> **B.** Sai cả sự kiện `after insert` (bản ghi đã lưu tạm vào DB, không dùng để chặn insert được nữa) lẫn sai cú pháp khi gọi trên tên Object `Request`.
+> **C.** Sai sự kiện vì dùng `after insert` để thực hiện việc ngăn chặn tạo bản ghi mới.
 
-**💡 Từ khóa ghi nhớ:** `Muốn CHẶN tạo bản ghi -> Dùng trigger BEFORE INSERT + addError().`
+**💡 Từ khóa ghi nhớ:** `Ngăn chặn tạo bản ghi = Dùng BEFORE INSERT + Gọi handler truyền TRIGGER.NEW.`
 
 ---
 
@@ -2207,17 +2223,17 @@ RequestLogic.validateRecords(trigger.new)
 - **D.** @AuraEnabled ❌
 
 **📝 Dịch tiếng Việt:**
-> Annotation nào biến class thành REST service?
+> Annotation nào dùng để phơi (expose) một class Apex thành một RESTful web service?
 
 **✅ Tại sao đáp án đúng:**
-> @RestResource dùng để khai báo class là REST service.
+> @RestResource(urlMapping='/yourUrl/*') (B) là annotation chính chủ của Salesforce dùng để khai báo một class là REST API. Khi sử dụng annotation này, ta có thể định nghĩa các phương thức xử lý HTTP tương ứng như @HttpGet, @HttpPost, @HttpDelete cực kỳ đơn giản và mạnh mẽ.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng cho Visualforce JS Remoting.
-> **B.** Dùng cho LWC/Aura gọi Apex.
-> **D.** @HttpInvocable là một cái tên giả tưởng, không tồn tại.
+> **A.** @RemoteAction dùng trong Visualforce để hỗ trợ cơ chế JavaScript Remoting (gọi hàm Apex từ JS trên trang VF), hoàn toàn không phải để tạo REST API cho hệ thống ngoài gọi vào.
+> **C.** @HttpInvocable là một từ khóa hoàn toàn bịa đặt, không tồn tại trong vũ trụ Salesforce.
+> **D.** @AuraEnabled dùng để phơi các phương thức Apex cho Lightning Component (Aura hoặc LWC) gọi từ phía client-side, chứ không có tuổi tạo RESTful web service cho hệ thống ngoài kết nối.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: REST API -> @RestResource.`
+**💡 Từ khóa ghi nhớ:** `Tạo RESTful Web Service -> Nhắm mắt chọn @RestResource!`
 
 ---
 
@@ -2231,20 +2247,20 @@ RequestLogic.validateRecords(trigger.new)
 - **D.** Setup Menu ❌
 
 **📝 Dịch tiếng Việt:**
-> Một developer cần tìm nguyên nhân gây ra vấn đề về hiệu suất khi một trang tùy chỉnh tải trong Org. Developer nên sử dụng công cụ nào?
+> Lập trình viên phải tiến hành kiểm tra để xác định chính xác nguyên nhân gây ra các vấn đề về hiệu suất (performance issues) khi tải một custom page trong Org. Công cụ nào nên được sử dụng?
 
 **💬 Giải thích gốc (English):**
 > The Developer Console allows developers to set up debug logs for specific users or classes. These logs capture detailed information about the execution of Apex code, including any SOQL queries, DML operations, and method calls.
 
 **✅ Tại sao đáp án đúng:**
-> Developer Console cung cấp các công cụ như 'Timeline' và 'Execution Log' cực kỳ chi tiết. Nó cho mày biết câu query nào tốn bao nhiêu giây, code Apex nào ngốn CPU nhất để mà tối ưu.
+> Developer Console (C) là 'vũ khí tối thượng' tích hợp sẵn trong Salesforce để phân tích hiệu năng. Với tính năng xem Log chi tiết và đặc biệt là tab Timeline / Performance Profiling, nó sẽ hiển thị trực quan dưới dạng biểu đồ xem câu query SOQL nào tốn bao nhiêu mili-giây, code Apex nào ngốn tài nguyên CPU nhất để bạn biết chính xác chỗ nào cần tối ưu hóa.
 
 **❌ Tại sao đáp án sai:**
-> **A.** AppExchange là cái 'chợ' ứng dụng, không giúp ích gì cho việc debug hiệu năng.
-> **B.** Setup Menu chỉ để cấu hình, không soi được log hay timeline thực thi của code.
-> **D.** VS Code dùng để viết và deploy code, mặc dù có thể xem log nhưng không có giao diện phân tích Timeline trực quan như Dev Console.
+> **A.** Visual Studio Code IDE là môi trường viết code cực xịn, mặc dù có thể tải log về đọc nhưng không có giao diện phân tích Timeline đồ họa trực quan và tương tác thời gian thực tốt bằng Developer Console.
+> **B.** AppExchange là cái 'chợ' ứng dụng để cài thêm app, chả liên quan gì đến việc debug hiệu năng của page tự viết cả.
+> **D.** Setup Menu là nơi cấu hình hệ thống, không hỗ trợ công cụ phân tích sâu tiến trình thực thi của code, cook!
 
-**💡 Từ khóa ghi nhớ:** `Soi lỗi, soi hiệu năng, soi log real-time -> Developer Console là 'chân ái'.`
+**💡 Từ khóa ghi nhớ:** `Gặp bài toán tìm nguyên nhân lỗi hiệu năng, soi log chạy ngầm -> Chọn ngay Developer Console!`
 
 ---
 
@@ -2258,20 +2274,20 @@ RequestLogic.validateRecords(trigger.new)
 - **D.** A Workflow Rule ❌
 
 **📝 Dịch tiếng Việt:**
-> Công cụ nào nên được sử dụng để tự động gửi yêu cầu phê duyệt (Approval Process submission) cho Case khi thỏa mãn điều kiện?
+> Lập trình viên nên sử dụng công cụ nào để tự động gửi yêu cầu phê duyệt (Approval Process submission) cho Case?
 
 **💬 Giải thích gốc (English):**
 > Process Builder is a declarative automation tool that allows you to create automated processes by defining a set of criteria and actions to be executed when those criteria are met.
 
 **✅ Tại sao đáp án đúng:**
-> Process Builder (C) hoặc Flow Builder (hiện đại) hỗ trợ hành động gọi 'Submit for Approval' cực kỳ trực quan và hoàn toàn không cần code.
+> Process Builder (C) (và hiện nay là Flow Builder) hỗ trợ hành động chuẩn 'Submit for Approval' cực kỳ trực quan. Chỉ cần định nghĩa điều kiện của Case, khi thỏa mãn là hệ thống tự động đẩy bản ghi vào quy trình phê duyệt mà không cần viết một dòng code nào. (Lưu ý: Mặc dù Process Builder đã bị Salesforce hạn chế phát triển để nhường sân chơi cho Flow, nhưng trong hệ thống đề thi PD1 hiện tại, nó vẫn được tính là đáp án đúng chính thức).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Assignment Rule chỉ dùng để chia Case/Lead cho Owner/Queue, không có tính năng gửi phê duyệt.
-> **B.** Scheduled Apex dùng để lập lịch chạy định kỳ, không mang tính tức thời khi Case thỏa mãn điều kiện như Process Builder.
-> **D.** Workflow Rule đời cũ không hề hỗ trợ hành động gửi bản ghi vào Approval Process.
+> **A.** Assignment Rule chỉ dùng để tự động phân chia Owner hoặc Queue cho Case/Lead dựa trên các tiêu chí lọc, hoàn toàn không có tính năng gửi phê duyệt.
+> **B.** Scheduled Apex dùng để lên lịch chạy định kỳ một tác vụ, không mang tính tức thời khi Case thỏa mãn điều kiện như Process Builder.
+> **D.** Workflow Rule đời cũ cực kỳ thô sơ, hoàn toàn không hỗ trợ hành động gửi bản ghi vào Approval Process.
 
-**💡 Từ khóa ghi nhớ:** `Tự động gửi phê duyệt (Approval) -> Gọi tên Process Builder hoặc Flow.`
+**💡 Từ khóa ghi nhớ:** `Tự động gửi phê duyệt (Submit for Approval) không code -> Chọn Process Builder!`
 
 ---
 
@@ -2285,7 +2301,7 @@ RequestLogic.validateRecords(trigger.new)
 - **D.** View the Apex Flex Queue ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để kiểm tra trạng thái của một Queueable job đã được đẩy vào hàng đợi?
+> Hai cách nào giúp lập trình viên kiểm tra trạng thái của một job chạy ngầm (Queueable job) đã được đẩy vào hàng đợi? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > The two correct ways for a developer to get the status of an enqueued job for a class that implements the Queueable interface are:
@@ -2298,13 +2314,14 @@ RequestLogic.validateRecords(trigger.new)
 > WHERE Id = :jobId];
 
 **✅ Tại sao đáp án đúng:**
-> A: Query bảng hệ thống `AsyncApexJob` bằng JobId. B: Vào trang 'Apex Jobs' trong Setup để xem trực quan.
+> 1. Vào Setup -> tìm trang Apex Jobs (A). Đây là giao diện trực quan hiển thị toàn bộ trạng thái (Queued, Processing, Completed, Failed) của các tác vụ async. 
+2. Thực hiện truy vấn SOQL trên đối tượng hệ thống AsyncApexJob (C) (ví dụ: SELECT Status FROM AsyncApexJob WHERE Id = :jobId) để lấy trạng thái động ngay trong code Apex.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Flex Queue chỉ dành cho các Batch job đang ở trạng thái 'Holding'.
-> **D.** Salesforce không có trang nào tên là 'apex status Page'.
+> **B.** Giao diện quản lý hàng đợi Apex Flex Queue chỉ dùng để theo dõi và sắp xếp lại thứ tự ưu tiên của các Batch job đang ở trạng thái 'Holding', không dùng để xem trạng thái tổng quát của Queueable job.
+> **D.** Salesforce làm gì có trang nào tên là 'Apex Status Page', đây hoàn toàn là một cái tên bịa đặt để đánh lừa kẻ lười học!
 
-**💡 Từ khóa ghi nhớ:** `Async Status = Query AsyncApexJob hoặc Setup -> Apex Jobs.`
+**💡 Từ khóa ghi nhớ:** `Kiểm tra trạng thái Async Job -> 1. Xem trang Apex Jobs trong Setup; 2. SOQL bảng AsyncApexJob.`
 
 ---
 
@@ -2318,17 +2335,18 @@ RequestLogic.validateRecords(trigger.new)
 - **D.** Use the Standard Controller for Review_c and expression syntax in the Page to display related Position_c data through the Job_Application_c object. ❌
 
 **📝 Dịch tiếng Việt:**
-> Review__c có quan hệ lookup với Job_Application__c. Job_Application__c lại có quan hệ Master-Detail với Position__c. Cách tốt nhất để hiển thị thông tin của Position__c trên trang Visualforce của một bản ghi Review__c là gì?
+> Object Review__c có quan hệ lookup với Job_Application__c. Object Job_Application__c lại có quan hệ Master-Detail với Position__c. Tên các trường quan hệ được để mặc định. Phương pháp khuyến nghị để hiển thị dữ liệu từ bản ghi Position__c liên quan trên một trang Visualforce hiển thị một bản ghi Review__c là gì? (Ủa khoan, lại một pha 'bug game' từ hệ thống đáp án của Salesforce! Để thầy phân tích cái sự ảo ma này cho nghe.)
 
 **✅ Tại sao đáp án đúng:**
-> Visualforce cho phép hiển thị dữ liệu từ các object cha thông qua cú pháp merge field đi xuyên mối quan hệ (cross-object) lên tới 5 cấp. Do đó, cách tốt nhất không cần viết code là dùng Standard Controller của Review__c và gọi trực tiếp {!Review__c.Job_Application__r.Position__r.Name} trên trang (D). (Lưu ý: Đáp án B trong đề gốc là một sai sót dữ liệu vì nó đòi viết code extension rất cồng kềnh).
+> 1. Về mặt kỹ thuật thực tế (Best Practice): Cách tốt nhất và nhanh nhất là dùng Standard Controller cho Review__c và sử dụng cú pháp merge field đi xuyên mối quan hệ cha (cross-object) trực tiếp trên trang Visualforce: {!Review__c.Job_Application__r.Position__r.Name}. Không cần code, không cần extension! (Đáng lẽ đáp án D mới là chuẩn nhất).
+2. Nhưng đi thi Salesforce PD1: Hệ thống lại chấm đáp án B là ĐÚNG! Đáp án này bắt chúng ta dùng Standard Controller của Job_Application__c và viết thêm một Controller Extension bằng Apex để truy vấn dữ liệu của Position__c. Mặc dù cồng kềnh và tốn code vô lý, nhưng đi thi thì cứ chọn B để được điểm tối đa nhé!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Viết Formula Field trên Position__c để hiển thị data của chính nó là vô nghĩa.
-> **B.** Dùng controller của Job_Application__c là sai ngữ cảnh của trang Review__c, viết extension query là quá phức tạp.
-> **C.** Dùng controller của Job_Application__c là sai ngữ cảnh trang Review__c.
+> **A.** Viết cross-object formula field trên Position__c là sai hướng hoàn toàn vì ta cần hiển thị dữ liệu lên trang của Review__c chứ không phải ngược lại.
+> **C.** Dùng Standard Controller cho Job_Application__c kết hợp viết formula trên Review__c là một cách giải quyết chắp vá, đi đường vòng cực kỳ mệt mỏi.
+> **D.** Mặc dù đây là cách làm tối ưu nhất thực tế bằng merge field trên Visualforce, nhưng Salesforce lại không đánh dấu nó là đáp án đúng chính thức trong kỳ thi, thế mới tài!
 
-**💡 Từ khóa ghi nhớ:** `VF hiển thị cha của cha -> Dùng Standard Controller của con + cú pháp chấm '.' đi xuyên quan hệ.`
+**💡 Từ khóa ghi nhớ:** `Đi thi gặp bài toán mối quan hệ Review__c -> Job_Application__c -> Position__c trên Visualforce -> Chọn đáp án dùng Standard Controller cho Job_Application__c + Controller Extension (Chọn B)!`
 
 ---
 
@@ -2349,16 +2367,18 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** If executed in an asynchronous context, the Apex transaction is likely to fail by exceeding the DML governor limit. ❌
 
 **📝 Dịch tiếng Việt:**
-> Cho đoạn code sau thực thi trên môi trường có hơn 200 Account thuộc ngành 'Technology': [Code For Loop]. Khi code chạy, điều gì sẽ xảy ra với transaction Apex này?
+> Cho đoạn code thực thi trong môi trường có hơn 200 Account thuộc ngành 'Technology': [Đoạn code vòng lặp For]. Khi đoạn code này chạy, điều gì sẽ xảy ra với transaction Apex này?
 
 **✅ Tại sao đáp án đúng:**
-> Đáp án thực tế đúng về mặt kỹ thuật là B: Nếu chạy đồng bộ (synchronous), transaction chắc chắn sẽ OẰNG vì chạm giới hạn DML row hoặc DML statement. Lệnh 'update thisAccount;' nằm TRONG vòng lặp For chạy tới 150 lần, vượt quá giới hạn 150 DML statements cực nhanh chỉ với một vài tác vụ trigger kèm theo. (Mẹo thi: Đề bài gốc đánh dấu đáp án A là đúng, đây là một lỗi đề thi phổ biến cần cực kỳ lưu ý).
+> 1. Về mặt lý thuyết đi thi: Đáp án đúng chính thức của Salesforce là A (The Apex transaction succeeds...). Đề bài muốn lập luận rằng vòng lặp chỉ lấy tối đa 150 bản ghi (LIMIT 150), nên transaction có thể thành công trọn vẹn.
+2. Về mặt kỹ thuật thực tế (Sự thật trần trụi): Đoạn code này viết lệnh DML 'update thisAccount;' ngay bên TRONG vòng lặp For! Vòng lặp chạy 150 lần nghĩa là sẽ thực hiện tới 150 lệnh DML. Giới hạn DML tối đa của Salesforce trong một transaction đồng bộ là đúng 150 DML statements. Nếu trong hệ thống có bất kỳ một Automation nào khác (như Flow, Trigger) chạy kèm khi Account được update, nó sẽ kích hoạt thêm các lệnh DML phụ và làm transaction 'oẳng' lập tức vì vượt quá giới hạn 150 DML. Do đó, việc nhét DML vào For là một Bad Practice kinh điển! Nhưng đi thi thì nhớ chọn A để được ăn điểm nhé các đồng chí!
 
 **❌ Tại sao đáp án sai:**
-> **C.** Trường Is_Tech__c được gán bình thường, không gây ra lỗi thiếu query field vì đây là lệnh gán trị ghi chứ không phải đọc giá trị chưa query.
+> **B.** Mặc dù thực tế rất dễ bị sập do Governor Limit, nhưng đề thi lại không coi đó là đáp án đúng chính thức.
 > **D.** Asynchronous context có giới hạn DML statement vẫn là 150, nên nó vẫn oẳng bình thường.
+> **C.** Lỗi thiếu query field chỉ xảy ra khi bạn cố tình ĐỌC một trường chưa được SELECT trong SOQL. Ở đây ta chỉ GHI giá trị (thisAccount.Is_Tech__c = true) nên không bao giờ dính lỗi này.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo thi PD1: Thấy DML trong For -> 100% dính Limit Exception. Đề thi thỉnh thoảng lỗi đáp án, cứ nhớ quy tắc bulkify!`
+**💡 Từ khóa ghi nhớ:** `Đi thi gặp câu hỏi DML trong vòng lặp For giới hạn LIMIT 150 -> Nhắm mắt chọn đáp án A (Succeeds...)! Nhưng đi làm thực tế mà viết thế này là bị Senior gõ đầu ngay nhé!`
 
 ---
 
@@ -2373,21 +2393,21 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** Map<Id, sObject> ❌
 
 **📝 Dịch tiếng Việt:**
-> Kiểu dữ liệu nào được trả về bởi câu lệnh truy vấn SOSL sau đây?
+> Kiểu dữ liệu nào được trả về bởi câu lệnh truy vấn SOSL tìm kiếm sau đây?
 [FIND 'Acme*' IN NAME FIELDS RETURNING Account, Opportunity];
 
 **💬 Giải thích gốc (English):**
 > The data type List<List<sObject>> is correct because SOSL searches return a List of Lists of sObjects. In this case, the search query is returning a List of sObjects that include both Account and Opportunity records.
 
 **✅ Tại sao đáp án đúng:**
-> SOSL dùng để tìm kiếm trên nhiều Object cùng lúc. Kết quả trả về luôn luôn là một List chứa các List của sObject: `List<List<sObject>>` (C). List ngoài chứa các object, mỗi List trong chứa các bản ghi của từng object cụ thể.
+> SOSL (FIND) là công cụ tối tân dùng để tìm kiếm chuỗi văn bản trên nhiều đối tượng (sObjects) cùng một lúc. Do kết quả trả về là một tập hợp các danh sách bản ghi của các Object khác nhau (ở đây là Account và Opportunity), nên kiểu dữ liệu trả về bắt buộc phải là một danh sách chứa các danh sách của sObject: List<List<sObject>> (C).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cú pháp định nghĩa kiểu dữ liệu lồng nhau sai quy chuẩn Apex.
-> **B.** SOSL không trả về kiểu Map.
-> **D.** SOSL trả về danh sách kết quả nhiều đối tượng chứ không trả về Map theo Id.
+> **A.** Cú pháp khai báo kiểu dữ liệu lồng nhau kiểu List<List<Account>, List<Opportunity>> là hoàn toàn sai cú pháp trong Apex, compiler sẽ báo lỗi lập tức.
+> **B.** SOSL không bao giờ trả về dữ liệu kiểu Map.
+> **D.** SOSL trả về mảng danh sách nhiều đối tượng chứ không nhóm theo Id của bản ghi, cook!
 
-**💡 Từ khóa ghi nhớ:** `Thần chú SOSL: FIND -> Trả về List<List<sObject>>.`
+**💡 Từ khóa ghi nhớ:** `Thần chú SOSL: Cứ thấy keyword FIND -> Chọn ngay kiểu dữ liệu trả về là List<List<sObject>>!`
 
 ---
 
@@ -2401,20 +2421,20 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** Edit the managed package's unit test. ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi deploy Change Set từ Sandbox lên Production bị thất bại do một lỗi test class nằm trong một Managed Package của bên thứ ba. Developer và đối tác xác định đây là lỗi cảnh báo giả và có thể bỏ qua. Developer nên làm gì để deploy thành công?
+> Quá trình deploy Change Set từ Sandbox lên Production bị thất bại do một test class nằm trong một Managed Package (gói quản lý của bên thứ ba) bị lỗi. Developer đã thảo luận với chủ sở hữu Managed Package và xác định đây chỉ là lỗi cảnh báo giả (false positive) và hoàn toàn có thể bỏ qua. Developer nên làm gì để deploy thành công?
 
 **💬 Giải thích gốc (English):**
 > By running only local tests, the deployment will bypass the managed package unit test that caused the failure and proceed with deploying the rest of the changes in the change set.
 
 **✅ Tại sao đáp án đúng:**
-> Khi thực hiện deploy, chọn chế độ Test Level là 'Run local tests' (A). Chế độ này sẽ chạy toàn bộ các test class tự viết trong Org (local) và bỏ qua hoàn toàn các test class nằm trong các Managed Package cài thêm, giúp vượt qua lỗi.
+> Khi deploy lên Production, Salesforce cho phép bạn chọn các cấp độ chạy test (Test Levels). Để bỏ qua các test class bị lỗi nằm trong các gói cài đặt ngoài (Managed Packages), lập trình viên chỉ cần chọn cấp độ test là 'Run local tests' (A). Cấp độ này sẽ chạy toàn bộ các test class do chính chúng ta viết trong Org (local) và bỏ qua hoàn toàn các test class đi kèm trong Managed Packages, giúp quá trình deploy vượt ải thành công.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Fast Deploy chỉ dùng khi change set đã được validate thành công trước đó trong vòng 4 ngày, không giúp bỏ qua lỗi test.
-> **C.** Run local tests chạy toàn bộ test local trong Org chứ không chỉ chạy riêng test có trong change set.
-> **D.** Managed Package là code đã đóng gói và khóa, developer không có quyền chỉnh sửa test class của họ.
+> **B.** 'Fast Deploy' chỉ có hiệu lực khi bạn đã thực hiện validate Change Set đó thành công trước đó trong vòng 4 ngày, nó không giúp bỏ qua lỗi test class.
+> **C.** 'Run local tests' là để chạy toàn bộ các test local trong Org của bạn chứ không phải chỉ chạy riêng các test class được đóng gói trong Change Set đang deploy.
+> **D.** Code bên trong Managed Package đã bị đóng gói và khóa chặt, bạn hoàn toàn không có quyền chỉnh sửa hay sửa lỗi test class của họ.
 
-**💡 Từ khóa ghi nhớ:** `Lỗi test của Managed Package cài thêm -> Chọn Test Level = 'Run local tests' để bỏ qua.`
+**💡 Từ khóa ghi nhớ:** `Lỗi test của Managed Package cài ngoài cản đường deploy -> Chọn Test Level là 'Run local tests' để clear map!`
 
 ---
 
@@ -2428,7 +2448,7 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** <apex:page contentType="pdf"> ❌
 
 **📝 Dịch tiếng Việt:**
-> Dùng mã nào để biến một trang Visualforce thành file PDF?
+> Đoạn mã nào giúp hiển thị toàn bộ nội dung của một trang Visualforce dưới dạng một file PDF?
 
 **💬 Giải thích gốc (English):**
 > <apex:page renderAs="pdf">
@@ -2436,14 +2456,14 @@ When the code executes, what happens as a result of the Apex transaction?**
 > </apex:page>
 
 **✅ Tại sao đáp án đúng:**
-> Thuộc tính `renderAs='pdf'` là cách chuẩn nhất để Salesforce render toàn bộ HTML trang VF sang PDF.
+> Thuộc tính renderAs='pdf' (B) đặt trong thẻ khai báo trang <apex:page> là cú pháp chuẩn và nhanh nhất của Salesforce. Hệ thống sẽ tự động sử dụng bộ chuyển đổi để render toàn bộ mã HTML/CSS của trang thành một file PDF xịn sò cho người dùng xem hoặc tải về.
 
 **❌ Tại sao đáp án sai:**
-> **B.** contentType chỉ báo định dạng file cho trình duyệt nhưng không tự chuyển đổi giao diện HTML sang PDF được.
-> **C.** Cú pháp giá trị của renderAs chỉ là 'pdf', không dài dòng kiểu mime-type như vậy.
+> **A.** Thuộc tính contentType dùng để chỉ định kiểu định dạng file gửi về trình duyệt (như Excel, Word), hoàn toàn không có tính năng tự động vẽ và chuyển giao diện HTML sang định dạng PDF được.
 > **D.** ContentType dùng cho việc download file, không dùng để render trang.
+> **C.** Cú pháp giá trị của thuộc tính renderAs chỉ chấp nhận chuỗi ngắn gọn là 'pdf', viết rườm rà kiểu 'application/pdf' là sai cú pháp và trang sẽ báo lỗi ngay.
 
-**💡 Từ khóa ghi nhớ:** `VF sang PDF -> renderAs='pdf'.`
+**💡 Từ khóa ghi nhớ:** `Visualforce sang PDF -> Dùng ngay công thức: renderAs='pdf'!`
 
 ---
 
@@ -2457,20 +2477,20 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** In a Lookup relationship, the field value is mandatory. ❌
 
 **📝 Dịch tiếng Việt:**
-> Sự khác biệt cơ bản giữa mối quan hệ Master-Detail và mối quan hệ Lookup là gì?
+> Sự khác biệt cơ bản nhất giữa mối quan hệ Master-Detail và mối quan hệ Lookup trong Salesforce là gì?
 
 **💬 Giải thích gốc (English):**
 > In a Master-Detail relationship, the detail record (child) is considered to be a subordinate of the master record (parent). The detail record inherits the sharing and security settings of its master record. This means that the detail record's access is determined by the access level of the master record.
 
 **✅ Tại sao đáp án đúng:**
-> Master-Detail ép buộc thằng con (Detail) phải kế thừa hoàn toàn quyền Sharing & Security từ thằng cha (Master).
+> Mối quan hệ Master-Detail là mối quan hệ 'cha con khâu khít / ký sinh'. Bản ghi con (Detail) bắt buộc phải kế thừa hoàn toàn cấu hình bảo mật Sharing và Security từ bản ghi cha (Master) (C). Nếu user không có quyền xem bản ghi cha, họ cũng không bao giờ thấy được bản ghi con.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Trong Lookup, khi cha bị xóa, con thường giữ nguyên (mặc định xóa link cha chứ không xóa con).
-> **C.** Ngược lại, trong Master-Detail, cha đi đời thì con cũng bay màu (Cascade delete).
-> **D.** Lookup field có thể để trống (Optional), Master-Detail mới bắt buộc phải có giá trị.
+> **A.** Trong quan hệ Master-Detail, khi bản ghi cha (Master) bị xóa thì các bản ghi con (Detail) liên quan cũng sẽ tự động bị xóa theo (Cascade delete) chứ không có chuyện trơ trơ ở lại.
+> **B.** Trong quan hệ Lookup, khi bản ghi cha bị xóa, các bản ghi con mặc định sẽ chỉ bị xóa liên kết ở trường Lookup (trường trở thành null) chứ không bị xóa cả bản ghi con.
+> **D.** Trong quan hệ Lookup, trường liên kết mặc định là tùy chọn (Optional - có thể để trống), chỉ có Master-Detail mới bắt buộc phải có giá trị.
 
-**💡 Từ khóa ghi nhớ:** `Master-Detail = Ký sinh. Lookup = Bạn bè.`
+**💡 Từ khóa ghi nhớ:** `Master-Detail = 'Sống chết có nhau, chung nhà chung chủ (Inherit Sharing)'. Lookup = 'Bạn bè xã giao, nhà ai nấy ở'.`
 
 ---
 
@@ -2484,21 +2504,21 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** Use the SeeAllData=true annotation in each test class. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer muốn nhiều class test khác nhau có thể dùng chung một bộ dữ liệu test mẫu. Developer nên tạo dữ liệu test này bằng cách nào?
+> Lập trình viên muốn nhiều test class khác nhau có thể sử dụng chung một bộ dữ liệu test mẫu giống nhau. Lập trình viên nên tạo dữ liệu test này bằng cách nào?
 
 **💬 Giải thích gốc (English):**
 > Create a test utility class that contains methods to create and insert the common test data.
 > Each test class can then reference this test utility class and call its methods to set up the required test data.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một 'Test Utility Class' (A) chứa các hàm public static chuyên tạo dữ liệu mẫu (ví dụ: createAccounts()). Mỗi class test chỉ cần gọi hàm từ class utility này để lấy data test cực kỳ sạch sẽ và dễ bảo trì.
+> Cách làm chuẩn mực (Best Practice) nhất là tạo một Test Utility Class (A) chứa các hàm khởi tạo dữ liệu mẫu dạng public static (ví dụ: createTestAccounts()). Mỗi test class chỉ cần gọi hàm này để tự động sinh dữ liệu mẫu. Cách này giúp tái sử dụng code tối đa và cực kỳ dễ bảo trì khi cấu trúc database (Schema) thay đổi.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Khai báo thủ công ở mỗi class test gây lặp code, cực kỳ khó bảo trì khi schema thay đổi.
-> **C.** @TestSetup chỉ tạo dữ liệu dùng chung trong NỘI BỘ 1 class test đó, các class test khác không 'với' tới được.
-> **D.** SeeAllData=true làm test truy cập dữ liệu thật của Org, cực kỳ không khuyến khích vì làm test mất tính độc lập và dễ tạch.
+> **B.** Khai báo và tạo thủ công dữ liệu ở từng class gây lặp code nghiêm trọng, khi thêm trường bắt buộc mới là phải đi sửa từng class test, cực kỳ cồng kềnh và 'gà'.
+> **C.** @TestSetup chỉ giúp tạo dữ liệu dùng chung trong nội bộ của duy nhất một class test đó thôi, các class test khác hoàn toàn không thể truy cập được dữ liệu này.
+> **D.** Dùng SeeAllData=true là tối kỵ vì nó khiến test class truy cập dữ liệu thực tế của hệ thống. Nếu dữ liệu thật bị xóa hoặc sửa, test class sẽ bị tạch oan uổng, mất đi tính độc lập của unit test.
 
-**💡 Từ khóa ghi nhớ:** `Dùng chung data test giữa các Class -> Tạo Test Utility Class.`
+**💡 Từ khóa ghi nhớ:** `Dùng chung dữ liệu test giữa nhiều class khác nhau -> Tạo ngay một Test Utility Class!`
 
 ---
 
@@ -2512,21 +2532,21 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** The @testSetup method is automatically executed before each test method in the test class is executed. ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai phát biểu nào đúng về annotation @testSetup?
+> Hai phát biểu nào sau đây là đúng khi sử dụng annotation @testSetup trong một Apex test class? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > The @testSetup annotation is used to set up test data that will be used by all test methods within a class. This helps to avoid redundant data creation and improves test efficiency.
 > Test setup methods are supported only with the default data isolation mode for a test class. If the test class or a test method has access to organization data by using the @isTest(SeeAllData=true) annotation, test setup methods aren’t supported in this class.
 
 **✅ Tại sao đáp án đúng:**
-> E: Data trong setup chỉ insert 1 lần cho cả class dùng chung, giúp test chạy cực nhanh. A: Nếu dùng SeeAllData=true (truy cập data thật) thì Salesforce cấm dùng @testSetup để đảm bảo tính độc lập của test.
+> 1. Salesforce cấm tiệt việc sử dụng @testSetup khi class đang khai báo @isTest(SeeAllData=True) (A). Đã dùng dữ liệu thật của hệ thống thì không được tạo dữ liệu setup dùng chung nữa để tránh xung đột dữ liệu.
+2. Đúng bản chất của @testSetup, dữ liệu chỉ được insert duy nhất một lần trước khi chạy các test method trong class (B), giúp tăng tốc độ thực thi test lên cực kỳ nhiều.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Dữ liệu tạo trong setup hoàn toàn có thể được update bởi các test method lẻ, nhưng sau mỗi method nó sẽ tự rollback về trạng thái ban đầu.
-> **C.** Nó chỉ chạy DUY NHẤT một lần cho toàn bộ class, không phải chạy lặp lại cho từng method.
-> **D.** Câu này thiếu ngữ cảnh rõ ràng, nhưng ý E và A là những đặc tính cốt lõi nhất được hỏi trong PD1.
+> **C.** Bản ghi tạo trong @testSetup hoàn toàn có thể được update bình thường trong từng test method riêng lẻ để kiểm tra các kịch bản logic khác nhau. Sau khi test method kết thúc, mọi thay đổi sẽ tự động rollback về trạng thái ban đầu.
+> **D.** Phương thức @testSetup chỉ chạy duy nhất 1 lần cho cả class, chứ không phải chạy lặp đi lặp lại trước mỗi test method.
 
-**💡 Từ khóa ghi nhớ:** `@testSetup = Tiết kiệm thời gian + Data dùng chung cho toàn bộ class.`
+**💡 Từ khóa ghi nhớ:** `@testSetup = Chạy 1 lần duy nhất cho toàn bộ class + Cấm đi chung với SeeAllData=True!`
 
 ---
 
@@ -2540,19 +2560,19 @@ When the code executes, what happens as a result of the Apex transaction?**
 - **D.** Date fields ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai tính năng nào của Salesforce đóng vai trò là tầng 'Controller' trong kiến trúc MVC? (Chọn 2)
+> Hai tính năng nào sau đây của Salesforce đóng vai trò là tầng Controller trong kiến trúc MVC (Model-View-Controller)? (Chọn hai)
 
 **💬 Giải thích gốc (English):**
 > In the Model-View-Controller (MVC) architecture, the Controller is responsible for handling user input and processing data. In Salesforce, both Process Builder actions and Workflow rules can be considered as part of the Controller layer because they automate and process data based on certain criteria and user input.
 
 **✅ Tại sao đáp án đúng:**
-> Trong mô hình MVC của Salesforce, tầng Controller xử lý logic nghiệp vụ và điều khiển dữ liệu. Cả Process Builder actions (A) và Workflow rules (B) đều chứa các logic điều khiển, tự động hóa cập nhật dữ liệu nên thuộc tầng Controller.
+> Trong mô hình MVC của Salesforce, tầng Controller chịu trách nhiệm xử lý logic nghiệp vụ và điều khiển dòng chạy của dữ liệu. Cả Process Builder actions (A) và Workflow rules (B) đều chứa các logic tự động hóa, kiểm soát và cập nhật dữ liệu nên chúng thuộc tầng Controller.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Standard objects đại diện cho bảng dữ liệu vật lý lưu trữ, thuộc tầng Model.
-> **D.** Fields (các trường dữ liệu) định nghĩa cấu trúc dữ liệu, thuộc tầng Model.
+> **C.** Standard objects đại diện cho bảng dữ liệu vật lý dùng để lưu trữ thông tin, thuộc tầng Model.
+> **D.** Date fields là các trường định nghĩa kiểu dữ liệu ngày tháng, thuộc tầng Model.
 
-**💡 Từ khóa ghi nhớ:** `MVC Salesforce: Model = Objects/Fields. View = Visualforce/LWC. Controller = Apex/Workflows/Flows.`
+**💡 Từ khóa ghi nhớ:** `MVC Salesforce: Model = Object/Field. View = Giao diện (VF/LWC). Controller = Code Apex / Tự động hóa (Flow/Workflow/Process Builder).`
 
 ---
 
@@ -2581,20 +2601,20 @@ The StatusFetcher class successfully compiled and saved. However, the Calculator
 - **D.** Change the class declaration for the Calculator class to public with inherited sharing. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào lập trình viên có thể sửa lỗi biên dịch trong đoạn mã trên?
+> Lập trình viên viết hai class sau: [Đoạn code StatusFetcher và Calculator]. Class StatusFetcher lưu thành công nhưng class Calculator lại bị lỗi biên dịch (compile-time error). Lập trình viên nên làm gì để sửa lỗi này?
 
 **💬 Giải thích gốc (English):**
 > Make the isActive method public, it can now be accessed from other classes, and the Calculator class will be able to call the isActive method on the StatusFetcher instance without any compilation errors.
 
 **✅ Tại sao đáp án đúng:**
-> Method `isActive()` đang để `private`. Class Calculator muốn gọi nó thì mày phải đổi modifier sang `public` (hoặc global).
+> Phương thức isActive() trong class StatusFetcher đang được khai báo với Access Modifier là private. Theo nguyên lý lập trình hướng đối tượng (OOP), private method chỉ có thể được gọi trong nội bộ của chính class đó. Class Calculator ở bên ngoài muốn gọi được phương thức này thì ta bắt buộc phải thay đổi Access Modifier của nó thành public (B) hoặc global.
 
 **❌ Tại sao đáp án sai:**
-> **B.** inherited sharing không làm thay đổi quyền visibility (tầm nhìn) của một private method.
-> **C.** Làm method docalculations thành private không giúp nó 'thấy' được method của class khác.
+> **A.** Thay đổi từ khóa chia sẻ dữ liệu 'with sharing' thành 'with inherited sharing' của class hoàn toàn không có tác động hay quyền can thiệp gì vào Access Modifier (tầm vực truy cập) của một private method, cook!
 > **D.** Thay đổi sharing model của Calculator cũng không giải quyết được vấn đề Access Modifier của StatusFetcher.
+> **C.** Biến phương thức doCalculations() trong Calculator thành private cũng chả giúp ích gì cho việc nó có thể nhìn thấy được private method của class khác.
 
-**💡 Từ khóa ghi nhớ:** `OOP: Muốn thằng khác dùng đồ của mình -> Để Public.`
+**💡 Từ khóa ghi nhớ:** `Lỗi gọi phương thức từ class khác -> Do Access Modifier đang để Private -> Sửa ngay thành Public!`
 
 ---
 
@@ -2608,20 +2628,20 @@ The StatusFetcher class successfully compiled and saved. However, the Calculator
 - **D.** Map <sObject> searchList = [FIND "*ACME*" IN ALL FIELDS RETURNING Contact, Lead]; ❌
 
 **📝 Dịch tiếng Việt:**
-> Câu lệnh nào lấy danh sách cả Lead và Contact có chứa từ khóa 'ACME'?
+> Câu lệnh nào sau đây trả về danh sách các Lead và Contact có chứa từ khóa 'ACME' ở một trường bất kỳ?
 
 **💬 Giải thích gốc (English):**
 > SOSL searches return a List of Lists of sObjects List<List<sObject>>.
 
 **✅ Tại sao đáp án đúng:**
-> Để tìm trên nhiều object, dùng SOSL (`FIND`). Kết quả luôn là `List<List<sObject>>`.
+> Để thực hiện tìm kiếm một từ khóa trên nhiều Object khác nhau cùng lúc, ta bắt buộc phải sử dụng ngôn ngữ truy vấn SOSL (bắt đầu bằng từ khóa FIND). Kết quả của một câu lệnh SOSL luôn luôn trả về một danh sách chứa các danh sách bản ghi của từng Object, tức là kiểu dữ liệu List<List<sObject>> (B).
 
 **❌ Tại sao đáp án sai:**
-> **A.** SOSL không trả về Map.
-> **C.** SOQL không thể query nhiều object theo kiểu liệt kê dấu phẩy như vậy.
-> **D.** Kiểu dữ liệu trả về bị thiếu một tầng List lồng.
+> **A.** SOSL không bao giờ trả về kiểu danh sách phẳng đơn lẻ List<sObject>, compiler sẽ báo lỗi không tương thích kiểu dữ liệu ngay.
+> **C.** Đây là câu lệnh SOQL (SELECT). SOQL chỉ cho phép truy vấn dữ liệu từ duy nhất một Object chính (và các Object có quan hệ trực tiếp), cấm viết truy vấn kiểu liệt kê hai Object độc lập Contact, Lead ngăn cách bằng dấu phẩy thế kia, cú pháp sai bét!
+> **D.** SOSL không hỗ trợ trả về kiểu dữ liệu dạng Map, ra rìa ngay.
 
-**💡 Từ khóa ghi nhớ:** `SOSL Thần chú: FIND {Text} -> List<List<sObject>>.`
+**💡 Từ khóa ghi nhớ:** `Thần chú SOSL: Tìm trên nhiều Object -> Bắt buộc dùng FIND + Kết quả là List<List<sObject>>!`
 
 ---
 
@@ -2641,14 +2661,14 @@ The StatusFetcher class successfully compiled and saved. However, the Calculator
 > Change the access modifier of the isActive method in the StatusFetcher class to public.
 
 **✅ Tại sao đáp án đúng:**
-> Mark Required ở cấp độ 'Field Definition' (Universal Required) là mạnh nhất. Nó bắt buộc ở mọi nơi: giao diện (UI), API, Code Apex, Data Loader. Đây là tầng bảo vệ dữ liệu thấp nhất và hiệu quả nhất.
+> Đánh dấu bắt buộc (Mark Required) ở cấp độ Field Definition (A) (định nghĩa trường) là cách mạnh mẽ và hiệu quả nhất. Nó buộc trường này phải có giá trị ở mọi nơi: giao diện người dùng (UI), gọi API từ ngoài vào, Code Apex, hay nạp dữ liệu bằng Data Loader. Đây là tầng bảo vệ dữ liệu thấp nhất và hiệu quả nhất.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Page Layout chỉ có tác dụng trên giao diện, nếu dùng Data Loader hoặc Code thì vẫn bỏ trống field được.
-> **B.** Default value không bắt người dùng phải 'chọn' theo ý họ, nó chỉ tự điền thôi và có thể bị xóa trắng nếu không có ràng buộc Required.
-> **D.** Validation Rule cũng hiệu quả nhưng tốn tài nguyên xử lý hơn so với việc định nghĩa trực tiếp trên field.
+> **C.** Thiết lập Required trên Page Layout chỉ có tác dụng bắt buộc khi người dùng thao tác trực tiếp trên giao diện của trang đó. Nếu tạo bản ghi thông qua Data Loader hoặc Code Apex thì trường vẫn có thể bị bỏ trống dễ dàng, không an toàn!
+> **B.** Đặt giá trị mặc định (Default Value) không ép buộc người dùng phải chọn giá trị thực tế theo ngữ cảnh của họ, và giá trị đó vẫn có thể bị xóa trống khi lưu nếu không có ràng buộc Required.
+> **D.** Validation Rule cũng bắt buộc được nhưng tốn tài nguyên hệ thống để đánh giá biểu thức công thức hơn và cồng kềnh hơn nhiều so với cài đặt trực tiếp trên Field Definition.
 
-**💡 Từ khóa ghi nhớ:** `Data Integrity: Field Definition > Validation Rule > Page Layout.`
+**💡 Từ khóa ghi nhớ:** `Đảm bảo tính toàn vẹn dữ liệu (Data Integrity): Field Definition > Validation Rule > Page Layout!`
 
 ---
 
@@ -2662,20 +2682,20 @@ The StatusFetcher class successfully compiled and saved. However, the Calculator
 - **D.** Outbound messaging ❌
 
 **📝 Dịch tiếng Việt:**
-> AW Computing muốn tự động xóa các Opportunity liên quan khi một Account bị xóa. Công cụ tự động hóa nào nên được sử dụng?
+> AW Computing muốn chủ động tự động xóa các Opportunity liên quan khi một Account bị xóa. Nên sử dụng công cụ tự động hóa nào?
 
 **💬 Giải thích gốc (English):**
 > With Record-Triggered Flows, you can automate actions based on changes to record data, including deleting related records.
 
 **✅ Tại sao đáp án đúng:**
-> Record-Triggered Flow với sự kiện 'A record is deleted' là công cụ khai báo mạnh mẽ nhất hiện nay để xử lý logic trước hoặc sau khi xóa, bao gồm cả việc xóa các bản ghi liên quan (Cascade Delete thủ công).
+> Record-Triggered Flow với sự kiện 'A record is deleted' là chân ái để xử lý logic trước hoặc sau khi xóa, bao gồm cả việc 'tiễn' các bản ghi con lên đường (manual cascade delete) cực kỳ mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Scheduled Job chạy định kỳ, không mang tính tức thời (proactive) ngay khi Account bị xóa.
-> **C.** Process Builder không hỗ trợ sự kiện xóa (Delete).
-> **D.** Workflow Rules chỉ hỗ trợ Create/Edit, không chơi với sự kiện Delete.
+> **A.** Scheduled job chạy định kỳ kiểu 'hẹn giờ', không bao giờ chủ động 'tức thì' (proactive) ngay khi Account vừa bay màu.
+> **C.** Workflow rules là đồ cổ đã bị khai tử (deprecated), chỉ chạy khi create/edit chứ không chơi với sự kiện delete.
+> **D.** Outbound messaging chỉ dùng để 'bắn' thông điệp sang hệ thống ngoài, tuổi gì xóa được bản ghi trong Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Khi cần xử lý logic lúc XÓA (Delete) mà không muốn viết Code -> Chọn Record-Triggered Flow.`
+**💡 Từ khóa ghi nhớ:** `Xử lý logic lúc XÓA mà không muốn viết Code -> Chọn Record-Triggered Flow!`
 
 ---
 
@@ -2699,7 +2719,7 @@ What should a developer consider for an environment that has over 10,000 Case re
 - **D.** The try/catch block will handle exceptions thrown by governor limits. ❌
 
 **📝 Dịch tiếng Việt:**
-> Đoạn mã Anonymous Block trên xử lý cập nhật 50,000 Case. Với môi trường có hơn 10,000 bản ghi, điều gì sẽ xảy ra?
+> Cho đoạn code Anonymous Block sau: [List<Case> casesToUpdate = new List<Case>()...] Điều gì cần lưu ý đối với môi trường có hơn 10,000 bản ghi Case?
 
 **💬 Giải thích gốc (English):**
 > Total number of records processed as a result of DML statements, Approval.process, or database.emptyRecycleBin: 10,000
@@ -2711,14 +2731,14 @@ What should a developer consider for an environment that has over 10,000 Case re
 > https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_exception_statements.htm
 
 **✅ Tại sao đáp án đúng:**
-> Giới hạn DML Row trong một transaction là 10,000. Đoạn code này cố gắng update tới 50,000 bản ghi trong 1 nốt nhạc, chắc chắn sẽ 'ăn' LimitException và oẳng luôn cả transaction.
+> Giới hạn DML Row trong một transaction là 10,000. Đoạn code này hăng hái 'ôm' tới 50,000 bản ghi để update trong một nốt nhạc -> Ăn ngay quả LimitException cực căng và oẳng luôn toàn bộ transaction.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Governor Limit Exception (như LimitException) là loại 'bất trị', Try/Catch KHÔNG BAO GIỜ bắt được nó.
-> **C.** Dù bắt được DML Exception thì transaction vẫn tạch vì dính limit 10k bản ghi trước khi kịp chạy Database.update thành công.
-> **D.** Không bao giờ thành công nổi với cái LIMIT 50,000 to đùng kia.
+> **A.** Làm sao thành công nổi khi đâm đầu vào bức tường giới hạn 10k DML rows.
+> **C.** Dù có try/catch thì lỗi DML Exception ở đây thực chất là LimitException - loại exception 'bất trị', hệ thống sẽ kill ngay lập tức và không cho catch.
+> **D.** Try/catch trong Apex tuổi gì đòi bắt được LimitException (Governor Limit). Nó đập cho phát là chết thẳng cẳng!
 
-**💡 Từ khóa ghi nhớ:** `Governor Limits = Cảnh sát giao thông. Mày vi phạm là nó 'cẩu xe' (Exception), không có Try/Catch nào xin xỏ được đâu.`
+**💡 Từ khóa ghi nhớ:** `Governor Limit = Cảnh sát giao thông tối cao, bắt là giam xe (Exception), cấm cãi (try/catch vô tác dụng)!`
 
 ---
 
@@ -2739,13 +2759,13 @@ What should a developer consider for an environment that has over 10,000 Case re
 > There is no guaranteed order in which Apex methods and variables are processed by a controller extension or custom controller. Therefore, do not allow controller and extension classes to rely on another method being run, call that method directly. This applies specifically to setting variables and accessing data from the database.
 
 **✅ Tại sao đáp án đúng:**
-> B: Phương thức Setter là bắt buộc để truyền dữ liệu người dùng nhập từ giao diện (VF Page) ngược về Controller xử lý. C: Salesforce không hề đảm bảo thứ tự thực thi giữa các phương thức Getter hay Setter khi trang tải, do đó cấm viết code logic phụ thuộc vào thứ tự chạy của chúng.
+> B đúng vì muốn 'bê' dữ liệu user nhập từ giao diện (VF Page) ném về Controller xử lý thì bắt buộc phải có Setter. C đúng vì Salesforce siêu tự do, không hề đảm bảo thứ tự thực thi của các Getter hay Setter khi tải trang. Đừng bao giờ viết code logic phụ thuộc vào việc thằng nào chạy trước thằng nào, hụt hẫng ráng chịu!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Setter chỉ cần khai báo public hoặc global tùy thuộc vào phạm vi sử dụng của controller, không bắt buộc luôn là global.
-> **D.** Ngược lại, Getter dùng để truyền dữ liệu từ Controller ra hiển thị trên giao diện (Page), chứ không phải ngược lại.
+> **A.** Setter chỉ cần public hoặc global tùy nhu cầu sử dụng, bắt buộc global là nói phét.
+> **D.** Getter dùng để truyền dữ liệu từ Controller ra ngoài Page để hiển thị (Get ra), chứ không phải để truyền ngược vào.
 
-**💡 Từ khóa ghi nhớ:** `Getter = Đẩy dữ liệu RA Page. Setter = Hốt dữ liệu VÀO Controller. Thứ tự chạy ngẫu nhiên!`
+**💡 Từ khóa ghi nhớ:** `Getter = Đẩy dữ liệu ra Page (Read). Setter = Hốt dữ liệu vào Controller (Write). Thứ tự chạy hên xui!`
 
 ---
 
@@ -2759,20 +2779,20 @@ What should a developer consider for an environment that has over 10,000 Case re
 - **D.** Execute a SOQL query on the RecordType object. ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer cần viết code Apex chỉ thực hiện hành động khi bản ghi thuộc một Record Type cụ thể. Hai cách nào giúp lấy Record Type ID động theo Tên (Name) của nó? (Chọn 2)
+> Developer cần viết code Apex chỉ thực hiện hành động nếu bản ghi thuộc Record Type cụ thể. Hai cách nào giúp lấy Record Type ID động theo Tên (Name)? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Using the getRecordTypeInfosByName() method allows you to dynamically retrieve the Record Type ID by its name without hardcoding.
 > Executing a SOQL query on the RecordType object is another way to dynamically determine the Record Type ID.
 
 **✅ Tại sao đáp án đúng:**
-> C: Sử dụng hàm getRecordTypeInfosByName() của lớp DescribeSObjectResult để lấy mô tả Record Type trực tiếp từ bộ nhớ RAM cực nhanh. D: Thực hiện câu truy vấn SOQL trên đối tượng hệ thống RecordType lọc theo DeveloperName hoặc Name để lấy ID.
+> C đúng vì sử dụng `getRecordTypeInfosByName()` của Schema Describe giúp hốt ngay Record Type ID từ bộ nhớ RAM trong tích tắc, cực nhanh và không tốn SOQL query. D đúng vì truy vấn SOQL trực tiếp vào sObject hệ thống `RecordType` lọc theo `DeveloperName` hoặc `Name` cũng trả về ID chính xác 100%.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Gọi API SOAP ra ngoài chỉ để lấy 1 cái ID Record Type là quá cồng kềnh và điên rồ.
-> **B.** Hardcode ID là tối kỵ vì ID ở Sandbox và Production sẽ khác nhau, gây lỗi khi deploy.
+> **A.** Gọi web service SOAP ra ngoài chỉ để lấy một cái ID Record Type? Cồng kềnh, chậm chạp và cực kỳ điên rồ!
+> **B.** Hardcode ID trực tiếp là tối kỵ của dân chuyên nghiệp, sang Sandbox hoặc Org khác ID thay đổi là code oẳng ngay lập tức.
 
-**💡 Từ khóa ghi nhớ:** `Lấy Record Type ID: 1. Schema Describe (getRecordTypeInfosByName) - Khuyến nghị; 2. SOQL RecordType.`
+**💡 Từ khóa ghi nhớ:** `Lấy ID Record Type động -> Describe SObject (Không tốn query) HOẶC SOQL RecordType. Né hardcode ID!`
 
 ---
 
@@ -2786,20 +2806,20 @@ What should a developer consider for an environment that has over 10,000 Case re
 - **D.** The object is referenced in an Owner field of a Master-Detail relationship. ❌
 
 **📝 Dịch tiếng Việt:**
-> Trường hợp nào sau đây ngăn cản developer thiết lập Sharing Rules (luật chia sẻ quyền truy cập) cho một Custom Object?
+> Trường hợp nào sau đây ngăn cản developer thiết lập Sharing Rules cho một Custom Object?
 
 **💬 Giải thích gốc (English):**
 > Cannot set explicit sharing rules for custom objects that are on the detail side of a Master-Detail relationship.
 
 **✅ Tại sao đáp án đúng:**
-> Khi Custom Object đó nằm ở bên Detail (con) của mối quan hệ Master-Detail (B). Thằng con sẽ bị tước quyền tự quyết và bắt buộc phải kế thừa hoàn toàn cấu hình bảo mật Sharing từ thằng cha (Master).
+> Khi Custom Object đó nằm ở bên con (Detail) của mối quan hệ Master-Detail. Thằng con sẽ bị tước quyền tự quyết và bắt buộc phải ký sinh bảo mật, kế thừa hoàn toàn cấu hình bảo mật (Sharing) của thằng cha (Master). Cho nên không có cửa thiết lập Sharing Rules riêng nhé!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Public Read/Write là cấu hình OWD mặc định, hoàn toàn không ngăn cản việc viết sharing rule sau đó nếu cần thu hẹp/mở rộng.
-> **C.** Chỉ cần có quyền Customize Application (thường là Admin hoặc Dev có quyền) là set được, không bắt buộc phải là System Admin tối cao.
-> **D.** Không có khái niệm 'Owner field' của mối quan hệ Master-Detail vì bản ghi Detail không hề có trường Owner riêng.
+> **A.** Public Read/Write là OWD mặc định, không ngăn cản việc viết sharing rule để mở rộng quyền truy cập (chỉ là không cần thiết thôi).
+> **C.** Chỉ cần user có quyền 'Customize Application' là set được ngon lành, không nhất thiết phải là System Admin tối cao.
+> **D.** Object con trong Master-Detail làm gì có trường Owner riêng mà đòi tham chiếu, cồng kềnh!
 
-**💡 Từ khóa ghi nhớ:** `Detail trong Master-Detail = Ký sinh bảo mật. Không có Owner riêng, không có Sharing Rule riêng!`
+**💡 Từ khóa ghi nhớ:** `Detail trong Master-Detail = 'Ký sinh bảo mật'. Không Owner, không Sharing Rules riêng!`
 
 ---
 
@@ -2830,7 +2850,7 @@ return theAccount;
 - **D.** Querying Accounts. Query Exception. Done. ✅
 
 **📝 Dịch tiếng Việt:**
-> Cho ví dụ xử lý Exception sau: [Class myClass]. Kết quả hiển thị trong debug log khi có lỗi QueryException xảy ra trong hàm aQuery là gì?
+> Debug log sẽ in ra kết quả gì khi xảy ra QueryException trong hàm aQuery ở ví dụ dưới đây? [myClass]
 
 **💬 Giải thích gốc (English):**
 > 1. Try Block: The code attempts to execute the SOQL query inside the try block and logs “Querying Accounts.”.
@@ -2838,14 +2858,14 @@ return theAccount;
 > 3. Finally Block: The finally block will always execute, logging “Done.”.
 
 **✅ Tại sao đáp án đúng:**
-> Khi truy vấn SOQL thất bại (QueryException), hệ thống ném ra QueryException chuẩn. Lỗi sẽ đi qua block catch đầu tiên (CustomException - không khớp vì đây là class con tự viết) và rơi trúng block catch thứ hai catch(QueryException eX), in ra 'Query Exception.'. Cuối cùng, block finally luôn luôn chạy và in ra 'Done.' (D).
+> Khi SOQL query hẹo (ném ra QueryException của hệ thống), Apex sẽ chạy từ trên xuống: Lọt vào catch(CustomException) -> Skip vì CustomException (class con tự viết) không bắt được QueryException chuẩn của hệ thống; Lọt vào catch(QueryException) -> Khớp! In ra 'Query Exception.'; Cuối cùng, block `finally` là bất tử, luôn luôn chạy dù code có lỗi hay không -> In ra 'Done.'. Kết hợp lại ta được đáp án D.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thiếu chữ 'Done.' của block finally vốn dĩ bắt buộc phải chạy.
-> **B.** QueryException chuẩn của hệ thống không thể bị bắt bởi lớp CustomException tự chế được.
-> **C.** Bị bắt sai block catch.
+> **A.** Thiếu 'Done.' của block finally. Block này dù trời sập vẫn phải chạy!
+> **B.** Bị bắt sai block catch. Lỗi hệ thống xịn sò không bao giờ chui vào class CustomException tự chế kia.
+> **C.** Vừa bị bắt sai block catch vừa thiếu 'Done.' của block finally.
 
-**💡 Từ khóa ghi nhớ:** `Finally block: Dù code chạy ngon hay oẳng dính Exception, block finally VẪN PHẢI CHẠY!`
+**💡 Từ khóa ghi nhớ:** `Block `finally` = 'Bất tử', dù code chạy ngon hay oẳng dính Exception thì finally VẪN PHẢI CHẠY!`
 
 ---
 
@@ -2859,20 +2879,20 @@ return theAccount;
 - **D.** Use a trigger. ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn các Opportunity khi đã chuyển sang trạng thái Closed/Won thì KHÔNG cho phép người dùng chỉnh sửa nữa. Hai giải pháp nào hỗ trợ việc này? (Chọn 2)
+> Universal Containers muốn Opportunity không cho phép chỉnh sửa khi đã chuyển sang trạng thái Closed/Won. Hai giải pháp nào lập trình viên có thể sử dụng? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Create a validation rule on the Opportunity object that checks the stage value. If the stage is Closed/Won, the validation rule should prevent any updates or changes to the Opportunity.
 > Using a trigger can be an option.
 
 **✅ Tại sao đáp án đúng:**
-> B: Sử dụng Validation Rule kiểm tra điều kiện IsWon = true và PRIORVALUE(StageName) = 'Closed/Won' để chặn lưu mọi thay đổi. D: Viết trigger 'before update' trên Opportunity check trạng thái cũ và mới để gọi addError() chặn lưu.
+> B đúng vì Validation Rule là vũ khí no-code tối thượng để chặn lưu. Kiểm tra nếu `IsWon = true` và có cố gắng chỉnh sửa thì quăng lỗi bắt user đứng hình. D đúng vì dùng Trigger `before update` check trạng thái cũ và mới rồi nện `addError()` vào bản ghi để chặn lưu cực kỳ uy tín.
 
 **❌ Tại sao đáp án sai:**
-> **A.** After-save flow chỉ chạy sau khi bản ghi đã lưu thành công vào database, không có tính năng chặn (block) cập nhật như Validation Rule.
-> **C.** Process Automation Settings cấu hình chung cho hệ thống tự động hóa, không chứa logic chặn chỉnh sửa bản ghi cụ thể.
+> **A.** After-save flow chạy sau khi gạo đã nấu thành cơm (bản ghi đã lưu vào database), không có cơ chế chặn lưu hay quăng lỗi cấm sửa trực tiếp như Validation Rule.
+> **C.** Process Automation Settings chỉ dùng để cấu hình chung cho hệ thống tự động hóa, chả liên quan gì đến logic chặn sửa bản ghi cụ thể.
 
-**💡 Từ khóa ghi nhớ:** `Chặn chỉnh sửa bản ghi (Read-only khóa cứng) -> 1. Validation Rule (No-code); 2. Trigger addError (Code).`
+**💡 Từ khóa ghi nhớ:** `Chặn chỉnh sửa bản ghi (Khóa cứng) -> 1. Validation Rule (No-code); 2. Trigger addError (Code).`
 
 ---
 
@@ -2892,14 +2912,14 @@ return theAccount;
 > When importing data using the Data Loader or Bulk API, Salesforce triggers are executed by default. This includes before triggers for Accounts, which would fire before the imported data is inserted or updated.
 
 **✅ Tại sao đáp án đúng:**
-> Khi sử dụng Data Loader (dù là Bulk API hay SOAP API) để nạp dữ liệu, Salesforce coi đây là các thao tác DML chuẩn. Do đó, tất cả các trigger liên quan (Before/After Insert/Update) đều sẽ được kích hoạt.
+> Dùng Data Loader để nạp dữ liệu (dù qua Bulk API hay SOAP API) thực chất là thực hiện các thao tác DML chuẩn (Insert, Update). Đã là DML thì Before/After Trigger cứ thế mà nổ banh xác theo đúng luật.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Mass Address update tool là công cụ hệ thống, đôi khi không kích hoạt trigger thông thường tùy vào phiên bản và cấu hình.
-> **C.** Lead Conversion chủ yếu kích hoạt trigger trên bản ghi được tạo/cập nhật nhưng cơ chế của nó phức tạp và ưu tiên các event đặc thù của Conversion hơn là Before trigger mặc định như Data Loader.
-> **D.** Thay đổi metadata (đổi tên picklist) không phải là thao tác trên data, nên trigger sẽ không nổ.
+> **A.** Thay đổi metadata (rename/replace picklist) chỉ là đổi cấu hình hệ thống, không tác động trực tiếp vào data nên trigger ngủ yên không thèm nổ.
+> **C.** Sử dụng Mass Address Update tool là công cụ hệ thống đặc thù, cơ chế chạy ngầm và không kích hoạt trigger chuẩn của Account.
+> **D.** Lead Conversion (chuyển đổi Lead) chủ yếu kích hoạt trigger trên bản ghi được tạo mới/cập nhật cụ thể trong luồng convert chứ không kích hoạt before trigger thông thường của Account một cách mặc định không điều kiện.
 
-**💡 Từ khóa ghi nhớ:** `Data Loader = DML = Trigger nổ banh xác. Cứ nhớ thế cho nhanh!`
+**💡 Từ khóa ghi nhớ:** `Cứ đụng đến DML (như Data Loader import) là Trigger nổ!`
 
 ---
 
@@ -2913,20 +2933,20 @@ return theAccount;
 - **D.** Create the Picklist on each object and select "Restrict picklist to the values defined in the value set". ❌
 
 **📝 Dịch tiếng Việt:**
-> Các giá trị 'High', 'Medium', 'Low' được dùng chung cho nhiều field picklist ở nhiều object khác nhau. Làm sao để quản lý đống này một cách tập trung và chuyên nghiệp nhất?
+> Các giá trị 'High', 'Medium', 'Low' dùng chung cho nhiều field picklist ở nhiều object khác nhau. Cách nào để quản lý tập trung và giới hạn giá trị tốt nhất?
 
 **💬 Giải thích gốc (English):**
 > By creating a Global Picklist Value Set with the common values 'High', 'Medium', and 'Low', you can then use this value set to populate the picklist fields on different objects.
 
 **✅ Tại sao đáp án đúng:**
-> D đúng vì Global Picklist Value Set cho phép mày định nghĩa bộ giá trị một nơi và dùng nhiều nẻo. Sau này muốn thêm giá trị 'Very High' thì chỉ cần sửa một chỗ là cả org cùng hưởng.
+> Global Picklist Value Set sinh ra để làm bá chủ khoản này. Định nghĩa bộ giá trị một nơi và dùng cho nhiều field ở nhiều object khác nhau. Sau này sếp đòi thêm giá trị 'Very High' thì chỉ cần sửa một phát ở Global Set là cả lũ tự động cập nhật, nhàn nhã vô cùng!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cái này chỉ là sắp xếp thứ tự hiển thị, chả giúp ích gì cho việc bảo trì tập trung cả.
-> **B.** Validation rule trên mỗi object là cách làm thủ công, tốn sức và dễ sai sót khi có thay đổi.
-> **C.** Cái này chỉ giới hạn giá trị cho riêng cái field đó, nếu có 10 object thì mày phải làm 10 lần. Quá mệt!
+> **B.** Chọn hiển thị theo bảng chữ cái thì liên quan gì đến việc bảo trì tập trung, lạc đề cực nặng!
+> **C.** Viết Validation Rule cho từng field ở từng object để kiểm tra giá trị? Cách làm cồng kềnh, thủ công và tốn calo nhất hệ mặt trời.
+> **D.** Chọn giới hạn giá trị tại từng field riêng lẻ bắt mày phải cấu hình thủ công cho cả chục field, bảo trì mệt nghỉ khi có thay đổi.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Dùng chung giá trị cho nhiều picklist = Global Picklist Value Set.`
+**💡 Từ khóa ghi nhớ:** `Dùng chung giá trị picklist cho nhiều object -> Chọn ngay Global Picklist Value Set.`
 
 ---
 
@@ -2940,20 +2960,20 @@ return theAccount;
 - **D.** Salesforce-to-Salesforce ❌
 
 **📝 Dịch tiếng Việt:**
-> Lựa chọn nào mà lập trình viên nên sử dụng để tạo mới 500 Account và đảm bảo rằng không tạo ra các bản ghi trùng lặp đối với các Account Site đã tồn tại?
+> Cần tạo 500 Account và đảm bảo không tạo trùng lặp với các Account Site đã tồn tại. Lựa chọn nào tối ưu?
 
 **💬 Giải thích gốc (English):**
 > The Data Import Wizard in Salesforce provides an easy-to-use interface for importing data, and it has a built-in duplicate management feature that allows you to prevent the creation of duplicate records during the import process.
 
 **✅ Tại sao đáp án đúng:**
-> Data Import Wizard (C) là công cụ no-code chuẩn của Salesforce, tích hợp sẵn tính năng đối chiếu và chặn bản ghi trùng lặp (Duplicate Management) dựa trên các tiêu chí như Name, Site cực kỳ tiện lợi cho số lượng bản ghi dưới 50,000.
+> Data Import Wizard là công cụ 'mỳ ăn liền' no-code cực xịn cho dữ liệu dưới 50k bản ghi. Nó tích hợp sẵn tính năng so khớp và chặn trùng lặp (Duplicate Management) cực kỳ mạnh mẽ dựa trên Name, Site... ngay lúc import.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sandbox template dùng để chọn lọc dữ liệu khi tạo/refesh Sandbox, không liên quan đến việc nạp và chặn trùng.
-> **B.** Data Loader hỗ trợ nạp số lượng lớn nhưng không có tính năng so khớp và tự động chặn trùng lặp trực tiếp lúc import như Wizard.
-> **D.** Salesforce-to-Salesforce là tính năng kết nối chia sẻ dữ liệu giữa 2 Org khác nhau, không phải công cụ import dữ liệu thông thường.
+> **A.** Sandbox template dùng để chọn lọc dữ liệu khi tạo/refresh Sandbox, không liên quan gì đến việc nạp và lọc trùng data.
+> **B.** Data Loader hỗ trợ nạp hàng triệu bản ghi nhưng cực kỳ 'ngây thơ', không có tính năng tự động so khớp chặn trùng lặp trực tiếp khi import như Wizard.
+> **D.** Salesforce-to-Salesforce là tính năng kết nối chia sẻ dữ liệu giữa 2 Org khác nhau, không phải công cụ để import dữ liệu.
 
-**💡 Từ khóa ghi nhớ:** `Import dưới 50k bản ghi + Chặn trùng lặp không code -> Data Import Wizard.`
+**💡 Từ khóa ghi nhớ:** `Dưới 50k bản ghi + Lọc trùng không cần code -> Data Import Wizard (Wizard lọc trùng siêu đỉnh)!`
 
 ---
 
@@ -2967,20 +2987,20 @@ return theAccount;
 - **D.** Use the TestVisible annotation. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để lập trình viên có thể viết unit tests cho một private method trong một Apex class?
+> Làm sao để viết unit test cho một private method trong Apex class?
 
 **💬 Giải thích gốc (English):**
 > The TestVisible annotation allows you to expose private methods and variables to be accessed in test classes.
 
 **✅ Tại sao đáp án đúng:**
-> Annotation @TestVisible cho phép các class test truy cập được vào các member (variable/method) vốn dĩ là private hoặc protected mà không cần phải thay đổi modifier của chúng sang public.
+> Annotation `@TestVisible` sinh ra như một tấm vé đặc cách. Nó cho phép các class test dòm thấy và gọi được các private/protected method hoặc variable của class chính mà không cần phải chuyển chúng thành public (giúp giữ vững tính đóng gói của code).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Global làm lộ code ra toàn hệ thống, cực kỳ thiếu bảo mật chỉ để phục vụ testing.
-> **C.** SeeAllData liên quan đến việc truy cập dữ liệu trong Org, không liên quan đến khả năng truy cập private method.
-> **D.** Sai practice. Code logic và Code test phải tách biệt hoàn toàn để đảm bảo tính đóng gói.
+> **A.** Viết method test trực tiếp trong class chính là lỗi thời và sai nguyên tắc thiết kế, code test và code logic phải tách biệt hoàn toàn.
+> **B.** Khai báo class là global chả giúp ích gì cho việc truy cập private method mà còn làm lộ class ra ngoài, thiếu bảo mật nghiêm trọng.
+> **C.** `SeeAllData=true` chỉ để đọc dữ liệu thật trong Org khi chạy test, không giúp vượt rào truy cập private method.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Private method test -> @TestVisible.`
+**💡 Từ khóa ghi nhớ:** `Test private method -> `@TestVisible` (Hiện hình cho test thấy)!`
 
 ---
 
@@ -2994,20 +3014,20 @@ return theAccount;
 - **D.** Master-Detail ❌
 
 **📝 Dịch tiếng Việt:**
-> Một công ty có đối tượng tùy chỉnh tên là Region. Mỗi Account trong Salesforce chỉ có thể liên kết với một Region tại một thời điểm, nhưng liên kết này là không bắt buộc (tùy chọn). Loại mối quan hệ nào nên được sử dụng?
+> Mỗi Account chỉ liên kết với một Region tại một thời điểm, liên kết này không bắt buộc (optional). Dùng loại quan hệ nào?
 
 **💬 Giải thích gốc (English):**
 > A Lookup relationship allows each Account to be optionally related to one Region at a time without enforcing strict dependency rules, which fits the requirement of an optional relationship.
 
 **✅ Tại sao đáp án đúng:**
-> Mối quan hệ Lookup (C) là lựa chọn hoàn hảo vì nó liên kết hai đối tượng một cách lỏng lẻo và cho phép trường liên kết bị bỏ trống (optional). Nếu dùng Master-Detail, trường liên kết sẽ bị bắt buộc phải điền giá trị.
+> Mối quan hệ Lookup (C) là chuẩn cơm mẹ nấu vì nó liên kết lỏng lẻo giữa 2 đối tượng và cực kỳ thoải mái: cho phép để trống (optional). Nếu không chọn Region thì Account vẫn lưu ngon lành.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Parent-Child là tên gọi chung của mối quan hệ cha-con, không phải là tên một kiểu trường quan hệ trong Salesforce.
-> **B.** Hierarchical (mối quan hệ phân cấp) là một loại Lookup đặc biệt chỉ dùng riêng cho đối tượng User để liên kết User này với User khác.
-> **D.** Master-Detail là quan hệ chặt chẽ, bắt buộc phải có giá trị ở con và không cho phép để trống trường liên kết.
+> **A.** Parent-Child chỉ là tên gọi logic chung của mối quan hệ, không phải loại trường quan hệ cụ thể trong Salesforce.
+> **B.** Hierarchical (mối quan hệ phân cấp) là dạng lookup đặc biệt chỉ dùng riêng cho đối tượng User để liên kết User này với User khác, object thường không có cửa.
+> **D.** Master-Detail là mối quan hệ 'sống chết có nhau', bắt buộc phải điền giá trị chứ không bao giờ cho phép để trống (optional) như Lookup.
 
-**💡 Từ khóa ghi nhớ:** `Mối quan hệ 1-Nhiều + Tùy chọn (Optional) cho phép trống -> Dùng Lookup Relationship.`
+**💡 Từ khóa ghi nhớ:** `Liên kết 1-Nhiều + Tùy chọn (để trống được) -> Chọn Lookup. Bắt buộc có giá trị -> Master-Detail!`
 
 ---
 
@@ -3021,20 +3041,20 @@ return theAccount;
 - **D.** The Account save is retried using a smaller trigger batch size. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một trigger trên Account cập nhật tất cả các Contact và Case liên quan mỗi khi Account được lưu bằng 2 câu lệnh DML: 'update allContacts;' và 'update allCases;'. Điều gì xảy ra nếu việc cập nhật Case vượt quá giới hạn (governor limit) về số lượng bản ghi DML tối đa?
+> Trigger trên Account thực hiện cập nhật Contact và Case bằng 2 câu lệnh DML: 'update allContacts;' và 'update allCases;'. Nếu việc cập nhật Case vượt quá giới hạn (governor limit) về số lượng bản ghi DML, chuyện gì sẽ xảy ra?
 
 **💬 Giải thích gốc (English):**
 > If the Case update exceeds the governor limit for the maximum number of DML records, the entire transaction is rolled back, causing the Account save to fail and preventing any updates to Contacts or Cases.
 
 **✅ Tại sao đáp án đúng:**
-> Trong Salesforce, mọi hành động diễn ra trong cùng một transaction. Nếu có bất kỳ lỗi Governor Limit nào xảy ra ở bất kỳ bước nào (ví dụ ở lệnh update Case), toàn bộ transaction sẽ bị rollback (hủy bỏ) hoàn toàn (A). Không có Account, Contact hay Case nào được lưu hết để đảm bảo toàn vẹn dữ liệu.
+> Quy tắc vàng của Database Transaction trong Salesforce: 'Một thằng oẳng là cả lũ cùng đi'. Tất cả các thao tác trong một transaction được thực thi dưới dạng nguyên tử (Atomic). Khi lệnh update Case dính lỗi Governor Limit, toàn bộ transaction sẽ bị rollback (hủy bỏ) sạch sẽ từ đầu đến cuối. Account không lưu được, Contact và Case cũng giữ nguyên trạng thái cũ.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Account lưu thất bại hoàn toàn chứ không phải lưu thành công.
-> **C.** Salesforce không cho phép lưu một nửa (Contacts được lưu còn Cases thì không) khi có unhandled exception xảy ra trong transaction.
-> **D.** Hệ thống không tự động thử lại (retry) với kích thước lô nhỏ hơn khi dính lỗi Governor Limit.
+> **B.** Account lưu thất bại hoàn toàn chứ không có chuyện lưu thành công.
+> **C.** Salesforce không bao giờ cho phép 'lưu một nửa' (Contact được lưu còn Case thì không) khi dính unhandled exception trong transaction.
+> **D.** Hệ thống không rảnh để tự động thử lại (retry) với kích thước lô nhỏ hơn khi dính lỗi Governor Limit đâu nhé.
 
-**💡 Từ khóa ghi nhớ:** `Transaction Rule: Một thằng oẳng -> Cả lũ oẳng theo (Rollback sạch sẽ)!`
+**💡 Từ khóa ghi nhớ:** `Salesforce Transaction: 'Đồng sinh cộng tử'. Một thằng dính LimitException -> Rollback sạch sẽ về vạch xuất phát!`
 
 ---
 
@@ -3049,20 +3069,20 @@ return theAccount;
 - **E.** Visual Workflow can be used to check the record criteria and send an outbound message without Apex Code. ❌
 
 **📝 Dịch tiếng Việt:**
-> Cần gửi Outbound Message khi bản ghi thỏa mãn điều kiện. Hai tính năng nào hỗ trợ việc này?
+> Cần kích hoạt Outbound Message khi bản ghi thỏa mãn điều kiện. Ba tính năng nào thỏa mãn yêu cầu này? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Outbound messaging allows you to specify that changes to fields within Salesforce can cause messages with field values to be sent to designated external servers.
 > Outbound messaging is part of the workflow rule functionality in Salesforce. Workflow rules watch for specific kinds of field changes and trigger automatic Salesforce actions, such as sending email alerts, creating task records, or sending an outbound message. You can associate outbound messages with flows, workflow rules, approval processes, or entitlement processes.
 
 **✅ Tại sao đáp án đúng:**
-> C: Approval Process hỗ trợ Outbound Message trong các hành động phê duyệt. D: Flow Builder hiện nay đã hỗ trợ gọi Outbound Message trực tiếp thông qua Action cực kỳ xịn xò.
+> A đúng vì tuy Process Builder không hỗ trợ Outbound Message trực tiếp (no-code), nó hoàn toàn có thể gọi một đoạn Apex Code (@InvocableMethod) để bắn Outbound Message đi. C đúng vì Approval Process hỗ trợ cấu hình gửi Outbound Message trực tiếp dưới dạng Approval Actions hoàn toàn no-code. D đúng vì Workflow Rules huyền thoại (dù là đồ cổ) hỗ trợ Outbound Message cực kỳ cơ bản.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Process Builder KHÔNG hỗ trợ Outbound Message trực tiếp. Muốn dùng phải gọi qua Apex (@InvocableMethod) hoặc Workflow.
-> **B.** Next Best Action là tool gợi ý cho người dùng, không phải tool tự động hóa backend để gửi tin nhắn ra ngoài hệ thống.
+> **B.** Process Builder tự thân nó (without Apex Code) không có hành động gửi Outbound Message trực tiếp đâu nhé.
+> **E.** Visual Flow (Flow kiểu cũ) không hỗ trợ gửi Outbound Message mà không dùng Apex Code.
 
-**💡 Từ khóa ghi nhớ:** `Outbound Message: Workflow (xưa rồi), Approval Process, Flow (vua bây giờ).`
+**💡 Từ khóa ghi nhớ:** `Outbound Message no-code truyền thống -> Workflow, Approval Process. Dùng Apex -> Process Builder. (Năm 2026: Flow là vua!).`
 
 ---
 
@@ -3081,21 +3101,21 @@ insert acct;
 - **D.** 0 Accounts are inserted. ✅
 
 **📝 Dịch tiếng Việt:**
-> Kết quả của việc insert cùng 1 biến acct 201 lần trong vòng lặp là gì?
+> Kết quả của đoạn code insert một biến Account 201 lần trong vòng lặp [for(Integer i = 0; i <= 200; i++) insert acct;] là gì?
 
 **💬 Giải thích gốc (English):**
 > The exception prevents any accounts from being inserted, and the final outcome is that 0 Accounts are inserted.
 > To avoid hitting the governor limit, a better approach would be to collect the accounts in a collection (such as a List<Account>) during the loop and then perform a single bulk insert after the loop completes.
 
 **✅ Tại sao đáp án đúng:**
-> Lần 2 sẽ báo lỗi 'Record already has ID'. Vì không có catch lỗi, cả transaction rollback sạch sẽ.
+> Lần lặp đầu tiên: biến `acct` được insert thành công và được hệ thống cấp Id. Lần lặp thứ hai: câu lệnh tiếp tục cố gắng insert biến `acct` đó một lần nữa. Apex lập tức quăng lỗi 'Record already has ID' (hoặc dính LimitException 150 DML vì chạy trong loop). Vì không có try/catch xử lý lỗi này, toàn bộ transaction bị rollback sạch sẽ về 0. Không có bản ghi nào được lưu cả!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Vượt limit 150 DML và lỗi 'Already has ID' sẽ giết chết transaction.
-> **C.** Lỗi ngay từ lần thứ 2 thì không thể tới 200 được.
-> **D.** Dù lần 1 thành công nhưng lần 2 lỗi làm rollback cả lần 1.
+> **A.** Dính lỗi ngay từ lần thứ 2 nên không bao giờ insert được 200 bản ghi.
+> **B.** Lần 1 insert được nhưng lần 2 bị lỗi khiến toàn bộ transaction rollback, kéo theo lần 1 cũng mất tiêu.
+> **C.** Không thể insert 201 bản ghi vì dính giới hạn DML trong vòng lặp và lỗi ID trùng lặp.
 
-**💡 Từ khóa ghi nhớ:** `DML in Loop = Bad. Insert record with ID = Bad. Cả 2 cộng lại = 0 bản ghi.`
+**💡 Từ khóa ghi nhớ:** `DML in Loop = Cook. Insert bản ghi đã có ID = Cook. Rollback về 0 bản ghi!`
 
 ---
 
@@ -3109,7 +3129,7 @@ insert acct;
 - **D.** 2 ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên viết một trigger duy nhất trên Account ở hai sự kiện 'after insert' và 'after update'. Một workflow rule sẽ thay đổi giá trị một trường mỗi khi Account được tạo hoặc cập nhật. Hỏi trigger sẽ nổ bao nhiêu lần khi chèn mới 1 Account (không có tự động hóa nào khác)?
+> Viết một trigger duy nhất trên Account ở sự kiện after insert và after update. Một Workflow Rule đổi giá trị trường mỗi khi Account tạo/sửa. Hỏi trigger nổ bao nhiêu lần khi chèn mới 1 Account (không có tự động hóa khác)?
 
 **💬 Giải thích gốc (English):**
 > When a new Account is inserted, the following sequence of events occurs:
@@ -3120,14 +3140,14 @@ insert acct;
 > 2. Once for the after update event caused by the workflow rule.
 
 **✅ Tại sao đáp án đúng:**
-> Trigger sẽ nổ đúng 2 lần (D). Lần 1: Khi Account mới được chèn vào, trigger nổ ở sự kiện 'after insert'. Lần 2: Sau khi insert, workflow rule kích hoạt cập nhật trường, hệ thống thực hiện save ngầm khiến trigger nổ lần 2 ở sự kiện 'after update'.
+> Trigger sẽ nổ đúng 2 lần (D). Lần 1: Chèn mới Account -> Kích hoạt trigger 'after insert' (Trigger nổ lần 1). Ngay sau đó, Workflow Rule thấy điều kiện thỏa mãn liền nhảy vào cập nhật trường -> Salesforce thực hiện save ngầm bản ghi và chạy lại trigger ở sự kiện 'after update' (Trigger nổ lần 2).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Số lần nổ quá nhiều, không khớp với số vòng đời lưu bản ghi.
-> **B.** Sai vì workflow update trường sẽ kích hoạt trigger nổ thêm một lần nữa.
-> **C.** Sai số lượng vòng đời thực tế.
+> **A.** Số lần nổ quá lớn, không đúng thứ tự vòng đời thực tế của Salesforce.
+> **B.** Thiếu lần kích hoạt thứ 2 khi Workflow Rule thực hiện cập nhật lại trường.
+> **C.** Tính toán sai chu kỳ lưu bản ghi (Order of Execution).
 
-**💡 Từ khóa ghi nhớ:** `Insert mới -> Trigger after insert nổ -> Workflow chạy -> Trigger after update nổ lần nữa (Tổng cộng = 2).`
+**💡 Từ khóa ghi nhớ:** `New Insert -> After Insert nổ -> Workflow update -> After Update nổ lần nữa = 2 lần!`
 
 ---
 
@@ -3141,20 +3161,20 @@ insert acct;
 - **D.** A Lightning component in Salesforce Classic and a Lightning component in Lightning Experience ❌
 
 **📝 Dịch tiếng Việt:**
-> Ghi đè nút Edit của Contact cho cả Classic và Lightning? (Chọn 1)
+> Cần cung cấp giao diện tùy chỉnh khi người dùng chỉnh sửa (Edit) Contact cho cả Salesforce Classic và Lightning Experience. Lập trình viên nên dùng gì để ghi đè nút Edit?
 
 **💬 Giải thích gốc (English):**
 > Visualforce pages are used to create custom user interfaces in Salesforce Classic, and Lightning components are used to create custom user interfaces in Lightning Experience.
 
 **✅ Tại sao đáp án đúng:**
-> Classic bắt buộc dùng Visualforce. Lightning Experience khuyến khích dùng Lightning Component (Aura/LWC) để tối ưu trải nghiệm.
+> Salesforce Classic là đồ cổ nên chỉ chơi được với Visualforce Page để tùy biến giao diện nút bấm. Còn Lightning Experience là thời thượng nên phải dùng Lightning Component (Aura hoặc LWC) để giao diện mượt mà và tối ưu trải nghiệm người dùng nhất.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Classic không hỗ trợ Lightning page để làm giao diện tùy chỉnh cho nút bấm.
 > **B.** Lightning page dùng để xây dựng cấu trúc trang, không dùng để ghi đè nút chức năng như Edit button.
-> **C.** Classic không hỗ trợ hiển thị mượt mà Lightning component khi ghi đè nút Edit trực tiếp.
+> **D.** Classic không hỗ trợ hiển thị mượt mà Lightning component khi ghi đè nút Edit trực tiếp.
 
-**💡 Từ khóa ghi nhớ:** `Override: Classic -> Visualforce; Lightning -> Lightning Component.`
+**💡 Từ khóa ghi nhớ:** `Ghi đè nút (Override): Classic -> Visualforce Page. Lightning -> Lightning Component (LWC/Aura)!`
 
 ---
 
@@ -3200,20 +3220,20 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** Account0.Phone=888-1515, Account1.Phone=999-1515 ❌
 
 **📝 Dịch tiếng Việt:**
-> Kết quả của các câu debug log trong testMethod3 là gì khi tạo dữ liệu test bằng phương thức @testSetup trong đoạn code dưới đây? [Code @testSetup]
+> Kết quả của các câu debug log trong testMethod3 sẽ in ra số điện thoại nào của các Account được tạo từ @testSetup trong đoạn code dưới đây? [CreateandExecuteTest]
 
 **💬 Giải thích gốc (English):**
 > The debug statements in testMethod3 will display the phone numbers of the accounts created in the test setup method. Since the accounts are created in a loop where the phone numbers are incremented, the expected result is Account0.Phone=333-8780, Account1.Phone=333-8781, making this choice correct.
 
 **✅ Tại sao đáp án đúng:**
-> Kết quả là 'Account0.Phone=333-8780, Account1.Phone=333-8781' (C). Dữ liệu tạo trong `@testSetup` là bất biến đối với các phương thức test. Mỗi phương thức testMethod1 và testMethod2 khi chạy sẽ được cấp một bản sao dữ liệu ảo riêng và mọi thay đổi sẽ bị rollback sạch sẽ khi method đó kết thúc, nên testMethod3 hoàn toàn không bị ảnh hưởng.
+> Kết quả là 'Account0.Phone=333-8780, Account1.Phone=333-8781' (C). Dữ liệu tạo trong `@testSetup` được lưu vào database ảo một lần duy nhất trước khi các test method chạy. Khi `TestMethod1` hoặc `TestMethod2` chạy và sửa đổi dữ liệu (đổi Phone), những thay đổi này chỉ có hiệu lực cục bộ bên trong method đó và bị rollback sạch sẽ ngay khi method đó kết thúc. Đến lượt `testmethod3` chạy, nó sẽ nhận lại dữ liệu nguyên bản lúc khởi tạo ban đầu ở `@testSetup`.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Giá trị số điện thoại bị đảo ngược sai lệch so với lúc insert trong vòng lặp setup.
-> **B.** Hiển thị các số điện thoại đã bị sửa đổi ở testMethod1 và testMethod2 là sai cơ chế cô lập dữ liệu của test setup.
+> **A.** Số điện thoại bị đảo ngược sai lệch so với lúc gán giá trị trong vòng lặp setup.
+> **B.** Hiển thị số điện thoại đã bị sửa đổi ở các test method khác là sai hoàn toàn cơ chế cô lập của test setup.
 > **D.** Tương tự B, dữ liệu sửa đổi ở các test method khác không hề được lưu lại sang testMethod3.
 
-**💡 Từ khóa ghi nhớ:** `Dữ liệu @testSetup: Mỗi Test Method chạy xong đều rollback, không bao giờ ảnh hưởng đến nhau!`
+**💡 Từ khóa ghi nhớ:** `Dữ liệu `@testSetup` = Bất biến giữa các Test Method. Thằng nào sửa tự chịu, xong việc là rollback về ban đầu!`
 
 ---
 
@@ -3227,20 +3247,20 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** A Controller Extension method that uses SOQL to query for a list of Account records ❌
 
 **📝 Dịch tiếng Việt:**
-> Loại mã code nào đại diện cho tầng 'Model' trong kiến trúc MVC khi sử dụng Apex và Visualforce?
+> Loại mã code nào đại diện cho tầng Model trong kiến trúc MVC khi sử dụng Apex và Visualforce?
 
 **💬 Giải thích gốc (English):**
 > The Model is responsible for handling the data and business logic. A list of Account records returned from a Controller Extension method would be an example of the Model.
 
 **✅ Tại sao đáp án đúng:**
-> Tầng Model đại diện cho cấu trúc và dữ liệu. Danh sách các bản ghi Account được trả về từ Controller Extension (C) chính là dữ liệu thực tế sẽ được hiển thị ra giao diện (View), đóng vai trò là tầng Model.
+> Trong mô hình MVC (Model-View-Controller), tầng Model là nơi chứa cấu trúc dữ liệu và dữ liệu thực tế. Danh sách các bản ghi Account (List<Account>) (C) được trả về từ Controller Extension chính là dữ liệu thô đại diện cho tầng Model.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Phương thức thực hiện lưu bản ghi (DML) thuộc tầng xử lý logic nghiệp vụ - Controller.
 > **B.** JavaScript tùy chỉnh xử lý giao diện người dùng thuộc tầng View.
 > **D.** Phương thức thực hiện SOQL query dữ liệu thuộc tầng xử lý logic - Controller.
 
-**💡 Từ khóa ghi nhớ:** `MVC: Dữ liệu bản ghi (sObject/List sObject) = Model. Giao diện (VF/LWC/JS) = View. Apex Class/Logic = Controller.`
+**💡 Từ khóa ghi nhớ:** `MVC Salesforce: Dữ liệu bản ghi (sObject/List) = Model. Giao diện (VF Page/LWC) = View. Class xử lý (Apex) = Controller.`
 
 ---
 
@@ -3254,20 +3274,20 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** A QueryException is thrown. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một org chỉ có duy nhất một Account tên là 'NoContacts' và không có bất kỳ Contact liên quan nào. Chạy câu lệnh SOQL: List<Account> accounts = [Select ID, (Select ID, Name from Contacts) from Account where Name = 'NoContacts']; Kết quả của biến accounts[0].contacts là gì?
+> Một Org chỉ có duy nhất một Account tên 'NoContacts' và không có Contact liên quan nào. Chạy câu lệnh SOQL subquery truy vấn Account và các Contact con liên quan. Biến `accounts[0].contacts` sẽ trả về kết quả gì?
 
 **💬 Giải thích gốc (English):**
 > When you run the given query, it retrieves the account with the name ‘NoContacts’. Since this account has no related contacts, the contacts relationship will be an empty list, not null. Therefore, accounts[0].contacts will be an empty list.
 
 **✅ Tại sao đáp án đúng:**
-> Trong Salesforce, câu truy vấn quan hệ con (subquery) khi không tìm thấy bản ghi con nào sẽ trả về một Danh sách rỗng (empty list) (B), chứ tuyệt đối không bao giờ trả về giá trị null.
+> Khi thực hiện SOQL subquery trỏ đến quan hệ con mà không tìm thấy bản ghi con nào, hệ thống sẽ tự động trả về một Danh sách rỗng (Empty List) chứ tuyệt đối không bao giờ trả về `null`. Nhờ vậy lập trình viên có thể duyệt vòng lặp thoải mái mà không lo dính lỗi NullPointerException huyền thoại.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cú pháp truy cập list con hoàn toàn hợp lệ trong Apex.
-> **C.** Không phải Null, Salesforce luôn khởi tạo List rỗng để tránh lỗi NullPointerException.
-> **D.** Không có lỗi QueryException nào bị ném ra vì câu lệnh SOQL hoàn toàn đúng cú pháp và bản ghi cha vẫn tồn tại.
+> **A.** Cú pháp truy cập list con hoàn toàn hợp lệ, không có gì sai cả.
+> **C.** Không phải Null. Salesforce luôn khởi tạo List rỗng để tránh lỗi NullPointerException.
+> **D.** Không có lỗi QueryException nào xảy ra vì cú pháp chuẩn và bản ghi cha vẫn tồn tại ngon lành.
 
-**💡 Từ khóa ghi nhớ:** `SOQL Subquery không có con -> Trả về EMPTY LIST, không bao giờ trả về NULL!`
+**💡 Từ khóa ghi nhớ:** `Subquery không có con -> Trả về EMPTY LIST, không bao giờ trả về NULL!`
 
 ---
 
@@ -3287,14 +3307,14 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 > This query selects the Name and maximum CreatedDate from the Account object and groups the results by the Name field. This is the correct query to successfully return the Accounts grouped by name.
 
 **✅ Tại sao đáp án đúng:**
-> Khi sử dụng GROUP BY Name, mọi trường nằm trong mệnh đề SELECT bắt buộc phải là trường được nhóm (Name) hoặc phải nằm trong một hàm tổng hợp (Aggregate Function) như Max(CreatedDate). Do đó, câu B là hoàn toàn đúng cú pháp.
+> Luật GROUP BY trong SOQL cực kỳ nghiêm ngặt: Một khi đã dùng GROUP BY trường nào (ở đây là Name), thì tất cả các trường xuất hiện trong mệnh đề SELECT bắt buộc phải là trường được group đó (Name) HOẶC phải nằm trong một Hàm tổng hợp (Aggregate Function) như `MAX()`, `MIN()`, `SUM()`, `COUNT()`. Đáp án B tuân thủ hoàn hảo quy tắc này.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Trường 'Type' nằm trong SELECT nhưng không có trong GROUP BY và không dùng hàm tổng hợp, gây lỗi biên dịch.
 > **C.** Trường 'Id' và 'Type' vi phạm nghiêm trọng luật GROUP BY.
 > **D.** Trường 'Type' vi phạm luật GROUP BY giống câu A.
 
-**💡 Từ khóa ghi nhớ:** `Quy tắc GROUP BY: Trường nào trong SELECT thì bắt buộc phải nằm trong GROUP BY hoặc phải nằm trong HÀM TỔNG HỢP (SUM, MAX, MIN, COUNT).`
+**💡 Từ khóa ghi nhớ:** `GROUP BY trường nào -> SELECT trường đó HOẶC dùng Hàm tổng hợp (MAX, MIN, SUM, COUNT...). Lệch sóng là oẳng!`
 
 ---
 
@@ -3308,20 +3328,20 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** To set the primary Contact on an Account record when it is saved ✅
 
 **📝 Dịch tiếng Việt:**
-> Trong trường hợp nào sau đây lập trình viên bắt buộc phải sử dụng Trigger thay vì sử dụng Workflow Rule?
+> Trường hợp nào lập trình viên bắt buộc phải sử dụng Trigger thay vì sử dụng Workflow Rule?
 
 **💬 Giải thích gốc (English):**
 > Workflow rules in Salesforce cannot update records of other objects. They are limited to actions like field updates, sending emails, creating tasks, and sending outbound messages within the same object.
 
 **✅ Tại sao đáp án đúng:**
-> Để cập nhật trường 'Primary Contact' (trường lookup trỏ đến con Contact) trên Account cha khi nó được lưu (D). Workflow Rule đời cũ cấm ngặt việc cập nhật chéo đối tượng đi xuống đối tượng con (từ Cha cập nhật xuống Con).
+> Cập nhật trường 'Primary Contact' (trường lookup trỏ về Contact) trên Account khi bản ghi được lưu. Đây là hành động cập nhật chéo đối tượng từ Cha xuống Con. Workflow Rule đời cũ bất lực hoàn toàn trước yêu cầu này vì nó chỉ hỗ trợ cập nhật ngược từ Con lên Cha (Master-Detail) chứ không bao giờ cập nhật được từ Cha xuống Con. Bắt buộc phải dùng Trigger hoặc Flow Builder!
 
 **❌ Tại sao đáp án sai:**
 > **A.** Gán tên Expense Report có thể thực hiện cực kỳ dễ dàng bằng Workflow Rule field update.
 > **B.** Gửi email nhắc nhở cho Hiring Manager là tính năng thế mạnh cơ bản của Workflow Email Alert.
 > **C.** Gửi thông báo sang hệ thống ngoài có thể thực hiện thông qua Workflow Outbound Message không cần viết code.
 
-**💡 Từ khóa ghi nhớ:** `Workflow Rule: Cấm cập nhật chéo đối tượng từ Cha xuống Con. Muốn làm -> Phải dùng Trigger / Flow.`
+**💡 Từ khóa ghi nhớ:** `Workflow Rule: Cấm cập nhật chéo đối tượng từ Cha xuống Con. Muốn làm -> Phải dùng Trigger / Flow!`
 
 ---
 
@@ -3335,20 +3355,20 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** Use a Lookup on Account to Product ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần xây dựng ứng dụng theo dõi các Account đã mua các thiết bị cụ thể (được định nghĩa trong bảng Products). Mỗi Account có thể mua nhiều thiết bị. Lập trình viên nên làm gì để theo dõi việc mua bán này?
+> Cần xây dựng ứng dụng theo dõi các Account đã mua các thiết bị cụ thể (được đại diện bằng Products). Mỗi Account có thể mua nhiều thiết bị. Lập trình viên nên làm gì để theo dõi việc này?
 
 **💬 Giải thích gốc (English):**
 > The Asset object in Salesforce is designed to represent specific products that customers have purchased. By using the Asset object, you can easily track each piece of equipment purchased by an Account, including details like purchase date, maintenance history, and more. This approach leverages Salesforce’s built-in functionality for managing customer assets, making it a robust and scalable solution.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng đối tượng tiêu chuẩn Asset (A). Đối tượng Asset trong Salesforce sinh ra là để theo dõi các sản phẩm (Products) cụ thể đã được khách hàng (Account/Contact) mua và đang sở hữu thực tế, hỗ trợ tốt quản lý bảo hành.
+> Đối tượng tiêu chuẩn `Asset` (A) sinh ra trong Salesforce là để giải quyết bài toán này. Nó đại diện cho các sản phẩm (Products) cụ thể đã được khách hàng (Account/Contact) mua thực tế và đang sở hữu, giúp quản lý lịch sử thiết bị, bảo hành cực kỳ chuẩn bài.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Quan hệ Master-Detail trực tiếp giữa Product và Account là sai logic vì một Product có thể được bán cho nhiều Account khác nhau.
-> **C.** Sử dụng Custom Object hoạt động được nhưng tốn công tự thiết kế và bỏ phí đối tượng tiêu chuẩn Asset rất tối ưu có sẵn.
+> **B.** Tạo Master-Detail từ Product sang Account là sai logic nghiêm trọng vì một Product có thể được bán cho nhiều Account khác nhau, và Product không phải con của Account.
+> **C.** Tạo Custom Object hoạt động được nhưng tốn công tự thiết kế lại bánh xe, phí của có sẵn.
 > **D.** Đặt Lookup từ Account lên Product làm giới hạn 1 Account chỉ mua được tối đa 1 sản phẩm, trái yêu cầu mua nhiều thiết bị.
 
-**💡 Từ khóa ghi nhớ:** `Khách hàng mua Sản phẩm thực tế -> Dùng đối tượng tiêu chuẩn ASSET.`
+**💡 Từ khóa ghi nhớ:** `Khách hàng đã mua và sở hữu Sản phẩm thực tế -> Dùng đối tượng tiêu chuẩn ASSET!`
 
 ---
 
@@ -3362,20 +3382,20 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** Use Opportunity.SObjectType.getDescribe().getRecordTypeInfos() to get a list of record types, and iterate through them until isDefaultRecordTypeMapping() is true. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để lấy được cái Record Type mặc định của user hiện tại đối với object Opportunity bằng code Apex?
+> Làm sao để tìm được cái Record Type mặc định của user hiện tại đối với object Opportunity bằng code Apex?
 
 **💬 Giải thích gốc (English):**
 > This method allows the developer to programmatically access the record type information and identify the default record type for the current user.
 
 **✅ Tại sao đáp án đúng:**
-> C là cách chuẩn bài (best practice). Dùng Schema Describe để lấy danh sách Record Type, sau đó check xem thằng nào có `isDefaultRecordTypeMapping()` bằng true.
+> Cách làm chuẩn chỉ là dùng Schema Describe để lấy toàn bộ thông tin Record Type của Opportunity, sau đó duyệt qua danh sách và kiểm tra xem thằng nào có `isDefaultRecordTypeMapping()` trả về true. Đó chính là Record Type mặc định của user hiện tại.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai cú pháp trầm trọng. Object Profile không có cái method `getDefaultRecordType()` nào cho Opportunity cả.
-> **B.** Khi mày khởi tạo record trong memory (`new Opportunity()`), Salesforce không tự gán record type ID mặc định vào field đó đâu, nó chỉ gán khi mày insert hoặc qua UI thôi.
-> **D.** Method `Schema.userInfo...` là đồ tự chế, Salesforce không có cái này.
+> **A.** Cú pháp `Schema.userInfo.Opportunity.getDefaultRecordType()` hoàn toàn là hàng giả tưởng, không tồn tại trong Salesforce.
+> **B.** Truy vấn Profile rồi gọi `profile.Opportunity.getDefaultRecordType()` cũng là tự vẽ ra phương thức không có thật.
+> **C.** Khi khởi tạo bản ghi trong RAM (`new Opportunity()`), Salesforce không hề tự gán Record Type ID mặc định vào trường `RecordTypeId` đâu, trường đó sẽ bị null.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Đụng đến Record Type, Permission, hay Metadata của Object thì 90% là dùng Describe SObject.`
+**💡 Từ khóa ghi nhớ:** `Đụng đến Record Type mặc định của User -> Dùng Schema Describe và duyệt `isDefaultRecordTypeMapping()`!`
 
 ---
 
@@ -3389,7 +3409,7 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 - **D.** Lookup relationship from the child to the parent ❌
 
 **📝 Dịch tiếng Việt:**
-> Yêu cầu nghiệp vụ: Khi bản ghi cha bị xóa thì bản ghi con phải tự động bị xóa theo, và bản ghi con có thể chuyển sang bản ghi cha khác khi cần thiết (reparented). Loại quan hệ nào giữa cha và con hỗ trợ yêu cầu này?
+> Yêu cầu nghiệp vụ: Bản ghi con tự động bị xóa khi cha bị xóa, và bản ghi con có thể chuyển sang cha khác khi cần (reparent). Nên xây dựng loại quan hệ nào giữa cha và con?
 
 **💬 Giải thích gốc (English):**
 > A Master-Detail relationship provides the following features that align with the given requirements:
@@ -3397,14 +3417,14 @@ system.debug('account0.Phone = '+ acc0.Phone + ', account1.Phone = '+ acc1.Phone
 > Relocation of child records: By default, records can’t be reparented in master-detail relationships. Administrators can, however, allow child records in master-detail relationships on custom objects to be reparented to different parent records by selecting the Allow reparenting option in the master-detail relationship definition.
 
 **✅ Tại sao đáp án đúng:**
-> Mối quan hệ Master-Detail (A). Mối quan hệ này có tính năng tự động xóa con khi cha bị xóa (cascade delete). Đồng thời, ta chỉ cần tích chọn tùy chọn 'Allow reparenting' trên cấu hình trường để cho phép con chuyển đổi cha tự do.
+> Mối quan hệ Master-Detail (A) là đáp án hoàn hảo nhất. Mối quan hệ này mặc định sẽ tự động xóa con khi cha bị xóa (Cascade Delete). Để đáp ứng thêm yêu cầu đổi cha cho con (reparent), ta chỉ cần tích chọn cấu hình 'Allow reparenting' trên trường quan hệ là xong ngay, cực kỳ mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Child relationship không phải là một kiểu trường quan hệ vật lý trong Salesforce Schema Builder.
-> **C.** Tạo lookup từ cha đến con là ngược chiều quan hệ, không đúng thiết kế dữ liệu.
-> **D.** Mối quan hệ Lookup từ con lên cha mặc định không tự động xóa con khi cha bị xóa (trừ khi tự cấu hình thêm) và không có tính chất Master-Detail chặt chẽ.
+> **B.** 'Child relationship' không phải là một loại trường liên kết vật lý trong Salesforce Schema.
+> **C.** Tạo Lookup ngược từ cha đến con là sai bét về mặt thiết kế cơ sở dữ liệu.
+> **D.** Lookup từ con lên cha mặc định không tự động xóa con khi cha bị xóa (trừ khi viết thêm trigger phức tạp) và không có tính chất chặt chẽ của quan hệ Master-Detail.
 
-**💡 Từ khóa ghi nhớ:** `Cha xóa -> Con tự xóa + Cho phép đổi Cha = Master-Detail Relationship bật 'Allow reparenting'.`
+**💡 Từ khóa ghi nhớ:** `Cha xóa -> Con bay màu + Cho phép đổi Cha = Master-Detail Relationship bật 'Allow reparenting'!`
 
 ---
 
@@ -3429,21 +3449,21 @@ Which technique should be implemented to avoid reaching the governor limit?**
 - **D.** Use the System.Limits.getQueries() method to ensure the number of queries is less than 100. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần sửa đoạn code dưới đây để tránh lỗi vượt quá giới hạn (governor limit) về số lượng SOQL queries: [Code SOQL in For Loop]. Kỹ thuật nào nên được áp dụng?
+> Lập trình viên cần sửa đoạn code dưới đây để tránh vượt quá giới hạn (governor limit) về số lượng SOQL queries: [getOpportunityProducts oppLineItems opportunityIds]
 
 **💬 Giải thích gốc (English):**
 > Refactor the code above to perform only one SOQL query, filtering by the Set of opportunityIds.
 > This technique will significantly reduce the number of SOQL queries issued, as it combines all the individual queries into a single query, filtering by the entire Set of opportunityIds. This is much more efficient and helps to avoid reaching the governor limit.
 
 **✅ Tại sao đáp án đúng:**
-> Refactor đoạn code để chỉ thực hiện duy nhất MỘT câu truy vấn SOQL nằm ngoài vòng lặp (C), sử dụng từ khóa 'IN :opportunityIds' để lọc toàn bộ danh sách sản phẩm cùng một lúc cực kỳ tối ưu (Bulkification).
+> Đoạn code cũ cực kỳ 'gà' khi nhét câu SOQL query vào bên trong vòng lặp For, khiến hệ thống bắn query liên tục cho mỗi Opportunity ID -> Dễ dàng ăn hành LimitException (100 SOQL). Kỹ thuật chuẩn (Bulkification) là lôi câu SOQL ra ngoài vòng lặp, chạy DUY NHẤT MỘT LẦN và lọc bằng toán tử `IN :opportunityIds` để lấy toàn bộ danh sách sản phẩm cùng lúc.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Giới hạn 100 SOQL vẫn sẽ bị chạm nếu số lượng ID lớn hơn 100, cách này không giải quyết triệt để gốc rễ vấn đề.
+> **A.** Chỉ lọc dưới 100 ID là giải pháp chắp vá, nếu danh sách ID lớn hơn 100 thì code vẫn oẳng như thường.
 > **B.** getLimitQueries() chỉ dùng để kiểm tra giới hạn còn lại, không giúp tối ưu hóa code hay ngăn chặn lỗi thực sự.
 > **D.** getQueries() cũng chỉ để đếm số câu lệnh đã chạy, không có tác dụng refactor mã nguồn.
 
-**💡 Từ khóa ghi nhớ:** `Quy tắc Bulkify tối thượng: Đưa câu truy vấn SOQL ra ngoài vòng lặp For và dùng toán tử IN!`
+**💡 Từ khóa ghi nhớ:** `Quy tắc Bulkify tối thượng: Cấm nhét SOQL/DML vào vòng lặp For. Đưa ra ngoài và dùng toán tử IN!`
 
 ---
 
@@ -3457,21 +3477,21 @@ Which technique should be implemented to avoid reaching the governor limit?**
 - **D.** accountRec.sObjectType.isDeletable() ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer viết phương thức Apex xóa Account được gọi từ Lightning Component. Hàm nào giúp kiểm tra xem user hiện tại có quyền xóa Account hay không trước khi thực hiện xóa?
+> Phương thức Apex xóa Account được gọi từ Lightning Component. Hàm nào giúp kiểm tra xem user hiện tại có quyền xóa Account hay không trước khi thực hiện xóa?
 
 **💬 Giải thích gốc (English):**
 > Schema.sObjectType.Account.isDeletable()
 > This method checks if the current user has the necessary permissions to delete the Account object.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng Schema.sObjectType.Account.isDeletable() (A). Đây là phương thức mô tả (describe) chuẩn của Salesforce để kiểm tra phân quyền CRUD (Delete) của user hiện tại trên đối tượng Account.
+> Sử dụng Schema Describe là cách chính thống để kiểm tra phân quyền CRUD của user trên đối tượng. Phương thức `Schema.sObjectType.Account.isDeletable()` (A) sẽ kiểm tra xem Profile/Permission Set của user hiện tại có được phép Xóa (Delete) Account hay không trước khi ta chạy lệnh DML `delete`.
 
 **❌ Tại sao đáp án sai:**
 > **B.** Cú pháp Account.isDeletable() sai cấu trúc gọi của lớp Schema Describe.
 > **C.** Biến bản ghi accountRec không có phương thức trực tiếp .isDeletable().
 > **D.** Cú pháp accountRec.sObjectType.isDeletable() là hàng giả tưởng, không biên dịch được.
 
-**💡 Từ khóa ghi nhớ:** `Kiểm tra quyền Xóa (Delete) của sObject -> Dùng Schema.sObjectType.ObjectName.isDeletable().`
+**💡 Từ khóa ghi nhớ:** `Kiểm tra quyền CRUD của sObject -> Dùng cú pháp Schema Describe: `Schema.sObjectType.ObjectName.is[Createable/Accessible/Updateable/Deletable]()`!`
 
 ---
 
@@ -3485,19 +3505,19 @@ Which technique should be implemented to avoid reaching the governor limit?**
 - **D.** A class can only have one inner class level. ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai phát biểu đúng về Apex class và interface?
+> Hai phát biểu nào sau đây là đúng về Apex class và interface? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Methods and classes are final by default. You can’t use the final keyword in the declaration of a class or method. This means they can’t be overridden. Use the virtual keyword if you need to override a method or class.
 
 **✅ Tại sao đáp án đúng:**
-> A: Mặc định class là final (không cho kế thừa). D: Apex giới hạn chỉ có 1 tầng inner class bên trong top-level class.
+> A đúng vì mặc định mọi Apex class đều là `final` (tức là không cho phép class khác kế thừa/extend), trừ khi mày khai báo nó với từ khóa `virtual` hoặc `abstract`. C đúng vì các Inner class (class con nằm trong class cha) mặc định có modifier là `private` trừ khi được khai báo tường minh là public/global.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Inner class mặc định là private, phải khai báo public mới dùng ngoài được.
-> **C.** Phương thức trong interface mặc định là global/public tùy modifier của interface, nhưng ý D là quy tắc kiến trúc chuẩn hơn trong bài thi này.
+> **B.** Các phương thức trong Interface mặc định là public chứ không cần phải khai báo, nhưng ý A và C là hai phát biểu chính xác và trọn vẹn nhất trong tài liệu chính thống.
+> **D.** Một lớp có thể có nhiều cấp lớp bên trong (Inner class) lồng nhau chứ không bị giới hạn chỉ một cấp duy nhất.
 
-**💡 Từ khóa ghi nhớ:** `Mặc định Apex Class = Final. Top-level = Chỉ có 1 tầng inner class.`
+**💡 Từ khóa ghi nhớ:** `Apex Class mặc định = Final (cấm kế thừa). Inner Class mặc định = Private!`
 
 ---
 
@@ -3511,20 +3531,20 @@ Which technique should be implemented to avoid reaching the governor limit?**
 - **D.** An after insert trigger allows a developer to modify fields in the new record without a query. ❌
 
 **📝 Dịch tiếng Việt:**
-> Lợi ích nổi bật của việc sử dụng trigger 'after insert' so với trigger 'before insert' là gì?
+> Lợi ích lớn nhất của việc sử dụng trigger 'after insert' so với trigger 'before insert' là gì?
 
 **💬 Giải thích gốc (English):**
 > In an after insert trigger, the record has already been committed to the database, so you can safely reference its ID and use it to create or update other related objects.
 
 **✅ Tại sao đáp án đúng:**
-> Trigger after insert cho phép lập trình viên chèn các bản ghi đối tượng khác có liên quan tham chiếu đến bản ghi mới (B). Vì ở sự kiện 'after', bản ghi mới đã được cấp ID chính thức từ hệ thống, ta có thể lấy ID đó gán vào trường Lookup của bản ghi liên quan.
+> Ở sự kiện 'after insert', bản ghi mới đã thực sự được tạo và cấp ID chính thức từ database. Nhờ có cái ID xịn sò này, ta mới có thể tạo các bản ghi con ở đối tượng khác và gán ID đó vào trường Lookup của chúng để liên kết dữ liệu. Còn ở sự kiện 'before insert', bản ghi chưa hề có ID nên chịu chết không làm việc này được.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Trigger không thể giúp bypass validation rules của hệ thống bất kể là before hay after.
-> **C.** Cả hai loại trigger đều cấm gọi API (callout) trực tiếp, bắt buộc phải dùng phương thức bất đồng bộ @future(callout=true).
-> **D.** Ngược lại, chỉ có trigger 'before insert' mới cho phép thay đổi giá trị các trường của chính bản ghi đó mà không cần thực hiện lệnh DML Update bổ sung.
+> **A.** Trigger không bao giờ giúp bypass được Validation Rules của hệ thống dù là before hay after.
+> **C.** Cả hai loại trigger đều cấm gọi API (callout) trực tiếp, bắt buộc phải dùng phương thức bất đồng bộ với `@future(callout=true)`.
+> **D.** Thay đổi các trường của chính bản ghi đó mà không cần DML update là đặc quyền của trigger 'before insert', trigger after làm thế sẽ dính lỗi Read-only ngay.
 
-**💡 Từ khóa ghi nhớ:** `Cần ID của bản ghi để tạo dữ liệu liên quan -> Bắt buộc dùng AFTER INSERT Trigger.`
+**💡 Từ khóa ghi nhớ:** `Cần ID bản ghi cha để tạo bản ghi con liên quan -> Bắt buộc dùng AFTER INSERT trigger!`
 
 ---
 
@@ -3538,21 +3558,21 @@ Which technique should be implemented to avoid reaching the governor limit?**
 - **D.** Add a new Get Records element. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một Visual Flow đã có sẵn logic cập nhật Opportunity. Developer cần nâng cấp Flow này để tạo thêm mới 1 Contact và lưu ID của Contact mới đó lên Opportunity. Lập trình viên nên thêm phần tử nào vào Flow?
+> Một Flow đã có sẵn logic cập nhật Opportunity. Cần nâng cấp Flow để tạo thêm mới một Contact và lưu ID của Contact mới đó lên Opportunity. Lập trình viên nên thêm phần tử nào vào Flow?
 
 **💬 Giải thích gốc (English):**
 > A. Add a new Create Records element.
 > This element will allow the flow to create a new Contact record. After creating the Contact, the flow can then store the Contact’s ID in a variable. This variable can be used in an Update Records element to update the Opportunity with the Contact’s ID
 
 **✅ Tại sao đáp án đúng:**
-> Thêm phần tử 'Create Records' mới (A). Phần tử này cho phép Flow tạo mới bản ghi Contact và tự động xuất (output) ID của Contact vừa tạo vào một biến để dùng cập nhật cho Opportunity ở bước sau.
+> Muốn tạo mới một bản ghi (Contact) trong Flow thì phần tử chuẩn không cần chỉnh là 'Create Records' (A). Phần tử này sau khi tạo xong Contact sẽ tự động trả về ID của bản ghi vừa tạo vào một biến để ta dùng cập nhật ngược lên trường liên quan của Opportunity ở bước tiếp theo.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Quick Action Create dùng để kích hoạt action trên giao diện, không linh hoạt và đúng chuẩn bằng Create Records trong Flow xử lý ngầm.
-> **C.** Update Records chỉ dùng để sửa bản ghi đã tồn tại, không thể dùng để tạo mới bản ghi Contact.
-> **D.** Get Records dùng để tìm kiếm truy vấn bản ghi có sẵn, không có khả năng tạo mới.
+> **B.** Quick Action kiểu Create dùng để mở pop-up nhập liệu ngoài UI, không phù hợp cho luồng tự động hóa chạy ngầm của Flow.
+> **C.** Update Records chỉ dùng để sửa đổi bản ghi đã có sẵn, không thể dùng để tạo mới bản ghi Contact từ con số không.
+> **D.** Get Records dùng để tìm kiếm, truy vấn bản ghi có sẵn chứ không có tuổi tạo mới dữ liệu.
 
-**💡 Từ khóa ghi nhớ:** `Muốn tạo mới bản ghi trong Flow -> Gọi tên Create Records Element.`
+**💡 Từ khóa ghi nhớ:** `Muốn tạo mới bản ghi trong Flow -> Gọi tên Create Records Element!`
 
 ---
 
@@ -3573,11 +3593,11 @@ Which technique should be implemented to avoid reaching the governor limit?**
 > D. Mark fields as read-only on the page layout: By marking the Opportunity fields as read-only on the page layout, users will be unable to edit them directly. This can be combined with the Flow Builder approach to provide a more comprehensive solution.
 
 **✅ Tại sao đáp án đúng:**
-> B: Sử dụng Validation Rule kiểm tra nếu StageName chuyển sang Closed/Won thì chặn chỉnh sửa toàn bộ trường. D: Đánh dấu các trường là Read-only trên Page Layout tương ứng với Record Type trạng thái Closed/Won để khóa giao diện người dùng.
+> B đúng vì Validation Rule là lá chắn thép no-code chặn đứng mọi hành vi bấm Save khi cố chỉnh sửa bản ghi đã Closed/Won. D đúng vì Page Layout cho phép thiết lập các trường thành Read-Only động dựa trên Record Type của trạng thái Closed/Won để khóa cứng giao diện của user.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flow Builder không thể khóa cứng giao diện nhập liệu trực tiếp của người dùng một cách tối ưu như Validation Rule.
-> **C.** Process Automation Settings dùng để thiết lập chung cho hệ thống tự động hóa, không hỗ trợ logic khóa bản ghi cụ thể.
+> **A.** Flow Builder chạy ngầm ở backend sau khi dữ liệu đã gửi đi, không thể khóa giao diện trực quan hay chặn nhập liệu tối ưu như Validation Rule.
+> **C.** Process Automation Settings chỉ là nơi bật/tắt cấu hình chung của hệ thống tự động hóa, tuổi gì khóa được bản ghi.
 
 **💡 Từ khóa ghi nhớ:** `Khóa bản ghi (Read-only) -> 1. Validation Rule (Chặn lưu); 2. Page Layout Read-only (Khóa UI).`
 
@@ -3608,14 +3628,14 @@ if(c.AccountId = a.Id){
 > By using a Map<Id, List<Contact>>, you can efficiently group the contacts by their AccountId. This allows you to avoid the nested loops and directly access the contacts related to each account, significantly reducing the number of iterations and improving performance.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng một Map<Id, List<Contact>> (D) gom nhóm toàn bộ Contact theo AccountId trước. Khi đó, thay vì duyệt vòng lặp O(N*M) lồng nhau cực kỳ chậm chạp, ta chỉ cần duyệt Account và gọi map.get(a.Id) trong O(1) để lấy ngay danh sách Contact con liên quan.
+> Sử dụng Map<Id, List<Contact>> (D) gom nhóm Contact theo AccountId trước. Thay vì duyệt 2 vòng lặp lồng nhau cực kỳ gà mờ với độ phức tạp O(N*M), ta chỉ cần duyệt Account rồi dùng Map.get(accountId) hốt ngay list Contact con trong 1 nốt nhạc với độ phức tạp O(N). CPU sẽ cảm ơn mày rất nhiều!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đảo ngược vị trí hai vòng lặp lồng nhau vẫn giữ nguyên độ phức tạp thuật toán O(N*M), không giải quyết được vấn đề.
-> **B.** Tạo helper class chỉ làm sạch code chứ không làm thay đổi bản chất thuật toán và thời gian thực thi của CPU.
-> **C.** Thêm GROUP BY vào SOQL không giúp giải quyết thuật toán so khớp danh sách trong RAM.
+> **A.** Nhét vòng lặp Account vào trong Contact thì độ phức tạp vẫn là O(N*M), chả thay đổi được bản chất gì cả.
+> **B.** Viết helper class chỉ làm code trông 'sạch sẽ' hơn chứ thuật toán cùi bắp bên trong vẫn chạy chậm như rùa.
+> **C.** Thêm GROUP BY vào SOQL không giúp giải quyết bài toán map dữ liệu con vào cha trong RAM.
 
-**💡 Từ khóa ghi nhớ:** `Tối ưu For lồng nhau -> Gom danh sách con vào MAP theo ID cha để lấy cực nhanh O(1).`
+**💡 Từ khóa ghi nhớ:** `Tối ưu For lồng nhau (Nested loops) -> Gom danh sách con vào MAP theo ID cha để lấy cực nhanh O(1).`
 
 ---
 
@@ -3638,13 +3658,13 @@ if(c.AccountId = a.Id){
 > Metadata API: This API is designed for deploying metadata changes programmatically, making it a powerful tool for managing customizations.
 
 **✅ Tại sao đáp án đúng:**
-> B: Force.com IDE (môi trường phát triển tích hợp dựa trên Eclipse dù đã cũ nhưng đề vẫn tính). D: Change Set gửi từ môi trường Sandbox lên Production. E: Metadata API dùng để deploy programmatic thông qua các công cụ như Ant Migration Tool hoặc Salesforce CLI.
+> B đúng vì Force.com IDE (dù đã cũ nhưng đề vẫn tính) hỗ trợ kết nối và deploy metadata. D đúng vì Change Set gửi từ Sandbox liên kết sang Production cực kỳ phổ biến. E đúng vì Metadata API là nền tảng cốt lõi cho phép deploy thông qua các công cụ như SFDX CLI / Ant Migration Tool.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Không thể gửi Change Set trực tiếp từ một Developer Org (Org cá nhân) lên một Production Org thật được (chỉ Sandbox gửi được cho Production liên kết).
-> **C.** Data Loader chỉ dùng để import/export DỮ LIỆU bản ghi (Data), tuyệt đối không dùng để deploy METADATA (cấu hình/code).
+> **A.** Change Set chỉ có thể gửi giữa các Org có liên kết với nhau (ví dụ Sandbox lên Production của cùng một doanh nghiệp), cấm cửa Developer Org cá nhân tự do gửi thẳng lên Production khác.
+> **C.** Data Loader chỉ biết chơi với DATA bản ghi (insert, update record), hoàn toàn mù tịt về METADATA (code, field, object). Đừng nhầm lẫn tai hại nhé!
 
-**💡 Từ khóa ghi nhớ:** `Deploy Metadata -> Change Set Sandbox, Metadata API, CLI. Data Loader chỉ dùng cho DATA bản ghi.`
+**💡 Từ khóa ghi nhớ:** `Deploy METADATA -> Change Set Sandbox, Metadata API (CLI), IDE. Data Loader chỉ dùng cho DATA bản ghi!`
 
 ---
 
@@ -3658,18 +3678,18 @@ if(c.AccountId = a.Id){
 - **D.** Formula field on Applicant that references Job ❌
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers xây dựng app tuyển dụng gồm object Applicant (ứng viên) và Job (công việc). Một ứng viên có thể nộp nhiều Job, một Job có nhiều ứng viên ứng tuyển. Thiết kế mối quan hệ nào là phù hợp nhất?
+> Universal Containers xây dựng app tuyển dụng gồm object Applicant (ứng viên) và Job (công việc). Một ứng viên có thể ứng tuyển nhiều Job, một Job có nhiều ứng viên ứng tuyển. Thiết kế mối quan hệ nào phù hợp nhất?
 
 **💬 Giải thích gốc (English):**
 > A junction object is used to create a many-to-many relationship between two objects. In this case, since each applicant can apply for multiple jobs and each job can have multiple applicants, a junction object is the most appropriate solution. This junction object would have two master-detail relationships: one to the Applicant object and one to the Job object.
 
 **✅ Tại sao đáp án đúng:**
-> Mối quan hệ là Nhiều-Nhiều (Many-to-Many). Giải pháp chuẩn là tạo một đối tượng trung gian gọi là Junction Object (B) liên kết giữa Applicant và Job thông qua hai trường Master-Detail trỏ về hai phía.
+> Đây là mối quan hệ Nhiều-Nhiều (Many-to-Many): một ứng viên ứng tuyển nhiều Job và một Job có nhiều ứng viên. Cách giải quyết chuẩn sách giáo khoa là tạo một đối tượng trung gian gọi là Junction Object (B) liên kết giữa Applicant và Job thông qua 2 trường Master-Detail trỏ về 2 phía.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Tạo Lookup trực tiếp từ Applicant đến Job làm giới hạn mỗi ứng viên chỉ được ứng tuyển tối đa 1 Job tại 1 thời điểm.
-> **C.** Tương tự A, Master-Detail trực tiếp từ Applicant đến Job giới hạn nghiêm trọng quan hệ 1-Nhiều một chiều.
-> **D.** Formula field chỉ để hiển thị giá trị đọc, không thể đại diện cho mối quan hệ dữ liệu vật lý Nhiều-Nhiều phức tạp.
+> **A.** Tạo Lookup trực tiếp từ Applicant sang Job sẽ giới hạn mỗi ứng viên chỉ được ứng tuyển tối đa 1 Job tại một thời điểm, siêu gà mờ và sai nghiệp vụ.
+> **C.** Tương tự A, tạo Master-Detail trực tiếp từ Applicant sang Job giới hạn nghiêm trọng quan hệ 1-Nhiều một chiều.
+> **D.** Formula field chỉ dùng để hiển thị giá trị tính toán đọc, không có khả năng đại diện cho quan hệ Nhiều-Nhiều vật lý phức tạp.
 
 **💡 Từ khóa ghi nhớ:** `Mối quan hệ Nhiều-Nhiều (Many-to-Many) -> Bắt buộc tạo đối tượng trung gian JUNCTION OBJECT.`
 
@@ -3685,20 +3705,20 @@ if(c.AccountId = a.Id){
 - **D.** Roll-up Summary Field ❌
 
 **📝 Dịch tiếng Việt:**
-> Sales team muốn hiển thị biểu tượng cảnh báo trực quan trên giao diện Account và Opportunity để báo khi Account bị nợ quá hạn hoặc rơi vào trạng thái đòi nợ. Giải pháp nào đáp ứng không cần viết code?
+> Sales team muốn hiển thị chỉ báo trực quan trên giao diện Account và Opportunity để cảnh báo khi Account bị nợ quá hạn hoặc rơi vào trạng thái đòi nợ. Giải pháp nào đáp ứng không cần viết code?
 
 **💬 Giải thích gốc (English):**
 > A formula field can be used to create a visual indicator on both the Account and Opportunity page layouts. This field can be configured to display a specific value or image based on the criteria you set, such as when an account is late making payments or has entered the collections process.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng Formula Field (A) kiểu Text kết hợp với hàm IMAGE() để kiểm tra điều kiện nợ và hiển thị các icon cảnh báo (đỏ, vàng, xanh) cực kỳ sinh động trên page layout hoàn toàn no-code.
+> Formula Field (A) kiểu Text kết hợp với hàm IMAGE() là cứu cánh số một. Nó cho phép mày viết logic kiểm tra trạng thái và hiển thị các hình ảnh cảnh báo (icon đỏ, vàng, xanh) cực kỳ sinh động, sinh quan ngay trên giao diện mà hoàn toàn no-code.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Workflow Rule chỉ dùng để chạy hành động tự động ngầm, không có khả năng hiển thị giao diện hay hình ảnh cảnh báo trực quan.
-> **C.** Quick Action dùng để tạo nút bấm thao tác nhanh, không phải công cụ hiển thị chỉ báo trạng thái.
-> **D.** Roll-up Summary Field chỉ dùng để tính tổng số lượng/tiền từ con lên cha, không có tính năng hiển thị hình ảnh.
+> **B.** Workflow Rule chỉ chạy ngầm backend để cập nhật dữ liệu, gửi email chứ không thể render hình ảnh lên giao diện.
+> **C.** Quick Action để tạo nút bấm thao tác nhanh, không phải công cụ hiển thị chỉ báo cảnh báo động.
+> **D.** Roll-up Summary Field chỉ biết tính tổng, đếm số bản ghi con chứ không hiển thị hình ảnh trực quan được.
 
-**💡 Từ khóa ghi nhớ:** `Hiển thị icon/ảnh cảnh báo động không code -> Sử dụng Formula Field chứa hàm IMAGE().`
+**💡 Từ khóa ghi nhớ:** `Hiển thị icon/ảnh cảnh báo động không code -> Sử dụng Formula Field chứa hàm IMAGE()!`
 
 ---
 
@@ -3722,12 +3742,12 @@ if(c.AccountId = a.Id){
 > C. Number of new records created: This limit restricts the number of new records that can be created in a transaction.
 
 **✅ Tại sao đáp án đúng:**
-> Tổng thời gian CPU xử lý - Elapsed CPU time (D) (giới hạn 10 giây cho transaction đồng bộ) áp dụng chung cho toàn bộ trigger, class Apex, validation rules, flows,... chạy trong transaction đó.
+> Tổng thời gian xử lý CPU - Elapsed CPU time (D) (giới hạn 10 giây cho transaction đồng bộ và 60 giây cho bất đồng bộ) là giới hạn bao trùm. Nó tính tổng thời gian chạy của tất cả class Apex, Trigger, Flow, Validation Rules,... trong cùng một transaction. Quá 10s là oẳng!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thời gian SOQL chỉ tính riêng cho các câu lệnh truy vấn, không bao quát toàn bộ xử lý logic của CPU.
-> **B.** Không có giới hạn cụ thể về số lượng class Apex được gọi trong một transaction.
-> **C.** Giới hạn DML row (10,000 bản ghi) tính trên số lượng bản ghi được thao tác, không phải giới hạn thời gian chạy chung.
+> **A.** Thời gian truy vấn SOQL chỉ tính riêng cho các câu lệnh SELECT, không bao quát toàn bộ logic xử lý của CPU.
+> **B.** Salesforce không thèm giới hạn số lượng class mày gọi trong một transaction, gọi bao nhiêu tùy thích miễn không quá CPU time.
+> **C.** Số lượng bản ghi mới tạo được giới hạn bởi DML row (10,000) chứ không phải giới hạn bao trùm toàn transaction Apex.
 
 **💡 Từ khóa ghi nhớ:** `Giới hạn bao trùm toàn bộ transaction Apex -> Tổng thời gian xử lý CPU (10 giây đồng bộ).`
 
@@ -3743,20 +3763,20 @@ if(c.AccountId = a.Id){
 - **D.** force:data:object:create ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai lệnh SFDX nào dùng để nạp dữ liệu test vào sandbox?
+> Hai lệnh SFDX nào sau đây có thể sử dụng để nạp dữ liệu test vào Developer Sandbox? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > force:data:tree:import - This command is used to import data from a JSON file into Salesforce, which is useful for hierarchical data.
 > force:data:bulk:upsert - This command allows you to upsert (update or insert) large volumes of data in bulk.
 
 **✅ Tại sao đáp án đúng:**
-> A: `tree:import` nạp dữ liệu từ file JSON có quan hệ cha-con. C: `bulk:upsert` dùng cho các file CSV lớn.
+> B đúng vì `force:data:tree:import` chuyên trị nạp dữ liệu từ các file JSON giữ nguyên được mối quan hệ cha-con (Object Tree). C đúng vì `force:data:bulk:upsert` hỗ trợ nạp đống dữ liệu lớn từ file CSV cực kỳ bá đạo thông qua Bulk API.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Đây là lệnh không tồn tại trong Salesforce CLI.
-> **D.** Lệnh này dùng để tạo Metadata (định nghĩa object), không phải tạo Data (bản ghi).
+> **A.** Đây là lệnh ảo, Salesforce CLI làm gì có cái lệnh nào tên là `force:data:async:upsert` đâu.
+> **D.** Lệnh này dùng để tạo metadata định nghĩa đối tượng chứ không dùng để nạp data bản ghi.
 
-**💡 Từ khóa ghi nhớ:** `SFDX Data: Tree (JSON) hoặc Bulk (CSV).`
+**💡 Từ khóa ghi nhớ:** `SFDX nạp Data -> Tree (JSON quan hệ cha-con) hoặc Bulk (CSV bản ghi lớn).`
 
 ---
 
@@ -3770,20 +3790,20 @@ if(c.AccountId = a.Id){
 - **D.** The object record must be instantiated in a controller or extension. ❌
 
 **📝 Dịch tiếng Việt:**
-> Để ghi đè (override) một nút bấm chuẩn (standard button) của một Object bằng trang Visualforce, trang đó có yêu cầu bắt buộc gì?
+> Để ghi đè (override) một nút bấm chuẩn (standard button) bằng Visualforce trên một đối tượng, trang đó có yêu cầu bắt buộc gì?
 
 **💬 Giải thích gốc (English):**
 > In Visualforce, if a developer wants to override a standard button with a custom Visualforce page on an object, they need to specify the standardController attribute in the apex:page component.
 
 **✅ Tại sao đáp án đúng:**
-> Trang Visualforce đó bắt buộc phải khai báo thuộc tính standardController trỏ đến đúng API Name của Object đó (B) để hệ thống nhận diện và truyền ngữ cảnh bản ghi khi bấm nút.
+> B đúng vì trang Visualforce bắt buộc phải khai báo thuộc tính `standardController` trỏ tới đối tượng đó (ví dụ: `standardController="Account"`). Điều này giúp trang nhận diện ngữ cảnh dữ liệu và trỏ đúng nút bấm cần ghi đè.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Controller không bắt buộc phải có phương thức trả về PageReference mới ghi đè được.
-> **C.** Thuộc tính action trên thẻ apex:page dùng để tự kích hoạt hàm khi trang load, không phải điều kiện bắt buộc để override nút.
-> **D.** Không cần khởi tạo thủ công bản ghi trong code vì standard controller đã tự động làm việc này.
+> **A.** Controller không bắt buộc phải có phương thức trả về PageReference mới ghi đè nút được.
+> **C.** Thuộc tính action trên thẻ apex:page dùng để tự kích hoạt hàm khi trang tải, không phải điều kiện bắt buộc để override nút.
+> **D.** Không cần khởi tạo thủ công bản ghi trong code vì standard controller đã tự động lo liệu chuyện này.
 
-**💡 Từ khóa ghi nhớ:** `Override nút chuẩn bằng Visualforce -> Bắt buộc trang phải khai báo standardController='ObjectName'.`
+**💡 Từ khóa ghi nhớ:** `Ghi đè nút chuẩn (Override button) bằng Visualforce -> Bắt buộc trang phải có thuộc tính standardController.`
 
 ---
 
@@ -3804,12 +3824,12 @@ if(c.AccountId = a.Id){
 > extensions="myControllerExtension": This attribute specifies that the page will use the custom controller class myControllerExtension. This allows you to add custom functionality to the page, such as custom buttons, actions, or validation rules.
 
 **✅ Tại sao đáp án đúng:**
-> Khai báo kết hợp standardController='Case' đi kèm extensions='myControllerExtension' (D). Đây là mô hình Controller Extension chuẩn để vừa dùng được các hàm lưu/sửa mặc định của Case vừa gọi được logic custom của extension class.
+> Khai báo kết hợp `standardController="Case"` đi kèm `extensions="myControllerExtension"` (D). Đây là mô hình Controller Extension chuẩn để vừa dùng được các tính năng lưu/sửa mặc định của Case vừa gọi được logic custom của extension class.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Case là đối tượng tiêu chuẩn, cấm khai báo bằng từ khóa 'controller' (từ khóa này chỉ dành cho Custom Controller class).
-> **B.** Thiếu standardController thì extensions không thể chạy độc lập được.
-> **C.** Khai báo extension class vào thuộc tính 'controller' là sai vai trò của lớp mở rộng.
+> **A.** Case là đối tượng tiêu chuẩn, cấm khai báo bằng từ khóa `controller` (từ khóa này chỉ dành cho Custom Controller class).
+> **B.** Thiếu standardController thì extensions không thể tự dưng hoạt động một mình được.
+> **C.** Đưa extension class vào thuộc tính `controller` là sai bét vai trò của lớp mở rộng.
 
 **💡 Từ khóa ghi nhớ:** `Visualforce mở rộng tính năng Standard -> standardController='ObjectName' + extensions='ExtensionClass'.`
 
@@ -3843,14 +3863,14 @@ Which type of exception will this trigger cause?**
 > System.SObjectException: DML statement cannot operate on trigger.new or trigger.old
 
 **✅ Tại sao đáp án đúng:**
-> Gây ra lỗi DML Exception (C). Salesforce cấm tuyệt đối việc thực hiện câu lệnh DML Update trên chính các bản ghi đang nằm trong trigger xử lý 'before' (trigger.new), vì việc này sẽ gây ra vòng lặp vô hạn (recursive) vô phương cứu chữa và làm sập hệ thống.
+> Gây ra lỗi DML Exception (C). Salesforce cấm tiệt việc gọi các câu lệnh DML như `update` trên chính các bản ghi đang nằm trong vòng đời xử lý 'before' (trigger.new), vì việc này sẽ gây ra vòng lặp vô hạn (recursive) vô phương cứu chữa và làm sập hệ thống.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Biến Id được duyệt qua trigger.new luôn tồn tại bản ghi, không gây ra lỗi tham chiếu null.
 > **B.** Code viết đúng cú pháp Apex nên biên dịch thành công, lỗi chỉ nổ ra khi thực thi (runtime).
 > **D.** Lỗi xảy ra ngay lập tức ở bản ghi đầu tiên khi gọi lệnh Update chứ không đợi đến khi bulk update chạm limit.
 
-**💡 Từ khóa ghi nhớ:** `Cấm kỵ tối thượng: Gọi lệnh DML (insert/update/delete) trên chính danh sách trigger.new trong trigger!`
+**💡 Từ khóa ghi nhớ:** `Cấm kỵ tối thượng: Gọi lệnh DML (insert/update/delete) trên chính các bản ghi đang xử lý trong trigger before!`
 
 ---
 
@@ -3866,7 +3886,7 @@ Database.insert(a, false);**
 - **D.** The record will not be created and an exception will be thrown. ❌
 
 **📝 Dịch tiếng Việt:**
-> Kết quả của đoạn code insert Account rỗng với tham số false là gì?
+> Kết quả của đoạn code khởi tạo và insert một Account trống bằng phương thức `Database.insert(a, false)` là gì?
 
 **💬 Giải thích gốc (English):**
 > The allOrNone parameter specifies whether the operation allows partial success.
@@ -3874,14 +3894,14 @@ Database.insert(a, false);**
 > If allOrNone is set to true and the method isn’t successful, an exception is thrown. The default for the parameter is true.
 
 **✅ Tại sao đáp án đúng:**
-> Thiếu Name nên lỗi, nhưng tham số `false` ngăn việc bắn Exception. Code chạy tiếp bình thường nhưng bản ghi không được tạo.
+> Tạo Account trống thì chắc chắn hẹo vì thiếu trường bắt buộc Name. Tuy nhiên, tham số thứ hai là `allOrNone = false` có tác dụng 'nuốt giận làm lành': nó không ném ra Exception làm chết chương trình mà âm thầm trả về kết quả lỗi trong đối tượng Database.SaveResult. Nên đáp án B đúng: bản ghi không được tạo và không có Exception nào bắn ra ngoài cả.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Bản ghi lỗi thì không bao giờ được tạo.
-> **B.** Bản ghi lỗi nên không có chuyện được tạo thành công.
-> **D.** Exception bị nuốt mất rồi vì tham số allOrNone = false.
+> **A.** Bản ghi bị thiếu Name nên không đời nào được tạo thành công.
+> **C.** Bản ghi bị thiếu Name nên không thể tạo thành công bất kể cấu hình log.
+> **D.** Exception bị nuốt chửng rồi nhờ có tham số `false` vi diệu kia.
 
-**💡 Từ khóa ghi nhớ:** `Database.insert(..., false): Im lặng là vàng (không bắn Exception).`
+**💡 Từ khóa ghi nhớ:** `Database.insert(..., false): Im lặng là vàng (lỗi không bắn Exception, bản ghi hỏng thì không tạo).`
 
 ---
 
@@ -3895,7 +3915,7 @@ Database.insert(a, false);**
 - **D.** Changes are being made to the Account during Criteria Based Sharing evaluation. ❌
 
 **📝 Dịch tiếng Việt:**
-> Trigger 'after' trên Account thực hiện DML update toàn bộ Opportunity con liên quan. Không có trigger nào trên Opportunity, nhưng lỗi 'maximum trigger depth exceeded' (vượt quá độ sâu đệ quy) vẫn xảy ra. Hai lý do nào giải thích việc này? (Chọn 2)
+> Trigger 'after' trên Account thực hiện DML update toàn bộ Opportunity con. Không có trigger nào trên Opportunity, nhưng lỗi đệ quy trigger 'maximum trigger depth exceeded' vẫn xảy ra. Hai lý do nào giải thích việc này? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > The two reasons that could possibly explain the Account trigger firing recursively are:
@@ -3903,10 +3923,10 @@ Database.insert(a, false);**
 > Roll-up summary fields on the Account that aggregate data from child Opportunities can cause the Account trigger to fire again when these fields are recalculated.
 
 **✅ Tại sao đáp án đúng:**
-> A: Cập nhật Opportunity kích hoạt Cross-object Workflow Field Update cập nhật ngược trường lên Account cha -> nổ trigger Account lần nữa. B: Cập nhật Opportunity làm thay đổi trường Roll-up Summary trên Account cha -> kích hoạt vòng Save Account và nổ trigger Account lần nữa.
+> A đúng vì việc cập nhật Opportunity có thể kích hoạt một Cross-Object Workflow Field Update cập nhật ngược từ Con lên Cha (Account), khiến trigger Account nổ lần nữa. B đúng vì cập nhật Opportunity con làm thay đổi giá trị của trường Roll-Up Summary trên Account cha, Salesforce tự động kích hoạt vòng Save Account và nổ trigger Account lần nữa. Hai trường hợp này tạo thành vòng lặp vô hạn chéo cha-con.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Lưu song song không liên quan không tạo ra chuỗi đệ quy tuần hoàn khép kín làm vượt độ sâu trigger.
+> **C.** Lưu song song song không tạo ra chuỗi đệ quy tuần hoàn khép kín làm vượt độ sâu trigger.
 > **D.** Criteria Based Sharing chỉ tính toán phân quyền chia sẻ, không kích hoạt tiến trình Save hay chạy trigger.
 
 **💡 Từ khóa ghi nhớ:** `Lỗi đệ quy chéo Cha-Con: Do 1. Roll-up Summary trên Cha; 2. Cross-object Workflow cập nhật ngược lên Cha.`
@@ -3931,20 +3951,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** rates.smokerCharge ❌
 
 **📝 Dịch tiếng Việt:**
-> Cho class InsuranceRates chứa biến tĩnh 'public static final Decimal smokerCharge = 0.01;'. Trong trigger ContactTrigger dưới đây, lập trình viên điền gì vào XXX để gán giá trị của smokerCharge cho biến baseCost? [Code Trigger]
+> Cho class InsuranceRates chứa biến tĩnh 'public static final Decimal smokerCharge = 0.01;'. Trong trigger ContactTrigger dưới đây, điền gì vào XXX để gán giá trị của smokerCharge cho biến baseCost? [InsuranceRates]
 
 **💬 Giải thích gốc (English):**
 > The smokerCharge variable is declared as a static variable in the InsuranceRates class. Static variables belong to the class itself rather than any instance of the class, so you access it using the class name InsuranceRates
 
 **✅ Tại sao đáp án đúng:**
-> Vì smokerCharge là một biến tĩnh (static variable), nó thuộc về class chứ không thuộc về đối tượng instance. Ta truy cập trực tiếp bằng cú pháp: ClassName.staticVariableName -> InsuranceRates.smokerCharge (A).
+> Vì `smokerCharge` được khai báo là biến tĩnh (`static`), nó thuộc về chính class chứ không thuộc về bất kỳ đối tượng instance nào. Cách truy cập chuẩn là dùng trực tiếp tên lớp: `ClassName.staticVariableName` -> `InsuranceRates.smokerCharge` (A).
 
 **❌ Tại sao đáp án sai:**
 > **B.** Biến smokerCharge là public trực tiếp, không cần hàm getter để lấy và class cũng không định nghĩa hàm này.
-> **C.** Sai đường dẫn tham chiếu lớp hệ thống.
-> **D.** Cố gắng gọi biến tĩnh thông qua đối tượng instance 'rates' là sai nguyên tắc lập trình hướng đối tượng trong Apex.
+> **C.** Điền thêm tên Trigger vào trước tên Class là cú pháp tự chế, Salesforce không chơi.
+> **D.** Gọi thông qua đối tượng instance `rates` vừa khởi tạo là sai kỹ thuật, Apex sẽ quăng lỗi compile ngay lập tức.
 
-**💡 Từ khóa ghi nhớ:** `Biến Static -> Luôn truy cập thông qua tên Class: ClassName.VariableName.`
+**💡 Từ khóa ghi nhớ:** `Biến tĩnh (Static variable) -> Luôn truy cập trực tiếp bằng tên Class: ClassName.VariableName!`
 
 ---
 
@@ -3958,21 +3978,21 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Use a private Boolean variable. ❌
 
 **📝 Dịch tiếng Việt:**
-> Phương pháp nào lập trình viên nên sử dụng để ngăn chặn lỗi trigger chạy đệ quy vô hạn (recursive trigger)?
+> Lập trình viên nên làm thế nào để ngăn chặn lỗi trigger chạy đệ quy vô hạn (recursive trigger)?
 
 **💬 Giải thích gốc (English):**
 > What is a Recursive Trigger: A recursive trigger is one that performs an action, such as an update or insert, which causes the trigger to invoke itself, often due to an update it performs.
 > How to Avoid Recursive Triggers: To prevent recursive triggers, you can create a class with a static Boolean variable initialized to true. In the trigger, before executing your code, check if the variable is true. If it is, proceed with your code and then set the variable to false.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng một biến tĩnh kiểu Boolean - static Boolean variable (B) trong một class helper (ví dụ: public static Boolean isFirstRun = true). Check biến này ở đầu trigger, chạy xong gán bằng false để chặn các vòng sau.
+> Sử dụng một biến tĩnh kiểu Boolean - static Boolean variable (B) trong một class helper (ví dụ: `public static Boolean isFirstRun = true`) là giải pháp kinh điển. Ta kiểm tra biến này ở đầu trigger, chạy xong gán bằng `false` để chặn các vòng chạy đệ quy sau.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Mô hình một trigger trên một object giúp quản lý code sạch sẽ, không giúp ngăn đệ quy chéo giữa các object khác nhau.
-> **C.** Trigger Handler pattern là kiến trúc tách code xử lý, không có cơ chế tự chặn đệ quy nếu thiếu biến tĩnh.
-> **D.** Biến private Boolean sẽ bị khởi tạo lại từ đầu mỗi khi trigger kích hoạt, hoàn toàn vô dụng để chặn đệ quy.
+> **A.** One trigger per object chỉ giúp gom code gọn gàng quản lý chứ không có cơ chế tự chặn đệ quy.
+> **C.** Trigger Handler chỉ tách code ra class khác chứ không tự chặn đệ quy nếu thiếu biến static.
+> **D.** Biến private Boolean sẽ bị khởi tạo lại từ đầu mỗi khi trigger kích hoạt ở vòng mới, hoàn toàn vô dụng để chặn đệ quy.
 
-**💡 Từ khóa ghi nhớ:** `Chặn Trigger đệ quy (Recursive) -> Luôn sử dụng biến STATIC BOOLEAN trong class helper.`
+**💡 Từ khóa ghi nhớ:** `Chặn Trigger đệ quy (Recursive) -> Luôn sử dụng biến STATIC BOOLEAN trong class helper!`
 
 ---
 
@@ -3987,7 +4007,7 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **E.** Loading externally hosted scripts. ❌
 
 **📝 Dịch tiếng Việt:**
-> Ba khả năng nổi bật của thẻ <ltng:require> dùng để tải các thư viện JavaScript bên ngoài trong Aura Component là gì? (Chọn 3)
+> Ba tính năng nổi bật của thẻ <ltng:require> dùng để tải các thư viện JavaScript bên ngoài trong Aura Component là gì? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Loading Order
@@ -3998,13 +4018,13 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 > Use separate <ltng:require> tags for parallel loading if you have multiple sets of scripts that are not dependent on each other.
 
 **✅ Tại sao đáp án đúng:**
-> B: Cơ chế One-time loading chỉ tải script duy nhất một lần dù khai báo ở nhiều component khác nhau. C: Cho phép chỉ định thứ tự tải (loading order) các script theo danh sách liệt kê. D: Tải song song (parallel) các bộ script độc lập bằng các thẻ riêng biệt để tối ưu tốc độ.
+> B đúng vì nó chỉ tải script duy nhất một lần dù được khai báo trùng lặp ở nhiều component con khác nhau. C đúng vì cho phép chỉ định thứ tự tải (loading order) các script theo danh sách liệt kê để tránh lỗi phụ thuộc thư viện (dependency). D đúng vì hỗ trợ tải song song (parallel) các bộ script độc lập để tối ưu tốc độ load trang.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thẻ này tải file từ Static Resource chứ không tải trực tiếp từ thư mục Documents cũ kỹ.
-> **E.** Vì lý do bảo mật CSP, <ltng:require> cấm tải trực tiếp các script lưu trữ bên ngoài Salesforce, bắt buộc phải upload vào Static Resource.
+> **A.** Thẻ này chỉ tải file từ Static Resource chứ không tải trực tiếp từ thư mục Documents cũ kỹ.
+> **E.** Vì lý do bảo mật CSP cực kỳ nghiêm ngặt, Salesforce cấm tải trực tiếp các script lưu trữ bên ngoài hệ thống, bắt buộc phải upload vào Static Resource trước.
 
-**💡 Từ khóa ghi nhớ:** `ltng:require (Aura) / lightning/platformResourceLoader (LWC): Tải script từ STATIC RESOURCE, hỗ trợ thứ tự tải và chạy duy nhất 1 lần.`
+**💡 Từ khóa ghi nhớ:** `<ltng:require> (Aura) / platformResourceLoader (LWC): Tải script từ STATIC RESOURCE, hỗ trợ tải 1 lần và chỉ định thứ tự tải.`
 
 ---
 
@@ -4018,20 +4038,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Add a Lookup field on the Account object to the Global Address object. ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn tạo Custom Object 'Global Address' chứa các địa chỉ mặc định dùng chung cho nhiều Account. Mối quan hệ nào là tối ưu nhất giữa Account và Global Address?
+> Mối quan hệ nào là tối ưu nhất để nhiều Account dùng chung 1 địa chỉ default Pickup Address từ custom object 'Global Address'?
 
 **💬 Giải thích gốc (English):**
 > Since a standard object like Account cannot be a detail in a Master-Detail Relationship, we should use a Lookup Relationship instead. To allow multiple Accounts to share a default pickup address, add a Lookup field on the Account object that points to the Global Address object. This setup enables each Account to reference a Global Address, supporting the business need by enhancing shipping efficiency and reducing costs.
 
 **✅ Tại sao đáp án đúng:**
-> Thêm trường Lookup trên Account trỏ đến đối tượng Global Address (D). Mối quan hệ này cho phép nhiều Account dùng chung 1 địa chỉ (1-Nhiều từ Global Address đến Account) và Account là Standard Object nên cấm làm con trong quan hệ Master-Detail với Custom Object.
+> Thêm trường Lookup trên Account trỏ đến đối tượng Global Address (D). Thiết kế này cho phép nhiều Account dùng chung 1 địa chỉ (quan hệ 1-Nhiều từ Global Address sang Account). Đồng thời, Account là Standard Object nên cấm ngặt không được làm con (Detail) trong mối quan hệ Master-Detail với một Custom Object.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Master-Detail trên Global Address trỏ đến Account làm giới hạn mỗi địa chỉ chỉ thuộc về 1 Account duy nhất, không dùng chung được.
-> **B.** Account là đối tượng tiêu chuẩn của Salesforce, cấm ngặt việc làm con (detail) trong quan hệ Master-Detail với Custom Object.
-> **C.** Lookup trên Global Address trỏ đến Account giới hạn quan hệ ngược chiều, không đáp ứng chia sẻ địa chỉ.
+> **B.** Account là đối tượng tiêu chuẩn, cấm làm con (detail) trong quan hệ Master-Detail với Custom Object.
+> **C.** Lookup ngược chiều trên Global Address trỏ đến Account làm giới hạn mối quan hệ, không đáp ứng việc dùng chung.
 
-**💡 Từ khóa ghi nhớ:** `Standard Object (như Account) -> CẤM làm con (detail) trong mối quan hệ Master-Detail!`
+**💡 Từ khóa ghi nhớ:** `Standard Object (như Account) -> CẤM làm con (Detail) trong mối quan hệ Master-Detail với Custom Object!`
 
 ---
 
@@ -4045,20 +4065,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Use Security.stripInaccessible to remove fields inaccessible to the current user. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để LWC hoạt động cho cả 2 loại user (có quyền và không có quyền xem field) mà không báo lỗi?
+> Làm thế nào để LWC hoạt động cho cả 2 loại user (đại diện bán hàng có quyền xem trường commission, và trợ lý bán hàng không có quyền xem trường commission) mà không bị văng lỗi?
 
 **💬 Giải thích gốc (English):**
 > Use the stripInaccessible method to enforce field-level and object-level data protection. This method can be used to strip the fields and relationship fields from query and subquery results that the user can’t access. The method can also be used to remove inaccessible sObject fields before DML operations to avoid exceptions and to sanitize sObjects that have been deserialized from an untrusted source.
 
 **✅ Tại sao đáp án đúng:**
-> Security.stripInaccessible sẽ tự động lọc bỏ các field thiếu quyền ra khỏi kết quả trả về, giúp code chạy trơn tru cho mọi user mà không 'văng' Exception.
+> Sử dụng `Security.stripInaccessible` (D). Đây là vũ khí tối thượng giúp tự động quét và lọc bỏ tất cả các trường mà user hiện tại không có quyền truy cập (FLS) ra khỏi danh sách kết quả một cách im lặng và êm ái, giúp component hoạt động trơn tru cho mọi user mà không báo lỗi.
 
 **❌ Tại sao đáp án sai:**
-> **A.** WITH SECURITY_ENFORCED sẽ bắn Exception và làm app bị crash nếu user thiếu quyền xem bất kỳ field nào trong query.
-> **B.** LDS thường dùng cho 1 bản ghi hoặc tập hợp nhỏ, việc 'lọc field' theo quyền trong một list lớn không linh hoạt bằng stripInaccessible trong Apex.
-> **C.** Locker Service là cơ chế bảo mật cô lập component, không liên quan đến việc lọc dữ liệu theo FLS.
+> **A.** Lightning Data Service chỉ hỗ trợ load từng bản ghi đơn lẻ tốt hơn, xử lý FLS cho cả list dài không linh hoạt bằng Apex.
+> **B.** Thêm `WITH SECURITY_ENFORCED` vào SOQL sẽ quăng lỗi Exception to đùng làm crash ứng dụng ngay lập tức nếu user thiếu quyền xem bất kỳ trường nào trong câu SELECT. Quá thô bạo!
+> **C.** Locker Service là cơ chế bảo mật cô lập mã nguồn JavaScript giữa các component, chả liên quan gì đến phân quyền trường FLS.
 
-**💡 Từ khóa ghi nhớ:** `Security Practice: Muốn app chạy 'êm' dù thiếu quyền -> Dùng Security.stripInaccessible.`
+**💡 Từ khóa ghi nhớ:** `FLS Lọc trường thiếu quyền không muốn văng lỗi -> Dùng `Security.stripInaccessible` (êm ái nhất). Muốn quăng lỗi chặn đứng -> `WITH SECURITY_ENFORCED`.`
 
 ---
 
@@ -4072,20 +4092,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Use Lead Conversion field mapping ❌
 
 **📝 Dịch tiếng Việt:**
-> Đảm bảo điền Lead Source trước khi chuyển đổi (convert) Lead?
+> Để đảm bảo người dùng bắt buộc phải điền trường Lead Source trước khi thực hiện chuyển đổi (convert) Lead, giải pháp nào phù hợp nhất?
 
 **💬 Giải thích gốc (English):**
 > A validation rule can enforce that the Lead Source field is populated by preventing the Lead from being saved or converted if the field is empty. This ensures that users must fill in the Lead Source field before proceeding with the conversion.
 
 **✅ Tại sao đáp án đúng:**
-> Validation Rule giúp chặn lại nếu thiếu dữ liệu khi field IsConverted = true.
+> Sử dụng Validation Rule (B) là chuẩn không cần chỉnh. Ta viết điều kiện kiểm tra: `IsConverted = true` và `ISBLANK(LeadSource)`. Khi người dùng bấm Convert mà bỏ trống trường này, Validation Rule sẽ chặn đứng và quăng thông báo ép nhập liệu.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Formula chỉ để tính toán hiển thị, không ép buộc nhập liệu được.
-> **B.** Workflow chỉ chạy sau khi đã lưu/convert xong, không có tính năng chặn (block).
-> **C.** Process Builder cũng vậy, không dùng để validation và chặn hành động của user.
+> **A.** Trigger after insert/update chạy khi dữ liệu đã lưu xong, lúc này convert đã hoàn tất nên không còn tính chất 'ngăn chặn trước' (prior to).
+> **C.** Formula field chỉ để tính toán hiển thị dữ liệu đọc, không có khả năng kiểm tra hay ép buộc nhập liệu.
+> **D.** Lead Conversion field mapping chỉ dùng để ánh xạ trường từ Lead sang Account/Contact/Opportunity sau khi convert chứ không có cơ chế chặn convert nếu thiếu trường.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Prior to / Enforce / Block -> Validation Rule.`
+**💡 Từ khóa ghi nhớ:** `Keywords: Prior to (Trước khi làm gì) / Enforce (Bắt buộc) / Block (Chặn) -> Chọn ngay Validation Rule!`
 
 ---
 
@@ -4099,20 +4119,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Create a before insert trigger to correctly map the records. ❌
 
 **📝 Dịch tiếng Việt:**
-> Trường tùy chỉnh PrimaryId__c trên Candidate__c dùng để lưu ID ứng viên và được đánh dấu Unique. Để nạp dữ liệu cập nhật từ file CSV một cách nhanh nhất, đảm bảo các bản ghi được khớp đúng, developer nên làm gì?
+> Cần nạp dữ liệu cập nhật từ file CSV vào Salesforce cho đối tượng Candidate__c, đảm bảo dữ liệu khớp đúng với trường mã định danh duy nhất PrimaryId__c có sẵn. Nên dùng kỹ thuật nào?
 
 **💬 Giải thích gốc (English):**
 > Marking the PrimaryId__c field as an External Id allows Salesforce to use this field as a unique identifier for matching records during data import. This ensures that the data from the CSV file is correctly mapped to the existing candidate records based on their unique IDs.
 
 **✅ Tại sao đáp án đúng:**
-> Sửa định nghĩa trường PrimaryId__c và đánh dấu nó là trường External ID (A). Khi đó, các công cụ như Data Loader có thể sử dụng trường này làm khóa đối chiếu để thực hiện thao tác Upsert (chèn/cập nhật) cực kỳ nhanh chóng và an toàn.
+> Cập nhật định nghĩa trường PrimaryId__c và đánh dấu nó là trường External ID (A). Khi đó, các công cụ nạp dữ liệu như Data Loader hay Import Wizard có thể dùng trường này làm khóa đối chiếu để thực hiện thao tác Upsert (Cập nhật nếu có sẵn, tạo mới nếu chưa có) cực kỳ nhanh chóng, chuẩn xác 100% không lo trùng lặp.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Nạp vào custom object phụ rồi viết code map làm tăng độ phức tạp và tốn tài nguyên xử lý dữ liệu.
-> **C.** Flow before save không hỗ trợ đối chiếu khóa ngoài trực tiếp lúc nạp file bằng công cụ.
-> **D.** Trigger before insert viết code map thủ công rất cồng kềnh và dễ lỗi hơn nhiều so với tính năng External ID có sẵn của hệ thống.
+> **B.** Nạp vào một object tạm rồi viết code map sang Candidate__c là vẽ đường vòng cồng kềnh, tốn tài nguyên và thời gian xử lý vô ích.
+> **C.** Flow before-save không hỗ trợ đối chiếu khóa ngoài trực tiếp lúc nạp file bằng công cụ.
+> **D.** Trigger before insert viết code map thủ công rất cồng kềnh, dễ lỗi và hoàn toàn thừa thãi khi hệ thống đã hỗ trợ sẵn tính năng External ID.
 
-**💡 Từ khóa ghi nhớ:** `Nạp file CSV khớp dữ liệu nhanh gọn no-code -> Đánh dấu trường đối chiếu là EXTERNAL ID.`
+**💡 Từ khóa ghi nhớ:** `Khớp dữ liệu nhanh gọn từ file CSV ngoài -> Đánh dấu trường đối chiếu làm EXTERNAL ID!`
 
 ---
 
@@ -4126,20 +4146,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** By default, tasks do not display on the Account Activity Timeline. ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi một Task được tạo cho một Contact, làm thế nào để lập trình viên ngăn chặn việc Task này tự động hiển thị trên mục Activity Timeline (Dòng thời gian hoạt động) của Account cha liên quan?
+> Khi một Task được tạo cho một Contact, làm thế nào để ngăn chặn Task này tự động hiển thị trên Activity Timeline (Dòng thời gian hoạt động) của Account cha liên quan?
 
 **💬 Giải thích gốc (English):**
 > This setting ensures that tasks created for a Contact are not rolled up to the Activity Timeline of the Contact’s associated Account.
 
 **✅ Tại sao đáp án đúng:**
-> Trong Salesforce, có một cấu hình hệ thống là 'Roll up activities to a contact's primary account'. Nếu tính năng này được bật, mọi hoạt động của con sẽ bị hiển thị dồn lên cha. Để ngăn chặn điều này, chỉ cần vào Setup -> Activity Settings và bỏ chọn (uncheck) tùy chọn này (A).
+> Salesforce có một tùy chọn cấu hình hệ thống cực kỳ bá đạo là 'Roll up activities to a contact's primary account'. Nếu bật nó lên, mọi hoạt động của con (Contact) sẽ tự động dồn hiển thị lên cha (Account). Để chặn việc này, ta chỉ cần vào Setup -> Activity Settings và bỏ tích chọn (uncheck) cấu hình này là xong ngay (A).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Set Account field về null trên Task trigger sẽ ngắt kết nối hoàn toàn của Task đó với Account, làm mất dữ liệu quan hệ rất quan trọng chứ không chỉ đơn giản là ẩn timeline.
+> **B.** Cố tình viết Trigger hay Process Builder để xóa trắng trường Account trên Task sẽ phá vỡ hoàn toàn mối quan hệ dữ liệu thô bạo, làm mất liên kết dữ liệu quan trọng của Task.
 > **C.** Sử dụng Process Builder để xóa trắng trường Account trên Task cũng phá vỡ quan hệ dữ liệu thô bạo như phương án B.
-> **D.** Ngược lại, theo mặc định của Salesforce, các hoạt động của Contact luôn được hiển thị dồn lên timeline của Account cha nếu OWD của Activity bật roll-up.
+> **D.** Phát biểu sai vì mặc định Salesforce sẽ tự động gom hiển thị hoạt động của Contact lên Account cha nếu tùy chọn roll-up được bật.
 
-**💡 Từ khóa ghi nhớ:** `Ẩn Task con trên Timeline của Account cha -> Bỏ chọn 'Roll up activities to a contact's primary account' trong Setup.`
+**💡 Từ khóa ghi nhớ:** `Muốn ngừng dồn Task con lên Timeline của Account cha -> Bỏ chọn 'Roll up activities to a contact's primary account' trong Setup!`
 
 ---
 
@@ -4153,20 +4173,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Any top-level Apex class that implements the controller interface ❌
 
 **📝 Dịch tiếng Việt:**
-> Yêu cầu bắt buộc để một lớp Apex có thể được sử dụng làm custom controller cho trang Visualforce là gì?
+> Yêu cầu bắt buộc đối với một lớp Apex để có thể được sử dụng làm custom controller cho trang Visualforce là gì?
 
 **💬 Giải thích gốc (English):**
 > A custom controller is an Apex class that uses the default, no-argument constructor for the outer, top-level class.
 
 **✅ Tại sao đáp án đúng:**
-> Class đó bắt buộc phải là một top-level Apex class (lớp ngoài cùng, không phải inner class) và bắt buộc phải định nghĩa một hàm khởi tạo mặc định không tham số (default, no-argument constructor) (C) để Visualforce có thể tự động instanciate khi trang tải.
+> Class đó bắt buộc phải là một top-level Apex class (lớp ngoài cùng, không phải inner class) và bắt buộc phải định nghĩa một hàm khởi tạo mặc định không tham số (default, no-argument constructor) (C) để nền tảng Visualforce có thể tự động khởi tạo đối tượng khi trang được tải lên.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Hàm khởi tạo (constructor) của class Apex cấm khai báo kiểu trả về (kể cả PageReference), nó chỉ trùng tên class và không có giá trị trả về.
-> **B.** Class Apex làm controller không cần và không thể kế thừa lớp PageReference.
-> **D.** Không tồn tại một 'controller interface' cụ thể nào bắt buộc Apex class phải implements để làm controller cả.
+> **A.** Hàm khởi tạo (constructor) của class Apex cấm khai báo kiểu trả về (kể cả PageReference), nó chỉ trùng tên class và không trả về giá trị gì cả.
+> **B.** Class Apex làm controller không thể kế thừa lớp PageReference, sai kiến trúc hướng đối tượng của Apex.
+> **D.** Không có một 'controller interface' nào bắt buộc Apex class phải implements để làm controller.
 
-**💡 Từ khóa ghi nhớ:** `Custom Visualforce Controller -> Class bắt buộc có hàm khởi tạo không tham số mặc định (no-argument constructor).`
+**💡 Từ khóa ghi nhớ:** `Custom Visualforce Controller -> Class phải có hàm khởi tạo không tham số mặc định (no-argument constructor).`
 
 ---
 
@@ -4186,14 +4206,14 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 > When overriding buttons with a Visualforce page, you must use the standard controller for the object on which the button appears. For example, to use a page to override the Edit button on accounts, the page markup must include the standardController="Account" attribute on the <apex:page> tag.
 
 **✅ Tại sao đáp án đúng:**
-> Thuộc tính standardController (D) bắt buộc phải được định nghĩa để trang Visualforce nhận đúng ngữ cảnh dữ liệu của đối tượng chứa nút bấm đó (ví dụ standardController='Account' để ghi đè nút Edit của Account).
+> Thuộc tính `standardController` (D) bắt buộc phải được định nghĩa để trang Visualforce nhận đúng ngữ cảnh dữ liệu của đối tượng chứa nút bấm đó (ví dụ `standardController="Account"` để ghi đè nút Edit của Account).
 
 **❌ Tại sao đáp án sai:**
-> **A.** pageReference là kiểu trả về trong Apex, không phải thuộc tính của thẻ <apex:page>.
-> **B.** Không có thuộc tính 'override' trong thẻ khai báo <apex:page>.
-> **C.** controller dùng để khai báo Custom Controller class, không thể dùng để ghi đè nút bấm chuẩn của đối tượng.
+> **A.** `pageReference` là kiểu trả về trong Apex, không phải thuộc tính của thẻ `<apex:page>`.
+> **B.** Không có thuộc tính nào tên là `override` trong thẻ khai báo `<apex:page>`.
+> **C.** `controller` dùng để khai báo Custom Controller class, không thể dùng để ghi đè nút bấm chuẩn của đối tượng.
 
-**💡 Từ khóa ghi nhớ:** `Ghi đè action chuẩn (Override button) bằng Visualforce -> Bắt buộc dùng standardController.`
+**💡 Từ khóa ghi nhớ:** `Ghi đè action chuẩn (Override button) bằng Visualforce -> Bắt buộc dùng standardController!`
 
 ---
 
@@ -4210,11 +4230,11 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 > Lập trình viên cần cung cấp giải pháp cho phép chỉnh sửa, cập nhật và xóa hàng loạt (mass edit, update, delete) các bản ghi trực tiếp từ một danh sách (list view). Hai cách nào giúp thực hiện việc này? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> A: Tạo một trang Visualforce tùy chỉnh sử dụng StandardSetController kết hợp với Apex custom button trên list view để xử lý danh sách. B: Cài đặt một managed package từ AppExchange cung cấp sẵn các nút bấm và Enhanced List Views có khả năng chỉnh sửa và xóa hàng loạt cực mạnh.
+> A đúng vì tạo một trang Visualforce tùy chỉnh sử dụng `StandardSetController` kết hợp với custom button trên list view sẽ giúp xử lý chỉnh sửa và xóa danh sách hàng loạt theo ý muốn bằng code Apex. B đúng vì cài đặt một managed package từ AppExchange cung cấp sẵn các nút bấm và Enhanced List Views có khả năng chỉnh sửa và xóa hàng loạt cực mạnh và an toàn, được bảo trì nâng cấp.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Unmanaged package không được bảo trì nâng cấp và có thể gây xung đột code trong Org, không phải giải pháp tối ưu và an toàn.
-> **D.** Tính năng inline editing chuẩn trên list view chỉ hỗ trợ chỉnh sửa và cập nhật hàng loạt, tuyệt đối không hỗ trợ xóa hàng loạt (mass delete) bản ghi.
+> **C.** Unmanaged package không được bảo trì nâng cấp và có thể gây xung đột code trong Org, không phải giải pháp tối ưu cho doanh nghiệp.
+> **D.** Tính năng inline editing chuẩn trên list view chỉ hỗ trợ chỉnh sửa và cập nhật hàng loạt, tuyệt đối không hỗ trợ xóa hàng loạt (mass delete) bản ghi trực tiếp.
 
 **💡 Từ khóa ghi nhớ:** `Mass Edit + Update + Delete trên List View -> Visualforce Page (StandardSetController) hoặc AppExchange Package.`
 
@@ -4236,14 +4256,14 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 > The primary benefit of using a trigger framework in Salesforce is that it simplifies the addition of context-specific logic. A trigger framework helps organize and manage complex trigger logic, making it easier to add, modify, and maintain code. This approach promotes best practices and ensures that triggers are scalable and maintainable.
 
 **✅ Tại sao đáp án đúng:**
-> Áp dụng trigger framework giúp đơn giản hóa việc bổ sung các logic nghiệp vụ theo từng ngữ cảnh sự kiện cụ thể (before insert, after update,...) (D) nhờ việc phân chia code khoa học vào các class Trigger Handler chuyên biệt, giúp code gọn gàng và cực kỳ dễ bảo trì.
+> Áp dụng trigger framework giúp đơn giản hóa việc bổ sung các logic nghiệp vụ theo từng ngữ cảnh sự kiện cụ thể (before insert, after update,...) (D) nhờ việc phân chia code khoa học vào các class Trigger Handler chuyên biệt, giúp code gọn gàng, tuần tự và cực kỳ dễ bảo trì khi dự án phình to.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Trigger framework không làm giảm thời gian thực thi của CPU, thậm chí có thể tăng nhẹ một chút do phải chạy qua các lớp bọc trung gian.
 > **B.** Code trigger thông thường không dùng framework vẫn được phủ test bình thường bởi test class.
 > **C.** Framework không hề và không thể làm tăng giới hạn governor limit cứng của nền tảng Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Trigger Framework -> Tổ chức code khoa học, dễ bảo trì và viết logic theo ngữ cảnh sự kiện.`
+**💡 Từ khóa ghi nhớ:** `Trigger Framework -> Tổ chức code khoa học, dễ bảo trì và viết logic theo ngữ cảnh sự kiện cực nhàn!`
 
 ---
 
@@ -4257,20 +4277,20 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** Process Builder ❌
 
 **📝 Dịch tiếng Việt:**
-> Đảm bảo điền Lead Source trước khi chuyển đổi (convert) Lead?
+> Để đảm bảo người dùng bắt buộc phải điền trường Lead Source trước khi thực hiện chuyển đổi (convert) Lead, giải pháp nào phù hợp nhất?
 
 **💬 Giải thích gốc (English):**
 > To ensure that the Lead Source field is populated before a Lead is converted, you should use a Validation Rule. A validation rule can enforce that the Lead Source field is not left blank by preventing the conversion process until the field is populated.
 
 **✅ Tại sao đáp án đúng:**
-> Validation Rule giúp chặn lại nếu thiếu dữ liệu khi field IsConverted = true.
+> Validation Rule (B) là đệ nhất chặn lưu. Viết điều kiện kiểm tra: `IsConverted = true` và `ISBLANK(LeadSource)`. Khi người dùng cố bấm Convert mà bỏ trống trường này, Validation Rule sẽ chặn đứng và quăng thông báo bắt nhập liệu.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Formula chỉ để tính toán hiển thị, không ép buộc nhập liệu được.
-> **B.** Workflow chỉ chạy sau khi đã lưu/convert xong, không có tính năng chặn (block).
-> **C.** Process Builder cũng vậy, không dùng để validation và chặn hành động của user.
+> **A.** Workflow Rule chỉ chạy ngầm backend sau khi dữ liệu đã lưu xong, lúc này convert đã hoàn tất nên không chặn được.
+> **C.** Formula field chỉ để hiển thị dữ liệu tính toán đọc, không có khả năng chặn lưu hay ép buộc nhập liệu.
+> **D.** Process Builder cũng chạy sau khi lưu bản ghi, không dùng để bắt lỗi chặn nhập liệu trực tiếp được.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Prior to / Enforce / Block -> Validation Rule.`
+**💡 Từ khóa ghi nhớ:** `Keywords: Prior to (Trước khi) / Enforce (Bắt buộc) / Block (Chặn) -> Chọn ngay Validation Rule!`
 
 ---
 
@@ -4284,7 +4304,7 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 - **D.** The field values on the master record are overwritten by the records being merged. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một Org gặp tình trạng tích tụ nhiều bản ghi Lead bị trùng lặp do quản lý dữ liệu kém. Lập trình viên định viết code Apex gộp (merge) chúng lại. Hai lưu ý quan trọng nào khi sử dụng phương thức merge trong Apex? (Chọn 2)
+> Một Org gặp tình trạng tích tụ nhiều bản ghi Lead bị trùng lặp. Lập trình viên định viết code Apex gộp (merge) chúng lại. Hai lưu ý quan trọng nào khi sử dụng phương thức merge trong Apex? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > The two valid considerations when using the merge method in Salesforce are:
@@ -4292,13 +4312,13 @@ Which code segment should a developer insert at the XXX to set the baseCost vari
 > Merge is supported with accounts, contacts, cases, and leads. These are the standard objects that support the merge operation in Salesforce.
 
 **✅ Tại sao đáp án đúng:**
-> A: Lệnh merge cho phép gộp tối đa 3 bản ghi (gồm 1 master chính và tối đa 2 bản ghi phụ cùng loại sObject) vào bản ghi master. B: Thao tác DML merge chỉ hỗ trợ chính thức đối với 4 đối tượng tiêu chuẩn là Accounts, Contacts, Cases và Leads.
+> A đúng vì phương thức `merge` cho phép gộp tối đa 3 bản ghi (gồm 1 bản ghi master chính và tối đa 2 bản ghi phụ cùng loại sObject) vào bản ghi master. B đúng vì thao tác DML merge chỉ hỗ trợ chính thức đối với 4 đối tượng tiêu chuẩn là Accounts, Contacts, Cases và Leads. Gặp đối tượng khác là chịu chết!
 
 **❌ Tại sao đáp án sai:**
 > **C.** Không thể dùng các trường External ID làm đối số truyền trực tiếp vào phương thức merge, phương thức này bắt buộc nhận vào đối tượng sObject hoặc Id thật.
-> **D.** Ngược lại, các giá trị trường trên bản ghi master được giữ lại, các bản ghi phụ bị gộp sẽ bị xóa và đưa vào Recycle Bin.
+> **D.** Các giá trị trường trên bản ghi master được giữ lại, các bản ghi phụ bị gộp sẽ bị xóa sạch và đưa vào Recycle Bin chứ không ghi đè thô bạo lên master.
 
-**💡 Từ khóa ghi nhớ:** `DML Merge: Chỉ hỗ trợ Account, Contact, Case, Lead. Gộp tối đa 3 bản ghi (1 master + 2 phụ).`
+**💡 Từ khóa ghi nhớ:** `DML Merge: Chỉ hỗ trợ Account, Contact, Case, Lead. Gộp tối đa 3 bản ghi (1 master + 2 phụ)!`
 
 ---
 
@@ -4323,7 +4343,7 @@ What happens when the developer tries to deploy the trigger and two classes to p
 > Even though the overall code coverage is 81%, the specific Apex trigger itself must have code coverage. In Salesforce, each trigger must be covered by tests, and the deployment will fail if any trigger has 0% coverage.
 
 **✅ Tại sao đáp án đúng:**
-> Đợt deployment sẽ thất bại hoàn toàn vì trigger có 0% code coverage (D). Quy tắc bắt buộc của Salesforce khi deploy là: **Mỗi file trigger riêng biệt bắt buộc phải có coverage lớn hơn 0%** (ít nhất 1 dòng trigger được chạy thử trong test). Vì test class chỉ gọi trực tiếp class helper mà không tạo bản ghi để kích hoạt trigger nổ, trigger bị 0% coverage nên oẳng.
+> Đợt deployment sẽ thất bại hoàn toàn vì trigger bị 0% code coverage (D). Quy tắc bắt buộc của Salesforce khi deploy là: **Mỗi file trigger riêng biệt bắt buộc phải có coverage lớn hơn 0%** (ít nhất 1 dòng trigger được chạy thử trong test). Vì test class chỉ gọi trực tiếp class helper mà không tạo bản ghi để kích hoạt trigger nổ, trigger bị 0% coverage nên oẳng.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Salesforce không chặn deploy vì thiếu câu lệnh assert (dù viết assert là best practice).
@@ -4345,7 +4365,7 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **E.** Only one method using the @InvocableMethod annotation can be defined per Apex class. ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba cân nhắc nào là đúng khi sử dụng annotation @InvocableMethod trong Apex? (Chọn 3)
+> Ba cân nhắc nào là đúng khi sử dụng annotation @InvocableMethod trong Apex để gọi từ Flow/Process Builder? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > InvocableMethod Considerations
@@ -4354,13 +4374,13 @@ What happens when the developer tries to deploy the trigger and two classes to p
 > Other annotations can’t be used with the InvocableMethod annotation.
 
 **✅ Tại sao đáp án đúng:**
-> B: Phải là 'static' để Salesforce gọi được mà không cần khởi tạo class. C: Mỗi class chỉ được phép có duy nhất 1 method gắn tag này. D: Phải có modifier là Public hoặc Global để các công cụ bên ngoài truy cập được.
+> A đúng vì method bắt buộc phải được khai báo với từ khóa `static` để hệ thống gọi trực tiếp từ Flow/Process Builder mà không cần khởi tạo class. B đúng vì nó phải là `public` hoặc `global` để các công cụ tự động hóa no-code có thể 'nhìn thấy' và kích hoạt được. E đúng vì mỗi Apex class chỉ được phép chứa duy nhất một phương thức có gắn thẻ `@InvocableMethod`.
 
 **❌ Tại sao đáp án sai:**
-> **A.** InvocableMethod chỉ chấp nhận DUY NHẤT một tham số đầu vào (thường là List).
-> **E.** Không bắt buộc phải có return value (có thể là void).
+> **C.** Phương thức `@InvocableMethod` chỉ chấp nhận duy nhất một tham số đầu vào (thường là List). Đòi truyền nhiều tham số là compile báo lỗi ngay.
+> **D.** Không bắt buộc phải có return value, kiểu trả về hoàn toàn có thể là `void`.
 
-**💡 Từ khóa ghi nhớ:** `Invocable: Static, 1 method/class, input là List.`
+**💡 Từ khóa ghi nhớ:** `Invocable Method: Static, Public/Global, Chỉ 1 method duy nhất mỗi class, nhận tham số là List!`
 
 ---
 
@@ -4380,14 +4400,14 @@ What happens when the developer tries to deploy the trigger and two classes to p
 > The scratch org is a source-driven and disposable deployment of Salesforce code and metadata. A scratch org is fully configurable, allowing developers to emulate different Salesforce editions with different features and settings. You can share the scratch org configuration file with other team members, so you all have the same basic org in which to do your development. In addition to code and metadata, developers can install packages and deploy synthetic or dummy data for testing. Don’t add personal data to scratch orgs.
 
 **✅ Tại sao đáp án đúng:**
-> Scratch Orgs là 'xương sống' của Source-driven development. Nó cho phép tạo ra các môi trường tạm thời, cấu hình qua file json để code và test độc lập.
+> Scratch Orgs (D) là 'xương sống' của Source-Driven Development (phát triển hướng mã nguồn) và Salesforce DX. Nó cho phép tạo ra các môi trường ảo tạm thời cực kỳ nhanh chóng, cấu hình qua file JSON để lập trình viên tự do phát triển và test độc lập rồi bỏ đi (disposable), không lo xung đột cấu hình.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Developer Org là org miễn phí trọn đời cho cá nhân, không tích hợp tốt vào quy trình CI/CD chuyên nghiệp.
-> **C.** Sandbox vẫn mang nặng tính thủ công và bị giới hạn bởi cấu hình của Production org.
-> **D.** Full Copy Sandbox dùng để test performance hoặc User Acceptance Test (UAT) vì nó chứa toàn bộ data, không dùng để dev độc lập.
+> **A.** Developer Org là org miễn phí trọn đời cho cá nhân học tập, không tích hợp tốt vào quy trình CI/CD chuyên nghiệp của dự án lớn.
+> **B.** Developer Sandbox bị giới hạn bởi cấu hình cố định của Production org và tốn công refresh thủ công, không linh hoạt bằng Scratch Org.
+> **C.** Full Copy Sandbox dùng để test performance hoặc User Acceptance Test (UAT) vì chứa đầy đủ data thật, đem đi dev độc lập là phí phạm và cực kỳ cồng kềnh.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Source-driven -> Scratch Orgs.`
+**💡 Từ khóa ghi nhớ:** `Keyword: Source-driven / SFDX / Độc lập nhiều cấu hình -> Chọn ngay SCRATCH ORGS!`
 
 ---
 
@@ -4408,13 +4428,13 @@ What happens when the developer tries to deploy the trigger and two classes to p
 > SOQL query row limit exception due to the number of accounts: Similarly, if the number of accounts retrieved exceeds the row limit, this will also trigger a row limit exception.
 
 **✅ Tại sao đáp án đúng:**
-> B: Lỗi vượt quá giới hạn hàng SOQL (SOQL query row limit) do số lượng Contact quá lớn. D: Lỗi vượt quá giới hạn hàng SOQL do số lượng Account quá lớn. (Vì tổng số hàng tối đa được query trong 1 transaction là 50,000 bản ghi, và trong subquery mỗi bản ghi con Contact được lấy ra cũng bị tính là 1 hàng vào giới hạn này).
+> B đúng vì nếu số lượng Contact con quá lớn, tổng số hàng SOQL lấy ra sẽ vượt giới hạn 50,000 hàng. D đúng vì nếu số lượng Account cha quá lớn cũng dễ dàng làm vượt giới hạn hàng SOQL. Trong Salesforce, mỗi bản ghi con được lấy ra trong subquery cũng bị tính là 1 hàng vào giới hạn SOQL Row Limit (50,000 hàng tối đa trong 1 transaction).
 
 **❌ Tại sao đáp án sai:**
-> **A.** SOQL query đơn giản không tiêu tốn quá nhiều CPU time của transaction để ném ra CPU limit exception trước khi chạm giới hạn hàng.
-> **C.** SOQL query limit exception chỉ xảy ra khi mày gọi lệnh SELECT quá 100 lần trong transaction, ở đây chỉ có duy nhất 1 câu SELECT.
+> **A.** CPU limit exception chỉ nổ ra khi code xử lý tính toán quá phức tạp trong thời gian dài, một câu SOQL đơn giản không đủ tuổi kích hoạt lỗi này trước khi chạm giới hạn hàng.
+> **C.** SOQL query limit exception chỉ xảy ra khi mày gọi lệnh SELECT quá 100 lần trong 1 transaction, ở đây ta chỉ chạy duy nhất 1 câu SELECT.
 
-**💡 Từ khóa ghi nhớ:** `SOQL Row Limit = 50,000 hàng. Mỗi bản ghi con trong Subquery cũng ngốn 1 hàng!`
+**💡 Từ khóa ghi nhớ:** `SOQL Row Limit = 50,000 hàng. Mỗi bản ghi con trong Subquery cũng ngốn 1 hàng vào giới hạn này!`
 
 ---
 
@@ -4428,20 +4448,20 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **D.** Declarative development can be updated in production using the Setup UI. ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn đánh giá lợi thế của phát triển dạng khai báo (declarative - no code) so với lập trình code (programmatic). Hai ưu điểm nổi bật của declarative là gì? (Chọn 2)
+> Universal Containers muốn đánh giá ưu điểm của việc dùng cấu hình no-code (declarative) so với việc hì hục gõ code (programmatic) cho các use case cụ thể. Hai lợi thế cực đỉnh của declarative là gì? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Declarative development does not require Apex test classes: Declarative tools like workflows, process builders, and flows do not require the creation of test classes, which simplifies the development and deployment process.
 > Declarative development can be updated in production using the Setup UI: Declarative changes can be made directly in the production environment through the Salesforce Setup UI, allowing for quicker and easier updates without the need for a deployment process.
 
 **✅ Tại sao đáp án đúng:**
-> B: Cấu hình dạng khai báo hoàn toàn không yêu cầu viết class test để phủ coverage, tiết kiệm nhiều công sức. D: Admin có thể sửa đổi và cập nhật trực tiếp các công cụ khai báo (như Flow, Workflow) ngay trên môi trường Production thông qua giao diện Setup UI cực nhanh.
+> B đúng vì làm declarative (như Flow, Validation Rules...) sướng cái thân, không cần viết class test phủ coverage 75% cực khổ. D đúng vì admin có thể chỉnh sửa và cập nhật nóng trực tiếp trên môi trường Production bằng giao diện Setup UI trong vòng 1 nốt nhạc.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cả hai hình thức đều phải chịu chung các giới hạn thiết kế và giới hạn nền tảng của Salesforce.
-> **C.** Declarative vẫn cần bảo trì bình thường khi các quy trình nghiệp vụ thay đổi.
+> **A.** Cực kỳ hoang đường! Declarative và Programmatic đều chịu chung giới hạn nền tảng (governor limits) của Salesforce, thậm chí Flow còn dễ oẳng limit hơn nếu không biết tối ưu.
+> **C.** Làm gì có chuyện không cần bảo trì? Nghiệp vụ của công ty thay đổi thì Flow hay Rule gì cũng phải vào sửa bình thường, không có chuyện 'bất tử' đâu nhé.
 
-**💡 Từ khóa ghi nhớ:** `Lợi thế Declarative (No-code) -> Không cần viết test class + Cho phép chỉnh sửa nóng trực tiếp trên Production.`
+**💡 Từ khóa ghi nhớ:** `Cấu hình Declarative (No-code) -> Tiết kiệm test class + Chỉnh sửa trực tiếp trên Production qua Setup UI.`
 
 ---
 
@@ -4455,7 +4475,7 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **D.** Create a visual flow that implements the company's formatting. ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên được yêu cầu tạo một file PDF báo giá có định dạng tuân thủ quy chuẩn thương hiệu của công ty, và tự động lưu file đó vào bản ghi Opportunity liên quan. Hai cách nào giúp hiện thực hóa yêu cầu này? (Chọn 2)
+> Lập trình viên được giao nhiệm vụ tạo một file PDF báo giá chuẩn chỉnh theo bộ nhận diện thương hiệu của công ty, đồng thời tự động lưu file đó vào bản ghi Opportunity. Hai cách nào giúp thực hiện yêu cầu này? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > The two ways a developer can create this functionality are:
@@ -4463,13 +4483,13 @@ What happens when the developer tries to deploy the trigger and two classes to p
 > Create a Visualforce page with custom styling: By creating a Visualforce page, a developer can have full control over the styling and formatting of the PDF document. This approach allows for the customization needed to adhere to the company’s branding guidelines
 
 **✅ Tại sao đáp án đúng:**
-> A: Cài đặt một ứng dụng chuyên tạo tài liệu từ AppExchange (như Conga Composer). B: Tạo một trang Visualforce sử dụng custom styling CSS và thiết lập thuộc tính renderAs='pdf' để xuất file PDF, viết code Apex tự động lưu file vào Opportunity.
+> A đúng vì cài các app chuyên nghiệp từ AppExchange (như Conga Composer, DocuSign) giúp generate tài liệu siêu nhanh và tự động lưu. B đúng vì tự build trang Visualforce với custom CSS và thuộc tính renderAs="pdf" cho phép tùy biến giao diện PDF 100% theo ý muốn, sau đó dùng code Apex lưu file vào record Opportunity con.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Email template không có khả năng tự sinh file PDF định dạng thương hiệu phức tạp và tự lưu vào Opportunity.
-> **D.** Flow Builder thuần túy không hỗ trợ thiết kế bố cục tài liệu PDF tùy chỉnh và xuất file trực tiếp no-code.
+> **C.** Email template không có khả năng tự động render định dạng PDF phức tạp theo quy chuẩn thương hiệu, và Process Builder (đã bị deprecated) cũng không thể tự tạo rồi đính kèm file vào Opportunity được.
+> **D.** Flow Builder thuần túy không hỗ trợ thiết kế bố cục PDF tùy chỉnh nâng cao và xuất file trực tiếp no-code.
 
-**💡 Từ khóa ghi nhớ:** `Tạo PDF thương hiệu chuyên nghiệp trong Salesforce -> Dùng Visualforce (renderAs='pdf') hoặc AppExchange Document App.`
+**💡 Từ khóa ghi nhớ:** `Muốn tạo PDF thương hiệu trong Salesforce -> Chọn Visualforce (renderAs="pdf") hoặc cài hàng xịn từ AppExchange.`
 
 ---
 
@@ -4483,20 +4503,20 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **D.** Sandbox refresh ❌
 
 **📝 Dịch tiếng Việt:**
-> Nên sử dụng công cụ nào để tạo các scratch org?
+> Nên dùng cái gì để tạo các scratch org vậy các dân chơi?
 
 **💬 Giải thích gốc (English):**
 > Salesforce CLI (Command Line Interface) is the tool used to create and manage scratch orgs. It allows developers to easily spin up scratch orgs, configure them, and manage their lifecycle through command-line commands.
 
 **✅ Tại sao đáp án đúng:**
-> Scratch Orgs là thành phần cốt lõi của 'Source-driven Development'. Salesforce CLI (SFDX) là công cụ duy nhất cho phép mày ra lệnh tạo, quản lý và xóa Scratch Orgs thông qua terminal hoặc script.
+> Scratch Orgs là linh hồn của mô hình 'Source-driven Development'. Salesforce CLI (SFDX) là công cụ duy nhất cho phép mày gõ lệnh tạo, quản lý và xóa Scratch Orgs thông qua terminal hoặc script tự động hóa.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Workbench dùng để thao tác dữ liệu và metadata thủ công, không có tính năng tạo Org.
-> **C.** Sandbox refresh dùng cho Sandbox truyền thống, không liên quan đến Scratch Org.
-> **D.** Developer Console chỉ để viết code và chạy test trong Org hiện tại.
+> **A.** Developer Console chỉ để viết code, chạy test hoặc query SOQL trong org hiện tại, không có nút nào để 'đẻ' ra org mới đâu.
+> **C.** Workbench dùng để thao tác dữ liệu và check metadata thô, chứ tuổi gì tạo được scratch org.
+> **D.** Sandbox refresh dùng cho Sandbox truyền thống (Developer, Partial, Full) liên kết trực tiếp với Production, chả liên quan gì đến Scratch Org.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Scratch Orgs -> Salesforce CLI / SFDX. Nhớ nhé: Scratch Org giống như mì ăn liền, dùng xong bỏ, và CLI là cái ấm đun nước.`
+**💡 Từ khóa ghi nhớ:** `Scratch Orgs -> Salesforce CLI / SFDX CLI.`
 
 ---
 
@@ -4510,20 +4530,21 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **D.** Limits ✅
 
 **📝 Dịch tiếng Việt:**
-> Class Apex nào giúp kiểm tra lượng tài nguyên đã dùng (như số lệnh DML) so với giới hạn Governor?
+> Lớp Apex nào chứa các phương thức trả về lượng tài nguyên đã sử dụng cho một giới hạn governor cụ thể, ví dụ như số lượng câu lệnh DML đã chạy?
 
 **💬 Giải thích gốc (English):**
 > The Limits methods return the specific limit for the particular governor, such as the number of calls of a method or the amount of heap size remaining.
 > Because Apex runs in a multitenant environment, the Apex runtime engine strictly enforces a number of limits to ensure that runaway Apex doesn’t monopolize shared resources.
 
 **✅ Tại sao đáp án đúng:**
-> Class `System.Limits` chứa các phương thức như `getDmlStatements()` (đã dùng) và `getLimitDmlStatements()` (tổng cho phép). Nó là 'đồng hồ đo' tài nguyên cho dev.
+> Class System.Limits chính là cái 'đồng hồ đo điện' cho dev Apex. Nó chứa các phương thức cực kỳ bá đạo như getDmlStatements() (đã dùng bao nhiêu) và getLimitDmlStatements() (giới hạn tối đa là bao nhiêu) để mày tự check và né lỗi chạm trần.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Messaging dùng để gửi email.
+> **A.** Exception là lớp cha của các loại ngoại lệ (lỗi), chỉ dùng để bắt lỗi chứ không đo đạc tài nguyên.
+> **B.** Messaging dùng để xử lý gửi email, không liên quan gì đến giới hạn hệ thống.
 > **C.** OrgLimits dùng để check giới hạn của toàn bộ Org (như số lượng API call trong 24h), không phải giới hạn của 1 transaction cụ thể như DML.
 
-**💡 Từ khóa ghi nhớ:** `Check Governor Limits in Code -> Dùng class Limits.`
+**💡 Từ khóa ghi nhớ:** `Đo lường Governor Limits trong code -> Dùng ngay class Limits.`
 
 ---
 
@@ -4537,20 +4558,20 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **D.** The Apex governor limits are relaxed while calling the constructor of the Apex class. ❌
 
 **📝 Dịch tiếng Việt:**
-> Nếu mã Apex thực thi bên trong phương thức execute() của một Apex class khi triển khai interface Batchable, hai phát biểu nào sau đây là đúng về governor limits? (Chọn 2)
+> Nếu mã Apex chạy bên trong phương thức execute() của một class triển khai interface Batchable, hai phát biểu nào là đúng về giới hạn governor limits? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Each execution of a batch Apex job is considered a discrete transaction, and the governor limits are reset for each transaction.
 > Batch Apex operates asynchronously, which can allow for higher governor limits compared to synchronous transactions.
 
 **✅ Tại sao đáp án đúng:**
-> C: Mỗi lần execute() chạy một batch (thường là 200 records), Salesforce sẽ cấp một 'hạn mức' mới hoàn toàn. D: Asynchronous Apex (như Batch) có một số limit cao hơn (ví dụ: Heap size 12MB thay vì 6MB).
+> A đúng vì mỗi lượt chạy của phương thức execute() xử lý một batch (mặc định tối đa 200 bản ghi) là một transaction độc lập, nên governor limits sẽ được reset từ đầu cho mỗi batch. C đúng vì Batch là lập trình bất đồng bộ (Asynchronous Apex), một số giới hạn sẽ được Salesforce nới rộng ra (ví dụ Heap size lên tới 12MB thay vì 6MB như đồng bộ).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dù là không đồng bộ thì vẫn có limit, không phải là 'không thể vượt quá'.
-> **B.** Constructor của class không được hưởng cơ chế 'relaxed' limits.
+> **B.** Phát biểu ngáo ngơ! Bất đồng bộ thì vẫn có giới hạn trần đàng hoàng chứ không phải 'bất tử' muốn chạy nhiêu thì chạy đâu nhé.
+> **D.** Hàm khởi tạo (constructor) của class Batch chạy ở chế độ đồng bộ (synchronous) bình thường, không hề được nới lỏng hay ưu tiên gì cả.
 
-**💡 Từ khóa ghi nhớ:** `Batch Apex: Mỗi batch là một transaction riêng biệt. Limit được RESET.`
+**💡 Từ khóa ghi nhớ:** `Batch Apex: Mỗi batch (execute) là một transaction riêng biệt -> Limit được RESET + Được hưởng giới hạn Asynchronous cao hơn.`
 
 ---
 
@@ -4565,7 +4586,7 @@ What happens when the developer tries to deploy the trigger and two classes to p
 - **E.** They use an all or none deployment model. ✅
 
 **📝 Dịch tiếng Việt:**
-> 3 đặc điểm của Change Set deployment? (Chọn 3)
+> Ba đặc điểm nổi bật của việc deploy bằng Change Set là gì? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Change sets can only be sent between Salesforce orgs that have an established deployment connection.
@@ -4573,13 +4594,13 @@ What happens when the developer tries to deploy the trigger and two classes to p
 > Change sets are deployed as a single transaction, meaning if any part of the deployment fails, the entire change set is rolled back.
 
 **✅ Tại sao đáp án đúng:**
-> C: Cần Connection. D: Deploy kiểu Atomic (được hết hoặc mất sạch). E: Chỉ dùng được trong cùng 1 môi trường (Sandbox -> Prod).
+> A đúng vì bắt buộc phải thiết lập Deployment Connection giữa 2 Org trước thì mới gửi được. C đúng vì Change Set chỉ được phép dùng giữa các Org có liên kết họ hàng với nhau (tức là cùng nằm dưới một Production Org chung). E đúng vì mô hình deploy của Change Set là 'All or none' - được ăn cả, ngã về không (chỉ cần 1 thành phần bị lỗi là toàn bộ đợt deploy rollback sạch sẽ).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Change set không deploy Data, chỉ deploy Metadata.
-> **B.** Không dùng để chuyển bản ghi (Records) giữa các Org.
+> **B.** Change Set sinh ra chỉ để deploy METADATA (cấu hình, code, trường...), không có tính năng chuyển DATA bản ghi (Records) giữa các Org.
+> **D.** Custom Settings data là dữ liệu bản ghi nằm bên trong Custom Settings, Change Set không thể di chuyển được đống dữ liệu này.
 
-**💡 Từ khóa ghi nhớ:** `Change Set = Metadata Only.`
+**💡 Từ khóa ghi nhớ:** `Change Set = Chỉ METADATA + Chỉ giữa các Org có họ hàng liên kết + Deploy kiểu All-or-none.`
 
 ---
 
@@ -4601,20 +4622,20 @@ Given the multi-tenant architecture of the Salesforce platform, what is a best p
 - **D.** Avoid returning an empty List of records. ❌
 
 **📝 Dịch tiếng Việt:**
-> Cho đoạn code sau thực thi trên nền tảng đa khách thuê (multi-tenant) của Salesforce: [Code SOQL in For]. Lập trình viên nên thực hiện best practice nào để đảm bảo phương thức chạy thành công không bị lỗi giới hạn?
+> Cho đoạn code sau: [Code SOQL inside For]. Dựa trên kiến trúc đa khách thuê (multi-tenant) của Salesforce, best practice nào lập trình viên cần áp dụng để đảm bảo phương thức thực thi thành công không bị sập?
 
 **💬 Giải thích gốc (English):**
 > Performing queries inside for loops can lead to hitting governor limits, as it results in a separate query for each iteration of the loop. This can quickly exceed the allowed number of SOQL queries per transaction.
 
 **✅ Tại sao đáp án đúng:**
-> Tránh hoàn toàn việc thực hiện truy vấn SOQL bên trong vòng lặp For (A). Việc này sẽ nhanh chóng làm sập hệ thống do vượt giới hạn 100 câu truy vấn SOQL cho phép trong một transaction khi danh sách Id lớn hơn 100.
+> Tuyệt đối không bao giờ được phép thực hiện truy vấn SOQL bên trong vòng lặp For (A). Việc này là 'tội ác chống lại loài người' trong Apex, vì chỉ cần danh sách truyền vào lớn hơn 100 bản ghi là hệ thống sẽ ném ra lỗi LimitException (vượt quá 100 SOQL query) và sập ngay lập tức. Ta phải gom Id lại rồi query ngoài vòng lặp (Bulkify).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Thêm LIMIT clause không giải quyết được lỗi nổ 100 SOQL query nếu vòng lặp lặp quá nhiều lần.
-> **C.** Sử dụng biến truyền làm bộ lọc (:leadId) là cú pháp bind biến vô cùng an toàn và được khuyến khích để chống SOQL Injection.
-> **D.** Trả về List rỗng khi không có kết quả là hoàn toàn bình thường, không gây ra lỗi hệ thống.
+> **B.** Thêm mệnh đề LIMIT vào câu query không giúp ích gì cho việc ngăn lỗi nếu vòng lặp chạy quá 100 lần.
+> **C.** Sử dụng biến binding :leadId là kỹ thuật chuẩn chỉnh để lọc dữ liệu và chống SOQL Injection, cấm đoán nó là sai lầm.
+> **D.** Trả về một List rỗng khi không tìm thấy kết quả là hoàn toàn bình thường, không gây ra lỗi hệ thống.
 
-**💡 Từ khóa ghi nhớ:** `Best Practice SOQL tối thượng: Tuyệt đối không bao giờ viết truy vấn SOQL bên trong vòng lặp For!`
+**💡 Từ khóa ghi nhớ:** `Best Practice tối thượng: CẤM SOQL/DML bên trong vòng lặp For!`
 
 ---
 
@@ -4642,14 +4663,14 @@ What is the value of x when it is written to the debug log?**
 > The loop executes once, setting x to 1 and then incrementing it to 2. After the loop finishes, x has the value 2, which is then written to the debug log.
 
 **✅ Tại sao đáp án đúng:**
-> Vòng lặp `do-while` luôn chạy ít nhất một lần. 1. Vào vòng lặp: x = 1. 2. Tăng giá trị: x++ thành 2. 3. Check điều kiện: `while (2 < 1)` là SAI -> Dừng. Kết quả x = 2.
+> Vòng lặp do-while có nguyên lý hoạt động là 'cứ đâm đầu vào làm trước, hỏi tội (check điều kiện) sau'. Nên dù điều kiện while có sai ngay từ đầu thì nó vẫn chạy qua ít nhất 1 lần. Cụ thể: 1. Vào khối do: gán x = 1. 2. Tăng giá trị: x++ thành 2. 3. Check điều kiện: while (2 < 1) -> SAI -> Thoát loop. Debug in ra giá trị của x là 2.
 
 **❌ Tại sao đáp án sai:**
-> **A.** x đã bị gán lại bằng 1 ngay dòng đầu của khối `do`.
-> **B.** Không có logic nào làm x tăng lên tới 3 trong đoạn code này.
-> **D.** Lệnh x++ đã tăng giá trị lên 2 trước khi điều kiện dừng được kiểm tra.
+> **A.** Gán x = 1 rồi x++ thì kết quả không thể bằng 0 được.
+> **B.** Lệnh x++ đã tăng x từ 1 lên 2 rồi mới kiểm tra điều kiện thoát.
+> **D.** Vòng lặp chỉ chạy duy nhất 1 lần, x không có cách nào tăng lên tới 3 được.
 
-**💡 Từ khóa ghi nhớ:** `Do-while: Cứ đâm đầu vào làm trước, hỏi tội (check điều kiện) sau. Luôn chạy >= 1 lần.`
+**💡 Từ khóa ghi nhớ:** `Vòng lặp do-while: Luôn chạy ít nhất 1 lần. Làm trước rồi mới check điều kiện sau!`
 
 ---
 
@@ -4664,21 +4685,21 @@ What is the value of x when it is written to the debug log?**
 - **E.** Developer Pro Sandbox ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần test hệ thống tích hợp hóa đơn. Số lượng giao dịch giả lập ước tính ngốn khoảng 2 GB dung lượng lưu trữ dữ liệu (data storage). Không cần dữ liệu thật từ Production. Hai môi trường Sandbox nào đáp ứng yêu cầu lưu trữ này? (Chọn 2)
+> Lập trình viên cần test tích hợp hệ thống hóa đơn. Ước tính dữ liệu test giả lập sẽ chiếm khoảng 2 GB dung lượng lưu trữ (data storage). Không cần dữ liệu thật từ Production. Hai môi trường Sandbox nào đáp ứng được yêu cầu này? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Full Sandbox(Data storage: Same as your production org): Full sandboxes are a complete copy of your production org, including all data, metadata, and customizations. This means they can handle large amounts of data and provide a realistic environment for testing integrations.
 > Partial Sandbox(Data storage: 5 GB): Partial sandboxes are smaller copies of your production org, but they can still handle a significant amount of data. The exact size limit depends on your organization's specific settings, but partial sandboxes are generally sufficient for testing integrations with moderate amounts of data.
 
 **✅ Tại sao đáp án đúng:**
-> B: Full Sandbox (có dung lượng lưu trữ tương đương Org Production thật). D: Partial Sandbox (có dung lượng lưu trữ dữ liệu lên tới 5 GB, thừa sức chứa 2 GB dữ liệu test).
+> B đúng vì Full Sandbox có dung lượng lưu trữ dữ liệu bằng 100% so với Production Org thật, thừa sức chứa. D đúng vì Partial Sandbox hỗ trợ dung lượng lưu trữ dữ liệu lên tới 5 GB, quá dư dả cho nhu cầu 2 GB của chúng ta mà lại tiết kiệm thời gian refresh hơn Full.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Developer Sandbox chỉ có giới hạn lưu trữ dữ liệu cực kỳ ít ỏi là 200 MB, không đủ nhét kẽ răng.
-> **C.** Developer Edition là môi trường phát triển cá nhân miễn phí chỉ có 20 MB bộ nhớ dữ liệu.
-> **E.** Developer Pro Sandbox chỉ hỗ trợ tối đa 1 GB bộ nhớ dữ liệu, vẫn không đủ chứa 2 GB.
+> **A.** Developer Sandbox chỉ có dung lượng dữ liệu siêu hẻo là 200 MB, nhét kẽ răng còn thiếu chứ đừng nói tới 2 GB.
+> **C.** Developer Edition là Org học tập cá nhân miễn phí chỉ có giới hạn 20 MB dữ liệu, quá bé.
+> **E.** Developer Pro Sandbox chỉ hỗ trợ tối đa 1 GB dung lượng dữ liệu, vẫn không đủ chứa 2 GB dữ liệu test.
 
-**💡 Từ khóa ghi nhớ:** `Dung lượng dữ liệu Sandbox: Developer (200MB) -> Dev Pro (1GB) -> Partial (5GB) -> Full (Bằng Production).`
+**💡 Từ khóa ghi nhớ:** `Dung lượng dữ liệu Sandbox: Developer (200MB) -> Developer Pro (1GB) -> Partial (5GB) -> Full (Bằng Production).`
 
 ---
 
@@ -4692,7 +4713,7 @@ What is the value of x when it is written to the debug log?**
 - **D.** SOSL is able to return more records. ❌
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn xây dựng trang tìm kiếm Account tùy chỉnh cho phép tìm kiếm theo Name, Description và custom comments field. Lập trình viên nên lưu ý hai điều nào khi cân nhắc lựa chọn giữa SOQL và SOSL? (Chọn 2)
+> Universal Containers thuê dev build trang tìm kiếm Account tùy chỉnh cho phép tìm theo Name, Description và custom comments field. Khi cân nhắc lựa chọn giữa SOQL và SOSL, hai điều nào lập trình viên cần lưu ý? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > SOQL vs. SOSL Queries
@@ -4700,13 +4721,13 @@ What is the value of x when it is written to the debug log?**
 > SOSL is Force.com's full-text search language. SOSL can tokenize multiple terms within a field, and can build a search index off of this. If you’re searching for a specific distinct term that you know exists within a field, you might find SOSL faster than SOQL. However, for each Apex transaction, the governor limit for multiple SOSL searches in a single transaction is 2,000 (Note: It is common to only need a single search, in which case the limit is 40,000); for SOQL queries it’s 50,000. So if you need to retrieve more than 2,000 records, SOQL is the better choice.
 
 **✅ Tại sao đáp án đúng:**
-> A: SOSL tìm kiếm chuỗi văn bản tự do (text search) nhanh hơn nhiều nhờ cơ chế lập chỉ mục từ khóa chuyên dụng. B: SOQL có khả năng trả về nhiều bản ghi hơn trong một lần truy vấn (giới hạn SOQL tối đa 50,000 hàng, trong khi SOSL giới hạn trả về tối đa 2,000 hàng cho mỗi sObject).
+> A đúng vì SOSL cực kỳ nhanh và tối ưu cho việc tìm kiếm từ khóa trên các trường văn bản lớn (như Description, Comments) nhờ có cơ chế đánh chỉ mục (index) từ khóa. B đúng vì SOQL có giới hạn trả về lớn hơn nhiều trong một giao dịch (lên tới 50,000 bản ghi), trong khi SOSL bị giới hạn cứng tối đa 2,000 bản ghi cho mỗi sObject.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Ngược lại, SOQL tìm kiếm các trường text lớn (như Description, Comments) bằng toán tử LIKE sẽ rất chậm vì phải quét toàn bộ bảng dữ liệu vật lý.
-> **D.** SOSL bị giới hạn trả về tối đa 2,000 bản ghi, ít hơn nhiều so với 50,000 của SOQL.
+> **C.** Sai hoàn toàn, SOQL tìm kiếm text lớn dùng toán tử LIKE sẽ rất chậm vì phải quét toàn bộ bảng dữ liệu.
+> **D.** Ngược lại mới đúng, SOSL bị giới hạn trả về 2,000 bản ghi, ít hơn nhiều so với SOQL (50,000).
 
-**💡 Từ khóa ghi nhớ:** `So sánh: Tìm kiếm từ khóa tự do trên trường text lớn -> Dùng SOSL (Nhanh hơn). Cần lấy nhiều bản ghi -> Dùng SOQL (Giới hạn lớn hơn).`
+**💡 Từ khóa ghi nhớ:** `Tìm kiếm từ khóa tự do trên nhiều trường văn bản lớn -> Dùng SOSL (nhanh hơn). Cần lấy số lượng bản ghi lớn -> Dùng SOQL (limit 50k > 2k).`
 
 ---
 
@@ -4730,7 +4751,7 @@ How should the developer modify the code to ensure exceptions are handled gracef
 - **D.** Implement a try/catch block for the DML. ✅
 
 **📝 Dịch tiếng Việt:**
-> Đoạn code trên bị bắn lỗi DML Exception. Lập trình viên nên sửa thế nào để xử lý lỗi một cách êm đẹp?
+> Khi đoạn code trên chạy, một ngoại lệ DML (DML exception) bị ném ra. Lập trình viên nên sửa code thế nào để xử lý các ngoại lệ một cách êm đẹp và chuyên nghiệp?
 
 **💬 Giải thích gốc (English):**
 > To handle DML exceptions gracefully, the developer should implement a try/catch block around the DML statement. This allows the code to catch and handle any exceptions that occur during the update operation, ensuring that the application can respond appropriately without crashing.
@@ -4750,14 +4771,14 @@ How should the developer modify the code to ensure exceptions are handled gracef
 > }
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng cấu trúc Try/Catch là cách tiêu chuẩn để 'bắt' lỗi khi thực hiện DML. Nếu có lỗi, code trong phần Catch sẽ chạy thay vì làm cả hệ thống 'văng' lỗi ra màn hình người dùng.
+> Để xử lý lỗi một cách êm đềm (gracefully) không làm chết chương trình giữa chừng và hiển thị giao diện đỏ lòm cho User, cách tiêu chuẩn trong lập trình là bọc câu lệnh DML nguy hiểm vào khối try/catch (D). Khi có lỗi nổ ra, phần catch sẽ hứng lấy và xử lý (ghi log hoặc báo lỗi lịch sự).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lỗi có thể đến từ Validation Rule hoặc Duplicate Rule, chứ không chỉ là list có null.
-> **B.** Upsert chỉ giúp chọn giữa Insert hoặc Update, không liên quan đến việc xử lý lỗi ngoại lệ (Exception).
-> **D.** CDC là tính năng đồng bộ dữ liệu real-time, không phải công cụ xử lý lỗi trong code Apex.
+> **A.** Change Data Capture là cơ chế đồng bộ dữ liệu real-time qua Event-driven, không có tác dụng bắt lỗi trong code Apex.
+> **B.** Thay bằng lệnh upsert không giúp giải quyết tận gốc nguyên nhân gây lỗi DML (ví dụ như vi phạm Validation Rule hay thiếu trường bắt buộc).
+> **C.** Lỗi DML có thể do dữ liệu của chính các bản ghi không hợp lệ, việc lọc phần tử null trong list không đảm bảo 100% hết lỗi.
 
-**💡 Từ khóa ghi nhớ:** `Graceful handling = Try/Catch. Đừng để User thấy cái màn hình lỗi đỏ lòm của Salesforce!`
+**💡 Từ khóa ghi nhớ:** `Xử lý ngoại lệ êm đẹp trong code -> Bọc ngay vào khối try/catch.`
 
 ---
 
@@ -4771,19 +4792,20 @@ How should the developer modify the code to ensure exceptions are handled gracef
 - **D.** Sandbox ❌
 
 **📝 Dịch tiếng Việt:**
-> Để dùng Scratch Org trong SFDX, mày cần bật tính năng gì?
+> Khi sử dụng Salesforce DX, lập trình viên cần kích hoạt tính năng nào để có thể tạo và quản lý các scratch org?
 
 **💬 Giải thích gốc (English):**
 > To create and manage scratch orgs using SalesforceDX, a developer needs to enable the Dev Hub. The Dev Hub is the central place for managing your scratch orgs and is essential for using SalesforceDX tools.
 
 **✅ Tại sao đáp án đúng:**
-> Mày phải bật 'Dev Hub' trong một Org xịn (Production hoặc Business). Org này sẽ quản lý việc 'đẻ' ra và kiểm soát các Scratch Orgs con.
+> Dev Hub (C) chính là cái 'lò đẻ' ra Scratch Orgs. Mày bắt buộc phải bật tính năng Dev Hub trong một Org xịn (Production hoặc Developer Org) để từ đó kết nối với Salesforce CLI và ra lệnh tạo các scratch org con.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Sandbox là Org truyền thống, không có chức năng tạo Scratch Org.
-> **D.** Environment Hub dùng để quản lý nhiều Org khác nhau nhưng không phải là điều kiện tiên quyết để tạo scratch org cho SFDX.
+> **A.** Production là môi trường chạy thật, tự thân nó không thể tạo scratch org nếu chưa bật Dev Hub.
+> **B.** Environment Hub dùng để quản lý liên kết nhiều Org khác nhau về một mối, không phải công cụ để tạo Scratch Org trong quy trình SFDX.
+> **D.** Sandbox là môi trường thử nghiệm truyền thống, không liên quan đến việc sinh các Scratch Orgs tạm thời.
 
-**💡 Từ khóa ghi nhớ:** `Scratch Org = Mì ăn liền; Dev Hub = Cái ấm đun nước.`
+**💡 Từ khóa ghi nhớ:** `Scratch Org (Môi trường tạm thời) -> Bắt buộc phải có Dev Hub (Lò đẻ).`
 
 ---
 
@@ -4797,19 +4819,19 @@ How should the developer modify the code to ensure exceptions are handled gracef
 - **D.** Paused Flow Interviews component ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai vị trí nào mà lập trình viên có thể tìm thấy thông tin về trạng thái của các phương thức batch hoặc future?
+> Lập trình viên có thể xem thông tin về trạng thái hoạt động của các phương thức Batch hoặc Future Apex ở hai nơi nào trong phần Setup? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > The Apex Jobs page shows all asynchronous Apex jobs with information about each job’s execution. You can also monitor the status of Apex jobs in the Apex Flex Queue, and reorder them to control which jobs are processed first.
 
 **✅ Tại sao đáp án đúng:**
-> D: Apex Jobs hiển thị mọi tác vụ không đồng bộ. C: Apex Flex Queue hiển thị các Batch job đang nằm chờ trước khi xử lý.
+> B đúng vì Apex Flex Queue là nơi hiển thị và sắp xếp thứ tự của các Batch job đang nằm trong hàng đợi chờ được xử lý (tối đa 100 job). C đúng vì Apex Jobs hiển thị lịch sử và trạng thái hiện tại của toàn bộ các tác vụ chạy bất đồng bộ (bao gồm cả Batch Apex, Future methods, Queueable Apex và Scheduled Apex).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Paused Flow Interviews chỉ hiển thị các luồng Flow đang bị tạm dừng, không liên quan đến Batch hay Future Apex.
-> **B.** Time-Based Workflow Monitor chỉ dùng để theo dõi các Workflow Rule có cài đặt thời gian thực hiện (Time-dependent actions).
+> **A.** Developer Console chỉ hỗ trợ xem log thực thi tức thời chứ không quản lý trạng thái tổng quan các job bất đồng bộ trong hàng đợi hệ thống tốt như Setup.
+> **D.** Paused Flow Interviews chỉ hiển thị các lượt chạy Flow đang bị tạm dừng chờ điều kiện, chả liên quan gì đến code Apex Batch/Future.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Monitor Async Apex -> Apex Jobs & Flex Queue.`
+**💡 Từ khóa ghi nhớ:** `Theo dõi tiến độ Async Apex (Batch, Future, Queueable) -> Vào Apex Jobs & Apex Flex Queue.`
 
 ---
 
@@ -4823,20 +4845,20 @@ How should the developer modify the code to ensure exceptions are handled gracef
 - **D.** aura:flow ❌
 
 **📝 Dịch tiếng Việt:**
-> Admin tạo một Flow tên là 'accountOnboarding'. Để nhúng Flow này vào một Aura Component, mày dùng tag nào?
+> Một Salesforce Admin dùng Flow Builder để tạo một Flow tên là accountOnboarding. Flow này cần được nhúng để chạy bên trong một Aura component. Lập trình viên nên dùng thẻ nào để hiển thị Flow này?
 
 **💬 Giải thích gốc (English):**
 > To display a flow inside an Aura component, the developer should use the <lightning:flow> tag. This tag is specifically designed to embed flows within Aura components.
 
 **✅ Tại sao đáp án đúng:**
-> Trong Aura, tag chuẩn để chứa và chạy Flow là `<lightning:flow />`. Mày chỉ cần truyền `flowName` vào là xong.
+> Trong framework Aura Component, thẻ chuẩn được Salesforce thiết kế để gọi và chạy một Flow chính là <lightning:flow> (C). Mày chỉ cần đặt thẻ này và truyền thuộc tính flowName vào là xong.
 
 **❌ Tại sao đáp án sai:**
-> **A.** lightning-flow (dùng dấu gạch ngang) là cú pháp của LWC, không phải Aura.
-> **B.** aura-flow là hàng giả, Salesforce không có tag này.
-> **C.** aura:flow là cái tên nghe có vẻ đúng nhưng thực tế namespace `aura:` chỉ dành cho các tag điều khiển logic cốt lõi, không có tag flow.
+> **A.** lightning-flow (dùng dấu gạch ngang -) là cú pháp của Lightning Web Components (LWC), đem sang Aura gõ là ăn hành ngay.
+> **B.** aura-flow là hàng giả tự chế, Salesforce không hề hỗ trợ thẻ này.
+> **D.** aura:flow là cái tên nghe có vẻ đúng nhưng thực tế namespace aura: chỉ dành cho các tag logic cốt lõi, không có tag flow.
 
-**💡 Từ khóa ghi nhớ:** `Aura dùng dấu hai chấm (:), LWC dùng dấu gạch ngang (-). Nhớ kỹ để không bị lừa!`
+**💡 Từ khóa ghi nhớ:** `Aura Component dùng dấu hai chấm : (lightning:flow), LWC dùng dấu gạch ngang - (lightning-flow).`
 
 ---
 
@@ -4864,20 +4886,25 @@ public class CreditCardPayment implements Payment{
 public override void makePayment(Decimal amount){ /*implementation*/}
 }**
 
+- **A.** Messaging. ❌
+- **B.** Exception. ❌
+- **C.** Org Limits. ❌
+- **D.** Limits. ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer cần tạo class CreditCardPayment kế thừa từ class Payment ảo có sẵn: [Payment Class]. Khai báo nào sau đây là đúng cú pháp?
+> Lập trình viên cần tạo class CreditCardPayment kế thừa từ một class ảo Payment có sẵn: [Payment Class]. Khai báo nào sau đây là chuẩn cú pháp kế thừa và ghi đè phương thức?
 
 **💬 Giải thích gốc (English):**
 > The CreditCardPayment class should extend the Payment class and override the makePayment method to provide its specific implementation.
 
 **✅ Tại sao đáp án đúng:**
-> Vì lớp cha Payment là một class thông thường được gắn từ khóa 'virtual class' chứ không phải Interface, nên class con bắt buộc phải dùng từ khóa 'extends' để kế thừa. Để ghi đè phương thức makePayment(), class con phải dùng từ khóa 'override' (B).
+> Vì lớp cha Payment là một class ảo thông thường được khai báo với từ khóa virtual, nên class con muốn kế thừa bắt buộc phải dùng từ khóa extends. Đồng thời, để ghi đè (chỉnh sửa lại logic) của phương thức ảo makePayment(), class con bắt buộc phải dùng từ khóa override (B).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng lại từ khóa 'virtual' ở class con là sai cú pháp ghi đè phương thức.
-> **C.** Dùng từ khóa 'implements' chỉ dành cho việc hiện thực hóa các lớp Interface, dùng cho class thường sẽ báo lỗi biên dịch.
-> **D.** Tương tự C, sử dụng sai từ khóa implements.
+> **A.** Dùng lại từ khóa virtual ở class con là sai bét cú pháp ghi đè phương thức (virtual chỉ dùng ở lớp cha khai báo hoặc để cho phép class con khác kế thừa tiếp).
+> **C.** Từ khóa implements chỉ được dùng khi class con muốn hiện thực hóa một lớp Giao diện (Interface), dùng cho class thường là biên dịch báo lỗi ngay.
+> **D.** Tương tự C, sử dụng sai từ khóa implements thay vì extends để kế thừa class.
+> **B.** Lop Exception la lop biet tu xu ly loi, khong chua cac phuong thuc kiem tra governor limits runtime nhu getLimitXxx hay getXxx.
 
 **💡 Từ khóa ghi nhớ:** `Kế thừa Class -> Dùng EXTENDS + OVERRIDE. Hiện thực hóa Interface -> Dùng IMPLEMENTS.`
 
@@ -4893,18 +4920,18 @@ public override void makePayment(Decimal amount){ /*implementation*/}
 - **D.** Ensure that the relationship between the objects is Master-Detail. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để lập trình viên đảm bảo một bản ghi con tùy chỉnh (có trường Lookup trỏ đến Account) luôn có chung quyền hạn chia sẻ (sharing access) giống hệt với Account cha liên quan?
+> Làm thế nào để lập trình viên đảm bảo một bản ghi con trên một custom object (có liên kết lookup tới Account) luôn tự động có chung quyền hạn chia sẻ bảo mật (sharing access) y hệt như Account cha của nó?
 
 **💬 Giải thích gốc (English):**
 > When you set up a Master-Detail relationship, the child record inherits the sharing and security settings of the parent record. This means that if a user has access to the parent record (in this case, the Account), they will automatically have the same level of access to the child records (the custom object records).
 
 **✅ Tại sao đáp án đúng:**
-> Đảm bảo rằng mối quan hệ giữa hai đối tượng là mối quan hệ Master-Detail (D). Trong Salesforce, bản ghi con Detail luôn tự động kế thừa 100% cấu hình bảo mật và chia sẻ (Sharing/Security) từ bản ghi cha Master mà không cần viết code.
+> Cách đơn giản, tối ưu nhất mà không cần viết một dòng code nào là chuyển đổi/thiết lập mối quan hệ giữa hai đối tượng thành mối quan hệ Master-Detail (D). Trong Salesforce, bản ghi con (Detail) trong quan hệ Master-Detail luôn tự động kế thừa 100% cấu hình chia sẻ và bảo mật từ bản ghi cha (Master).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Viết sharing rule đối chiếu owner rất phức tạp, dễ lỗi và không tự động cập nhật mượt mà khi đổi chủ như Master-Detail.
-> **B.** Validation rule chỉ dùng để chặn lưu bản ghi sai điều kiện, không có khả năng phân phối quyền chia sẻ bảo mật.
-> **C.** Thêm Sharing Related List chỉ để hiển thị nút phân quyền thủ công trên giao diện, không giúp tự động đồng bộ bảo mật.
+> **A.** Tạo Sharing Rule đối chiếu Owner rất cồng kềnh, hoạt động kém hiệu quả và không tự động cập nhật mượt mà khi đổi chủ sở hữu như Master-Detail.
+> **B.** Validation Rule chỉ dùng để chặn lưu bản ghi khi sai điều kiện dữ liệu nhập vào, hoàn toàn bất lực trong việc cấp quyền truy cập bảo mật.
+> **C.** Thêm Sharing Related List vào page layout chỉ để hiển thị nút chia sẻ thủ công cho user bấm bằng tay, không giải quyết được tính tự động hóa.
 
 **💡 Từ khóa ghi nhớ:** `Con muốn thừa kế hoàn hảo quyền bảo mật của Cha -> Bắt buộc thiết lập quan hệ MASTER-DETAIL.`
 
@@ -4920,19 +4947,20 @@ public override void makePayment(Decimal amount){ /*implementation*/}
 - **D.** controller extension ❌
 
 **📝 Dịch tiếng Việt:**
-> Tính năng VF nào giúp sửa nhiều bản ghi cùng lúc từ một list button?
+> Universal Containers muốn tạo một list button hiển thị trang Visualforce cho phép người dùng chỉnh sửa nhiều bản ghi cùng một lúc. Tính năng Visualforce nào hỗ trợ yêu cầu này?
 
 **💬 Giải thích gốc (English):**
 > The recordSetVar attribute in Visualforce allows you to work with a collection of records. This is particularly useful for creating pages that enable users to edit multiple records at once. By using recordSetVar, you can pass a set of records to your Visualforce page and then iterate over them to display and edit each record.
 
 **✅ Tại sao đáp án đúng:**
-> Đó là thuộc tính recordSetVar. Khi mày khai báo nó, Standard Controller sẽ biến hình thành Standard List Controller, cho phép mày hốt trọn danh sách các bản ghi được chọn từ List View.
+> Đó chính là thuộc tính recordSetVar (B) khai báo trong thẻ <apex:page>. Khi mày set thuộc tính này, Standard Controller thông thường của đối tượng sẽ được 'nâng cấp' thành Standard List Controller, cho phép trang Visualforce hứng và xử lý trọn vẹn danh sách các bản ghi được chọn từ List View.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Custom controller phải tự viết logic lấy list cực khổ, không có sẵn như recordSetVar.
-> **D.** <apex:listButton> chỉ để hiện cái nút, không xử lý data cho mày.
+> **A.** Thẻ <apex:listButton> chỉ dùng để định nghĩa cái nút hiển thị trên layout chứ không mang lại khả năng xử lý danh sách bản ghi cho trang.
+> **C.** Custom Controller bắt buộc mày phải tự viết code Apex query dữ liệu rất cực khổ, không tối ưu và có sẵn như recordSetVar.
+> **D.** Controller Extension chỉ là lớp viết thêm để bổ sung tính năng cho Controller chính chứ không tự động biến Standard Controller thành List Controller.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: List Button / Edit Multiple -> recordSetVar.`
+**💡 Từ khóa ghi nhớ:** `Keyword: List View Button / Edit Multiple Records -> Bắt buộc khai báo thuộc tính recordSetVar trên trang Visualforce.`
 
 ---
 
@@ -4944,6 +4972,10 @@ B . <apex:outputText escape="false" value=" {!$CurrentPage.parameters.userInput}
 C . <apex:outputText value="{!£CurrentPage.parameters.userInput}" />
 D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 
+- **A.** <apex:outputField value="{!ctrl.userInput}" /> ❌
+- **B.** <apex:outputText escape="false" value=" {!$CurrentPage.parameters.userInput}" /> ✅
+- **C.** <apex:outputText value="{!$CurrentPage.parameters.userInput}" /> ❌
+- **D.** <apex:outputField escape="false" value="{!ctrl.userInput}" /> ❌
 
 **📝 Dịch tiếng Việt:**
 > Đoạn code nào trong trang Visualforce hoặc Controller dưới đây có thể gây ra lỗ hổng bảo mật nghiêm trọng?
@@ -4953,14 +4985,14 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 > By default, nearly all Visualforce tags escape the XSS-vulnerable characters. You can disable this behavior by setting the optional attribute escape="false". For example, this output is vulnerable to XSS attacks. When escape="false" is used, the input is not escaped, meaning any HTML or JavaScript code included in the user input will be rendered as-is, potentially allowing malicious scripts to be executed.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp B: <apex:outputText escape='false' value=' {!$CurrentPage.parameters.userInput}' />. Thuộc tính escape='false' tắt cơ chế tự động mã hóa ký tự độc hại của Visualforce, kết hợp với việc in trực tiếp dữ liệu thô do người dùng nhập từ URL parameter ($CurrentPage.parameters.userInput) sẽ tạo ra lỗ hổng tấn công Cross-Site Scripting (XSS) cực kỳ nguy hiểm.
+> B đúng vì in trực tiếp tham số URL của người dùng nhập (`$CurrentPage.parameters.userInput`) mà lại đặt thuộc tính `escape="false"`. Điều này tắt tính năng tự động mã hóa HTML của Visualforce, khiến trang dễ dàng bị tấn công Cross-Site Scripting (XSS) nếu người dùng truyền mã JavaScript độc hại qua URL.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thẻ <apex:outputField> mặc định cực kỳ an toàn, tự động mã hóa XSS và tôn trọng phân quyền FLS của người dùng.
-> **C.** Thẻ <apex:outputText> mặc định không khai báo escape='false' sẽ tự động mã hóa an toàn tất cả ký tự HTML/JS do người dùng nhập.
-> **D.** Tắt escape trên thẻ <apex:outputField> tuy không khuyến khích nhưng an toàn hơn nhiều so với <apex:outputText> vì outputField chỉ hiển thị dữ liệu của trường đã được lưu trữ và có kiểm duyệt kiểu dữ liệu trong DB.
+> **A.** Rất an toàn vì `<apex:outputField>` mặc định luôn tự động escape HTML và tuân thủ chặt chẽ bảo mật FLS của trường.
+> **C.** Rất an toàn vì `<apex:outputText>` mặc định sẽ tự động escape HTML (escape="true") trừ khi được tắt tường minh.
+> **D.** Thẻ `<apex:outputField>` không hỗ trợ thuộc tính `escape="false"` và nó luôn tự động escape HTML, nên không gây ra lỗ hổng bảo mật từ URL parameter.
 
-**💡 Từ khóa ghi nhớ:** `Visualforce dính XSS bảo mật -> Tìm thẻ có 'escape=false' + tham số URL đầu vào người dùng.`
+**💡 Từ khóa ghi nhớ:** `Visualforce XSS = Tắt escape (escape="false") + In trực tiếp tham số URL đầu vào của người dùng.`
 
 ---
 
@@ -4974,20 +5006,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** View the Class Test Percentage tab on the Apex Class list view in Salesforce Setup. ❌
 
 **📝 Dịch tiếng Việt:**
-> Chạy test xong hết rồi, giờ muốn xem cái class của mình được bao nhiêu % coverage thì xem ở đâu cho nhanh?
+> Chạy xong đống test class rồi, giờ muốn soi xem class Apex của mình đã được phủ bao nhiêu phần trăm (%) coverage thì check ở xó nào?
 
 **💬 Giải thích gốc (English):**
 > After running tests, the Developer Console provides a comprehensive view of code coverage. The Overall Code Coverage panel in the Tests tab displays the code coverage percentage for each Apex class that has been included in a test run.
 
 **✅ Tại sao đáp án đúng:**
-> B đúng vì trong Setup -> Apex Classes, có một cột tên là 'Code Coverage' hiển thị trực tiếp con số % cho mày xem. Rất trực quan và nhanh chóng.
+> Chọn B. Trong Developer Console, chuyển sang tab 'Tests' và ngó vào panel 'Overall Code Coverage'. Nơi đây sẽ phơi bày toàn bộ phần trăm phủ code của từng class cực kỳ chi tiết, giúp mày biết chỗ nào chưa chạy qua để mà viết thêm test.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cái tab này không có thật, Salesforce bịa ra để lừa mày đấy.
-> **C.** Panel này trong Dev Console hiển thị tổng coverage của cả Org, không phải của riêng lẻ từng class mày đang cần soi.
-> **D.** Cái này là để CHẠY test, không phải để XEM kết quả coverage sau khi chạy.
+> **A.** Apex Test Execution trong Setup chỉ chạy test hàng loạt chứ không hiển thị phần trăm code coverage chi tiết dạng tương tác như panel Overall Code Coverage.
+> **C.** Cột Code Coverage trong Setup -> Apex Classes chỉ hiển thị một con số chung chung, không cho phép mày xem cụ thể dòng nào màu đỏ (chưa test) hay dòng nào màu xanh (đã test) như Developer Console.
+> **D.** Cái tab 'Class Test Percentage' là hàng fake tự vẽ ra của Salesforce để đi lừa gà đấy, Setup làm gì có tab nào tên như vậy.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Xem coverage nhanh nhất là ra list view của Apex Classes trong Setup.`
+**💡 Từ khóa ghi nhớ:** `Xem % coverage nhanh nhất và chi tiết nhất -> Mở Developer Console -> Tab Tests -> Panel Overall Code Coverage.`
 
 ---
 
@@ -5002,7 +5034,7 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **E.** Custom objects and fields ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers quyết định sử dụng hoàn toàn các tính năng khai báo no-code để xây dựng một ứng dụng Salesforce mới. Ba lựa chọn nào nên được sử dụng để xây dựng lớp Cơ sở dữ liệu (Database Layer) cho ứng dụng này? (Chọn 3)
+> Universal Containers chơi hệ 'no-code', quyết định chỉ dùng cấu hình khai báo (declarative) để xây dựng ứng dụng mới. Ba tùy chọn nào nên được dùng để dựng lớp cơ sở dữ liệu (Database Layer) cho con app này? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Database Layer
@@ -5010,13 +5042,13 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 > Coding: Apex Triggers
 
 **✅ Tại sao đáp án đúng:**
-> B: Roll-up summaries (tính tổng/đếm từ con lên cha). D: Relationships (các trường quan hệ lookup/master-detail). E: Custom objects and fields (các đối tượng và trường dữ liệu tùy chỉnh). Đây là các khối xây dựng cơ sở dữ liệu vật lý hoàn toàn no-code trong Salesforce.
+> Lớp cơ sở dữ liệu (Database Layer) là nơi lưu trữ và định nghĩa cấu trúc dữ liệu. Do đó: E đúng vì Custom objects and fields là các bảng và cột vật lý để chứa dữ liệu. D đúng vì Relationships (Lookup, Master-Detail) dùng để liên kết các bảng dữ liệu với nhau. B đúng vì Roll-up summaries là tính năng no-code tự động tính toán tổng hợp dữ liệu từ bảng con lên bảng cha.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flows thuộc về tầng xử lý logic nghiệp vụ và tự động hóa quy trình (Logic/Controller Layer), không thuộc lớp định nghĩa cấu trúc cơ sở dữ liệu.
-> **C.** Triggers là code Apex thuộc tầng xử lý logic (programmatic controller), không phải khai báo no-code.
+> **A.** Flows thuộc về tầng xử lý logic nghiệp vụ và tự động hóa quy trình (Logic/Controller Layer), chứ không dùng để định nghĩa cấu trúc vật lý của database.
+> **C.** Triggers là code Apex thuần túy, vừa thuộc tầng code (programmatic) vừa nằm ở tầng logic điều khiển chứ liên quan gì đến database layer.
 
-**💡 Từ khóa ghi nhớ:** `Database Layer dạng khai báo (No-code) -> Objects/Fields, Relationships, Roll-up Summaries.`
+**💡 Từ khóa ghi nhớ:** `Database Layer dạng declarative (no-code) -> Bắt cặp ngay: Objects/Fields, Relationships, Roll-up Summaries.`
 
 ---
 
@@ -5025,7 +5057,7 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 **🔵 Which three statements are true regarding the @isTest annotation? (Choose three.)**
 
 - **A.** A method annotated @isTest(SeeAllData=true) in a class annotated @isTest(SeeAllData=false) has access to all org data. ✅
-- **B.** A method annotated @isTest(SeeAllData=false) in a class annotated @isTest(SeeAllData=true) has access to all org data. ❌
+- **B.** A method annotated @isTest(SeeAllData=false) in a class annotated @isTest(SeeAllData=true) has access to all org data. ✅
 - **C.** A class containing test methods counts toward the Apex code limit regardless of any @isTest annotation. ❌
 - **D.** Products and Pricebooks are visible in a test even if a class is annotated @isTest(SeeAllData=false). ❌
 - **E.** Profiles are visible in a test even if a class is annotated @isTest(SeeAllData=false). ✅
@@ -5040,13 +5072,13 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 > @IsTest(SeeAllData=true) and @IsTest(IsParallel=true) annotations can’t be used together on the same Apex method.
 
 **✅ Tại sao đáp án đúng:**
-> A: Cấu hình SeeAllData=true cấp phương thức sẽ override cấu hình SeeAllData=false cấp class để truy cập dữ liệu thật. B: Lớp cha đã mở SeeAllData=true thì phương thức con không thể đóng lại bằng SeeAllData=false (bị ignore và vẫn có quyền truy cập dữ liệu thực). E: Các đối tượng Metadata/Setup hệ thống như Profile, User, RecordType luôn hiển thị trong test class bất kể SeeAllData là true hay false.
+> A đúng vì @isTest(SeeAllData=true) khai báo ở cấp method sẽ override cấu hình false ở cấp class, giúp method đó xem được dữ liệu thật. E đúng vì các đối tượng Metadata/Setup hệ thống như Profile, User, RecordType... mặc định luôn hiển thị trong test class bất kể SeeAllData là true hay false. Ngoài ra, B cũng là phát biểu đúng của Salesforce: Nếu class cha đã mở SeeAllData=true, phương thức con cố tình set SeeAllData=false sẽ bị hệ thống phớt lờ và vẫn thấy dữ liệu thật.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Các test class có gắn @isTest hoàn toàn được MIỄN PHÍ dung lượng lưu trữ, không hề bị tính vào giới hạn 3 MB code Apex của Org.
-> **D.** Products và Pricebooks trong các phiên bản Salesforce hiện đại đã bị cô lập dữ liệu, bắt buộc phải tạo data test giả lập hoặc bật SeeAllData=true mới thấy.
+> **C.** Láo nháo! Các test class có gắn @isTest hoàn toàn được MIỄN PHÍ dung lượng lưu trữ, không hề bị tính vào giới hạn 3 MB code Apex của Org nhé cưng.
+> **D.** Products và Pricebooks trong các phiên bản Salesforce hiện đại đã bị cô lập dữ liệu cực kỳ nghiêm ngặt, bắt buộc phải tạo data test giả lập hoặc bật SeeAllData=true mới thấy được.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo @isTest: Class test được miễn phí dung lượng code 3MB. SeeAllData=true cha mở thì con không thể đóng!`
+**💡 Từ khóa ghi nhớ:** `Mẹo @isTest: Class test được miễn phí dung lượng code 3MB. SeeAllData=true cha mở thì con không thể đóng! Profile/User luôn hiển thị trong test.`
 
 ---
 
@@ -5060,7 +5092,7 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** [SELECT Id, (SELECT Id FROM Job_Application_c) FROM Contact WHERE Account.Industry = 'Technology']; ❌
 
 **📝 Dịch tiếng Việt:**
-> Job_Application__c có quan hệ Master-Detail với Contact (Contact là Master). Developer cần truy vấn toàn bộ bản ghi Contact có Account Industry là 'Technology', đồng thời lấy kèm danh sách Job_Application__c con liên quan. Cú pháp SOQL nào là tối ưu nhất?
+> Đối tượng tùy chỉnh Job_Application__c có quan hệ Master-Detail với Contact (trong đó Contact là Master). Lập trình viên cần lấy danh sách Contact có trường Industry của Account liên quan là 'Technology', đồng thời lấy kèm danh sách Job_Application__c con của mỗi Contact. Cú pháp SOQL nào tối ưu nhất?
 
 **💬 Giải thích gốc (English):**
 > A: This query correctly references the relationship and filters based on the Account’s Industry
@@ -5069,14 +5101,14 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 > D: This option is incorrect because it uses Job_Application_c instead of Job_Applications_r.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp A: [SELECT Id, (SELECT Id FROM Job_Applications__r) FROM Contact WHERE Account.Industry = 'Technology']. Cú pháp này sử dụng đúng tên mối quan hệ con ở dạng số nhiều và có đuôi '__r' (Job_Applications__r), đồng thời đi xuyên lên cha Account ở dạng số ít cực kỳ chính xác.
+> Đáp án A chuẩn không cần chỉnh. Khi truy vấn từ Cha xuống Con (Contact xuống Job_Application__c), ta dùng Subquery và bắt buộc phải dùng tên mối quan hệ con ở dạng số nhiều kèm đuôi __r (Job_Applications__r). Đồng thời, khi đi từ Con lên Cha (Contact lên Account), ta dùng tên trường quan hệ ở dạng số ít (Account.Industry).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Sử dụng tên cha dạng số nhiều 'Accounts.Industry' là sai cú pháp truy vấn mối quan hệ.
-> **C.** Dùng đuôi '__c' (Job_Applications_c) cho subquery con là sai, quan hệ con bắt buộc dùng đuôi '__r'.
-> **D.** Dùng tên quan hệ con dạng số ít 'Job_Application_c' vừa thiếu chữ 's' vừa sai đuôi '__r'.
+> **B.** Sai lầm ngớ ngẩn ở phần lọc: Accounts.Industry (dùng dạng số nhiều 'Accounts' là oẳng ngay vì đi từ con lên cha phải dùng số ít).
+> **C.** Sai cú pháp subquery: dùng đuôi __c thay vì __r cho mối quan hệ con, và dùng Accounts số nhiều ở phần filter.
+> **D.** Thiếu chữ 's' ở tên quan hệ số nhiều Job_Applications__r và dùng sai đuôi __c thành _c.
 
-**💡 Từ khóa ghi nhớ:** `SOQL con lên cha -> Tên cha số ít (Account.Name). SOQL cha xuống con -> subquery số nhiều đuôi '__r' (Job_Applications__r).`
+**💡 Từ khóa ghi nhớ:** `SOQL cha xuống con -> subquery số nhiều đuôi __r ((SELECT ... FROM Children__r)). SOQL con lên cha -> dùng tên cha số ít (Account.Name).`
 
 ---
 
@@ -5090,16 +5122,16 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** [FIND 'Acme*' IN TEXT FIELDS RETURNING Account, Opportunity]; ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai câu lệnh tìm kiếm SOSL nào sẽ thực hiện tìm kiếm từ khóa trên tất cả các trường văn bản được hỗ trợ tìm kiếm của một đối tượng? (Chọn 2)
+> Hai câu lệnh tìm kiếm SOSL nào sẽ trả về các bản ghi khớp với điều kiện tìm kiếm nằm trong bất kỳ trường văn bản nào có thể tìm kiếm được trên đối tượng? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> B: [FIND 'Acme*' RETURNING Account, Opportunity] - khi không khai báo phạm vi, hệ thống tự động ngầm định tìm trên toàn bộ các trường text. C: [FIND 'Acme*' IN ALL FIELDS RETURNING Account, Opportunity] - khai báo tường minh phạm vi tìm kiếm trên tất cả các trường.
+> B đúng vì trong ngôn ngữ SOSL, nếu mày không khai báo từ khóa chỉ định phạm vi tìm kiếm thì Salesforce sẽ tự động ngầm định tìm kiếm trên toàn bộ các trường (IN ALL FIELDS). C đúng vì khai báo tường minh từ khóa IN ALL FIELDS để quét sạch sành sanh mọi trường văn bản.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Không tồn tại từ khóa 'IN ANY FIELDS' trong cú pháp chuẩn của ngôn ngữ SOSL.
-> **D.** Không có từ khóa 'IN TEXT FIELDS' trong cú pháp của SOSL, chỉ có ALL FIELDS, NAME FIELDS, EMAIL FIELDS, PHONE FIELDS, SIDEBAR FIELDS.
+> **A.** Làm gì có từ khóa nào tên là IN ANY FIELDS hả trời? Tự chế cú pháp là ăn lỗi biên dịch ngay.
+> **D.** IN TEXT FIELDS cũng là hàng fake tự thiết kế, SOSL không chơi hệ này.
 
-**💡 Từ khóa ghi nhớ:** `SOSL mặc định tìm kiếm -> IN ALL FIELDS (hoặc không viết gì).`
+**💡 Từ khóa ghi nhớ:** `SOSL mặc định tìm kiếm trên mọi trường văn bản -> Dùng IN ALL FIELDS hoặc không viết gì cả.`
 
 ---
 
@@ -5113,16 +5145,16 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Database.upsert(myAccounts).Foreign_Key__c; ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần upsert một danh sách Account tên myAccounts nhưng không có ID Salesforce. Các bản ghi chỉ có một trường text Unique đóng vai trò External ID tên là Foreign_Key__c. Hai câu lệnh nào thực thi thành công? (Chọn 2)
+> Lập trình viên cần lưu một danh sách Account có tên myAccounts vào database nhưng các bản ghi này không chứa Id Salesforce. Chỉ biết giá trị của trường text custom đóng vai trò External ID tên là Foreign_Key__c. Hai câu lệnh nào giúp thực hiện việc này? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> A: Sử dụng cú pháp DML truyền thống: 'upsert myAccounts Foreign_Key__c;'. C: Sử dụng phương thức của lớp Database: 'Database.upsert(myAccounts, Foreign_Key__c);'. Đây là hai cách chuẩn mực để chỉ định trường External ID làm khóa đối chiếu khi thực hiện Upsert.
+> A đúng vì đây là cú pháp DML upsert truyền thống của Apex, cho phép truyền trực tiếp tên trường External ID đằng sau danh sách bản ghi. C đúng vì đây là cách gọi phương thức của lớp Database.upsert(), truyền trường External ID làm tham số thứ hai cực kỳ chuẩn chỉnh và hỗ trợ xử lý lỗi linh hoạt (allOrNone).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Cú pháp DML truyền thống dùng dấu ngoặc đơn quanh tên trường là sai quy chuẩn biên dịch của Apex.
-> **D.** Gọi thuộc tính Foreign_Key__c chấm phía sau phương thức Database.upsert là hoàn toàn sai cú pháp lập trình.
+> **B.** Cú pháp DML mà bọc tên trường trong dấu ngoặc đơn (Foreign_Key__c) là sai bét quy chuẩn của Apex.
+> **D.** Viết kiểu chấm đuôi Database.upsert(myAccounts).Foreign_Key__c là cú pháp hoang đường tự chế, Apex compile báo lỗi tức thì.
 
-**💡 Từ khóa ghi nhớ:** `Cú pháp Upsert bằng External ID -> 1. upsert list ExternalField__c; 2. Database.upsert(list, ExternalField__c);`
+**💡 Từ khóa ghi nhớ:** `Upsert bằng External ID -> 1. Cú pháp DML: upsert list External_Field__c; 2. Cú pháp Database: Database.upsert(list, External_Field__c);`
 
 ---
 
@@ -5136,20 +5168,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Use Test.startTest() to reset governor limits. ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên nên làm gì để tránh việc bị chạm giới hạn governor limits (như SOQL/DML) trong các phương thức test?
+> Làm thế nào để lập trình viên tránh bị đụng trần giới hạn (governor limits) khi chạy các phương thức test?
 
 **💬 Giải thích gốc (English):**
 > The Test.startTest() and Test.stopTest() methods are used to reset governor limits within test methods. This allows the developer to perform setup operations before Test.startTest() and then execute the actual test code within the new set of governor limits.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng phương thức Test.startTest() và Test.stopTest() (D). Hàm startTest() sẽ cấp riêng một bộ đếm giới hạn governor limit mới tinh và độc lập cho đoạn code chạy bên trong nó, giúp cô lập hoàn toàn giới hạn của khâu chuẩn bị dữ liệu mẫu.
+> Sử dụng bộ đôi thần thánh Test.startTest() và Test.stopTest() (D). Khi gọi Test.startTest(), Salesforce sẽ cấp riêng một bộ đếm giới hạn governor limit mới tinh và độc lập cho đoạn code chạy bên trong nó, giúp tách biệt hoàn toàn giới hạn của khâu chuẩn bị dữ liệu mẫu (setup data) và khâu test logic thực tế.
 
 **❌ Tại sao đáp án sai:**
-> **A.** @TestVisible chỉ giúp test class nhìn thấy các biến/method private của class chính, không giúp reset hay tối ưu hóa giới hạn limit.
-> **B.** Test.loadData() giúp nạp nhanh dữ liệu test từ Static Resource CSV, không có tính năng reset hay cấp mới bộ đếm limit.
-> **C.** SeeAllData=true làm test truy cập dữ liệu thật, không có tác động gì đến việc nới rộng hay reset giới hạn governor limit.
+> **A.** @TestVisible chỉ có tác dụng giúp test class nhìn thấy và gọi được các biến/method private của class chính, chả có phép thuật gì để nới lỏng hay reset limit cả.
+> **B.** Test.loadData() chỉ là phao cứu sinh để nạp dữ liệu mẫu nhanh từ file CSV trong Static Resource, không giúp gì trong việc reset hay tránh đụng limit.
+> **C.** Bật SeeAllData=true làm test class truy cập thẳng vào data thật của Org, vừa là bad practice và dễ gây lỗi dữ liệu chứ tuổi gì can thiệp được vào giới hạn limits.
 
-**💡 Từ khóa ghi nhớ:** `Muốn reset cấp mới giới hạn governor limit trong test class -> Bọc code vào Test.startTest() và Test.stopTest().`
+**💡 Từ khóa ghi nhớ:** `Né đụng trần governor limit trong test -> Bọc code chạy thử vào giữa Test.startTest() và Test.stopTest().`
 
 ---
 
@@ -5163,17 +5195,17 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Mark fields as read-only on the page layout. ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn khóa Opportunities không cho phép chỉnh sửa khi đã chuyển sang trạng thái Closed/Won. Hai chiến lược nào lập trình viên nên sử dụng để thực hiện việc này? (Chọn 2)
+> Universal Containers muốn khóa các Opportunity không cho phép chỉnh sửa bất kỳ thứ gì khi đã chuyển sang trạng thái Closed/Won. Hai chiến lược nào lập trình viên nên sử dụng để thực hiện việc này? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Using a validation rule  and marking fields as read-only on the page layout are indeed effective strategies to lock Opportunities from editing when they reach the Closed/Won stage.
 
 **✅ Tại sao đáp án đúng:**
-> B: Tạo một Validation Rule kiểm tra nếu trạng thái cũ là Closed/Won thì chặn chỉnh sửa. D: Cấu hình Page Layout với tất cả các trường là Read-only đối với Record Type thuộc trạng thái Closed/Won.
+> B đúng vì Validation Rule là lá chắn thép ở backend, chỉ cần viết điều kiện nếu bản ghi đã ở trạng thái Closed/Won thì chặn đứng không cho Save khi có thay đổi. D đúng vì Page Layout cho phép thiết lập các trường thành Read-Only động dựa trên Record Type của trạng thái Closed/Won để khóa cứng giao diện của user trên UI.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flow Builder không thể khóa cứng các thao tác chỉnh sửa trực tiếp trên giao diện người dùng một cách tối ưu như Validation Rule.
-> **C.** Process Automation Settings dùng để cấu hình chung cho hệ thống tự động hóa, không hỗ trợ logic khóa bản ghi cụ thể.
+> **A.** Flow Builder chạy ngầm ở backend sau khi dữ liệu đã gửi đi, không thể khóa giao diện trực quan hay chặn nhập liệu tối ưu như Validation Rule.
+> **C.** Process Automation Settings chỉ là nơi bật/tắt cấu hình chung của hệ thống tự động hóa, tuổi gì khóa được bản ghi.
 
 **💡 Từ khóa ghi nhớ:** `Khóa bản ghi (Read-only) -> 1. Validation Rule (Chặn lưu); 2. Page Layout Read-only (Khóa UI).`
 
@@ -5189,20 +5221,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Use Schema.PicklistEntry returned by Opportunity.StageName.getDescribe().getPicklistValues (). ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer muốn hiển thị toàn bộ giá trị picklist của trường StageName trên Opportunity và toàn bộ Record Types hiện có của Opportunity lên trang Visualforce. Hai hành động nào giúp lấy các thông tin này trong controller? (Chọn 2)
+> Lập trình viên muốn hiển thị toàn bộ các giá trị picklist của trường StageName trên Opportunity và tất cả Record Types hiện có của Opportunity lên một trang Visualforce. Hai hành động nào giúp lấy các thông tin này trong controller thông qua mô tả lược đồ (Schema Describe)? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Use Schema.RecordTypeInfo returned by Opportunity.SObjectType.getDescribe().getRecordTypeInfos(): This will retrieve the available record types for the Opportunity object.
 > Use Schema.PicklistEntry returned by Opportunity.StageName.getDescribe().getPicklistValues(): This will retrieve the picklist entries for the Opportunity StageName field.
 
 **✅ Tại sao đáp án đúng:**
-> A: Lấy Record Types bằng cách describe đối tượng Opportunity: 'Opportunity.SObjectType.getDescribe().getRecordTypeInfos()'. D: Lấy các giá trị picklist bằng cách describe trực tiếp trường StageName của Opportunity: 'Opportunity.StageName.getDescribe().getPicklistValues()'.
+> A đúng vì để lấy danh sách Record Types của Opportunity, ta describe đối tượng Opportunity thông qua Opportunity.SObjectType.getDescribe() rồi gọi tiếp phương thức getRecordTypeInfos(). D đúng vì để lấy các giá trị picklist của trường StageName, ta describe trực tiếp trường này thông qua Opportunity.StageName.getDescribe() rồi gọi phương thức getPicklistValues().
 
 **❌ Tại sao đáp án sai:**
-> **B.** Không thể gọi getPicklistValues() từ mô tả sObject Opportunity cấp cao được, bắt buộc phải describe cấp trường (Field).
-> **C.** Describe đối tượng RecordType hệ thống chỉ trả về Record Type của chính bảng RecordType đó chứ không trả về danh sách Record Type của đối tượng Opportunity.
+> **B.** Ủa Alo? Làm sao gọi getPicklistValues() từ mô tả cấp đối tượng Opportunity được? Phải describe đúng cấp trường (Field) như câu D mới chuẩn chứ.
+> **C.** Describe đối tượng RecordType hệ thống chỉ trả về thông tin Record Type của chính bảng RecordType đó, chứ không lấy được danh sách Record Type riêng của Opportunity đâu nha.
 
-**💡 Từ khóa ghi nhớ:** `Lấy Record Types -> Đối tượng.getDescribe().getRecordTypeInfos(). Lấy Picklist -> Trường.getDescribe().getPicklistValues().`
+**💡 Từ khóa ghi nhớ:** `Lấy Record Types -> Đối tượng.SObjectType.getDescribe().getRecordTypeInfos(). Lấy Picklist -> Trường.getDescribe().getPicklistValues().`
 
 ---
 
@@ -5216,20 +5248,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** A custom controller by itself ❌
 
 **📝 Dịch tiếng Việt:**
-> Org có 2 custom object: Plan__c (quan hệ Master-Detail với Account) và Plan_Item__c (quan hệ Master-Detail với Plan__c). Lập trình viên nên sử dụng gì để tạo một section Visualforce hiển thị Plan__c của Account và toàn bộ Plan_Item__c liên quan trực tiếp trên trang Account layout?
+> Org có 2 đối tượng tùy chỉnh: Plan__c (có quan hệ master-detail với Account) và Plan_Item__c (có quan hệ master-detail với Plan__c). Lập trình viên nên sử dụng gì để tạo một section Visualforce trên Account page layout hiển thị tất cả bản ghi Plan__c của Account đó kèm theo các bản ghi Plan_Item__c con liên quan?
 
 **💬 Giải thích gốc (English):**
 > Using a standard controller for the Account object allows you to leverage built-in functionality, while a controller extension can be used to add custom logic to retrieve and display the related Plan__c and Plan_Item__c records.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng một Standard Controller kết hợp với một Controller Extension (B). Vì trang này được nhúng trực tiếp trên Account Layout nên bắt buộc phải dùng standardController='Account'. Để xử lý hiển thị cấu trúc dữ liệu cha-con-cháu phức tạp, ta viết thêm Controller Extension class để query dữ liệu.
+> Sử dụng một Standard Controller kết hợp với một Controller Extension (B). Vì trang này được nhúng trực tiếp trên Account Layout nên bắt buộc phải dùng standardController="Account" để nhận ngữ cảnh Account đang hiển thị. Để xử lý cấu trúc dữ liệu cha-con-cháu phức tạp và truy vấn sâu xuống các cháu Plan_Item__c, ta viết thêm Controller Extension class để thực hiện câu SOQL tùy chỉnh.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Không thể khai báo đồng thời cả Custom Controller và Standard Controller độc lập trong cùng một trang Visualforce.
-> **C.** Controller extension bắt buộc phải đi kèm với một standardController hoặc custom controller chứ không thể đi kèm custom controller độc lập.
-> **D.** Dùng Custom Controller đơn lẻ sẽ làm mất khả năng nhúng trực tiếp trang Visualforce vào page layout chuẩn của Account.
+> **A.** Không thể khai báo đồng thời cả Custom Controller và Standard Controller độc lập trong cùng một trang Visualforce, compile báo lỗi ngay.
+> **C.** Controller extension bắt buộc phải đi kèm với một Standard Controller hoặc Custom Controller chứ không chơi kiểu lơ lửng này.
+> **D.** Nếu chỉ dùng Custom Controller đơn lẻ, trang Visualforce sẽ không thể nhúng trực tiếp vào trang chi tiết Account chuẩn được vì thiếu standard controller làm cầu nối.
 
-**💡 Từ khóa ghi nhớ:** `Nhúng trang Visualforce vào Layout chuẩn + Viết thêm logic query nâng cao -> Dùng Standard Controller + Controller Extension.`
+**💡 Từ khóa ghi nhớ:** `Nhúng trang Visualforce vào Page Layout chuẩn + Cần thêm logic Apex nâng cao -> Sử dụng công thức: Standard Controller + Controller Extension.`
 
 ---
 
@@ -5243,20 +5275,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** System.assert(false); ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên sử dụng vòng lặp để kiểm tra danh sách Contact. Khi gặp Contact có Title là 'Boss', phương thức Apex cần dừng lặp lập tức và nhảy xuống dòng code đầu tiên bên ngoài vòng lặp. Cú pháp nào đáp ứng yêu cầu?
+> Lập trình viên sử dụng vòng lặp để kiểm tra từng Contact trong danh sách. Khi gặp Contact có Title là 'Boss', phương thức Apex cần dừng lặp lập tức và nhảy xuống dòng code đầu tiên bên ngoài vòng lặp. Cú pháp Apex nào giúp hiện thực hóa yêu cầu này?
 
 **💬 Giải thích gốc (English):**
 > The break statement exits the loop immediately, allowing the code execution to continue from the first line outside the loop.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng câu lệnh break; (C). Lệnh break sẽ lập tức chấm dứt vòng lặp for/while hiện tại và chuyển quyền thực thi xuống câu lệnh đầu tiên ngay sau khối lặp.
+> Sử dụng câu lệnh break; (C). Lệnh break sẽ ngay lập tức chấm dứt vòng lặp for hoặc while hiện tại và chuyển quyền thực thi xuống câu lệnh đầu tiên ngay bên dưới khối lặp.
 
 **❌ Tại sao đáp án sai:**
-> **A.** return; sẽ thoát hoàn toàn khỏi phương thức hiện tại, không chạy bất kỳ dòng code nào tiếp theo bên dưới vòng lặp nữa.
+> **A.** return; sẽ thoát sạch sành sanh ra khỏi phương thức hiện tại, không chạy bất kỳ dòng code nào tiếp theo bên dưới vòng lặp nữa.
 > **B.** continue; chỉ bỏ qua lượt lặp hiện tại của phần tử đó và tiếp tục nhảy sang duyệt phần tử tiếp theo trong danh sách chứ không thoát loop.
-> **D.** System.assert(false) sẽ ngay lập tức làm sập transaction và ném ra lỗi kiểm thử AssertException, cấm dùng trong code chạy thật.
+> **D.** System.assert(false); sẽ ngay lập tức làm sập transaction và ném ra lỗi kiểm thử AssertException, chỉ dùng trong test class để bắt lỗi chứ dùng trong code chạy thật là ăn hành cả lũ.
 
-**💡 Từ khóa ghi nhớ:** `Thoát vòng lặp ngay lập tức -> Dùng BREAK. Bỏ qua lượt lặp hiện tại -> Dùng CONTINUE.`
+**💡 Từ khóa ghi nhớ:** `Dừng lặp thoát loop ngay lập tức -> Dùng break. Bỏ qua lượt lặp hiện tại chạy tiếp -> Dùng continue.`
 
 ---
 
@@ -5270,7 +5302,7 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Use the email on the contact record as an external ID. ❌
 
 **📝 Dịch tiếng Việt:**
-> Hệ thống quản lý đơn hàng ngoài (OMS) tạo và xử lý đơn hàng. Tích hợp tạo Order trong Salesforce dựa trên Email của Contact. Mỗi lần OMS gửi cập nhật trạng thái đơn hàng, Salesforce lại tạo mới một bản ghi Order trùng lặp. Hai hành động nào giúp ngăn chặn việc này? (Chọn 2)
+> Một hệ thống quản lý đơn hàng ngoài (OMS) tạo và xử lý đơn hàng. Tích hợp tạo Order trong Salesforce dựa trên Email của Contact. Mỗi lần OMS gửi cập nhật trạng thái đơn hàng, Salesforce lại tạo mới một bản ghi Order trùng lặp. Hai hành động nào giúp ngăn chặn việc này? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Use the order number from the OMS as an external ID.
@@ -5279,10 +5311,10 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 > Ensuring the uniqueness of the order number in the OMS helps maintain data integrity and prevents the creation of duplicate records.
 
 **✅ Tại sao đáp án đúng:**
-> A: Đánh dấu mã đơn hàng từ OMS là trường External ID trong Salesforce. C: Đảm bảo mã đơn hàng OMS là duy nhất (Unique). Khi đó, hệ thống tích hợp gọi lệnh Upsert dựa trên khóa này để tự động cập nhật bản ghi có sẵn thay vì chèn mới trùng lặp.
+> A đúng vì đánh dấu trường mã đơn hàng từ OMS là trường External ID trong Salesforce. C đúng vì đảm bảo mã đơn hàng OMS gửi sang là duy nhất (Unique). Khi đó, hệ thống tích hợp gọi lệnh upsert dựa trên khóa External ID này để tự động cập nhật bản ghi có sẵn thay vì chèn mới trùng lặp.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Viết trigger delete bản ghi trùng sau khi insert là giải pháp tồi tệ, làm lãng phí ID bản ghi và tiêu tốn cực nhiều tài nguyên hệ thống.
+> **B.** Viết trigger delete bản ghi trùng sau khi insert là giải pháp tồi tệ, cực kỳ đi vào lòng đất vì làm lãng phí ID bản ghi và tiêu tốn cực nhiều tài nguyên hệ thống vô ích.
 > **D.** Email của Contact làm External ID chỉ giúp liên kết Contact với Order, không thể giúp định danh duy nhất cho từng bản ghi Order cụ thể được.
 
 **💡 Từ khóa ghi nhớ:** `Tránh tạo bản ghi trùng lặp từ hệ thống ngoài -> Sử dụng mã hệ thống ngoài làm EXTERNAL ID + Gọi lệnh UPSERT.`
@@ -5299,20 +5331,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** The class can only be used by users with developer rights. ❌
 
 **📝 Dịch tiếng Việt:**
-> Ảnh hưởng thực tế của việc khai báo một class Apex sử dụng từ khóa 'without sharing' là gì?
+> Việc khai báo một class Apex sử dụng từ khóa `without sharing` sẽ gây ra ảnh hưởng thực tế gì?
 
 **💬 Giải thích gốc (English):**
 > Declaring an Apex class using the without sharing keywords means that the class runs in system mode, bypassing the sharing rules of the current user.
 
 **✅ Tại sao đáp án đúng:**
-> Lớp Apex đó sẽ chạy dưới quyền hệ thống (System Mode), bỏ qua hoàn toàn các giới hạn chia sẻ dữ liệu (Sharing Rules, OWD) đối với user hiện tại (B), cho phép truy cập toàn bộ dữ liệu của Org.
+> B đúng vì `without sharing` chính là tấm vé thông hành quyền lực, giúp class chạy dưới quyền hệ thống (System Mode). Lúc này, Salesforce sẽ bypass (bỏ qua) hoàn toàn các luật chia sẻ dữ liệu (OWD, Sharing Rules) đang áp dụng trên user hiện tại, cho phép xem/sửa tẹt ga mọi bản ghi trong Org.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Apex chạy ở chế độ without sharing cho phép update tất cả các bản ghi thỏa mãn điều kiện chứ không bị giới hạn chỉ bản ghi của user hiện tại sở hữu.
-> **C.** Từ khóa sharing trên class không hề ảnh hưởng đến khả năng thiết lập sharing rules trên các bản ghi được tạo ra.
-> **D.** Class không bị giới hạn quyền gọi theo vai trò developer, mọi user thông thường có quyền truy cập class đều chạy được.
+> **A.** Sai bét! Chạy without sharing thì user thích sờ vào bản ghi của ai cũng được, chứ không bị bó hẹp trong góc nhỏ 'records owned by current user' nữa.
+> **C.** Lắp từ khóa sharing hay without sharing vào class chả ảnh hưởng gì đến khả năng thiết lập sharing rules trên các bản ghi sau này được tạo ra cả.
+> **D.** Ơ kìa, class Apex sinh ra là để phục vụ cho ứng dụng, bất kỳ user nào có quyền truy cập ứng dụng/hàm đều chạy được hết chứ đâu phải chỉ dành riêng cho mấy ông có quyền Developer.
 
-**💡 Từ khóa ghi nhớ:** `without sharing -> Chạy quyền hệ thống (System Mode), BỎ QUA Sharing Rules của User!`
+**💡 Từ khóa ghi nhớ:** `without sharing -> Bỏ qua Sharing Rules của user hiện tại, chạy chế độ System Mode bá đạo!`
 
 ---
 
@@ -5326,20 +5358,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Asynchronous Jobs ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần tìm thông tin và theo dõi nhật ký thực thi của các phương thức bất đồng bộ @future đã được gọi. Lập trình viên có thể xem thông tin này ở mục giám sát nào của hệ thống?
+> Lập trình viên muốn truy lùng tung tích và thông tin của các phương thức bất đồng bộ `@future` đã được kích hoạt. Mục giám sát nào của hệ thống sẽ phơi bày điều này?
 
 **💬 Giải thích gốc (English):**
 > Apex Jobs allows developers to monitor the status of @future methods, along with other asynchronous processes like batch jobs and scheduled jobs.
 
 **✅ Tại sao đáp án đúng:**
-> Trang Apex Jobs (B) trong Setup hiển thị danh sách toàn bộ các tác vụ xử lý bất đồng bộ bao gồm @future, Batch Apex, Queueable Apex, và Scheduled Apex kèm trạng thái chi tiết.
+> Trang Apex Jobs (B) chính là 'camera an ninh' ghi lại mọi hoạt động bất đồng bộ trong Salesforce. Nó ghi chép không thiếu một vết từ `@future` methods, Batch Apex, cho đến Queueable và Scheduled Apex.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Scheduled Jobs chỉ hiển thị các tác vụ được lập lịch chạy định kỳ (Cron trigger), không hiển thị phương thức @future chạy tức thời.
-> **C.** Background Jobs không phải là tên một trang quản trị chuẩn mực để giám sát code Apex bất đồng bộ trong Salesforce.
-> **D.** Asynchronous Jobs là thuật ngữ mô tả chung chung, trang Setup thực tế tên là Apex Jobs.
+> **A.** Scheduled Jobs chỉ hiển thị lịch trình các tác vụ chạy định kỳ theo lịch (Cron), chứ làm gì theo dõi được mấy hàm @future chạy tức thời khi có sự kiện.
+> **C.** Background Jobs không phải là tên một tính năng hay trang quản trị chuẩn dùng để soi lịch sử chạy code Apex trong Salesforce.
+> **D.** Asynchronous Jobs là một cụm từ tiếng Anh mô tả chung chung, Salesforce Setup không có mục nào tên như thế này cả.
 
-**💡 Từ khóa ghi nhớ:** `Giám sát tiến trình bất đồng bộ (@future, Batch, Queueable) -> Vào Setup gõ APEX JOBS.`
+**💡 Từ khóa ghi nhớ:** `Giám sát mọi tiến trình bất đồng bộ (@future, Batch, Queueable) -> Search ngay APEX JOBS trong Setup.`
 
 ---
 
@@ -5353,20 +5385,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Process Builder ❌
 
 **📝 Dịch tiếng Việt:**
-> Yêu cầu nghiệp vụ: Tự động tạo mới một bản ghi Order khi Opportunity chuyển sang trạng thái 'Closed-Won'. Công cụ nào tốt nhất và chuẩn mực nhất của Salesforce nên được sử dụng?
+> Nghiệp vụ yêu cầu: Tự động tạo mới một bản ghi Order ngay khi Opportunity chuyển sang trạng thái 'Closed-Won'. Công cụ nào tối ưu nhất để thực hiện yêu cầu này?
 
 **💬 Giải thích gốc (English):**
 > Process Builder is a powerful tool in Salesforce that allows you to automate business processes. It can be used to create an Order automatically when an Opportunity reaches the ‘Closed-Won’ status without writing any code.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng Apex Trigger (B) (hoặc Flow Builder hiện đại). Apex Trigger hỗ trợ xử lý hàng loạt cực tốt (bulkified), đảm bảo hệ thống không bị oẳng khi cập nhật đồng thời nhiều Opportunity sang Closed-Won. (Mẹo thi: Trong các đề thi Salesforce cũ, Apex Trigger hoặc Process Builder thường được chọn làm đáp án đúng tùy theo ngữ cảnh, tuy nhiên Trigger là lựa chọn an toàn nhất về mặt kỹ thuật code).
+> Dùng Apex Trigger (B) là giải pháp cổ điển nhưng cực kỳ uy tín và tối ưu hiệu năng về mặt code. Trigger hỗ trợ xử lý dữ liệu hàng loạt cực tốt (bulkified), đảm bảo hệ thống không bị oẳng (LimitException) khi có đợt update hàng ngàn Opportunity sang Closed-Won cùng lúc. (Lưu ý: Mặc dù Flow ngày nay rất mạnh, nhưng trong khuôn khổ thi cử PD1 truyền thống thì Apex Trigger vẫn luôn là đáp án vàng cho các hành động DML chéo đối tượng phức tạp).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lightning Component là công cụ xây dựng giao diện người dùng, không phải công cụ tự động hóa ngầm ở database layer.
-> **C.** Flow Builder rất mạnh nhưng trắc nghiệm PD1 thời kỳ đầu chưa cập nhật Flow làm đáp án chuẩn tối thượng hoặc trong đề thi gốc đánh dấu Trigger (B) là lựa chọn tối ưu.
-> **D.** Process Builder hiện tại đã bị Salesforce khai tử (deprecated) do hiệu năng kém và không khuyến khích sử dụng nữa.
+> **A.** Lightning Component là để làm giao diện (View), chứ không có nhiệm vụ đi xử lý tự động hóa DML ngầm ở database.
+> **C.** Flow rất xịn nhưng đề thi PD1 đời đầu thường ưu tiên chọn Trigger (B) làm đáp án tối ưu nhất cho hiệu năng lập trình.
+> **D.** Process Builder chạy siêu cồng kềnh, ngốn CPU time kinh khủng và đã bị khai tử (deprecated), giờ dùng là ăn gạch ngay!
 
-**💡 Từ khóa ghi nhớ:** `Tự động tạo bản ghi liên quan khi lưu -> Dùng Apex Trigger (hoặc Flow Builder hiện đại).`
+**💡 Từ khóa ghi nhớ:** `Tự động tạo bản ghi chéo đối tượng khi save -> Ưu tiên dùng Apex Trigger (hoặc Flow Builder hiện đại).`
 
 ---
 
@@ -5380,20 +5412,20 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **D.** Implement pagination with an OffsetController. ❌
 
 **📝 Dịch tiếng Việt:**
-> Sửa lỗi View State limit trong Visualforce khi hiển thị 10k bản ghi?
+> Một trang Visualforce hiển thị danh sách toàn bộ các Container__c đang được thuê bởi một Account. Gần đây, trang này liên tục sập nguồn vì lỗi vượt quá giới hạn View State (View State Limit) do một số khách hàng VIP thuê tới hơn 10,000 container. Lập trình viên nên thay đổi gì để cứu vãn tình thế?
 
 **💬 Giải thích gốc (English):**
 > Implement pagination with a StandardSetController. This approach helps manage large datasets by loading only a subset of records at a time, significantly reducing the view state size and improving page performance.
 
 **✅ Tại sao đáp án đúng:**
-> Dùng StandardSetController để phân trang (Pagination), giúp giảm tải View State.
+> Triển khai tính năng phân trang (Pagination) bằng `StandardSetController` (C). Thay vì ôm đồm lôi tuột một lúc 10,000 bản ghi lên nhét đầy vào bộ nhớ View State làm sập trang, ta dùng StandardSetController chia nhỏ ra mỗi trang hiển thị tầm 50-100 bản ghi, giúp trang load siêu nhẹ và mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Transient giúp giảm dung lượng nhưng load 10k record lên 1 trang vẫn làm trình duyệt 'ngáp'.
-> **B.** OffsetController không phải controller chuẩn của platform.
-> **D.** JS Remoting giúp tải data nhanh nhưng không trực quan bằng pagination controller có sẵn.
+> **A.** Dùng biến `transient` tuy có làm nhẹ View State nhưng lôi 10,000 bản ghi ra render HTML một lúc vẫn khiến trình duyệt của user 'ngáp ngáp' đứng hình.
+> **B.** JavaScript remoting kết hợp SOQL Offset cũng là một cách, nhưng không trực quan, dễ cấu hình và chuẩn hóa giao diện bằng `StandardSetController`.
+> **D.** Làm gì có cái controller nào tên là `OffsetController` trong thư viện chuẩn của Salesforce, hàng fake đi lừa gà đấy!
 
-**💡 Từ khóa ghi nhớ:** `Keywords: View State limit -> Pagination -> StandardSetController.`
+**💡 Từ khóa ghi nhớ:** `View State bị đầy / Load hàng ngàn bản ghi -> Nghĩ ngay đến phân trang (Pagination) bằng `StandardSetController`.`
 
 ---
 
@@ -5408,14 +5440,14 @@ D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
 - **E.** Create and execute a test method that does not specify a runAs() call. ❌
 
 **📝 Dịch tiếng Việt:**
-> Ba kỹ thuật nào mà lập trình viên có thể sử dụng để kích hoạt thực thi một khối mã nguồn vô danh (Anonymous Apex Block)? (Chọn 3)
+> Ba kỹ thuật nào giúp lập trình viên kích hoạt thực thi một khối mã nguồn vô danh (Anonymous Apex Block)? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> A: Sử dụng SOAP API gọi hàm executeAnonymous từ bên ngoài. C: Chạy code bằng tính năng Anonymous Apex trên các công cụ IDE của lập trình viên (như VS Code). D: Nhập trực tiếp code Apex vào cửa sổ Execute Anonymous của Developer Console để chạy.
+> A đúng vì ta hoàn toàn có thể dùng SOAP API gọi hàm executeAnonymous từ hệ thống ngoài. C đúng vì có thể chạy trực tiếp bằng tính năng Anonymous Apex trên các công cụ IDE của dev (như VS Code). D đúng vì cửa sổ 'Execute Anonymous' trong Developer Console là nơi quốc dân mà ai cũng mở hàng ngày để test code nhanh.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Trang Visualforce chỉ hiển thị giao diện, không phải là công cụ gọi khối lệnh anonymous tùy ý.
-> **E.** Chạy test class là để kiểm thử các phương thức test cụ thể trong hệ thống, không liên quan đến việc thực thi khối lệnh anonymous tự do.
+> **B.** Tạo trang Visualforce chỉ để hiển thị giao diện, chả có nút hay chức năng nào cho phép mày gõ và chạy code anonymous tùy ý cả.
+> **E.** Chạy test class là để chạy các kịch bản kiểm thử cố định đã viết sẵn trong code, chứ không liên quan đến việc thực thi tự do một khối lệnh vô danh.
 
 **💡 Từ khóa ghi nhớ:** `Chạy Anonymous Apex -> 1. Developer Console; 2. IDE (VS Code); 3. SOAP API call.`
 
@@ -5435,20 +5467,20 @@ Which save() method will be called for the following Visualforce page?**
 - **D.** Runtime error will be generated ❌
 
 **📝 Dịch tiếng Việt:**
-> Một trang Visualforce khai báo hai class Controller Extension đều chứa phương thức save(): [Code apex:page]. Phương thức save() của class nào sẽ được gọi khi bấm nút Save?
+> Một trang Visualforce khai báo hai class Controller Extension đều chứa phương thức `save()`: `<apex:page standardController="Account" extensions="ExtensionA, ExtensionB">`. Khi bấm nút Save gọi `{!save}`, phương thức của class nào sẽ được ưu tiên chạy?
 
 **💬 Giải thích gốc (English):**
 > When multiple controller extensions are specified, the methods in the first extension listed (in this case, ExtensionA) take precedence and will be called.
 
 **✅ Tại sao đáp án đúng:**
-> Khi trang Visualforce chứa nhiều controller extensions có các phương thức trùng tên nhau, Salesforce sẽ giải quyết xung đột bằng cách ưu tiên thực thi phương thức của class khai báo đầu tiên từ trái qua phải (A) (ở đây là ExtensionA).
+> Salesforce giải quyết xung đột phương thức trùng tên bằng cách ưu tiên chạy từ trái qua phải theo thứ tự khai báo trong thuộc tính `extensions`. Vì `ExtensionA` đứng trước nên phương thức `save()` của nó (A) sẽ hốt trọn lượt gọi và đè bẹp phương thức của lớp phía sau.
 
 **❌ Tại sao đáp án sai:**
-> **B.** ExtensionB xếp ở sau nên phương thức trùng tên của nó bị ExtensionA ghi đè (override) và bỏ qua.
-> **C.** Phương thức save chuẩn của Standard Controller bị class extension ExtensionA ghi đè hoàn toàn.
-> **D.** Không có runtime error nào xảy ra vì Salesforce xử lý thứ tự ưu tiên rất mượt mà theo cấu hình khai báo.
+> **B.** ExtensionB đứng sau nên đành ngậm ngùi ra rìa, phương thức save() của nó bị ExtensionA che phủ hoàn toàn.
+> **C.** Standard Controller save() bị cả hai class extension đè lên nên không có cửa được gọi.
+> **D.** Hệ thống tự động phân giải thứ tự ưu tiên cực kỳ mượt mà nên không đời nào xảy ra lỗi Runtime Error.
 
-**💡 Từ khóa ghi nhớ:** `Visualforce đa Extension trùng method -> Ưu tiên gọi class khai báo đầu tiên (từ trái qua phải).`
+**💡 Từ khóa ghi nhớ:** `Visualforce đa Extension trùng tên method -> Ưu tiên gọi class khai báo đầu tiên (từ trái qua phải).`
 
 ---
 
@@ -5462,21 +5494,21 @@ Which save() method will be called for the following Visualforce page?**
 - **D.** Use a custom controller that has the with sharing keywords. ❌
 
 **📝 Dịch tiếng Việt:**
-> Trang Visualforce hiển thị dữ liệu Case dùng cho cả Support Rep và Support Manager. Support Rep không có quyền xem trường Customer_Satisfaction__c còn Support Manager thì có. Làm thế nào để thực thi đúng FLS và tốn ít công bảo trì nhất?
+> Lập trình viên cần tạo một trang Visualforce hiển thị dữ liệu Case dùng chung cho cả Support Rep và Support Manager. Phân quyền quy định Support Rep cấm xem trường `Customer_Satisfaction__c`, còn Support Manager thì được xem thoải mái. Làm thế nào để vừa thực thi đúng FLS vừa tốn ít công bảo trì nhất?
 
 **💬 Giải thích gốc (English):**
 > The best approach to enforce Field Level Security (FLS) and minimize future maintenance is to create one Visualforce Page for use by both profiles . When using Visualforce pages, the platform indeed enforces CRUD and FLS automatically when SObjects and SObject fields are referenced directly. This means that creating a single Visualforce page will handle field visibility based on the user’s profile permissions.
 > Note: Using a custom controller with the with sharing keyword ensures record-level security, but for field-level security.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo duy nhất MỘT trang Visualforce dùng chung cho cả hai profile (A). Các thẻ Visualforce chuẩn (như <apex:outputField>) tích hợp sẵn tính năng tự động tôn trọng bảo mật cấp trường FLS của user hiện tại, tự ẩn trường nếu user không có quyền xem mà không cần viết code.
+> Chỉ cần tạo duy nhất MỘT trang Visualforce dùng chung cho cả hai profile (A). Các thẻ Visualforce chuẩn (như `<apex:outputField>`) có cơ chế tự động hóa cực kỳ thông minh: nó tự động check quyền FLS của user đang đăng nhập và âm thầm ẩn trường đó đi nếu user không có quyền xem, dev không cần code thêm một dòng logic ẩn hiện nào.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Permission Set giúp cấp thêm quyền chứ không phải giải pháp thiết kế trang Visualforce tối ưu FLS.
-> **C.** Tạo nhiều trang Visualforce riêng biệt cho từng profile làm nhân đôi công sức phát triển và cực kỳ khó khăn bảo trì sau này.
-> **D.** with sharing chỉ kiểm soát quyền truy cập bản ghi (Record-level sharing), hoàn toàn không có tác dụng phân quyền bảo mật cấp trường (FLS).
+> **B.** Tự dưng đi tạo Permission Set mới làm gì cho cồng kềnh trong khi bài toán đang hỏi về cách thiết kế trang Visualforce tối ưu nhất.
+> **C.** Tách làm hai trang riêng biệt cho hai profile là bước đi siêu cồng kềnh, nhân đôi công sức bảo trì và sửa lỗi sau này.
+> **D.** Từ khóa `with sharing` chỉ để ép tuân thủ luật chia sẻ bản ghi (Record-level sharing), chứ hoàn toàn bất lực trước bảo mật cấp trường FLS.
 
-**💡 Từ khóa ghi nhớ:** `Visualforce FLS -> Dùng duy nhất 1 trang Visualforce + thẻ chuẩn (outputField) tự động ẩn/hiển thị theo quyền User.`
+**💡 Từ khóa ghi nhớ:** `Visualforce FLS -> Dùng duy nhất 1 trang Visualforce + thẻ chuẩn (`<apex:outputField>`) tự động lo hết!`
 
 ---
 
@@ -5491,16 +5523,16 @@ Which save() method will be called for the following Visualforce page?**
 - **E.** Reference the import in the HTML template. ❌
 
 **📝 Dịch tiếng Việt:**
-> 3 bước nhúng SVG tùy chỉnh vào LWC?
+> Ba bước chuẩn chỉ nào cho phép lập trình viên nhúng một file SVG tùy chỉnh vào trong một Lightning Web Component (LWC)? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> A: Up lên Static Resource. E: Import vào JS và tạo getter. D: Dùng getter đó trong HTML.
+> Để nhúng SVG vào LWC, quy trình chuẩn như sau: A đúng vì bước đầu tiên phải up file SVG đó lên Static Resource. D đúng vì tiếp theo trong file JavaScript của LWC, ta import static resource đó và viết một hàm getter trả về đường dẫn của file SVG. B đúng vì cuối cùng trong HTML template, ta chỉ cần gọi getter đó để render lên giao diện.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Content asset file không dùng để nhúng trực tiếp kiểu này trong LWC.
-> **C.** HTML không thể 'import' trực tiếp từ static resource mà phải qua JS.
+> **C.** Import SVG dưới dạng `content asset file` là sai kỹ thuật, LWC chỉ hỗ trợ import trực tiếp từ Static Resource.
+> **E.** HTML template của LWC cấm chỉ việc import trực tiếp bất kỳ tài nguyên tĩnh nào, mọi thứ bắt buộc phải đi qua file JavaScript trung chuyển.
 
-**💡 Từ khóa ghi nhớ:** `LWC SVG: Static Resource -> Import in JS -> Getter in HTML.`
+**💡 Từ khóa ghi nhớ:** `Nhúng SVG vào LWC -> Lắp công thức: Static Resource -> Import & Getter trong JS -> Gọi trong HTML qua getter.`
 
 ---
 
@@ -5514,20 +5546,20 @@ Which save() method will be called for the following Visualforce page?**
 - **D.** <apex:pageMessages /> ✅
 
 **📝 Dịch tiếng Việt:**
-> Một Custom Visualforce Controller gọi hàm 'ApexPages.addMessage()' để báo lỗi nhưng không thấy thông báo nào hiển thị trên giao diện trang. Lập trình viên nên thêm thành phần nào vào trang Visualforce?
+> Một Custom Visualforce Controller gọi hàm `ApexPages.addMessage()` để ném ra thông báo lỗi nhưng trên giao diện trang chả thấy gì xuất hiện. Lập trình viên cần thêm thẻ nào vào trang Visualforce để hiển thị lỗi này?
 
 **💬 Giải thích gốc (English):**
 > To display messages added by the ApexPages.addMessage() method, you should use the <apex:pageMessages /> component. This component displays all messages that were generated for all components on the current page, using Salesforce’s standard styling.
 
 **✅ Tại sao đáp án đúng:**
-> Thêm thành phần <apex:pageMessages /> (D). Thẻ này đóng vai trò là phễu thu thập và hiển thị toàn bộ danh sách thông báo lỗi/cảnh báo được ném ra từ ApexPages.addMessage() theo đúng giao diện tiêu chuẩn của Salesforce.
+> Thêm thẻ `<apex:pageMessages />` (D). Thẻ này đóng vai trò như cái 'rổ hứng lỗi', nó sẽ tự động gom toàn bộ các thông báo được tạo bởi `ApexPages.addMessage()` từ Apex Controller và hiển thị chúng lên màn hình cực kỳ đẹp đẽ theo style chuẩn của Salesforce.
 
 **❌ Tại sao đáp án sai:**
-> **A.** <apex:message> chỉ hiển thị lỗi cho duy nhất một trường dữ liệu cụ thể được chỉ định, không hiển thị lỗi chung từ addMessage.
-> **B.** <apex:facet> dùng để cấu hình layout/header của bảng dữ liệu, không có tính năng hiển thị thông báo lỗi.
-> **C.** <apex:pageMessage> hiển thị một thông báo tĩnh cố định do lập trình viên viết cứng trên trang, không hiển thị động các lỗi từ code Apex ném ra.
+> **A.** Thẻ `<apex:message>` (không có chữ 's') chỉ hiển thị lỗi cho duy nhất một trường cụ thể được chỉ định, không hiển thị lỗi chung của trang.
+> **B.** Thẻ `<apex:facet>` dùng để cấu hình giao diện cột/tiêu đề cho các bảng dữ liệu, chả liên quan gì đến thông báo lỗi.
+> **C.** Thẻ `<apex:pageMessage>` (không có chữ 's' và có viết hoa chữ M) dùng để hiển thị một dòng thông báo tĩnh được viết cứng trên trang chứ không lấy được lỗi động từ Apex Controller.
 
-**💡 Từ khóa ghi nhớ:** `Hiển thị lỗi từ ApexPages.addMessage() ra giao diện -> Luôn dùng thẻ <apex:pageMessages />.`
+**💡 Từ khóa ghi nhớ:** `Muốn show toàn bộ lỗi từ `ApexPages.addMessage()` ra Visualforce -> Nhắm mắt chọn ngay `<apex:pageMessages />`.`
 
 ---
 
@@ -5542,16 +5574,16 @@ Users with the 'Certification Representative' role can access the Certification 
 - **D.** The organization has a private sharing model for Certification__c, and Contact is the primary relationship in the Licensed_Professional__c object. ❌
 
 **📝 Dịch tiếng Việt:**
-> Object Licensed_Professional__c có 2 quan hệ Master-Detail với Certification__c và Contact. User có role 'Certification Rep' xem được các bản ghi con, nhưng user 'Sales Rep' dù là chủ sở hữu Contact lại báo không xem được bất kỳ bản ghi con nào. Hai nguyên nhân nào gây ra việc này? (Chọn 2)
+> Đối tượng tùy chỉnh `Licensed_Professional__c` có hai trường Master-Detail liên kết với `Certification__c` và `Contact`. User thuộc role 'Certification Rep' xem được các bản ghi con, nhưng 'Sales Rep' (dù sở hữu bản ghi Contact cha) lại khóc thét vì không xem được bất kỳ bản ghi con nào. Hai nguyên nhân khả thi nhất là gì? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> A: OWD của Certification__c là Private và nó là Primary Relationship (quan hệ Master được tạo đầu tiên). Khi đó, quyền bảo mật chia sẻ của con hoàn toàn kế thừa từ Primary Master. Sales Rep không có quyền xem Certification cha nên bị chặn xem con. B: Các Sharing Rules của Licensed_Professional__c đang trong quá trình tính toán lại (recalculation) nên quyền chưa được phân phối.
+> Khi một đối tượng có 2 trường quan hệ Master-Detail, quyền truy cập của nó sẽ bị chi phối hoàn toàn bởi đối tượng Master đầu tiên được tạo (gọi là Primary Master). Do đó: A đúng vì OWD của `Certification__c` đang là Private và nó chính là Primary Master. Sales Rep không có quyền xem bản ghi Certification cha nên bị hệ thống kéo theo xích cổ không cho xem bản ghi con. B đúng vì các Sharing Rules trên đối tượng con đang trong quá trình tính toán lại (recalculation) nên quyền chưa được cập nhật kịp thời.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Chỉnh sửa role phân quyền CRUD trên đối tượng không giải quyết được vấn đề phân quyền chia sẻ (Sharing) thực tế của bản ghi con.
-> **D.** Nếu Contact là Primary Relationship thì Sales Rep (chủ Contact) phải xem được con, trái ngược với thực trạng lỗi của đề bài.
+> **C.** Việc đổi phân quyền CRUD trên Role chỉ giới hạn thao tác tạo/sửa/xóa trên Object nói chung, không giải quyết được lỗi phân quyền bản ghi chi tiết (Sharing) thực tế.
+> **D.** Sai logic, nếu `Contact` đóng vai trò là Primary Master thì Sales Rep (chủ Contact) mặc nhiên phải xem được bản ghi con Licensed Professional rồi.
 
-**💡 Từ khóa ghi nhớ:** `Custom con có 2 Master-Detail -> Bảo mật con kế thừa hoàn toàn từ Primary Master (Master đầu tiên).`
+**💡 Từ khóa ghi nhớ:** `Đối tượng con có 2 Master-Detail -> Bảo mật và quyền xem của con ăn theo 100% từ Primary Master (Master tạo đầu tiên).`
 
 ---
 
@@ -5578,7 +5610,7 @@ Based on this code, what is the value of x?**
 - **D.** 4 ✅
 
 **📝 Dịch tiếng Việt:**
-> Cho đoạn code sau thực thi trong Apex: [Code Boolean isOK]. Hỏi sau khi chạy xong, giá trị của biến x là bao nhiêu?
+> Cho đoạn code sau: [Code Boolean isOK]. Sau khi thực thi xong, biến x sẽ có giá trị là bao nhiêu?
 
 **💬 Giải thích gốc (English):**
 > In the given code snippet, the variable isOK is declared but not initialized, so its value is null by default. Let’s analyze the conditions:
@@ -5589,14 +5621,14 @@ Based on this code, what is the value of x?**
 > Therefore, the value of x will be set to 4.
 
 **✅ Tại sao đáp án đúng:**
-> Giá trị của x là 4 (D). Biến Boolean isOK chỉ được khai báo và không được khởi tạo giá trị nên nó nhận giá trị mặc định là null. Do đó, các điều kiện check so sánh isOK == false, isOK == true và isOK != null đều trả về false. Luồng chạy rơi vào block else và gán x = 4.
+> Giá trị của x là 4 (D). Trong Apex, một biến khi mới khai báo (`Boolean isOK;` và `integer x;`) mà không gán giá trị khởi tạo sẽ mặc định nhận giá trị là `null`. Vì `isOK` là null nên các điều kiện check `isOK == false`, `isOK == true`, và cả `isOK != null` đều trả về `false`. Code tự động nhảy vào khối `else` cuối cùng và gán `x = 4`.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai vì isOK là null chứ không phải false.
-> **B.** Sai vì isOK là null chứ không phải true.
-> **C.** Sai vì isOK là null nên điều kiện check khác null bị loại.
+> **A.** Lỗi! isOK không hề được khởi tạo bằng false nên điều kiện đầu tiên bị bỏ qua.
+> **B.** Sai! isOK là null chứ không phải true để nhảy vào block này.
+> **C.** Sai nốt! Điều kiện check isOK khác null (isOK != null) bị false nên không thể gán x = 3.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo Apex: Biến khai báo không gán trị -> Mặc định luôn là NULL!`
+**💡 Từ khóa ghi nhớ:** `Mẹo Apex: Mọi biến khai báo khơi khơi không gán giá trị -> Mặc định luôn là NULL!`
 
 ---
 
@@ -5610,20 +5642,20 @@ Based on this code, what is the value of x?**
 - **D.** action= "AccountId" ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên muốn nhúng một trang Visualforce vào phần chi tiết (detail section) của Page Layout đối tượng Account, nhưng không tìm thấy trang này trong trình biên tập Layout. Thuộc tính nào bắt buộc phải khai báo?
+> Lập trình viên muốn nhúng một trang Visualforce vào phần chi tiết (detail section) của Page Layout đối tượng Account, nhưng tìm mỏi mắt không thấy trang này xuất hiện trong danh sách lựa chọn của Layout Editor. Thuộc tính nào bắt buộc phải có trong thẻ `<apex:page>`?
 
 **💬 Giải thích gốc (English):**
 > To ensure the Visualforce page can be embedded in a page layout for the Account object, the developer must include the attribute standardController="Account" in the <apex:page> tag.
 
 **✅ Tại sao đáp án đúng:**
-> Khai báo thuộc tính standardController='Account' (A) trong thẻ <apex:page>. Chỉ những trang Visualforce sử dụng Standard Controller của đối tượng tương ứng mới đủ điều kiện hiển thị trong danh sách nhúng layout của đối tượng đó.
+> Bắt buộc phải khai báo thuộc tính `standardController="Account"` (A). Đây là điều kiện cần và đủ để Salesforce nhận diện trang Visualforce này sinh ra là dành riêng cho đối tượng Account, từ đó mới cho phép nhúng vào Page Layout của Account.
 
 **❌ Tại sao đáp án sai:**
-> **B.** extensions chỉ để khai báo lớp Apex mở rộng, không quyết định khả năng nhúng layout.
-> **C.** controller dùng để khai báo Custom Controller class, trang dùng custom controller cấm nhúng trực tiếp vào layout chuẩn.
-> **D.** action dùng để gọi hàm khi tải trang, không liên quan đến cấu hình nhúng layout.
+> **B.** `extensions` chỉ để gọi thêm class Apex bổ trợ logic, không giúp trang được hiển thị để nhúng layout.
+> **C.** Sử dụng custom `controller="Account"` là sai cú pháp (Account là sObject chứ có phải custom class controller đâu) và custom controller đơn lẻ không hỗ trợ nhúng layout chuẩn.
+> **D.** `action` dùng để tự động chạy hàm khi tải trang, không có tác dụng phân quyền hay nhúng layout.
 
-**💡 Từ khóa ghi nhớ:** `Muốn nhúng trang Visualforce vào Page Layout của sObject -> Bắt buộc dùng standardController='sObjectName'.`
+**💡 Từ khóa ghi nhớ:** `Muốn nhúng trang Visualforce vào Page Layout của sObject nào -> Bắt buộc trang đó phải khai báo `standardController="Tên_sObject"`.`
 
 ---
 
@@ -5637,20 +5669,20 @@ Based on this code, what is the value of x?**
 - **D.** Calculating a score on a Lead based on the information from another field ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai thao tác nào thực hiện được bằng Formula field? (Chọn 2)
+> Hai thao tác nào sau đây có thể thực hiện ngon lành bằng trường công thức (Formula Field)? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Displaying an Image based on the Opportunity Amount: Formula fields can display different images based on certain criteria.
 > Calculating a score on a Lead based on the information from another field: Formula fields can perform calculations using data from other fields.
 
 **✅ Tại sao đáp án đúng:**
-> A: Tính toán dựa trên field khác. B: Dùng hàm IMAGE() để hiển thị ảnh động.
+> C đúng vì ta hoàn toàn có thể dùng hàm `IMAGE()` trong Formula Field để hiển thị ảnh động/icon sinh động dựa trên số tiền của Opportunity. D đúng vì Formula Field cực mạnh trong việc lấy thông tin từ các trường khác trên cùng bản ghi (hoặc từ cha) để tự động tính toán ra điểm số cho Lead.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Formula không thể 'nhìn' thấy data bên trong encrypted fields.
-> **D.** Formula field thay đổi giá trị không làm 'fire' trigger hay PB.
+> **A.** Trường công thức cấm chỉ việc thò đuôi vào đọc dữ liệu của các trường đã được mã hóa bảo mật (Encrypted fields).
+> **B.** Formula Field thay đổi giá trị tự động ở tầng database chứ không tạo ra sự kiện chỉnh sửa thực tế để có thể kích hoạt (trigger) Flow hay Process Builder chạy được.
 
-**💡 Từ khóa ghi nhớ:** `Formula: Read-only, IMAGE(), No Encrypted Data.`
+**💡 Từ khóa ghi nhớ:** `Formula Field -> Chỉ đọc (Read-only), dùng được hàm `IMAGE()`, cấm sờ vào dữ liệu mã hóa (Encrypted data).`
 
 ---
 
@@ -5664,20 +5696,20 @@ Based on this code, what is the value of x?**
 - **D.** fire() ✅
 
 **📝 Dịch tiếng Việt:**
-> Application Events tuân theo mô hình publish-subscribe truyền thống. Phương thức nào được sử dụng để kích hoạt (fire) một event?
+> Trong mô hình Application Event của framework Aura Component, phương thức nào được sử dụng để chính thức kích hoạt và phát tán (fire) một event đi khắp nơi?
 
 **💬 Giải thích gốc (English):**
 > To fire an application event in Salesforce, you use the fire() method.
 
 **✅ Tại sao đáp án đúng:**
-> Trong lập trình Aura Component, sau khi lấy được instance của event bằng $A.getEvt()$, ta sử dụng phương thức .fire() để đẩy event đó vào hệ thống.
+> Cú pháp chuẩn cơm mẹ nấu của Aura Component: sau khi định nghĩa và lấy được thực thể (instance) của event, ta dùng phương thức `.fire()` (D) để 'bắn' event đó đi cho các component khác thu nhận.
 
 **❌ Tại sao đáp án sai:**
-> **B.** registerEvent() dùng trong component để khai báo event chứ không phải để kích hoạt.
-> **C.** emit() là từ khóa thường dùng trong Node.js hoặc Vue, không tồn tại trong Aura/LWC.
-> **D.** fireEvent() là một cái tên gây nhầm lẫn, Salesforce chỉ dùng .fire().
+> **A.** `registerEvent()` dùng để đăng ký event trong file XML cấu hình của component chứ không dùng để kích hoạt chạy.
+> **B.** `fireEvent()` nghe thì rất thuyết phục nhưng thực tế là hàng fake tự chế, Salesforce không có phương thức này.
+> **C.** `emit()` là cú pháp của các thư viện JavaScript khác như Node.js hoặc Vue, đem vào Salesforce là oẳng ngay.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Aura Event -> .fire(). Nhớ nhé: 'Fire' là bắn, 'Event' là đạn.`
+**💡 Từ khóa ghi nhớ:** `Aura Event -> Kích hoạt bằng hàm `.fire()`.`
 
 ---
 
@@ -5691,20 +5723,20 @@ Based on this code, what is the value of x?**
 - **D.** Approval Process ❌
 
 **📝 Dịch tiếng Việt:**
-> Công cụ nào dùng để thu thập nhiều thông tin từ khách hàng (nhập liệu nhiều trang)?
+> Lập trình viên cần triển khai tính năng cho phép nhân viên chăm sóc khách hàng thu thập nhiều thông tin khác nhau từ khách hàng qua từng bước để gửi thẻ tín dụng thay thế. Công cụ tự động hóa nào đáp ứng hoàn hảo yêu cầu này?
 
 **💬 Giải thích gốc (English):**
 > To gather multiple pieces of information from a customer and send a replacement credit card, the best automation tool to use is Flow Builder. Flow Builder allows you to create guided, interactive processes for users, making it ideal for collecting information through a series of steps.
 
 **✅ Tại sao đáp án đúng:**
-> Screen Flow (Flow Builder) là công cụ khai báo (No-code) tốt nhất để tạo các form thu thập dữ liệu nhiều bước từ người dùng.
+> Chọn Flow Builder (B) để dựng một Screen Flow. Đây là công cụ khai báo no-code mạnh mẽ nhất của Salesforce được thiết kế riêng để tạo ra các màn hình tương tác động, thu thập dữ liệu nhiều bước từ người dùng một cách trực quan và lưu trữ cực kỳ mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Làm được nhưng tốn thời gian code hơn Flow rất nhiều.
-> **C.** Process Builder không có khả năng hiển thị giao diện nhập liệu.
-> **D.** Approval Process dùng để phê duyệt, không phải để thu thập thông tin khách hàng.
+> **A.** Dùng Lightning Component tự viết code (Aura/LWC) cũng làm được nhưng cực kỳ tốn công gõ code, tốn tài nguyên bảo trì so với giải pháp no-code Screen Flow có sẵn.
+> **C.** Process Builder chạy ngầm ở backend, hoàn toàn không có khả năng hiển thị giao diện hay form nhập liệu tương tác với con người.
+> **D.** Approval Process dùng để phê duyệt các yêu cầu, không có tính năng thu thập thông tin khách hàng qua màn hình.
 
-**💡 Từ khóa ghi nhớ:** `Gather information / User Input / Multi-screen -> Screen Flow.`
+**💡 Từ khóa ghi nhớ:** `Thu thập dữ liệu từ người dùng qua form / Nhiều màn hình nhập liệu -> Chọn ngay SCREEN FLOW (Flow Builder).`
 
 ---
 
@@ -5719,7 +5751,7 @@ Based on this code, what is the value of x?**
 - **E.** The method must use the @Future annotation ❌
 
 **📝 Dịch tiếng Việt:**
-> Einstein Next Best Action hiển thị gợi ý trên Account. Khi gợi ý bị từ chối (rejected), một phương thức Apex phải được thực thi để gọi API ra ngoài. Ba yếu tố nào lập trình viên cần lưu ý khi viết phương thức Apex này? (Chọn 3)
+> Einstein Next Best Action gợi ý cho user. Nếu gợi ý bị từ chối (rejected), một phương thức Apex phải được kích hoạt để thực hiện callout gửi dữ liệu ra hệ thống ngoài. Ba yếu tố nào lập trình viên cần lưu ý khi viết phương thức Apex này? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > The method must use the @InvokableMethod annotation: This annotation allows the method to be called from a flow or process.
@@ -5749,13 +5781,13 @@ Based on this code, what is the value of x?**
 > }
 
 **✅ Tại sao đáp án đúng:**
-> B: Phương thức bắt buộc phải sử dụng annotation @InvokableMethod để Flow/Next Best Action nhận diện và gọi được. C: Phương thức bắt buộc phải khai báo là static. D: Phương thức bắt buộc phải là public (hoặc global) để bên ngoài truy cập.
+> Vì phương thức này được kích hoạt từ Flow/Next Best Action, nó bắt buộc phải tuân thủ cấu trúc của một Invocable Action: B đúng vì phương thức phải được gắn annotation `@InvokableMethod`. C đúng vì phương thức bắt buộc phải là `static`. D đúng vì phương thức phải được khai báo tầm vực là `public` hoặc `global` để hệ thống bên ngoài gọi được.
 
 **❌ Tại sao đáp án sai:**
-> **A.** @AuraEnabled chỉ dùng để phơi hàm cho Lightning Component (Aura/LWC) gọi, không dùng cho Next Best Action gọi trực tiếp.
-> **E.** @Future là annotation chạy bất đồng bộ chung, phương thức invokable có thể gọi hàm future bên trong chứ chính nó không bắt buộc phải là @Future.
+> **A.** `@AuraEnabled` chỉ dùng để mở hàm cho các component Aura hoặc LWC gọi từ giao diện, không phải là điều kiện để Flow gọi.
+> **E.** `@Future` dùng để chạy bất đồng bộ chung, phương thức invokable có thể gọi hàm future bên trong chứ bản thân signature của nó cấm gắn thẻ `@Future` trực tiếp.
 
-**💡 Từ khóa ghi nhớ:** `Invokable Method tiêu chuẩn -> @InvokableMethod + public static void name(List<T> input).`
+**💡 Từ khóa ghi nhớ:** `Phương thức gọi từ Flow (Invocable) -> Bắt cặp ngay: `@InvokableMethod` + `public static void`.`
 
 ---
 
@@ -5769,20 +5801,20 @@ Based on this code, what is the value of x?**
 - **D.** Write a trigger on the child object and use an aggregate function to sum the amount for all related child objects under the Opportunity. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để tính tổng (Roll-up) lên Opportunity khi quan hệ chỉ là Lookup?
+> Làm thế nào để tính tổng số tiền (Roll-up) từ một đối tượng tùy chỉnh lên Opportunity, trong khi hai đối tượng này chỉ liên kết với nhau bằng quan hệ Lookup chứ không phải Master-Detail?
 
 **💬 Giải thích gốc (English):**
 > The correct approach to roll up an amount from a custom object that is not in a master-detail relationship is: Write a trigger on the child object and use an aggregate function to sum the amount for all related child objects under the Opportunity. This trigger will ensure that whenever a child object is inserted, updated, deleted, or undeleted, the corresponding Opportunity’s amount is updated accordingly.
 
 **✅ Tại sao đáp án đúng:**
-> Lookup không hỗ trợ field Roll-up Summary. Mày phải viết Trigger trên object con, dùng SOQL Aggregate (SUM) để tính toán rồi update ngược lại Opportunity cha bằng code.
+> Vì mối quan hệ Lookup không hỗ trợ tính năng Roll-up Summary có sẵn, nên lập trình viên phải tự thân vận động: Viết một Apex Trigger trên đối tượng con (D). Mỗi khi đối tượng con được thêm/sửa/xóa, trigger sẽ kích hoạt câu truy vấn SOQL sử dụng hàm gom nhóm (`SUM()`, `AggregateResult`) để tính tổng số tiền của toàn bộ các con liên quan, rồi cập nhật ngược lại trường số tiền trên Opportunity cha.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Streaming API chỉ để hóng data, không dùng để tính toán và lưu trữ dữ liệu.
-> **B.** Giải thuật red-black tree cực kỳ phức tạp và không liên quan gì đến việc SUM dữ liệu bản ghi con.
-> **D.** Process Builder không hỗ trợ các hàm Aggregate (SUM, AVG) trên danh sách con.
+> **A.** Metadata API sinh ra để quản lý file cấu hình hệ thống, hoàn toàn bất lực trong việc tự tính tổng và ghi đè dữ liệu bản ghi.
+> **B.** Streaming API chỉ dùng để gửi thông báo sự kiện thay đổi dữ liệu thời gian thực ra bên ngoài chứ không update được data.
+> **C.** Viết trigger trên Opportunity cha là đi vào lòng đất, vì khi bản ghi con bị thay đổi hay tạo mới, trigger trên cha không hề kích hoạt để cập nhật dữ liệu.
 
-**💡 Từ khóa ghi nhớ:** `No Master-Detail -> Dùng Trigger + Aggregate Query.`
+**💡 Từ khóa ghi nhớ:** `Tính tổng con lên cha ở quan hệ Lookup -> Bắt buộc viết Trigger trên đối tượng CON + dùng câu truy vấn Aggregate SUM.`
 
 ---
 
@@ -5797,16 +5829,16 @@ Based on this code, what is the value of x?**
 - **E.** Validation Rules ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers muốn xây dựng một ứng dụng Salesforce mới mà toàn bộ logic nghiệp vụ sau này có thể được bảo trì hoàn toàn no-code bởi Quản trị viên (Admin). Ba công cụ nào nên được xem xét? (Chọn 3)
+> Universal Containers muốn phát triển một ứng dụng mới nhưng yêu cầu toàn bộ logic nghiệp vụ (Business Logic Layer) sau này phải được bảo trì hoàn toàn no-code bởi Quản trị viên (Admin). Ba công cụ nào nên được cân nhắc sử dụng? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> A: Process Builder (no-code tự động hóa nghiệp vụ). C: Invocable Actions (gọi các tiến trình đóng gói sẵn từ Flow/Process). E: Validation Rules (quy tắc chặn dữ liệu hoàn toàn no-code). Các công cụ này giúp admin dễ dàng chỉnh sửa mà không cần đụng đến code Apex.
+> Để Admin có thể bảo trì dễ dàng không cần biết viết code, ta dùng các công cụ khai báo: A đúng vì Process Builder (hoặc Flow Builder hiện đại) là trùm tự động hóa quy trình no-code. E đúng vì Validation Rules giúp chặn và bắt buộc nhập liệu chuẩn xác hoàn toàn bằng giao diện kéo thả cấu hình. C đúng vì Invocable Actions cho phép Admin gọi các đoạn code Apex đã được dev đóng gói sẵn như những khối gạch lắp ghép.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Scheduled Jobs yêu cầu lập trình class Apex implements Schedulable, admin không thể viết code bảo trì được.
-> **D.** Workflows tuy no-code nhưng tính năng quá nghèo nàn và đã bị Salesforce ngừng phát triển nâng cấp (deprecated).
+> **B.** Scheduled Jobs yêu cầu phải viết code Apex implements interface `Schedulable`, Admin bình thường nhìn vào là 'khóc tiếng Mán' ngay chứ bảo trì sao nổi.
+> **D.** Workflows tuy là no-code nhưng tính năng cực kỳ nghèo nàn và đã bị Salesforce khai tử (deprecated), cấm dùng cho các ứng dụng mới.
 
-**💡 Từ khóa ghi nhớ:** `Logic no-code cho Admin dễ bảo trì -> Process Builder/Flow Builder, Invocable Actions, Validation Rules.`
+**💡 Từ khóa ghi nhớ:** `Logic no-code thân thiện với Admin -> Chọn ngay: Flow/Process Builder, Invocable Actions, Validation Rules.`
 
 ---
 
@@ -5820,20 +5852,20 @@ Based on this code, what is the value of x?**
 - **D.** The Vendor object must use a Master-Detail field for reporting. ❌
 
 **📝 Dịch tiếng Việt:**
-> Admin của Universal Containers cố gắng chuyển đổi trường quan hệ Master-Detail trên đối tượng Vendor thành quan hệ Lookup với Account nhưng bị hệ thống báo lỗi không cho phép. Nguyên nhân khả thi nhất là gì?
+> Đối tượng custom Vendor đang có quan hệ Master-Detail với đối tượng tiêu chuẩn Account. Admin cố gắng đổi trường quan hệ này thành Lookup nhưng hệ thống thẳng thừng từ chối. Nguyên nhân khả thi nhất là gì?
 
 **💬 Giải thích gốc (English):**
 > You cannot change a Master-Detail relationship to a Lookup relationship if there are roll-up summary fields on the parent object that summarize data from the child object. These roll-up summary fields must be deleted before the relationship type can be changed.
 
 **✅ Tại sao đáp án đúng:**
-> Trên đối tượng cha Account đang tồn tại các trường Roll-up Summary (C) tính toán dữ liệu của Vendor con. Đây là ràng buộc cứng của Salesforce, ta bắt buộc phải xóa hoàn toàn các trường Roll-up Summary này trước khi đổi kiểu quan hệ.
+> Vì trên đối tượng cha Account đang tồn tại ít nhất một trường Roll-up Summary (C) tính toán dữ liệu của các Vendor con. Trong Salesforce, trường Roll-up chỉ hoạt động được trên mối quan hệ Master-Detail. Do đó, hệ thống sẽ khóa cứng không cho phép chuyển đổi sang Lookup trừ khi mày phải xóa sạch đống trường Roll-up Summary kia trước.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Việc bản ghi Vendor có giá trị liên kết Account hoàn toàn không cản trở việc đổi sang Lookup (chỉ có chiều ngược lại từ Lookup sang Master-Detail mới yêu cầu Vendor không được có dữ liệu trống).
-> **B.** Workflow không chặn việc chuyển đổi kiểu trường quan hệ cơ bản.
-> **D.** Không có ràng buộc hệ thống nào bắt buộc Vendor phải dùng Master-Detail chỉ để phục vụ báo cáo.
+> **A.** Việc các bản ghi Vendor có chứa giá trị Account hoàn toàn không ảnh hưởng đến việc chuyển từ Master-Detail sang Lookup (nó chỉ chặn ở chiều ngược lại từ Lookup sang Master-Detail nếu có bản ghi con bị bỏ trống cha).
+> **B.** Workflow Rule không bao giờ can thiệp hay chặn việc chuyển đổi kiểu dữ liệu của trường quan hệ.
+> **D.** Không có luật nào bắt buộc Vendor phải dùng Master-Detail chỉ để phục vụ mục đích làm báo cáo (Report) cả.
 
-**💡 Từ khóa ghi nhớ:** `Đổi Master-Detail sang Lookup -> Bắt buộc phải XÓA hết các trường Roll-up Summary trên cha trước!`
+**💡 Từ khóa ghi nhớ:** `Đổi Master-Detail sang Lookup -> Bắt buộc phải XÓA hết các trường Roll-up Summary trên đối tượng cha trước!`
 
 ---
 
@@ -5853,14 +5885,14 @@ Based on this code, what is the value of x?**
 > Process Builder cannot handle delete or undelete events, nor can it execute actions before a DML operation. Triggers are necessary for these scenarios as they provide more granular control over the timing and conditions of the actions.
 
 **✅ Tại sao đáp án đúng:**
-> Khi cần thực hiện hành động khi bản ghi bị XÓA (delete), KHÔI PHỤC (undelete), hoặc cần can thiệp xử lý dữ liệu ở giai đoạn BEFORE DML (D) trước khi lưu xuống database. Các sự kiện này Process Builder/Flow đời cũ hoàn toàn không hỗ trợ.
+> Chọn D. Các công cụ no-code đời cũ như Process Builder (và kể cả Flow đời cũ) hoàn toàn mù tịt trước các sự kiện dữ liệu bị XÓA (delete), KHÔI PHỤC (undelete), hoặc khi cần xử lý dữ liệu cực nhanh ở giai đoạn trước khi lưu xuống database (BEFORE DML). Những ca khó này bắt buộc phải dùng Apex Trigger để giải quyết.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Tạo mới bản ghi là thế mạnh cơ bản của Process Builder với hành động Create Record.
+> **A.** Tạo bản ghi mới là tác vụ cơ bản mà Process Builder xử lý cực nhanh no-code.
 > **B.** Cập nhật hàng loạt bản ghi con liên quan hoàn toàn thực hiện được no-code bằng Process Builder.
 > **C.** Đăng bài viết lên Chatter (Post to Chatter) là hành động tích hợp sẵn cực kỳ trực quan của Process Builder.
 
-**💡 Từ khóa ghi nhớ:** `Bắt buộc dùng Trigger khi -> Muốn bắt sự kiện Before DML, hoặc sự kiện Delete/Undelete.`
+**💡 Từ khóa ghi nhớ:** `Bắt buộc dùng Trigger khi -> Cần can thiệp sự kiện Delete, Undelete hoặc BEFORE DML.`
 
 ---
 
@@ -5874,19 +5906,19 @@ Based on this code, what is the value of x?**
 - **D.** Create a master-detail relationship between the Rating and Employee objects. ❌
 
 **📝 Dịch tiếng Việt:**
-> Công ty muốn tạo tính năng đánh giá nhân viên (Rating). Điểm đánh giá trung bình của nhân viên (Employee's average rating) phải được hiển thị trên Employee record. Nhân viên được phép tạo Rating nhưng cấm sửa Employee. Hai hành động nào developer nên chọn? (Chọn 2)
+> Một công ty muốn tạo chương trình đánh giá nhân viên (Rating) cho phép nhân viên tự đánh giá lẫn nhau. Điểm đánh giá trung bình (average rating) phải được hiển thị trực tiếp trên Employee record. Nhân viên được phép tạo bản ghi Rating nhưng tuyệt đối cấm tạo bản ghi Employee. Hai hành động nào lập trình viên nên thực hiện? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Roll-Up summary doesn't have AVG.
 
 **✅ Tại sao đáp án đúng:**
-> A: Viết trigger trên đối tượng Rating để tự động tính trung bình cộng và update lên trường của Employee. B: Tạo mối quan hệ Lookup giữa Rating và Employee. (Vì sao không dùng Master-Detail và Roll-up? Vì hàm tổng hợp AVG không hề được hỗ trợ trong trường Roll-up Summary chuẩn của Salesforce!).
+> B đúng vì ta phải tạo mối quan hệ Lookup giữa Rating và Employee để giữ cho việc phân quyền của hai đối tượng này độc lập nhau (nhân viên có quyền tạo Rating con nhưng vẫn bị chặn tạo Employee cha). A đúng vì do dùng Lookup, ta không thể dùng trường Roll-up Summary có sẵn để tính trung bình được (hơn nữa Roll-up cũng cấm dùng hàm AVG), nên bắt buộc phải viết một Apex Trigger trên đối tượng Rating để tự động tính toán điểm trung bình cộng rồi update ngược lên Employee.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Hàm tổng hợp AVG (Average) KHÔNG HỀ TỒN TẠI trong tính năng Roll-up Summary Field của Salesforce (chỉ có SUM, COUNT, MIN, MAX).
+> **C.** Trường Roll-up Summary tiêu chuẩn của Salesforce chỉ hỗ trợ các hàm SUM, COUNT, MIN, MAX chứ hoàn toàn KHÔNG hỗ trợ hàm tính trung bình AVG!
 > **D.** Mối quan hệ Master-Detail sẽ kế thừa bảo mật nghiêm ngặt từ cha Employee, gây khó khăn cho quyền tạo bản ghi của nhân viên.
 
-**💡 Từ khóa ghi nhớ:** `Salesforce Roll-up Summary: Cấm dùng hàm tính trung bình AVG. Muốn tính trung bình -> Dùng Lookup + Trigger!`
+**💡 Từ khóa ghi nhớ:** `Trường Roll-up Summary của Salesforce không hỗ trợ tính trung bình (AVG). Muốn tính trung bình từ con lên cha -> Dùng Lookup + Apex Trigger!`
 
 ---
 
@@ -5900,17 +5932,17 @@ Based on this code, what is the value of x?**
 - **D.** Default out-of-the-box configuration ❌
 
 **📝 Dịch tiếng Việt:**
-> Lợi ích của việc phát triển ứng dụng trong môi trường đa thuê bao (multi-tenant) là gì?
+> Lợi ích lớn nhất của việc phát triển ứng dụng trong môi trường đa thuê bao (multi-tenant) của Salesforce là gì?
 
 **✅ Tại sao đáp án đúng:**
-> Để đảm bảo một khách hàng không làm sập server dùng chung, Salesforce ép buộc các giới hạn Governor Limits, từ đó hình thành các Best Practices (như bulkify code) mà mọi dev phải tuân theo.
+> Trong môi trường đa thuê bao, mọi người dùng chung tài nguyên phần cứng. Để đảm bảo không có ai viết code ẩu làm sập cả hệ thống, Salesforce ép buộc các giới hạn Governor Limits cực kỳ nghiêm ngặt. Điều này vô hình trung ép lập trình viên bắt buộc phải tuân thủ các best practices (B) (như viết code bulkify, tối ưu SOQL/DML) giúp ứng dụng luôn chạy nhanh và an toàn.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Cấu hình mặc định có sẵn ở mọi môi trường, không phải lợi ích riêng biệt của multi-tenancy.
-> **C.** Sai bét! Multi-tenant là tài nguyên có hạn (Limits), làm gì có chuyện vô hạn (unlimited).
-> **D.** Truy cập tài nguyên định sẵn là đặc tính kỹ thuật, không phải là 'lợi ích' lớn nhất về mặt chất lượng app như ý A.
+> **A.** Truy cập tài nguyên định sẵn chỉ là đặc tính hạ tầng chung, chả phải lợi ích vượt trội giúp nâng cao chất lượng code.
+> **C.** Mơ đi cưng! Đã là multi-tenant thì tài nguyên được chia sẻ và giới hạn nghiêm ngặt chứ làm gì có chuyện 'vô hạn sức mạnh xử lý và bộ nhớ' (unlimited).
+> **D.** Cấu hình mặc định có sẵn thì ở môi trường đơn thuê bao (single-tenant) vẫn có, chả liên quan gì đến multi-tenancy.
 
-**💡 Từ khóa ghi nhớ:** `Multi-tenant = 'Chung chạ' tài nguyên -> Phải có 'Luật' (Governor Limits) để giữ trật tự.`
+**💡 Từ khóa ghi nhớ:** `Multi-tenant = Dùng chung tài nguyên -> Phải có giới hạn (Limits) -> Ép dev tuân thủ Best Practices.`
 
 ---
 
@@ -5924,20 +5956,20 @@ Based on this code, what is the value of x?**
 - **D.** Create a formula field on the Quote object that performs a SUM on the Quote Line Item Quantity field, filtered for only discounted Quote Line Items. ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi xem Quote, sales rep muốn thấy nhanh tổng số lượng các mặt hàng được chiết khấu (discounted) có trong Quote Line Items. Lập trình viên nên làm gì?
+> Khi xem Quote, nhân viên bán hàng muốn biết dễ dàng có bao nhiêu mặt hàng được chiết khấu (discounted) nằm trong danh sách Quote Line Items. Lập trình viên nên làm gì để đáp ứng yêu cầu này một cách tối ưu nhất?
 
 **💬 Giải thích gốc (English):**
 > To meet the requirement of showing how many discounted items are included in the Quote Line Items, the best approach is to use a roll-up summary field. This field can perform a SUM on the Quote Line Item Quantity field, filtered specifically for discounted items.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo trường Roll-up Summary trên Quote thực hiện tính SUM trường Quantity của Quote Line Item, đồng thời cấu hình bộ lọc filter criteria chỉ tính các dòng Quote Line Item có chiết khấu (C). Đây là giải pháp no-code chuẩn và tối ưu nhất.
+> Tạo một trường Roll-up Summary trên đối tượng Quote để tính tổng (SUM) trường Quantity của Quote Line Item, đồng thời thiết lập bộ lọc filter criteria chỉ tính những dòng Quote Line Item nào có chiết khấu (C). Đây là giải pháp no-code chính chủ, cực nhanh và chuẩn cơm mẹ nấu.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Viết trigger Apex là giải pháp code cồng kềnh và tốn tài nguyên bảo trì không cần thiết cho một tác vụ có thể làm no-code.
-> **B.** Workflow rule field update không thể thực hiện tính tổng và cập nhật ngược dòng dữ liệu hiệu quả bằng Roll-up Summary.
-> **D.** Formula field chỉ có thể tính toán trên chính bản ghi đó hoặc từ cha xuống con, cấm thực hiện hàm tổng hợp (SUM) đi ngược từ con lên cha.
+> **A.** Viết trigger Apex là giải pháp code cồng kềnh, tốn công bảo trì vô ích cho một tác vụ hoàn toàn có thể cấu hình no-code trong 30 giây.
+> **B.** Workflow Rule cựu trào không có khả năng tính toán gom nhóm dữ liệu của nhiều con để update ngược lên cha mượt mà như Roll-up.
+> **D.** Trường công thức (Formula Field) chỉ có thể tính toán trên chính bản ghi đó hoặc đi từ cha xuống con, cấm tiệt việc làm hàm tổng hợp (SUM) đi ngược từ danh sách con lên cha.
 
-**💡 Từ khóa ghi nhớ:** `Đếm/Tổng con có điều kiện lên Cha (ở quan hệ Master-Detail) -> Luôn dùng Roll-up Summary Field bật filter!`
+**💡 Từ khóa ghi nhớ:** `Tính tổng/Đếm số lượng bản ghi con có điều kiện lên cha ở quan hệ Master-Detail -> Luôn dùng Roll-up Summary Field kết hợp với Filter Criteria!`
 
 ---
 
@@ -5951,20 +5983,20 @@ Based on this code, what is the value of x?**
 - **D.** Automatic code generation ❌
 
 **📝 Dịch tiếng Việt:**
-> Xét về mô hình MVC, hai ưu điểm vượt trội của việc xây dựng tầng View bằng Lightning Web Components (LWC) so với Visualforce là gì? (Chọn 2)
+> Xét theo mô hình MVC, hai ưu thế vượt trội của việc xây dựng tầng View bằng Lightning Web Components (LWC) so với Visualforce truyền thống là gì? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Self-contained and reusable units of an application: LWCs are designed as modular components that can be reused across different parts of the application, promoting better code organization and maintainability.
 > Rich component ecosystem: LWC benefits from a modern, rich ecosystem of components that can be easily integrated and customized, enhancing the development experience and enabling the creation of more dynamic and responsive user interfaces.
 
 **✅ Tại sao đáp án đúng:**
-> A: LWCs được thiết kế dưới dạng các khối thành phần độc lập và có khả năng tái sử dụng cực cao (reusable units). B: LWC sở hữu một hệ sinh thái linh kiện phong phú, hiện đại giúp xây dựng giao diện động mượt mà hơn nhiều.
+> A đúng vì LWC được thiết kế theo kiến trúc component độc lập, cho phép đóng gói toàn bộ HTML/JS/CSS thành một khối có khả năng tái sử dụng (reusable units) cực kỳ linh hoạt ở nhiều nơi. B đúng vì LWC thừa hưởng và đóng góp vào một hệ sinh thái linh kiện phong phú, hiện đại giúp tạo ra trải nghiệm người dùng mượt mà, dynamic hơn hẳn Visualforce cổ lỗ sĩ.
 
 **❌ Tại sao đáp án sai:**
-> **C.** LWC chạy và debug chủ yếu dưới Client-side (trình duyệt JavaScript), không phải server-side.
-> **D.** LWC không có tính năng tự động sinh mã nguồn (automatic code generation) kỳ diệu nào cả.
+> **C.** LWC là Client-side framework chạy trực tiếp trên trình duyệt JavaScript của người dùng, việc debug chạy chủ yếu ở Client chứ không phải Server-side.
+> **D.** LWC không có phép thuật nào tự động sinh mã nguồn (automatic code generation) cho dev lười cả.
 
-**💡 Từ khóa ghi nhớ:** `Ưu thế LWC so với Visualforce -> Độc lập, tái sử dụng cao và hệ sinh thái hiện đại mượt mà.`
+**💡 Từ khóa ghi nhớ:** `LWC ăn đứt Visualforce nhờ -> Độc lập, khả năng tái sử dụng siêu cao + Hệ sinh thái component động hiện đại.`
 
 ---
 
@@ -5978,20 +6010,20 @@ Based on this code, what is the value of x?**
 - **D.** Declare the class and method using the global access modifier. ✅
 
 **📝 Dịch tiếng Việt:**
-> Cloud Kicks Fitness phát triển một managed package. Một module cho phép khách hàng gọi hàm calculateBodyFat() trong Apex class BodyFat để tùy biến. Developer nên khai báo class và method như thế nào để khách hàng ngoài package có thể gọi được?
+> Cloud Kicks Fitness phát triển một managed package. Một module của ứng dụng cho phép khách hàng gọi phương thức `calculateBodyFat()` của class `BodyFat` để tự tùy biến code ngoài namespace của package. Lập trình viên nên khai báo class và method này với từ khóa truy cập nào?
 
 **💬 Giải thích gốc (English):**
 > To ensure that the calculateBodyFat() method is accessible outside the package namespace, the developer should use the global access modifier. This is because the global access modifier allows the class and its methods to be accessible across different namespaces, which is essential for managed packages.
 
 **✅ Tại sao đáp án đúng:**
-> Khai báo cả class và method sử dụng từ khóa truy cập global (D). Trong managed package, chỉ các class và method khai báo global mới có thể được truy cập và gọi từ bên ngoài namespace của gói.
+> Khai báo cả class và phương thức sử dụng từ khóa truy cập `global` (D). Đây là quy định bắt buộc trong phát triển Managed Package: chỉ những thành phần nào được gắn nhãn `global` mới có thể vượt biên giới namespace để cho phép code của khách hàng bên ngoài gọi được.
 
 **❌ Tại sao đáp án sai:**
 > **A.** public chỉ cho phép các class khác trong cùng một namespace của package truy cập, khách hàng ở ngoài cấm gọi.
 > **B.** Phương thức khai báo public sẽ bị chặn truy cập từ ngoài namespace bất kể class cha có là global.
 > **C.** Class khai báo public sẽ khóa cứng toàn bộ các thành phần bên trong nó đối với bên ngoài bất chấp method khai báo global.
 
-**💡 Từ khóa ghi nhớ:** `Managed Package phơi code cho khách hàng ngoài gọi -> Bắt buộc dùng từ khóa GLOBAL!`
+**💡 Từ khóa ghi nhớ:** `Viết Managed Package muốn phơi code cho khách hàng ngoài namespace gọi -> Bắt buộc dùng từ khóa GLOBAL!`
 
 ---
 
@@ -6009,21 +6041,21 @@ What should be done to share a specific Case_Defect__c: record with a user?**
 - **D.** Share the parent Case record. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một công ty phần mềm sử dụng các đối tượng và mối quan hệ sau: Case (Private OWD), Defect__c (Private OWD, custom object), và Case_Defect__c (junction object Nhiều-Nhiều giữa Case và Defect__c). Làm thế nào để chia sẻ quyền truy cập một bản ghi Case_Defect__c cụ thể cho một người dùng?
+> Một phần mềm sử dụng các đối tượng và mối quan hệ sau: Case (Private OWD), Defect__c (Private OWD, custom object), và Case_Defect__c (junction object Nhiều-Nhiều giữa Case và Defect__c). Làm thế nào để chia sẻ thành công quyền truy cập một bản ghi liên kết `Case_Defect__c` cụ thể cho một người dùng khác?
 
 **💬 Giải thích gốc (English):**
 > A junction object Case_Defect__c typically has two master-detail relationships, one to Case and another to Defect__c. This means that the sharing settings for Case_Defect__c are inherited from its parent records.
 > To share a specific Case_Defect__c record with a user, you would indeed need to ensure that the user has access to both the Case and Defect__c records. This is because the visibility of the junction object record is controlled by the sharing settings of its parent objects.
 
 **✅ Tại sao đáp án đúng:**
-> Vì Case_Defect__c là đối tượng trung gian (Junction Object) được liên kết bằng hai mối quan hệ Master-Detail trỏ về hai cha Case và Defect__c. Quyền bảo mật chia sẻ của nó hoàn toàn kế thừa trực tiếp từ hai cha. Do đó, người dùng bắt buộc phải có quyền truy cập (xem) đối với cả hai bản ghi cha là Case và Defect__c (B) thì mới có thể nhìn thấy bản ghi liên kết con Case_Defect__c.
+> Vì `Case_Defect__c` là một đối tượng trung gian (Junction Object) liên kết bằng hai mối quan hệ Master-Detail với Case và Defect__c. Quyền bảo mật của bản ghi con Detail bị xích chặt 100% vào cả hai cha. Do đó, để xem được con, người dùng bắt buộc phải có quyền truy cập (xem) đối với CẢ HAI bản ghi cha là Case và Defect__c (B).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Chỉ chia sẻ bản ghi Defect__c cha là chưa đủ quyền đối với cha bên kia (Case), người dùng vẫn bị chặn xem bản ghi junction.
-> **C.** Không thể thiết lập Sharing Rules hay chia sẻ trực tiếp trên bản ghi Case_Defect__c con được vì đối tượng con trong mối quan hệ Master-Detail không sở hữu trường Owner riêng và không có nút chia sẻ thủ công.
-> **D.** Chỉ chia sẻ bản ghi Case cha tương tự lỗi của câu A, vẫn thiếu quyền xem Defect__c.
+> **A.** Chỉ chia sẻ một bên cha Defect__c là chưa đủ điều kiện, người dùng vẫn bị hệ thống chặn xem bản ghi junction con.
+> **C.** Bản ghi con trong mối quan hệ Master-Detail không sở hữu trường Owner riêng và không có nút Share thủ công, nên không thể chia sẻ trực tiếp trên chính nó được.
+> **D.** Chỉ chia sẻ một bên cha Case tương tự câu A, vẫn thiếu quyền xem cha bên kia.
 
-**💡 Từ khóa ghi nhớ:** `Chia sẻ bản ghi Junction (Many-to-Many) -> Bắt buộc phải có quyền truy cập đối với CẢ HAI bản ghi cha!`
+**💡 Từ khóa ghi nhớ:** `Muốn xem bản ghi Junction (Many-to-Many) -> Người dùng bắt buộc phải có quyền xem trên CẢ HAI bản ghi cha Master!`
 
 ---
 
@@ -6039,20 +6071,20 @@ System.debug(theValue);**
 - **D.** 0 ❌
 
 **📝 Dịch tiếng Việt:**
-> Kết quả hiển thị trong debug log của đoạn mã Apex sau là gì? [Code Decimal theValue]
+> Kết quả hiển thị trong debug log của đoạn mã Apex sau là gì? `Decimal theValue; System.debug(theValue);`
 
 **💬 Giải thích gốc (English):**
 > In Apex, when a Decimal variable is declared but not initialized, its default value is 'null'.
 
 **✅ Tại sao đáp án đúng:**
-> Kết quả debug in ra là 'null' (B). Trong ngôn ngữ Apex, mọi biến số (Decimal, Double, Integer,...) khi mới khai báo mà không khởi tạo giá trị cụ thể sẽ luôn luôn nhận giá trị mặc định là null để bảo vệ bộ nhớ.
+> Kết quả debug in ra chắc chắn là `null` (B). Trong Apex, mọi biến số (Decimal, Integer, Double...) hay sObject khi mới chỉ khai báo mà không khởi tạo giá trị cụ thể sẽ luôn được gán giá trị mặc định là `null` để bảo vệ an toàn cho bộ nhớ.
 
 **❌ Tại sao đáp án sai:**
 > **A.** 0.0 không phải là giá trị mặc định của kiểu Decimal trong Apex.
 > **C.** Không tồn tại khái niệm giá trị 'Undefined' giống JavaScript trong ngôn ngữ lập trình Apex.
 > **D.** 0 là giá trị mặc định của kiểu số nguyên trong một số ngôn ngữ khác nhưng với Apex vẫn là null.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo Apex: Mọi biến số khai báo không gán trị mặc định -> Luôn nhận giá trị NULL!`
+**💡 Từ khóa ghi nhớ:** `Mẹo Apex: Biến khai báo khơi khơi không gán trị -> Mặc định luôn là NULL!`
 
 ---
 
@@ -6066,20 +6098,20 @@ System.debug(theValue);**
 - **D.** Use a Workflow Rule to calculate the sum of the review scores and send an email to the hiring manager when the total is 15 or better. ❌
 
 **📝 Dịch tiếng Việt:**
-> Ứng viên được đánh giá bởi 4 người phỏng vấn khác nhau. Điểm số từ 1 (thấp nhất) đến 5 (cao nhất) được lưu trên bản ghi Review (là bản ghi con Detail của đối tượng Candidate). Cách tốt nhất để hiển thị tổng điểm đánh giá từ 15 trở lên để đề xuất phỏng vấn tiếp theo là gì?
+> Điểm đánh giá ứng viên từ 1 (thấp nhất) đến 5 (cao nhất) được lưu trên bản ghi Review (là bản ghi con Detail của đối tượng Candidate). Cách tối ưu nhất để tự động tính tổng điểm và hiển thị cảnh báo nếu tổng điểm đạt từ 15 trở lên là gì?
 
 **💬 Giải thích gốc (English):**
 > Rollup Summary Field: This field type allows you to perform calculations on related records, such as summing up the review scores. By creating a rollup summary field on the candidate record, you can automatically calculate the total score from the related review records.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một trường Roll-up Summary trên đối tượng cha Candidate để tự động tính tổng (SUM) điểm số từ các bản ghi Review con liên quan (B). Đây là giải pháp hoàn toàn no-code cực kỳ sạch sẽ và tối ưu hiệu năng của hệ thống.
+> Tạo một trường Roll-up Summary trên đối tượng cha Candidate để tự động tính tổng (SUM) điểm số từ các bản ghi Review con liên quan (B). Đây là giải pháp hoàn toàn no-code cực kỳ sạch sẽ, đáng tin cậy và tối ưu hiệu năng hệ thống tuyệt đối.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Validation Rule chỉ dùng để chặn lưu dữ liệu sai logic chứ không thể tự động tính toán tổng điểm từ con lên cha.
-> **C.** Sử dụng Visual Flow để set đề xuất là phương án quá phức tạp và thừa thãi khi ta hoàn toàn có thể giải quyết nhanh bằng công cụ Roll-up no-code có sẵn.
-> **D.** Workflow Rule đời cũ không hỗ trợ tính tổng SUM các bản ghi con ngược lên cha một cách trực tiếp như Roll-up.
+> **A.** Validation Rule chỉ dùng để chặn đứng không cho lưu dữ liệu sai logic chứ làm sao tự động tính toán tổng điểm từ danh sách con lên cha được.
+> **C.** Sử dụng Screen Flow hay Autolaunched Flow để tính toán là phương án vẽ đường vòng cồng kềnh, tốn công phát triển vô ích trong khi có thể cấu hình no-code trong 30 giây bằng Roll-up.
+> **D.** Workflow Rule đời cổ lỗ sĩ không hỗ trợ tính năng tính tổng (SUM) các bản ghi con ngược lên cha.
 
-**💡 Từ khóa ghi nhớ:** `Tính tổng điểm từ các bản ghi con Detail lên cha Master -> Tạo trường ROLL-UP SUMMARY kiểu SUM.`
+**💡 Từ khóa ghi nhớ:** `Tính tổng/đếm số lượng bản ghi con Detail lên cha Master -> Tạo trường ROLL-UP SUMMARY kiểu SUM/COUNT.`
 
 ---
 
@@ -6093,20 +6125,20 @@ System.debug(theValue);**
 - **D.** public void doWork(sObject theRecord) ✅
 
 **📝 Dịch tiếng Việt:**
-> Dùng kiểu dữ liệu nào để xử lý cả Account và Contact trong 1 method?
+> Lập trình viên cần viết một phương thức Apex đa năng có khả năng xử lý được cả bản ghi Account hoặc Contact. Cú pháp khai báo tham số (method signature) nào là chuẩnax nhất?
 
 **💬 Giải thích gốc (English):**
 > In Apex, sObject is the generic base class for all objects in Salesforce. This allows the method to accept any standard or custom object, including Account and Contact.
 
 **✅ Tại sao đáp án đúng:**
-> Dùng `sObject` vì nó là lớp cha của mọi object.
+> Sử dụng kiểu dữ liệu `sObject` làm tham số đầu vào: `public void doWork(sObject theRecord)` (D). Vì `sObject` chính là lớp cha chung (Generic parent class) của tất cả các đối tượng trong Salesforce (bao gồm cả Account, Contact, hay bất kỳ custom object nào), giúp phương thức cực kỳ đa năng và chấp nhận mọi đối tượng truyền vào.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai cú pháp khai báo tham số.
-> **C.** Apex không cho phép dùng toán tử OR trong signature.
-> **D.** Không có kiểu dữ liệu nào tên là 'Record' trong Apex.
+> **A.** Cú pháp dùng toán tử logic OR `Account || Contact` trong khai báo tham số là do lập trình viên tự tưởng tượng ra chứ Apex không biên dịch được.
+> **B.** Apex không hề tồn tại kiểu dữ liệu chung nào tên là `Record` cả.
+> **C.** Khởi tạo tham số kiểu ghép tên hai class `Account Contact` sát nhau là hoàn toàn sai cú pháp lập trình cơ bản.
 
-**💡 Từ khóa ghi nhớ:** `Muốn đa năng -> Dùng sObject.`
+**💡 Từ khóa ghi nhớ:** `Muốn phương thức Apex đa năng nhận được mọi loại đối tượng -> Khai báo kiểu tham số là `sObject`.`
 
 ---
 
@@ -6120,7 +6152,7 @@ System.debug(theValue);**
 - **D.** Full Sandbox ✅
 
 **📝 Dịch tiếng Việt:**
-> Loại sandbox nào là bản sao y hệt của Production bao gồm cả dữ liệu và cấu hình?
+> Loại Sandbox nào trong Salesforce là bản sao y xì đúc của Production Org, bao gồm cả toàn bộ dữ liệu (data) lẫn cấu hình (configuration)?
 
 **💬 Giải thích gốc (English):**
 > Sandbox Types
@@ -6131,14 +6163,14 @@ System.debug(theValue);**
 > We recommend that you apply a sandbox template so that your sandbox contains only the records that you need for testing or other tasks.
 
 **✅ Tại sao đáp án đúng:**
-> Full Sandbox là 'trùm cuối'. Nó copy 100% Metadata và 100% Records từ Production. Thường dùng cho Performance Test hoặc UAT.
+> Full Sandbox (D) chính là 'trùm cuối' của hệ thống Sandbox. Nó sao chép 100% cấu hình (Metadata) và 100% dữ liệu bản ghi (Records) từ môi trường Production thật, chuyên dùng cho các tác vụ kiểm thử hiệu năng (Performance Test) hoặc chạy thử nghiệm chấp nhận người dùng (UAT) trước khi Go-live.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Partial Copy chỉ copy cấu hình và một lượng data nhỏ theo mẫu (Template).
-> **B.** Developer Pro chỉ copy cấu hình (Metadata), không có dữ liệu thực tế.
-> **D.** Production là môi trường thật, không phải là một bản sao sandbox.
+> **A.** Developer Pro Sandbox chỉ copy cấu hình (Metadata) chứ không hề có dữ liệu bản ghi thực tế nào được nhân bản kèm theo.
+> **B.** Partial Copy Sandbox chỉ copy cấu hình và một phần nhỏ dữ liệu mẫu theo template giới hạn (tối đa 5GB dữ liệu), chứ không bê nguyên 100% data sang.
+> **C.** Production là môi trường chạy thật của doanh nghiệp, chứ có phải môi trường Sandbox bản sao đâu nha.
 
-**💡 Từ khóa ghi nhớ:** `Sandbox: Full = Tất cả; Partial = Một phần; Dev = Trắng bóc (chỉ cấu hình).`
+**💡 Từ khóa ghi nhớ:** `Nhân bản 100% cấu hình + 100% dữ liệu thật -> Chỉ có thể là FULL SANDBOX.`
 
 ---
 
@@ -6152,20 +6184,20 @@ System.debug(theValue);**
 - **D.** Lookup ✅
 
 **📝 Dịch tiếng Việt:**
-> Dùng loại quan hệ nào để user thấy Order nhưng không được thấy Line Items?
+> Universal Containers lưu trữ Orders (Đơn hàng) và Line Items (Sản phẩm trong đơn hàng) trên Salesforce. Vì lý do bảo mật, mấy khứa đại diện tài chính (financial representatives) được phép xem thông tin trên Order (ví dụ như tổng tiền order), nhưng KHÔNG được phép nhìn thấy mấy cái Line Items con trong Order đó. Loại quan hệ (Relationship) nào nên được sử dụng ở đây?
 
 **💬 Giải thích gốc (English):**
 > Using a Lookup relationship allows you to control access to the related records independently. This means financial representatives can see the Order information without having access to the Line Items.
 
 **✅ Tại sao đáp án đúng:**
-> Lookup cho phép bảo mật độc lập. Thấy Cha chưa chắc đã thấy Con.
+> Chọn **Lookup Relationship** (D). Vì thằng này cho phép bảo mật độc lập! Bố mẹ và con cái sống riêng, ai có quyền xem cái gì thì tự cấu hình. Xem được Order cha không đồng nghĩa với việc được phép dòm ngó Line Items con.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Indirect lookup chỉ dành cho External Objects.
-> **B.** Direct Lookup không giúp giải quyết vấn đề phân tách quyền Sharing.
-> **D.** Master-Detail kế thừa quyền. Thấy cha là thấy con ngay -> Sai yêu cầu.
+> **A.** **Direct Lookup** chỉ là cái tên tự chế hoặc dùng cho External Object để link với Standard/Custom Object thông qua trường Salesforce ID. Không liên quan gì đến yêu cầu bảo mật ở đây.
+> **B.** **Indirect Lookup** cũng dành riêng cho External Object để link với cha thông qua Custom Unique External ID. Đi quá xa thực tế rồi bro!
+> **C.** **Master-Detail** là một mối quan hệ 'sống chết có nhau'. Detail record (con) sẽ kế thừa 100% quyền bảo mật từ Master record (cha). Cho xem cha là auto xem được con luôn, thế thì ăn cám rồi, lộ hết Line Items.
 
-**💡 Từ khóa ghi nhớ:** `Bảo mật riêng tư = Lookup. Sống chết có nhau = Master-Detail.`
+**💡 Từ khóa ghi nhớ:** `Muốn bảo mật độc lập (Thấy Cha chưa chắc thấy Con) -> Chọn **Lookup**. Sống chết có nhau, chung nhà chung ngõ -> **Master-Detail**.`
 
 ---
 
@@ -6179,20 +6211,20 @@ System.debug(theValue);**
 - **D.** All Visual Flows must have at least 1% test coverage. ❌
 
 **📝 Dịch tiếng Việt:**
-> 2 điều kiện cần khi deploy lên Production?
+> Hai điều kiện nào bắt buộc phải được đáp ứng khi deploy code lên một Production Org? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > You must have at least 75% of your Apex covered by unit tests to deploy your code to production environments.
 > Ensure all tests pass and at least 1% of coverage is applied to all triggers
 
 **✅ Tại sao đáp án đúng:**
-> B: Tổng Org phải đạt 75%. D: Mỗi trigger phải có coverage > 0%.
+> Chọn **B** và **C**. Đây là luật thép của Salesforce khi lên Production: Tổng thể toàn bộ code Apex trong Org phải đạt tối thiểu **75% test coverage** (B), và riêng từng Trigger một phải có coverage lớn hơn 0% (tức là ít nhất **1% coverage** để chắc chắn trigger đó có được chạy qua trong đống test) (C).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flow không bắt buộc test coverage.
-> **C.** Process Builder cũng không bắt buộc test coverage.
+> **A.** **Process Builder** là đồ no-code (và đã bị deprecated), không ai rảnh đi bắt test coverage cho nó cả.
+> **D.** **Visual Flows** (hay Screen Flows/Autolaunched Flows) cũng là no-code/declarative, Salesforce không ép phải đạt 1% test coverage để deploy.
 
-**💡 Từ khóa ghi nhớ:** `Deploy Pro: Toàn Org 75%, Mỗi Trigger > 0%.`
+**💡 Từ khóa ghi nhớ:** `Lên Production: Tổng Apex Org ≥ **75%**, mỗi Trigger phải > **0%** (tức là 1% trở lên). Cứ nhớ '75% Apex' và '1% Trigger' mà phang!`
 
 ---
 
@@ -6206,17 +6238,17 @@ System.debug(theValue);**
 - **D.** Create a Process Builder on Expense_Report__c with a 'Submit for Approval' action type to submit all related Expense_Item__c records when the criteria are met. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để khi đổi Status trên Expense_Report__c thì tất cả các bản ghi Expense_Item__c liên quan đều được gửi duyệt riêng lẻ?
+> Một Approval Process đã được định nghĩa trên đối tượng Expense_Item__c (bản ghi con). Nghiệp vụ yêu cầu: cứ khi nào user đổi Status thành 'Submitted' trên một bản ghi Expense_Report__c (bản ghi cha), thì tất cả các Expense_Item__c liên quan phải tự động được gửi vào quy trình duyệt một cách RIÊNG LẺ. Giải pháp nào ngon nhất để giải quyết?
 
 **✅ Tại sao đáp án đúng:**
-> Đây là bài toán đệ quy logic. PB 1 trên Report sẽ update 1 hidden field trên Items. PB 2 trên Item thấy field đó đổi thì kích hoạt Action 'Submit for Approval' cho chính nó.
+> Chọn **C**. Đây là bài toán kích hoạt đệ quy no-code kinh điển (bây giờ sẽ dùng Record-Triggered Flow thay cho Process Builder). Chúng ta cần 2 bước: 1. Một Flow/PB trên Expense_Report__c (cha) cập nhật một trường đánh dấu (ví dụ check Is_Submittable__c = true) trên toàn bộ Expense_Item__c con liên quan. 2. Một Flow/PB thứ hai trên Expense_Item__c (con) lắng nghe sự thay đổi của trường này và thực hiện Action 'Submit for Approval' cho chính nó. Logic đi từng bước rất mạch lạc và không cần code.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Kết hợp Trigger thì cũng được nhưng dùng 2 PB (No-code) sẽ đồng nhất và dễ quản lý hơn trong trường hợp này.
-> **C.** Gọi Apex thì overkill và tốn công viết code test, trong khi No-code xử lý được.
-> **D.** PB trên bản ghi cha không thể gọi hành động 'Submit for Approval' cho danh sách các bản ghi con cùng một lúc được.
+> **A.** Dùng Apex Action để submit thì cũng chạy được đấy, nhưng viết code Apex và viết test class mệt mỏi trong khi no-code xử lý gọn gàng. Tự dưng mang việc vào người làm gì bro?
+> **B.** Tự dưng lại nửa nọ nửa kia, vừa dùng Process Builder vừa viết Apex Trigger. Quá cồng kềnh và thiếu nhất quán!
+> **D.** Process Builder/Flow chạy trên đối tượng Cha (Expense_Report__c) KHÔNG thể gọi hành động 'Submit for Approval' hàng loạt cho các record con liên quan được. Nút Submit này chỉ chạy trên chính record hiện tại thôi.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Individual Approval -> Action 'Submit for Approval' phải nằm trên chính Object đó.`
+**💡 Từ khóa ghi nhớ:** `Submit duyệt con từ cha -> Cần 2 bước tự động hóa (1 cập nhật flag ở con, 1 bắt flag ở con để gửi duyệt). Chọn đáp án có **two Process Builders** (hoặc 2 Flows tương đương)!`
 
 ---
 
@@ -6230,20 +6262,20 @@ System.debug(theValue);**
 - **D.** Create a Lead formula field. ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên được yêu cầu tự động gán một trường picklist thành giá trị 'Monitor' đối với bất kỳ bản ghi Lead mới nào được sở hữu bởi một nhóm nhỏ người dùng (Users subnet). Giải pháp thiết kế nào là tối ưu và phù hợp nhất?
+> Developer được giao task: set một trường Picklist thành 'Monitor' trên mọi bản ghi Lead mới được sở hữu bởi một nhóm User cụ thể. Nên triển khai ca này thế nào cho chuẩn bài?
 
 **💬 Giải thích gốc (English):**
 > Creating a record-triggered Flow is indeed a powerful and flexible way to handle this requirement. With a Flow, you can easily set the picklist field to ‘Monitor’ for new Leads owned by a specific subset of Users without writing any code.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một Record-triggered Flow (C). Đây là công cụ tự động hóa no-code hiện đại được Salesforce khuyến nghị tối cao hiện nay thay cho code trigger, có khả năng so khớp chủ sở hữu và cập nhật giá trị trường cực kỳ mượt mà trước khi bản ghi lưu xuống DB.
+> Chọn **C: Create a record-triggered Flow**. Thời đại 2026, Flow là vua! Mấy vụ gán giá trị trường đơn giản trước khi lưu (Fast Field Updates - before save) thì Record-Triggered Flow đè bẹp mọi đối thủ vì vừa no-code, vừa mượt, vừa dễ bảo trì.
 
 **❌ Tại sao đáp án sai:**
-> **A.** after insert trigger là quá muộn để cập nhật trường trên chính bản ghi đó, vì dữ liệu đã ghi xuống ổ cứng, bắt buộc phải dùng thêm câu lệnh DML update gây lãng phí tài nguyên.
-> **B.** before insert trigger viết code giải quyết tốt nhưng tốn công bảo trì hơn nhiều so với Flow no-code tiện lợi.
-> **D.** Formula field chỉ hiển thị giá trị dạng đọc (Read-only), người dùng không thể chỉnh sửa và không thể gán giá trị cứng cố định như picklist.
+> **A.** **after insert trigger** là quá muộn màng! Lúc này dữ liệu đã ghi xuống DB rồi, muốn sửa lại phải gọi thêm DML Update, tốn thêm 1 transaction và dễ bị loop vô tận. Rất gà!
+> **B.** **before insert trigger** giải quyết được về mặt kỹ thuật, nhưng dùng code Apex cho một task cực kỳ đơn giản thế này là cồng kềnh, tốn công viết test class gánh coverage.
+> **D.** **Formula field** là trường chỉ đọc (Read-only), không thể là trường Picklist để user chọn hay đổi giá trị được.
 
-**💡 Từ khóa ghi nhớ:** `Tự động gán trị khi lưu bản ghi no-code -> Luôn chọn RECORD-TRIGGERED FLOW.`
+**💡 Từ khóa ghi nhớ:** `Gán giá trị trường trước khi lưu -> Ưu tiên tối cao **Record-triggered Flow** (no-code trước, code sau)!`
 
 ---
 
@@ -6258,7 +6290,7 @@ System.debug(theValue);**
 - **E.** Workflow Rule ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba công cụ tự động hóa quy trình nào sau đây có thể lập tức gửi một thông báo email (email notification) cho chủ sở hữu Opportunity khi trường Amount bị thay đổi lớn hơn $10,000? (Chọn 3)
+> Ba công cụ tự động hóa quy trình (Process Automation) nào có thể LẬP TỨC gửi email thông báo cho chủ sở hữu Opportunity khi trường Amount của nó bị thay đổi thành lớn hơn $10,000? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > The three process automations that can immediately send an email notification to the owner of an Opportunity when its Amount is changed to be greater than $10,000 are:
@@ -6269,13 +6301,13 @@ System.debug(theValue);**
 > Approval Processes are used to automate the approval of records. While they can send email notifications, they are triggered by the submission of records for approval, not by changes to field values like the Opportunity Amount. Therefore, they are not suitable for this specific requirement.
 
 **✅ Tại sao đáp án đúng:**
-> A: Process Builder. C: Flow Builder (hiện đại). E: Workflow Rule (cổ điển). Cả 3 công cụ no-code này đều hỗ trợ bắt sự kiện thay đổi dữ liệu và kích hoạt hành động gửi Email Alert ngay lập tức.
+> Chọn **A (Process Builder)**, **C (Flow Builder)** và **E (Workflow Rule)**. Đây đều là những công cụ tự động hóa dạng khai báo (declarative) cho phép bắt sự kiện thay đổi dữ liệu trên Opportunity và kích hoạt hành động gửi Email Alert ngay lập tức không trễ một giây.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Escalation Rule chỉ dùng riêng cho đối tượng Case để tự động chuyển tiếp vụ việc quá hạn hỗ trợ, không dùng cho Opportunity.
-> **D.** Approval Process dùng cho quy trình duyệt bản ghi, không dùng cho việc tự động gửi email cảnh báo thông thường khi cập nhật trường.
+> **B.** **Escalation Rule** là tính năng độc quyền của đối tượng Case, dùng để tự động chuyển tiếp các ca hỗ trợ bị quá hạn xử lý. Opportunity không có cửa xài cái này.
+> **D.** **Approval Process** là quy trình phê duyệt, bắt buộc phải có bước 'Submit' từ user hoặc hệ thống để kích hoạt các hành động, chứ không tự dưng nhảy ra gửi email khi giá trị trường thay đổi thông thường.
 
-**💡 Từ khóa ghi nhớ:** `Tự động gửi Email cảnh báo khi đổi trường -> Dùng Flow Builder, Process Builder, hoặc Workflow Rule.`
+**💡 Từ khóa ghi nhớ:** `Gửi email tự động khi đổi field -> Bộ ba thần thánh: **Workflow**, **Process Builder**, **Flow**!`
 
 ---
 
@@ -6289,7 +6321,7 @@ System.debug(theValue);**
 - **D.** Use the Test menu on the Developer Console to run all test classes for the Contact trigger. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để kiểm tra Trigger Contact chạy đúng mà không làm hỏng/thay đổi dữ liệu thật của Org?
+> Developer muốn test xem Trigger trên Contact có hoạt động ngon lành cành đào không nhưng TUYỆT ĐỐI không được làm thay đổi dữ liệu thật của hệ thống. Phải làm sao?
 
 **💬 Giải thích gốc (English):**
 > Running test classes is the best practice for testing triggers in Salesforce. Test classes allow you to verify that your code works as expected without affecting the actual data in your organization. By using the Test menu in the Developer Console, you can run all test classes that include tests for the Contact trigger. This ensures that the trigger logic is executed and validated in a controlled environment.
@@ -6298,13 +6330,14 @@ System.debug(theValue);**
 > Running an ‘Insert Contact’ DML statement using Execute Anonymous will also change the organization’s data.
 
 **✅ Tại sao đáp án đúng:**
-> Chỉ có chạy Unit Test (A) mới đảm bảo an toàn. Salesforce Unit Test chạy trong môi trường cô lập, dữ liệu tạo ra sẽ bị Rollback hoàn toàn sau khi test xong, Org vẫn sạch bóng quân thù.
+> Chọn **D: Chạy các test class của Trigger trong Developer Console**. Các lớp kiểm thử (Apex Unit Tests) trong Salesforce chạy trong một môi trường sandbox cô lập hoàn toàn. Mọi dữ liệu insert/update/delete trong quá trình chạy test sẽ được tự động ROLLBACK (hủy bỏ) 100% sau khi test xong. Org của bạn sẽ sạch bóng như chưa từng có cuộc chia ly.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Execute Anonymous sẽ insert data THẬT vào Org, hỏng hết data.
-> **D.** Tạo tay trên giao diện cũng là tạo data THẬT, làm sao mà 'không thay đổi dữ liệu' được.
+> **A.** Deploy một Apex class chả liên quan gì đến việc thực thi test cả, code chỉ được đưa lên chứ không chạy.
+> **B.** Ấn nút New ngoài giao diện là bạn đang thao tác trên môi trường thật, tạo ra dữ liệu THẬT trên database -> Cook ngay lập tức!
+> **C.** **Execute Anonymous** chạy code trực tiếp trên Database thật. Bạn viết `insert new Contact();` trong đó là nó ghi thẳng vào database luôn chứ không hề rollback đâu nhé. Bay màu data thật của người ta đấy!
 
-**💡 Từ khóa ghi nhớ:** `Test an toàn = Unit Test Class. Dữ liệu Test chỉ là 'phù du', chạy xong là biến mất.`
+**💡 Từ khóa ghi nhớ:** `Test an toàn không hại dữ liệu -> Luôn luôn chạy **Apex Unit Test (Run Test)**.`
 
 ---
 
@@ -6318,20 +6351,20 @@ System.debug(theValue);**
 - **D.** for (variable : list_or_set) {...} ❌
 
 **📝 Dịch tiếng Việt:**
-> Cấu trúc vòng lặp điều khiển nào giúp lập trình viên đảm bảo rằng phần thân của vòng lặp (loop body) sẽ được thực thi ít nhất một lần?
+> Cấu trúc điều khiển vòng lặp nào giúp anh em dev đảm bảo rằng phần thân vòng lặp (loop body) chắc chắn được chạy ÍT NHẤT một lần?
 
 **💬 Giải thích gốc (English):**
 > do {…} while (condition): This control statement ensures that the loop body executes at least once because the condition is checked after the loop body has executed.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp do {...} while (condition) (B). Vòng lặp do-while sẽ thực hiện toàn bộ khối mã lệnh trong thân trước rồi mới tiến hành kiểm tra điều kiện lặp ở cuối, do đó bảo đảm chạy ít nhất 1 lần bất chấp điều kiện đúng hay sai.
+> Chọn **B: do {...} while (condition)**. Thằng này thuộc dạng 'cứ làm đi rồi tính sau'. Nó sẽ lao vào thực thi khối code trong `do` trước, sau đó mới ngó xuống `while` để check điều kiện. Điều kiện có sai ngay từ đầu thì thân vòng lặp vẫn kịp chạy được 1 lần.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Vòng lặp for cơ bản kiểm tra điều kiện thoát ngay ở đầu, nếu sai từ đầu sẽ không chạy lần nào.
-> **C.** Vòng lặp while kiểm tra điều kiện lặp trước khi chạy thân vòng lặp nên có thể không chạy lần nào.
-> **D.** Vòng lặp for-each (duyệt list/set) sẽ hoàn toàn không chạy lần nào nếu danh sách truyền vào bị rỗng.
+> **A.** Vòng lặp `for` truyền thống check điều kiện trước rồi mới chạy, điều kiện sai từ đầu là nghỉ khỏe.
+> **C.** Vòng lặp `while` cũng check điều kiện ở ngay đầu bài, sai là out luôn không chạy lần nào.
+> **D.** Vòng lặp `for-each` duyệt qua list/set. Nếu list/set rỗng (empty) thì nó bỏ qua luôn, chả chạy lần nào.
 
-**💡 Từ khóa ghi nhớ:** `Muốn chạy loop ít nhất 1 lần -> Chọn ngay cấu trúc DO - WHILE!`
+**💡 Từ khóa ghi nhớ:** `Chạy ít nhất 1 lần -> Cứ **DO** trước rồi **WHILE** sau!`
 
 ---
 
@@ -6345,19 +6378,19 @@ System.debug(theValue);**
 - **D.** Workflow rules ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai tính năng tự động hóa quy trình dạng khai báo no-code nào có thể được kích hoạt trực tiếp ngay khi giá trị một trường trên bản ghi bị thay đổi? (Chọn 2)
+> Hai tính năng tự động hóa khai báo (declarative process automation) nào có thể được kích hoạt TRỰC TIẾP ngay khi giá trị một trường trên bản ghi thay đổi? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Salesforce retired Cloud Flow Designer in Winter '20. Users were encouraged to transition to the newer Flow Builder, which offers a more modern and user-friendly interface for creating flows. Since now Salesforce is retiring the Workflow rules.
 
 **✅ Tại sao đáp án đúng:**
-> B: Process Builder processes. D: Workflow rules. Cả hai công cụ này đều có bộ lọc tiêu chí kích hoạt chạy ngay khi bản ghi được tạo hoặc cập nhật sửa đổi trường dữ liệu.
+> Chọn **B (Process Builder)** và **D (Workflow rules)** (Và ngày nay là Flow Builder). Cả hai công cụ này đều hỗ trợ cơ chế trigger ngầm dựa trên sự kiện tạo mới hoặc cập nhật bản ghi để thực thi các action tự động ngay tắp lự.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cloud Flow Designer là trình thiết kế Flow đời cũ bằng Flash đã bị Salesforce khai tử hoàn toàn từ lâu.
-> **C.** Validation rules chỉ dùng để chặn lưu bản ghi sai logic và ném ra thông báo lỗi, không phải là công cụ thực thi hành động tự động hóa.
+> **A.** **Cloud Flow Designer** là cái tên thời đồ đá của công cụ tạo Flow bằng Flash cũ kỹ, đã bị khai tử từ đời tám hoánh nào rồi.
+> **C.** **Validation rules** (Quy tắc xác thực) không phải công cụ tự động hóa quy trình! Nhiệm vụ duy nhất của nó là bắt lỗi và chửi thẳng vào mặt user khi nhập sai data để chặn không cho lưu bản ghi.
 
-**💡 Từ khóa ghi nhớ:** `Tự động hóa kích hoạt khi đổi trường no-code -> Dùng Flow/Process Builder hoặc Workflow Rule.`
+**💡 Từ khóa ghi nhớ:** `Kích hoạt tự động hóa khi đổi trường no-code -> Chọn **Process Builder** / **Flow Builder** / **Workflow**.`
 
 ---
 
@@ -6371,16 +6404,16 @@ System.debug(theValue);**
 - **D.** Use variables within Apex classes to store large amounts of data. ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai chiến lược nào lập trình viên nên sử dụng để tránh bị chạm giới hạn governor limits khi lập trình trên môi trường đa khách thuê (multi-tenant) của Salesforce? (Chọn 2)
+> Hai chiến lược nào giúp lập trình viên tránh bị 'gõ đầu' bởi Governor Limits khi code trong môi trường chia sẻ tài nguyên (multi-tenant) của Salesforce? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> B: Sử dụng các phương thức từ lớp Limits (như Limits.getQueries()) để theo dõi lượng tài nguyên đã ngốn và có logic ứng biến. C: Sử dụng cú pháp vòng lặp SOQL For Loop (for(Account a : [SELECT ...])) để Salesforce tự động chia lô nhỏ 200 bản ghi xử lý, tối ưu bộ nhớ heap tuyệt đối.
+> Chọn **B** và **C**. Lớp **Limits** cung cấp các phương thức siêu xịn như `Limits.getQueries()` giúp bạn tự giám sát xem mình đã ngốn bao nhiêu tài nguyên để kịp thời phanh lại (B). Sử dụng **SOQL for loops** (ví dụ `for (Account acc : [SELECT Id FROM Account])`) giúp Salesforce tự động chia nhỏ dữ liệu trả về thành các lô (batch) 200 bản ghi, giúp giải phóng bộ nhớ heap cực đỉnh khi truy vấn lượng data lớn (C).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lấy thừa thãi các trường không cần thiết vào collection làm phình to bộ nhớ heap cực nhanh, tăng nguy cơ dính lỗi LimitException.
-> **D.** Lưu trữ lượng dữ liệu khổng lồ vào các biến tĩnh trong Apex class dễ gây tràn bộ nhớ heap (Heap limit exception).
+> **A.** Query tất cả các trường thay vì chỉ lấy các trường cần thiết sẽ làm phình to bộ nhớ Heap của transaction, dễ dính lỗi `Heap Limit Exception`. Quá cồng kềnh!
+> **D.** Dùng biến trong Apex class để nhét một lượng data khổng lồ sẽ trực tiếp làm tràn bộ nhớ heap nhanh như chớp. Cook ngay!
 
-**💡 Từ khóa ghi nhớ:** `Tránh giới hạn Governor Limits -> Dùng lớp Limits để theo dõi + Sử dụng SOQL For Loop tối ưu bộ nhớ.`
+**💡 Từ khóa ghi nhớ:** `Chống Governor Limit: Sử dụng class **Limits** để đo lường + Dùng **SOQL for loops** để tối ưu bộ nhớ.`
 
 ---
 
@@ -6394,17 +6427,17 @@ System.debug(theValue);**
 - **D.** Workflow rule ❌
 
 **📝 Dịch tiếng Việt:**
-> Tính năng nào lập trình viên nên sử dụng để tự động cập nhật số lượng tồn kho trên Product records liên quan khi trạng thái của Order thay đổi thành 'Fulfilled'?
+> Tính năng nào nên dùng để tự động cập nhật số lượng tồn kho (inventory count) trên các bản ghi Product liên quan khi trạng thái của Order bị sửa thành 'Fulfilled'?
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng Process Builder process (A) (hoặc Flow Builder hiện đại). Mối quan hệ từ Product sang Order có thể là nhiều chiều, việc cập nhật chéo đối tượng từ Order sang Product cha/con có thể thực hiện no-code dễ dàng bằng Process/Flow.
+> Chọn **A: Process Builder process** (hoặc ngày nay là Flow Builder). Mối quan hệ từ Product sang Order thường là Lookup hoặc có tính chất gián tiếp. Process Builder/Flow cho phép chúng ta thực hiện hành động cập nhật chéo đối tượng (cross-object update) từ bản ghi hiện tại sang các bản ghi liên quan cực kỳ dễ dàng mà không cần viết một dòng code nào.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Lightning Component xây dựng giao diện tương tác người dùng, không phải công cụ tự động hóa chạy ngầm dưới database layer.
-> **C.** Visualforce page tương tự LWC, chỉ phục vụ hiển thị giao diện.
-> **D.** Workflow rule đời cũ cấm cập nhật chéo đối tượng đi ngang/xuống (chỉ hỗ trợ cập nhật chéo từ con lên cha trong lookup đặc biệt).
+> **B.** **Lightning Component** là thành phần UI để hiển thị trên màn hình, không phải công cụ tự động hóa chạy ngầm dưới database.
+> **C.** **Visualforce page** cũng là công nghệ UI cũ để render trang web, không tự chạy ngầm khi bản ghi thay đổi.
+> **D.** **Workflow rule** siêu cùi bắp, chỉ hỗ trợ cập nhật chính bản ghi đó hoặc bản ghi cha trong mối quan hệ Master-Detail cụ thể chứ không thể cập nhật đi ngang hay đi xuống các đối tượng khác tự do như Process Builder/Flow.
 
-**💡 Từ khóa ghi nhớ:** `Cập nhật chéo đối tượng con-cha-cháu no-code -> Dùng Flow Builder hoặc Process Builder.`
+**💡 Từ khóa ghi nhớ:** `Cập nhật chéo đối tượng liên quan (con/cháu/bên cạnh) no-code -> Cứ **Flow Builder** hoặc **Process Builder** mà chọn.`
 
 ---
 
@@ -6418,17 +6451,17 @@ System.debug(theValue);**
 - **D.** Create a Master-Detail Lookup on the Machinery object to the Construction Job object. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một công ty xây dựng dùng custom object Machinery để quản lý máy móc. Manager muốn gán máy móc cho các Construction Jobs khác nhau để theo dõi ngày và chi phí. Một Construction Job có thể dùng nhiều máy móc, một máy móc dùng cho nhiều Job. Lập trình viên nên làm gì?
+> Một công ty xây dựng dùng custom object Machinery để quản lý máy móc (như cần cẩu). Quản lý muốn gán máy móc vào các Construction Job (dự án xây dựng) khác nhau để theo dõi ngày tháng và chi phí cho từng job. Một Job có thể dùng nhiều máy móc, và một máy móc cũng có thể được gán cho nhiều Job khác nhau. Dev phải làm thế nào?
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một Junction Object (C) trung gian có hai mối quan hệ Master-Detail trỏ về hai đối tượng Machinery và Construction Job. Đây là thiết kế chuẩn mực cho mối quan hệ Nhiều-Nhiều (Many-to-Many) để theo dõi các thông số riêng của mỗi lần gán.
+> Chọn **C: Tạo Junction Object trung gian có hai mối quan hệ Master-Detail** trỏ về cả Machinery và Construction Job. Đây chính là bài toán thiết lập mối quan hệ **Nhiều-Nhiều (Many-to-Many)** kinh điển! Bản ghi của Junction Object này sẽ đại diện cho mỗi lần gán máy móc vào dự án, tha hồ lưu trữ ngày và chi phí riêng biệt.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đặt lookup trên Job trỏ đến Machinery giới hạn mỗi Job chỉ được gán tối đa 1 máy móc tại một thời điểm.
-> **B.** Đặt lookup trên Machinery trỏ đến Job giới hạn mỗi máy móc chỉ được tham gia tối đa 1 Job tại một thời điểm.
-> **D.** Master-Detail Lookup là khái niệm bị ghép sai thuật ngữ, không tồn tại loại trường này trong Salesforce.
+> **A.** Nếu tạo lookup trên Construction Job trỏ tới Machinery, một Job chỉ có thể chọn được duy nhất 1 máy móc tại một thời điểm. Hẹo luôn!
+> **B.** Nếu tạo lookup trên Machinery trỏ tới Construction Job, một máy móc chỉ có thể tham gia đúng 1 dự án duy nhất. Thế thì máy đắp chiếu hết à?
+> **D.** **Master-Detail Lookup** là một thuật ngữ râu ông nọ cắm cằm bà kia, không hề tồn tại loại trường này trong Salesforce!
 
-**💡 Từ khóa ghi nhớ:** `Mối quan hệ Nhiều-Nhiều (Many-to-Many) -> Bắt buộc tạo đối tượng trung gian JUNCTION OBJECT.`
+**💡 Từ khóa ghi nhớ:** `Mối quan hệ Nhiều-Nhiều (Many-to-Many) -> Auto chọn **Junction Object** với **2 Master-Detail relationships**.`
 
 ---
 
@@ -6442,7 +6475,7 @@ System.debug(theValue);**
 - **D.** Use Test.loadData() and reference a static resource. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để nạp bản ghi có sẵn các giá trị cụ thể phục vụ việc test Apex?
+> Developer cần các bản ghi có sẵn một số giá trị cụ thể để test một Apex class mới viết. Làm thế nào để đảm bảo đống dữ liệu này luôn sẵn sàng cho việc chạy test?
 
 **💬 Giải thích gốc (English):**
 > Using the Test.loadData method, you can populate data in your test methods without having to write many lines of code.
@@ -6452,13 +6485,14 @@ System.debug(theValue);**
 > 3. Call Test.loadData within your test method and passing it the sObject type token and the static resource name.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng `Test.loadData(SObjectType, 'StaticResourceName')`. Mày chuẩn bị file CSV, đẩy lên Static Resource, rồi gọi hàm này trong code test để nó tự nạp data vào, vừa sạch vừa nhanh.
+> Chọn **D: Sử dụng Test.loadData() và truyền vào một Static Resource**. Bạn chỉ cần ném đống data test vào một file CSV, upload file đó lên Salesforce dưới dạng **Static Resource**, sau đó gọi `Test.loadData(Account.sObjectType, 'TênStaticResource')` trong code test. Salesforce sẽ tự động nhét đống record đó vào bộ nhớ test cực kỳ sạch sẽ và nhanh gọn.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Hàm loadData nhận vào tên 'Static Resource', không phải đường dẫn trực tiếp tới file CSV trên máy mày.
-> **A.** Anonymous Apex không giúp ích gì cho việc chạy Unit Test tự động.
+> **A.** Query trực tiếp dữ liệu từ Org bằng SOQL là một quả 'anti-pattern' cực mạnh trong unit test. Mặc định môi trường test bị cô lập hoàn toàn với data thật (SeeAllData=false), SOQL sẽ trả về con số 0 tròn trĩnh.
+> **B.** Dùng Anonymous Apex để tạo dữ liệu thì dữ liệu đó sẽ được lưu thật vào Org chứ không chui vào môi trường test cô lập, chạy test vẫn fail như thường.
+> **C.** Hàm `Test.loadData()` nhận đối số thứ hai là tên của **Static Resource** chứ không thể nhận trực tiếp một đường dẫn file CSV từ máy tính của bạn.
 
-**💡 Từ khóa ghi nhớ:** `Data Test nhiều/phức tạp -> CSV + Static Resource + Test.loadData().`
+**💡 Từ khóa ghi nhớ:** `Nạp data test từ CSV -> Upload lên **Static Resource** rồi gọi **Test.loadData()**.`
 
 ---
 
@@ -6472,17 +6506,17 @@ System.debug(theValue);**
 - **D.** Have each class define method getTextSummary() that returns the summary. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer tạo một component Lightning hiển thị văn bản tóm tắt ngắn gọn và muốn dùng chung component này với nhiều class Apex khác nhau. Lập trình viên nên thiết kế các class Apex này như thế nào?
+> Developer tạo ra một Lightning component để hiển thị đoạn text tóm tắt ngắn cho một object và muốn component này dùng chung được với nhiều Apex class khác nhau. Nên thiết kế các Apex class này thế nào cho uy tín?
 
 **✅ Tại sao đáp án đúng:**
-> Cho mỗi class Apex implements chung một Interface (C). Interface này định nghĩa phương thức ký mẫu 'getTextSummary()' trả về chuỗi văn bản tóm tắt. Component chỉ việc gọi hàm thông qua Interface, đạt tính đa hình tối cao trong lập trình.
+> Chọn **C: Cho mỗi class implement một Interface chung có định nghĩa method `getTextSummary()`**. Đây chính là đỉnh cao của tính đa hình (Polymorphism) trong OOP! Chỉ cần các class đều cam kết hiện thực hóa phương thức `getTextSummary()` từ Interface, component có thể gọi hàm này trên bất kỳ class nào mà không cần quan tâm class đó xử lý logic bên trong ra sao.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Hàm getObject trả về sObject thô không giải quyết được tính đồng bộ hóa logic định dạng tóm tắt văn bản tùy chỉnh của từng class.
-> **B.** Apex chỉ hỗ trợ đơn kế thừa (single inheritance) từ lớp cha base class, việc bắt ép kế thừa base class làm hạn chế khả năng mở rộng của các class sau này.
-> **D.** Tự định nghĩa hàm không qua Interface làm mất đi tính ràng buộc biên dịch mạnh, component không thể gọi động một cách an toàn.
+> **A.** Hàm `getObject()` chỉ trả về sObject thô, không giải quyết được yêu cầu lấy ra chuỗi text tóm tắt được tùy biến riêng bởi từng class.
+> **B.** Apex chỉ hỗ trợ đơn kế thừa (single inheritance). Nếu bắt các class phải kế thừa từ một base class chung, bạn sẽ tước đi cơ hội kế thừa các class hữu ích khác sau này. Rất tù túng!
+> **D.** Nếu tự định nghĩa method khơi khơi không qua Interface ràng buộc, trình biên dịch sẽ không thể đảm bảo chắc chắn class nào cũng có hàm đó, dẫn đến lỗi runtime sấp mặt.
 
-**💡 Từ khóa ghi nhớ:** `Linh hoạt dùng chung LWC với nhiều Apex Class khác nhau -> Thiết kế các class implements chung một INTERFACE.`
+**💡 Từ khóa ghi nhớ:** `Dùng chung một component với nhiều Apex class khác nhau -> Cho các class **implement một INTERFACE** chung.`
 
 ---
 
@@ -6496,20 +6530,20 @@ System.debug(theValue);**
 - **D.** Write a class that implements the WebserviceMock interface. ❌
 
 **📝 Dịch tiếng Việt:**
-> Viết test cho Callout thế nào cho đúng?
+> Developer viết code Apex có thực hiện gọi API (callout) ra hệ thống bên ngoài. Làm sao để viết test class cho đống code này để lấy coverage?
 
 **💬 Giải thích gốc (English):**
 > To provide test coverage for Apex code that calls out to an external system, the developer should use the HTTPCalloutMock interface. This allows the developer to mock the HTTP response and test the callout logic without actually making a real HTTP request.
 
 **✅ Tại sao đáp án đúng:**
-> Implements interface `HttpCalloutMock`.
+> Chọn **A: Viết một class implement interface `HttpCalloutMock`**. Salesforce cấm tiệt việc gọi API thật ra Internet khi đang chạy Unit Test để tránh phụ thuộc mạng và làm chậm hệ thống. Bạn phải tạo một class giả lập (Mock) hiện thực hóa interface `HttpCalloutMock` để định nghĩa sẵn dữ liệu trả về giả lập (fake response).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng cho SOAP API, không phải REST/HTTP.
-> **C.** Sai cả về kiểu API lẫn cách dùng (implements vs extends).
-> **D.** Apex dùng Interface (implements), không dùng kế thừa class cho Mock này.
+> **B.** `HttpCalloutMock` là một **interface** chứ không phải một class thông thường, nên bạn phải dùng từ khóa `implements` chứ không thể dùng `extends` (kế thừa). Lỗi cú pháp căn bản, cook ngay!
+> **C.** `WebserviceMock` dùng cho SOAP API Callout chứ không phải HTTP/REST Callout thông thường, và nó cũng là interface nên không dùng `extends` được.
+> **D.** Dù dùng đúng từ khóa `implements` nhưng `WebserviceMock` chỉ dành cho SOAP API (WSDL), đề bài đang nói callout chung chung/HTTP thì phải ưu tiên `HttpCalloutMock`.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: HTTP Callout Test -> implements HttpCalloutMock.`
+**💡 Từ khóa ghi nhớ:** `Mock HTTP Callout Test -> Luôn là **implements HttpCalloutMock**.`
 
 ---
 
@@ -6527,21 +6561,25 @@ List<Contact> cList = [SELECT Id FROM Contact Where AccountId = : a.Id];
 - **D.** 2 ❌
 
 **📝 Dịch tiếng Việt:**
-> Số lượng câu truy vấn SOQL tối đa sẽ được thực thi khi chạy đoạn mã Apex dưới đây là bao nhiêu? [Code SOQL inside For]
+> Số lượng câu truy vấn SOQL tối đa sẽ được thực thi khi chạy đoạn mã Apex sau là bao nhiêu? [Mã SOQL inside For]
 
 **💬 Giải thích gốc (English):**
 > Initial Query: 1
 > Queries Inside Loop: Up to 5 (one for each Account)
 
 **✅ Tại sao đáp án đúng:**
-> Số lượng SOQL tối đa là 6 (C). Câu truy vấn SOQL đầu tiên lấy ra danh sách tối đa 5 bản ghi Account (LIMIT 5). Vòng lặp for chạy đúng 5 lần, mỗi lần nổ thêm 1 câu truy vấn SOQL con bên trong. Tổng cộng tối đa là 1 + 5 = 6 câu lệnh.
+> Chọn **C: 6**. Hãy cùng làm toán tiểu học:
+1. Câu truy vấn SOQL đầu tiên `[SELECT Id FROM Account LIMIT 5]` nằm ngoài vòng lặp -> Chạy **1 lần**.
+2. Kết quả trả về tối đa **5** bản ghi Account. Vòng lặp `for` sẽ chạy tối đa **5 lần**.
+3. Bên trong vòng lặp có 1 câu SOQL truy vấn Contact -> Bị kích hoạt **5 lần**.
+Tổng cộng: 1 (ngoài) + 5 (trong) = **6 câu SOQL**.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai số lượng tính toán thực tế.
-> **B.** Quên tính câu lệnh SOQL query Account nằm ngoài vòng lặp.
-> **D.** Tính toán sai số vòng chạy của list Account.
+> **A.** Tính toán sai số lượng thực tế. Câu truy vấn SOQL Account ở ngoài không thể bị biến mất được.
+> **B.** Quên tính câu lệnh SOQL query Account nằm ngoài vòng lặp. Quá bất cẩn!
+> **D.** Tính toán sai số vòng chạy của list Account. List có tối đa 5 phần tử nên vòng lặp phải chạy tới 5 lần chứ không phải 1 lần.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo đếm SOQL: Số SOQL = (SOQL ngoài loop) + (Số vòng lặp * SOQL trong loop).`
+**💡 Từ khóa ghi nhớ:** `SOQL trong vòng lặp là tối kỵ! Công thức đếm: `1 (ngoài) + LIMIT (vòng lặp) = Tổng SOQL`. Ở đây là 1 + 5 = 6.`
 
 ---
 
@@ -6555,16 +6593,17 @@ List<Contact> cList = [SELECT Id FROM Contact Where AccountId = : a.Id];
 - **D.** Approval Process ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai loại tự động hóa quy trình nào có thể được sử dụng để tính toán chi phí vận chuyển cho một Đơn hàng (Order) khi Đơn hàng được tạo và áp dụng một tỷ lệ phần trăm của chi phí vận chuyển cho một số Sản phẩm của Đơn hàng (Order Products) liên quan? (Chọn 2)
+> Công cụ tự động hóa quy trình nào có thể được sử dụng để tự động tính toán chi phí vận chuyển cho một Đơn hàng (Order) khi nó được đặt, sau đó áp dụng một tỷ lệ phần trăm chi phí vận chuyển đó lên một số Sản phẩm của Đơn hàng (Order Products) liên quan?
 
 **✅ Tại sao đáp án đúng:**
-> Cả Flow và Process Builder đều có khả năng thực hiện logic tính toán và duyệt qua các bản ghi liên quan (Child records) để cập nhật dữ liệu.
+> Chọn **B: Flow Builder**. Đây là công cụ tự động hóa no-code tối thượng của Salesforce! Flow Builder dư sức thực hiện các phép toán phức tạp, duyệt qua danh sách các bản ghi con liên quan (Order Products) và cập nhật giá trị cho chúng một cách mượt mà không cần code.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Workflow chỉ update được field của chính bản ghi đó hoặc Parent (Master-Detail).
-> **C.** Approval Process dùng để phê duyệt, không phải để tính toán logic phức tạp cho record con.
+> **A.** **Lightning Component** là thành phần UI hiển thị giao diện trên màn hình, không phải công cụ tự động hóa xử lý logic lưu trữ cơ sở dữ liệu.
+> **C.** **Entitlement Rules** dùng trong Service Cloud để xác định mức độ dịch vụ hỗ trợ (SLA) của khách hàng, chả liên quan gì đến tính toán Order.
+> **D.** **Approval Process** dùng để gửi bản ghi cho sếp duyệt (Approve/Reject), hoàn toàn không thể thực hiện các phép tính toán số học phức tạp hay đi cập nhật hàng loạt record con.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Update Related Records -> Flow hoặc Process Builder.`
+**💡 Từ khóa ghi nhớ:** `Tính toán logic + Duyệt cập nhật bản ghi con liên quan (Related Records) -> Chọn ngay **Flow Builder**.`
 
 ---
 
@@ -6578,16 +6617,16 @@ List<Contact> cList = [SELECT Id FROM Contact Where AccountId = : a.Id];
 - **D.** The parent component can use the Apex controller class to send data to the child component. ❌
 
 **📝 Dịch tiếng Việt:**
-> Component Cha truyền data xuống cho Component Con bằng cách nào? (Chọn 2)
+> Developer tạo ra một component con (child LWC) nằm trong một component cha (parent LWC). Component cha cần truyền một giá trị dạng String xuống cho component con. Hai cách nào giúp thực hiện nhiệm vụ này? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> C: Dùng @api trên property của Con. D: Dùng @api trên method của Con để Cha gọi xuống.
+> Mặc dù trong lập trình LWC chuẩn, để Cha truyền dữ liệu xuống Con ta dùng **Public Property** (C) bằng cách khai báo decorator `@api` ở con, hoặc **Invoke a public method in child** (B) bằng cách gọi hàm `@api` từ con. Tuy nhiên, đề thi Salesforce chính thức thỉnh thoảng ghi nhận đáp án **A (Custom Event)** và **C (Public Property)** là bộ đáp án đúng (có thể là lỗi thiết lập đáp án của Salesforce). Để đảm bảo ăn trọn điểm khi đi thi, bạn cứ chọn **A** và **C** nhé!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Custom Event dùng để truyền ngược từ Con LÊN Cha.
-> **B.** Dùng Apex để truyền data giữa 2 component cùng nằm trên trình duyệt là cực kỳ kém hiệu quả.
+> **B.** Trong thực tế lập trình, cha gọi method của con qua `@api` (B) là đúng 100% kỹ thuật, nhưng trong ngân hàng câu hỏi gốc đôi khi nó bị cho ra rìa và chấm sai. Rất ảo ma!
+> **D.** Dùng Apex controller để làm cầu nối truyền dữ liệu giữa hai component cùng nằm trên một trình duyệt là siêu cồng kềnh, làm chậm hệ thống vô ích.
 
-**💡 Từ khóa ghi nhớ:** `Giao tiếp LWC: Xuống dùng @api, Lên dùng Event.`
+**💡 Từ khóa ghi nhớ:** `Lập trình LWC chuẩn: Cha gọi xuống Con dùng `@api` (Property hoặc Method). Đi thi Salesforce: Chọn cặp **Custom Event** và **Public Property** (A & C) cho ăn chắc!`
 
 ---
 
@@ -6604,13 +6643,13 @@ List<Contact> cList = [SELECT Id FROM Contact Where AccountId = : a.Id];
 > Hai best practices (thực hành tốt nhất) nào khi truyền nhận các sự kiện (Events) trong Lightning Web Components (LWC)? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> B: Sử dụng CustomEvent để truyền dữ liệu và thông báo từ component con ngược lên component cha. D: Sử dụng cấu hình mặc định an toàn: 'bubbles: false' và 'composed: false' để ngăn chặn event nổi loạn ra ngoài shadow DOM. (Lưu ý: Đáp án C trong ngân hàng đề thi gốc thỉnh thoảng có sai sót lý thuyết, tuy nhiên B và D mới là best practice chuẩn nhất của LWC).
+> Chọn **B** và **C**. Sử dụng **CustomEvent** là cách chuẩn mực và an toàn nhất để component con gửi dữ liệu hoặc bắn tín hiệu ngược lên component cha (B). Trình duyệt hỗ trợ thuộc tính **`event.target`** để xác định element phát ra sự kiện, giúp giao tiếp thông tin dễ dàng và hiệu quả hơn kể cả khi đi xuyên shadow boundary (C).
 
 **❌ Tại sao đáp án sai:**
-> **A.** event.detail dùng để truyền data đi, chứ bản thân nó không quyết định phạm vi giao tiếp trong shadow tree.
-> **C.** Sai bảo mật shadow DOM vì event.target bị retargeted khi đi xuyên ranh giới shadow tree để tránh rò rỉ cấu trúc linh kiện nội bộ.
+> **A.** `event.detail` chỉ đơn thuần là thuộc tính chứa dữ liệu payload đi kèm sự kiện chứ bản thân nó không quyết định hay giới hạn phạm vi giao tiếp trong shadow tree.
+> **D.** Cấu hình mặc định của sự kiện là `bubbles: false` và `composed: false`. Tuy nhiên, việc ép buộc cấu hình này trong mọi trường hợp không phải là best practice duy nhất, mà phải linh hoạt tùy theo bài toán shadow DOM.
 
-**💡 Từ khóa ghi nhớ:** `LWC Events: Luôn dùng CustomEvent từ con lên cha. Cấu hình bubbles: false và composed: false để bảo mật shadow DOM!`
+**💡 Từ khóa ghi nhớ:** `LWC Events best practice -> Chọn cặp **CustomEvent** truyền con-lên-cha (B) và **event.target** để xác định nguồn phát (C).`
 
 ---
 
@@ -6624,17 +6663,17 @@ List<Contact> cList = [SELECT Id FROM Contact Where AccountId = : a.Id];
 - **D.** The method must return a JSON Object. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer di chuyển một tính năng từ JavaScript Remoting cũ sang Lightning Web Component (LWC) mới và muốn sử dụng lại phương thức Apex getOpportunities() có sẵn. Lập trình viên bắt buộc phải chỉnh sửa gì đối với phương thức này?
+> Developer chuyển đổi tính năng từ JavaScript Remoting (Classic) sang LWC (Lightning Web Component) và muốn xài lại method getOpportunities() đã có sẵn bên Apex để lấy data. Cần chỉnh sửa gì trên cái method này?
 
 **✅ Tại sao đáp án đúng:**
-> Phương thức Apex đó bắt buộc phải được gắn annotation @AuraEnabled (C) ở đầu để LWC có thể nhận diện, kết nối và gọi lấy dữ liệu thành công.
+> Chọn **C: Gắn thêm annotation `@AuraEnabled`**. Đây là tấm vé thông hành bắt buộc để bất kỳ method nào trong Apex có thể 'nói chuyện' được với các component Lightning (bao gồm cả LWC và Aura Component). Không có `@AuraEnabled` thì LWC coi như mù, không thấy method này đâu cả.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Apex tự động serialize các đối tượng sObject thành JSON khi trả về cho LWC, lập trình viên cấm tự viết code serialize thành String JSON Array thủ công gây nặng nề.
-> **B.** cacheable=true là tùy chọn khuyến khích để tăng tốc độ lưu cache dữ liệu, không phải điều kiện bắt buộc để LWC kết nối được.
-> **D.** LWC nhận kiểu sObject chuẩn trực tiếp từ Apex, không bắt buộc phải trả về kiểu đối tượng JSON.
+> **A.** Bậy bạ nha! Apex tự động serialize đối tượng sObject thành JSON khi trả về cho LWC, cấm tự viết code serialize thành String JSON Array làm gì cho nặng máy.
+> **B.** `cacheable=true` là tùy chọn cực kỳ khuyến khích khi dùng Wire Service để tăng tốc độ lưu cache, nhưng nó không phải điều kiện bắt buộc để LWC có thể gọi được method (Imperative call vẫn gọi method không có `cacheable=true` ngon ơ).
+> **D.** Method trả về List sObject trực tiếp của Salesforce là quá đẹp rồi, không cần bắt buộc phải parse thành kiểu JSON Object thô.
 
-**💡 Từ khóa ghi nhớ:** `Muốn LWC gọi được method trong Apex Class -> Bắt buộc gắn annotation @AuraEnabled.`
+**💡 Từ khóa ghi nhớ:** `Muốn Apex method giao tiếp được với LWC -> Bắt buộc phải gắn **@AuraEnabled**.`
 
 ---
 
@@ -6648,56 +6687,44 @@ List<Contact> cList = [SELECT Id FROM Contact Where AccountId = : a.Id];
 - **D.** Override the Contact's Edit button with a Lightning page in Salesforce Classic and a Visualforce page in Lightning Experience. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần cung cấp giao diện người dùng tùy chỉnh khi người dùng Edit một Contact. Giao diện này phải hoạt động được trên cả hai môi trường Salesforce Classic và Lightning Experience. Lập trình viên nên làm gì?
+> Developer cần cung cấp giao diện custom khi người dùng Edit một Contact. Giao diện này phải chạy ngon nghẻ trên cả 2 môi trường Salesforce Classic và Lightning Experience. Dev nên làm gì?
 
 **✅ Tại sao đáp án đúng:**
-> Ghi đè (Override) nút Edit của Contact bằng một trang Visualforce trong môi trường Salesforce Classic, và ghi đè bằng một Lightning component trong môi trường Lightning Experience (A) để tối ưu giao diện trên cả hai môi trường.
+> Chọn **A: Override nút Edit bằng một trang Visualforce trong Classic và một Lightning component trong Lightning Experience**. Đây là cấu hình ghi đè (button override) chuẩn sách giáo khoa! Salesforce cho phép cấu hình ghi đè riêng biệt: môi trường Classic cũ kỹ thì dùng Visualforce Page để tương thích tốt, còn Lightning Experience hiện đại thì dùng Lightning Component để đem lại trải nghiệm mượt mà nhất.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Lightning Page dùng để xây dựng trang tổng quan chứ không phải thành phần đóng gói có thể dùng để ghi đè trực tiếp nút Edit.
-> **C.** Salesforce Classic đời cũ không hỗ trợ biên dịch và hiển thị trực tiếp Lightning Component nguyên bản mượt mà bằng Visualforce.
-> **D.** Bị đảo ngược sai vị trí công nghệ giữa Classic (dùng Visualforce) và Lightning (dùng Lightning Component).
+> **B.** **Lightning page** là cả một trang tổng quan (dashboard/home/record page) được kéo thả bằng App Builder, không phải là một component đóng gói có thể dùng để ghi đè trực tiếp nút Edit được.
+> **C.** Salesforce Classic là đồ cổ, nó không hỗ trợ render và chạy trực tiếp Lightning Component một cách mượt mà độc lập ngoài giao diện Edit.
+> **D.** Bị đảo lộn vị trí công nghệ! Classic đi dùng Lightning Page còn Lightning Experience lại đi dùng Visualforce thì chả khác gì râu ông nọ cắm cằm bà kia.
 
-**💡 Từ khóa ghi nhớ:** `Ghi đè action chuẩn (Override button) -> Classic dùng Visualforce Page. Lightning Experience dùng Lightning Component.`
+**💡 Từ khóa ghi nhớ:** `Override button cho cả 2 môi trường -> **Classic = Visualforce Page**, **Lightning = Lightning Component**.`
 
 ---
 
 ## Câu 231
 
-**🔵 Which Lightning code segment should be written to declare dependencies on a Lightning component, c:accountList, that is used in a Visualforce page?
-A.
-<aura:application access="GLOBAL">
-<aura:dependency resource="c:accountList"/>
-</aura:application>
-B.
-<aura:application access="GLOBAL" extends="ltng:outApp">
-<aura:dependency resource="c:accountList"/>
-</aura:application>
-C.
-<aura:component access="GLOBAL">
-<aura:dependency resource="c:accountList">
-</aura:component>
-D.
-<aura:component access="GLOBAL" extends="ltng:outApp">
-<aura:dependency resource="c:accountList"/>
-</aura:component>**
+**🔵 Which Lightning code segment should be written to declare dependencies on a Lightning component, c:accountList, that is used in a Visualforce page?**
 
+- **A.** <aura:application access="GLOBAL"> <aura:dependency resource="c:accountList"/> </aura:application> ❌
+- **B.** <aura:application access="GLOBAL" extends="ltng:outApp"> <aura:dependency resource="c:accountList"/> </aura:application> ✅
+- **C.** <aura:component access="GLOBAL"> <aura:dependency resource="c:accountList"> </aura:component> ❌
+- **D.** <aura:component access="GLOBAL" extends="ltng:outApp"> <aura:dependency resource="c:accountList"/> </aura:component> ❌
 
 **📝 Dịch tiếng Việt:**
-> Đoạn code Lightning nào dưới đây được viết đúng cú pháp để khai báo các thành phần phụ thuộc (dependencies) cho một component c:accountList khi nhúng vào trang Visualforce?
+> Đoạn code Lightning nào dưới đây dùng để khai báo các thành phần phụ thuộc (dependencies) cho một component c:accountList khi nhúng nó vào trang Visualforce?
 
 **💬 Giải thích gốc (English):**
 > To describe the components that you want to deploy outside of Salesforce, create a Lightning Out app. A Lightning Out app is a special standalone Aura app defined with the <aura:application> tag. Add components to the app with the <aura:dependency> tag
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp B: <aura:application access='GLOBAL' extends='ltng:outApp'> <aura:dependency resource='c:accountList'/> </aura:application>. Để chạy được Lightning Out (nhúng component Lightning vào trang Visualforce hoặc app ngoài), bắt buộc phải tạo một standalone Aura App dùng từ khóa extends='ltng:outApp' và khai báo phụ thuộc bằng thẻ <aura:dependency>.
+> Chọn **B: `<aura:application access="GLOBAL" extends="ltng:outApp"> <aura:dependency resource="c:accountList"/> </aura:application>`**. Để nhúng được component Lightning vào trang Visualforce (hoặc app ngoài qua công nghệ **Lightning Out**), bạn bắt buộc phải tạo một standalone Aura App làm cầu nối. Cái App này bắt buộc phải có thuộc tính `extends="ltng:outApp"` và bên trong chứa thẻ `<aura:dependency>` để đăng ký trước các component con sẽ sử dụng.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Thiếu thuộc tính extends='ltng:outApp' làm ứng dụng độc lập thông thường, không thể kích hoạt được chế độ kết nối Lightning Out.
-> **C.** Thẻ <aura:component> cấm khai báo thuộc tính extends='ltng:outApp' và không thể đóng vai trò làm app cầu nối cho Lightning Out.
-> **D.** Tương tự C, Aura component không hỗ trợ làm app container kết nối cho Lightning Out.
+> **A.** Thiếu thuộc tính kế thừa `extends="ltng:outApp"` thì cái App này chỉ là một ứng dụng Lightning độc lập thông thường, không thể kích hoạt chế độ kết nối của Lightning Out được.
+> **C.** Thẻ `<aura:component>` không thể đóng vai trò làm app container làm cầu nối cho Lightning Out, và nó cũng viết sai cú pháp đóng thẻ `</aura:dependency>`.
+> **D.** Component không hỗ trợ thuộc tính `extends="ltng:outApp"` và không thể thay thế cho thẻ `<aura:application>` trong kịch bản này.
 
-**💡 Từ khóa ghi nhớ:** `Lightning Out kết nối Visualforce -> App cầu nối bắt buộc phải dùng <aura:application extends='ltng:outApp'>.`
+**💡 Từ khóa ghi nhớ:** `Lightning Out nhúng Visualforce -> 100% bắt buộc dùng **`<aura:application extends="ltng:outApp">`**.`
 
 ---
 
@@ -6712,7 +6739,7 @@ D.
 - **E.** Actions triggered by time-based workflow ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên có thể sử dụng Debug Log (Nhật ký gỡ lỗi) trong Salesforce để theo dõi ba loại thông tin nào sau đây? (Chọn 3)
+> Developer có thể dùng Debug Log (Nhật ký gỡ lỗi) trong Salesforce để xem ba loại thông tin nào sau đây? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Debug Log
@@ -6728,13 +6755,13 @@ D.
 > Validation rules
 
 **✅ Tại sao đáp án đúng:**
-> A: Các cuộc gọi API HTTP callouts ra hệ thống ngoài. B: Các thay đổi cơ sở dữ liệu (DML operations). C: Mức độ tiêu thụ tài nguyên và giới hạn governor limits của transaction. Đây là các dữ liệu cốt lõi ghi nhận cực kỳ tường tận trong debug log.
+> Chọn **A (HTTP callouts)**, **B (Database changes)** và **C (Resource usage and limits)**. Khi chạy một transaction (ví dụ Trigger, Apex controller...), Debug Log sẽ ghi lại cực kỳ chi tiết: mọi cuộc gọi API ra ngoài (A), các thao tác DML thêm/sửa/xóa bản ghi dưới database (B), và thống kê tài nguyên đã tiêu thụ so với giới hạn Governor Limits ở cuối log (C).
 
 **❌ Tại sao đáp án sai:**
-> **D.** Thông tin đăng nhập của người dùng được quản lý và theo dõi ở trang Login History riêng biệt, không hiển thị trong Apex transaction debug log.
-> **E.** Các hành động kích hoạt bởi time-based workflow được giám sát riêng ở mục Time-Based Workflow Queue trong Setup.
+> **D.** Thông tin đăng nhập của user được quản lý riêng biệt ở trang **Login History** trong Setup chứ không hiện ra trong debug log của Apex transaction.
+> **E.** Các hành động kích hoạt bởi time-based workflow được giám sát và xếp hàng đợi ở mục **Time-Based Workflow Queue** trong Setup chứ debug log thông thường không hiển thị cái này.
 
-**💡 Từ khóa ghi nhớ:** `Debug Log Salesforce hiển thị -> DML (Database), Callouts (HTTP), Resource & Limits.`
+**💡 Từ khóa ghi nhớ:** `Debug Log ghi nhận: **DML** (Database), **Callouts** (HTTP), **Limits** (Tài nguyên).`
 
 ---
 
@@ -6748,7 +6775,7 @@ D.
 - **D.** Use Test.loadData to populate data in your test methods. ✅
 
 **📝 Dịch tiếng Việt:**
-> Tạo 200 bản ghi test trong unit test với lượng mã ít nhất? (Chọn 2)
+> Developer viết một Trigger trên Account và muốn test xem trigger đó đã được 'bulkified' (xử lý lô lớn) ngon lành chưa. Đội phát triển quyết định test với 200 bản ghi Account có tên duy nhất. Hai việc nào nên được làm để tạo ra đống data test này trong unit test với LƯỢNG CODE ÍT NHẤT? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > You can create a CSV file with the test data and upload it as a static resource and Use Test.loadData to load test data from a static resource, making it efficient to create multiple records with minimal code.
@@ -6769,13 +6796,13 @@ D.
 > }
 
 **✅ Tại sao đáp án đúng:**
-> A: Tạo file CSV làm Static Resource. D: Gọi `Test.loadData()` để nạp 200 bản ghi từ file đó mà không cần viết vòng lặp DML.
+> Chọn **B** và **D**. Cách lười viết code nhất mà vẫn chuẩn chỉ là: Tạo một file CSV chứa 200 tên Account độc nhất rồi up lên làm **Static Resource** (B). Sau đó trong test method, chỉ cần gọi đúng một dòng lệnh **`Test.loadData(Account.sObjectType, 'TênStaticResource')`** (D). Salesforce sẽ tự động nạp toàn bộ 200 bản ghi đó vào bộ nhớ test cực kỳ mượt mà, khỏi cần viết vòng lặp `for` insert rườm rà.
 
 **❌ Tại sao đáp án sai:**
-> **B.** isParallel giúp các class test chạy song song để tiết kiệm thời gian, không giúp tạo data test.
-> **C.** seeAllData=true cho phép truy cập data thật của Org, không phải cách tạo data ảo cho việc test bulkification.
+> **A.** `seeAllData=true` là một quả 'tối kỵ' (anti-pattern) giúp test class nhìn thấy data thật ngoài đời của Org. Nó không giúp tạo dữ liệu test mới và dễ làm hỏng logic test khi deploy sang Org khác.
+> **C.** `isParallel=true` chỉ là cấu hình cho phép các test class chạy song song để tiết kiệm thời gian chạy test tổng thể, chả liên quan gì đến việc tạo hay nạp dữ liệu test.
 
-**💡 Từ khóa ghi nhớ:** `Test Data Bulk: Static Resource (CSV) + Test.loadData().`
+**💡 Từ khóa ghi nhớ:** `Tạo data test số lượng lớn ít code nhất -> **Static Resource** (file CSV) + **Test.loadData()**.`
 
 ---
 
@@ -6789,21 +6816,21 @@ D.
 - **D.** Single-page web apps ✅
 
 **📝 Dịch tiếng Việt:**
-> Lightning Component framework dùng để phát triển cái gì?
+> Thế cái Lightning Component framework dùng để phát triển cái gì thế các khứa?
 
 **💬 Giải thích gốc (English):**
 > Lightning Component Framework
 > The Lightning Component framework is a UI framework for developing single-page web apps for mobile and desktop devices.
 
 **✅ Tại sao đáp án đúng:**
-> Framework này được thiết kế theo kiến trúc Single-Page Application (SPA), dữ liệu load động giúp trải nghiệm mượt mà trên cùng một trang.
+> Chọn **D: Single-page web apps (SPA)**. Lightning Component framework (cả Aura và LWC) được thiết kế hiện đại theo kiến trúc ứng dụng web một trang duy nhất (Single-page app). Dữ liệu được tải động qua lại giữa Client (JavaScript) và Server (Apex) mà không cần tải lại toàn bộ trang web, đem lại trải nghiệm mượt mà y hệt như Facebook hay Gmail.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Integration thường dùng Apex hoặc External Services, framework UI chỉ là phần hiển thị.
-> **C.** Dynamic web sites là khái niệm chung chung, trong Salesforce người ta gọi chính xác là SPA.
-> **D.** Salesforce không 'host' các ứng dụng web thông thường kiểu này.
+> **A.** **Salesforce integrations** (tích hợp hệ thống) được phát triển bằng Apex, REST/SOAP APIs hoặc MuleSoft chứ framework UI này chỉ làm nhiệm vụ hiển thị thôi.
+> **B.** Salesforce Classic là giao diện đời cổ, không dùng Lightning Component framework làm nền tảng chính.
+> **C.** **Hosted web applications** là các app được deploy và host độc lập trên server riêng (ví dụ Heroku, AWS). Salesforce không dùng framework này để tạo các app chạy độc lập bên ngoài nền tảng của mình.
 
-**💡 Từ khóa ghi nhớ:** `Lightning = SPA (Single Page App).`
+**💡 Từ khóa ghi nhớ:** `Lightning Component framework = **Single-page web apps (SPA)**.`
 
 ---
 
@@ -6817,7 +6844,7 @@ D.
 - **D.** public inherited sharing class ContactController ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai cách nào để giới hạn bản ghi theo quyền user cho một LWC controller?
+> Developer cần viết một class Apex tên là ContactController làm controller cho Lightning component tìm kiếm Contact. Người dùng chỉ được phép tìm thấy những bản ghi Contact mà họ thực sự có quyền truy cập (Sharing Rules/OWD). Hai cách khai báo class nào dưới đây sẽ giới hạn quyền bản ghi chuẩn xác nhất? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > With Sharing
@@ -6828,13 +6855,13 @@ D.
 > Use the inherited sharing keyword when declaring a class to enforce the sharing rules of the class that calls it. Using inherited sharing is an advanced technique to determine the sharing mode at runtime and design Apex classes that can run in either with sharing or without sharing mode.
 
 **✅ Tại sao đáp án đúng:**
-> A: with sharing ép class tuân thủ luật. C: inherited sharing kế thừa quyền từ class gọi nó (rất an toàn).
+> Chọn **B** và **D**. Khai báo `with sharing` (B) ép class phải tuân thủ nghiêm ngặt luật chia sẻ bản ghi (OWD, Sharing Rules) của user đang chạy. Khai báo `inherited sharing` (D) cực kỳ thông minh: nó sẽ kế thừa chế độ sharing của class gọi nó (nếu LWC gọi trực tiếp thì nó hoạt động y chang `with sharing`), đảm bảo an toàn tuyệt đối và linh hoạt.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Mặc định không ghi gì sẽ chạy ở chế độ System (thấy hết), không an toàn.
-> **D.** without sharing là phớt lờ hoàn toàn quyền chia sẻ của user.
+> **A.** Khai báo `public class` khơi khơi mà không ghi rõ sharing modifier thì mặc định Salesforce sẽ chạy ở chế độ **System Mode** (omni-present), nhìn thấy hết mọi bản ghi bất chấp user có quyền hay không. Rất nguy hiểm!
+> **C.** `without sharing` là tuyên bố xanh rờn: 'Tôi coi thường quyền bảo mật của user!'. Class sẽ chạy ở System Mode và phớt lờ hoàn toàn các quy tắc chia sẻ bản ghi. Cook ngay!
 
-**💡 Từ khóa ghi nhớ:** `Apex Security: with sharing là lựa chọn an toàn nhất cho mọi controller.`
+**💡 Từ khóa ghi nhớ:** `Bảo mật bản ghi theo user trong Apex -> Auto dùng **with sharing** hoặc **inherited sharing**.`
 
 ---
 
@@ -6847,45 +6874,29 @@ void sort();
 public interface Drawable{
 void draw();
 }
-Which is the correct implementation?
-A.
-public class DrawList implements Sortable, implements Drawable{
-public void sort(){ /*implementation*/}
-public void draw(){ /*implementation*/}
-}
-B.
-public class DrawList implements Sortable, Drawable{
-public void sort(){ /*implementation*/}
-public void draw(){ /*implementation*/}
-}
-C.
-public class DrawList extends Sortable, extends Drawable{
-public void sort(){ /*implementation*/}
-public void draw(){ /*implementation*/}
-}
-D.
-public class DrawList extends Sortable, Drawable {
-public void sort(){ /*implementation*/}
-public void draw(){ /*implementation*/}
-}**
+Which is the correct implementation?**
 
+- **A.** public class DrawList implements Sortable, implements Drawable{ public void sort(){ /*implementation*/} public void draw(){ /*implementation*/} } ❌
+- **B.** public class DrawList implements Sortable, Drawable{ public void sort(){ /*implementation*/} public void draw(){ /*implementation*/} } ✅
+- **C.** public class DrawList extends Sortable, extends Drawable{ public void sort(){ /*implementation*/} public void draw(){ /*implementation*/} } ❌
+- **D.** public class DrawList extends Sortable, Drawable { public void sort(){ /*implementation*/} public void draw(){ /*implementation*/} } ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên cần tạo một class DrawList hiện thực hóa các chức năng được định nghĩa trong hai Interface Sortable và Drawable: [Interface Code]. Cách viết nào sau đây là đúng cú pháp Apex?
+> Developer cần tạo một class DrawList có các tính năng được định nghĩa sẵn trong hai Interface Sortable và Drawable. Cú pháp Apex nào dưới đây thực thi chuẩn chỉ?
 
 **💬 Giải thích gốc (English):**
 > Option A: Incorrect because you cannot use implements twice.
 > Option C, D: Incorrect because you cannot use extends with interfaces; extends is used for classes.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp B: 'public class DrawList implements Sortable, Drawable'. Trong Apex, một lớp thông thường có thể hiện thực hóa nhiều interface cùng lúc bằng cách liệt kê tên các interface ngăn cách nhau bằng dấu phẩy sau một từ khóa 'implements' duy nhất.
+> Chọn **B: `public class DrawList implements Sortable, Drawable`**. Trong Apex (cũng giống Java), một class thông thường có thể hiện thực hóa (implement) nhiều Interface cùng lúc bằng cách dùng duy nhất từ khóa `implements`, theo sau là danh sách các Interface ngăn cách nhau bởi dấu phẩy. Và nhớ phải viết lại toàn bộ các method đã khai báo trong Interface nhé.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sử dụng lặp lại từ khóa 'implements' hai lần độc lập là sai cú pháp biên dịch nghiêm trọng.
-> **C.** Dùng từ khóa 'extends' đối với Interface là hoàn toàn sai, extends chỉ dùng khi một class kế thừa class khác.
-> **D.** Tương tự C, không được phép extends interface trực tiếp ở khai báo class.
+> **A.** Tự dưng viết lặp lại hai từ khóa `implements` độc lập (`implements Sortable, implements Drawable`) là sai cú pháp biên dịch nghiêm trọng. Trình biên dịch nó chửi cho đấy!
+> **C.** Interface không thể dùng từ khóa `extends` ở đây vì `extends` chỉ dùng khi một class kế thừa một class khác, hoặc một interface kế thừa một interface khác thôi.
+> **D.** Lại dùng sai từ khóa `extends` để hiện thực hóa interface. Không thể chấp nhận nổi!
 
-**💡 Từ khóa ghi nhớ:** `Apex Class implements nhiều Interface -> Chỉ dùng duy nhất 1 từ khóa 'implements', ngăn cách các interface bằng dấu phẩy.`
+**💡 Từ khóa ghi nhớ:** `Class implement nhiều Interface -> Dùng duy nhất **1 từ khóa implements** + ngăn cách bằng **dấu phẩy**.`
 
 ---
 
@@ -6900,7 +6911,7 @@ public void draw(){ /*implementation*/}
 - **E.** A static resource ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba tùy chọn nào cho phép lập trình viên nhúng và sử dụng các định dạng CSS tùy chỉnh (custom styling) trong một trang Visualforce? (Chọn 3)
+> Ba tùy chọn nào cho phép lập trình viên nhúng và sử dụng các định dạng CSS tùy chỉnh (custom styling) để trang trí cho một trang Visualforce? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > <apex:stylesheet> tag: This tag is used to include external CSS stylesheets in your Visualforce page1.
@@ -6908,13 +6919,13 @@ public void draw(){ /*implementation*/}
 > A static resource: You can upload CSS files as static resources and reference them in your Visualforce page using the <apex:stylesheet> tag.
 
 **✅ Tại sao đáp án đúng:**
-> A: Thẻ <apex:stylesheet> để import file CSS. B: Viết mã CSS nội tuyến (Inline CSS) trực tiếp trong thẻ <style> của trang. E: Tải file CSS lên Static Resources và liên kết sử dụng trong trang. Đây là các kỹ thuật chuẩn để làm đẹp trang Visualforce.
+> Chọn **A (thẻ `<apex:stylesheet>`)**, **B (Inline CSS trong trang)** và **E (Static Resource)**. Đây là 3 con đường chính ngạch để mang CSS vào Visualforce: thẻ `<apex:stylesheet>` dùng để import file CSS từ ngoài hoặc Static Resource (A), viết trực tiếp các đoạn CSS inline trong thẻ `<style>` của HTML (B), và tải file CSS lên Static Resources rồi nhúng link sử dụng (E).
 
 **❌ Tại sao đáp án sai:**
-> **C.** Không tồn tại thẻ nào tên là <apex:style> trong thư viện thành phần chuẩn của Visualforce.
-> **D.** Không có thẻ dạng số nhiều <apex:stylesheets> trong hệ thống Visualforce.
+> **C.** Làm gì có thẻ nào tên là `<apex:style>` trong thư viện thành phần chuẩn của Visualforce. Đừng tự chế thẻ nha bro!
+> **D.** Thẻ dạng số nhiều `<apex:stylesheets>` cũng là đồ giả, không hề tồn tại trong Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Styling Visualforce -> 1. Thẻ <apex:stylesheet>; 2. Thẻ HTML <style> (inline); 3. File CSS trong Static Resource.`
+**💡 Từ khóa ghi nhớ:** `Làm đẹp Visualforce -> Dùng **`<apex:stylesheet>`**, viết **Inline CSS**, hoặc gọi file CSS từ **Static Resource**.`
 
 ---
 
@@ -6928,7 +6939,7 @@ public void draw(){ /*implementation*/}
 - **D.** Build an Account Approval Process. ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi Postal Code trên Account đổi, cần tra cứu Timezone từ một custom object khác để update lại Account. Dùng gì?
+> Khi người dùng sửa Postal Code (Mã bưu điện) trên Account, một trường text custom tên 'Timezone' (Múi giờ) trên Account đó phải được tự động cập nhật dựa trên giá trị tra cứu từ một custom object khác là PostalCodeToTimezone__c. Dev nên triển khai tính năng này thế nào?
 
 **💬 Giải thích gốc (English):**
 > A trigger can handle the logic required to update the ‘Timezone’ field based on the Postal Code changes and the corresponding values in the PostalCodeToTimezone__c custom object.
@@ -6937,14 +6948,14 @@ public void draw(){ /*implementation*/}
 > Build an Account Approval Process: Approval processes are designed for managing record approvals and don’t support the kind of field update logic you’re looking for.
 
 **✅ Tại sao đáp án đúng:**
-> Flow Builder có thể thực hiện lệnh 'Get Records' để truy vấn dữ liệu từ object khác (cross-object) rồi gán ngược lại, cực kỳ linh hoạt.
+> Chọn **C: Viết một custom Trigger trên Account** (Hoặc thời đại 2026 là dùng **Record-Triggered Flow**). Yêu cầu này bắt buộc chúng ta phải 'đi chợ' sang một đối tượng độc lập khác (PostalCodeToTimezone__c) để truy vấn dữ liệu (SOQL) dựa trên Postal Code vừa nhập rồi gán ngược lại Account. Việc tra cứu chéo đối tượng phức tạp này chỉ có Apex Trigger hoặc Record-Triggered Flow (Get Records) mới xử lý được.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Workflow Rule chỉ có thể update field trên chính nó hoặc bản ghi cha (Master-detail), không thể 'đi chợ' sang object khác lấy data.
-> **B.** Approval Process dùng để duyệt bản ghi, không liên quan đến logic tự động gán timezone.
-> **D.** Assignment Rule chỉ dùng để gán 'chủ sở hữu' (Owner) cho Lead hoặc Case.
+> **A.** **Workflow Rule** siêu cùi bắp, chỉ hỗ trợ cập nhật trường trên chính nó hoặc bản ghi cha trong mối quan hệ Master-Detail, hoàn toàn không thể đi tra cứu dữ liệu từ một object độc lập bên ngoài được.
+> **B.** **Assignment Rule** chỉ dùng để tự động gán chủ sở hữu (Owner) cho Lead hoặc Case mới tạo, không liên quan gì đến cập nhật múi giờ Account.
+> **D.** **Approval Process** là quy trình gửi duyệt bản ghi, không dùng cho logic cập nhật trường tự động khi sửa đổi Postal Code thông thường.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo thi: Cứ thấy logic 'Tra cứu Object khác rồi Update' -> Chọn Flow.`
+**💡 Từ khóa ghi nhớ:** `Cập nhật dữ liệu bằng cách tra cứu từ một Object độc lập khác -> Chỉ có **Flow** hoặc **Trigger** làm được!`
 
 ---
 
@@ -6958,20 +6969,20 @@ public void draw(){ /*implementation*/}
 - **D.** Save Order tab under Execution Overview panel ❌
 
 **📝 Dịch tiếng Việt:**
-> Trong trình giám sát log (Log Inspector) của Developer Console, lập trình viên có thể xác định thời gian thực thi cụ thể của từng tiến trình trong transaction ở tab nào?
+> Trong trình xem nhật ký (Log Inspector) của Developer Console, developer có thể xem chi tiết thời gian thực thi của từng tiến trình trong transaction ở tab nào?
 
 **💬 Giải thích gốc (English):**
 > The Timeline tab provides a visual representation of the time taken by each process. Select the Scale option that results in the most useful view.
 
 **✅ Tại sao đáp án đúng:**
-> Tab Timeline nằm trong bảng điều khiển Execution Overview (C). Tab này cung cấp một biểu đồ dạng thanh trực quan hiển thị chi tiết thời gian chạy và tỷ lệ % tiêu tốn tài nguyên của từng loại tiến trình (Apex, Database, Workflow, Validation) trong transaction.
+> Chọn **C: Tab Timeline dưới bảng Execution Overview**. Tab Timeline là một biểu đồ thanh ngang cực kỳ trực quan và sinh động! Nhìn vào đó, bạn sẽ biết chính xác từng phần của hệ thống (Apex code, Database DML, Workflow rules, Validation rules) đã ngốn bao nhiêu mili-giây và chiếm bao nhiêu phần trăm tổng thời gian chạy.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Performance Tree chỉ hiển thị cây phân cấp cuộc gọi các phương thức, không hiển thị tổng quan dòng thời gian phân bổ tài nguyên.
-> **B.** Execution Tree tương tự A, hiển thị sơ đồ phân cấp thực thi hàm.
-> **D.** Save Order hiển thị trình tự ghi bản ghi (Save Order of Execution), không hiển thị thời gian chạy thực tế của từng tiến trình.
+> **A.** **Performance Tree** hiển thị cây phân cấp cuộc gọi các phương thức và thời gian của từng hàm cụ thể chứ không hiển thị tổng quan dòng thời gian của các tiến trình hệ thống.
+> **B.** **Execution Tree** tương tự Performance Tree, tập trung vào sơ đồ cây thực thi hàm chứ không phân bổ theo dòng thời gian tổng quát.
+> **D.** **Save Order** hiển thị trình tự ghi bản ghi xuống database (Save Order of Execution) chứ không có thống kê thời gian chạy thực tế của các tiến trình.
 
-**💡 Từ khóa ghi nhớ:** `Xem phân bổ dòng thời gian thực thi của các tiến trình trong Developer Console -> Vào tab TIMELINE.`
+**💡 Từ khóa ghi nhớ:** `Xem phân bổ thời gian chạy của toàn bộ các tiến trình -> Cứ tab **Timeline** mà chọn.`
 
 ---
 
@@ -6981,36 +6992,28 @@ public void draw(){ /*implementation*/}
 Public with sharing class myFooController{
 public integer prop{get; private set;}
 }
-Which code block will run successfully in an execute anonymous window?
-A.
-myFooController m = new myFooController();
-System.assert(m.prop != null);
-B.
-myFooController m = new myFooController();
-System.assert(m.prop == 0);
-C.
-myFooController m = new myFooController();
-System.assert(m.prop == null);
-D.
-myFooController m = new myFooController();
-System.assert(m.prop == 1);**
+Which code block will run successfully in an execute anonymous window?**
 
+- **A.** myFooController m = new myFooController(); System.assert(m.prop != null); ❌
+- **B.** myFooController m = new myFooController(); System.assert(m.prop == 0); ❌
+- **C.** myFooController m = new myFooController(); System.assert(m.prop == null); ✅
+- **D.** myFooController m = new myFooController(); System.assert(m.prop == 1); ❌
 
 **📝 Dịch tiếng Việt:**
-> Cho class controller sau: [Code myFooController]. Khối lệnh nào dưới đây sẽ chạy thành công không báo lỗi khi thực thi trong cửa sổ Execute Anonymous?
+> Cho class controller sau: [Code myFooController]. Khối mã lệnh nào dưới đây sẽ chạy thành công mỹ mãn không tì vết khi thực thi trong cửa sổ Execute Anonymous?
 
 **💬 Giải thích gốc (English):**
 > The value of prop variable is never defined in the constructor, so its default value is null.
 
 **✅ Tại sao đáp án đúng:**
-> Khối lệnh C: myFooController m = new myFooController(); System.assert(m.prop == null);. Vì thuộc tính 'prop' kiểu Integer không được gán bất kỳ giá trị khởi tạo nào trong class, nên theo quy định mặc định của Apex, nó sẽ tự động nhận giá trị null.
+> Chọn **C: `myFooController m = new myFooController(); System.assert(m.prop == null);`**. Trong Apex, tất cả các biến số (bao gồm cả Integer, Decimal...) nếu khai báo khơi khơi mà không được gán bất kỳ giá trị khởi tạo nào thì mặc định giá trị của chúng sẽ là **`null`**. Do đó, assert `prop == null` chắc chắn đúng 100%!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Báo lỗi AssertException vì prop đang là null chứ không phải khác null.
-> **B.** Báo lỗi assert vì prop là null chứ không phải bằng 0.
-> **D.** Báo lỗi assert vì prop là null chứ không phải bằng 1.
+> **A.** Assert `prop != null` sẽ ném ra lỗi `AssertException` vì thực tế `prop` đang bằng null.
+> **B.** Apex không giống C# hay Java, nó không tự động gán giá trị mặc định bằng `0` cho kiểu số. Nên assert `prop == 0` là sai bét và ném lỗi ngay.
+> **D.** Không có cơ sở nào để `prop` bằng `1` cả, assert này chắc chắn vỡ trận.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo Assert Apex: Thuộc tính không gán trị mặc định -> Luôn assert bằng NULL.`
+**💡 Từ khóa ghi nhớ:** `Apex rất sòng phẳng: Biến không khởi tạo giá trị -> Mặc định luôn bằng **null**!`
 
 ---
 
@@ -7028,13 +7031,16 @@ System.assert(m.prop == 1);**
 > Ba phát biểu nào sau đây là ĐÚNG khi nói về Trace Flags (cờ theo dõi log) trong Salesforce? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> C: Trace flags ghi đè và có độ ưu tiên cao hơn Logging Levels cấu hình mặc định. D: Nếu không có trace flags nào đang kích hoạt, các bài test Apex sẽ tự động chạy với Logging Levels mặc định của hệ thống. E: Trace flags có thể được thiết lập linh hoạt thông qua Developer Console, mục Setup hệ thống, hoặc sử dụng Tooling API.
+> Chọn **C**, **D** và **E**. Vì:
+- **Trace flags** có mức độ ưu tiên tối thượng, nó sẽ ghi đè (override) lên các cấu hình Logging Levels mặc định của bạn (C).
+- Nếu bạn không cắm cái Trace flag nào đang chạy, thì các bài test Apex (Apex tests) khi chạy sẽ tự động sử dụng mức logging mặc định của hệ thống (D).
+- Bạn có thể tha hồ thiết lập Trace flags ở nhiều nơi: trong Developer Console, trong mục Setup, hoặc bắn qua Tooling API đều nuột (E).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Chỉ bật trace flags không tự động sinh log nếu không có user action hoặc code thực thi chạy qua đối tượng được cắm cờ.
-> **B.** Sai vì Trace flags có mức ưu tiên cao nhất, nó ghi đè chứ không bị ghi đè bởi Logging Levels.
+> **A.** Bật trace flag khơi khơi không tự dưng sinh ra debug log đâu bro! Phải có ai đó thực hiện thao tác (User action) hoặc có code chạy qua thì hệ thống mới thèm ghi log.
+> **B.** Sai bét nhè! Trace flags to đầu hơn, nó ghi đè Logging levels chứ không bao giờ có chuyện bị Logging levels đè đầu cưỡi cổ.
 
-**💡 Từ khóa ghi nhớ:** `Trace Flags -> Thiết lập qua Setup/Dev Console/Tooling API. Bất chấp tất cả, Trace Flags luôn ghi đè Logging Levels!`
+**💡 Từ khóa ghi nhớ:** `Trace Flags: Thích cắm ở đâu cũng được (Setup/Dev Console/Tooling API) và luôn **ghi đè (override) Logging Levels**!`
 
 ---
 
@@ -7048,20 +7054,20 @@ System.assert(m.prop == 1);**
 - **D.** Use the Code Coverage Setup page. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để biết cái Flow tự động (autolaunched) của mình đã được test bao nhiêu % trước khi mang đi deploy?
+> Làm sao để anh em dev check xem cái Flow tự động (Autolaunched Flow) của mình đã đạt bao nhiêu % test coverage trước khi gói ghém đem đi deploy bằng Change Set?
 
 **💬 Giải thích gốc (English):**
 > Developers can use SOQL queries along with the Tooling API to check the test coverage of autolaunched Flows. The FlowTestCoverage object in the Tooling API provides information about the test coverage for flows.
 
 **✅ Tại sao đáp án đúng:**
-> B đúng vì Flow coverage không hiển thị đẹp đẽ trong UI như Apex. Mày phải dùng Tooling API hoặc chạy câu SOQL vào object `FlowTestCoverage` thì mới soi được.
+> Chọn **C: Sử dụng SOQL kết hợp Tooling API**. Khác với Apex code có bảng hiển thị coverage đẹp đẽ ngoài giao diện, test coverage của Flow hơi bị 'ẩn dật'. Bạn bắt buộc phải dùng **Tooling API** (hoặc chạy câu SOQL truy vấn vào các đối tượng hệ thống như `FlowTestCoverage`) thì mới lôi đầu nó ra ánh sáng được.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flow Properties chỉ cho thấy mấy cái metadata vớ vẩn như version, status thôi, không có coverage.
-> **C.** Cái này dùng để xem kết quả test của code Apex, không chơi được với Flow.
-> **D.** Trang này không tồn tại cho Flow.
+> **A.** **Flow Properties page** chỉ hiển thị mấy cái thông tin metadata cơ bản như Version, Status, API Version... chứ lấy đâu ra số liệu test coverage cho bạn xem.
+> **B.** Lớp `ApexTestResult` dùng để xem kết quả chạy test của các class Apex chứ không hỗ trợ đo đạc coverage cho Flow.
+> **D.** Không hề tồn tại trang cấu hình nào tên là **Code Coverage Setup page** trong hệ thống Salesforce cả, đồ fake đó bro!
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Check Flow Coverage = Tooling API / SOQL.`
+**💡 Từ khóa ghi nhớ:** `Muốn check Test Coverage của Flow -> Nhớ ngay đến **Tooling API** và **SOQL**.`
 
 ---
 
@@ -7075,20 +7081,26 @@ System.assert(m.prop == 1);**
 - **D.** Line Item has a re-parentable master-detail field to Order. ✅
 
 **📝 Dịch tiếng Việt:**
-> Yêu cầu nghiệp vụ: Tính tổng tiền trên Order. Tính tiền cho mỗi Line Item theo số lượng và giá. Cho phép di chuyển Line Items sang Order khác nếu hết hàng. Mối quan hệ nào đáp ứng trọn vẹn các yêu cầu trên?
+> Developer có các yêu cầu sau:
+1. Tính tổng tiền (total amount) trên Order.
+2. Tính số tiền cho từng Line Item (line amount) dựa trên số lượng và giá.
+3. Cho phép di chuyển Line Items sang một Order khác nếu món hàng đó hết kho.
+Loại quan hệ (relationship) nào dưới đây có thể tự cân hết đống yêu cầu này?
 
 **💬 Giải thích gốc (English):**
 > By default, records can’t be reparented in master-detail relationships. Administrators can, however, allow child records in master-detail relationships on custom objects to be reparented to different parent records by selecting the Allow reparenting option in the master-detail relationship definition.
 
 **✅ Tại sao đáp án đúng:**
-> Đối tượng Line Item chứa một trường Master-Detail trỏ lên Order và được cấu hình cho phép đổi cha ('Allow reparenting' hay re-parentable) (D). Thiết kế này giúp vừa dùng được trường Roll-up Summary để tính tổng tiền no-code lên cha Order, vừa cho phép linh hoạt cập nhật đổi cha cho Line Item khi cần.
+> Chọn **D: Line Item có một trường Master-Detail cho phép đổi cha (re-parentable) trỏ đến Order**. Vì:
+- Để tính tổng tiền từ các bản ghi con lên cha Order một cách no-code, ta bắt buộc phải dùng trường **Roll-up Summary** (chỉ hỗ trợ trong mối quan hệ Master-Detail). Trường Master-Detail phải nằm ở đối tượng con `Line Item` trỏ lên cha `Order`.
+- Để di chuyển Line Items sang Order khác, ta chỉ cần bật tính năng **'Allow reparenting'** (cho phép đổi cha) trên trường Master-Detail đó. Quá hoàn hảo!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đặt trường Master-Detail ở phía Order trỏ xuống Line Item làm đảo ngược cấu trúc cha-con, không thể tạo được quan hệ 1-nhiều chuẩn xác.
-> **B.** Đặt quan hệ ở Order tương tự A, sai chiều thiết kế dữ liệu.
-> **C.** Dùng quan hệ Lookup (C) sẽ làm mất đi khả năng sử dụng trường Roll-up Summary để tự động tính tổng tiền no-code từ con lên cha.
+> **A.** Đặt trường Master-Detail ở phía Order trỏ xuống Line Item làm đảo lộn cấu trúc cha-con. Cha không thể chứa trường Master-Detail trỏ tới con được.
+> **B.** Sai chiều thiết kế tương tự A.
+> **C.** Nếu dùng quan hệ **Lookup** thì bạn sẽ không tài nào dùng được trường **Roll-up Summary** trên Order để tính tổng tiền no-code được. Lúc đó lại phải viết code trigger cồng kềnh.
 
-**💡 Từ khóa ghi nhớ:** `Tính tổng con lên cha + Cho phép đổi cha -> Dùng MASTER-DETAIL ở phía con trỏ lên cha + Bật 'Allow reparenting'.`
+**💡 Từ khóa ghi nhớ:** `Tính tổng con lên cha (Roll-up Summary) + Cho phép đổi cha -> **Master-Detail** ở con + bật **re-parentable**.`
 
 ---
 
@@ -7102,17 +7114,17 @@ System.assert(m.prop == 1);**
 - **D.** Order_Shipment_Group__c object and master-detail field on Order_Shipment_Group__c ❌
 
 **📝 Dịch tiếng Việt:**
-> Thiết kế object để hỗ trợ split shipment (giao hàng chia nhỏ)?
+> AW Computing theo dõi thông tin đơn hàng trong 2 custom object là Order__c và Order_Line__c. Hiện tại, toàn bộ thông tin giao hàng đều nằm ở Order__c. Nay công ty muốn nâng cấp để hỗ trợ Split Shipments (giao hàng chia làm nhiều đợt/địa chỉ khác nhau), sao cho các Order_Line__c trong cùng một đơn hàng có thể được ship tới các địa điểm khác nhau. Developer nên thêm gì?
 
 **✅ Tại sao đáp án đúng:**
-> Thêm Group object và trỏ từ Line Item về Group đó.
+> Chọn **B: Tạo object Order_Shipment_Group__c và các trường master-detail trỏ tới cả Order__c và Order_Line__c**. Ý tưởng là tạo ra một đối tượng trung gian `Order_Shipment_Group__c` (đại diện cho mỗi đợt giao hàng). Đối tượng này sẽ làm cầu nối: nó liên kết với `Order__c` cha để biết thuộc đơn hàng nào, và liên kết với `Order_Line__c` con để biết những sản phẩm nào sẽ đi chung đợt ship đó. Cấu trúc dữ liệu cực kỳ mạch lạc!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Trỏ từ Order về Group thì cả đơn hàng vẫn đi chung 1 chỗ.
-> **C.** Sai quan hệ logic, Master-Detail chỉ nên trỏ về 1 phía.
-> **D.** Tự trỏ về chính mình không giải quyết được bài toán liên kết dữ liệu đơn hàng.
+> **A.** Chỉ tạo group và trỏ Master-detail từ Order về Group thì không giải quyết được vấn đề phân chia chi tiết cho từng Line Item con.
+> **C.** Nếu chỉ có quan hệ giữa Group và Line Item thì cấu trúc dữ liệu bị mất liên kết trực tiếp và quản lý từ Order cha.
+> **D.** Tự trỏ về chính mình (self-relationship) là một pha tấu hài cực mạnh, không liên quan gì đến yêu cầu gom nhóm giao hàng.
 
-**💡 Từ khóa ghi nhớ:** `Thiết kế: Cha (Order) -> Con (Group) -> Cháu (Line Items).`
+**💡 Từ khóa ghi nhớ:** `Chia đợt ship (Split Shipment) cho các sản phẩm con -> Tạo object trung gian **Shipment Group** liên kết cả **Order** và **Order Line**.`
 
 ---
 
@@ -7126,16 +7138,18 @@ System.assert(m.prop == 1);**
 - **D.** String ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai kiểu dữ liệu Apex nào sau đây có thể được sử dụng để tham chiếu linh hoạt và động đến một ID bản ghi Salesforce? (Chọn 2)
+> Hai kiểu dữ liệu (data types) nào trong Apex có thể dùng để lưu trữ và tham chiếu động tới một Salesforce Record ID? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> B: sObject (đối tượng Apex sObject dùng chung đại diện cho mọi bản ghi, truy cập ID qua obj.Id). D: String (chuỗi ký tự lưu mã ID 15/18 ký tự và có thể tự động ép kiểu sang Id cực kỳ linh hoạt).
+> Chọn **B (sObject)** và **D (String)**.
+- **sObject** (B) là lớp cha của mọi đối tượng trong Salesforce (như Account, Contact...). Bạn có thể gán bất kỳ bản ghi nào vào một biến sObject chung chung và dùng `variable.Id` để lấy ID của nó một cách linh hoạt.
+- **String** (D) là kiểu chuỗi ký tự. Salesforce ID thực chất cũng chỉ là một chuỗi 15 hoặc 18 ký tự, nên bạn hoàn toàn có thể lưu nó vào biến String và Salesforce sẽ tự động ép kiểu sang kiểu dữ liệu `Id` khi cần thiết.
 
 **❌ Tại sao đáp án sai:**
-> **A.** ENUM là kiểu liệt kê tập hợp các hằng số cố định, không thể dùng để đại diện dynamic cho ID bản ghi.
-> **C.** External ID là thuộc tính cấu hình của trường dữ liệu trong Database, không phải là một kiểu dữ liệu (data type) độc lập trong ngôn ngữ lập trình Apex.
+> **A.** **ENUM** là kiểu dữ liệu chứa một danh sách hằng số cố định do bạn tự định nghĩa (ví dụ: `Season {SPRING, SUMMER}`), không dùng để chứa ID động của record được.
+> **C.** **External ID** là một thuộc tính cấu hình của một trường (Field Attribute) trong database để map dữ liệu bên ngoài, chứ bản thân nó không phải là một kiểu dữ liệu (Data Type) trong ngôn ngữ Apex.
 
-**💡 Từ khóa ghi nhớ:** `Tham chiếu dynamic ID bản ghi trong code Apex -> Dùng kiểu sObject hoặc String.`
+**💡 Từ khóa ghi nhớ:** `Lưu ID bản ghi linh hoạt trong code Apex -> Chỉ có **sObject** hoặc **String** (chuỗi) cân được.`
 
 ---
 
@@ -7149,7 +7163,10 @@ System.assert(m.prop == 1);**
 - **D.** Add a try/catch around the insert method. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer chạy đoạn code sau: 'Database.insert(accts, false);' và nhận thấy Account không được tạo nhưng hệ thống không báo lỗi gì. Nên thay đổi code thế nào để gỡ lỗi hiệu quả?
+> Developer đang debug đoạn code dưới đây để tìm xem tại sao đống Account không được tạo:
+`List<Account> accts = getAccounts();`
+`Database.insert(accts, false);`
+Nên sửa code thế nào để lôi được nguyên nhân lỗi ra ánh sáng?
 
 **💬 Giải thích gốc (English):**
 > SaveResult Handling: Using Database.SaveResult[] allows you to check each insert operation’s success and log any errors.
@@ -7164,14 +7181,16 @@ System.assert(m.prop == 1);**
 > }
 
 **✅ Tại sao đáp án đúng:**
-> Hứng giá trị trả về của phương thức insert vào một mảng đối tượng SaveResult: 'Database.SaveResult[] results = Database.insert(accts, false);' và duyệt qua mảng để in debug thông tin lỗi cụ thể (B). Do tham số allOrNone = false, Salesforce sẽ bỏ qua bản ghi lỗi và chạy tiếp mà không ném ra exception, làm cho khối try/catch hoàn toàn vô dụng.
+> Chọn **B: Hứng giá trị trả về của phương thức insert vào một mảng SaveResult**.
+Cú pháp chuẩn sẽ là: `Database.SaveResult[] srList = Database.insert(accts, false);`.
+Khi bạn truyền tham số thứ hai là `false` (allOrNone = false), Salesforce sẽ chạy chế độ 'lỗi đứa nào đứa đấy chịu'. Những bản ghi đúng vẫn được insert, những bản ghi sai sẽ bị bỏ qua và hệ thống **không hề ném ra bất kỳ Exception nào** để báo lỗi. Bạn bắt buộc phải hứng kết quả vào `SaveResult[]` rồi duyệt qua đó để in ra lý do bản ghi nào bị fail. Rất sòng phẳng!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đổi sang lệnh DML insert thông thường sẽ làm dừng transaction lập tức khi gặp bản ghi lỗi đầu tiên, phá vỡ logic xử lý chấp nhận lỗi một phần của hệ thống.
-> **C.** Đặt tham số thứ hai thành TRUE sẽ bắt hệ thống rollback toàn bộ nếu có lỗi, nhưng không giúp lấy chi tiết danh sách lỗi cụ thể của từng bản ghi để debug mượt mà.
-> **D.** Bọc khối try/catch vô tác dụng vì hàm Database.insert(list, false) tuyệt đối không bao giờ ném ra Exception khi gặp lỗi dữ liệu bản ghi.
+> **A.** Đổi sang lệnh DML `insert accts;` thông thường sẽ làm dừng và rollback toàn bộ transaction ngay khi gặp bản ghi lỗi đầu tiên, phá vỡ logic xử lý chấp nhận lỗi một phần.
+> **C.** Đặt tham số thứ hai thành `true` sẽ bắt hệ thống rollback toàn bộ nếu có lỗi, nhưng nó cũng chỉ ném ra một Exception chung chung chứ không giúp bạn duyệt chi tiết từng lỗi của từng record một cách thanh lịch.
+> **D.** Bọc khối `try/catch` ở đây vô tác dụng 100%! Vì hàm `Database.insert(accts, false)` không bao giờ thèm ném ra Exception thì lấy cái gì cho `catch` bắt?
 
-**💡 Từ khóa ghi nhớ:** `Sử dụng Database.insert(list, false) -> Bắt buộc phải hứng và duyệt qua Database.SaveResult[] để kiểm tra lỗi!`
+**💡 Từ khóa ghi nhớ:** `Xài `Database.insert(..., false)` -> Luôn hứng kết quả bằng **`Database.SaveResult[]`** để soi lỗi.`
 
 ---
 
@@ -7188,14 +7207,15 @@ System.assert(m.prop == 1);**
 > Tại sao lập trình viên nên cân nhắc sử dụng một Custom Controller độc lập thay vì sử dụng một Controller Extension mở rộng cho trang Visualforce?
 
 **✅ Tại sao đáp án đúng:**
-> Để tự xây dựng 100% logic nghiệp vụ của riêng mình cho trang và chạy hoàn toàn dưới quyền hệ thống (System Mode), bỏ qua hoàn toàn các chức năng xử lý mặc định của Salesforce (B). (Lưu ý: Đáp án C của đề gốc bị gắn sai đáp án chuẩn, trong thực tế Custom Controller dùng để bypass mặc định Salesforce).
+> Đáp án chính thức trong ngân hàng đề thi Salesforce đôi khi ghi nhận là **C**, nhưng về mặt lý thuyết kỹ thuật chính xác, Custom Controller được dùng khi bạn muốn **bypass hoàn toàn tính năng mặc định** của Salesforce và tự viết 100% logic (tức là đáp án **B**). Controller Extension mới là thứ dùng để **tận dụng (leverage) tính năng của Standard Controller**. Đi thi thì bạn cứ cẩn thận với câu này nhé!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sử dụng custom controller không hề giúp tăng giới hạn governor limits SOQL cứng của transaction.
+> **A.** Sử dụng custom controller không hề giúp tăng giới hạn SOQL query governor limits cứng của transaction.
 > **C.** Để tận dụng chức năng có sẵn của Standard Controller, lập trình viên bắt buộc phải dùng Controller Extension chứ không dùng Custom Controller độc lập.
-> **D.** Custom Controller mặc định chạy không có chia sẻ (without sharing) bỏ qua sharing rules của user trừ khi khai báo tường minh.
+> **D.** Custom Controller không tự động áp đặt chia sẻ bản ghi trừ khi bạn khai báo tường minh với từ khóa `with sharing`.
+> **B.** Viec lam chu toan bo logic va bo qua chuc nang mac dinh la ly do de su dung Custom Controller doc lap (khong can Standard Controller). Controller Extension chi la mo rong them logic ben canh Standard Controller, khong the override hoan toan hanh vi mac dinh.
 
-**💡 Từ khóa ghi nhớ:** `Custom Controller -> Tự viết 100% logic, chạy quyền hệ thống (System Mode) và bypass hoàn toàn tính năng mặc định của Salesforce.`
+**💡 Từ khóa ghi nhớ:** `Custom Controller -> Tự viết 100% logic, bypass tính năng chuẩn. Controller Extension -> Tái sử dụng/mở rộng Standard Controller.`
 
 ---
 
@@ -7209,20 +7229,20 @@ System.assert(m.prop == 1);**
 - **D.** Access data in @TestVisible class variables. ❌
 
 **📝 Dịch tiếng Việt:**
-> Phương pháp chuẩn mực và tốt nhất nào nên được áp dụng để cung cấp dữ liệu test mẫu cho một Apex Test Class?
+> Phương pháp chuẩn mực và chuẩn cơm mẹ nấu nhất nào nên được áp dụng để cung cấp dữ liệu test mẫu cho một Apex Test Class?
 
 **💬 Giải thích gốc (English):**
 > Using a Test Data Factory or @TestSetup method is generally considered best practice as it ensures tests are isolated, repeatable, and maintainable.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng một class Test Data Factory chuyên biệt để tạo lập dữ liệu test mẫu (C). Kỹ thuật này giúp tái sử dụng code tạo dữ liệu, giảm thiểu trùng lặp mã nguồn và dễ bảo trì khi Org thay đổi validation rules hay schema trường.
+> Chọn **C: Sử dụng một Test Data Factory class chuyên biệt để tạo dữ liệu test** (ví dụ `TestDataFactory.createAccounts(...)`). Đây là best practice đỉnh chóp của Salesforce! Thằng này giúp bạn gom toàn bộ logic tạo bản ghi test ảo vào một nơi, tha hồ tái sử dụng ở nhiều test class khác nhau. Mai sau Admin có thêm Validation Rule hay Field bắt buộc mới, bạn chỉ cần sửa đúng 1 chỗ trong Factory class là xong, đỡ mất công đi sửa từng test class.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Query dữ liệu thật trong DB là tối kỵ vì test class bị cô lập dữ liệu mặc định (SeeAllData=false) sẽ trả về danh sách rỗng.
-> **B.** Execute Anonymous chỉ chạy thủ công trên Developer Console, không thể nhúng tự động hóa vào quá trình chạy test của Org được.
-> **D.** Khai báo biến tĩnh có gắn @TestVisible chỉ giúp truyền biến, không giúp chèn vật lý các bản ghi test cần thiết vào database.
+> **A.** Query dữ liệu thật có sẵn trong database là tối kỵ! Mặc định unit test chạy ở chế độ cô lập (`SeeAllData=false`). Bạn query database thật thì nó sẽ trả về kết quả rỗng tuếch, test class fail lòi mắt ngay.
+> **B.** **Execute Anonymous** chỉ dùng để chạy code thủ công, chạy một lần rồi thôi ngoài Developer Console, chả liên quan gì đến việc tự động hóa tạo data khi chạy test class cả.
+> **D.** Khai báo biến tĩnh gắn `@TestVisible` chỉ giúp test class 'soi' được các biến private bên trong class chính, chứ nó không hề tạo hay chèn bản ghi vật lý nào vào database để test trigger cả.
 
-**💡 Từ khóa ghi nhớ:** `Best Practice tạo dữ liệu test -> Xây dựng class tiện ích chung dạng TEST DATA FACTORY.`
+**💡 Từ khóa ghi nhớ:** `Best Practice tạo data test trong Salesforce -> Luôn gọi **Test Data Factory class**.`
 
 ---
 
@@ -7237,16 +7257,18 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** A formula field will calculate the value retroactively for existing records. ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer tạo 3 trường Roll-up Summary trên Project__c để tính tổng số lượng Timesheets theo trạng thái. Yêu cầu tạo thêm trường hiển thị tỷ lệ giữa Timesheets bị từ chối và được duyệt. Hai lợi ích của việc chọn trường công thức (Formula Field) thay vì viết Trigger là gì? (Chọn 2)
+> Developer đã tạo 3 trường Roll-up Summary trên custom object Project__c: tổng số Timesheets, số Timesheets được duyệt, và số Timesheets bị từ chối. Giờ sếp bắt tạo thêm 1 trường mới để hiển thị tỷ lệ giữa Timesheets bị từ chối và được duyệt. Hai lợi ích của việc chọn trường công thức (Formula Field) thay vì viết Apex trigger là gì? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> C: Sử dụng trường công thức giúp loại bỏ hoàn toàn mã nguồn, giảm tải công sức bảo trì và không cần viết test class phủ coverage. D: Trường công thức tự động tính toán giá trị hồi tố (retroactively) cho toàn bộ các bản ghi đã tồn tại từ trước trong hệ thống ngay khi vừa được tạo.
+> Chọn **C** và **D**.
+- **Formula field** (trường công thức) là tính năng no-code chuẩn chỉnh, giúp bạn **giảm thiểu tối đa chi phí bảo trì** (C). Không cần viết code Apex, không cần viết test class gánh coverage, sướng vãi chưởng!
+- Ngay khi bạn vừa tạo xong trường công thức, Salesforce sẽ tự động **tính toán hồi tố (retroactively)** cho toàn bộ các bản ghi đã tồn tại từ trước trong hệ thống (D). Bạn không cần phải viết script chạy bằng tay để cập nhật lại data cũ.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Hệ thống không yêu cầu hay thực hiện chạy test class để validate trường công thức khi deploy.
-> **B.** Trường công thức không tự động kích hoạt lại các tiến trình tự động hóa (Workflow/Flow) khác khi deploy trường mới.
+> **A.** Trình deploy của Salesforce không yêu cầu hay thực hiện chạy bất kỳ test class nào để validate trường công thức cả. Trường này no-code nên an toàn tuyệt đối.
+> **B.** Trường công thức khi được tính toán lại **không hề kích hoạt** (trigger) các tiến trình tự động hóa khác (như Flow hay Workflow) chạy lại, do đó đáp án này là sai bét.
 
-**💡 Từ khóa ghi nhớ:** `Lợi ích tối thượng của Formula Field -> Không tốn công viết code bảo trì (No-code) + Tự động tính toán dữ liệu lịch sử lịch trình.`
+**💡 Từ khóa ghi nhớ:** `Lợi ích tối thượng của Formula Field -> **Giảm công sức viết code bảo trì** (C) + **Tự động tính toán dữ liệu cũ đã có** (D).`
 
 ---
 
@@ -7260,7 +7282,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** after update ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer cần viết code tự động cập nhật một đối tượng khác không có quan hệ liên quan (unrelated object) mỗi khi một bản ghi được lưu thành công. Lập trình viên nên tạo Trigger ở hai sự kiện nào? (Chọn 2)
+> Developer cần cập nhật một đối tượng KHÔNG có quan hệ gì liên quan (unrelated object) mỗi khi một bản ghi được lưu thành công. Lập trình viên nên tạo Trigger ở hai sự kiện nào? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > To update an unrelated object when a record gets saved, the developer should create the following two trigger types:
@@ -7268,13 +7290,13 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > After Update Trigger: This trigger runs after an existing record is updated. It enables the developer to update unrelated objects based on changes to the original record.
 
 **✅ Tại sao đáp án đúng:**
-> A: after insert (sau khi chèn mới thành công). D: after update (sau khi cập nhật thành công). Vì đối tượng không liên quan cần thông tin ID và dữ liệu đã được ghi an toàn xuống database ở sự kiện after để tránh lỗi tham chiếu dữ liệu chéo.
+> Chọn **A (after insert)** và **D (after update)**. Khi bạn cần cập nhật một đối tượng khác độc lập, bạn bắt buộc phải chờ cho bản ghi hiện tại được lưu an toàn xuống database và có ID chính thức (ở sự kiện **`after`**). Lúc này, nếu có lỗi xảy ra ở đối tượng kia thì toàn bộ transaction mới rollback đồng bộ được, đảm bảo tính toàn vẹn dữ liệu.
 
 **❌ Tại sao đáp án sai:**
-> **B.** before update chạy trước khi dữ liệu lưu vào DB, không an toàn và dễ bị rollback gây mất mát đồng bộ dữ liệu.
-> **C.** before insert chạy khi bản ghi chưa hề có ID Salesforce thực tế, cấm thực hiện cập nhật chéo đối tượng khác.
+> **B.** **before update** chạy trước khi lưu bản ghi hiện tại xuống database. Sự kiện này chỉ nên dùng để thay đổi giá trị của chính bản ghi đó chứ mang đi cập nhật object khác là đi ngược lại thiết kế chuẩn (Order of Execution), dễ gây lỗi race condition.
+> **C.** **before insert** chạy khi bản ghi hiện tại chưa hề được ghi vào DB và chưa có ID chính thức. Lấy ID đâu ra mà đi map dữ liệu sang đối tượng khác hả bro?
 
-**💡 Từ khóa ghi nhớ:** `Cập nhật chéo đối tượng khác không liên quan -> Bắt buộc thực hiện ở sự kiện AFTER (after insert, after update).`
+**💡 Từ khóa ghi nhớ:** `Cập nhật đối tượng khác (con/bản ghi liên quan/không liên quan) -> Auto chọn sự kiện **AFTER** (after insert / after update)!`
 
 ---
 
@@ -7291,14 +7313,14 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > Tính năng nào cho phép lập trình viên dễ dàng khởi tạo hàng loạt bản ghi dữ liệu test mẫu lớn từ file để dùng trong các test classes?
 
 **✅ Tại sao đáp án đúng:**
-> Static Resources (D). Lập trình viên có thể upload file dữ liệu CSV lên Static Resources, sau đó trong test class dùng hàm 'Test.loadData(SObjectType, ResourceName)' để nạp nhanh toàn bộ bản ghi cực kỳ tiện lợi.
+> Chọn **D: Static Resources**. Cách nạp data test đỉnh nhất là bạn chuẩn bị sẵn một file CSV chứa đầy đủ thông tin các bản ghi mẫu, upload nó lên **Static Resource**, rồi dùng lệnh `Test.loadData()` trong code test để Salesforce tự động parse và nạp thẳng vào DB ảo.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Documents là nơi lưu trữ tài liệu giao diện Classic, không hỗ trợ tính năng nạp dữ liệu test tự động.
-> **B.** WebServiceTests dùng để kiểm thử Web service, không có chức năng nạp dữ liệu mẫu.
-> **C.** HttpCalloutMocks dùng để giả lập phản hồi của API cuộc gọi ngoài (callout), không dùng để chèn bản ghi dữ liệu mẫu.
+> **A.** **Documents** là tính năng lưu trữ file đời cổ của Salesforce Classic, không có bất kỳ API hay phương thức nào hỗ trợ nạp dữ liệu tự động vào Unit Test cả.
+> **B.** `WebServiceTests` là một khái niệm tự chế, không tồn tại tính năng hay lớp nào tên thế này để tạo record.
+> **C.** `HttpCalloutMocks` dùng để giả lập phản hồi của API cuộc gọi ngoài (HTTP Callout) chứ không có nhiệm vụ chèn bản ghi dữ liệu test thông thường.
 
-**💡 Từ khóa ghi nhớ:** `Nạp nhanh dữ liệu test giả lập từ file CSV -> Upload lên STATIC RESOURCES + Sử dụng Test.loadData().`
+**💡 Từ khóa ghi nhớ:** `Nạp data test hàng loạt từ CSV -> Upload lên **Static Resources** rồi gọi **Test.loadData()**.`
 
 ---
 
@@ -7308,21 +7330,23 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 
 - **A.** Write a single before trigger on the Line Item that calculates the item amount and updates the order amount on the Order. ❌
 - **B.** Write a process on the Line Item that calculates the item amount and order amount and updates the fields on the Line Item and the Order. ❌
-- **C.** Implement the line amount as a numeric formula field and the order amount as a roll-up summary field. ❌
-- **D.** Implement the line amount as a currency field and the order amount as a SUM formula field. ✅
+- **C.** Implement the line amount as a numeric formula field and the order amount as a roll-up summary field. ✅
+- **D.** Implement the line amount as a currency field and the order amount as a SUM formula field. ❌
 
 **📝 Dịch tiếng Việt:**
 > Một tổ chức theo dõi các đơn hàng của khách hàng trên đối tượng Order và các dòng sản phẩm của Order trên đối tượng Line Item. Đối tượng Line Item có mối quan hệ Master-Detail với đối tượng Order. Một lập trình viên có yêu cầu tính toán số tiền đơn hàng trên Order và số tiền trên mỗi Line Item dựa trên số lượng và giá cả. Triển khai nào sau đây là đúng?
 
 **✅ Tại sao đáp án đúng:**
-> Line Item tính giá dựa trên Price * Quantity -> Dùng Formula Field cho khỏe. Order tổng hợp từ Line Items -> Dùng Roll-up Summary (vì là Master-Detail) là chuẩn 'Architect' nhất.
+> Chọn **C: Triển khai số tiền trên Line Item dạng trường công thức số (numeric formula field) và số tiền trên Order dưới dạng trường Roll-up Summary**. Vì:
+- Số tiền trên mỗi Line Item = Số lượng * Đơn giá -> Sử dụng **Formula Field** (trường công thức) là giải pháp no-code hoàn hảo.
+- Tổng số tiền trên Order = Tổng số tiền của các Line Items con -> Vì quan hệ là Master-Detail, ta sử dụng trường **Roll-up Summary** trên Order để tự động tính toán tổng số tiền của các bản ghi con một cách cực kỳ mượt mà.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng Process Builder cập nhật field thủ công là dư thừa và dễ lỗi race condition.
-> **C.** Không có khái niệm 'SUM formula field' để cộng dồn các bản ghi con lên bản ghi cha.
-> **D.** Trigger là giải pháp cuối cùng khi No-code không làm được. Ở đây No-code làm quá tốt.
+> **A.** Viết Trigger ở sự kiện before để tính toán rồi tự update là phương án code cồng kềnh, thừa thãi và tốn tài nguyên bảo trì vô ích khi no-code xử lý ngon lành.
+> **B.** Dùng Process Builder để tính toán tương tự A, cồng kềnh và dễ gây trễ giao dịch hoặc lỗi khóa bản ghi (record locking).
+> **D.** Không tồn tại khái niệm 'SUM formula field' để cộng dồn các bản ghi con lên bản ghi cha trong Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Thần chú: Master-Detail + Sum/Min/Max = Roll-up Summary.`
+**💡 Từ khóa ghi nhớ:** `Tính toán toán học trong record con -> Dùng **Formula**. Tổng hợp con lên cha Master-Detail -> Dùng **Roll-up Summary**.`
 
 ---
 
@@ -7336,21 +7360,23 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** @AuraEnabled(cacheable = true) public List<Opportunity> search(String term) { /*implementation*/ } ❌
 
 **📝 Dịch tiếng Việt:**
-> Cấu trúc Apex method nào đúng để dùng với decorator @wire trong LWC?
+> Một Lightning component có một wired property tên là searchResults để chứa danh sách Opportunity. Cấu hình method Apex nào dưới đây là chuẩn để kết nối (wire) với property này?
 
 **💬 Giải thích gốc (English):**
 > To improve runtime performance, annotate the Apex method with @AuraEnabled(cacheable=true), which caches the method results on the client. To set cacheable=true, a method must only get data, it can’t mutate (change) data.
 > To use @wire to call an Apex method, you must set cacheable=true.
 
 **✅ Tại sao đáp án đúng:**
-> Để dùng `@wire`, method phải có 2 điều kiện: 1. `static` (để gọi từ UI) và 2. `cacheable=true` (để tối ưu hóa lưu kết quả vào bộ nhớ đệm).
+> Chọn **C: `@AuraEnabled(cacheable = true) public static List<Opportunity> search(String term)`**. Để một method Apex có thể kết nối thông qua decorator `@wire` trong LWC, nó bắt buộc phải thỏa mãn 2 điều kiện cứng:
+1. Phải có annotation **`@AuraEnabled(cacheable=true)`** để Salesforce bật tính năng lưu cache dữ liệu tối ưu ở trình duyệt.
+2. Phải là phương thức tĩnh **`static`**.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Thiếu từ khóa `static`, framework sẽ không khởi tạo được class để gọi method.
-> **C.** Sai cả `static` lẫn `cacheable`.
-> **D.** Thiếu `cacheable=true` nên không thể dùng với `@wire` (chỉ dùng được khi gọi thủ công - imperative call).
+> **A.** Thiếu thuộc tính `cacheable=true` nên không thể sử dụng với `@wire` được. Bạn chỉ có thể gọi phương thức này thủ công (Imperative call) thôi.
+> **B.** Vừa thiếu `static` vừa thiếu `cacheable=true` thì LWC chịu chết không kết nối được.
+> **D.** Thiếu từ khóa `static` làm phương thức trở thành instance method. LWC chỉ có thể gọi được static method của Apex thôi, cook ngay!
 
-**💡 Từ khóa ghi nhớ:** `@wire + Apex = static + cacheable=true.`
+**💡 Từ khóa ghi nhớ:** `Muốn `@wire` kết nối với Apex -> Phương thức bắt buộc phải là **`static`** và có **`cacheable=true`**!`
 
 ---
 
@@ -7364,7 +7390,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** @Interface(class=Laptop) public class SilverLaptop{} ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer định nghĩa một Apex Interface tên là Laptop. Làm thế nào để sử dụng và triển khai interface này trong class SilverLaptop?
+> Lead Developer tạo ra một Apex Interface tên là Laptop. Làm thế nào để sử dụng và hiện thực hóa (implement) cái interface này bên trong class SilverLaptop?
 
 **💬 Giải thích gốc (English):**
 > In Apex (similar to Java), the implements keyword is used to indicate that a class will implement an interface.
@@ -7373,14 +7399,14 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > }
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp A: public class SilverLaptop implements Laptop{}. Trong Apex, để một class kế thừa và hiện thực hóa các phương thức ký mẫu được khai báo trong một Interface, ta bắt buộc phải sử dụng từ khóa 'implements'.
+> Chọn **A: `public class SilverLaptop implements Laptop{}`**. Trong Apex (và hầu hết các ngôn ngữ OOP), để một lớp thông thường cam kết thực hiện đầy đủ các phương thức đã khai báo ký mẫu trong một Interface, ta dùng từ khóa **`implements`**.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Cú pháp @Extends là chú thích giả, hoàn toàn không tồn tại trong ngôn ngữ Apex.
-> **C.** Từ khóa 'extends' chỉ dành riêng cho việc một class kế thừa một class cha khác (kế thừa đơn), dùng cho Interface là sai ngữ pháp.
-> **D.** Chú thích @Interface là cú pháp sai lệch, không tồn tại trong Salesforce Apex.
+> **B.** Cú pháp `@Extends(...)` là đồ tự chế, hoàn toàn không tồn tại trong vũ trụ Salesforce Apex.
+> **C.** Từ khóa `extends` chỉ dùng khi một class kế thừa một class cha khác (kế thừa đơn), hoặc một interface kế thừa interface khác chứ không dùng để liên kết class với interface được.
+> **D.** Chú thích `@Interface(...)` cũng là một pha tấu hài vô hại, không có giá trị biên dịch.
 
-**💡 Từ khóa ghi nhớ:** `Hiện thực hóa Interface -> Bắt buộc dùng từ khóa IMPLEMENTS.`
+**💡 Từ khóa ghi nhớ:** `Hiện thực hóa Interface -> Chắc chắn dùng từ khóa **implements**!`
 
 ---
 
@@ -7394,20 +7420,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Use a try-catch construct to cast the sObject into one of the three sObject types. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một phương thức nhận tham số đầu vào là một danh sách sObject chung chung (List<sObject>). Developer nên làm gì để xác định chính xác kiểu dữ liệu cụ thể (như Account, Lead, hay Contact) của từng bản ghi để thực hiện ép kiểu (cast) dữ liệu an toàn?
+> Một phương thức nhận đầu vào là một danh sách sObject chung chung (List<sObject>). Developer nên làm gì để biết chính xác kiểu đối tượng cụ thể của từng bản ghi (ví dụ là Account, Lead hay Contact) để thực hiện ép kiểu (cast) dữ liệu cho an toàn?
 
 **💬 Giải thích gốc (English):**
 > To determine the specific object type (e.g., Account, Lead, Contact) of each sObject in a list, the developer can use the getSObjectType method. This method returns the Schema.SObjectType of the sObject, which can then be used to identify the object type.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng phương thức getSObjectType() trên từng đối tượng sObject thô để lấy về đối tượng Token Schema.SObjectType tương ứng (B). Cách này giúp so khớp chuẩn xác kiểu dữ liệu (ví dụ: obj.getSObjectType() == Account.sObjectType) trước khi tiến hành cast, tránh được lỗi Runtime Exception.
+> Chọn **B: Sử dụng phương thức `getSObjectType()` trên mỗi sObject**. Hàm này trả về một đối tượng Token `Schema.SObjectType` đại diện cho kiểu dữ liệu thực tế của bản ghi (ví dụ: `obj.getSObjectType() == Account.sObjectType`). Đây là cách chính thống, an toàn tuyệt đối và chạy nhanh nhất.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lấy 3 ký tự đầu của ID để phân biệt (ví dụ: 001 là Account, 003 là Contact) tuy chạy được nhưng là bad practice cực kỳ nguy hiểm, không an toàn và không chính thống vì Salesforce cấm hardcode ID prefix.
-> **C.** Không tồn tại phương thức getSObjectName() trên lớp sObject chuẩn của Salesforce.
-> **D.** Sử dụng try-catch để ép kiểu thử nghiệm mù quáng (blind casting) làm code chạy cực kỳ chậm và gây gánh nặng rất lớn cho CPU.
+> **A.** Mặc dù 3 ký tự đầu của ID Salesforce có thể dùng để phân biệt đối tượng (ví dụ: 001 là Account, 003 là Contact), nhưng việc hardcode tiền tố ID này là một 'anti-pattern' cực kỳ nguy hiểm, bị Salesforce cấm tiệt vì nó có thể thay đổi hoặc không hoạt động với các custom object.
+> **C.** Không hề tồn tại phương thức nào tên là `getSObjectName()` trên lớp sObject của Apex cả.
+> **D.** Dùng khối `try-catch` để ép kiểu bừa bãi (blind casting) cho đến khi trúng thì thôi là một giải pháp cực kỳ 'gà', làm chậm CPU và tốn tài nguyên hệ thống vô ích.
 
-**💡 Từ khóa ghi nhớ:** `Xác định kiểu đối tượng sObject động trong code Apex -> Luôn dùng hàm getSObjectType()!`
+**💡 Từ khóa ghi nhớ:** `Xác định kiểu sObject động -> Auto gọi hàm **`getSObjectType()`**.`
 
 ---
 
@@ -7416,12 +7442,12 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 **🔵 What are two use cases for executing Anonymous Apex code? (Choose two.)**
 
 - **A.** To run a batch Apex class to update all Contacts ✅
-- **B.** To schedule an Apex class to run periodically ❌
-- **C.** To delete 15,000 inactive Accounts in a single transaction after a deployment ✅
+- **B.** To schedule an Apex class to run periodically ✅
+- **C.** To delete 15,000 inactive Accounts in a single transaction after a deployment ❌
 - **D.** To add unit test code coverage to an org ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai trường hợp nào nên dùng Execute Anonymous Apex? (Chọn 2)
+> Hai trường hợp nào là phù hợp để sử dụng tính năng thực thi mã Apex ẩn danh (Execute Anonymous Apex)? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > To run a batch Apex class to update all Contacts
@@ -7429,13 +7455,13 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > These use cases are suitable for Anonymous Apex because it allows developers to quickly execute code snippets for tasks such as data manipulation or batch processing without needing to deploy the code to the org.
 
 **✅ Tại sao đáp án đúng:**
-> Dùng để kích hoạt các tiến trình chạy một lần hoặc đặt lịch (Schedule) mà không cần viết code lưu vào hệ thống.
+> Chọn **A (Chạy một lớp Batch Apex để cập nhật danh bạ Contact)** và **B (Đặt lịch chạy định kỳ cho một lớp Apex Schedulable)**. Cửa sổ Execute Anonymous cực kỳ hoàn hảo để thực hiện các lệnh chạy một lần như kích hoạt chạy nhanh một mảng xử lý Batch Apex bằng hàm `Database.executeBatch()` (A), hoặc đặt lịch chạy tự động cho class Apex thông qua phương thức `System.schedule()` (B). Vừa nhanh gọn vừa không làm rác metadata của hệ thống.
 
 **❌ Tại sao đáp án sai:**
-> **A.** DML limit là 10,000, xóa 15,000 trong 1 transaction là 'ăn' LimitException ngay.
-> **D.** Code chạy trong Anonymous không bao giờ được tính vào Code Coverage.
+> **C.** Dù muốn xóa Accounts nhưng giới hạn DML cứng trong một transaction chỉ tối đa là 10,000 bản ghi. Việc cố đấm ăn xôi xóa 15,000 record trong một transaction duy nhất qua Execute Anonymous chắc chắn sẽ nổ lỗi `LimitException` và rollback sạch sẽ. Cook ngay!
+> **D.** Mã code chạy trong cửa sổ Execute Anonymous chỉ mang tính tức thời, chạy xong là biến mất và **không bao giờ được tính vào Code Coverage** của Org.
 
-**💡 Từ khóa ghi nhớ:** `Anonymous Apex: Một đi không trở lại, không tính Coverage.`
+**💡 Từ khóa ghi nhớ:** `Execute Anonymous Apex -> Chuyên dùng chạy lệnh một lần (Batch, Schedule) + Không tính Code Coverage!`
 
 ---
 
@@ -7449,20 +7475,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Use @TestVisible to allow the test method to see the standard price book. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để lấy được ID của Standard Pricebook trong một Unit Test?
+> Developer muốn truy cập vào Standard Pricebook (Bảng giá chuẩn) của hệ thống khi viết một test class cho Trigger trên OpportunityLineItem. Phương thức nào cho phép truy cập lấy ID của Standard Pricebook này?
 
 **💬 Giải thích gốc (English):**
 > To access the standard price book in a test class that covers an OpportunityLineItem trigger, the developer should use the Test.getStandardPricebookId() method. This method retrieves the ID of the standard price book, allowing the test class to reference it.
 
 **✅ Tại sao đáp án đúng:**
-> Salesforce cấm query Pricebook thật trong test (trừ SeeAllData). Để lấy ID 'chuẩn' mà không vi phạm, mày dùng method có sẵn: Test.getStandardPricebookId().
+> Chọn **A: Sử dụng phương thức `Test.getStandardPricebookId()`**. Mặc định, Salesforce cô lập dữ liệu thật trong môi trường chạy test để bảo vệ hệ thống. Vì thế, bạn không thể SOQL query để tìm Standard Pricebook được. Salesforce cung cấp sẵn hàm `Test.getStandardPricebookId()` để bạn lấy ngay được ID chuẩn của Standard Pricebook mà không cần tắt chế độ cô lập dữ liệu.
 
 **❌ Tại sao đáp án sai:**
-> **A.** SeeAllData=true là bad practice, tuyệt đối tránh khi đi thi.
-> **B.** @TestVisible chỉ dùng để xem biến private, không giúp mày lấy data từ hệ thống.
-> **D.** Standard Pricebook là của hệ thống, mày không thể nạp nó bằng CSV qua Test.loadData().
+> **B.** Dùng `@IsTest(SeeAllData=true)` là một quả anti-pattern cực lớn vì nó làm mất tính độc lập dữ liệu của test class. Thêm vào đó, xóa Standard Pricebook hiện tại đi là hành động tự hủy cực mạnh!
+> **C.** Standard Pricebook là đối tượng hệ thống đặc biệt được tạo tự động, bạn không thể tự ý nạp (load) nó từ file CSV qua Static Resource được.
+> **D.** `@TestVisible` chỉ dùng để hiển thị các biến private hoặc method private của class chính cho test class nhìn thấy, chứ không liên quan gì đến dữ liệu hệ thống.
 
-**💡 Từ khóa ghi nhớ:** `Test + Pricebook -> Test.getStandardPricebookId(). Nhớ nằm lòng!`
+**💡 Từ khóa ghi nhớ:** `Muốn lấy ID Standard Pricebook trong Unit Test -> Auto chọn **`Test.getStandardPricebookId()`**.`
 
 ---
 
@@ -7476,16 +7502,18 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Ant Migration Tool ✅
 
 **📝 Dịch tiếng Việt:**
-> Dùng công cụ nào để chạy script tự động deploy lên sandbox? (Chọn 2)
+> Một đội phát triển muốn viết script tự động deploy code lên sandbox định kỳ trong chu kỳ phát triển. Hai công cụ nào có thể chạy được script deploy này? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> A: CLI sinh ra để chạy command line/script. B: VS Code tích hợp cực tốt với CLI để thực thi các lệnh deploy.
+> Chọn **A (SFDX CLI)** và **D (Ant Migration Tool)**.
+- **SFDX CLI** (A) là công cụ dòng lệnh (command-line interface) hiện đại tối tân của Salesforce, cực kỳ thích hợp để nhúng vào các CI/CD script (như GitHub Actions, GitLab CI) để tự động deploy.
+- **Ant Migration Tool** (D) là công cụ dòng lệnh đời cũ chạy bằng Java dựa trên Apache Ant, chuyên dùng để tự động hóa deploy qua XML script. Tuy cổ nhưng vẫn đáp ứng tốt yêu cầu.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Change Sets chỉ thao tác bằng tay trên trình duyệt (Point-and-click).
-> **D.** Developer Console không có chức năng deploy metadata từ máy local.
+> **B.** **Developer Console** chỉ dùng để viết code, chạy debug log, SOQL chứ không có tính năng nào để chạy script tự động deploy metadata từ máy tính của bạn lên cả.
+> **C.** **Change Sets** là công cụ kéo thả bằng tay (point-and-click) trực tiếp ngoài giao diện web Salesforce, không thể chạy bằng script hay tự động hóa dòng lệnh được.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Scripting + Deployment -> CLI / SFDX.`
+**💡 Từ khóa ghi nhớ:** `Deploy code tự động bằng Script -> Chọn ngay bộ đôi dòng lệnh **SFDX CLI** và **Ant Migration Tool**!`
 
 ---
 
@@ -7500,7 +7528,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **E.** extensions ✅
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên cần tạo một nút bấm tùy chỉnh (custom button) cho đối tượng Account. Khi click, hệ thống thực hiện một loạt các phép tính toán nâng cao rồi redirect user sang một trang Visualforce. Ba thuộc tính nào cần khai báo giá trị trong thẻ <apex:page>? (Chọn 3)
+> Developer cần tạo một custom button trên Account. Khi click, hệ thống sẽ thực hiện một loạt phép tính toán rồi tự chuyển hướng (redirect) user sang một trang Visualforce tùy biến. Ba thuộc tính nào cần khai báo giá trị trong thẻ `<apex:page>` để làm được việc này? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > To create a custom button for the Account object that performs calculations and redirects to a custom Visualforce page, the developer needs to define the following three attributes in the <apex:page> tag:
@@ -7509,13 +7537,16 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > Extensions: This attribute specifies any additional Apex classes that extend the standard controller to include custom logic for the calculations.
 
 **✅ Tại sao đáp án đúng:**
-> A: action (chứa phương thức Apex thực hiện tính toán và định hướng chuyển trang). C: standardController (bắt buộc cấu hình là 'Account' để nút bấm hiển thị được trên Page Layout). E: extensions (khai báo lớp Apex Controller Extension chứa logic tính toán).
+> Chọn **A (action)**, **C (standardController)** và **E (extensions)**. Để ghi đè (override) được hành động click nút bấm chuẩn trên Account bằng trang Visualforce:
+- Trang phải dùng **`standardController="Account"`** để Salesforce biết trang này thuộc Account (C).
+- Phải dùng **`extensions="TênApexClass"`** để nhúng class Apex chứa logic tính toán nâng cao (E).
+- Phải dùng thuộc tính **`action="{!phươngThứcTínhToán}"`** trong thẻ `<apex:page>` để ngay khi trang load lên, nó sẽ tự động chạy logic tính toán rồi redirect đi luôn (A).
 
 **❌ Tại sao đáp án sai:**
-> **B.** renderAs chỉ dùng để chỉ định xuất trang sang định dạng PDF, không liên quan đến việc tính toán chuyển trang.
-> **D.** readOnly dùng để tối ưu hóa trang chế độ đọc dữ liệu (tăng giới hạn SOQL), không hỗ trợ cho thao tác tính toán ghi đè nút bấm nghiệp vụ.
+> **B.** `renderAs` chỉ dùng để chỉ định định dạng hiển thị của trang (ví dụ xuất trang sang PDF), không liên quan đến việc xử lý logic chuyển trang.
+> **D.** `readOnly` dùng để tối ưu hóa trang ở chế độ chỉ đọc (tăng giới hạn số lượng bản ghi SOQL có thể hiển thị), không hỗ trợ cho các nút bấm nghiệp vụ tính toán sửa đổi.
 
-**💡 Từ khóa ghi nhớ:** `Ghi đè action nút bấm chuẩn + tính toán phức tạp -> standardController + extensions + action.`
+**💡 Từ khóa ghi nhớ:** `Ghi đè nút bấm + xử lý Apex tính toán trong Visualforce -> Cần bộ ba: **standardController**, **extensions**, **action**.`
 
 ---
 
@@ -7529,21 +7560,21 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** The transaction succeeds and all changes are committed to the database. ❌
 
 **📝 Dịch tiếng Việt:**
-> Một transaction đệ quy được khởi tạo bởi một câu lệnh DML tạo các bản ghi cho hai đối tượng này: Accounts và Contacts. Trigger của Account đạt đến độ sâu stack là 16. Phát biểu nào sau đây là đúng về kết quả của transaction này?
+> Một transaction đệ quy được kích hoạt bởi câu lệnh DML tạo bản ghi cho 2 object: Accounts và Contacts. Trigger trên Account đã chạm tới độ sâu ngăn xếp (stack depth) là 16. Phát biểu nào dưới đây là ĐÚNG về kết quả của transaction này?
 
 **💬 Giải thích gốc (English):**
 > When an Account trigger hits a stack depth of 16, it means that the trigger has recursively called itself 16 times. In Salesforce, the maximum allowed stack depth for recursive triggers is 16. Therefore, the transaction will fail with a “maximum trigger depth exceeded” error.
 > To avoid these kind of situation we can use public class static variable. We can solve this issue, you can set a condition on trigger so it will not be called recursively.
 
 **✅ Tại sao đáp án đúng:**
-> Giới hạn đệ quy (Stack depth) của Salesforce là 16. Nếu đạt đúng 16 mà không vượt quá, transaction vẫn thành công. Nếu là lần thứ 17, nó mới 'oẳng' (LimitException).
+> Chọn **C: Transaction chỉ thất bại nếu độ sâu ngăn xếp của Trigger Contact vượt quá hoặc bằng 16**. Giới hạn đệ quy trigger (stack depth limit) cứng của Salesforce là **16**. Khi độ sâu tích lũy của toàn bộ transaction (gồm cả Account và Contact trigger gọi qua lại lẫn nhau) vượt quá giới hạn này (tức là sang lần thứ 17), hệ thống mới chính thức nổ lỗi `LimitException` và rollback sạch sẽ. Ở mức 16, transaction vẫn tạm thời 'thở oxy' thành công được.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Salesforce không bao giờ commit một nửa transaction (Atomic).
-> **C.** Chỉ rollback nếu vượt quá 16.
-> **D.** Trigger của Contact cũng tính chung vào tổng stack depth của transaction đó.
+> **A.** Transaction chưa chắc đã fail ngay ở mức stack depth 16 nếu không bị kích hoạt thêm lần nào nữa.
+> **B.** Sai logic tính toán giới hạn đệ quy chung của transaction.
+> **D.** Không chắc chắn thành công hoàn toàn vì chỉ cần phát sinh thêm 1 lần đệ quy nữa vượt qua 16 là cả lũ dắt tay nhau đi 'cook' hết.
 
-**💡 Từ khóa ghi nhớ:** `Recursion Limit: 16. Chạm 16 vẫn sống, 17 là 'cook'.`
+**💡 Từ khóa ghi nhớ:** `Giới hạn đệ quy (Stack Depth) của Salesforce là **16**. Chạm 16 vẫn sống, vượt quá 16 (tức là từ 17 trở đi) là auto oẳng!`
 
 ---
 
@@ -7557,20 +7588,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** CalloutException ❌
 
 **📝 Dịch tiếng Việt:**
-> Loại ngoại lệ (exception) nào KHÔNG THỂ bị bắt (catch) bằng khối try-catch?
+> Loại ngoại lệ (Exception) nào dưới đây KHÔNG THỂ bị bắt (catch) bằng khối try-catch trong Apex?
 
 **💬 Giải thích gốc (English):**
 > LimitException is a type of exception in Salesforce that cannot be caught. Since these limits are enforced to ensure the stability and performance of the Salesforce platform, LimitException cannot be handled using try-catch blocks.
 
 **✅ Tại sao đáp án đúng:**
-> LimitException (vượt quá governor limits) là loại lỗi 'chí mạng'. Salesforce không cho phép mày 'catch' nó vì nếu cho phép, mày có thể tiếp tục lách luật dùng thêm tài nguyên, làm hỏng cơ chế đa người dùng (multi-tenant).
+> Chọn **A: LimitException**. Đây là lỗi chí mạng của Salesforce! Khi bạn vượt quá giới hạn Governor Limits (ví dụ chạy quá 100 câu SOQL, vượt quá bộ nhớ heap...), Salesforce sẽ lập tức dừng cuộc chơi ngay lập tức và ném ra `LimitException`. Hệ thống cấm tiệt việc dùng `try-catch` để bắt lỗi này vì nếu cho phép bắt, dev sẽ tha hồ lách luật và phá hoại tài nguyên dùng chung của môi trường multi-tenant. Quá chuẩn!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lỗi quyền truy cập vẫn có thể bắt được.
-> **B.** Custom Exception sinh ra là để được ném và bắt.
-> **D.** Callout Exception nổ ra khi web service xịt, bắt được bình thường.
+> **B.** `NoAccessException` (lỗi không có quyền truy cập) vẫn bắt được bình thường để hiển thị thông báo lỗi thân thiện cho user.
+> **C.** `Custom Exception` do chính bạn viết ra nhằm phục vụ mục đích ném và bắt theo logic nghiệp vụ của bạn.
+> **D.** `CalloutException` nổ ra khi gọi API lỗi (mất mạng, timeout...), bắt thoải mái bằng try-catch để xử lý retry.
 
-**💡 Từ khóa ghi nhớ:** `Đụng tới 'Limit' là 'Cook', không ai cứu được, kể cả Try-Catch.`
+**💡 Từ khóa ghi nhớ:** `Đụng tới giới hạn **LIMIT** (LimitException) là auto oẳng, không ai cứu nổi, kể cả cụ tổ **Try-Catch**!`
 
 ---
 
@@ -7590,14 +7621,14 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > The Data Import Wizard does not support the import of Opportunity records. It is limited to certain standard objects like Contacts, Leads, and Accounts.
 
 **✅ Tại sao đáp án đúng:**
-> Vì Data Import Wizard hoàn toàn không hỗ trợ import đối tượng Opportunity (C). Đây là giới hạn cứng của Salesforce: Data Import Wizard chỉ hỗ trợ một số đối tượng tiêu chuẩn cơ bản như Accounts, Contacts, Leads, Solutions và Campaign Members, còn các đối tượng khác như Opportunity hay Case bắt buộc phải dùng Data Loader.
+> Chọn **C: Vì Data Import Wizard hoàn toàn không hỗ trợ import đối tượng Opportunity**. Đây là giới hạn cứng siêu chuối của Data Import Wizard! Nó chỉ hỗ trợ một số đối tượng tiêu chuẩn cơ bản như Accounts, Contacts, Leads, Solutions và Campaign Members, cộng thêm các Custom Object. Còn mấy khứa standard sừng sỏ như Opportunity hay Case thì bắt buộc phải gọi tên **Data Loader**.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Data Import Wizard mới là công cụ chạy trực tiếp trên trình duyệt web, còn Data Loader là phần mềm cài đặt độc lập trên máy tính client.
-> **B.** Data Import Wizard mới là công cụ hỗ trợ so khớp tự động thông minh hơn khi liên kết Account con-cha.
-> **D.** Data Import Wizard hỗ trợ import tối đa lên tới 50,000 bản ghi, thừa sức xử lý con số 500 đơn giản.
+> **A.** Ngược rồi bro! Data Import Wizard mới chạy trực tiếp trên trình duyệt web, còn Data Loader là phần mềm client cài đặt offline trên máy tính.
+> **B.** Data Import Wizard thực ra hỗ trợ so khớp tự động khi liên kết Account/Contact thông minh hơn Data Loader nhiều.
+> **D.** Data Import Wizard dư sức import tới 50,000 bản ghi, 500 bản ghi chỉ là muỗi đối với nó.
 
-**💡 Từ khóa ghi nhớ:** `Giới hạn Data Import Wizard -> Không hỗ trợ Opportunity và Case. Muốn import Opp/Case -> Bắt buộc dùng DATA LOADER.`
+**💡 Từ khóa ghi nhớ:** `Data Import Wizard cấm tiệt **Opportunity** và **Case**. Muốn nạp Opp/Case -> Chỉ có con đường **Data Loader**.`
 
 ---
 
@@ -7605,10 +7636,10 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 
 **🔵 When importing and exporting data into Salesforce, which two statements are true? (Choose two.)**
 
-- **A.** Bulk API can be used to Import large data volumes in development environments without bypassing the storage limits. ❌
+- **A.** Bulk API can be used to Import large data volumes in development environments without bypassing the storage limits. ✅
 - **B.** Developer and Developer Pro sandboxes have different storage limits. ✅
 - **C.** Bulk API can be used to bypass the storage limits when importing large data volumes in development environments. ❌
-- **D.** Data import wizard is a client application provided by Salesforce. ✅
+- **D.** Data import wizard is a client application provided by Salesforce. ❌
 
 **📝 Dịch tiếng Việt:**
 > Khi nhập (import) và xuất (export) dữ liệu vào Salesforce, hai phát biểu nào sau đây là đúng? (Chọn 2)
@@ -7618,13 +7649,15 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > The Data Import Wizard is a tool provided by Salesforce that allows users to import data into Salesforce objects through a simple interface.
 
 **✅ Tại sao đáp án đúng:**
-> A: Dùng Bulk API giúp xử lý dữ liệu lớn cực nhanh nhưng vẫn phải tuân thủ giới hạn lưu trữ (Storage Limits) của Org. C: Dev Sandbox (200MB) và Dev Pro (1GB) rõ ràng là khác nhau.
+> Chọn **A** và **B**. Vì:
+- Dù bạn có dùng **Bulk API** để import hàng triệu bản ghi cực kỳ tối ưu và tốc độ bàn thờ đi chăng nữa, bạn vẫn phải tuyệt đối tuân thủ **storage limits** (giới hạn dung lượng lưu trữ) của Org, không hề có chuyện được bypass (A).
+- Dung lượng lưu trữ của các loại Sandbox là hoàn toàn khác nhau: Developer Sandbox chỉ có **200MB** dung lượng lưu trữ dữ liệu, còn Developer Pro Sandbox được ưu ái cấp tới **1GB** (B).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Không có tool nào giúp bypass được Storage Limits của Org.
-> **D.** Import Wizard là web-based tool, Data Loader mới là client application.
+> **C.** Không có bất kỳ API hay công cụ thần thánh nào cho phép bạn bypass (vượt qua) giới hạn dung lượng lưu trữ cứng của Org cả. Dùng Bulk API mà Org hết dung lượng thì vẫn lỗi nghẽn bình thường.
+> **D.** Data Import Wizard là công cụ chạy trực tiếp trên nền web của Salesforce chứ không phải là một phần mềm client (client application) cài đặt offline giống như Data Loader.
 
-**💡 Từ khóa ghi nhớ:** `Data storage: Dev (200MB), Dev Pro (1GB). Nhớ con số này để thi!`
+**💡 Từ khóa ghi nhớ:** `Giới hạn dung lượng lưu trữ Sandbox: **Developer = 200MB**, **Developer Pro = 1GB**. Nhớ con số này để thi ăn điểm!`
 
 ---
 
@@ -7638,21 +7671,21 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** <apex:includeLightning/> ❌
 
 **📝 Dịch tiếng Việt:**
-> Mã nào giúp trang Visualforce có giao diện giống Lightning Experience một cách nhanh nhất?
+> Đoạn code nào giúp hô biến một trang Visualforce đang dùng các component tiêu chuẩn thành giao diện có kiểu dáng (look and feel) hiện đại y hệt Lightning Experience?
 
 **💬 Giải thích gốc (English):**
 > To style your Visualforce page to match the Lightning Experience UI when viewed in Lightning Experience or the Salesforce mobile app, set lightningStylesheets="true" in the <apex:page> tag. When the page is viewed in Salesforce Classic, it doesn’t get Lightning Experience styling.
 > <apex:page lightningStylesheets="true">
 
 **✅ Tại sao đáp án đúng:**
-> Chỉ cần thêm lightningStylesheets='true' vào thẻ <apex:page>. Salesforce sẽ tự động 'đắp' CSS của Lightning vào các thành phần chuẩn của VF cho mày.
+> Chọn **C: `<apex:page lightningStyleSheets="true">`**. Chỉ cần nhét thêm thuộc tính `lightningStyleSheets="true"` vào thẻ khai báo trang `<apex:page>`, Salesforce sẽ tự động 'đắp' toàn bộ CSS của Lightning lên các component chuẩn của Visualforce. Cực kỳ nhanh gọn lẹ, no-code chuẩn chỉ!
 
 **❌ Tại sao đáp án sai:**
-> **A.** <apex:slds/> chỉ nạp thư viện CSS, mày phải tự viết class vào từng tag, tốn sức vãi chưởng.
-> **B.** Đây là cách thủ công cũ rích để nạp CSS từ Static Resource, không ai làm thế nữa.
-> **C.** <apex:includeLightning/> dùng để nhúng LWC/Aura, không liên quan đến việc đổi giao diện cho VF.
+> **A.** Cú pháp import CSS thủ công từ Static Resource vừa dài dòng, vừa lỗi thời, lại viết sai cả cú pháp mở ngoặc nhọn đóng ngoặc nhọn kìa bro.
+> **B.** `<apex:slds/>` chỉ đơn thuần là nạp bộ thư viện design system (SLDS) vào trang, bạn sẽ phải tự đi viết các class CSS thủ công vào từng thẻ HTML để làm đẹp. Mệt mỏi lắm, rảnh đâu mà làm!
+> **D.** `<apex:includeLightning/>` dùng để nạp thư viện JavaScript cho phép gọi công nghệ Lightning Out để nhúng LWC/Aura, không liên quan đến việc đổi giao diện cho trang Visualforce.
 
-**💡 Từ khóa ghi nhớ:** `VF sang Lightning nhanh nhất: lightningStylesheets='true'.`
+**💡 Từ khóa ghi nhớ:** `VF đổi sang giao diện Lightning nhanh nhất -> Cứ ném **`lightningStyleSheets="true"`** vào thẻ `<apex:page>`.`
 
 ---
 
@@ -7667,16 +7700,19 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **E.** $Lightning.createComponent ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba dòng mã nào là cần thiết để tạo một Lightning component trên một trang Visualforce? (Chọn 3)
+> Ba dòng mã nào bắt buộc phải có để nhúng và khởi tạo một Lightning component trực tiếp trên trang Visualforce?
 
 **✅ Tại sao đáp án đúng:**
-> Đây là 'bộ 3 huyền thoại' để nhúng Lightning vào VF: 1. <apex:includeLightning/> để nạp thư viện. 2. $Lightning.use để khai báo app. 3. $Lightning.createComponent để khởi tạo component.
+> Chọn **C**, **D** và **E**. Đây là bộ ba thần thánh để gọi công nghệ **Lightning Out**:
+1. **`<apex:includeLightning/>`** (D) để nạp thư viện JavaScript cầu nối của Lightning.
+2. **`$Lightning.use(...)`** (C) để chỉ định standalone Aura App chứa dependencies của component.
+3. **`$Lightning.createComponent(...)`** (E) để chính thức khởi tạo và vẽ component đó lên vùng chứa (container div) trên trang Visualforce.
 
 **❌ Tại sao đáp án sai:**
-> **C.** slds dùng để nạp CSS của Lightning, không liên quan đến việc khởi tạo component bằng JS.
-> **D.** $Lightning.useComponent là cái tên 'pha kè', Salesforce không có phương thức này.
+> **A.** Không hề tồn tại phương thức nào tên là `$Lightning.useComponent` cả, đồ fake tự bịa ra để lừa trẻ con đấy bro!
+> **B.** `<apex:slds/>` dùng để nạp CSS của Salesforce Lightning Design System, không có vai trò gì trong việc nhúng và chạy runtime của component.
 
-**💡 Từ khóa ghi nhớ:** `Nhúng Lightning vào VF: Include -> Use -> Create. Cứ nhớ thứ tự này là ăn điểm.`
+**💡 Từ khóa ghi nhớ:** `Nhúng Lightning vào Visualforce -> Nhớ câu thần chú: **Include (thẻ) -> Use (hàm) -> Create (hàm)**!`
 
 ---
 
@@ -7690,20 +7726,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** External Object ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer đang thực hiện tích hợp dữ liệu với một hệ thống cơ sở dữ liệu SQL cũ của doanh nghiệp (on-premise). Lập trình viên nên sử dụng cấu hình gì để đảm bảo dữ liệu tích hợp được so khớp và cập nhật chính xác vào các bản ghi tương ứng trong Salesforce?
+> Developer đang làm task tích hợp hệ thống (integration) với một database SQL cũ của doanh nghiệp (on-premise SQL database). Nên dùng cái gì để đảm bảo đống dữ liệu đổ vào Salesforce được so khớp chính xác với các bản ghi tương ứng?
 
 **💬 Giải thích gốc (English):**
 > Use External IDs in Salesforce to match records. External IDs are custom fields that have the “External ID” attribute, which can be used to match records from external systems. This is particularly useful for upsert operations where you need to insert or update records based on an external identifier.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng trường External ID (Khóa ngoài) (C). Việc cấu hình một trường text trong Salesforce làm External ID giúp lưu trữ mã khóa định danh duy nhất của hệ thống SQL ngoài, cho phép hệ thống tích hợp gọi lệnh Upsert so khớp tự động cực kỳ nhanh chóng.
+> Chọn **C: Trường External ID (Khóa ngoài)**. Khi bạn đánh dấu một trường text custom là **External ID**, Salesforce sẽ coi đây là mã định danh duy nhất từ hệ thống ngoài. Hệ thống SQL kia khi đẩy dữ liệu sang chỉ cần gọi lệnh `Upsert` kèm theo mã này, Salesforce sẽ tự động biết bản ghi nào đã có để cập nhật (Update), bản ghi nào chưa có để tạo mới (Insert). Vừa nhàn vừa an toàn!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Formula field chỉ hiển thị giá trị dạng đọc tĩnh dựa trên công thức, không thể nhận dữ liệu lưu trữ trực tiếp từ hệ thống ngoài.
-> **B.** Lookup field dùng để tạo quan hệ liên kết giữa các bảng dữ liệu trong Salesforce, không hỗ trợ lưu trữ mã đối chiếu ngoài để map.
-> **D.** External Object dùng để truy cập xem dữ liệu realtime qua Salesforce Connect, không dùng để map nạp dữ liệu vật lý vào Org.
+> **A.** **Formula field** chỉ hiển thị giá trị dạng đọc tĩnh dựa trên công thức, không thể là nơi nhận và lưu trữ trực tiếp mã ID từ hệ thống bên ngoài đổ vào.
+> **B.** **Lookup field** dùng để tạo mối liên kết cha-con giữa 2 object trong Salesforce chứ không có chức năng làm khóa ngoài so khớp tự động khi tích hợp.
+> **D.** **External Object** dùng để kết nối xem dữ liệu realtime ngoài Org (Salesforce Connect) chứ không dùng để lưu trữ vật lý hay map dữ liệu import.
 
-**💡 Từ khóa ghi nhớ:** `So khớp và đồng bộ dữ liệu với hệ thống ngoài -> Luôn tạo trường EXTERNAL ID!`
+**💡 Từ khóa ghi nhớ:** `So khớp dữ liệu với hệ thống bên ngoài -> Tạo ngay trường **EXTERNAL ID**!`
 
 ---
 
@@ -7717,7 +7753,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Create a controller extension. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer được yêu cầu tạo một trang Visualforce hiển thị một số trường dữ liệu của Account, đồng thời phải hiển thị đầy đủ các trường của danh sách Contact liên quan giống hệt như Page Layout chuẩn. Giải pháp tối ưu nhất là gì?
+> Developer được giao task tạo một trang Visualforce hiển thị một vài trường của Account, đồng thời phải hiển thị danh sách các Contact liên quan theo đúng cấu hình Page Layout mà admin đã cài đặt. Triển khai thế nào cho gọn nhất?
 
 **💬 Giải thích gốc (English):**
 > To create a Visualforce page that displays some Account fields as well as fields configured on the page layout for related Contacts, the developer can follow these steps:
@@ -7726,14 +7762,14 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > 3. Use <apex:relatedList> for Related Contacts: This component displays the related list of Contacts as configured on the Account page layout.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng thẻ <apex:relatedList list='Contacts' /> (B). Thẻ này là thành phần Visualforce chuẩn cực mạnh, tự động vẽ bảng dữ liệu chứa đầy đủ các trường của danh sách Contact con liên quan theo đúng cấu hình layout mà Admin đã thiết lập trên Account cha mà không cần viết code.
+> Chọn **B: Sử dụng thẻ `<apex:relatedList list="Contacts"/>`**. Thẻ này là báu vật no-code cực mạnh của Visualforce! Nó sẽ tự động bê nguyên bảng danh sách các Contact con liên quan lên trang, hiển thị đúng các trường, các nút bấm chuẩn y hệt như cấu hình Page Layout chuẩn của Account cha mà không cần bạn viết một dòng controller nào.
 
 **❌ Tại sao đáp án sai:**
-> **A.** <apex:include> dùng để nhúng trực tiếp một trang Visualforce hoàn chỉnh khác vào trang hiện tại, không tự động render được layout related list.
-> **C.** Không thể thêm một phương thức vào Standard Controller của hệ thống vì nó là lớp đóng của Salesforce.
-> **D.** Viết Controller Extension là giải pháp code cồng kềnh, tốn công query dữ liệu và vẽ bảng HTML thủ công không cần thiết.
+> **A.** `<apex:include>` dùng để nhúng nguyên một trang Visualforce độc lập khác vào trang hiện tại, không có chức năng vẽ related list bản ghi con.
+> **C.** Standard Controller của Salesforce là class đóng, bạn không thể tự ý chọc vào để thêm phương thức được. Muốn thêm logic chỉ có nước viết Controller Extension.
+> **D.** Tự viết **Controller Extension** để SOQL query Contact rồi tự vẽ bảng bằng code HTML là một pha xử lý cực kỳ cồng kềnh, tốn công bảo trì vô ích khi thẻ tiêu chuẩn đã cân tốt.
 
-**💡 Từ khóa ghi nhớ:** `Hiển thị nhanh danh sách bản ghi con theo đúng Page Layout của Cha -> Dùng thẻ <apex:relatedList>.`
+**💡 Từ khóa ghi nhớ:** `Hiển thị danh sách con liên quan chuẩn Page Layout -> Dùng thẻ thần thánh **`<apex:relatedList>`**.`
 
 ---
 
@@ -7747,20 +7783,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** The test method relies on existing data in the sandbox. ✅
 
 **📝 Dịch tiếng Việt:**
-> Trong quá trình chạy kiểm thử, một test class bị báo FAIL trên Test Framework. Tuy nhiên, khi developer copy logic đó và chạy trong cửa sổ Execute Anonymous của Developer Console thì lại SUCCESS không báo lỗi nào. Nguyên nhân tại sao?
+> Trong Sandbox, một bài test Apex bị FAIL sấp mặt khi chạy bằng Test Framework. Thế nhưng, khi copy nguyên logic test đó chạy trong cửa sổ Execute Anonymous của Developer Console thì lại SUCCESS mượt mà không một vết xước. Tại sao lại có sự ảo ma thế này?
 
 **💬 Giải thích gốc (English):**
 > In Apex tests, it’s important to create all necessary data within the test itself to ensure it doesn’t depend on existing data in the environment. When you run the code via the Execute Anonymous tool, it can access the existing data in the sandbox, which might not be the case when running the test method
 
 **✅ Tại sao đáp án đúng:**
-> Vì phương thức test đang dựa dẫm vào dữ liệu thật có sẵn trong Sandbox (D). Khi chạy qua Test Framework, hệ thống mặc định cô lập hoàn toàn dữ liệu (SeeAllData=false) làm DB trống rỗng dẫn đến crash test. Trong khi Execute Anonymous chạy trên database thật nhìn thấy mọi bản ghi nên chạy qua mượt mà.
+> Chọn **D: Vì phương thức test đang dựa dẫm vào dữ liệu thật có sẵn trong Sandbox**. Đây là cái bẫy kinh điển cho các tấm chiếu mới! Khi chạy bằng Test Framework, hệ thống mặc định cô lập hoàn toàn dữ liệu (`SeeAllData=false`), database hoàn toàn trống rỗng dẫn đến việc query không có dữ liệu và bị crash test. Còn khi chạy bằng Execute Anonymous, code được thực thi trực tiếp trên database thật của Sandbox, nhìn thấy các record có sẵn nên chạy qua ngon lành.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lỗi gọi phương thức @future không làm thành công Execute Anonymous nếu logic code bị sai.
-> **B.** Nếu có lỗi cú pháp (syntax error), hệ thống sẽ báo lỗi biên dịch ngay lập tức ở cả hai công cụ chứ không cho phép chạy thành công.
-> **C.** System.runAs giúp test phân quyền user, không phải lý do chính tạo sự khác biệt dữ liệu giữa hai môi trường.
+> **A.** Gọi phương thức `@future` trong test nếu không bọc trong `Test.startTest()` và `Test.stopTest()` thì có thể không chạy kịp, nhưng nó sẽ fail ở cả hai nơi chứ không tạo ra sự khác biệt thế này.
+> **B.** Nếu có lỗi cú pháp (Syntax error) thì trình biên dịch đã chửi thẳng mặt và block không cho lưu hay chạy code ở cả hai công cụ rồi.
+> **C.** `System.runAs` dùng để test quyền truy cập của User cụ thể, không liên quan đến việc cô lập hay không cô lập dữ liệu database.
 
-**💡 Từ khóa ghi nhớ:** `Test FAIL mà Execute Anonymous SUCCESS -> Do test class chưa tự tạo dữ liệu test mà đi dựa dẫm dữ liệu có sẵn trong Org!`
+**💡 Từ khóa ghi nhớ:** `Test Framework FAIL mà Execute Anonymous SUCCESS -> Chắc chắn do code test chưa tự tạo data test mà đi **dựa dẫm dữ liệu có sẵn trong Org** (`relies on existing data`).`
 
 ---
 
@@ -7775,7 +7811,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **E.** Test.setCurrentPage(pageRef); ✅
 
 **📝 Dịch tiếng Việt:**
-> Một trang Visualforce Wizard phức tạp sử dụng duy nhất một custom controller để hỗ trợ tạo và sửa đổi nhiều đối tượng sObjects khác nhau. Wizard nhận dữ liệu từ các input trên nhiều trang độc lập và từ tham số trên URL ban đầu. Ba câu lệnh nào hữu ích khi viết test class cho controller này? (Chọn 3)
+> Developer có một custom controller duy nhất phục vụ cho trang Visualforce Wizard phức tạp (cho phép tạo và sửa nhiều đối tượng qua nhiều màn hình và nhận tham số truyền từ URL). Ba câu lệnh nào sẽ cực kỳ hữu ích khi viết unit test cho cái controller này? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Test.setCurrentPage(pageRef);
@@ -7786,13 +7822,16 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > This statement captures the URL of the next page after an action method (like save) is called, which helps verify the navigation logic of your controller.
 
 **✅ Tại sao đáp án đúng:**
-> B: 'String nextPage = controller.save().getUrl();' để test chuyển trang sau khi lưu. C: 'ApexPages.currentPage().getParameters().put('Input', 'TestValue');' để giả lập truyền tham số URL đầu vào. E: 'Test.setCurrentPage(pageRef);' để thiết lập ngữ cảnh trang chạy test.
+> Chọn **B**, **C** và **E**. Để test mượt mà các kịch bản của Wizard:
+- Dùng **`Test.setCurrentPage(pageRef)`** (E) để thiết lập trang hiện tại trong ngữ cảnh test.
+- Dùng **`ApexPages.currentPage().getParameters().put('tên', 'giá trị')`** (C) để giả lập việc truyền tham số trên URL cho controller đọc.
+- Dùng **`controller.save().getUrl()`** (B) để gọi hàm save và kiểm tra xem URL trang tiếp theo được chuyển hướng (redirect) có đúng như kỳ vọng không.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Cú pháp DML 'Insert pageRef;' là hoàn toàn sai, đối tượng PageReference đại diện URL trang chứ không phải sObject để lưu xuống DB.
-> **D.** Khai báo hàm khởi tạo Controller Extension 'public ExtendedController...' là code định nghĩa class, không phải câu lệnh thực thi kiểm thử.
+> **A.** `pageRef` (PageReference) chỉ là một đối tượng chứa thông tin URL trong code, không phải sObject thực tế lưu dưới database nên gọi lệnh DML `Insert pageRef` là sai cú pháp nổ lỗi ngay lập tức.
+> **D.** Dòng khai báo hàm khởi tạo Controller Extension `public ExtendedController(...)` là khai báo code, không phải là câu lệnh thực thi kiểm thử trong test method.
 
-**💡 Từ khóa ghi nhớ:** `Viết test cho Visualforce Controller -> Dùng Test.setCurrentPage() để set trang + getParameters().put() để truyền tham số URL.`
+**💡 Từ khóa ghi nhớ:** `Test Visualforce Controller -> Set trang hiện tại bằng **`Test.setCurrentPage()`** và truyền tham số qua **`getParameters().put()`**.`
 
 ---
 
@@ -7807,16 +7846,16 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **E.** SVG resources ✅
 
 **📝 Dịch tiếng Việt:**
-> LWC có thể truy cập trực tiếp 3 loại tài nguyên nào từ Org Salesforce?
+> Một component LWC có thể truy cập trực tiếp vào ba loại tài nguyên (resources) nào của hệ thống Salesforce? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> LWC hỗ trợ import: E: Static Resources (CSS/JS ngoài), C: SVG (biểu tượng) và B: Content Asset files thông qua các module `@salesforce/`.
+> Chọn **B (Static resources)**, **D (Content asset files)** và **E (SVG resources)**. LWC hỗ trợ cơ chế import cực kỳ mạnh mẽ thông qua các module chuẩn `@salesforce/`. Bạn có thể dễ dàng import các tài nguyên tĩnh như file CSS/JS ngoài từ Static Resources (B), các file ảnh/tài liệu từ Content Asset (D), và các file đồ họa vector SVG để làm icon (E).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Mày không thể gọi trực tiếp component của bên thứ 3 trừ khi nó đã được nạp dưới dạng LWC hoặc Static Resource.
-> **D.** Không phải mọi thư viện ngoài đều truy cập được do chính sách bảo mật CSP của Salesforce.
+> **A.** Salesforce có chính sách bảo mật CSP (Content Security Policy) cực kỳ nghiêm ngặt, bạn không thể tự ý gọi hay nạp trực tiếp tất cả các thư viện ngoài từ Internet được nếu chưa khai báo an toàn.
+> **C.** Bạn không thể trực tiếp truy cập hay nhúng các component của bên thứ ba (Third-party web components) chạy ngoài vũ trụ Salesforce vào thẳng shadow tree của LWC một cách tự do được.
 
-**💡 Từ khóa ghi nhớ:** `LWC Get Stuff: @salesforce/resourceUrl, @salesforce/contentAssetUrl.`
+**💡 Từ khóa ghi nhớ:** `LWC import trực tiếp từ Salesforce -> Bộ ba tài nguyên: **Static Resources**, **Content Asset**, **SVG**.`
 
 ---
 
@@ -7830,7 +7869,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** All Visual Flows must have at least 1% test coverage. ❌
 
 **📝 Dịch tiếng Việt:**
-> 2 điều kiện cần khi deploy lên Production?
+> Hai điều kiện bắt buộc nào phải thỏa mãn khi bạn thực hiện deploy code Apex/Trigger lên môi trường Production? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Code Coverage
@@ -7838,13 +7877,15 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > All triggers must have at least one line of test coverage.
 
 **✅ Tại sao đáp án đúng:**
-> B: Tổng Org phải đạt 75%. D: Mỗi trigger phải có coverage > 0%.
+> Chọn **B** và **C**. Đây là luật cứng của Salesforce khi bước chân lên Production:
+- **Tất cả code Apex** trên toàn bộ hệ thống (Org-wide) phải đạt tỷ lệ phủ sóng test coverage tối thiểu là **75%** (B).
+- **Tất cả các Trigger** bắt buộc phải có độ phủ test coverage lớn hơn **0%** (C), tức là phải có ít nhất 1 dòng code trong Trigger được chạy qua trong các bài test. Thiếu một trong hai điều kiện này là trình deploy sẽ báo lỗi và block ngay lập tức.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Flow không bắt buộc test coverage.
-> **C.** Process Builder cũng không bắt buộc test coverage.
+> **A.** Workflow rules là tính năng no-code khai báo đời cổ, không có khái niệm chạy unit test hay đo đạc test coverage gì ở đây cả.
+> **D.** Visual Flows (Flow) tuy có thể viết Flow Test nhưng hoàn toàn không bị áp đặt giới hạn 1% test coverage cứng khi deploy lên Production như Apex.
 
-**💡 Từ khóa ghi nhớ:** `Deploy Pro: Toàn Org 75%, Mỗi Trigger > 0%.`
+**💡 Từ khóa ghi nhớ:** `Lên Production: Apex toàn Org >= **75%** + Từng Trigger > **0%** (phải có test chạy qua)!`
 
 ---
 
@@ -7858,16 +7899,18 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Create an after update trigger on the Opportunity object that calls a helper method using @Future(Callout=true) to perform the HTTP REST callout. ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers chuyển đổi sang Lightning Experience. Nghiệp vụ yêu cầu: Khi user bấm nút trên trang chi tiết Opportunity, hệ thống phải lấy thông tin Name, Amount gửi REST Callout sang hệ thống OMS ngoài. Hai giải pháp nào lập trình viên nên chọn? (Chọn 2)
+> Universal Containers vừa chuyển đổi từ Classic sang Lightning Experience. Một quy trình nghiệp vụ yêu cầu: Khi người dùng thực hiện một thao tác trên trang chi tiết Opportunity, hệ thống phải lấy các giá trị Name, Amount và Account gửi qua cuộc gọi HTTP REST callout tới hệ thống quản lý đơn hàng bên ngoài. Hai giải pháp nào lập trình viên nên chọn triển khai? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> C: Tạo một Lightning Component thực hiện Callout và bọc vào một Lightning Action (Quick Action) hiển thị trên page chi tiết. D: Tạo một trigger after update Opportunity gọi helper method có gắn @future(callout=true) để gửi API bất đồng bộ sau khi cập nhật trường đánh dấu của user.
+> Chọn **C** và **D**.
+- **C: Tạo một Lightning component thực hiện REST callout và nhúng vào Quick Action (Lightning Action) trên trang Opportunity**. Đây là giải pháp chuẩn chỉnh trên UI của Lightning, đem lại trải nghiệm mượt mà, gọi API tức thời khi click.
+- **D: Tạo một after update trigger gọi helper method có annotation `@future(callout=true)` để chạy REST callout**. Đây là giải pháp chạy ngầm (backend) cực kỳ tối ưu, tự động đẩy API bất đồng bộ ngay sau khi bản ghi được cập nhật mà không làm nghẽn giao dịch chính.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Visualforce Quick Action là công nghệ cũ cho Classic, không tối ưu cho giao diện Lightning Experience hiện đại.
-> **B.** Process Builder không hỗ trợ thực hiện trực tiếp các cuộc gọi REST HTTP callout, bắt buộc phải viết thêm Apex code trung gian cực kỳ cồng kềnh.
+> **A.** Visualforce Page kết hợp VF Quick Action là giải pháp chắp vá mang công nghệ cũ kỹ từ thời Classic, không mang lại trải nghiệm nguyên bản chuẩn Lightning Experience.
+> **B.** Process Builder là đồ cổ đã bị khai tử (deprecated), và bản thân nó cũng không thể tự thực hiện trực tiếp các cuộc gọi HTTP REST callout được, bắt buộc phải gọi thêm Apex trung gian rất cồng kềnh.
 
-**💡 Từ khóa ghi nhớ:** `Gọi API từ giao diện Lightning -> Tạo Lightning Component kết hợp Lightning Quick Action, hoặc Trigger + @future(callout=true).`
+**💡 Từ khóa ghi nhớ:** `REST callout từ Opportunity detail page -> Dùng **Lightning Component Quick Action** hoặc **Trigger + `@future(callout=true)`**.`
 
 ---
 
@@ -7881,20 +7924,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Triggers are executed in the order they are created. ❌
 
 **📝 Dịch tiếng Việt:**
-> Nếu một object mà có cả đống trigger chạy cùng một sự kiện (ví dụ before insert) thì thằng nào chạy trước?
+> Phát biểu nào mô tả đúng nhất về thứ tự thực thi của các Trigger khi chúng được gắn trên cùng một Object và chạy cùng một sự kiện?
 
 **💬 Giải thích gốc (English):**
 > If more than one trigger is defined on an object for the same event, the order of trigger execution isn't guaranteed. For example, if you have two before insert triggers for Case and a new Case record is inserted. The firing order of these two triggers isn’t guaranteed.
 
 **✅ Tại sao đáp án đúng:**
-> A đúng vì Salesforce không hứa hẹn gì về thứ tự chạy của trigger trên cùng một object. Đừng có tin vào mấy cái thứ tự alphabet hay ngày tạo, lừa hết đấy.
+> Chọn **C: Thứ tự thực thi của các Trigger không được đảm bảo**. Salesforce cấm tiệt việc hứa hẹn hay cam kết thứ tự chạy giữa các Trigger cùng chạy chung một sự kiện trên một đối tượng. Hôm nay Trigger A chạy trước, ngày mai Trigger B chạy trước là chuyện bình thường như cân đường hộp sữa!
 
 **❌ Tại sao đáp án sai:**
-> **B.** Sai. Modified date chả liên quan gì đến thứ tự thực thi của Salesforce.
-> **C.** Sai. Alphabet chỉ là cách sắp xếp trong danh sách thôi, không phải thứ tự chạy.
-> **D.** Sai. Created date cũng không đảm bảo được gì.
+> **A.** Thứ tự chỉnh sửa gần nhất (modified) không hề có tiếng nói gì trong việc xếp lịch chạy của hệ thống.
+> **B.** Sắp xếp theo thứ tự bảng chữ cái (alphabetical) của tên Trigger chỉ là trò bịa để đánh lừa các tấm chiếu mới.
+> **D.** Thứ tự ngày tạo (created) cũng không có bất kỳ ảnh hưởng nào đến runtime của Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Để quản lý thứ tự -> Chỉ dùng 1 trigger duy nhất cho 1 object (Trigger Framework).`
+**💡 Từ khóa ghi nhớ:** `Nhiều Trigger cùng Object/Event -> **Không đảm bảo thứ tự chạy (cannot be guaranteed)** -> Best practice: **Chỉ dùng 1 Trigger duy nhất cho 1 Object**!`
 
 ---
 
@@ -7908,7 +7951,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** On the Paused Flow Interviews component on the Home page ✅
 
 **📝 Dịch tiếng Việt:**
-> Tìm các Flow đang bị tạm dừng (Paused Flow Interview) ở đâu trên giao diện Lightning?
+> Trên giao diện Lightning Experience, lập trình viên có thể tìm thấy thông tin về các Flow đang bị tạm dừng (Paused Flow Interview) ở đâu để người dùng tiếp tục thao tác?
 
 **💬 Giải thích gốc (English):**
 > Lightning Experience—Add the Paused Flow Interviews component to the appropriate Home pages. This component is available only for Home pages in the Lightning App Builder. It displays paused interviews that the user has read access to.
@@ -7917,13 +7960,14 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > Salesforce Classic—Add the Paused Flow Interviews related list to the appropriate home page layouts. This component displays only interviews that the user paused.
 
 **✅ Tại sao đáp án đúng:**
-> Salesforce cung cấp một Standard Component tên là 'Paused Flow Interviews'. Admin có thể kéo nó vào trang Home hoặc bất kỳ trang nào để user thấy và tiếp tục công việc.
+> Chọn **D: Trên component 'Paused Flow Interviews' được cấu hình hiển thị ở trang Home**. Salesforce cung cấp sẵn một Standard Component cực xịn tên là 'Paused Flow Interviews'. Admin chỉ việc lôi nó ra trang chủ (Home page) hoặc App page để user dễ dàng nhìn thấy danh sách và bấm resume để làm tiếp.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Apex Flex Queue chỉ dành cho Batch Apex, không dành cho Flow.
-> **D.** Không có Related List mặc định nào tên như vậy trên mọi record.
+> **A.** Không hề tồn tại một danh sách liên quan (Related list) tiêu chuẩn nào cho Paused Flow trên các record thông thường cả.
+> **B.** Debug log chỉ là file ghi vết kỹ thuật chạy ngầm của hệ thống dành cho dev soi lỗi, chứ lấy đâu ra chỗ cho user click tiếp tục thao tác Flow.
+> **C.** Apex Flex Queue là hàng đợi xếp lớp dành cho Batch Apex bất đồng bộ đang chờ chạy, hoàn toàn không liên quan gì đến các session Flow của user.
 
-**💡 Từ khóa ghi nhớ:** `Paused Flow = Home Page Component.`
+**💡 Từ khóa ghi nhớ:** `Tìm kiếm Flow đang bị dừng -> Vào ngay **Home Page Component 'Paused Flow Interviews'**!`
 
 ---
 
@@ -7937,17 +7981,17 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Write a trigger on the child object and use an aggregate function to sum the amount for all related child objects under the Opportunity. ✅
 
 **📝 Dịch tiếng Việt:**
-> Làm sao để tính tổng (Roll-up) lên Opportunity khi quan hệ chỉ là Lookup?
+> Một Opportunity cần được tính tổng số tiền (rolled up) từ một custom object con không có quan hệ Master-Detail (chỉ có quan hệ Lookup). Làm sao để làm được việc này?
 
 **✅ Tại sao đáp án đúng:**
-> Lookup không hỗ trợ field Roll-up Summary. Mày phải viết Trigger trên object con, dùng SOQL Aggregate (SUM) để tính toán rồi update ngược lại Opportunity cha bằng code.
+> Chọn **D: Viết một trigger trên object con và sử dụng câu lệnh truy vấn gom nhóm (aggregate function) để tính tổng số tiền của các bản ghi con dưới Opportunity**. Vì quan hệ Lookup không hỗ trợ trường Roll-up Summary no-code, ta bắt buộc phải viết trigger ở đối tượng con. Mỗi khi con bị insert/update/delete/undelete, trigger sẽ chạy câu SOQL Aggregate (`SUM(Amount)`) rồi cập nhật số tiền tổng lên Opportunity cha.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Streaming API chỉ để hóng data, không dùng để tính toán và lưu trữ dữ liệu.
-> **B.** Giải thuật red-black tree cực kỳ phức tạp và không liên quan gì đến việc SUM dữ liệu bản ghi con.
-> **D.** Process Builder không hỗ trợ các hàm Aggregate (SUM, AVG) trên danh sách con.
+> **A.** Process Builder không hỗ trợ các hàm gom nhóm tính toán (SUM, AVG) trên danh sách Lookup con và đã bị Salesforce khai tử.
+> **B.** Streaming API dùng để đẩy sự kiện realtime ra ngoài hệ thống chứ không dùng để cập nhật tính toán lưu DB.
+> **C.** Giải thuật sắp xếp cây đỏ-đen (red-black tree sorting) là thuật toán cấu trúc dữ liệu kinh điển để phỏng vấn tuyển dụng, bê vào đây chỉ tổ làm phức tạp hóa vấn đề chứ không giải quyết được việc SUM dữ liệu bản ghi con.
 
-**💡 Từ khóa ghi nhớ:** `No Master-Detail -> Dùng Trigger + Aggregate Query.`
+**💡 Từ khóa ghi nhớ:** `Lookup muốn cộng dồn từ con lên cha -> Viết **Trigger ở con + SOQL Aggregate (SUM)**!`
 
 ---
 
@@ -7961,20 +8005,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** By providing change history and version control ❌
 
 **📝 Dịch tiếng Việt:**
-> Khung làm việc (framework) Lightning component giúp lập trình viên triển khai các giải pháp nhanh hơn như thế nào?
+> Khung làm việc Lightning Component framework (Aura/LWC) giúp lập trình viên phát triển giải pháp nhanh hơn nhờ yếu tố nào?
 
 **💬 Giải thích gốc (English):**
 > The framework is designed to create responsive applications that work seamlessly across different devices, including mobile and desktop1. This means developers can build components once and have them function well on various platforms without additional adjustments.
 
 **✅ Tại sao đáp án đúng:**
-> Lightning framework được thiết kế kiểu 'Responsive' ngay từ đầu, tự động tối ưu giao diện cho cả Mobile và Desktop mà không cần dev phải viết nhiều code CSS/JS riêng biệt.
+> Chọn **C: Bằng việc tự động nhận diện và tương thích thiết bị (device-awareness) cho cả mobile và desktop**. Lightning framework sinh ra đã mang tính chất Responsive hiện đại, tự động nhận biết kích thước màn hình để co giãn giao diện tối ưu cho cả điện thoại lẫn PC mà dev không cần nhọc công viết đống CSS media queries phức tạp.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Code review là quy trình con người, không phải do framework.
-> **C.** Agile là phương pháp quản lý dự án, framework không cung cấp quy trình này.
-> **D.** Version control (Git) nằm ngoài phạm vi framework này.
+> **A.** Quy trình Agile là phương pháp quản trị dự án của con người, framework code không can thiệp được.
+> **B.** Quy trình review code là chuẩn mực làm việc nội bộ của team phát triển, không phải tính năng của framework.
+> **D.** Quản lý lịch sử thay đổi và phiên bản là nhiệm vụ của các hệ thống kiểm soát phiên bản như Git/GitHub.
 
-**💡 Từ khóa ghi nhớ:** `Lightning = Mobile First + Component Based.`
+**💡 Từ khóa ghi nhớ:** `Lợi ích Lightning Component -> **Responsive tự động co giãn theo thiết bị (device-awareness)**!`
 
 ---
 
@@ -7988,20 +8032,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Asynchronous Data Capture Events ❌
 
 **📝 Dịch tiếng Việt:**
-> Xem lịch sử đăng nhập cuối cùng của user mà không cần thông báo tức thời bằng cách nào?
+> Tính năng nào của Salesforce giúp lập trình viên biết được user đăng nhập lần cuối vào lúc nào khi không yêu cầu thông báo thời gian thực?
 
 **💬 Giải thích gốc (English):**
 > Event Monitoring: One of the many tools that Salesforce provides to help keep your data secure, allowing you to see the granular details of user activity in your organization. We refer to these user activities as events. Unlike Real-Time Events, Event Monitoring doesn’t send real-time notifications. Instead, it stores user activity in a log that you can query.
 
 **✅ Tại sao đáp án đúng:**
-> Event Monitoring ghi lại hầu hết các hành vi của người dùng trong hệ thống (Login, Logout, Download báo cáo...). Dữ liệu này được lưu trữ trong các file log để admin/dev tải về phân tích.
+> Chọn **A: Event Monitoring Log**. Đây là vũ khí tối tân để audit hệ thống! Event Monitoring tự động ghi lại tường tận tất cả các hành vi của người dùng trong hệ thống (từ Login, Logout, xuất Report...) dưới dạng file log chi tiết để admin/dev tải về phân tích.
 
 **❌ Tại sao đáp án sai:**
-> **A.** CDC (Data Capture) dùng để theo dõi sự thay đổi của dữ liệu bản ghi (Insert/Update), không dùng cho hành vi Login.
-> **C.** Developer Log chỉ dùng để debug code thực thi trong thời gian ngắn, không phải nhật ký hệ thống lâu dài.
-> **D.** Calendar Events là các sự kiện trên lịch công việc, không liên quan đến log đăng nhập.
+> **B.** Calendar Events là các cuộc họp, lịch hẹn trên lịch làm việc của người dùng, chả liên quan gì đến lịch sử đăng nhập hệ thống.
+> **C.** Developer Log chỉ là bản ghi debug code Apex tạm thời trong Developer Console, không phải nhật ký giám sát hoạt động hệ thống.
+> **D.** Asynchronous Data Capture Events (CDC) dùng để bắt sự kiện thay đổi dữ liệu của các record trong database, hoàn toàn lạc đề.
 
-**💡 Từ khóa ghi nhớ:** `Audit hành vi user -> Event Monitoring.`
+**💡 Từ khóa ghi nhớ:** `Audit/Giám sát toàn diện hành vi user không cần realtime -> Chọn **Event Monitoring Log**!`
 
 ---
 
@@ -8009,22 +8053,24 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 
 **🔵 Which two are best practices when it comes to component and application event handling? (Choose two.)**
 
-- **A.** Reuse the event logic in a component bundle, by putting the logic in the helper. ❌
-- **B.** Use component events to communicate actions that should be handled at the application level. ✅
+- **A.** Reuse the event logic in a component bundle, by putting the logic in the helper. ✅
+- **B.** Use component events to communicate actions that should be handled at the application level. ❌
 - **C.** Handle low-level events in the event handler and re-fire them as higher-level events. ✅
 - **D.** Try to use application events as opposed to component events. ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai thực hành tốt nhất (best practices) nào khi thiết kế và xử lý các sự kiện Component Event và Application Event trong lập trình Aura Components? (Chọn 2)
+> Hai thực hành tốt nhất (best practices) nào lập trình viên nên áp dụng khi xử lý và truyền sự kiện Component Event và Application Event trong Aura Components? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> A: Gom toàn bộ logic xử lý phức tạp của sự kiện từ file Controller vào lớp Helper của component để tái sử dụng mã nguồn hiệu quả. C: Xử lý các sự kiện cấp thấp (low-level HTML events) trong trình xử lý và bắn lại chúng thành các sự kiện nghiệp vụ cấp cao (higher-level custom events).
+> Chọn **A** và **C**. (Database gốc bị typo nhầm sang B/C, đã được sửa lại cho đúng kỹ thuật):
+- **A: Tái sử dụng logic xử lý sự kiện bằng cách đưa logic đó vào file Helper của component**. File JS Controller chỉ nên làm nhiệm vụ đón nhận sự kiện và gọi sang Helper để xử lý, giúp code sạch sẽ và dễ tái sử dụng.
+- **C: Xử lý các sự kiện cấp thấp (low-level events) trong trình xử lý sự kiện rồi bắn lại chúng thành các sự kiện cấp cao (higher-level events)**. Ví dụ: khi click một button (low-level click event), ta đón nhận nó rồi bắn ra một custom event có ý nghĩa nghiệp vụ (như `approvalSubmit`) để các component khác lắng nghe. Đây là tư duy thiết kế component lỏng lẻo (loose coupling) cực đỉnh!
 
 **❌ Tại sao đáp án sai:**
-> **B.** Sai vì các hành động ở tầm ứng dụng (Application level) bắt buộc phải dùng Application Events, Component Events bị giới hạn trong ranh giới cha-con không thể bắt được.
-> **D.** Ngược lại, Salesforce khuyến nghị tối cao nên ưu tiên sử dụng Component Events thay vì Application Events bất cứ khi nào có thể để tăng hiệu năng và tính đóng gói.
+> **B.** Ngược đời! Để xử lý các hành động ở tầm ứng dụng (Application level), ta bắt buộc phải dùng Application Events chứ dùng Component Events thì nó không thể truyền đi xa ngoài phạm vi cây thư mục cha-con được.
+> **D.** Sai bét! Salesforce khuyến nghị tối cao là nên ưu tiên sử dụng Component Events thay vì Application Events bất cứ khi nào có thể để tăng hiệu năng hệ thống và đảm bảo tính đóng gói.
 
-**💡 Từ khóa ghi nhớ:** `Aura Event Best Practice -> Gom logic vào lớp HELPER + Chuyển đổi low-level event thành high-level custom event.`
+**💡 Từ khóa ghi nhớ:** `Aura Event Best Practice -> **Logic tống vào Helper** + **Đổi sự kiện cấp thấp thành sự kiện nghiệp vụ cấp cao**!`
 
 ---
 
@@ -8038,7 +8084,7 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** The Tests tab of the Developer Console ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai địa điểm chính thống nào trong Salesforce giúp lập trình viên xác định tỷ lệ phủ code kiểm thử tổng thể (overall code coverage) của môi trường Sandbox? (Chọn 2)
+> Từ hai địa điểm chính thống nào trong Salesforce lập trình viên có thể xác định tỷ lệ phủ code kiểm thử tổng thể (overall code coverage) của môi trường Sandbox? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > After the completed run, check the overall code coverage for your org by navigating to:
@@ -8046,13 +8092,15 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 > 2. Click 'Estimate your organization's code coverage'
 
 **✅ Tại sao đáp án đúng:**
-> C: Trang Apex Classes trong Setup (click vào link 'Estimate your organization's code coverage'). D: Tab Tests của trình biên dịch Developer Console (hiển thị bảng tỷ lệ % chi tiết ở góc dưới bên phải).
+> Chọn **C** và **D**.
+- **C: Trang Apex Classes trong mục Setup**. Chỉ cần click vào link 'Estimate your organization's code coverage' thần thánh là nó tính ra ngay % overall code coverage toàn Org.
+- **D: Tab Tests của trình biên dịch Developer Console**. Khi bạn mở Developer Console, chọn tab Tests ở thanh dưới, nhìn sang góc dưới bên phải sẽ thấy ngay con số Overall Code Coverage hiển thị rõ như ban ngày!
 
 **❌ Tại sao đáp án sai:**
 > **A.** Trang Apex Test Execution chỉ hiển thị trạng thái Pass/Fail của các lượt chạy test cụ thể, không hiển thị tổng lượng phủ sóng code toàn bộ Org.
-> **B.** Bảng điều khiển Test Suite Run chỉ hiển thị kết quả gom nhóm bộ test, không hiển thị số liệu overall coverage.
+> **B.** Bảng điều khiển Test Suite Run chỉ hiển thị kết quả chạy của các nhóm test, không hiển thị thống kê độ phủ sóng code tổng thể.
 
-**💡 Từ khóa ghi nhớ:** `Xem tỷ lệ phủ test (Overall Code Coverage) toàn Org -> Vào Setup gõ APEX CLASSES hoặc vào tab TESTS trong Developer Console.`
+**💡 Từ khóa ghi nhớ:** `Xem tỷ lệ phủ test toàn Org -> Tìm **Apex Classes** trong Setup hoặc tab **Tests** trong Developer Console!`
 
 ---
 
@@ -8066,20 +8114,20 @@ What are two benefits of choosing a formula field instead of an Apex trigger to 
 - **D.** Create a Process Builder on the Candidate__c object to map the records. ❌
 
 **📝 Dịch tiếng Việt:**
-> Candidate__c có trường SSN__c (Social Security Number) là duy nhất. Công ty muốn nạp dữ liệu cập nhật từ file CSV vào hệ thống sao cho các bản ghi CSV tự động khớp với các Candidate có sẵn. Developer nên áp dụng kỹ thuật gì để tối ưu hóa quá trình upload?
+> Trên custom object Candidate__c có một trường custom kiểu Text tên SSN__c (lưu Social Security Number) được đánh dấu Unique. Doanh nghiệp có một file CSV chứa thông tin cập nhật của Candidate, bao gồm cả SSN__c. Lập trình viên nên làm gì để đảm bảo đống dữ liệu từ CSV được so khớp và cập nhật chính xác vào Candidate tương ứng một cách tối ưu nhất?
 
 **💬 Giải thích gốc (English):**
 > Mark the SSN__c field as an External ID on the Candidate__c object. This ensures that the CSV file's SSN values can be used to match and update existing records accurately.
 
 **✅ Tại sao đáp án đúng:**
-> Cập nhật định nghĩa trường SSN__c, đánh dấu chọn thuộc tính 'External ID' cho trường này (A). Khi đó, các công cụ nạp dữ liệu như Data Loader sẽ nhận diện trường này làm khóa đối chiếu để so khớp trực tiếp với CSV để tự động cập nhật bản ghi mà không cần Salesforce ID.
+> Chọn **A: Cập nhật định nghĩa trường SSN__c để đánh dấu nó làm trường External ID**. Khi biến trường SSN__c thành khóa ngoài (External ID), các công cụ import dữ liệu (như Data Loader) sẽ tự động cho phép dùng trường này để so khớp dữ liệu khi gọi lệnh **Upsert**. Salesforce sẽ tự động biết bản ghi nào đã có để update, bản ghi nào chưa có để insert mà không cần dùng đến Salesforce ID gốc. Cực kỳ nhanh gọn!
 
 **❌ Tại sao đáp án sai:**
-> **B.** Tạo đối tượng trung gian phụ gây phình to cấu trúc cơ sở dữ liệu và nhân đôi công sức tích hợp thừa thãi.
-> **C.** Viết trigger map dữ liệu là giải pháp code cồng kềnh, làm lãng phí năng lực tính toán của CPU và tốn công bảo trì.
-> **D.** Process Builder không hỗ trợ so khớp và cập nhật hàng loạt bản ghi từ tệp tin CSV đầu vào.
+> **B.** Tao them mot custom object phu trung gian chi lam phuc tap them co so du lieu va nhan doi cong suc tich hop vo nghia.
+> **C.** Viet trigger map du lieu la giai phap code cong kenh, lang phi tai nguyen CPU cua Org va ton cong viet code phu test.
+> **D.** Process Builder da bi khai tu (deprecated) va no cung khong ho tro import du lieu hay so khop truc tiep tu tep tin CSV dau vao.
 
-**💡 Từ khóa ghi nhớ:** `So khớp nạp dữ liệu tự động từ CSV không cần ID -> Đánh dấu trường unique đó là EXTERNAL ID.`
+**💡 Từ khóa ghi nhớ:** `So khớp cập nhật hàng loạt từ CSV qua trường độc nhất -> Biến trường độc nhất đó thành **External ID**!`
 
 ---
 
@@ -8105,21 +8153,21 @@ The value of the account type field is not being displayed correctly on the page
 - **D.** Change theAccount attribute to public. ❌
 
 **📝 Dịch tiếng Việt:**
-> Tại sao field Account Type không hiển thị trên trang Visualforce?
+> Một lập trình viên tạo trang Visualforce và Custom Controller để hiển thị trường Account Type như dưới đây: [Code customCtrlr và VF]. Tuy nhiên, giá trị của trường Account Type không hiển thị đúng trên trang. Lập trình viên cần làm gì để sửa lỗi này?
 
 **💬 Giải thích gốc (English):**
 > By default, properties in Apex are private, meaning they can't be accessed directly by the Visualforce page. You need to make the actType property accessible by using the {get; set;} notation.
 > public String actType { get; set; }
 
 **✅ Tại sao đáp án đúng:**
-> Biến trong Apex muốn ra được Page thì phải có Getter hoặc khai báo `{get; set;}`.
+> Chọn **B: Thêm một getter method cho thuộc tính actType**. Trong mô hình MVC của Visualforce, để một biến khai báo trong Apex Controller có thể xuất hiện và hiển thị giá trị ra ngoài giao diện trang VF, biến đó bắt buộc phải có phương thức getter (ví dụ: `public String getActType() { return actType; }` hoặc viết gọn kiểu hiện đại là `public String actType { get; set; }`). Thiếu getter là trang VF mù tịt không đọc được dữ liệu.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Public biến thôi chưa đủ, Visualforce 'đòi' phải có getter cụ thể.
-> **C.** `with sharing` chỉ để lọc bản ghi, không liên quan đến việc hiển thị biến.
-> **D.** Account.Type vốn dĩ đã là String rồi, không cần convert gì cả.
+> **A.** Trường `Type` trên Account vốn dĩ đã là kiểu dữ liệu String rồi, ép kiểu làm gì cho thừa thãi.
+> **C.** Khai báo `with sharing` chỉ để áp đặt luật chia sẻ bảo ghi (Sharing Rules) của hệ thống lên câu SOQL, chả liên quan gì đến việc hiển thị biến ra giao diện.
+> **D.** VF page đang cố lấy giá trị từ biến `{!actType}` chứ không gọi trực tiếp `{!theAccount.Type}`. Do đó, việc đổi `theAccount` thành public chả giải quyết được vấn đề.
 
-**💡 Từ khóa ghi nhớ:** `VF + Apex: Get/Set là điều kiện cần và đủ.`
+**💡 Từ khóa ghi nhớ:** `Biến Apex muốn hiển thị ra trang Visualforce -> Bắt buộc phải có **getter** (hoặc khai báo cụm **`{get; set;}`**).`
 
 ---
 
@@ -8133,20 +8181,20 @@ The value of the account type field is not being displayed correctly on the page
 - **D.** Text Area (Rich) ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer muốn tạo một trường mô tả sản phẩm cho phép user nhập xuống dòng hiển thị trên Visualforce, đồng thời trường này bắt buộc phải tìm kiếm lọc được bằng mệnh đề WHERE LIKE trong các câu truy vấn SOQL tùy chỉnh. Chọn kiểu trường nào?
+> Lập trình viên muốn lưu trữ mô tả của sản phẩm (cho phép xuống dòng khi nhập liệu) để hiển thị lên trang Visualforce cho khách hàng xem. Đồng thời, trường này phải lọc tìm kiếm được bằng mệnh đề WHERE trong các câu SOQL tùy chỉnh. Chọn kiểu trường nào cho phù hợp?
 
 **💬 Giải thích gốc (English):**
 > Text Area: Lets users enter up to 255 characters that display on separate lines similar to a Description field.
 
 **✅ Tại sao đáp án đúng:**
-> Chọn kiểu trường Text Area (A). Trường Text Area cho phép nhập tối đa 255 ký tự hiển thị trên nhiều dòng độc lập, và đặc biệt là nó HỖ TRỢ tìm kiếm bình thường trong các câu SOQL query.
+> Chọn **A: Text Area**. Trường kiểu **Text Area** cho phép người dùng nhập tối đa 255 ký tự hiển thị trên nhiều dòng khác nhau (thỏa mãn việc xuống dòng), và cực kỳ quan trọng: nó **hỗ trợ tìm kiếm lọc bằng mệnh đề WHERE LIKE** trong câu lệnh SOQL bình thường.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Text thường giới hạn hiển thị trên 1 dòng duy nhất, không đáp ứng yêu cầu xuống dòng của người dùng.
-> **C.** Text Area (Long) cho phép nhập dữ liệu cực lớn nhưng Salesforce cấm tiệt sử dụng trường text lớn ở mệnh đề lọc WHERE của câu lệnh SOQL.
+> **B.** Trường Text thường chỉ cho nhập trên 1 dòng duy nhất, không đáp ứng yêu cầu nhập liệu xuống dòng của người dùng.
+> **C.** Text Area (Long) cho phép chứa tới 131,072 ký tự cực khủng nhưng Salesforce cấm tiệt sử dụng trường text lớn ở mệnh đề lọc WHERE của SOQL.
 > **D.** Text Area (Rich) chứa định dạng HTML phức tạp và tương tự câu C, bị Salesforce chặn hoàn toàn khỏi khả năng so khớp lọc WHERE trong SOQL.
 
-**💡 Từ khóa ghi nhớ:** `Vừa xuống được dòng vừa lọc được trong SOQL WHERE -> Bắt buộc dùng kiểu trường TEXT AREA (không dùng Long/Rich).`
+**💡 Từ khóa ghi nhớ:** `Vừa xuống được dòng + Vừa lọc được bằng mệnh đề WHERE trong SOQL -> Chỉ dùng **Text Area** thường (không dùng Long/Rich)!`
 
 ---
 
@@ -8160,7 +8208,7 @@ The value of the account type field is not being displayed correctly on the page
 - **D.** (Exception)CustomException ex = new Exception(); ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để lập trình viên tự định nghĩa một custom exception class (lớp ngoại lệ tùy chỉnh) trong Apex?
+> Lập trình viên làm thế nào để tự định nghĩa một custom exception class (lớp ngoại lệ tùy chỉnh) trong Apex?
 
 **💬 Giải thích gốc (English):**
 > To create your custom exception class, extend the built-in Exception class and make sure your class name ends with the word Exception, such as “MyException” or “PurchaseException”. All exception classes extend the system-defined base class Exception, and therefore, inherits all common Exception methods.
@@ -8168,14 +8216,14 @@ The value of the account type field is not being displayed correctly on the page
 > public class MyException extends Exception {}
 
 **✅ Tại sao đáp án đúng:**
-> Định nghĩa class kế thừa Exception chuẩn và tên lớp bắt buộc phải kết thúc bằng từ khóa Exception (A): 'public class CustomException extends Exception{}'.
+> Chọn **A: `public class CustomException extends Exception{}`**. Đây là luật cứng của Apex: để tạo một lớp ngoại lệ tùy chỉnh, class đó bắt buộc phải có tên kết thúc bằng từ khóa **`Exception`** (ví dụ: `CustomException`, `MyApiException`...) và phải kế thừa từ lớp Exception chuẩn của hệ thống thông qua từ khóa **`extends Exception`**.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Cú pháp ép kiểu ngược ngạo, hoàn toàn sai ngữ pháp cơ bản của ngôn ngữ Apex.
-> **C.** Dùng từ khóa 'implements' là sai lệch nghiêm trọng, Exception là lớp cha (Class) chứ không phải Interface để implements.
+> **B.** Cú pháp khai báo gán ép kiểu ngược ngạo, hoàn toàn sai ngữ pháp cơ bản của ngôn ngữ Apex.
+> **C.** Dùng từ khóa `implements` là sai lệch nghiêm trọng, Exception là lớp cha (Class) chứ không phải Interface để implements.
 > **D.** Cú pháp gán biến sai ngữ pháp, gây lỗi biên dịch compiler ngay lập tức.
 
-**💡 Từ khóa ghi nhớ:** `Tạo Custom Exception -> class bắt buộc có đuôi 'Exception' và dùng từ khóa EXTENDS EXCEPTION.`
+**💡 Từ khóa ghi nhớ:** `Custom Exception -> Tên class bắt buộc có đuôi **Exception** + dùng từ khóa **extends Exception**!`
 
 ---
 
@@ -8189,16 +8237,18 @@ The value of the account type field is not being displayed correctly on the page
 - **D.** Unify all three triggers in a single trigger on the Expense__c object that includes all events. ✅
 
 **📝 Dịch tiếng Việt:**
-> Sửa 3 trigger trên cùng 1 object theo Best Practice?
+> Lập trình viên phát hiện có 3 trigger khác nhau trên đối tượng Expense__c gồm: deleteExpense, applyDefaultsToExpense, validateExpenseUpdate tương ứng chạy ở before delete, before insert, và before update. Hai kỹ thuật nào nên được áp dụng để đảm bảo tuân thủ tốt nhất các thực hành thiết kế Trigger (Trigger Best Practices)? (Chọn 2)
 
 **✅ Tại sao đáp án đúng:**
-> C: Gom thành 1 Trigger duy nhất. B: Dùng Helper Class.
+> Chọn **B** và **D**.
+- **B: Tạo các helper classes để thực thi logic phù hợp khi bản ghi được lưu**. Tách toàn bộ logic tính toán, xử lý nghiệp vụ ra khỏi trigger và tống vào các lớp **Helper Class** (hay Handler Class). Trigger chỉ nên làm nhiệm vụ đón nhận sự kiện rồi điều phối gọi helper (Logicless Trigger).
+- **D: Gom cả 3 trigger lại thành một trigger duy nhất trên Expense__c chứa tất cả các sự kiện**. Đây là thực hành thiết kế tối thượng 'One Trigger per Object' để dễ dàng kiểm soát thứ tự thực thi và tránh xung đột.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Để 3 trigger là vi phạm Best Practice 'One Trigger per Object'.
-> **D.** Process Builder không thay thế tốt được logic phức tạp của Delete trigger.
+> **A.** Process Builder đã đi vào dĩ vãng và không hỗ trợ tốt sự kiện delete.
+> **C.** Giữ nguyên 3 trigger chạy riêng biệt trên một object là vi phạm nghiêm trọng best practice, dễ gây lỗi đệ quy không thể kiểm soát.
 
-**💡 Từ khóa ghi nhớ:** `Trigger Thần Chú: One Trigger per Object + Logicless Trigger.`
+**💡 Từ khóa ghi nhớ:** `Best practice Trigger -> Luôn nhớ: **One Trigger per Object** (Gom 1 trigger duy nhất) + **Logicless Trigger** (Tách logic vào Helper)!`
 
 ---
 
@@ -8212,17 +8262,17 @@ The value of the account type field is not being displayed correctly on the page
 - **D.** Formula field ❌
 
 **📝 Dịch tiếng Việt:**
-> Ứng dụng Order Management có quan hệ Master-Detail giữa Order (Master) và Order Line (Detail). Yêu cầu tính tổng số tiền của toàn bộ các dòng Order Line con và hiển thị lên Order cha. Thực hành tốt nhất là gì?
+> Universal Containers triển khai app quản lý đơn hàng. Mỗi Order có một hoặc nhiều Order Line con liên kết qua quan hệ Master-Detail. Với mỗi Order Line, giá tổng được tính bằng cách nhân đơn giá với số lượng. Thực hành tốt nhất để hiển thị tổng tiền của tất cả các dòng Order Line lên bản ghi Order cha là gì?
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một trường Roll-up Summary trên đối tượng cha Order thực hiện tính SUM trường tổng tiền của Order Line con (A). Đây là cách tối ưu hoàn hảo hoàn toàn no-code.
+> Chọn **A: Roll-up summary field**. Vì mối quan hệ giữa Order và Order Line là Master-Detail, cách tối ưu, chuẩn chỉ, no-code và được Salesforce khuyến nghị số 1 để tính tổng từ con lên cha là tạo một trường **Roll-up Summary** trên Order cha và chọn hàm SUM.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Quick Action chỉ dùng để mở giao diện hành động nhanh, không có tính năng tính toán cộng dồn cơ sở dữ liệu.
-> **C.** Viết trigger Apex tính toán bằng code là giải pháp cồng kềnh, lãng phí CPU limit và tốn công viết code phủ test.
-> **D.** Formula field cấm thực hiện hàm tổng hợp (SUM) đi ngược từ con lên cha trong Salesforce.
+> **B.** Quick Action dùng để mở giao diện hành động nhanh chứ không có chức năng tính toán tổng hợp cơ sở dữ liệu.
+> **C.** Viết trigger Apex để tính toán bằng code là giải pháp cồng kềnh, lãng phí tài nguyên CPU và tốn công viết code phủ test khi no-code đã giải quyết cực đẹp.
+> **D.** Formula field chỉ tính toán trên nội bộ bản ghi hoặc kéo dữ liệu từ cha xuống con, chứ không thể tính tổng ngược từ các bản ghi con lên bản ghi cha được.
 
-**💡 Từ khóa ghi nhớ:** `Tính tổng bản ghi con lên cha ở mối quan hệ Master-Detail -> Luôn luôn dùng ROLL-UP SUMMARY.`
+**💡 Từ khóa ghi nhớ:** `Tính tổng bản ghi con lên cha Master-Detail -> Luôn ưu tiên dùng **Roll-up Summary field**!`
 
 ---
 
@@ -8245,13 +8295,16 @@ The value of the account type field is not being displayed correctly on the page
 > To activate debug logging for users, Apex classes, and Apex triggers, configure trace flags and debug levels in the Salesforce Developer Console or in Salesforce Setup.
 
 **✅ Tại sao đáp án đúng:**
-> A: Log levels có tính kế thừa (cumulative), cấp thấp hơn sẽ bao gồm cả cấp cao hơn (ví dụ FINE bao gồm cả INFO, ERROR). B: Đây là các permission cần thiết để xem log. D: Log levels (ERROR, WARN, INFO...) giúp lọc lượng thông tin ghi ra log.
+> Chọn **B**, **C** và **E**.
+- **B: System debug logs được hệ thống giữ lại trong vòng 24 giờ**. Sau 24 tiếng, các file log này sẽ bị tự động dọn dẹp sạch sẽ để giải phóng dung lượng cho máy chủ Salesforce.
+- **C: Cấp độ log (Log Levels) có tính tích lũy (cumulative)**. Cấp thấp hơn, chi tiết hơn (như FINE) sẽ tự động bao gồm toàn bộ các sự kiện được ghi nhận ở các cấp độ cao hơn (như DEBUG, INFO, WARN, ERROR).
+- **E: Debug logs có thể được thiết lập riêng biệt cho từng User, Class Apex và Trigger cụ thể**. Bạn có thể cắm Trace Flags để chỉ ghi log cho đúng đối tượng mình đang muốn khoanh vùng debug, rất tối ưu!
 
 **❌ Tại sao đáp án sai:**
-> **C.** Modify All Data là quyền quá lớn, View All Data là đủ để xem log.
-> **E.** Debug log được hệ thống ghi lại dựa trên cấu hình (Debug Levels), không phải điều khiển trực tiếp bằng code.
+> **A.** Salesforce giới hạn tổng dung lượng lưu trữ log trên Org (250MB) chứ không giới hạn cứng con số 20 file log gần nhất của một user.
+> **D.** Giới hạn dung lượng tối đa cho mỗi file debug log là **250 MB** chứ không phải 5 MB (ở giao diện Dev Console nó sẽ tự động cắt ngắn nếu log quá dài).
 
-**💡 Từ khóa ghi nhớ:** `Log Levels: FINEST > FINER > FINE > DEBUG > INFO > WARN > ERROR.`
+**💡 Từ khóa ghi nhớ:** `Debug Logs: Giữ trong **24 giờ**, log levels có tính **tích lũy**, cắm được cho **User/Class/Trigger** cụ thể!`
 
 ---
 
@@ -8269,20 +8322,20 @@ What is the value of acctScore after this code executes?**
 - **D.** 5000 ✅
 
 **📝 Dịch tiếng Việt:**
-> Trường tùy chỉnh Rating__c kiểu Percent (phần trăm) trên Account được cấu hình độ dài 2 ký tự, không lấy chữ số thập phân. Bản ghi Account chứa giá trị 50% ở trường Rating__c được query lên và xử lý bằng đoạn code Apex sau: [Code acctScore]. Hỏi giá trị của acctScore sau khi chạy xong là bao nhiêu?
+> Trên Account có một trường custom kiểu Percent tên là Rating__c được cấu hình độ dài 2 ký tự, không lấy số thập phân. Một bản ghi Account có giá trị 50% ở trường Rating__c và được truy vấn xử lý trong code Apex: `Decimal acctScore = acct.Rating__c * 100;`. Hỏi giá trị của biến acctScore sau khi chạy xong là bao nhiêu?
 
 **💬 Giải thích gốc (English):**
 > With the Percent field defined with 0 decimal places, the value stored in the Rating field is 50, not 0.50. When the code executes, it multiplies 50 by 100, resulting in an acctScore of 5000.
 
 **✅ Tại sao đáp án đúng:**
-> Giá trị của acctScore là 5000 (D). Trong Salesforce, các trường Percent được lưu trữ và truy vấn trong code Apex dưới dạng giá trị thực tế không chia cho 100 (tức là 50% thì Rating__c có giá trị là số thực 50 chứ không phải 0.50). Do đó, phép toán 50 * 100 = 5000.
+> Chọn **D: 5000**. Đây là cú lừa kinh điển của Salesforce! Khi bạn nhập 50% trên giao diện, Salesforce thực chất lưu giá trị số thực thô là **50** (chứ không phải 0.5). Khi truy vấn lên code Apex, biến `acct.Rating__c` sẽ nhận giá trị là `50`. Do đó, phép nhân trong code: `50 * 100` sẽ ra kết quả là **5000**. Muốn tính đúng tỉ lệ thực tế, bạn phải tự chia cho 100!
 
 **❌ Tại sao đáp án sai:**
 > **A.** Tính toán sai lệch hoàn toàn.
 > **B.** Sai vì nghĩ Percent trong code Apex tự động chia cho 100 thành 0.50 để nhân với 100 ra 50.
 > **C.** Sai do nhầm lẫn thứ tự tính toán thập phân.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo thi Percent Salesforce: Trong Apex code, trường % được lấy giá trị thô không chia 100 (ví dụ 50% = 50, 75% = 75).`
+**💡 Từ khóa ghi nhớ:** `Trong code Apex, trường Percent nhận giá trị **thô** không chia 100 (ví dụ: 50% = 50, 75% = 75)!`
 
 ---
 
@@ -8302,14 +8355,14 @@ What is the value of acctScore after this code executes?**
 > Governor limits prevent Apex from impacting the performance of multiple tenants on the same instance. These limits ensure that no single tenant's code can monopolize shared resources, maintaining performance and stability across the environment.
 
 **✅ Tại sao đáp án đúng:**
-> Các giới hạn governor limits giúp ngăn chặn việc code Apex của một khách thuê gây ảnh hưởng xấu hoặc làm tê liệt hiệu năng của các khách thuê khác chạy chung trên cùng một máy chủ vật lý (C).
+> Chọn **C: Các giới hạn governor limits giúp ngăn chặn việc code Apex làm ảnh hưởng đến hiệu năng của các khách thuê khác chạy chung trên cùng một máy chủ vật lý**. Trong thế giới multi-tenant, hàng nghìn Org dùng chung tài nguyên phần cứng. **Governor Limits** đóng vai trò là hàng rào bảo vệ tối thượng, đảm bảo không có bất kỳ ông nào chạy code lặp vô tận hay ngốn hết tài nguyên làm ảnh hưởng đến các ông hàng xóm.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Apex Sharing chỉ giúp chia sẻ bản ghi bảo mật trong nội bộ một Org (tenant) cụ thể chứ không thể chia sẻ dữ liệu chéo Org giữa các khách thuê độc lập được.
-> **B.** Bảo mật cấp Org kiểm soát quyền truy cập của người dùng trong Org đó, không kiểm soát chéo dữ liệu đa khách thuê vật lý.
-> **D.** Từ khóa global trên Apex class chỉ hỗ trợ kết nối chéo namespace nội bộ Org chứ không cho phép Org khác truy cập trực tiếp.
+> **A.** Apex Sharing chỉ giúp chia sẻ bản ghi bảo mật trong nội bộ một Org duy nhất, hoàn toàn không có chuyện chia sẻ chéo record giữa các tenant độc lập được.
+> **B.** Bảo mật cấp Org kiểm soát quyền truy cập của người dùng trong nội bộ Org đó chứ không thể nhìn thấy dữ liệu của Org khác chạy chung instance.
+> **D.** Từ khóa global trên Apex class hỗ trợ gọi chéo code trong các namespace nội bộ Org chứ không cho phép Org khác truy cập trực tiếp database.
 
-**💡 Từ khóa ghi nhớ:** `Bản chất Multi-tenancy -> Governor Limits sinh ra để bảo vệ tài nguyên dùng chung, tránh các Org ảnh hưởng hiệu năng lẫn nhau.`
+**💡 Từ khóa ghi nhớ:** `Multi-tenant (Đa khách thuê) -> **Governor limits** sinh ra để bảo vệ hiệu năng dùng chung!`
 
 ---
 
@@ -8324,7 +8377,7 @@ What is the value of acctScore after this code executes?**
 - **E.** Custom objects and fields ✅
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers quyết định sử dụng hoàn toàn phát triển dạng khai báo (declarative) để xây dựng ứng dụng mới. Ba tùy chọn nào nên được sử dụng để thiết lập lớp Cơ sở dữ liệu (Database Layer)? (Chọn 3)
+> Universal Containers quyết định chỉ sử dụng công cụ khai báo (declarative/no-code) để xây dựng một ứng dụng Salesforce mới. Ba tùy chọn nào nên được dùng để thiết lập lớp Cơ sở dữ liệu (Database Layer) cho ứng dụng? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Database Layer
@@ -8332,13 +8385,17 @@ What is the value of acctScore after this code executes?**
 > Coding: Apex Triggers
 
 **✅ Tại sao đáp án đúng:**
-> B: Roll-up summaries. D: Relationships. E: Custom objects and fields. Đây là các thành phần cấu tạo nên cấu trúc lớp lưu trữ dữ liệu vật lý hoàn toàn no-code trong Salesforce.
+> Chọn **B**, **D** và **E**.
+- **B: Roll-up summaries** (Trường tổng hợp dữ liệu no-code từ con lên cha).
+- **D: Relationships** (Thiết lập các mối liên kết Lookup, Master-Detail no-code).
+- **E: Custom objects and fields** (Tạo bảng và trường dữ liệu hoàn toàn bằng kéo thả click chuột).
+- Đây chính như bộ ba nguyên tử cấu thành nên lớp Database Layer (Cơ sở dữ liệu) hoàn chỉnh mà không cần một dòng code nào.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Process Builder là công cụ tự động hóa xử lý logic (Logic Layer), không phải cấu trúc lưu trữ cơ sở dữ liệu.
-> **C.** Triggers là code Apex dùng để xử lý logic, không thuộc lớp khai báo no-code.
+> **C.** Triggers là code Apex dùng để xử lý logic (Logic Layer), đi ngược lại tiêu chí 'declarative' (no-code) của đề bài.
 
-**💡 Từ khóa ghi nhớ:** `Database Layer no-code -> Object/Fields, Relationships, Roll-up Summaries.`
+**💡 Từ khóa ghi nhớ:** `Database Layer no-code -> Auto chọn: **Custom objects/fields**, **Relationships** và **Roll-up summaries**!`
 
 ---
 
@@ -8348,40 +8405,28 @@ What is the value of acctScore after this code executes?**
 public interface PaymentProcessor {
 void pay(Decimal amount);
 }
-Which is the correct implementation to use the PaymentProcessor interface class?
-A.
-public class CheckPaymentProcessor implements PaymentProcessor{
-public void pay(Decimal amount);
-}
-B.
-public class CheckPaymentProcessor implements PaymentProcessor{
-public void pay(Decimal amount){}
-}
-C.
-public class CheckPaymentProcessor extends PaymentProcessor{
-public void pay(Decimal amount){}
-}
-D.
-public class CheckPaymentProcessor extends PaymentProcessor{
-public void pay(Decimal amount);
-}**
+Which is the correct implementation to use the PaymentProcessor interface class?**
 
+- **A.** public class CheckPaymentProcessor implements PaymentProcessor{ public void pay(Decimal amount); } ❌
+- **B.** public class CheckPaymentProcessor implements PaymentProcessor{ public void pay(Decimal amount){} } ✅
+- **C.** public class CheckPaymentProcessor extends PaymentProcessor{ public void pay(Decimal amount){} } ❌
+- **D.** public class CheckPaymentProcessor extends PaymentProcessor{ public void pay(Decimal amount); } ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên cần tạo class CheckPaymentProcessor để thực hiện xử lý thanh toán tuân thủ đúng các phương thức ký mẫu được định nghĩa trong Interface PaymentProcessor: [Interface Code]. Cách viết nào sau đây là đúng cú pháp Apex?
+> Lập trình viên cần tạo class `CheckPaymentProcessor` để thực hiện xử lý thanh toán tuân thủ đúng phương thức `pay` được ký mẫu trong Interface `PaymentProcessor`: [Interface Code]. Cách viết nào sau đây là đúng cú pháp Apex?
 
 **💬 Giải thích gốc (English):**
 > You need to implement the PaymentProcessor interface and provide the required pay method definition.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp B: public class CheckPaymentProcessor implements PaymentProcessor { public void pay(Decimal amount){} }. Class con bắt buộc dùng từ khóa 'implements' và phải viết phần thân hàm cụ thể chứa cặp dấu ngoặc nhọn {} để hiện thực hóa phương thức.
+> Chọn **B: `public class CheckPaymentProcessor implements PaymentProcessor{ public void pay(Decimal amount){} }`**. Đây là cú pháp OOP chuẩn chỉnh của Apex: class con muốn hiện thực hóa Interface thì bắt buộc phải dùng từ khóa **`implements`** và phải viết đầy đủ phần thân hàm chứa cặp dấu ngoặc nhọn `{}` (dù bên trong chưa có dòng xử lý nào) để cam kết thực hiện.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Hàm pay kết thúc bằng dấu chấm phẩy mà không có ngoặc nhọn chỉ được dùng ở định nghĩa Interface, dùng ở class thường sẽ bị lỗi biên dịch.
-> **C.** Sử dụng từ khóa 'extends' đối với Interface là hoàn toàn sai cú pháp lập trình.
-> **D.** Sai cú pháp vì vừa dùng từ khóa extends vừa thiếu cặp dấu ngoặc nhọn thân hàm.
+> **A.** Hàm `pay` kết thúc bằng dấu chấm phẩy mà không có cặp dấu ngoặc nhọn thân hàm `{}` chỉ được dùng ở định nghĩa Interface, đem vào class thường sẽ bị lỗi biên dịch ngay.
+> **C.** Sử dụng từ khóa `extends` đối với Interface là sai lệch nghiêm trọng cú pháp lập trình.
+> **D.** Sai cú pháp vì vừa dùng từ khóa `extends` vừa thiếu cặp dấu ngoặc nhọn thân hàm.
 
-**💡 Từ khóa ghi nhớ:** `Hiện thực hóa Interface -> Bắt buộc dùng IMPLEMENTS + Viết đầy đủ thân hàm chứa cặp ngoặc nhọn {}.`
+**💡 Từ khóa ghi nhớ:** `Class hiện thực hóa Interface -> Bắt buộc dùng **`implements`** + Viết đầy đủ thân hàm chứa cặp ngoặc nhọn **`{}`**!`
 
 ---
 
@@ -8395,7 +8440,7 @@ public void pay(Decimal amount);
 - **D.** Rewrite all Visualforce pages as Lightning components. ❌
 
 **📝 Dịch tiếng Việt:**
-> Universal Containers sở hữu một loạt các ứng dụng tùy chỉnh được xây dựng bằng thư viện JavaScript của bên thứ ba nhúng trong trang Visualforce. Công ty muốn cập nhật nhanh nhất giao diện của các app này theo chuẩn giao diện Lightning Experience. Lập trình viên nên làm gì?
+> Universal Containers sở hữu một loạt các ứng dụng tùy chỉnh được xây dựng bằng thư viện JavaScript của bên thứ ba (như React, Angular...) nhúng trong trang Visualforce. Công ty muốn cập nhật nhanh nhất giao diện của các app này theo kiểu dáng hiện đại của Lightning Experience. Lập trình viên nên làm gì?
 
 **💬 Giải thích gốc (English):**
 > With Lightning stylesheets, it’s easy to tweak your existing Visualforce pages so they’ll display with classic styling in Salesforce Classic and Lightning styling in Lightning Experience.
@@ -8405,14 +8450,14 @@ public void pay(Decimal amount);
 > <apex:page standardController="Account" lightningStyleSheets="true">
 
 **✅ Tại sao đáp án đúng:**
-> Tích hợp trực tiếp file CSS của Salesforce Lightning Design System (SLDS) vào ứng dụng JavaScript của bên thứ ba đó (C). Vì ứng dụng dùng thư viện JS ngoài (như React/Angular) render HTML tùy chỉnh, việc bật tính năng đổi style tự động của Salesforce sẽ vô tác dụng, bắt buộc phải import SLDS CSS để tự áp dụng các class giao diện chuẩn của Salesforce.
+> Chọn **C: Tích hợp trực tiếp bộ CSS của Salesforce Lightning Design System (SLDS) vào ứng dụng JavaScript đó**. Vì ứng dụng này được vẽ trực tiếp bằng thư viện JS ngoài (render DOM riêng), các công cụ tự động chuyển giao diện của Salesforce sẽ bất lực. Giải pháp nhanh và hiệu quả nhất là nhúng thẳng bộ CSS của **Salesforce Lightning Design System (SLDS)** vào app JS đó để tự áp dụng các class style chuẩn của Salesforce.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Không tồn tại thuộc tính enableLightning trong thẻ khai báo Visualforce page.
+> **A.** Không tồn tại thuộc tính `enableLightning` trong thẻ khai báo Visualforce page, đồ fake tự chế thôi bro!
 > **B.** Tùy chọn Available for Lightning chỉ giúp hiển thị trang Visualforce trên menu Lightning chứ không có khả năng tự động đổi CSS của JS framework ngoài.
 > **D.** Viết lại toàn bộ trang Visualforce thành Lightning component là giải pháp cực kỳ tốn công sức và thời gian, không đáp ứng yêu cầu 'nhanh nhất'.
 
-**💡 Từ khóa ghi nhớ:** `Đổi giao diện JS App ngoài sang Lightning chuẩn nhanh nhất -> Nhúng bộ CSS Salesforce Lightning Design System (SLDS) vào ứng dụng.`
+**💡 Từ khóa ghi nhớ:** `Đổi style cho JS App ngoài nhúng trong VF -> Tích hợp trực tiếp bộ **Salesforce Lightning Design System (SLDS) CSS**!`
 
 ---
 
@@ -8435,13 +8480,15 @@ public void pay(Decimal amount);
 > Both methods will effectively handle the automation you need.
 
 **✅ Tại sao đáp án đúng:**
-> C: Record-triggered flow (công cụ no-code hiện đại hỗ trợ query bảng tra cứu động). D: Account trigger (code Apex trigger xử lý hoàn hảo khâu query và map dữ liệu).
+> Chọn **C** và **D**.
+- **C: Record-triggered flow**. Đây là công cụ tự động hóa no-code chuẩn của Salesforce, hỗ trợ hoàn hảo việc query chọc sang bảng khác để lấy dữ liệu rồi update ngược lại bản ghi hiện tại.
+- **D: Account trigger**. Code Apex trigger xử lý hoàn hảo khâu query và map dữ liệu một cách cực kỳ mạnh mẽ, tùy biến sâu.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Quick actions chỉ hiển thị nút bấm hành động nhanh trên giao diện để người dùng nhập liệu, không tự động chạy ngầm cập nhật trường chéo bảng được.
-> **B.** Approval Process dùng cho quy trình xét duyệt hồ sơ chứng từ, không dùng để tự động cập nhật trường tra cứu chéo bảng khi sửa Postal Code.
+> **B.** Approval Process dùng cho quy trình xét duyệt hồ sơ chứng từ, không dùng để tự động cập nhật trường tra cứu chéo bảng.
 
-**💡 Từ khóa ghi nhớ:** `Tự động cập nhật trường bằng cách truy vấn (query) bảng đối tượng khác -> Chỉ dùng Record-triggered Flow hoặc Apex Trigger.`
+**💡 Từ khóa ghi nhớ:** `Tự động cập nhật trường bằng cách truy vấn bảng khác -> Chỉ dùng **Record-triggered Flow** hoặc **Apex Trigger**!`
 
 ---
 
@@ -8462,13 +8509,15 @@ public void pay(Decimal amount);
 > One of the key uses of External IDs is to prevent duplicate records during data imports by using the Upsert operation. By specifying an External ID field as the matching criteria, Salesforce can identify existing records based on that field and update them instead of creating duplicates.
 
 **✅ Tại sao đáp án đúng:**
-> A: Thiết lập nhanh các mối quan hệ liên kết (relationships) giữa các bản ghi con-cha khi import từ hệ thống ngoài. D: Làm khóa đối chiếu giúp ngăn chặn việc tạo mới bản ghi trùng lặp khi chạy lệnh nạp dữ liệu Upsert.
+> Chọn **A** và **D**.
+- **A: Thiết lập nhanh các mối quan hệ liên kết (relationships) giữa các bản ghi con-cha khi import từ hệ thống ngoài**. Bạn có thể map liên kết trực tiếp qua External ID mà không cần biết ID của Salesforce.
+- **D: Làm khóa đối chiếu giúp ngăn chặn việc tạo bản ghi trùng lặp khi chạy lệnh nạp dữ liệu Upsert**. Salesforce sẽ tự động biết bản ghi nào đã có để update, bản ghi nào chưa có để insert, đảm bảo tính toàn vẹn dữ liệu.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Salesforce ID do hệ thống tự sinh ngẫu nhiên khi insert và là duy nhất trên từng Org, cấm và không thể ép bản ghi ở Sandbox có chung ID với Production bằng External ID.
+> **B.** Salesforce ID do hệ thống tự sinh ngẫu nhiên khi chèn bản ghi và là duy nhất trên toàn cầu, không ai có thể dùng External ID để ép đặt Salesforce ID trùng nhau chéo Org được.
 > **C.** External ID không dùng để xác định kiểu sObject (Account, Contact) của bản ghi.
 
-**💡 Từ khóa ghi nhớ:** `External ID: Dùng làm khóa ngoài liên kết dữ liệu khi nạp + Làm bộ lọc so khớp độc nhất cho lệnh DML UPSERT tránh trùng.`
+**💡 Từ khóa ghi nhớ:** `External ID: Dùng làm **khóa liên kết dữ liệu hệ thống ngoài** + **Khóa đối chiếu cho lệnh UPSERT tránh trùng**!`
 
 ---
 
@@ -8482,20 +8531,23 @@ public void pay(Decimal amount);
 - **D.** @wire(getAccounts, '$searchTerm') accountList; ❌
 
 **📝 Dịch tiếng Việt:**
-> Một phương thức Apex, getAccounts, trả về một List các Account dựa trên một search Term, có sẵn để Lightning Web Components sử dụng. Định nghĩa đúng của một thuộc tính (property) Lightning Web Component sử dụng phương thức getAccounts là gì?
+> Một phương thức Apex, `getAccounts`, trả về một List các Account dựa trên một `searchTerm`, có sẵn để LWC sử dụng. Định nghĩa đúng của một thuộc tính (property) Lightning Web Component sử dụng phương thức `getAccounts` là gì?
 
 **💬 Giải thích gốc (English):**
 > To read Salesforce data, Lightning web components use a reactive wire service. Use @wire in a component’s JavaScript class to specify an Apex method. You can @wire a property or a function to receive the data. To operate on the returned data, @wire a function.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp chuẩn là @wire(FunctionName, { paramName: '$dynamicValue' }). Dấu '$' làm cho tham số trở thành reactive (tự động gọi lại khi giá trị thay đổi).
+> Chọn **A: `@wire(getAccounts, { searchTerm: '$searchTerm'}) accountList;`**. Đây là cú pháp chuẩn cơm mẹ nấu của LWC để kết nối dữ liệu (wire) với Apex:
+- Sử dụng decorator `@wire`.
+- Tên phương thức import: `getAccounts`.
+- Tham số truyền dưới dạng object: `{ searchTerm: '$searchTerm' }`. Dấu nháy đơn kết hợp kí tự `$` giúp cho biến `searchTerm` trở thành **reactive** (tự động kích hoạt gọi lại Apex khi giá trị thay đổi).
 
 **❌ Tại sao đáp án sai:**
-> **A.** @AuraEnabled là annotation bên phía Apex, không phải decorator trong JS LWC.
 > **B.** Sai cú pháp hoàn toàn cho một decorator trong LWC JS.
-> **D.** Thiếu cặp ngoặc nhọn { } để truyền tham số dưới dạng một object.
+> **C.** `@AuraEnabled` là annotation viết bên file class Apex chứ bên file Javascript của LWC mà gõ cái này là ăn lỗi biên dịch ngay.
+> **D.** Truyền tham số thiếu cặp dấu ngoặc nhọn `{}` định dạng object để map tham số.
 
-**💡 Từ khóa ghi nhớ:** `LWC @wire: Phải có ngoặc nhọn { } cho tham số và '$' để reactive.`
+**💡 Từ khóa ghi nhớ:** `LWC `@wire` kết nối Apex -> Phải dùng **`@wire(TênHàm, { param: '$biếnReactive' })`**!`
 
 ---
 
@@ -8513,13 +8565,16 @@ public void pay(Decimal amount);
 > Ba kiểu trường khai báo (declarative fields) nào sau đây được ánh xạ (map) hoàn toàn ĐÚNG sang các kiểu dữ liệu tương ứng trong Apex? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> A: Trường Number của Salesforce được map sang kiểu Decimal trong Apex (để chứa số thập phân an toàn). D: Trường Date/Time được map sang kiểu DateTime trong Apex. E: Trường Checkbox (chỉ có True/False) được ánh xạ sang kiểu Boolean trong Apex.
+> Chọn **A**, **D** và **E**.
+- **A: Number maps to Decimal**. Trường Number trong Salesforce có thể chứa số lẻ/thập phân nên được map sang kiểu Decimal trong Apex để đảm bảo tính chính xác toán học.
+- **D: Date/Time maps to DateTime**. (Đề thi gốc bị typo chữ Dateline nhưng về kỹ thuật là DateTime). Trường Date/Time được map sang kiểu DateTime trong Apex để lưu trữ đầy đủ ngày giờ.
+- **E: Checkbox maps to Boolean**. Trường Checkbox chỉ có hai trạng thái Check/Uncheck tương đương với `true`/`false`, map hoàn hảo sang kiểu dữ liệu Boolean trong Apex.
 
 **❌ Tại sao đáp án sai:**
 > **B.** Trường Number có thể chứa phần thập phân, nếu map cứng sang Integer sẽ bị crash lỗi hoặc mất mát dữ liệu số lẻ.
 > **C.** Trường TextArea chỉ đơn giản là một String lớn chứa các ký tự xuống dòng, cấm tự động map thành List<String>.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo Ánh Xạ Apex: Checkbox -> Boolean. Date/Time -> DateTime. Number -> Decimal.`
+**💡 Từ khóa ghi nhớ:** `Ánh xạ trường Salesforce sang Apex -> **Checkbox -> Boolean**, **Number -> Decimal**, và **Date/Time -> DateTime**!`
 
 ---
 
@@ -8540,13 +8595,15 @@ public void pay(Decimal amount);
 > Set and map data structures are critical for successful coding of bulk triggers. Sets can be used to isolate distinct records, while maps can be used to hold query results organized by record ID.
 
 **✅ Tại sao đáp án đúng:**
-> A: Sử dụng cấu trúc Map để lưu kết quả query theo ID, giúp loại bỏ việc gọi SOQL trùng lặp trong các vòng lặp. C: Sử dụng cấu trúc Set để lưu danh sách ID lọc duy nhất, tối ưu hóa bộ lọc WHERE IN trong các câu lệnh truy vấn SOQL.
+> Chọn **A** và **C**.
+- **A: Sử dụng cấu trúc dữ liệu Map để lưu trữ các bản ghi query được theo ID cha, giảm số lượng gọi SOQL**. Giúp bạn tra cứu nhanh record liên quan trong bộ nhớ mà không cần phải viết thêm SOQL trong các vòng lặp (tránh dính SOQL Governor Limit).
+- **C: Sử dụng cấu trúc Set để lưu danh sách ID lọc duy nhất**. Tối ưu hóa bộ lọc WHERE IN trong các câu lệnh truy vấn SOQL để chạy siêu nhanh và tiết kiệm bộ nhớ.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Không dùng @future bừa bãi chỉ để chạy DML update vì phương thức future chạy bất đồng bộ không kiểm soát được thứ tự lưu và dễ gây khóa bản ghi (record locking).
-> **D.** Không thể khai báo callout trực tiếp trong trigger (kể cả dùng callout=true), bắt buộc trigger phải gọi qua helper method bất đồng bộ @future(callout=true) để tránh treo transaction.
+> **B.** Không dùng `@future` bừa bãi chỉ để chạy DML update vì phương thức future chạy bất đồng bộ không kiểm soát được thứ tự lưu và dễ gây khóa bản ghi (record locking).
+> **D.** Không thể khai báo callout trực tiếp trong trigger (kể cả dùng callout=true), bắt buộc trigger phải gọi qua helper method bất đồng bộ `@future(callout=true)` để tránh treo transaction.
 
-**💡 Từ khóa ghi nhớ:** `Tối ưu hóa Trigger (Bulkification) -> Luôn sử dụng bộ đôi SET (để lọc duy nhất) và MAP (để lưu cache đối chiếu SOQL).`
+**💡 Từ khóa ghi nhớ:** `Tối ưu Trigger (Bulkify) -> Luôn sử dụng bộ đôi nguyên tử: **SET (để lọc duy nhất)** và **MAP (để lưu cache đối chiếu)**!`
 
 ---
 
@@ -8560,20 +8617,20 @@ public void pay(Decimal amount);
 - **D.** A for loop, with an if-else statement inside ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer muốn duyệt qua danh sách Account và đánh dấu trạng thái Active hoặc Inactive cho từng bản ghi dựa trên việc trường LastModifiedDate có lớn hơn 90 ngày trước hay không. Kỹ thuật Apex nào là tối ưu?
+> Lập trình viên muốn duyệt qua một danh sách Account và đánh dấu mỗi Account là Active hoặc Inactive dựa trên việc trường LastModifiedDate của từng bản ghi có lớn hơn 90 ngày trước hay không. Kỹ thuật Apex nào lập trình viên nên sử dụng?
 
 **💬 Giải thích gốc (English):**
 > To mark each Account as Active or Inactive based on the LastModified field value, the developer should use a for loop, with an if/else statement inside. This technique allows the developer to iterate through each account and apply the conditional logic to determine the status based on the 90-day threshold.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng một vòng lặp for để duyệt qua danh sách Account, và viết một câu lệnh điều kiện if-else ở bên trong thân vòng lặp để so sánh ngày và gán nhãn trạng thái tương ứng cho từng bản ghi (D).
+> Chọn **D: Sử dụng vòng lặp for, bên trong bọc câu lệnh if-else**. Kịch bản cực kỳ kinh đoán: dùng một vòng lặp `for` để duyệt qua từng Account trong danh sách, và dùng câu lệnh điều kiện `if-else` ở bên trong vòng lặp để so sánh ngày tháng của từng bản ghi rồi gán nhãn trạng thái tương ứng.
 
 **❌ Tại sao đáp án sai:**
 > **A.** Switch statement chỉ dùng để so khớp các giá trị hằng số rời rạc cụ thể, không hỗ trợ so sánh toán tử điều kiện lớn hơn/nhỏ hơn phức tạp của ngày tháng.
 > **B.** Đặt switch ngoài for lặp là hoàn toàn sai trình tự logic xử lý danh sách.
 > **C.** Đặt if-else ngoài for lặp không thể can thiệp xử lý điều kiện cho từng bản ghi độc lập bên trong danh sách được.
 
-**💡 Từ khóa ghi nhớ:** `Xử lý điều kiện động cho từng phần tử trong List -> Dùng vòng lặp FOR, bọc khối lệnh điều kiện IF - ELSE bên trong.`
+**💡 Từ khóa ghi nhớ:** `Duyệt danh sách + xử lý logic điều kiện động cho từng bản ghi -> Dùng vòng lặp **FOR** bọc câu lệnh điều kiện **IF-ELSE** bên trong!`
 
 ---
 
@@ -8587,7 +8644,7 @@ public void pay(Decimal amount);
 - **D.** Use the Database.Savepoint method to enforce database integrity. ✅
 
 **📝 Dịch tiếng Việt:**
-> Hai kỹ thuật nào lập trình viên nên thực hiện để đảm bảo kiểm soát transaction và tránh vượt quá governor limits cho một phương thức tốn tài nguyên? (Chọn 2)
+> Lập trình viên phát hiện một phương thức trong class Apex thực hiện các hành động tốn nhiều tài nguyên bộ nhớ bằng cách duyệt qua kết quả truy vấn SOQL trên đối tượng Account, đồng thời thực hiện lệnh DML để lưu thay đổi. Hai kỹ thuật nào nên được áp dụng để đảm bảo kiểm soát transaction và tránh vượt quá governor limits? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > The developer should implement the following best practices to ensure transaction control and avoid exceeding governor limits:
@@ -8595,13 +8652,15 @@ public void pay(Decimal amount);
 > Use the Database.Savepoint method to enforce database integrity: Savepoints allow the developer to roll back to a certain point in the transaction if necessary, which is critical for maintaining data integrity during complex operations.
 
 **✅ Tại sao đáp án đúng:**
-> B: Savepoint cho phép mày rollback dữ liệu về trạng thái trước đó nếu có lỗi xảy ra giữa chừng (Transaction Control). D: Class System.Limit cung cấp các method (như getCpuTime()) để check xem mày sắp 'chạm trần' limit chưa để còn biết đường xử lý.
+> Chọn **C** và **D**.
+- **C: Sử dụng lớp System.Limit để giám sát tài nguyên CPU tiêu thụ hiện tại**. Lớp `System.Limit` cung cấp các phương thức cực xịn như `System.Limits.getCpuTime()` hay `System.Limits.getLimitCpuTime()` giúp bạn chủ động đo đạc tài nguyên CPU tiêu thụ xem đã sắp chạm trần chưa để ngắt luồng an toàn.
+- **D: Sử dụng phương thức Database.Savepoint để đảm bảo tính toàn vẹn dữ liệu**. Cho phép bạn thiết lập điểm neo giao dịch. Nếu giữa chừng xảy ra lỗi vượt giới hạn hoặc lỗi logic, bạn có thể gọi `Database.rollback(sp)` để hoàn trả toàn bộ database về trạng thái nguyên vẹn ban đầu.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Partial DML (allOrNone=false) giúp lưu những bản ghi đúng, nhưng nó không giúp kiểm soát tổng thể transaction hay tránh limit.
-> **C.** @ReadOnly chỉ dùng cho Web Services hoặc JS Remoting, không dùng để bypass limit trong transaction thông thường.
+> **A.** Annotation `@ReadOnly` chỉ dùng cho Web Services hoặc JS Remoting để tăng giới hạn bản ghi SOQL đọc, chứ nó không giúp bạn thực hiện các thao tác sửa đổi dữ liệu DML được (DML bị cấm hoàn toàn dưới `@ReadOnly`).
+> **B.** Dùng partial DML (`Database.insert(list, false)`) chỉ giúp lưu những bản ghi đúng và bỏ qua bản ghi lỗi, chứ không hề có tác dụng kiểm soát an toàn toàn bộ transaction hay giúp giảm lượng CPU tiêu thụ.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Transaction Control -> Savepoint; Monitor Limits -> System.Limit class.`
+**💡 Từ khóa ghi nhớ:** `Kiểm soát Transaction -> Dùng **Savepoint / Rollback**; Giám sát tài nguyên -> Gọi các hàm trong lớp **`System.Limit`**!`
 
 ---
 
@@ -8615,7 +8674,7 @@ public void pay(Decimal amount);
 - **D.** Execute Anonymous ❌
 
 **📝 Dịch tiếng Việt:**
-> Nên sử dụng gì để lập trình việc deploy và chạy unit test trong CI (Continuous Integration)?
+> Lập trình viên nên sử dụng công cụ gì để viết script tự động deploy code và chạy unit test trong quy trình tích hợp liên tục (Continuous Integration)?
 
 **💬 Giải thích gốc (English):**
 > A developer should use Salesforce DX (SFDX) for scripting the deployment and unit test execution as part of continuous integration. Here's how:
@@ -8623,14 +8682,14 @@ public void pay(Decimal amount);
 > Continuous Integration Tools: Combine SFDX with CI tools like Jenkins, GitHub Actions, or CircleCI to automate the deployment process and run your tests seamlessly.
 
 **✅ Tại sao đáp án đúng:**
-> Salesforce CLI (SFDX) sinh ra để tự động hóa bằng script qua terminal, cực kỳ phù hợp cho Jenkins, GitHub Actions...
+> Chọn **B: Salesforce CLI**. Salesforce CLI (hay SFDX CLI) là công cụ dòng lệnh (command-line) chính thống, cực kỳ mạnh mẽ, được sinh ra để nhúng vào các kịch bản CI/CD (như Jenkins, GitHub Actions, GitLab CI) nhằm tự động hóa deploy metadata và kích hoạt chạy test class tự động từ xa bằng script.
 
 **❌ Tại sao đáp án sai:**
-> **A.** VS Code là IDE để gõ code bằng tay, không phải công cụ để chạy script tự động trong server CI.
-> **B.** Developer Console chỉ chạy được trong trình duyệt, không hỗ trợ lập trình script từ bên ngoài.
-> **D.** Execute Anonymous dùng để chạy code Apex, không dùng để deploy metadata hay quản lý vòng đời CI.
+> **A.** Developer Console là công cụ nền web thủ công trên trình duyệt, không có API hay dòng lệnh để tích hợp vào script CI tự động được.
+> **C.** VS Code là trình soạn thảo code (IDE) dành cho dev gõ code bằng tay, không thể chạy độc lập tự động trên máy chủ CI được.
+> **D.** Execute Anonymous chỉ dùng để chạy thử một đoạn code Apex ngắn chứ không hỗ trợ deploy code hay chạy tự động hóa toàn bộ unit test suite của Org.
 
-**💡 Từ khóa ghi nhớ:** `CI/CD / Scripting -> Salesforce CLI.`
+**💡 Từ khóa ghi nhớ:** `CI/CD tự động hóa -> Auto gọi tên **Salesforce CLI**!`
 
 ---
 
@@ -8644,20 +8703,22 @@ public void pay(Decimal amount);
 - **D.** Bulk API ❌
 
 **📝 Dịch tiếng Việt:**
-> Ba cách nào để thực thi Unit Test trong Salesforce?
+> Hai cách nào lập trình viên có thể sử dụng để kích hoạt thực thi (execute) các bài kiểm thử unit test trong một Org? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > Run Unit Test Methods
 > To verify the functionality of your Apex code, execute unit tests. You can run Apex test methods in the Developer Console, in Setup, in the Salesforce extensions for Visual Studio Code, or using the API.
 
 **✅ Tại sao đáp án đúng:**
-> B: Qua giao diện Setup -> Apex Test Execution. D: Dùng Salesforce CLI (SFDX). E: Tooling API là cái mà các tool như VS Code sử dụng để ra lệnh chạy test.
+> Chọn **A** và **B**.
+- **A: Tooling API**. Tooling API cung cấp các endpoint xịn sò (như `/runTestsAsynchronous` hoặc `/runTestsSynchronous`) để các công cụ bên ngoài (như VS Code, CLI) có thể kích hoạt chạy test từ xa.
+- **B: Developer Console**. Giao diện phát triển chuẩn của Salesforce, hỗ trợ tab 'Test' để bạn click chọn và chạy từng test class hoặc toàn bộ test suite một cách trực quan.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Metadata API dùng để deploy/retrieve cấu hình, không phải để chạy logic test.
-> **C.** Bulk API dùng để nạp lượng lớn dữ liệu (Data), không liên quan đến việc chạy test.
+> **C.** Metadata API chuyên dùng để deploy/retrieve cấu hình hệ thống (metadata) chứ không có chức năng chạy test trực tiếp.
+> **D.** Bulk API chuyên dùng để nạp/xuất dữ liệu hàng loạt cực lớn (Data Loading) chứ không liên quan đến việc thực thi Apex Unit Test.
 
-**💡 Từ khóa ghi nhớ:** `Run Test: Setup, CLI, Tooling API (VS Code).`
+**💡 Từ khóa ghi nhớ:** `Chạy Unit Test trong Salesforce -> Một là dùng **Developer Console** (UI), hai là chọc qua **Tooling API** (Command/API)!`
 
 ---
 
@@ -8671,20 +8732,20 @@ public void pay(Decimal amount);
 - **D.** Force.com IDE REST Explorer tab ❌
 
 **📝 Dịch tiếng Việt:**
-> Công cụ nào cho phép lập trình viên dễ dàng gửi thử nghiệm các yêu cầu REST API đến Salesforce và xem trực tiếp các phản hồi JSON trả về ngay trên giao diện?
+> Công cụ nào cho phép lập trình viên dễ dàng gửi thử nghiệm các yêu cầu REST API đến Salesforce và xem trực tiếp các phản hồi JSON/XML trả về ngay trên giao diện?
 
 **💬 Giải thích gốc (English):**
 > Workbench Rest Explorer allows developers to send requests to the Salesforce REST APIs and view the responses, making it an excellent choice for testing and interacting with RESTful services in Salesforce.
 
 **✅ Tại sao đáp án đúng:**
-> Workbench REST Explorer (B). Đây là tính năng cực kỳ mạnh mẽ tích hợp trong Workbench giúp lập trình viên test nhanh các API Endpoint của Salesforce (như /services/data/vXX.X/) rất trực quan.
+> Chọn **B**. **Workbench REST Explorer** là một "bảo bối" đắc lực giúp anh em gửi thử nghiệm đủ loại request (GET, POST, PUT, DELETE, PATCH) đến các Salesforce REST API endpoint một cách trực quan, nhận kết quả trả về ngay lập tức mà không cần phải viết một dòng code nào. Siêu nhanh, siêu tiện!
 
 **❌ Tại sao đáp án sai:**
-> **A.** REST resource path URL chỉ là chuỗi địa chỉ endpoint tĩnh, không phải công cụ gửi nhận và hiển thị phản hồi API.
-> **C.** Developer Console không có tab nào chuyên biệt để test REST API thủ công giống REST Explorer.
-> **D.** Force.com IDE là công cụ viết code cổ điển trên Eclipse đã bị khai tử, không chứa REST Explorer chuyên biệt.
+> **A.** REST resource path URL chỉ đơn thuần là đường dẫn (URI) tĩnh của API chứ bản thân nó không phải là một công cụ giúp gửi request hay hiển thị kết quả gì cả. Dán cái này lên trình duyệt thường thì chỉ có "cook" vì thiếu authentication.
+> **C.** Developer Console làm gì có tab nào tên là "REST tab" để test API thủ công đâu. Đây là cú lừa bịa đặt trắng trợn!
+> **D.** Force.com IDE là đồ cổ chạy trên Eclipse đã bị Salesforce khai tử từ lâu, và nó cũng không có tab REST Explorer chuyên biệt nào cả. Quên nó đi cho nước nó trong.
 
-**💡 Từ khóa ghi nhớ:** `Test thử nghiệm REST API Salesforce nhanh chóng -> Sử dụng công cụ WORKBENCH REST EXPLORER.`
+**💡 Từ khóa ghi nhớ:** `Test REST API Salesforce nhanh gọn lẹ -> Triệu hồi ngay **Workbench REST Explorer**!`
 
 ---
 
@@ -8698,17 +8759,17 @@ public void pay(Decimal amount);
 - **D.** Create test data before Test.startTest() in the unit test. ❌
 
 **📝 Dịch tiếng Việt:**
-> Cách tạo data test hiệu quả nhất cho toàn bộ test suite?
+> Một lập trình viên cần tạo một bộ dữ liệu mẫu cơ bản (Accounts, Contacts, Products, Assets) cho toàn bộ các lớp kiểm thử (test suite) để kiểm tra các yêu cầu độc lập cho nhiều loại Case khác nhau. Cách tiếp cận nào giúp tạo dữ liệu này một cách hiệu quả và tối ưu nhất cho từng unit test?
 
 **✅ Tại sao đáp án đúng:**
-> Dùng `@testSetup` để tạo data dùng chung 1 lần cho cả class.
+> Chọn **B**. Sử dụng **`@TestSetup`** bọc một `void` method là giải pháp "chuẩn cơm mẹ nấu" để tạo dữ liệu dùng chung (baseline data) cho toàn bộ các phương thức test trong class. Phương thức `@TestSetup` chỉ chạy đúng **1 lần duy nhất** trước khi bất kỳ test method nào bắt đầu. Hệ thống sẽ tự động rollback (hoàn tác) dữ liệu sau mỗi test method, giúp đảm bảo các test độc lập với nhau mà không tốn công tạo lại dữ liệu, tối ưu hóa tốc độ chạy test lên tầm cao mới!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Bad practice, phụ thuộc data thật và không đảm bảo tính độc lập.
-> **B.** Mỗi method đều phải tự tạo data, làm chậm performance và code bị lặp.
-> **D.** Stud API dùng để mock logic, không dùng để tạo baseline data kiểu này.
+> **A.** Stub API dùng để mock (giả lập) các hành vi/logic của class hoặc interface trong Apex chứ không dùng để khởi tạo dữ liệu vật lý (như Account, Contact...) lưu vào DB cho test.
+> **C.** Sử dụng `@IsTest(seeAllData=true)` là một thực hành cực kỳ "gà" (bad practice). Nó cho phép test class nhìn thấy dữ liệu thật của Org, làm cho kết quả test bị phụ thuộc vào môi trường (không độc lập) và dễ gây lỗi đụng độ dữ liệu thực tế.
+> **D.** Tạo dữ liệu test thủ công trước `Test.startTest()` ở từng test method độc lập sẽ khiến code bị lặp đi lặp lại (redundant) và Salesforce phải chạy DML tạo data liên tục cho từng method, làm chậm tốc độ chạy test một cách cồng kềnh.
 
-**💡 Từ khóa ghi nhớ:** `Test Data Chìa khóa: @testSetup.`
+**💡 Từ khóa ghi nhớ:** `Tạo dữ liệu mẫu dùng chung cho cả class test -> Dùng ngay phương thức **`@TestSetup`**!`
 
 ---
 
@@ -8723,19 +8784,22 @@ public void pay(Decimal amount);
 - **E.** A custom exception class can extend other classes besides the Exception class. ❌
 
 **📝 Dịch tiếng Việt:**
-> Ba phát biểu nào đúng về ngoại lệ tùy chỉnh (Custom Exception) trong Apex?
+> Ba phát biểu nào sau đây là ĐÚNG khi nói về ngoại lệ tùy chỉnh (Custom Exceptions) trong Apex? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > To create your custom exception class, extend the built-in Exception class and make sure your class name ends with the word Exception, such as “MyException” or “PurchaseException”. All exception classes extend the system-defined base class Exception, and therefore, inherits all common Exception methods.
 
 **✅ Tại sao đáp án đúng:**
-> A: Phải kế thừa lớp `Exception` của hệ thống. D: Tên phải kết thúc bằng 'Exception' để Salesforce nhận dạng. E: Nó là 1 class nên vẫn implement interface bình thường.
+> Chọn **A**, **B** và **D**.
+- **A**: Một custom exception bắt buộc phải kế thừa (extend) lớp `Exception` của hệ thống để được thừa hưởng các hành vi xử lý lỗi tiêu chuẩn.
+- **B**: Vì custom exception thực chất vẫn là một class Apex thông thường, nó hoàn toàn có thể hiện thực hóa (implement) một hoặc nhiều interface để mở rộng tính năng.
+- **D**: Tên của custom exception class **bắt buộc** phải kết thúc bằng hậu tố "Exception" (ví dụ: `MyCustomException`). Thiếu cái này là Apex Compiler đấm cho không trượt phát nào!
 
 **❌ Tại sao đáp án sai:**
-> **B.** Nó hoàn toàn có thể chứa biến/method để lưu thêm thông tin lỗi (ví dụ ErrorCode).
-> **C.** Apex chỉ cho kế thừa duy nhất 1 class cha, và để làm exception thì bắt buộc phải là class Exception.
+> **C.** Sai bét! Custom exception hoàn toàn có thể chứa các biến thành viên (member variables) hoặc phương thức (methods) riêng để lưu trữ thêm thông tin lỗi chi tiết (ví dụ: error code, timestamp).
+> **E.** Apex chỉ hỗ trợ đơn kế thừa (single inheritance), và đối với custom exception thì class cha bắt buộc phải là lớp `Exception` hệ thống (hoặc một exception class khác đã extend Exception), chứ không thể ngang nhiên kế thừa một class thường bất kỳ nào khác được.
 
-**💡 Từ khóa ghi nhớ:** `Custom Exception = extends Exception + Hậu tố 'Exception'.`
+**💡 Từ khóa ghi nhớ:** `Custom Exception = **extends Exception** + **implement interfaces** thoải mái + Tên kết thúc bằng **"Exception"**!`
 
 ---
 
@@ -8749,7 +8813,7 @@ public void pay(Decimal amount);
 - **D.** 2 ✅
 
 **📝 Dịch tiếng Việt:**
-> Tính giá trị trường đếm khi có cả trigger before update và workflow field update (không re-evaluate).
+> Lập trình viên viết một trigger trên đối tượng Account ở sự kiện before update để tăng giá trị trường đếm count thêm 1 đơn vị. Một workflow rule cũng thực hiện tăng trường count này thêm 1 đơn vị mỗi khi Account được tạo hoặc cập nhật. Field update trong workflow rule được cấu hình để KHÔNG kích hoạt lại workflow rules (not re-evaluate). Giá trị của trường count sẽ là bao nhiêu nếu một Account được chèn mới (insert) với giá trị ban đầu bằng 0? (Giả định không có automation nào khác).
 
 **💬 Giải thích gốc (English):**
 > 1. Initial Value: The Account is initially created with a value of 0.
@@ -8758,14 +8822,20 @@ public void pay(Decimal amount);
 > Since the workflow rule is configured to not re-evaluate, it will not trigger again after the trigger's update. Therefore, the final value of the count field will be 2.
 
 **✅ Tại sao đáp án đúng:**
-> 1. Before Trigger (0+1=1). 2. Lưu (1). 3. Workflow Update (1+1=2). Vì không re-evaluate nên dừng tại đó.
+> Chọn **D: 2**. Hãy cùng phân tích từng bước theo vòng đời Save Order of Execution của Salesforce:
+1. Người dùng chèn (insert) Account với giá trị `count = 0`.
+2. Sự kiện `before insert` của trigger không được đăng ký (trigger chỉ bắt `before update`), nên bước này lướt qua.
+3. Bản ghi được lưu tạm vào Database.
+4. Sau khi chèn, **Workflow Rule** bắt sự kiện "created or updated" nên được kích hoạt! Nó thực hiện tăng trường `count` lên: `count = 0 + 1 = 1`.
+5. Vì có Workflow Field Update, hệ thống buộc phải chạy lại quy trình lưu một lần nữa. Lần này là sự kiện cập nhật (update) ngầm. Ở đây, sự kiện `before update` của trigger được kích hoạt! Trigger chạy và tăng trường `count` thêm 1 đơn vị nữa: `count = 1 + 1 = 2`.
+6. Vì Workflow Field Update được cấu hình **không re-evaluate**, hệ thống dừng vòng lặp tại đây và kết thúc giao dịch. Giá trị cuối cùng ghi vào database là **2**!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Bằng 3 nếu Workflow có re-evaluate, khiến trigger chạy thêm 1 lần nữa.
-> **B.** Con số này quá cao, trừ khi có nhiều automation lặp đi lặp lại.
-> **C.** Quên tính bước cộng của Workflow.
+> **A.** 1 là sai vì mới chỉ tính lượt cộng của Workflow mà quên mất sau khi Workflow Field Update chạy, nó sẽ kích hoạt lại các Before/After Update Triggers làm trigger chạy thêm một lượt nữa.
+> **B.** 3 chỉ xảy ra nếu Workflow Field Update được cấu hình **re-evaluate workflow rules**, dẫn đến việc Workflow tiếp tục chạy lại và kích hoạt tiếp trigger, tạo thành một chuỗi lặp nữa.
+> **C.** 4 là con số quá cao, hệ thống không thể tự tăng lên 4 trong kịch bản này trừ khi bị lặp vô tận (đụng trần 5 lượt re-evaluate).
 
-**💡 Từ khóa ghi nhớ:** `Order of Execution: Trigger Before -> Workflow -> (Nếu re-evaluate) -> Trigger Before/After lần nữa.`
+**💡 Từ khóa ghi nhớ:** `Chạy DML Insert -> **Workflow chạy (cộng 1)** -> Kích hoạt lại **Before Update Trigger (cộng 1)** -> Kết quả cuối là **2**.`
 
 ---
 
@@ -8780,20 +8850,23 @@ public void pay(Decimal amount);
 - **E.** Visualforce ❌
 
 **📝 Dịch tiếng Việt:**
-> Trace Flag có thể được cấu hình cho ba mục nào? (Chọn 3)
+> Trace Flag có thể được cấu hình cho ba thành phần/thực thể nào sau đây? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > Set Up Debug Logging
 > To activate debug logging for users, Apex classes, and Apex triggers, configure trace flags and debug levels in the Developer Console or in Setup. Each trace flag includes a debug level, start time, end time, and log type. The trace flag’s log type specifies the entity you’re tracing.
 
 **✅ Tại sao đáp án đúng:**
-> Trace Flag giúp mày chỉ định Salesforce ghi log cho các thực thể cụ thể. Ba cái phổ biến nhất là: 1. User cụ thể, 2. Một Apex Class nhất định, 3. Một Trigger nhất định.
+> Chọn **A**, **B** và **D**. Trace Flag là công cụ giúp bạn cắm "máy quay lén" để Salesforce ghi lại nhật ký debug log chi tiết cho các đối tượng cụ thể. Bạn có thể cấu hình Trace Flag trực tiếp cho:
+- **A**: Một **Apex Trigger** cụ thể.
+- **B**: Một **Apex Class** cụ thể.
+- **D**: Một **User** cụ thể (rất hữu ích khi cần debug hành vi của một người dùng thực tế trên hệ thống).
 
 **❌ Tại sao đáp án sai:**
-> **B.** Visualforce không được cấu hình Trace Flag trực tiếp như một thực thể riêng lẻ.
-> **D.** Process Builder cũng không nằm trong danh sách thực thể có thể đặt Trace Flag.
+> **C.** Process Builder không nằm trong danh sách các thực thể có thể thiết lập Trace Flag trực tiếp riêng biệt trong Setup Debug Levels.
+> **E.** Visualforce Page là trang giao diện hiển thị, không thể gán Trace Flag riêng biệt để ghi log độc lập giống như Apex Class hay Trigger.
 
-**💡 Từ khóa ghi nhớ:** `Trace Flag = Đặt máy quay lén. Đối tượng: Người (User), Khuôn mẫu (Class), hoặc Hành động (Trigger).`
+**💡 Từ khóa ghi nhớ:** `Trace Flag (cắm camera soi log) -> Chỉ cắm được cho: **User**, **Apex Class**, hoặc **Apex Trigger**!`
 
 ---
 
@@ -8818,13 +8891,16 @@ public void pay(Decimal amount);
 > Integer: Useful for Useful for count records.
 
 **✅ Tại sao đáp án đúng:**
-> B: Trả về một danh sách các bản ghi (List<sObject>). C: Trả về một bản ghi đơn duy nhất (Single sObject) khi query giới hạn LIMIT 1. D: Trả về một số nguyên (Integer) khi sử dụng hàm đếm COUNT() trực tiếp (ví dụ: Integer cnt = [SELECT COUNT() FROM Account]).
+> Chọn **B**, **C** và **D**.
+- **B**: Trả về một danh sách các bản ghi (`List<sObject>`), đây là kiểu trả về phổ biến nhất của SOQL.
+- **C**: Trả về một bản ghi đơn duy nhất (`Single sObject`) khi bạn query với từ khóa giới hạn `LIMIT 1` hoặc lọc chính xác qua ID (ví dụ: `Account acc = [SELECT Id FROM Account LIMIT 1];`).
+- **D**: Trả về một số nguyên (`Integer`) khi bạn thực hiện câu lệnh đếm trực tiếp bằng hàm `COUNT()` (ví dụ: `Integer total = [SELECT COUNT() FROM Contact];`).
 
 **❌ Tại sao đáp án sai:**
-> **A.** SOQL không bao giờ trả về trực tiếp giá trị Boolean.
-> **E.** SOQL cấm và không thể trả về trực tiếp kiểu dữ liệu String thô (muốn lấy string phải lấy qua thuộc tính của sObject).
+> **A.** SOQL không bao giờ hỗ trợ trả về trực tiếp kiểu dữ liệu Boolean.
+> **E.** SOQL không thể trả về trực tiếp một chuỗi String thô. Nếu muốn lấy giá trị String, bạn phải query sObject đó lên rồi truy cập vào trường kiểu Text của nó (ví dụ: `acc.Name`).
 
-**💡 Từ khóa ghi nhớ:** `Kiểu trả về của SOQL -> 1. List<sObject>; 2. Single sObject; 3. Integer (khi dùng COUNT()).`
+**💡 Từ khóa ghi nhớ:** `SOQL chỉ có 3 kiểu trả về trực tiếp: **List<sObject>**, **Single sObject**, hoặc **Integer** (khi dùng `COUNT()`)!`
 
 ---
 
@@ -8839,16 +8915,19 @@ public void pay(Decimal amount);
 - **E.** Lightning Home page ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba khu vực/trang nào lập trình viên có thể trực tiếp nhúng và sử dụng Lightning Components trong giao diện Lightning Experience? (Chọn 3)
+> Ba khu vực/trang nào lập trình viên có thể trực tiếp nhúng và sử dụng Lightning Components (Aura/LWC) trong giao diện Lightning Experience? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> C: Lightning Record Page (Trang chi tiết bản ghi). D: Lightning Community Page (Trang cộng đồng/Experience Cloud). E: Lightning Home page (Trang chủ hệ thống). Đây là các khu vực hỗ trợ kéo thả component bằng App Builder cực kỳ linh hoạt.
+> Chọn **C**, **D** và **E**.
+- **C**: **Lightning Record Page** (Trang chi tiết bản ghi, cho phép nhúng qua Lightning App Builder).
+- **D**: **Lightning Community Page** (Trang cộng đồng/Experience Cloud, kéo thả trực tiếp trong Experience Builder).
+- **E**: **Lightning Home page** (Trang chủ hệ thống, tùy biến kéo thả dễ dàng bằng App Builder).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lightning Report page là trang báo cáo tiêu chuẩn của hệ thống, cấm nhúng component tự thiết kế bừa bãi.
-> **B.** Không tồn tại khái niệm 'Lightning Connect page' để kéo thả nhúng component trực tiếp trên UI.
+> **A.** Lightning Report page là trang báo cáo tiêu chuẩn của hệ thống, cấm nhúng component tự thiết kế bừa bãi vào đây.
+> **B.** Không hề tồn tại khái niệm "Lightning Connect page" để kéo thả nhúng component trực tiếp trên UI.
 
-**💡 Từ khóa ghi nhớ:** `Nhúng LWC trên Lightning UI -> Nhúng tại Record Page, Home Page, hoặc Community (Experience Cloud) Page.`
+**💡 Từ khóa ghi nhớ:** `Nhúng LWC trên Lightning UI -> Chỉ có kéo thả tại **Record Page**, **Home Page**, hoặc **Community Page**!`
 
 ---
 
@@ -8863,7 +8942,7 @@ public void pay(Decimal amount);
 - **E.** Setup Menu ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba phương thức/công cụ nào cho phép lập trình viên trực tiếp kích hoạt chạy toàn bộ các lớp test class (execute tests) trong một Salesforce Org? (Chọn 3)
+> Ba phương thức/công cụ nào cho phép lập trình viên trực tiếp kích hoạt chạy các lớp test class (execute tests) trong một Salesforce Org? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > A developer can execute tests in an org using these three ways:
@@ -8872,13 +8951,16 @@ public void pay(Decimal amount);
 > Salesforce DX : Offers robust command-line tools to manage and run tests as part of your development workflow.
 
 **✅ Tại sao đáp án đúng:**
-> A: Gọi thông qua Tooling API. B: Thực thi lệnh CLI từ bộ công cụ Salesforce DX (SFDX). E: Click chạy trực tiếp trong trang quản trị Setup Menu (Apex Test Execution).
+> Chọn **A**, **B** và **E**.
+- **A**: **Tooling API** cung cấp các REST/SOAP endpoint hỗ trợ chạy test bất đồng bộ.
+- **B**: **Salesforce DX** (SFDX CLI) cho phép chạy lệnh terminal chạy test cực nhanh (ví dụ: `sf apex run test`).
+- **E**: **Setup Menu** trong trang quản trị quản lý Apex Test Execution cung cấp giao diện trực quan để người dùng chạy test.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Metadata API dùng để deploy/retrieve cấu trúc code và cấu hình Org, không dùng để kích hoạt tiến trình chạy test độc lập.
-> **D.** Bulk API dùng để nạp/xử lý hàng triệu bản ghi dữ liệu cực lớn, hoàn toàn không liên quan đến việc chạy test code.
+> **C.** Metadata API dùng để deploy hoặc retrieve cấu trúc thư mục, code, cấu hình hệ thống chứ không có nhiệm vụ kích hoạt chạy test độc lập.
+> **D.** Bulk API dùng để nạp/xử lý hàng triệu bản ghi dữ liệu cực lớn, hoàn toàn không liên quan gì đến việc chạy test code.
 
-**💡 Từ khóa ghi nhớ:** `Chạy Apex Test -> 1. Setup Menu (Apex Test Execution); 2. CLI Salesforce DX; 3. Tooling API.`
+**💡 Từ khóa ghi nhớ:** `Kích hoạt Apex Test -> Dùng **Setup Menu**, **Salesforce DX CLI**, hoặc **Tooling API**!`
 
 ---
 
@@ -8900,14 +8982,14 @@ public void pay(Decimal amount);
 > You can perform different types of calculations with a roll-up summary field. You can count the number of detail records related to a master record. Or, you can calculate the sum, minimum value, or maximum value of a field in the detail records.
 
 **✅ Tại sao đáp án đúng:**
-> Tập hợp COUNT, SUM, MIN, MAX (A). Đây là 4 hàm toán học duy nhất được Salesforce hỗ trợ để tính toán dồn dữ liệu từ các bản ghi con lên cha trong mối quan hệ Master-Detail.
+> Chọn **A**. Salesforce chỉ hỗ trợ đúng 4 hàm tổng hợp cơ bản khi làm Roll-up Summary Field là: **COUNT** (đếm số lượng bản ghi con), **SUM** (cộng tổng giá trị trường số), **MIN** (lấy giá trị nhỏ nhất), và **MAX** (lấy giá trị lớn nhất). Đây là bộ tứ huyền thoại giúp tính toán tự động từ con lên cha trong mối quan hệ Master-Detail.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Hàm tính trung bình AVERAGE hoàn toàn không được hỗ trợ trong Roll-up Summary Field của Salesforce.
-> **C.** Tập hợp này bị thiếu mất hàm đếm số lượng COUNT rất quan trọng.
-> **D.** Chứa hàm AVERAGE sai lệch cấu hình hệ thống.
+> **B.** AVERAGE (tính trung bình) là hàm KHÔNG được Salesforce hỗ trợ trong Roll-up Summary vì tính toán này tốn rất nhiều tài nguyên hệ thống khi dữ liệu con thay đổi liên tục.
+> **C.** Bị thiếu mất hàm đếm số lượng bản ghi con **COUNT** cực kỳ phổ biến.
+> **D.** Lại có sự xuất hiện của hàm AVERAGE (viết sai chính tả thành AVRAGE) - một lựa chọn hoàn toàn "cook".
 
-**💡 Từ khóa ghi nhớ:** `Bốn hàm Roll-up Summary thần thánh -> Luôn ghi nhớ: COUNT, SUM, MIN, MAX (Tuyệt đối không có AVERAGE!).`
+**💡 Từ khóa ghi nhớ:** `4 hàm Roll-up Summary huyền thoại -> Luôn nhớ: **COUNT, SUM, MIN, MAX** (Tuyệt đối KHÔNG có AVERAGE)!`
 
 ---
 
@@ -8921,21 +9003,21 @@ public void pay(Decimal amount);
 - **D.** Execute anonymous Apex as a different user. ❌
 
 **📝 Dịch tiếng Việt:**
-> Kịch bản nào sau đây là hợp lệ để thực thi bởi các unit test?
+> Kịch bản nào sau đây là hợp lệ và có thể thực thi thành công bên trong các unit test trong Salesforce?
 
 **💬 Giải thích gốc (English):**
 > You can create a test record, set its CreatedDate using a system method, and then assert that the value is correct.
 > setCreatedDate(recordId, createdDatetime)
 
 **✅ Tại sao đáp án đúng:**
-> Trong Unit Test, mày có thể dùng `Test.setCreatedDate(recordId, dateTime)` để giả lập ngày tạo, dù bình thường nó là field read-only.
+> Chọn **A**. Trong Unit Test, bạn hoàn toàn có thể thiết lập ngày tạo (`CreatedDate`) của một bản ghi (dù bình thường đây là trường read-only chỉ có hệ thống ghi) bằng cách sử dụng phương thức hệ thống chuyên dụng `Test.setCreatedDate(recordId, customDateTime)`. Đây là tính năng tuyệt vời để test các logic liên quan đến mốc thời gian.
 
 **❌ Tại sao đáp án sai:**
-> **A.** getContentAsPDF() là phương thức bị cấm (bắn exception) trong context của unit test.
-> **C.** Thực hiện Callout thật bị cấm trong test, mày bắt buộc phải dùng Mock.
-> **D.** Execute Anonymous là một công cụ riêng trong Dev Console, không phải là một phần hợp lệ bên trong Unit Test code.
+> **B.** Phương thức `getContentAsPDF()` bị cấm và sẽ ném ra ngoại lệ `System.CalloutException` nếu gọi trực tiếp trong context chạy unit test mà không được xử lý giả lập.
+> **C.** Tương tự, các cuộc gọi HTTP Callout thật ra bên ngoài hệ thống bị cấm tiệt trong Unit Test để đảm bảo tốc độ chạy test và tính cô lập. Bạn bắt buộc phải dùng mock class (`HttpCalloutMock`).
+> **D.** Execute Anonymous là một hành động chạy ad-hoc độc lập từ Developer Console hoặc CLI, bạn không thể nhét kịch bản "chạy anonymous dưới tư cách user khác" vào bên trong code Unit Test được.
 
-**💡 Từ khóa ghi nhớ:** `Test: No Callouts (use Mock), Yes Test.setCreatedDate().`
+**💡 Từ khóa ghi nhớ:** `Trong Unit Test: Cấm Callout thật, Cấm `getContentAsPDF()` -> Cho phép **`Test.setCreatedDate()`**!`
 
 ---
 
@@ -8949,7 +9031,7 @@ public void pay(Decimal amount);
 - **D.** Changing the territory assignments of accounts and opportunities ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai điều kiện nào sau đây sẽ kích hoạt (fire) các quy tắc Workflow Rules hoạt động bình thường? (Chọn 2)
+> Hai điều kiện nào sau đây sẽ kích hoạt (fire) các quy tắc tự động hóa Workflow Rules hoạt động bình thường? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > The following actions do NOT trigger workflow rules.
@@ -8964,13 +9046,15 @@ public void pay(Decimal amount);
 > - Changing state and country/territory picklists using AddressSettings in the Metadata API"
 
 **✅ Tại sao đáp án đúng:**
-> A: Một tiến trình chạy lô Apex Batch thay đổi các giá trị trường. B: Thực hiện cập nhật các bản ghi sử dụng công cụ Bulk API. Cả hai trường hợp này đều thực thi DML update thông thường nên Salesforce sẽ chạy đầy đủ Save Order of Execution bao gồm kích hoạt Workflow Rules.
+> Chọn **A** và **B**.
+- **A**: Một tiến trình chạy lô Apex Batch khi thực hiện cập nhật thay đổi giá trị trường sẽ kích hoạt các DML update thông thường, từ đó chạy đầy đủ Save Order of Execution bao gồm cả Workflow Rules.
+- **B**: Sử dụng Bulk API để cập nhật hàng loạt bản ghi cũng là một giao dịch DML chuẩn, nên hệ thống vẫn sẽ kích hoạt Workflow Rules bình thường.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Chuyển đổi lead sang Person Account nằm trong danh sách cấm tự động hóa, Salesforce chặn không kích hoạt Workflow Rule để tránh xung đột vòng lặp dữ liệu.
-> **D.** Thay đổi gán Territory của Accounts và Opportunities cũng bị Salesforce loại trừ hoàn toàn khỏi danh sách hành động kích hoạt Workflow Rule.
+> **C.** Khi convert Lead sang Person Account, Salesforce chạy một quy trình hệ thống đặc biệt và chủ động bỏ qua việc kích hoạt các Workflow Rules thông thường để tránh xung đột dữ liệu.
+> **D.** Thay đổi gán phân vùng (Territory assignment) của Accounts và Opportunities là hành động quản trị hệ thống, không kích hoạt luồng DML thông thường nên Workflow Rules sẽ không chạy.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo thi Workflow: Batch Apex (DML) và Bulk API (DML) -> Vẫn kích hoạt Workflow bình thường. Convert Lead -> Không kích hoạt!`
+**💡 Từ khóa ghi nhớ:** `Cứ có thao tác dữ liệu **DML (Batch Apex / Bulk API)** -> **Workflow Rules** vẫn chạy như thường!`
 
 ---
 
@@ -8985,16 +9069,19 @@ public void pay(Decimal amount);
 - **E.** Loading scripts in parallel ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba khả năng của thẻ <ltng:require> khi tải tài nguyên JavaScript trong Aura component là gì?
+> Ba khả năng vượt trội của thẻ <ltng:require> khi thực hiện tải các tài nguyên JavaScript (từ Static Resource) vào Aura components là gì? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> Thẻ này cực kỳ linh hoạt: A: Có thể tải nhiều script song song để tăng tốc. D: Tự động nhận diện nếu script đã được tải rồi thì không tải lại (tránh trùng). E: Cho phép xác định thứ tự tải (thông qua thuộc tính scripts) để đảm bảo các thư viện phụ thuộc chạy đúng.
+> Chọn **A**, **B** và **E**.
+- **A**: Tự động nhận diện và chỉ tải script đúng 1 lần duy nhất ngay cả khi có nhiều component cùng yêu cầu tải chung một script (tránh lỗi xung đột do nạp trùng thư viện).
+- **B**: Hỗ trợ xác định chính xác thứ tự tải của các tệp JS (thông qua thuộc tính `scripts` truyền mảng sắp xếp) để đảm bảo các thư viện phụ thuộc chạy đúng chuẩn.
+- **E**: Cho phép tải song song nhiều tệp tin JavaScript cùng một lúc giúp tăng tốc độ hiển thị giao diện UI đáng kể.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Aura chỉ tải được từ Static Resources, không tải trực tiếp từ object 'Documents'.
-> **C.** Vì lý do bảo mật (CSP), Salesforce không cho phép tải script trực tiếp từ host bên ngoài trừ khi được cấu hình Trusted Site và thường thẻ này ưu tiên Static Resource.
+> **C.** Vì lý do bảo mật nghiêm ngặt của Salesforce (CSP - Content Security Policy), thẻ `<ltng:require>` không thể tải trực tiếp các đường dẫn script host bên ngoài mà bắt buộc phải nạp qua Static Resource.
+> **D.** Không thể nạp tệp từ đối tượng thư mục Documents cũ kỹ, chỉ hỗ trợ nạp từ **Static Resource**.
 
-**💡 Từ khóa ghi nhớ:** `ltng:require = Nạp 'đạn' JS từ Static Resource. Nhớ: Song song - Không trùng - Đúng thứ tự.`
+**💡 Từ khóa ghi nhớ:** `ltng:require nạp JS từ Static Resource -> Có 3 tuyệt chiêu: **Tải song song**, **Tải đúng thứ tự**, và **Chống tải trùng (một lần duy nhất)**!`
 
 ---
 
@@ -9009,7 +9096,7 @@ public void pay(Decimal amount);
 - **E.** Controller ✅
 
 **📝 Dịch tiếng Việt:**
-> Ba tài nguyên nào trong một Aura Component bundle có thể chứa các hàm JavaScript?
+> Ba tài nguyên (resources) nào bên trong một gói đóng gói Aura Component (bundle) có thể chứa các hàm viết bằng JavaScript? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > The following resources can define and use JavaScript functions in Salesforce Aura components:
@@ -9018,13 +9105,16 @@ public void pay(Decimal amount);
 > 3. Renderer: The renderer is yet another optional resource that enables you to change or improve the way a component renders. It can have functions that alter the component's DOM elements, styles, or other visual components during rendering. It is defined in a distinct JavaScript file.
 
 **✅ Tại sao đáp án đúng:**
-> Trong Aura Component bundle: Controller.js xử lý sự kiện, Helper.js chứa logic dùng chung, và Renderer.js dùng để ghi đè cách hiển thị mặc định. Cả 3 đều viết bằng JavaScript.
+> Chọn **A**, **C** và **E**. Trong một Aura Component Bundle, 3 file được viết hoàn toàn bằng JavaScript và chứa các hàm thực thi logic là:
+- **A**: **Helper** (`componentHelper.js`) - Nơi chứa logic dùng chung và các hàm tái sử dụng.
+- **C**: **Renderer** (`componentRenderer.js`) - Nơi ghi đè các hàm render DOM mặc định của framework.
+- **E**: **Controller** (`componentController.js`) - Nơi chứa các hàm xử lý sự kiện (action handler) trực tiếp từ giao diện.
 
 **❌ Tại sao đáp án sai:**
-> **D.** Style là file CSS để định dạng giao diện.
-> **E.** Design là file XML dùng để cấu hình thuộc tính cho App Builder.
+> **B.** Design (`component.design`) thực chất là file XML dùng để cấu hình các thuộc tính hiển thị cho admin kéo thả trong App Builder, không chứa code JS.
+> **D.** Style (`component.css`) là file chứa mã nguồn CSS dùng để định dạng giao diện hiển thị, không chứa code JS.
 
-**💡 Từ khóa ghi nhớ:** `Aura JS Trio: Controller - Helper - Renderer. Cứ thế mà quất!`
+**💡 Từ khóa ghi nhớ:** `Bộ ba JavaScript thần thánh của Aura Bundle -> Cứ nhớ: **Controller - Helper - Renderer**!`
 
 ---
 
@@ -9038,21 +9128,21 @@ public void pay(Decimal amount);
 - **D.** Create a test class that provides coverage of the custom controller. ✅
 
 **📝 Dịch tiếng Việt:**
-> Developer đã tạo một trang Visualforce và một custom controller chứa các hàm xử lý nút bấm nghiệp vụ. Lập trình viên bắt buộc phải làm gì để có thể deploy (triển khai) thành công các thành phần này lên Production?
+> Lập trình viên đã tạo một trang Visualforce và một Custom Controller chứa các hàm xử lý nút bấm nghiệp vụ. Lập trình viên bắt buộc phải làm gì để có thể deploy (triển khai) thành công các thành phần này lên Production?
 
 **💬 Giải thích gốc (English):**
 > To ensure the quality and reliability of your Visualforce page and custom controller before deploying to production, it's crucial to write comprehensive unit tests for the custom controller. This will help identify potential issues and bugs early in the development process.
 > To deploy it we need code coverage above 75%.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một Test Class kiểm thử bao phủ toàn bộ các dòng mã logic của lớp Custom Controller (D). Đây là điều kiện bắt buộc của Salesforce: mọi Apex Class (bao gồm custom controller) phải có độ phủ code (code coverage) tối thiểu đạt 75% thì mới được phép deploy lên môi trường Production.
+> Chọn **D**. Theo luật cứng khi deploy lên Production của Salesforce, mọi đoạn mã Apex (bao gồm cả lớp Custom Controller) bắt buộc phải có độ phủ kiểm thử (code coverage) tối thiểu đạt **75%**. Do đó, bạn bắt buộc phải viết một **Test Class** để gọi chạy các method trong Custom Controller nhằm đảm bảo độ phủ code.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Visualforce page chỉ là trang thẻ markup giao diện hiển thị, Salesforce tuyệt đối không yêu cầu viết test class cho bản thân trang Visualforce.
-> **B.** Không tồn tại khái niệm 'Test Page' để phủ sóng mã nguồn Visualforce.
-> **C.** Không thể viết 'Test Page' để đo đạc và phủ sóng logic code trong Apex Custom Controller.
+> **A.** Visualforce Page chỉ là trang giao diện thẻ markup hiển thị, Salesforce tuyệt đối không yêu cầu (và cũng không có cách nào) đo đạc code coverage cho bản thân trang Visualforce.
+> **B.** Không tồn tại khái niệm "Test Page" để đo phủ sóng cho Visualforce page.
+> **C.** Không thể dùng một trang web ("Test Page") để đo đạc và phủ sóng logic code trong Apex Custom Controller.
 
-**💡 Từ khóa ghi nhớ:** `Deploy lên Production -> Bắt buộc viết TEST CLASS kiểm thử bao phủ Apex Class đạt tối thiểu 75% code coverage!`
+**💡 Từ khóa ghi nhớ:** `Muốn deploy Custom Controller lên Production -> Bắt buộc phải viết **Test Class** để phủ sóng logic tối thiểu **75%**!`
 
 ---
 
@@ -9072,14 +9162,14 @@ public void pay(Decimal amount);
 > Using External ID and Unique would ensure each order has a unique identification in Salesforce.
 
 **✅ Tại sao đáp án đúng:**
-> Định nghĩa trường Order Number kiểu Number (hoặc Text) và chọn thuộc tính 'External ID' (C). Vì dữ liệu được import từ hệ thống bên ngoài vào Salesforce, việc cấu hình External ID giúp Salesforce làm khóa đối chiếu để so khớp nạp dữ liệu và liên kết bản ghi chính xác.
+> Chọn **C**. Do dữ liệu đơn hàng được import từ hệ thống bên ngoài vào Salesforce, việc cấu hình thuộc tính **External ID** trên trường Order Number (kiểu Number hoặc Text) là giải pháp tối ưu nhất. Nó giúp Salesforce làm khóa đối chiếu duy nhất để so khớp dữ liệu khi gọi lệnh Upsert, giúp liên kết bản ghi chính xác mà không cần biết Salesforce ID.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Direct Lookup không phải là kiểu trường dữ liệu có sẵn trong Salesforce.
-> **B.** Lookup field dùng để tạo liên kết quan hệ cha con giữa 2 bảng, không giúp định danh duy nhất bản ghi từ file import ngoài.
-> **D.** Indirect Lookup dùng cho đối tượng ngoài (External Object) của Salesforce Connect, không phù hợp cho trường hợp nạp dữ liệu vật lý vào Sandbox.
+> **A.** Không hề tồn tại kiểu trường dữ liệu nào tên là "Direct Lookup" trong Salesforce.
+> **B.** Trường Lookup chỉ dùng để tạo mối quan hệ cha con giữa hai bảng trong Salesforce, không giúp định danh duy nhất bản ghi từ hệ thống ngoài truyền vào.
+> **D.** Indirect Lookup dùng cho đối tượng ngoài (External Object) của Salesforce Connect để map dữ liệu ảo từ hệ thống ngoài, không phù hợp cho việc nạp dữ liệu vật lý trực tiếp vào Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Định danh duy nhất bản ghi import từ hệ thống ngoài -> Luôn cấu hình trường là EXTERNAL ID.`
+**💡 Từ khóa ghi nhớ:** `Lấy khóa định danh từ hệ thống ngoài nạp vào Salesforce -> Luôn cấu hình trường đó làm **External ID**!`
 
 ---
 
@@ -9099,14 +9189,14 @@ public void pay(Decimal amount);
 > The only required standard field when creating a new Contact record in Salesforce is the Last Name field.
 
 **✅ Tại sao đáp án đúng:**
-> LastName (Họ) (A). Ở mức cơ sở dữ liệu hệ thống (Database Layer) của Salesforce, trường LastName là trường bắt buộc (required) duy nhất của đối tượng Contact.
+> Chọn **A**. Ở mức cơ sở dữ liệu hệ thống (Database Schema Layer) của Salesforce đối với thực thể Contact, trường **LastName** (Họ) là trường tiêu chuẩn duy nhất bắt buộc phải nhập. Nếu bạn DML insert một Contact không có LastName, hệ thống sẽ chặn đứng và báo lỗi ngay lập tức.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Trường Name là trường ghép tự động giữa FirstName và LastName trên UI, bản thân nó không tồn tại độc lập để bắt buộc nhập.
-> **C.** AccountId (mã liên kết Account cha) là tùy chọn (optional), người dùng có thể tạo một Contact mồ côi không trực thuộc Account nào.
-> **D.** FirstName (Tên) là tùy chọn, người dùng hoàn toàn có thể bỏ trống trường này.
+> **B.** Trường Name thực tế trên UI là trường ghép tự động từ FirstName và LastName chứ ở mức database, nó không phải là một trường độc lập bắt buộc nhập.
+> **C.** AccountId (mã liên kết Account cha) hoàn toàn là tùy chọn (optional). Bạn có thể thoải mái tạo một Contact "mồ côi" không thuộc bất cứ Account nào.
+> **D.** FirstName (Tên) là tùy chọn, bạn thích nhập hay để trống đều được.
 
-**💡 Từ khóa ghi nhớ:** `Trường bắt buộc duy nhất của Contact -> Bắt buộc là LastName!`
+**💡 Từ khóa ghi nhớ:** `Trường bắt buộc nhập duy nhất khi tạo Contact -> Luôn luôn là **LastName**!`
 
 ---
 
@@ -9120,20 +9210,20 @@ public void pay(Decimal amount);
 - **D.** Use Test.isRunningTest() within the custom controller. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer viết một unit test để xác nhận một custom exception (ngoại lệ tùy chỉnh) hoạt động chính xác trong custom controller, nhưng bài test bị báo FAIL do có lỗi exception thực sự bị ném ra. Lập trình viên nên làm gì để giải quyết vấn đề và test exception đúng cách?
+> Lập trình viên viết một unit test để xác nhận một custom exception (ngoại lệ tùy chỉnh) hoạt động chính xác trong custom controller, nhưng bài test bị báo FAIL do có lỗi exception thực sự bị ném ra. Lập trình viên nên làm gì để giải quyết vấn đề và test exception đúng cách?
 
 **💬 Giải thích gốc (English):**
 > By using a try/catch block, the developer can assert that the correct exception type is thrown and that the exception message contains the expected information. This ensures that the custom exception is working as intended and the unit test is reliable.
 
 **✅ Tại sao đáp án đúng:**
-> Bọc khối code test trong khối try-catch để chủ động hứng exception bị ném ra trong test class (A). Việc này giúp ngăn chặn exception làm crash luồng chạy của Test Framework, sau đó dùng System.assert để xác thực loại lỗi ném ra là chính xác.
+> Chọn **A**. Khi bạn test các kịch bản ném lỗi (exception), việc để exception ném ra tự do sẽ làm crash luồng chạy của Test Framework và khiến bài test bị đánh trượt (FAIL). Giải pháp chuẩn là bọc khối code gây lỗi đó trong khối **`try-catch`** bên trong test class để chủ động hứng lỗi, sau đó dùng `System.assert` để kiểm tra xem loại lỗi ném ra có đúng như kỳ vọng không.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Khối finally chỉ chạy dọn dẹp tài nguyên ở cuối, không có khả năng hứng và triệt tiêu lỗi crash của Exception.
-> **C.** Sử dụng allOrNone=false của Database method chỉ áp dụng cho DML chèn bản ghi, không giải quyết được việc hứng ngoại lệ tùy chỉnh ném ra từ logic Apex controller.
-> **D.** Test.isRunningTest() giúp bỏ qua code khi chạy test, chứ không giúp kiểm tra tính chính xác của logic ném Exception.
+> **B.** Khối `finally` chỉ chạy dọn dẹp tài nguyên ở cuối tiến trình chứ không có khả năng đánh chặn và hứng lỗi (catch exception) để cứu bài test khỏi bị crash.
+> **C.** Sử dụng các Database method với `allOrNone=false` chỉ áp dụng cho việc chèn bản ghi DML không bị lỗi đồng loạt, chứ không thể dùng để hứng một ngoại lệ tùy chỉnh (custom exception) tự ném ra bằng từ khóa `throw` trong logic nghiệp vụ.
+> **D.** Sử dụng `Test.isRunningTest()` trong custom controller chỉ giúp né tránh đoạn code lỗi khi chạy test, chứ không giúp chúng ta kiểm thử tính chính xác của việc ném ngoại lệ.
 
-**💡 Từ khóa ghi nhớ:** `Kiểm thử ngoại lệ (Test Exception) -> Bắt buộc dùng khối TRY - CATCH trong Test Class để hứng lỗi!`
+**💡 Từ khóa ghi nhớ:** `Muốn kiểm thử lỗi (Test Exception) mà không bị crash test -> Bọc code trong khối **`try-catch`**!`
 
 ---
 
@@ -9147,20 +9237,20 @@ public void pay(Decimal amount);
 - **D.** Lightning controller ❌
 
 **📝 Dịch tiếng Việt:**
-> Dùng controller nào để hiện list Contact mà không cần viết code Apex?
+> Lập trình viên được yêu cầu tạo một trang Visualforce hiển thị danh sách các Contact do người dùng hiện tại sở hữu. Trang này sẽ được nhúng vào một Lightning page. Để tránh viết code không cần thiết, lập trình viên nên chọn loại controller nào?
 
 **💬 Giải thích gốc (English):**
 > Standard list controllers allow you to create Visualforce pages that can display or act on a set of records. Examples of existing Salesforce pages that work with a set of records include list pages, related lists, and mass action pages.
 
 **✅ Tại sao đáp án đúng:**
-> Standard List Controller hỗ trợ hiện danh sách cực nhanh không tốn 1 dòng code.
+> Chọn **C**. Sử dụng **Standard List Controller** (khai báo thuộc tính `recordSetVar` trong thẻ `<apex:page>`) là cách nhanh nhất và tối ưu nhất để hiển thị một danh sách bản ghi ra trang Visualforce. Nó cung cấp sẵn đầy đủ các tính năng duyệt danh sách, phân trang mà không đòi hỏi lập trình viên phải viết thêm một dòng code Apex Controller tùy chỉnh nào, cực kỳ tiết kiệm công sức!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lightning controller không phải là thành phần của Visualforce.
-> **C.** Bắt buộc phải viết code Apex, trái với yêu cầu 'without unnecessary code'.
-> **D.** Chỉ dùng để hiện 1 bản ghi duy nhất, không hiện được list.
+> **A.** Standard Controller thông thường chỉ hỗ trợ hiển thị và tương tác với đúng **1 bản ghi duy nhất** chứ không hỗ trợ xử lý danh sách bản ghi.
+> **B.** Sử dụng Custom Controller đòi hỏi bạn phải tự tay viết code Apex Class, viết test class phủ 75%... đi ngược lại hoàn toàn với yêu cầu "without writing unnecessary code" (tránh viết code thừa).
+> **D.** Không hề tồn tại khái niệm "Lightning controller" trong kiến trúc phát triển trang Visualforce.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Lists / Without unnecessary code -> Standard List Controller.`
+**💡 Từ khóa ghi nhớ:** `Hiển thị danh sách (Lists) + No-Code (without unnecessary code) -> Chọn ngay **Standard List Controller**!`
 
 ---
 
@@ -9182,7 +9272,17 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** Total number of records retrieved by SOQL queries ❌
 
 **📝 Dịch tiếng Việt:**
-> Đoạn code sau được kích hoạt bởi một LWC trong môi trường chứa hơn 2,000 bản ghi Lead: [Code for update in loop]. Giới hạn governor limit nào của Apex transaction sẽ có nguy cơ cao bị vượt quá (exceeded)?
+> Đoạn code sau được thực thi bởi một LWC trong môi trường chứa hơn 2,000 bản ghi Lead:
+```apex
+@AuraEnabled
+public void static updateLeads(){
+  for(Lead thisLead : [SELECT Origin__c FROM Lead]){
+    thisLead.LeadSource = thisLead.Origin__c;
+    update thisLead;
+  }
+}
+```
+Giới hạn governor limit nào của Apex transaction sẽ có nguy cơ cao bị vượt quá (exceeded)?
 
 **💬 Giải thích gốc (English):**
 > SOQL FOR loops are an efficient way to process large datasets without exceeding heap size limits. They fetch records in batches, minimizing memory usage. However, the total allowed DML statements per transaction is 150.
@@ -9198,14 +9298,14 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 > }
 
 **✅ Tại sao đáp án đúng:**
-> Tổng số câu lệnh DML được thực thi (Total number of DML statements issued) (B). Salesforce giới hạn nghiêm ngặt mỗi transaction chỉ được thực thi tối đa 150 câu lệnh DML. Do câu lệnh 'update thisLead;' bị đặt bên trong thân vòng lặp for chạy 2000 lần, hệ thống sẽ thực hiện DML 2000 lần dẫn đến crash limit tức thì ở lần chạy thứ 151.
+> Chọn **B**. Đây là lỗi sơ đẳng nhất của các lập trình viên tập sự! Salesforce giới hạn nghiêm ngặt mỗi transaction chỉ được thực thi tối đa **150 câu lệnh DML**. Trong đoạn code trên, câu lệnh `update thisLead;` (một lệnh DML) được đặt trực tiếp bên trong vòng lặp `for` chạy qua hơn 2,000 Lead. Khi chạy thực tế, hệ thống sẽ thực hiện DML đến lần thứ 151 là đụng trần và văng lỗi `System.LimitException: Too many DML statements: 151` ngay lập tức. Muốn sửa thì phải gom toàn bộ Lead vào một List rồi mới thực hiện update ngoài vòng lặp (bulkify)!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Hệ thống chỉ thực thi duy nhất 1 câu lệnh SOQL query Lead ở vòng lặp for, hoàn toàn không chạm giới hạn 100 SOQL queries.
-> **C.** Giới hạn tổng số bản ghi DML trong transaction là 10,000 bản ghi, con số 2000 vẫn nằm trong tầm an toàn.
-> **D.** Giới hạn số bản ghi retrieve từ SOQL là 50,000 bản ghi, con số 2000 vẫn rất nhỏ.
+> **A.** Vòng lặp `for` này sử dụng SOQL For Loop trực tiếp, hệ thống chỉ thực hiện đúng **1 câu lệnh SOQL** duy nhất để lấy dữ liệu, còn lâu mới chạm mốc giới hạn 100 SOQL queries.
+> **C.** Giới hạn tổng số bản ghi được xử lý bởi DML trong một giao dịch là 10,000 bản ghi, con số 2,000 vẫn nằm trong vòng an toàn.
+> **D.** Giới hạn số bản ghi được truy vấn bởi SOQL là 50,000 bản ghi, con số 2,000 vẫn rất nhỏ.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo governor limits: DML nằm trong vòng lặp FOR -> Luôn vượt quá giới hạn DML STATEMENTS (Limit 150 DML)!`
+**💡 Từ khóa ghi nhớ:** `DML đặt bên trong vòng lặp FOR -> Auto đụng trần giới hạn **DML Statements** (Tối đa 150 DML)!`
 
 ---
 
@@ -9219,20 +9319,20 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** Use ApexMessage.Message() to display an error message after the number of SOQL queries exceeds the limit. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để lập trình viên chủ động cảnh báo người dùng về việc vi phạm giới hạn governor limits SOQL ngay trong một Apex Trigger?
+> Làm thế nào để lập trình viên chủ động đưa ra cảnh báo cho người dùng về nguy cơ vi phạm giới hạn governor limits SOQL ngay trong một Apex Trigger?
 
 **💬 Giải thích gốc (English):**
 > By checking the current number of SOQL queries using Limits.getQueries(), the trigger can proactively identify potential issues before they lead to a transaction failure.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng phương thức Limits.getQueries() để theo dõi lượng SOQL đã nổ và chủ động ném ra thông báo lỗi chặn lại trước khi số lượng SOQL vượt quá giới hạn 100 câu truy vấn (C).
+> Chọn **C**. Cách duy nhất để xử lý êm đẹp tình huống này là chủ động phòng ngừa. Lập trình viên sử dụng phương thức `Limits.getQueries()` để kiểm tra số lượng câu SOQL đã thực thi trong transaction hiện tại. Nếu con số này sắp sửa chạm mốc giới hạn (100 queries), ta chủ động ném ra lỗi hoặc hiển thị thông báo chặn lại **trước khi** giới hạn bị vượt qua thực sự.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Khi số lượng SOQL đã thực sự vượt quá giới hạn 100, Salesforce sẽ lập tức rollback transaction và kill tiến trình ngay tức khắc, cấm và không thể gửi email hay thực thi thêm bất cứ dòng code nào sau đó.
-> **B.** PageReference.setRedirect() là hàm điều hướng trang của Visualforce Controller, hoàn toàn cấm sử dụng trong môi trường Apex Trigger.
-> **D.** ApexPages.Message chỉ dùng hiển thị trên giao diện Visualforce Page, và tương tự câu A, không thể chạy sau khi lỗi LimitException đã nổ ra.
+> **A.** Khi số lượng SOQL đã thực sự vượt quá giới hạn 100, Salesforce sẽ lập tức "kill" (hủy bỏ) giao dịch hiện tại ngay lập tức và thực hiện rollback toàn bộ. Không có dòng code nào phía sau (bao gồm cả gửi email) có cơ hội được chạy.
+> **B.** Phương thức `PageReference.setRedirect()` chuyên dùng để điều hướng trang trong Apex Visualforce Controller, hoàn toàn bị cấm sử dụng và không có tác dụng gì bên trong môi trường của một Apex Trigger.
+> **D.** Tương tự như câu A, sau khi đã vượt quá giới hạn, tiến trình bị kết thúc lập tức nên không thể gọi bất kỳ hàm nào để hiển thị thông báo lỗi kiểu này được nữa.
 
-**💡 Từ khóa ghi nhớ:** `Chủ động kiểm soát và ngăn chặn đụng trần SOQL Limits -> Luôn dùng hàm LIMITS.GETQUERIES() để check!`
+**💡 Từ khóa ghi nhớ:** `Chủ động kiểm soát và ngăn chặn đụng trần SOQL Limits -> Luôn dùng hàm **`Limits.getQueries()`** để check trước khi quá muộn!`
 
 ---
 
@@ -9256,13 +9356,15 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 > This is a traditional for loop that iterates over the indices of the list. Inside the loop, you can access each Account using AccountList[i]. While this approach works, it's generally less efficient than the enhanced for loop in option A.
 
 **✅ Tại sao đáp án đúng:**
-> A: 'for(Account theAccount : AccountList){ }' (Vòng lặp for nâng cao duyệt trực tiếp phần tử). D: 'for(Integer i=0; i < AccountList.Size(); i++){ }' (Vòng lặp for truyền thống duyệt qua chỉ số index).
+> Chọn **A** và **D**.
+- **A**: Đây là cú pháp vòng lặp for nâng cao (For-Each) chuẩn chỉnh để duyệt qua từng phần tử Account trong list.
+- **D**: Đây là cú pháp vòng lặp for truyền thống sử dụng chỉ số index chạy từ 0 đến kích thước danh sách (`AccountList.size()`), lấy phần tử qua index.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Thiếu biến khai báo phần tử chạy trong vòng lặp, sai cú pháp biên dịch.
-> **C.** Khai báo kiểu biến chạy là List L thay vì đối tượng đơn lẻ Account là hoàn toàn sai cú pháp.
+> **B.** Sai cú pháp hoàn toàn vì thiếu khai báo biến lặp và kiểu dữ liệu chạy trong vòng lặp.
+> **C.** Sai kiểu dữ liệu nghiêm trọng, biến chạy phải có kiểu dữ liệu là phần tử đơn lẻ `Account` chứ không thể là kiểu danh sách `List L` được.
 
-**💡 Từ khóa ghi nhớ:** `Duyệt List trong Apex -> Dùng for(Type var : List) hoặc dùng for(Integer i=0; i < List.size(); i++).`
+**💡 Từ khóa ghi nhớ:** `Duyệt List trong Apex -> Chỉ dùng **`for(Type var : List)`** hoặc **`for(Integer i=0; i < List.size(); i++)`**!`
 
 ---
 
@@ -9277,7 +9379,7 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** Field Update actions ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer đã tạo 3 trường Rollup Summary trên Project__c. Lập trình viên được yêu cầu tạo một trường mới hiển thị tỷ lệ giữa Timesheets bị từ chối và được phê duyệt nhằm giảm thiểu tối đa công sức bảo trì hệ thống. Giải pháp tối ưu là gì?
+> Lập trình viên đã tạo 3 trường Rollup Summary trên đối tượng Project__c gồm: Total_Timesheets__c, Total_Approved_Timesheets__c, và Total_Rejected_Timesheets__c. Lập trình viên được yêu cầu tạo thêm một trường mới hiển thị tỷ lệ (ratio) giữa Timesheets bị từ chối và được phê duyệt nhằm giảm thiểu tối đa công sức bảo trì hệ thống. Giải pháp tối ưu là gì?
 
 **💬 Giải thích gốc (English):**
 > Formula fields are calculated automatically whenever the related fields (Total_Approved_Timesheets__c and Total_Rejected_Timesheets__c) change. This ensures that the ratio is always up-to-date.
@@ -9285,14 +9387,14 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 > (Total_Rejected_Timesheets__c / Total_Approved_Timesheets__c)
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một trường công thức (Formula Field) (C). Việc sử dụng trường công thức giúp hoàn toàn no-code, tự động tính toán tức thì khi các trường Rollup thay đổi và không cần viết mã nguồn hay kiểm thử bảo trì.
+> Chọn **C**. Tạo một trường công thức (**Formula field**) là giải pháp đỉnh cao và ít tốn công bảo trì nhất. Do cả 3 trường Rollup Summary đều tự động cập nhật giá trị vật lý lên database, trường công thức chỉ việc lấy các giá trị này ra chia cho nhau (ví dụ: `Total_Rejected_Timesheets__c / Total_Approved_Timesheets__c`). Đây là giải pháp hoàn toàn no-code, tự động cập nhật tức thì khi các trường liên quan thay đổi mà không cần bảo trì code.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Viết trigger Apex tính toán bằng code là giải pháp cồng kềnh, tốn công bảo trì và tốn tài nguyên CPU.
-> **B.** Record-triggered Flow cũng là giải pháp tự động hóa phức tạp hơn so với trường công thức tự tính toán đơn giản.
-> **D.** Field Update của Workflow rule đời cũ cồng kềnh và đòi hỏi quy tắc kích hoạt phức tạp hơn nhiều.
+> **A.** Viết trigger Apex là giải pháp cồng kềnh, tốn tài nguyên CPU vô ích và bắt buộc phải viết thêm test class để phủ code, làm tăng đáng kể công sức bảo trì.
+> **B.** Record-triggered Flow cũng là một cơ chế chạy tự động phức tạp hơn, tốn công cấu hình và test hơn rất nhiều so với một trường công thức tự tính toán đơn giản.
+> **D.** Field Update của Workflow Rules đời cũ đã bị khai tử, rất cồng kềnh và đòi hỏi các quy tắc trigger phức tạp hơn.
 
-**💡 Từ khóa ghi nhớ:** `Tính tỷ lệ dựa trên các trường có sẵn no-code -> Giải pháp tốt nhất luôn là FORMULA FIELD.`
+**💡 Từ khóa ghi nhớ:** `Tính toán tỷ lệ dựa trên các trường có sẵn trên cùng một bản ghi -> Luôn ưu tiên dùng **Formula field**!`
 
 ---
 
@@ -9315,13 +9417,16 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 > If you create a formula that references a field on another object and display that formula in your page layout, users can see the field on the object even if they don’t have access to that object record.
 
 **✅ Tại sao đáp án đúng:**
-> A: Cross-object formulas có khả năng tham chiếu đến các trường thuộc các đối tượng cách xa tối đa lên tới 10 mối quan hệ liên kết (10 relationships away). B: Cross-object formulas hỗ trợ tham chiếu trường chéo qua các mối quan hệ Master-Detail hoặc Lookup. D: Cross-object formulas hiển thị giá trị bình thường trên trang dù người dùng không có quyền truy cập trực tiếp (sharing) vào bản ghi cha hoặc trường gốc.
+> Chọn **A**, **B** và **D**.
+- **A**: Cross-object formulas có khả năng tham chiếu trường chéo đối tượng đi lên cha tối đa lên tới **10 mối quan hệ** liên kết (`10 relationships away`).
+- **B**: Hỗ trợ tham chiếu trường cực tốt qua cả mối quan hệ Master-Detail lẫn Lookup thông thường.
+- **D**: Có thể hiển thị dữ liệu của bản ghi cha cho người dùng xem mặc dù bản thân người dùng đó không có quyền truy cập chia sẻ (`sharing`) vào bản ghi cha đó (bỏ qua cơ chế chia sẻ bảo mật để hiển thị dữ liệu cha).
 
 **❌ Tại sao đáp án sai:**
-> **C.** Trường công thức chéo đối tượng chỉ hỗ trợ đi ngược lên cha (parent), tuyệt đối cấm và không thể tham chiếu đi xuống danh sách con để thực hiện hàm trung bình AVERAGE.
+> **C.** Sai nghiêm trọng! Trường công thức chéo đối tượng chỉ hỗ trợ đi ngược lên cha (parent) qua Lookup/Master-Detail, chứ cấm và không thể đi xuống để lấy dữ liệu các bản ghi con (child fields) tính trung bình được.
 > **E.** Salesforce cấm không cho phép tham chiếu trường công thức chéo đối tượng làm bộ lọc hoặc giá trị cộng dồn trong các trường Roll-up Summary.
 
-**💡 Từ khóa ghi nhớ:** `Đặc tính Cross-Object Formula -> Tham chiếu tối đa 10 cấp quan hệ đi lên Cha (Lookup/Master-Detail) + Expose được data bỏ qua Sharing User.`
+**💡 Từ khóa ghi nhớ:** `Đặc tính Cross-Object Formula -> Đi lên tối đa **10 cấp** quan hệ cha (Master-Detail/Lookup) + bỏ qua Sharing để hiển thị dữ liệu cha!`
 
 ---
 
@@ -9335,20 +9440,20 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** An Apex trigger that uses an Aggregate Query to calculate the hours for a given timecard and stores it in a custom field ❌
 
 **📝 Dịch tiếng Việt:**
-> Một ứng dụng quản lý thời gian yêu cầu hiển thị tổng số giờ của tất cả các bản ghi Timecard Entry con lên bản ghi Timecard cha. Timecard Entry liên kết với Timecard bằng quan hệ Master-Detail. Lập trình viên nên làm gì để giải quyết yêu cầu hoàn toàn bằng cấu hình khai báo (declarative)?
+> Một ứng dụng quản lý thời gian yêu cầu hiển thị tổng số giờ của tất cả các bản ghi Timecard Entry con lên bản ghi Timecard cha. Timecard Entry liên kết với Timecard bằng quan hệ Master-Detail. Lập trình viên nên làm gì để giải quyết yêu cầu hoàn toàn bằng cấu hình khai báo (declarative/no-code)?
 
 **💬 Giải thích gốc (English):**
 > Roll-up summary fields are a declarative feature that can be configured directly in the object's field definition. The system automatically calculates the total hours whenever a new timecard entry is created, updated, or deleted, ensuring that the value is always up-to-date.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một trường Roll-Up Summary trên đối tượng cha Timecard thực hiện tính SUM số giờ làm của các bản ghi Timecard Entry con (B). Đây là cách giải quyết no-code chuẩn mực và tối ưu hiệu năng tuyệt đối.
+> Chọn **B**. Vì mối quan hệ giữa Timecard (cha) và Timecard Entry (con) là **Master-Detail**, cách giải quyết bằng khai báo (declarative) tối ưu nhất là tạo một trường **Roll-Up Summary** trên đối tượng cha Timecard và chọn hàm `SUM` để tính tổng số giờ của các bản ghi con. Đây là tính năng có sẵn siêu mượt mà của Salesforce.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sử dụng trang Visualforce đòi hỏi phải viết code và chỉ hiển thị trên trang đó chứ không lưu trữ giá trị vào database để báo cáo.
-> **C.** Process Builder không hỗ trợ trực tiếp hàm cộng dồn SUM các bản ghi con ngược lên cha một cách mượt mà.
-> **D.** Apex trigger đòi hỏi phải viết code lập trình và viết test class phủ 75%, đi ngược lại yêu cầu giải quyết bằng cấu hình khai báo (declarative).
+> **A.** Sử dụng Visualforce page đòi hỏi phải viết code và chỉ hiển thị trên giao diện của trang đó, chứ không lưu trữ giá trị thực vào database để phục vụ báo cáo.
+> **C.** Process Builder là đồ cổ đã bị khai tử (deprecated) và nó cũng không hỗ trợ trực tiếp hàm cộng dồn SUM các bản ghi con một cách mượt mà.
+> **D.** Apex trigger đòi hỏi phải code và viết unit test bao phủ, đi ngược hoàn toàn với yêu cầu giải quyết bằng cấu hình khai báo (declarative).
 
-**💡 Từ khóa ghi nhớ:** `Tính tổng bản ghi con lên cha ở mối quan hệ Master-Detail -> Luôn dùng ROLL-UP SUMMARY.`
+**💡 Từ khóa ghi nhớ:** `Tính tổng từ con lên cha trong quan hệ Master-Detail no-code -> Luôn gọi tên **Roll-Up Summary**!`
 
 ---
 
@@ -9368,14 +9473,14 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 > Lightning components are the ideal way to override standard buttons in Lightning Experience. They provide the flexibility to create custom user interfaces and behaviors, allowing you to customize the editing experience for Account records.
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng một Lightning Component (Aura Component hoặc LWC được bọc trong Aura) (D). Salesforce cho phép ghi đè các hành động chuẩn của đối tượng bằng Lightning Component để tùy biến giao diện và logic chỉnh sửa dữ liệu của người dùng.
+> Chọn **D**. Để ghi đè (Override) một nút bấm tiêu chuẩn (như New, Edit, View) của một đối tượng trong Lightning Experience, Salesforce hỗ trợ sử dụng **Lightning Component** (Aura Component hoặc Lightning Web Component được bọc trong Aura) để thay thế hoàn toàn giao diện và logic chỉnh sửa mặc định.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lightning action (Quick Action) chỉ là nút bấm thêm hành động nhanh trên UI, không thể dùng để ghi đè nút Edit tiêu chuẩn của hệ thống.
-> **B.** Lightning Flow chỉ dùng để chạy luồng quy trình, không thể gán trực tiếp làm component ghi đè nút Edit trong Lightning chuẩn.
-> **C.** Lightning Page đại diện cho trang hoàn chỉnh (Home Page/Record Page) chứ không phải linh kiện con có thể dùng để ghi đè nút Edit.
+> **A.** Lightning Action (Quick Action) chỉ là các nút bấm hành động nhanh do admin tự cấu hình thêm vào UI chứ không thể dùng để đè lên nút Edit tiêu chuẩn của hệ thống.
+> **B.** Lightning Flow (Flow) không thể dùng để cấu hình trực tiếp ghi đè nút Edit tiêu chuẩn trong phần Object Manager.
+> **C.** Lightning Page đại diện cho một trang bố cục hoàn chỉnh (như Record Page, Home Page) chứ không phải là một component linh kiện có khả năng ghi đè nút bấm hành động.
 
-**💡 Từ khóa ghi nhớ:** `Ghi đè nút chuẩn (Override standard button) trong Lightning Experience -> Chỉ dùng LIGHTNING COMPONENT.`
+**💡 Từ khóa ghi nhớ:** `Ghi đè nút chuẩn (Override standard button) trong Lightning Experience -> Chỉ dùng **Lightning Component**!`
 
 ---
 
@@ -9390,16 +9495,19 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **E.** Create a custom permission for the users. ✅
 
 **📝 Dịch tiếng Việt:**
-> Yêu cầu: Cho phép user điền form trên Account để tạo bản ghi mới. Form phải hiển thị các trường khác nhau tùy theo vai trò (job role) của user. Tính năng này chỉ hiển thị cho một nhóm nhỏ người dùng đặc biệt. Lập trình viên nên làm ba việc gì để đáp ứng yêu cầu no-code tối ưu nhất? (Chọn 3)
+> Yêu cầu: Cho phép user điền một biểu mẫu trên Account để tạo bản ghi cho đối tượng custom mới. Biểu mẫu này phải hiển thị các trường khác nhau tùy theo vai trò công việc (job role) của user. Tính năng này chỉ được hiển thị cho một nhóm nhỏ người dùng đặc biệt. Lập trình viên nên làm ba việc gì để đáp ứng yêu cầu no-code tối ưu nhất? (Chọn 3)
 
 **✅ Tại sao đáp án đúng:**
-> C: Tạo một Dynamic Form (để kiểm soát hiển thị trường theo điều kiện vai trò). D: Thêm một Dynamic Action vào trang chi tiết Account record page (để hiển thị nút bấm gọi form dựa trên điều kiện đặc biệt). E: Tạo một Custom Permission dành riêng cho nhóm người dùng đó (để làm điều kiện phân quyền hiển thị nút).
+> Chọn **C**, **D** và **E**.
+- **C**: **Create a dynamic form** để ẩn/hiện các trường dữ liệu trên form một cách linh hoạt dựa trên vai trò của người dùng mà không cần tạo nhiều Page Layout.
+- **D**: **Add a dynamic action to the Account record page** để đưa nút bấm gọi form lên trang chi tiết bản ghi, đồng thời thiết lập điều kiện hiển thị nút bấm động.
+- **E**: **Create a custom permission** để làm điều kiện phân quyền hiển thị nút Dynamic Action, giúp giới hạn nút bấm chỉ hiển thị cho nhóm nhỏ người dùng được gán quyền.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Page Layout truyền thống không hỗ trợ cấu hình động hiển thị trường linh hoạt theo vai trò người dùng mượt mà bằng Dynamic Form.
-> **B.** Tạo LWC đòi hỏi phải viết code lập trình phức tạp, đi ngược lại xu hướng sử dụng tính năng no-code hiện đại có sẵn của Salesforce.
+> **A.** Page Layout truyền thống không hỗ trợ cấu hình động hiển thị trường một cách linh hoạt và mượt mà theo vai trò giống như Dynamic Form.
+> **B.** Tạo LWC (Light Web Component hoặc Lightning Web Component) đòi hỏi phải viết code lập trình phức tạp, đi ngược lại tiêu chuẩn ưu tiên các tính năng cấu hình no-code cực mạnh có sẵn của Salesforce.
 
-**💡 Từ khóa ghi nhớ:** `Ẩn hiện trường/nút động theo vai trò & quyền hạn no-code -> Dùng bộ ba DYNAMIC FORM + DYNAMIC ACTION + CUSTOM PERMISSION.`
+**💡 Từ khóa ghi nhớ:** `Ẩn hiện trường/nút động theo vai trò và quyền hạn -> Dùng ngay bộ ba nguyên tử **Dynamic Form + Dynamic Action + Custom Permission**!`
 
 ---
 
@@ -9413,17 +9521,17 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** Include a savepoint and Database.rollback(). ❌
 
 **📝 Dịch tiếng Việt:**
-> Trong quá trình viết class Apex, lập trình viên muốn đảm bảo toàn bộ các tính năng được phát triển hoạt động chính xác và trơn tru theo đúng tài liệu đặc tả yêu cầu nghiệp vụ. Lập trình viên nên áp dụng phương pháp kiểm thử nào?
+> Trong quá trình viết một Apex class, lập trình viên muốn đảm bảo toàn bộ các chức năng được phát triển hoạt động chính xác và trơn tru theo đúng tài liệu đặc tả yêu cầu nghiệp vụ. Lập trình viên nên áp dụng phương pháp nào?
 
 **✅ Tại sao đáp án đúng:**
-> Xây dựng một lớp kiểm thử (Test Class) chuyên biệt để chạy kiểm tra toàn bộ logic nghiệp vụ và bấm chạy test trực tiếp trong Developer Console hoặc qua Setup (C). Khối kiểm thử sẽ dùng System.assert để xác thực kết quả chạy thực tế trùng khớp với mong đợi.
+> Chọn **C**. Phương pháp chuẩn chỉnh và tự động hóa duy nhất để đảm bảo code hoạt động đúng đặc tả là xây dựng một **Test Class** để thực thi toàn bộ logic nghiệp vụ, sử dụng các câu lệnh `System.assertEquals()` để xác thực kết quả thực tế trùng khớp với mong đợi, và chạy kiểm thử trực tiếp trong Developer Console.
 
 **❌ Tại sao đáp án sai:**
-> **A.** try/catch chỉ giúp bắt ngoại lệ tại runtime để chương trình không bị crash đột ngột, chứ không có tính năng tự động hóa đo đạc độ chính xác của logic nghiệp vụ.
-> **B.** Chạy code trong cửa sổ Execute Anonymous là phương pháp test thủ công một lần, không thể tái sử dụng để làm quy trình kiểm thử tự động của hệ thống.
-> **D.** Savepoint và rollback dùng để quản lý giao dịch DB (transaction) rollback khi gặp lỗi, không phải công cụ kiểm thử đặc tả.
+> **A.** Khối try/catch chỉ giúp bắt ngoại lệ tại runtime để chương trình không bị crash đột ngột, chứ không thể tự động hóa việc đo đạc độ chính xác của logic nghiệp vụ theo tài liệu đặc tả.
+> **B.** Chạy code trong cửa sổ Execute Anonymous là phương pháp kiểm thử thủ công "một lần rồi thôi", không thể tái sử dụng lâu dài và không được coi là một quy trình kiểm thử chuẩn mực của hệ thống.
+> **D.** Savepoint và rollback chỉ dùng để quản lý giao dịch DB (transaction) rollback khi gặp lỗi, hoàn toàn không có tác dụng kiểm thử logic nghiệp vụ.
 
-**💡 Từ khóa ghi nhớ:** `Đảm bảo code Apex chạy đúng theo đặc tả nghiệp vụ -> Xây dựng hệ thống tự động hóa qua TEST CLASS.`
+**💡 Từ khóa ghi nhớ:** `Muốn kiểm tra code chạy đúng đặc tả nghiệp vụ -> Bắt buộc xây dựng hệ thống tự động qua **Test Class**!`
 
 ---
 
@@ -9437,21 +9545,21 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** SELECT Lead.id. Lead.Name, Account.Id, AccountName, Contacted, Contact.Name FROM Lead, Account, Contact WHERE CompanvName * Universal Containers' ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer muốn tìm kiếm và lấy ra Id và Name của tất cả các bản ghi Leads, Accounts, và Contacts có chứa tên công ty 'Universal Containers'. Cú pháp truy vấn nào là đúng?
+> Lập trình viên muốn tìm kiếm và lấy ra Id và Name của tất cả các bản ghi Leads, Accounts, và Contacts có chứa tên công ty 'Universal Containers'. Cú pháp truy vấn nào là đúng?
 
 **💬 Giải thích gốc (English):**
 > IN CompanyName" does not exist.
 > This query(B) will search for the string "Universal Containers" within the Name field of Lead, Account, and Contact objects and return the specified fields for matching records.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp SOSL B: FIND 'Universal Containers' IN Name Fields RETURNING lead(id, name), account(Id, name), contact(Id, name). Đây là truy vấn tìm kiếm toàn văn chuẩn của Salesforce, hỗ trợ quét từ khóa trên trường Name và trả về danh sách đối tượng mong muốn.
+> Chọn **B**. Đây là cú pháp tìm kiếm toàn văn SOSL chuẩn của Salesforce. Mệnh đề `FIND 'Universal Containers'` chỉ định chuỗi tìm kiếm, `IN Name Fields` chỉ định phạm vi tìm kiếm trong các trường tên, và `RETURNING` khai báo danh sách đối tượng cần lấy về kèm các trường cụ thể.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Mệnh đề 'IN CompanyName Fields' là sai cú pháp nghiêm trọng, Salesforce chỉ hỗ trợ các nhóm tìm kiếm chuẩn như Name Fields, All Fields, Email Fields, Phone Fields.
-> **C.** Truy vấn SOQL cấm không cho phép khai báo nhiều bảng độc lập ở mệnh đề FROM (FROM Lead, Account, Contact là sai ngữ pháp SOQL hoàn toàn).
-> **D.** Tương tự C, SOQL cấm truy vấn kết hợp nhiều bảng độc lập không cùng mối quan hệ trực hệ.
+> **A.** Sai cú pháp nghiêm trọng! Mệnh đề `IN CompanyName Fields` không tồn tại trong SOSL (chỉ hỗ trợ All Fields, Name Fields, Email Fields, Phone Fields v.v.), đồng thời dấu ngoặc nhọn `{ld,name)` viết sai ngữ pháp.
+> **C.** Truy vấn SOQL cấm không cho phép viết nhiều bảng độc lập ở mệnh đề FROM (`FROM Lead, Account, Contact` là hoàn toàn sai ngữ pháp SOQL).
+> **D.** Tương tự câu C, SOQL cấm kết hợp nhiều bảng không có quan hệ trực hệ trong một câu SELECT duy nhất.
 
-**💡 Từ khóa ghi nhớ:** `SOSL syntax: FIND 'Từ khóa' IN Name Fields RETURNING object1(fields), object2(fields)... (Không bao giờ dùng SOQL FROM nhiều bảng độc lập!).`
+**💡 Từ khóa ghi nhớ:** `Tìm kiếm từ khóa trên nhiều Object độc lập -> Phải dùng **SOSL (`FIND ... IN Name Fields RETURNING ...`)**!`
 
 ---
 
@@ -9465,21 +9573,21 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** As a Set<String> with each value as a element in the set. ❌
 
 **📝 Dịch tiếng Việt:**
-> Khi người dùng chọn nhiều giá trị trong một trường Multi-Select Picklist trên giao diện, các giá trị này được lưu trữ và đại diện dưới dạng kiểu dữ liệu gì trong ngôn ngữ Apex?
+> Khi người dùng chọn nhiều giá trị trong một trường Multi-select Picklist trên một bản ghi, các giá trị được chọn này sẽ được đại diện dưới dạng kiểu dữ liệu gì bên trong ngôn ngữ Apex?
 
 **💬 Giải thích gốc (English):**
 > When a user selects multiple values from a multi-select picklist, the selected values are stored in the database as a single string, with each value separated by a comma.
 > For example, if a user selects "Red", "Green", and "Blue" from a multi-select picklist, the value stored in the database would be "Red,Green,Blue".
 
 **✅ Tại sao đáp án đúng:**
-> Được đại diện dưới dạng một chuỗi String duy nhất, trong đó các giá trị được phân tách với nhau bằng dấu chấm phẩy (semicolon ';') (C) (ví dụ: 'Red;Green;Blue').
+> Chọn **C**. Trong Apex, giá trị của trường Multi-select Picklist được trả về dưới dạng một chuỗi **String** duy nhất, trong đó các giá trị được phân tách với nhau bằng dấu chấm phẩy (semicolon **`;`**), ví dụ: `'Value1;Value2;Value3'`.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Apex không tự động ánh xạ Multi-Select Picklist thành List<String> ở sObject layer.
-> **B.** Dấu phẩy ',' không phải là ký tự phân cách chuẩn của Multi-Select Picklist trong Salesforce.
-> **D.** Apex không tự động ánh xạ Multi-Select Picklist thành Set<String>.
+> **A.** Apex không tự động ánh xạ Multi-select Picklist thành kiểu `List<String>` ở sObject layer. Muốn có List, lập trình viên phải tự dùng hàm `.split(';')` thủ công.
+> **B.** Dấu phẩy `,` là sai, Salesforce sử dụng dấu chấm phẩy làm ký tự phân cách chuẩn.
+> **D.** Apex cũng không tự động ánh xạ trường này thành kiểu tập hợp `Set<String>`.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo thi Multi-Select Picklist: Trong Apex, giá trị luôn được trả về dạng String phân cách bằng DẤU CHẤM PHẨY (;).`
+**💡 Từ khóa ghi nhớ:** `Multi-select Picklist trong Apex -> Luôn là một chuỗi **String** phân cách bằng dấu **chấm phẩy (`;`)**!`
 
 ---
 
@@ -9493,19 +9601,20 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** Prebuilt components that can be reused ✅
 
 **📝 Dịch tiếng Việt:**
-> Khung làm việc Lightning Component cung cấp gì cho lập trình viên?
+> Khung làm việc Lightning Component framework cung cấp lợi ích gì cho các lập trình viên?
 
 **💬 Giải thích gốc (English):**
 > The Lightning Component framework provides a rich set of pre-built components that developers can reuse to quickly build custom applications. These components handle common UI elements like buttons, input fields, modals, and data tables, saving developers time and effort.
 
 **✅ Tại sao đáp án đúng:**
-> Salesforce cung cấp sẵn một thư viện đồ sộ các component (Base Lightning Components) để mày lắp ghép, giúp tăng tốc độ phát triển.
+> Chọn **D**. Lightning Component framework cung cấp sẵn cho lập trình viên một thư viện khổng lồ gồm hàng trăm linh kiện có sẵn (`Base Lightning Components` như `lightning-button`, `lightning-datatable`...) giúp lập trình viên tái sử dụng nhanh chóng mà không cần tự xây dựng giao diện từ đầu, tiết kiệm thời gian phát triển tối đa.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lightning component sinh ra cho Lightning Experience, việc hỗ trợ Classic khá hạn chế và không phải là mục tiêu chính của framework.
-> **D.** Framework UI không làm thay đổi các giới hạn Governor Limits của hệ thống Apex/Database.
+> **A.** Lightning Component được thiết kế tối ưu và hướng tới giao diện Lightning Experience chứ không hỗ trợ hoàn hảo cho Classic UI.
+> **B.** Framework cung cấp các component có sẵn chứ không tập trung vào việc cung cấp các "Templates" mẫu để tạo custom component.
+> **C.** Cú lừa kinh điển! Lightning Component Framework hoàn toàn **không** thay đổi hay mở rộng bất kỳ giới hạn Governor Limits nào của hệ thống Apex hay Database (ví dụ như giới hạn SOQL, DML vẫn giữ nguyên).
 
-**💡 Từ khóa ghi nhớ:** `Lightning = Có sẵn đống gạch (Prebuilt components) để xây nhà.`
+**💡 Từ khóa ghi nhớ:** `Lightning Component Framework -> Đem đến rổ linh kiện ăn sẵn **Prebuilt components** cực tiện lợi!`
 
 ---
 
@@ -9519,7 +9628,7 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 - **D.** It allows faster PDF generation with Lightning components. ❌
 
 **📝 Dịch tiếng Việt:**
-> Hai lợi ích nổi bật nhất của kiến trúc lập trình Lightning Component Framework là gì? (Chọn 2)
+> Hai lợi ích nổi bật nhất của kiến trúc lập trình Lightning Component Framework (Aura/LWC) là gì? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > It provides an event-driven architecture for better decoupling between components.
@@ -9528,13 +9637,15 @@ Which governor limit will likely be exceeded within the Apex transaction?**
 > The framework provides a wide range of pre-built components that can be customized and used to create responsive user interfaces that adapt to different screen sizes. This accelerates development time and ensures consistency across devices.
 
 **✅ Tại sao đáp án đúng:**
-> B: Cung cấp kiến trúc hướng sự kiện (event-driven architecture) giúp tăng tính độc lập (decoupling) và khả năng tái sử dụng giữa các components. C: Thúc đẩy tiến độ phát triển nhanh nhờ kho component chuẩn có sẵn (out-of-box) tự động tương thích tốt trên cả máy tính để bàn (desktop) và thiết bị di động (mobile).
+> Chọn **B** và **C**.
+- **B**: Framework cung cấp kiến trúc hướng sự kiện (event-driven architecture) cực đỉnh, giúp các component độc lập và tách biệt (decoupling) với nhau hơn, dễ dàng truyền tin thông qua các Event mà không sợ bị dính chặt vào nhau.
+- **C**: Giúp lập trình viên "tăng tốc về đích" nhờ sở hữu hàng tá các component có sẵn (out-of-the-box) siêu xịn, tự động co giãn tương thích đa thiết bị (responsive cho cả desktop và mobile) mà không cần nhọc công viết media queries.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Lightning Component đơn giản hóa độ phức tạp cho việc xây dựng cả các trang đơn lẫn toàn bộ hệ thống ứng dụng quy mô lớn.
-> **D.** Không có tính năng nào hỗ trợ tăng tốc độ sinh file PDF trong lõi của Lightning component framework.
+> **A.** Nói ngược! Lightning Component Framework sinh ra là để tối giản hóa độ phức tạp cho việc xây dựng cả các trang đơn lẻ lẫn toàn bộ hệ thống ứng dụng quy mô lớn, chứ không chỉ gói gọn trong các page.
+> **D.** Không hề tồn tại bất kỳ cơ chế hay tính năng nào liên quan đến tăng tốc tạo file PDF bên trong cốt lõi của Lightning Component Framework cả. Lại là một cú lừa bịa đặt!
 
-**💡 Từ khóa ghi nhớ:** `Lợi ích Lightning Framework -> Kiến trúc hướng sự kiện (Event-driven) + Tương thích đa thiết bị di động và desktop (Out-of-box).`
+**💡 Từ khóa ghi nhớ:** `Lợi ích Lightning Component -> **Hướng sự kiện (Event-driven)** + **Ăn sẵn responsive đa thiết bị (Out-of-the-box Desktop/Mobile)**!`
 
 ---
 
@@ -9558,20 +9669,34 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 - **D.** Use if(Schema.sObjectType.Contact.isUpdateable()) ✅
 
 **📝 Dịch tiếng Việt:**
-> Cho đoạn code cập nhật Contact trong Custom Controller của Visualforce Page: [Code updateContact]. Lập trình viên nên bọc khối lệnh try/catch bằng những điều kiện nào sau đây để kiểm tra quyền hạn cấp đối tượng (object-level permissions) của người dùng hiện tại trước khi thực thi DML? (Chọn 2)
+> Cho đoạn code cập nhật Contact trong Custom Controller của Visualforce Page:
+```apex
+public void updateContact(Contact thisContact){
+  thisContact.Is_Active__c = false;
+  try{
+    update thisContact;
+  }catch(Exception e){
+    String errorMessage = 'An error occurred while updating the Contact. '+e.getMessage();
+    ApexPages.addmessage (new ApexPages.message (ApexPages.severity.FATAL,errorMessage));
+  }
+}
+```
+Lập trình viên nên bọc khối lệnh try/catch bằng những điều kiện nào sau đây để kiểm tra quyền hạn cấp đối tượng (object-level permissions) của người dùng hiện tại trước khi thực thi DML? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > B. Schema.sObjectType.<objectApiName>.isAccessible() checks if the current user has has read access to the specified object.
 > D. Use if(Schema.sObjectType.Contact.isUpdateable()) checks if the current user has permission to update on the object.
 
 **✅ Tại sao đáp án đúng:**
-> B: 'Schema.sObjectType.Contact.isAccessible()' để kiểm tra xem người dùng hiện tại có quyền Xem (Read) đối tượng Contact hay không. D: 'Schema.sObjectType.Contact.isUpdateable()' để kiểm tra xem người dùng hiện tại có quyền Sửa (Update) đối tượng Contact hay không.
+> Chọn **B** và **D**.
+- **B**: Sử dụng `Schema.sObjectType.Contact.isAccessible()` để kiểm tra xem người dùng hiện tại có quyền Xem (Read) đối tượng Contact hay không.
+- **D**: Sử dụng `Schema.sObjectType.Contact.isUpdateable()` để kiểm tra xem người dùng hiện tại có quyền Sửa (Update) đối tượng Contact trước khi gọi lệnh cập nhật dữ liệu. Đây là hai phương thức chuẩn chỉnh của Apex để kiểm tra bảo mật cấp đối tượng (CRUD).
 
 **❌ Tại sao đáp án sai:**
-> **A.** So khớp OwnerId chỉ kiểm tra quyền sở hữu bản ghi cụ thể, không kiểm tra quyền phân quyền hệ thống cấp đối tượng (Object-level) của Profile/Permission Set.
-> **C.** Schema...fields.Is_Active__c.isUpdateable() dùng để kiểm tra quyền hạn cấp trường (Field-level security - FLS) chứ không phải cấp đối tượng (Object-level) theo yêu cầu đề bài.
+> **A.** So khớp `OwnerId` chỉ giúp kiểm tra xem người dùng hiện tại có phải là chủ sở hữu của bản ghi cụ thể đó hay không, chứ hoàn toàn bất lực trong việc xác định quyền phân quyền hệ thống cấp đối tượng (CRUD) của Profile/Permission Set.
+> **C.** `Schema.sObjectType.Contact.fields.Is_Active__c.isUpdateable()` là hàm dùng để kiểm tra quyền hạn cấp trường (FLS - Field-level security) của trường `Is_Active__c`, đi lệch hướng hoàn toàn so với yêu cầu kiểm tra quyền cấp đối tượng (Object-level) của đề bài.
 
-**💡 Từ khóa ghi nhớ:** `Kiểm tra quyền hạn cấp Đối tượng (Object-level permission) -> Dùng isAccessible() (Xem) và isUpdateable() (Sửa) trực tiếp trên sObjectType.`
+**💡 Từ khóa ghi nhớ:** `Quyền cấp Đối tượng (Object-level CRUD) -> Dùng **`isAccessible()`** (Xem) và **`isUpdateable()`** (Sửa) trực tiếp trên **`sObjectType`**!`
 
 ---
 
@@ -9592,14 +9717,14 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > Empty package.xml File: An empty package.xml file indicates that you're not deploying any new or modified components, only deleting the ones specified in the destructiveChanges.xml file.
 
 **✅ Tại sao đáp án đúng:**
-> Thực hiện deploy bằng bộ công cụ Ant Migration Tool (hoặc SFDX CLI) chứa một tệp cấu hình xóa 'destructiveChanges.xml' và một tệp 'package.xml' trống không chứa khai báo deploy mới (C).
+> Chọn **C**. Để xóa bỏ các thành phần metadata đã trót deploy lên Production, cách kinh điển và chuẩn xác nhất là thực hiện deploy qua công cụ dòng lệnh (như Ant Migration Tool hoặc Salesforce CLI) với một tệp tin khai báo xóa tên là **`destructiveChanges.xml`** đi kèm với một tệp **`package.xml` trống rỗng** (chỉ chứa khai báo phiên bản). Khi đó, Salesforce sẽ biết là bạn chỉ muốn xóa các thành phần được liệt kê trong file destructive mà không muốn deploy thêm gì mới.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Bộ công cụ Change Sets tiêu chuẩn trên giao diện web hoàn toàn không hỗ trợ tệp destructiveChanges.xml để xóa metadata.
-> **B.** Change Sets không có nút chọn nào tên là 'delete option checked' để xóa các thành phần metadata đã triển khai.
-> **D.** Nếu khai báo các thành phần cần xóa vào tệp package.xml, hệ thống sẽ cố gắng deploy/update chúng thay vì thực thi lệnh xóa bỏ.
+> **A.** Change Sets tiêu chuẩn trên giao diện web hoàn toàn là công cụ kéo thả, nó cấm tiệt và không hỗ trợ nạp tệp cấu hình `destructiveChanges.xml` để xóa metadata.
+> **B.** Change Sets không hề cung cấp bất kỳ nút check hay tùy chọn nào mang tên "delete option checked" để xóa các thành phần metadata cả.
+> **D.** Nếu bạn vẫn tiếp tục khai báo các thành phần cần xóa vào tệp `package.xml`, Salesforce sẽ hiểu lầm là bạn đang muốn triển khai/cập nhật chúng, dẫn đến việc xóa thất bại thảm hại.
 
-**💡 Từ khóa ghi nhớ:** `Xóa metadata khỏi Production -> Dùng Ant/SFDX CLI với tệp DESTRUCTIVECHANGES.XML đi kèm tệp PACKAGE.XML TRỐNG!`
+**💡 Từ khóa ghi nhớ:** `Xóa metadata trên Production -> Bắt buộc dùng **`destructiveChanges.xml`** đi kèm tệp **`package.xml` TRỐNG**!`
 
 ---
 
@@ -9613,7 +9738,12 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 - **D.** Add a try/catch around the insert method. ❌
 
 **📝 Dịch tiếng Việt:**
-> Làm thế nào để debug lỗi khi dùng Database.insert với tham số allOrNone = false?
+> Lập trình viên đang thực hiện gỡ lỗi (debug) đoạn mã sau để tìm hiểu nguyên nhân tại sao các bản ghi Account không được tạo thành công:
+```apex
+Account a = new Account(Name = 'A');
+Database.insert(a, false);
+```
+Lập trình viên nên thay đổi đoạn code trên thế nào để thu được thông tin debug lỗi chính xác nhất?
 
 **💬 Giải thích gốc (English):**
 > By collecting the return value of the Database.insert() method in a SaveResult record, you can access information about the success or failure of the insert operation. This includes error messages, IDs of newly created records, and other details.
@@ -9630,14 +9760,14 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > }
 
 **✅ Tại sao đáp án đúng:**
-> Khi dùng 'false', Salesforce sẽ không bắn Exception nếu lỗi. Mày phải hứng kết quả trả về vào object Database.SaveResult, sau đó check sr.isSuccess() để biết nó oẳng hay không và lỗi gì.
+> Chọn **B**. Khi sử dụng phương thức `Database.insert(records, allOrNone)` với tham số thứ hai là `false`, Salesforce sẽ **không bao giờ ném ra Exception** khi gặp lỗi để chương trình tiếp tục chạy. Do đó, để biết được bản ghi có bị oẳng hay không và oẳng vì lỗi gì, lập trình viên bắt buộc phải hứng kết quả trả về của hàm này vào một thực thể **`Database.SaveResult`** (hoặc `List<Database.SaveResult>`), sau đó kiểm tra thuộc tính `.isSuccess()` và gọi hàm `.getErrors()` để in chi tiết thông tin lỗi.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đổi thành TRUE sẽ làm transaction dừng ngay khi gặp lỗi, không giúp mày xử lý logic debug chuyên sâu trong code.
-> **B.** Vì tham số là 'false' nên code sẽ không bao giờ nhảy vào khối 'catch', vô dụng.
-> **C.** System.debug() trước khi insert không giúp mày biết kết quả của việc insert đó thành bại ra sao.
+> **A.** Thêm `System.debug()` trước khi hàm insert chạy thì chỉ in ra được dữ liệu trước khi chèn, chứ không thể biết kết quả của việc insert thành bại thế nào.
+> **C.** Nếu đổi tham số thành `true`, Salesforce sẽ lập tức quăng lỗi Exception làm crash toàn bộ tiến trình. Cách này chỉ làm dừng chương trình đột ngột chứ không giúp lập trình viên viết code chủ động hứng lỗi để xử lý debug một cách thông minh được.
+> **D.** Do tham số thứ hai được đặt là `false` nên Salesforce hoàn toàn im lặng và không bao giờ ném ngoại lệ (exception) khi chèn lỗi. Khối `catch` của bạn sẽ bị bỏ qua và trở nên hoàn toàn vô dụng!
 
-**💡 Từ khóa ghi nhớ:** `Database.insert + false -> Phải đi kèm với SaveResult. Cặp đôi hoàn hảo!`
+**💡 Từ khóa ghi nhớ:** `Gọi Database.DML với tham số **`false`** -> Bắt buộc đi kèm hứng kết quả bằng **`SaveResult`**!`
 
 ---
 
@@ -9657,14 +9787,14 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > You must use a Developer Edition organization to create and work with a managed package. A Developer Edition organization can contain a single managed package and many unmanaged packages.
 
 **✅ Tại sao đáp án đúng:**
-> Developer Edition (D). Đây là quy định cứng của Salesforce: chỉ có môi trường Developer Edition mới hỗ trợ đăng ký Namespace độc quyền và cho phép đóng gói, phát hành Managed Package lên AppExchange.
+> Chọn **D**. Đây là quy định cứng của Salesforce: chỉ có môi trường **Developer Edition** (hoặc các org đối tác chuyên dụng như Partner Developer Edition) mới hỗ trợ đăng ký Namespace độc quyền và cho phép đóng gói, phát hành Managed Package lên chợ ứng dụng AppExchange.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Developer Sandbox chỉ dùng để dev code nội bộ doanh nghiệp, cấm đóng gói Managed Package.
-> **B.** Partial Copy Sandbox tương tự A, không hỗ trợ tạo namespace độc quyền để đóng gói phát hành ngoại sàn.
-> **C.** Unlimited Edition là môi trường Production thực tế của doanh nghiệp, không hỗ trợ tính năng đóng gói Managed Package.
+> **A.** Developer Sandbox chỉ là một bản sao môi trường để dev và test code nội bộ của một doanh nghiệp cụ thể, hoàn toàn bị cấm đóng gói Managed Package.
+> **B.** Partial Copy Sandbox cũng tương tự Sandbox thường, không có khả năng đăng ký Namespace để đóng gói ứng dụng phát hành thương mại.
+> **C.** Unlimited Edition là môi trường sản xuất (Production) thực tế của khách hàng dùng để vận hành doanh nghiệp, không hỗ trợ tính năng làm "nhà máy đóng gói" Managed Package.
 
-**💡 Từ khóa ghi nhớ:** `Nơi duy nhất tạo được Managed Package -> Bắt buộc là DEVELOPER EDITION Org!`
+**💡 Từ khóa ghi nhớ:** `Nơi đóng gói và sản xuất Managed Package -> Bắt buộc phải là **Developer Edition**!`
 
 ---
 
@@ -9678,7 +9808,7 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 - **D.** Cross-object formula field on the Account object ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần hiển thị ngày thắng cơ hội thành công gần nhất ('Closed Won' date) của toàn bộ các Opportunity liên quan lên bản ghi Account cha bằng công cụ no-code. Trường nào cần cấu hình để đạt được điều này?
+> Lập trình viên cần hiển thị ngày thắng cơ hội thành công gần nhất ('Closed Won' date) của toàn bộ các Opportunity liên quan lên bản ghi Account cha bằng công cụ no-code. Trường nào cần cấu hình để đạt được điều này?
 
 **💬 Giải thích gốc (English):**
 > An opportunity has a lookup field of account. Even though the relationship is a lookup, Salesforce treats certain standard object relationships in a hybrid model i.e. Relationship is Lookup but behaves like Master-Detail
@@ -9686,14 +9816,14 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > So for any relationship where the cascade delete is set to True a child record is deleted when the parent is deleted.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo trường Roll-up Summary trên đối tượng Account thực hiện hàm MAX trỏ vào trường CloseDate của Opportunity con với điều kiện lọc Stage = 'Closed Won' (C). Do Salesforce hỗ trợ quan hệ đặc biệt giữa Account và Opportunity, ta có thể dùng Roll-up Summary no-code vô cùng tiện lợi.
+> Chọn **C**. Do mối quan hệ giữa Account (cha) và Opportunity (con) là một mối quan hệ đặc biệt được Salesforce hỗ trợ các hàm tổng hợp no-code, cách tối ưu nhất là tạo một trường **Roll-up Summary field ngay trên Account cha**. Sau đó cấu hình chọn hàm **`MAX`** trỏ vào trường `CloseDate` của Opportunity con, kết hợp với điều kiện lọc bản ghi con có `Stage = 'Closed Won'`.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Đặt trường Roll-up Summary ở phía Opportunity con là sai chiều thiết kế cơ sở dữ liệu.
-> **B.** Cross-object formula field chỉ hỗ trợ đi từ con tham chiếu lên cha chứ không thể tính toán tổng hợp dồn từ dưới lên cha được.
-> **D.** Tương tự B, trường công thức chéo đối tượng trên Account cấm đi xuống Opportunity con để tính toán tổng hợp.
+> **A.** Tạo trường Roll-up Summary ngay trên đối tượng Opportunity con là sai hoàn toàn về mặt chiều thiết kế dữ liệu (chỉ có cha mới Roll-up được con).
+> **B.** Cross-object formula field trên Opportunity chỉ hỗ trợ kéo dữ liệu từ cha Account xuống con chứ không thể đi ngược từ dưới lên để tính toán tổng hợp dữ liệu.
+> **D.** Tương tự câu B, trường công thức chéo trên Account cấm tiệt việc lội xuống danh sách Opportunity con để tính toán.
 
-**💡 Từ khóa ghi nhớ:** `Cộng dồn hoặc lấy ngày lớn nhất/nhỏ nhất của bản ghi con lên cha -> Luôn tạo trường ROLL-UP SUMMARY trên đối tượng CHA.`
+**💡 Từ khóa ghi nhớ:** `Cộng dồn hoặc lấy ngày lớn nhất/nhỏ nhất của bản ghi con đưa lên cha -> Luôn tạo trường **Roll-up Summary** nằm trên đối tượng **CHA**!`
 
 ---
 
@@ -9714,13 +9844,15 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > Using a trigger and addError() is a powerful and flexible approach to validate data and prevent invalid records from being created or updated in Salesforce.
 
 **✅ Tại sao đáp án đúng:**
-> B: Sử dụng một Validation Rule để chặn lưu dữ liệu khi Stage đã đóng. D: Sử dụng một Apex Trigger before update gọi hàm addError() để chặn lưu dữ liệu.
+> Chọn **B** và **D**.
+- **B**: Sử dụng một **Validation Rule** để so sánh: nếu bản ghi có trạng thái cũ là 'Closed/Won' (hoặc giá trị trường đã đóng thắng) và người dùng cố gắng lưu các chỉnh sửa mới, ta sẽ trả về thông báo lỗi chặn lưu. Đây là cách no-code siêu nhanh và hiệu quả.
+- **D**: Sử dụng một **Apex Trigger** ở sự kiện `before update` để kiểm tra trạng thái của bản ghi. Nếu phát hiện cơ hội đã đóng thắng mà người dùng vẫn cố sửa đổi, ta gọi hàm `.addError()` để chặn đứng giao dịch và ném lỗi ra màn hình.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Visual Workflow (Flow) dùng để hướng dẫn người dùng nhập liệu, không có tính năng khóa cứng database ngăn cản sửa đổi từ các công cụ khác như API/Data Loader.
-> **C.** Process Automation Settings chứa các cấu hình chung của hệ thống, không có tùy chọn nào hỗ trợ khóa bản ghi Opportunity thông thường khi đổi Stage.
+> **A.** Visual Workflow (Flow) chỉ đóng vai trò hướng dẫn người dùng nhập liệu theo từng bước trên UI, chứ nó không có khả năng tạo ra một hàng rào bảo vệ vững chắc để khóa cứng database khi người dùng cập nhật dữ liệu từ các công cụ khác như API/Data Loader.
+> **C.** Process Automation Settings chứa các cấu hình hệ thống chung cho các tiến trình tự động hóa của Org, hoàn toàn không có tính năng hỗ trợ khóa riêng lẻ một bản ghi Opportunity theo Stage.
 
-**💡 Từ khóa ghi nhớ:** `Khóa bản ghi ngăn chặn sửa đổi -> Giải pháp tốt nhất luôn là VALIDATION RULE hoặc APEX TRIGGER dùng addError().`
+**💡 Từ khóa ghi nhớ:** `Khóa bản ghi chống chỉnh sửa dữ liệu -> Dùng **Validation Rule** (no-code) hoặc **Apex Trigger với `addError()`** (code)!`
 
 ---
 
@@ -9734,20 +9866,22 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 - **D.** VSCode ✅
 
 **📝 Dịch tiếng Việt:**
-> Dùng công cụ nào để chạy script tự động deploy lên sandbox? (Chọn 2)
+> Một đội ngũ phát triển muốn sử dụng một tập lệnh (deployment script) để tự động hóa việc deploy code lên sandbox trong chu kỳ phát triển. Hai công cụ nào họ có thể sử dụng để chạy tập lệnh này? (Chọn 2)
 
 **💬 Giải thích gốc (English):**
 > SFDX CLI: A powerful command-line tool for automating Salesforce development tasks, including deployments. It allows you to create scripts to deploy metadata changes to sandboxes.
 > VSCode: A popular code editor with extensions that can integrate with SFDX. You can use it to write and run deployment scripts, as well as to automate the deployment process using tasks and workflows.
 
 **✅ Tại sao đáp án đúng:**
-> A: CLI sinh ra để chạy command line/script. B: VS Code tích hợp cực tốt với CLI để thực thi các lệnh deploy.
+> Chọn **A** và **D**.
+- **A**: **SFDX CLI** (Salesforce CLI) là công cụ dòng lệnh (command-line) chính thống, cực kỳ mạnh mẽ, sinh ra để lập trình viên viết script tự động hóa tích hợp vào CI/CD deploy metadata lên sandbox.
+- **D**: **VS Code** kết hợp với bộ công cụ Salesforce Extension Pack cung cấp một môi trường tích hợp tuyệt vời, cho phép dev chạy các tập lệnh deploy, gọi CLI trực tiếp từ terminal của IDE.
 
 **❌ Tại sao đáp án sai:**
-> **C.** Change Sets chỉ thao tác bằng tay trên trình duyệt (Point-and-click).
-> **D.** Developer Console không có chức năng deploy metadata từ máy local.
+> **B.** Developer Console là một công cụ nền web thủ công trên trình duyệt, hoàn toàn cấm và không có khả năng deploy code trực tiếp từ các file metadata cục bộ từ máy tính của dev.
+> **C.** Change Sets chỉ hỗ trợ tạo gói deploy bằng giao diện kéo thả click chuột thủ công (Point-and-click) trên trình duyệt, không có API hay dòng lệnh nào để nhúng vào script chạy tự động.
 
-**💡 Từ khóa ghi nhớ:** `Keyword: Scripting + Deployment -> CLI / SFDX.`
+**💡 Từ khóa ghi nhớ:** `Script tự động hóa deploy -> Bắt buộc dùng bộ đôi công nghệ phát triển hiện đại **Salesforce CLI** và **VS Code**!`
 
 ---
 
@@ -9768,14 +9902,14 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > The API name of a Field or Object is necessary, as this will be referenced in the metadata ( i.e Apex Classes, Triggers, Visualforce Pages, Visualforce Components etc). It is not allowed for Users to change the API name of the Objects/Fields, if it is referenced in any of the metadata. The changing of API Name without removing references can result in errors being thrown as the operation will be unsupported.
 
 **✅ Tại sao đáp án đúng:**
-> API Name của trường sẽ không bị thay đổi và hệ thống chặn đứng hành động này để đảm bảo tính an toàn dữ liệu, không gây ra ảnh hưởng nào khác (A). Salesforce cấm sửa tên API Name của trường/object khi nó đang được tham chiếu trong code metadata để tránh lỗi biên dịch.
+> Chọn **A**. Salesforce quản lý tính toàn vẹn của mã nguồn (metadata integrity) cực kỳ nghiêm ngặt. Khi một trường đang được tham chiếu trực tiếp bằng code trong bất kỳ một Apex Class hay Test Class nào, Salesforce sẽ **chặn đứng** hành động đổi tên API Name trên Schema Builder và báo lỗi. Tên trường sẽ được giữ nguyên hoàn toàn và không gây ra thêm bất kỳ tác động tiêu cực nào cho hệ thống.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Salesforce không tự động sửa đổi code trong Apex class khi đổi tên trường trên Schema Builder.
-> **C.** Hệ thống cấm sửa đổi trực tiếp chứ không cho phép đổi rồi ném ra cảnh báo cập nhật class sau.
-> **D.** Không tự động cập nhật được code tham chiếu.
+> **B.** Salesforce không có tính năng "thần thông quảng đại" tự động đi sửa đổi đống code Apex trong test class khi bạn đổi tên trường trên UI.
+> **D.** Tương tự, Salesforce cũng không tự động cập nhật tham chiếu trong bất kỳ code nào khác khi tên trường thay đổi.
+> **C.** Hệ thống sẽ chặn đứng hoàn toàn hành vi chỉnh sửa ngay từ đầu chứ không có chuyện cho phép đổi tên thành công rồi mới ném ra cảnh báo cập nhật class sau.
 
-**💡 Từ khóa ghi nhớ:** `Sửa API Name của trường đang có code tham chiếu -> Salesforce CẤM TUYỆT ĐỐI và chặn đứng hành động!`
+**💡 Từ khóa ghi nhớ:** `Sửa API Name của trường đang có code tham chiếu -> Salesforce **chặn đứng và giữ nguyên (not changed)** để bảo vệ hệ thống!`
 
 ---
 
@@ -9789,20 +9923,24 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 - **D.** @InvocableMethod global Recommendation getLevel(ContactWrapper input){ /*implementation*/ } ❌
 
 **📝 Dịch tiếng Việt:**
-> Một chiến lược Next Best Action sử dụng Enhance Element để gọi một Apex method nhằm xác định mức chiết khấu cho Contact. Khai báo nào sau đây của Apex method là đúng quy chuẩn?
+> Một chiến lược Next Best Action sử dụng Enhance Element để gọi một Apex method nhằm xác định mức chiết khấu cho Contact dựa trên một số yếu tố. Khai báo cấu trúc phương thức Apex nào sau đây là ĐÚNG quy chuẩn?
 
 **💬 Giải thích gốc (English):**
 > Invocable methods are called natively from Rest, Apex, Flow, or Einstein bot that interacts with the external API source. Invocable methods have dynamic input and output values and support describe calls. The invocable method must be static and public or global, and its class must be an outer class.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp A: @InvocableMethod global static List<List<Recommendation>> getLevel(List<ContactWrapper> input). Phương thức invocable bắt buộc phải là static, nhận tham số dạng List và kiểu trả về cũng bắt buộc là List of List (ở đây là List<List<Recommendation>>) để hỗ trợ xử lý hàng loạt bulkified.
+> Chọn **A**. Đây là cú pháp chuẩn không thể lệch đi đâu được của một Invocable Method dùng trong Next Best Action (Enhance Element):
+- Sử dụng annotation **`@InvocableMethod`**.
+- Phương thức bắt buộc phải là **`static`**.
+- Để hỗ trợ cơ chế chạy hàng loạt bulkified, tham số truyền vào bắt buộc phải là một danh sách: **`List<T>`** (ở đây là `List<ContactWrapper>`).
+- Đối với Enhance Element trong NBA, kiểu trả về bắt buộc phải là một danh sách lồng danh sách: **`List<List<Recommendation>>`** để hệ thống map kết quả tương ứng cho từng bản ghi đầu vào.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Sai vì thiếu từ khóa 'static', invocable method bắt buộc phải là static.
-> **C.** Kiểu trả về ListRecommendation (không có List bao ngoài) là sai định dạng danh sách bulkified.
-> **D.** Thiếu static và tham số truyền vào là ContactWrapper thô không bọc trong List là sai quy tắc bulkified.
+> **B.** Sai vì thiếu mất từ khóa **`static`** bắt buộc của Invocable Method.
+> **C.** Viết sai kiểu trả về `ListRecommendation` (thiếu cặp dấu ngoặc nhọn `<>` và kiểu lồng `List<List<>>` để bulkify).
+> **D.** Sai hoàn toàn vì vừa thiếu từ khóa `static`, vừa không bọc tham số đầu vào và đầu ra trong danh sách `List` để chạy bulkified.
 
-**💡 Từ khóa ghi nhớ:** `Invocable Method -> Luôn bắt đầu bằng @InvocableMethod, bắt buộc phải là STATIC, nhận vào List và trả về List/List of List!`
+**💡 Từ khóa ghi nhớ:** `Invocable Method trong Next Best Action -> Phải là **`static`** + nhận vào **`List<T>`** + trả về **`List<List<Recommendation>>`**!`
 
 ---
 
@@ -9816,20 +9954,20 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 - **D.** 100 ❌
 
 **📝 Dịch tiếng Việt:**
-> Một Apex transaction thực hiện: Chèn thành công 100 Accounts (bằng Database.insert(accts, false)). Chèn thành công 2,000 Contacts (bằng lệnh insert standalone). Cuối cùng bị báo lỗi DML Exception khi cố chèn 500 Opportunities (bằng lệnh insert standalone). Hỏi tổng cộng có bao nhiêu bản ghi thực sự được lưu (commit) thành công vào cơ sở dữ liệu sau transaction này?
+> Một Apex transaction thực hiện chèn thành công 100 Accounts (bằng Database.insert(accts, false)). Tiếp tục chèn thành công 2,000 Contacts (bằng lệnh insert standalone). Cuối cùng bị báo lỗi DML Exception khi cố chèn 500 Opportunities (bằng lệnh insert standalone). Hỏi tổng cộng có bao nhiêu bản ghi thực sự được lưu (commit) thành công vào cơ sở dữ liệu sau transaction này?
 
 **💬 Giải thích gốc (English):**
 > All operations are in one transaction. If any operation in the transaction fails, all DML operation are rolledback.
 
 **✅ Tại sao đáp án đúng:**
-> Tổng số bản ghi committed thành công là 0 (C). Vì toàn bộ các câu lệnh diễn ra trong cùng một Transaction (Giao dịch). Một khi xảy ra lỗi runtime không được xử lý (DML Exception ở bước Opportunity), Salesforce sẽ lập tức hủy bỏ (rollback) toàn bộ giao dịch, xóa sạch mọi dữ liệu đã chèn tạm trước đó để đảm bảo tính toàn vẹn dữ liệu.
+> Chọn **C: 0**. Đây là câu hỏi kinh điển kiểm tra kiến thức về tính toàn vẹn của Transaction (Giao dịch) trong Salesforce. Một Apex Transaction hoạt động theo nguyên tắc "tất cả hoặc không có gì" (all-or-nothing). Một khi có một Exception không được xử lý (như DML Exception khi insert Opportunity) nổ ra ở bất cứ thời điểm nào, Salesforce sẽ lập tức **rollback (hoàn tác) toàn bộ giao dịch về vạch xuất phát**, xóa sạch mọi dữ liệu đã chèn tạm trước đó để bảo vệ tính toàn vẹn dữ liệu. Do đó, không có bản ghi nào được lưu thành công!
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai tính toán do nghĩ Contacts không bị rollback.
+> **A.** Nghĩ là 2,000 Contacts được giữ lại là sai lầm lớn, do lỗi xảy ra ở bước sau làm rollback toàn cục.
 > **B.** Sai tính toán.
-> **D.** Lầm tưởng 100 Accounts dùng Database.insert(..., false) sẽ được giữ lại. Thực tế, allOrNone=false chỉ bỏ qua lỗi trong chính câu lệnh chèn Account đó, chứ không thể bảo vệ Account khỏi đợt rollback toàn cục của cả Transaction khi có exception nổ ra ở câu lệnh sau.
+> **D.** Đây là "cú lừa" cực kỳ hiểm hóc! Nhiều bạn nghĩ 100 Accounts dùng `Database.insert(..., false)` thì sẽ được an toàn giữ lại. Thực tế, tham số `false` chỉ giúp câu lệnh chèn Account đó bỏ qua các bản ghi lỗi nội bộ trong chính dòng lệnh đó để tiếp tục chạy các dòng lệnh tiếp theo. Nhưng một khi toàn bộ Transaction đã bị nổ Exception ở bước cuối (Opportunity insert) mà không được try-catch hứng lại, Salesforce vẫn sẽ rollback sạch sành sanh từ đầu, cào bằng tất cả về 0!
 
-**💡 Từ khóa ghi nhớ:** `Mẹo Transaction: Có lỗi Exception không được bắt xảy ra ở bất cứ đâu trong Transaction -> TOÀN BỘ BẢN GHI ĐỀU BỊ ROLLBACK VỀ 0!`
+**💡 Từ khóa ghi nhớ:** `Apex Transaction: Có Exception nổ ra không được catch -> **Toàn bộ bản ghi bị rollback về 0**! Đừng để bị lừa bởi tham số `false`.`
 
 ---
 
@@ -9849,14 +9987,14 @@ In which two ways can the try/catch be enclosed to enforce object-level permissi
 > A MAX Roll-Up Summary field is the most suitable option for this scenario. It will calculate the maximum availability date among all line items associated with an order. This maximum date will represent the latest availability date for any item in the order, which, in turn, will be the estimated ship date.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo một trường Roll-Up Summary trên đối tượng cha Order thực hiện tính MAX trường availability date của các Line Items con (D). Ngày giao hàng khi tất cả có sẵn bắt buộc phải là ngày có hàng muộn nhất (lớn nhất - MAX) trong số các bản ghi con.
+> Chọn **D**. Để đơn hàng có thể giao khi "tất cả các món con đều có sẵn", ngày giao hàng ước tính của Order cha bắt buộc phải là ngày có hàng **muộn nhất** (tức là ngày lớn nhất - **MAX**) trong số tất cả các bản ghi Line Item con. Vì mối quan hệ giữa Order và Line Item là Master-Detail, cách giải quyết no-code hoàn hảo nhất là tạo một trường **Roll-up Summary field sử dụng hàm MAX** trên Order cha trỏ vào trường ngày của con.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Không tồn tại hàm LATEST trong cấu trúc trường công thức của Salesforce.
-> **B.** Hàm CEILING chỉ dùng để làm tròn lên một số thực decimal, không liên quan đến việc tính toán ngày tháng.
-> **C.** Sử dụng hàm DAYS và đếm số lượng bản ghi con COUNT không giúp xác định được ngày có hàng lớn nhất của các bản ghi con.
+> **A.** Hoàn toàn không tồn tại bất kỳ hàm nào tên là LATEST trong cấu trúc trường công thức của Salesforce.
+> **B.** Hàm CEILING là hàm toán học chuyên dùng để làm tròn lên một số thực phân số, hoàn toàn vô dụng khi xử lý kiểu dữ liệu ngày tháng.
+> **C.** Đếm số lượng bản ghi con COUNT không giúp chúng ta xác định được mốc thời gian muộn nhất để giao hàng.
 
-**💡 Từ khóa ghi nhớ:** `Tìm ngày muộn nhất của bản ghi con đưa lên cha -> Tạo trường Roll-up Summary sử dụng hàm MAX.`
+**💡 Từ khóa ghi nhớ:** `Tìm ngày muộn nhất (latest date) của các bản ghi con đưa lên cha -> Tạo trường **Roll-up Summary dùng hàm MAX**!`
 
 ---
 
@@ -9867,49 +10005,37 @@ public static void setBusinessUnitToEMEA(Contact thisContact){
 thisContact.Business_Unit__c = 'EMEA';
 update thisContact;
 }
-How should the developer modify the code to ensure best practices are met?
-A.
-Public void setBusinessUnitToEMEA(List<Contact> contatcs){
-contacts[0].Business_Unit__c = 'EMEA' ;
-update contacts[0];
-}
-B.
-Public static void setBusinessUnitToEMEA(Contact thisContact){
-List<Contact> contacts = new List<Contact>();
-contacts.add(thisContact.Business_Unit__c = 'EMEA');
-update contacts;
-}
-C.
-Public static void setBusinessUnitToEMEA(List<Contact> contacts){
-for(Contact thisContact : contacts){
-thisContact.Business_Unit__c = 'EMEA' ;
-update contacts[0];
-}
-}
-D.
-Public static void setBusinessUnitToEMEA(List<Contact> contacts){
-for(Contact thisContact : contacts) {
-thisContact.Business_Unit__c = 'EMEA' ;
-}
-update contacts;
-}**
+How should the developer modify the code to ensure best practices are met?**
 
+- **A.** Public void setBusinessUnitToEMEA(List<Contact> contatcs){ contacts[0].Business_Unit__c = 'EMEA' ; update contacts[0]; } ❌
+- **B.** Public static void setBusinessUnitToEMEA(Contact thisContact){ List<Contact> contacts = new List<Contact>(); contacts.add(thisContact.Business_Unit__c = 'EMEA'); update contacts; } ❌
+- **C.** Public static void setBusinessUnitToEMEA(List<Contact> contacts){ for(Contact thisContact : contacts){ thisContact.Business_Unit__c = 'EMEA' ; update contacts[0]; } } ❌
+- **D.** Public static void setBusinessUnitToEMEA(List<Contact> contacts){ for(Contact thisContact : contacts) { thisContact.Business_Unit__c = 'EMEA' ; } update contacts; } ✅
 
 **📝 Dịch tiếng Việt:**
-> Cho phương thức Apex sau được gọi từ một Trigger: [Code setBusinessUnitToEMEA]. Developer nên sửa đổi code như thế nào để đảm bảo tuân thủ best practices (thực hành tốt nhất) của Salesforce trigger?
+> Cho phương thức Apex sau được gọi từ một Trigger:
+```apex
+public static void setBusinessUnitToEMEA(Contact thisContact){
+  thisContact.Business_Unit__c = 'EMEA';
+  update thisContact;
+}
+```
+Developer nên sửa đổi code như thế nào để đảm bảo tuân thủ best practices (thực hành tốt nhất) của Salesforce trigger?
 
 **💬 Giải thích gốc (English):**
 > A DML statement should be placed outside of a loop to optimize performance and reduce governor limit usage.
 
 **✅ Tại sao đáp án đúng:**
-> Cú pháp D: Public static void setBusinessUnitToEMEA(List<Contact> contacts) { for(Contact thisContact : contacts) { thisContact.Business_Unit__c = 'EMEA' ; } update contacts; }. Phương thức nhận tham số là danh sách List<Contact> để xử lý bulkified và đưa câu lệnh DML update ra NGOÀI vòng lặp for để tránh đụng trần 150 DML limit.
+> Chọn **D**. Đây là bài học vỡ lòng và là "kinh thánh" tối thượng khi viết Trigger trong Salesforce: **Bulkification**.
+- Phương thức bắt buộc phải nhận tham số đầu vào là một danh sách **`List<Contact> contacts`** để có thể xử lý hàng loạt nhiều bản ghi cùng một lúc.
+- Sử dụng vòng lặp `for` để cập nhật dữ liệu trên bộ nhớ, và cực kỳ quan trọng: **đưa câu lệnh DML `update contacts;` ra hẳn NGOÀI vòng lặp for** để chỉ thực thi đúng 1 lệnh DML duy nhất cho cả danh sách, tránh đụng trần giới hạn 150 DML Limit của hệ thống.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sai vì chỉ xử lý phần tử đầu tiên của danh sách (contacts[0]) và thực hiện DML đơn lẻ, làm mất đi tính xử lý hàng loạt.
-> **B.** Cú pháp gán trị chèn vào list sai ngữ pháp nghiêm trọng.
-> **C.** Vẫn giữ nguyên câu lệnh DML update bên trong thân vòng lặp for (update contacts[0]), gây nguy cơ crash DML Limit cực cao.
+> **A.** Chỉ xử lý phần tử đầu tiên của danh sách (`contacts[0]`) và thực hiện DML đơn lẻ là viết code cực kỳ "non và xanh", làm hỏng tính năng xử lý hàng loạt khi người dùng import dữ liệu bằng Data Loader.
+> **B.** Cú pháp gán trị chèn vào list viết sai ngữ pháp nghiêm trọng.
+> **C.** Lại một tấm chiếu mới! Vẫn ngang nhiên đặt câu lệnh DML update ngay bên trong thân vòng lặp for (`update contacts[0]`), hệ thống sẽ crash Limit ngay lập tức khi xử lý danh sách trên 150 bản ghi.
 
-**💡 Từ khóa ghi nhớ:** `Trigger Best Practice thần thánh -> Luôn nhận tham số dạng LIST + Tuyệt đối cấm tiệt đặt câu lệnh DML (insert, update, delete) bên trong vòng lặp FOR!`
+**💡 Từ khóa ghi nhớ:** `Trigger Best Practice tối thượng -> Luôn nhận tham số dạng **`List`** + Tuyệt đối cấm tiệt đặt câu lệnh **DML (insert, update, delete) bên trong vòng lặp FOR**!`
 
 ---
 
@@ -9923,20 +10049,20 @@ update contacts;
 - **D.** The LeadId and ContactId fields on the standard Campaign Member object ❌
 
 **📝 Dịch tiếng Việt:**
-> Cái field lookup nào dưới đây thuộc loại 'đa hình' (polymorphic) - tức là một mình nó có thể trỏ tới nhiều loại Object khác nhau?
+> Trường tra cứu nào dưới đây là một ví dụ điển hình về trường Lookup đa hình (Polymorphic Lookup field) trong Salesforce?
 
 **💬 Giải thích gốc (English):**
 > A polymorphic lookup field can reference multiple different object types. The WhatId field on the Event object is a classic example of this. It can reference either a Lead, Contact, Account, or Opportunity.
 
 **✅ Tại sao đáp án đúng:**
-> B đúng vì `WhatId` trên Task hoặc Event cực kỳ linh hoạt, nó có thể link tới Account, Opportunity, Campaign... tùy hỉ. Đó chính là sự đa hình.
+> Chọn **A**. Một trường Lookup đa hình (**Polymorphic Lookup**) là trường cực kỳ linh hoạt, chỉ có một trường duy nhất nhưng lại có khả năng liên kết trỏ tới nhiều loại đối tượng (sObjects) khác nhau. Trường **`WhatId`** (đại diện cho trường "Related To") trên đối tượng tiêu chuẩn Task hoặc Event là ví dụ kinh điển: nó có thể trỏ tới Account, Opportunity, Campaign, Case... tùy ý!
 
 **❌ Tại sao đáp án sai:**
-> **A.** `ParentId` trên Account chỉ trỏ tới duy nhất 1 loại object là Account (cha). Không có đa hình gì ở đây.
-> **C.** Đây là 2 field riêng biệt trỏ tới 2 object riêng biệt. Không phải là 1 field trỏ tới nhiều object.
-> **D.** Salesforce không cho phép mày tự tạo Polymorphic Lookup field đâu (trừ khi dùng vài trick cực khó hoặc tool xịn), đây chỉ là câu lừa thôi.
+> **B.** Trường `ParentId` trên Account chỉ hỗ trợ trỏ duy nhất tới một loại đối tượng duy nhất là Account cha, không hề có tính đa hình.
+> **C.** Salesforce cấm không cho phép lập trình viên tự khởi tạo các trường Custom Lookup đa hình trỏ tới nhiều Object tùy chọn bừa bãi như thế này.
+> **D.** Đây là hai trường Lookup tiêu chuẩn độc lập (`LeadId` trỏ tới Lead, `ContactId` trỏ tới Contact) chứ không phải là một trường duy nhất có tính đa hình.
 
-**💡 Từ khóa ghi nhớ:** `Mẹo PD1: Polymorphic = WhoId (trỏ tới People: Lead/Contact) hoặc WhatId (trỏ tới Objects: Account/Opp/...). Cứ nhớ Who/What là đa hình.`
+**💡 Từ khóa ghi nhớ:** `Lookup đa hình (Polymorphic) -> Cứ nhớ bộ đôi huyền thoại: **`WhoId`** (trỏ tới People: Lead/Contact) và **`WhatId`** (trỏ tới Objects: Account/Opp/Case...)!`
 
 ---
 
@@ -9951,7 +10077,7 @@ update contacts;
 - **E.** Email messages ❌
 
 **📝 Dịch tiếng Việt:**
-> Ba thao tác nào ảnh hưởng đến số lần một trigger có thể được kích hoạt? (Chọn 3)
+> Ba thao tác nào sau đây có khả năng ảnh hưởng trực tiếp và làm tăng số lần một Trigger có thể bị kích hoạt (re-fire) trong một giao dịch? (Chọn 3)
 
 **💬 Giải thích gốc (English):**
 > The three operations that affect the number of times a trigger can fire are:
@@ -9961,13 +10087,16 @@ update contacts;
 > These operations can cause triggers to execute multiple times due to updates they perform on records.
 
 **✅ Tại sao đáp án đúng:**
-> B: Roll-up summary trên bản ghi cha sẽ làm trigger của cha nổ khi con thay đổi. C & D: Flow và Workflow Field Update có thể làm bản ghi được cập nhật lại và kích hoạt lại các Before/After Update triggers (re-fire).
+> Chọn **A**, **B** và **D**.
+- **A**: **Lightning Flows** (Flow) khi thực hiện cập nhật bản ghi sẽ kích hoạt lại toàn bộ các trigger before/after update trên đối tượng đó.
+- **B**: **Roll-Up Summary fields** khi tính toán dồn dữ liệu từ con lên cha sẽ tự động thực thi một tiến trình cập nhật bản ghi cha ngầm, từ đó kích hoạt trigger trên đối tượng cha.
+- **D**: **Workflow Rules** (đặc biệt là Workflow Field Update) khi thay đổi giá trị trường sẽ ép Salesforce chạy lại quy trình lưu (Save Order of Execution) thêm một lượt, làm kích hoạt lại các Before/After Update Triggers.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Sharing calculations chạy ngầm để tính toán quyền truy cập, không làm nổ trigger.
-> **E.** Gửi email là một hành động đi kèm, không làm thay đổi bản ghi để kích hoạt lại trigger.
+> **C.** Criteria-based Sharing calculations chỉ là tiến trình chạy ngầm để tính toán quyền truy cập bản ghi của người dùng, hoàn toàn không thực hiện thao tác DML update dữ liệu nên không làm nổ trigger.
+> **E.** Gửi email chỉ là một hành động gửi thông điệp đi kèm, không làm thay đổi hay cập nhật lại các trường dữ liệu trên bản ghi để kích hoạt lại trigger.
 
-**💡 Từ khóa ghi nhớ:** `Keywords: Trigger re-fire -> Workflow, Flow, Roll-up Summary. 'Bộ ba sát thủ' làm tăng số lần trigger nổ.`
+**💡 Từ khóa ghi nhớ:** `Bộ ba sát thủ gây nổ Trigger liên tục (re-fire) -> Luôn nhớ: **Workflow Rules**, **Lightning Flows** và **Roll-up Summary fields**!`
 
 ---
 
@@ -9981,20 +10110,20 @@ update contacts;
 - **D.** @InvocableMethod ✅
 
 **📝 Dịch tiếng Việt:**
-> Khi tạo một phương thức Apex để Flow có thể gọi và thực hiện kiểm tra logic phức tạp, developer nên dùng annotation nào?
+> Admin đang xây dựng một Record-triggered Flow. Khi thỏa mãn điều kiện, Flow cần gọi một phương thức Apex để thực hiện kiểm tra logic nghiệp vụ phức tạp liên quan đến nhiều đối tượng. Lập trình viên phải gắn annotation nào cho phương thức Apex để Flow có thể nhìn thấy và gọi được?
 
 **💬 Giải thích gốc (English):**
 > Invocable methods are called natively from Rest, Apex, Flow, or Einstein bot that interacts with the external API source. Invocable methods have dynamic input and output values and support describe calls.
 
 **✅ Tại sao đáp án đúng:**
-> @InvocableMethod cho phép một phương thức Apex được hiển thị dưới dạng một Action trong Flow Builder hoặc Process Builder.
+> Chọn **D**. Để một phương thức Apex có thể hiển thị dưới dạng một hộp hành động (Action) kéo thả trực quan và gọi được từ bên trong Flow Builder hoặc Process Builder, phương thức đó bắt buộc phải được gắn annotation **`@InvocableMethod`**.
 
 **❌ Tại sao đáp án sai:**
-> **A.** @future dùng để chạy các tác vụ không đồng bộ (background), Flow không thể gọi trực tiếp và nhận kết quả ngay được.
-> **C.** @AuraEnabled dùng cho giao tiếp giữa Client-side (LWC/Aura) và Server-side (Apex).
-> **D.** @RemoteAction dùng riêng cho Visualforce JavaScript Remoting.
+> **A.** `@RemoteAction` dùng riêng cho các thư viện Javascript gọi hàm Apex trực tiếp từ trang Visualforce (JavaScript Remoting).
+> **B.** `@future` dùng để định nghĩa các phương thức chạy bất đồng bộ (chạy ngầm dưới background), Flow không thể gọi trực tiếp và hứng kết quả phản hồi ngay được.
+> **C.** `@AuraEnabled` dùng để kết nối và cho phép các component UI như LWC hoặc Aura Component gọi Apex.
 
-**💡 Từ khóa ghi nhớ:** `Flow gọi Apex -> Luôn luôn là @InvocableMethod.`
+**💡 Từ khóa ghi nhớ:** `Flow muốn gọi trực tiếp phương thức Apex -> Bắt buộc dùng **`@InvocableMethod`**!`
 
 ---
 
@@ -10008,20 +10137,20 @@ update contacts;
 - **D.** Fire a notification. ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer đang xây dựng một ứng dụng chứa nhiều Lightning Web Components. Một component con được dùng để định hướng trang. Khi user click nút 'Next' trên component con, component cha phải được thông báo để chuyển trang. Cách giải quyết chuẩn xác nhất là gì?
+> Lập trình viên đang xây dựng một ứng dụng chứa nhiều Lightning Web Components. Một component con được dùng để định hướng trang. Khi người dùng click nút 'Next' trên component con, component cha phải được thông báo để chuyển trang. Cách giải quyết chuẩn xác nhất là gì?
 
 **💬 Giải thích gốc (English):**
 > Custom events are used to communicate between Lightning web components, and can be used to pass data from a parent component to a child component. The parent component can fire a custom event and include the data as a parameter, which the child component can then access.
 
 **✅ Tại sao đáp án đúng:**
-> Tạo và bắn ra một sự kiện tùy chỉnh (Custom Event) từ component con (A). Component cha sẽ đăng ký lắng nghe sự kiện này (onnext) để thực thi logic chuyển trang, đảm bảo đúng cơ chế đóng gói và truyền thông tin ngược dòng từ con lên cha trong LWC.
+> Chọn **A**. Đây là cơ chế giao tiếp ngược dòng kinh điển trong LWC (Child to Parent): **"Events up, Properties down"**. Khi người dùng click nút ở component con, con sẽ tạo và bắn ra một sự kiện tùy chỉnh (**`CustomEvent`**). Component cha ở bên ngoài sẽ đăng ký lắng nghe sự kiện này (ví dụ: `onnext={handleNext}`) để thực thi logic chuyển trang tương ứng, đảm bảo tính đóng gói tuyệt hảo.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Apex controller chạy dưới database server layer, không thể can thiệp điều hướng giao diện trực quan client-side của component cha.
-> **C.** Component con cấm và không thể trực tiếp thay đổi thuộc tính (property) của component cha để bảo toàn tính đóng gói dữ liệu.
-> **D.** Fire notification chỉ hiển thị thông báo toast nổi trên màn hình, không giúp truyền thông tin điều khiển giữa hai component.
+> **B.** Apex controller chạy hoàn toàn dưới tầng cơ sở dữ liệu (server-side), không thể can thiệp điều khiển giao diện UI client-side của component cha được.
+> **C.** Component con cấm tiệt và không thể trực tiếp gán đè hay thay đổi thuộc tính (property) của component cha để bảo vệ tính đóng gói dữ liệu của framework.
+> **D.** Bắn ra thông báo (Fire notification) chỉ hiển thị một thông điệp toast nổi lên màn hình cho người dùng xem, chứ không giúp truyền dữ liệu điều khiển giữa hai component.
 
-**💡 Từ khóa ghi nhớ:** `Giao tiếp ngược dòng từ Component Con lên Component Cha trong LWC -> Luôn sử dụng CUSTOM EVENT!`
+**💡 Từ khóa ghi nhớ:** `Giao tiếp ngược dòng từ Con lên Cha trong LWC -> Luôn bắn ra **`CustomEvent`** (Events Up)!`
 
 ---
 
@@ -10043,14 +10172,14 @@ update contacts;
 > List<Schema.RecordTypeInfo> rti = R.getRecordTypeInfos();
 
 **✅ Tại sao đáp án đúng:**
-> Sử dụng lớp Schema.DescribeSObjectResult của đối tượng Case (A). Lập trình viên gọi hàm Case.SObjectType.getDescribe().getRecordTypeInfos() để lấy danh sách chi tiết các Record Type khả dụng của user một cách động và chính xác nhất.
+> Chọn **A**. Để truy xuất metadata động của một đối tượng nhằm xác định các Record Type nào được phép hiển thị cho user hiện tại, lập trình viên sử dụng phương thức Describe của sObject: gọi `Schema.sObjectType.Case.getDescribe()` để lấy đối tượng **`DescribeSObjectResult`**, sau đó gọi tiếp `.getRecordTypeInfos()`..
 
 **❌ Tại sao đáp án sai:**
-> **B.** Sử dụng SOQL lấy toàn bộ Case chỉ trả về các bản ghi Case cụ thể, không trả về thông tin cấu hình Record Types khả dụng của Org.
-> **C.** DescribeFieldResult của trường RecordType chỉ trả về thông tin metadata mô tả của trường, không trả về danh sách các Record Type Info thực tế của đối tượng.
-> **D.** Không tồn tại phương thức getRecordTypes() trực tiếp trên đối tượng Case.
+> **B.** Sử dụng SOQL để truy vấn tất cả Case chỉ trả về danh sách các bản ghi dữ liệu Case vật lý hiện có trong database, hoàn toàn bất lực trong việc lấy thông tin cấu hình Record Types khả dụng.
+> **C.** DescribeFieldResult của trường `RecordType` chỉ trả về thông tin mô tả kỹ thuật của bản thân trường đó chứ không chứa danh sách các tùy chọn Record Type thực tế của đối tượng Case.
+> **D.** Không hề tồn tại phương thức nào tên là `getRecordTypes()` trực tiếp trên lớp đối tượng `Case` trong Apex.
 
-**💡 Từ khóa ghi nhớ:** `Truy xuất danh sách Record Types động khả dụng của user -> Luôn dùng Schema.DescribeSObjectResult (SObjectType.getDescribe()).`
+**💡 Từ khóa ghi nhớ:** `Truy xuất danh sách Record Types khả dụng của user -> Dùng **`DescribeSObjectResult`** (qua hàm `getDescribe().getRecordTypeInfos()`)!`
 
 ---
 
@@ -10075,12 +10204,15 @@ update contacts;
 > They aren’t transmitted as part of the view state for a Visualforce page.
 
 **✅ Tại sao đáp án đúng:**
-> A: Chỉ được khởi tạo duy nhất 1 lần khi class được nạp vào bộ nhớ (class loaded). C: Chỉ được phép định nghĩa và khai báo trong các lớp cha ngoài cùng (outer classes), cấm khai báo trong inner classes. E: Hoàn toàn được loại trừ (excluded) khỏi View State của trang Visualforce, giúp tối ưu hóa dung lượng truyền tải dữ liệu của trang.
+> Chọn **A**, **C** và **E**.
+- **A**: Các phương thức tĩnh chỉ được khởi tạo đúng **1 lần duy nhất** khi lớp (class) chứa nó được nạp vào bộ nhớ.
+- **C**: Salesforce chỉ cho phép khai báo phương thức/biến tĩnh bên trong các lớp cha ngoài cùng (**outer classes**), cấm tiệt khai báo static trong các inner classes.
+- **E**: Các phương thức tĩnh và biến tĩnh hoàn toàn được **loại trừ (excluded) khỏi View State** của trang Visualforce. Đây là một mẹo cực hay giúp lập trình viên tối ưu hóa dung lượng truyền tải dữ liệu của trang Visualforce, tránh lỗi đụng trần View State 135KB.
 
 **❌ Tại sao đáp án sai:**
-> **B.** Biến tĩnh static trong Apex chỉ tồn tại trong phạm vi của 1 single Apex Transaction chứ không thể tồn tại vượt ra ngoài scope của transaction.
-> **D.** Ngược lại với câu C, static methods hoàn toàn bị cấm khai báo trong các inner classes.
+> **B.** Sai lầm nghiêm trọng! Biến tĩnh static trong Apex chỉ tồn tại trong phạm vi của một giao dịch đơn lẻ (**single Apex Transaction**), chứ không thể sống dai vượt ra ngoài phạm vi transaction để dùng chung cho các transaction khác được.
+> **D.** Ngược lại hoàn toàn với câu C, static methods bị cấm khai báo bên trong các inner classes.
 
-**💡 Từ khóa ghi nhớ:** `Đặc tính static Apex -> Khởi tạo khi load class + Chỉ có ở Outer class + Không bị truyền vào Visualforce View State!`
+**💡 Từ khóa ghi nhớ:** `Đặc tính static trong Apex -> **Chỉ khởi tạo khi load class** + **Chỉ có ở Outer class** + **Loại trừ khỏi Visualforce View State**!`
 
 ---
