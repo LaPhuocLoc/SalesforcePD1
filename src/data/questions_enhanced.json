@@ -1397,40 +1397,40 @@
   {
     "id": 36,
     "original_num": 36,
-    "question": "A developer must create a ShippingCalculator class that cannot be instantiated and must include a working default implementation of a calculate method, that sub-classes can override. What is the correct implementation of the ShippingCalculator class?\nA.\npublic abstract class ShippingCalculator{\npublic abstract calculate() { /*implementation*/}\n}\nB.\npublic abstract class ShippingCalculator{\npublic virtual void calculate() { /*implementation*/}\n}\nC.\npublic abstract class ShippingCalculator{\npublic void calculate() { /*implementation*/}\n}\nD.\npublic abstract class ShippingCalculator{\npublic override calculate() { /*implementation*/}\n}",
+    "question": "A developer must create a ShippingCalculator class that cannot be instantiated and must include a working default implementation of a calculate method, that sub-classes can override. What is the correct implementation of the ShippingCalculator class?",
     "options": [
       {
         "key": "A",
-        "text": "@TestSetup"
+        "text": "public abstract class ShippingCalculator {\n  public abstract calculate() {/* implementation */ }\n}"
       },
       {
         "key": "B",
-        "text": "@isTest (SeeAllData=true)"
+        "text": "public abstract class ShippingCalculator {\n  public void calculate() {/* implementation */ }\n}"
       },
       {
         "key": "C",
-        "text": "@isTest (SeeAllData=true)"
+        "text": "public abstract class ShippingCalculator {\n  public virtual void calculate() {/* implementation */ }\n}"
       },
       {
         "key": "D",
-        "text": "@PreTest"
+        "text": "public abstract class ShippingCalculator {\n  public override calculate() {/* implementation */ }\n}"
       }
     ],
     "correct": [
-      "A"
+      "C"
     ],
     "type": "single",
     "explanation_en": "To create a ShippingCalculator class that cannot be instantiated and includes a default implementation of a calculate method that sub-classes can override, you can use the abstract keyword for the class and the virtual keyword for the calculate method.",
     "resources": "",
     "explanation": {
       "vi_question": "Lập trình viên cần tạo class ShippingCalculator không được phép khởi tạo trực tiếp (cannot be instantiated) nhưng phải chứa một phương thức calculate có sẵn mã xử lý mặc định để các class con có thể ghi đè (override). Khai báo nào sau đây là đúng?",
-      "why_correct": "Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).",
+      "why_correct": "Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'public virtual void calculate() ...' (tương ứng với đáp án C).",
       "why_wrong": {
-        "B": "calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).",
-        "C": "calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.",
-        "D": "Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu."
+        "A": "Phương thức calculate() khai báo abstract thì không được phép định nghĩa body (phần thân hàm có chứa code mặc định) trong Apex.",
+        "B": "Thiếu từ khóa 'virtual' ở phương thức calculate() khiến lớp con không thể sử dụng từ khóa 'override' để ghi đè.",
+        "D": "Từ khóa 'override' chỉ dùng khi lớp con muốn ghi đè phương thức từ lớp cha, không thể dùng ở lớp cha để khai báo ban đầu."
       },
-      "tip": "Cấm new (instantiate) -> abstract class. Cho phép con ghi đè -> virtual method."
+      "tip": "Không cho new trực tiếp -> abstract class. Cho phép ghi đè + có code mặc định -> virtual method."
     }
   },
   {
@@ -1553,7 +1553,7 @@
   {
     "id": 40,
     "original_num": 40,
-    "question": "A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored in a custom class, ContactInfo. Which is the correct definition of the Apex method that gets the additional information?\nA.\n@InvocableMethod(label='Additional Info')\npublic ContactInfo getInfo(Id contactId) { /*implementation*/ }\nB.\n@InvocableMethod(label='Additional Info')\npublic List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }\nC.\n@InvocableMethod(label='Additional Info')\npublic static ContactInfo getInfo(Id contactId) { /*implementation*/ }\nD.\n@InvocableMethod(label='Additional Info')\npublic static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }",
+    "question": "A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored in a custom class, ContactInfo. Which is the correct definition of the Apex method that gets the additional information?",
     "options": [
       {
         "key": "A",
@@ -2801,40 +2801,40 @@
   {
     "id": 72,
     "original_num": 12,
-    "question": "A developer needs to implement a custom SOAP Web Service that is used by an external Web Application. The developer chooses to Include helper methods that are not used by the Web Application in the implementation of the Web Service Class. Which code segment shows the correct declaration of the class and methods?\nA.\nWebservice class WebserviceClass{\nprivate Boolean helperMethod(){ /*implementation ...*/}\nglobal static String updateRecords(){ /*implementation ...*/}\n}\nB.\nglobal class WebserviceClass{\nprivate Boolean helperMethod(){ /*implementation ...*/}\nwebservice static String updateRecords(){ /*implementation ...*/}\n}\nC.\nWebservice class WebserviceClass{\nprivate Boolean helperMethod(){ /*implementation ...*/}\nWebservice static String updateRecords(){ /*implementation ...*/}\n}\nD.\nglobal class WebserviceClass{\nprivate Boolean helperMethod(){ /*implementation ...*/}\nglobal String updateRecords(){ /*implementation ...*/}\n}",
+    "question": "A developer needs to implement a custom SOAP Web Service that is used by an external Web Application. The developer chooses to Include helper methods that are not used by the Web Application in the implementation of the Web Service Class. Which code segment shows the correct declaration of the class and methods?",
     "options": [
       {
         "key": "A",
-        "text": "Use lazy loading and a transient List variable."
+        "text": "webservice class WebServiceClass {\n  private Boolean helperMethod() { /*implementation ...*/ }\n  global static String updateRecords() { /*implementation ...*/ }\n}"
       },
       {
         "key": "B",
-        "text": "Implement pagination with an OffsetController."
+        "text": "global class WebServiceClass {\n  private Boolean helperMethod() { /*implementation ...*/ }\n  webservice static String updateRecords() { /*implementation ...*/ }\n}"
       },
       {
         "key": "C",
-        "text": "Implement pagination with a StandardSetController."
+        "text": "webservice class WebServiceClass {\n  private Boolean helperMethod() { /*implementation ...*/ }\n  webservice static String updateRecords() { /*implementation ...*/ }\n}"
       },
       {
         "key": "D",
-        "text": "Use JavaScript remoting with SOQL Offset."
+        "text": "global class WebServiceClass {\n  private Boolean helperMethod() { /*implementation ...*/ }\n  global String updateRecords() { /*implementation ...*/ }\n}"
       }
     ],
     "correct": [
-      "C"
+      "B"
     ],
     "type": "single",
     "explanation_en": "The class must be declared as global to be accessible by external applications.\nThe method that is exposed as a web service must be declared with the webservice keyword.",
     "resources": "Webservice Methods",
     "explanation": {
-      "vi_question": "Developer cần tạo một custom SOAP Web Service để ứng dụng web bên ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn? (Ủa khoan, nhìn xuống đống đáp án kìa... Ơ kìa Salesforce! Lại một pha 'râu ông nọ cắm cằm bà kia' đi vào lịch sử! Câu hỏi thì hỏi về SOAP Web Service, mà đáp án lại nói về phân trang Visualforce! Đúng là 'bug game' kinh điển. Thôi thì để thầy giải thích cả hai cho các em đắc đạo nhé!)",
-      "why_correct": "1. Nếu theo đề bài gốc (SOAP Web Service): Class chứa SOAP Web Service bắt buộc phải khai báo là global class. Phương thức API phơi ra cho bên ngoài gọi phải dùng từ khóa webservice static. Các phương thức helper nội bộ có thể để private hoặc public bình thường. \n2. Nếu theo đống đáp án thực tế: Đáp án đúng được chấm điểm là C (Implement pagination with a StandardSetController). Lớp StandardSetController trong Apex là công cụ chuẩn chỉnh nhất để xử lý hiển thị danh sách bản ghi và phân trang (pagination) trên trang Visualforce cực kỳ mượt mà.",
+      "vi_question": "Developer cần tạo một custom SOAP Web Service để ứng dụng web bên ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn?",
+      "why_correct": "Bất kỳ class nào chứa phương thức khai báo từ khóa 'webservice' đều BẮT BUỘC phải là global class (để bên ngoài có thể truy cập). Phương thức API phơi ra cho bên ngoài gọi qua SOAP bắt buộc phải dùng từ khóa 'webservice static'. Các phương thức helper nội bộ không muốn lộ ra ngoài thì cứ khai báo 'private' bình thường. Do đó khai báo B là chuẩn nhất.",
       "why_wrong": {
-        "A": "Dùng lazy loading và biến transient chỉ giúp tối ưu bộ nhớ View State của trang Visualforce chứ không giải quyết được tính năng phân trang chuẩn.",
-        "B": "OffsetController là cái tên tự chế, không tồn tại trong Salesforce SDK.",
-        "D": "Dùng JS Remoting kết hợp SOQL Offset cũng phân trang được nhưng viết code mệt mỏi, cồng kềnh, không phải cách khai báo đơn giản, sẵn có như StandardSetController."
+        "A": "Cú pháp 'webservice class' là sai bét, Apex không cho phép dùng từ khóa webservice cho phần định nghĩa class.",
+        "C": "Tương tự A, sai cú pháp khai báo class với 'webservice class'.",
+        "D": "Thiếu từ khóa 'webservice' và 'static' trên phương thức updateRecords(), làm cho hệ thống bên ngoài không thể nhận diện và gọi qua SOAP."
       },
-      "tip": "Đi thi gặp câu hỏi SOAP Web Service mà đáp án toàn phân trang -> Nhắm mắt chọn StandardSetController để giật điểm nhé! Phân trang VF = StandardSetController."
+      "tip": "Quy tắc vàng SOAP trong Apex: Class bắt buộc GLOBAL, Method bắt buộc WEBSERVICE STATIC."
     }
   },
   {
@@ -2879,7 +2879,7 @@
   {
     "id": 74,
     "original_num": 14,
-    "question": "A developer needs to prevent the creation of Request records when certain conditions exist in the system. A RequestLogic class exists that checks the conditions. What is the correct implementation?\nA.\ntrigger RequestTrigger on Request(before insert){\nif(RequestLogic.isValid(Request))\nRequest.addError('Your request cannot be created at this time.');\n}\nB.\ntrigger RequestTrigger on Request(after insert){\nif(RequestLogic.isValid(Request))\nRequest.addError('Your request cannot be created at this time.');\n}\nC.\ntrigger RequestTrigger on Request(after insert){\nRequestLogic.validateRecords(trigger.new)\n}\nD.\ntrigger RequestTrigger on Request(before insert){\nRequestLogic.validateRecords(trigger.new)\n}",
+    "question": "A developer needs to prevent the creation of Request records when certain conditions exist in the system. A RequestLogic class exists that checks the conditions. What is the correct implementation?",
     "options": [
       {
         "key": "A",
@@ -6458,39 +6458,38 @@
   {
     "id": 165,
     "original_num": 45,
-    "question": "A developer must create a CreditCardPayment class that provides an implementation of an existing Payment class.\npublic virtual class Payment{\npublic virtual void makePayment(Decimal amount){ /*implementation*/}\n}\nWhich is the correct implementation?\nA.\npublic class CreditCardPayment extends Payment{\npublic virtual void makePayment(Decimal amount){ /*implementation*/}\n}\nB.\npublic class CreditCardPayment extends Payment{\npublic override void makePayment(Decimal amount){ /*implementation*/}\n}\nC.\npublic class CreditCardPayment implements Payment{\npublic virtual void makePayment(Decimal amount){ /*implementation*/}\n}\nD.\npublic class CreditCardPayment implements Payment{\npublic override void makePayment(Decimal amount){ /*implementation*/}\n}",
+    "question": "A developer must create a CreditCardPayment class that provides an implementation of an existing Payment class.\npublic virtual class Payment{\npublic virtual void makePayment(Decimal amount){ /*implementation*/}\n}\nWhich is the correct implementation?",
     "options": [
       {
         "key": "A",
-        "text": "Messaging."
+        "text": "public class CreditCardPayment extends Payment {\n  public virtual void makePayment(Decimal amount) { /*implementation*/ }\n}"
       },
       {
         "key": "B",
-        "text": "Exception."
+        "text": "public class CreditCardPayment extends Payment {\n  public override void makePayment(Decimal amount) { /*implementation*/ }\n}"
       },
       {
         "key": "C",
-        "text": "Org Limits."
+        "text": "public class CreditCardPayment implements Payment {\n  public virtual void makePayment(Decimal amount) { /*implementation*/ }\n}"
       },
       {
         "key": "D",
-        "text": "Limits."
+        "text": "public class CreditCardPayment implements Payment {\n  public override void makePayment(Decimal amount) { /*implementation*/ }\n}"
       }
     ],
     "correct": [
-      "D"
+      "B"
     ],
     "type": "single",
     "explanation_en": "The CreditCardPayment class should extend the Payment class and override the makePayment method to provide its specific implementation.",
     "resources": "",
     "explanation": {
-      "vi_question": "Lập trình viên cần tạo class CreditCardPayment kế thừa từ một class ảo Payment có sẵn: [Payment Class]. Khai báo nào sau đây là chuẩn cú pháp kế thừa và ghi đè phương thức?",
+      "vi_question": "Developer cần tạo class CreditCardPayment kế thừa từ class Payment ảo có sẵn: [Payment Class]. Khai báo nào sau đây là đúng cú pháp?",
       "why_correct": "Vì lớp cha Payment là một class ảo thông thường được khai báo với từ khóa virtual, nên class con muốn kế thừa bắt buộc phải dùng từ khóa extends. Đồng thời, để ghi đè (chỉnh sửa lại logic) của phương thức ảo makePayment(), class con bắt buộc phải dùng từ khóa override (B).",
       "why_wrong": {
-        "A": "Dùng lại từ khóa virtual ở class con là sai bét cú pháp ghi đè phương thức (virtual chỉ dùng ở lớp cha khai báo hoặc để cho phép class con khác kế thừa tiếp).",
-        "C": "Từ khóa implements chỉ được dùng khi class con muốn hiện thực hóa một lớp Giao diện (Interface), dùng cho class thường là biên dịch báo lỗi ngay.",
-        "D": "Tương tự C, sử dụng sai từ khóa implements thay vì extends để kế thừa class.",
-        "B": "Lop Exception la lop biet tu xu ly loi, khong chua cac phuong thuc kiem tra governor limits runtime nhu getLimitXxx hay getXxx."
+        "A": "Sử dụng từ khóa virtual ở class con thay vì override khi muốn ghi đè phương thức lớp cha là sai cú pháp.",
+        "C": "Từ khóa implements chỉ dành cho interface, không dùng để kế thừa một virtual class thông thường. Ngoài ra cũng sai từ khóa ghi đè.",
+        "D": "Sử dụng sai từ khóa implements thay vị extends để kế thừa class."
       },
       "tip": "Kế thừa Class -> Dùng EXTENDS + OVERRIDE. Hiện thực hóa Interface -> Dùng IMPLEMENTS."
     }
@@ -6576,7 +6575,7 @@
   {
     "id": 168,
     "original_num": 48,
-    "question": "Which code in a Visualforce page and/or controller might present a security vulnerability?\nA . <apex:outputField value=\"{!ctrl.userInput}\" />\nB . <apex:outputText escape=\"false\" value=\" {!$CurrentPage.parameters.userInput}\" />\nC . <apex:outputText value=\"{!£CurrentPage.parameters.userInput}\" />\nD . <apex:outputField escape=\"false\" value=\"{!ctrl.userInput}\" />",
+    "question": "Which code in a Visualforce page and/or controller might present a security vulnerability?",
     "options": [
       {
         "key": "A",

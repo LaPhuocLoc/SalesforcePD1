@@ -995,28 +995,20 @@ which two SOQL Queries performed are safe from SOQL injection? (Choose two.)**
 
 ## Câu 36
 
-**🔵 A developer must create a ShippingCalculator class that cannot be instantiated and must include a working default implementation of a calculate method, that sub-classes can override. What is the correct implementation of the ShippingCalculator class?
-A.
-public abstract class ShippingCalculator{
-public abstract calculate() { /*implementation*/}
-}
-B.
-public abstract class ShippingCalculator{
-public virtual void calculate() { /*implementation*/}
-}
-C.
-public abstract class ShippingCalculator{
-public void calculate() { /*implementation*/}
-}
-D.
-public abstract class ShippingCalculator{
-public override calculate() { /*implementation*/}
-}**
+**🔵 A developer must create a ShippingCalculator class that cannot be instantiated and must include a working default implementation of a calculate method, that sub-classes can override. What is the correct implementation of the ShippingCalculator class?**
 
-- **A.** @TestSetup ✅
-- **B.** @isTest (SeeAllData=true) ❌
-- **C.** @isTest (SeeAllData=true) ❌
-- **D.** @PreTest ❌
+- **A.** public abstract class ShippingCalculator {
+  public abstract calculate() {/* implementation */ }
+} ❌
+- **B.** public abstract class ShippingCalculator {
+  public void calculate() {/* implementation */ }
+} ❌
+- **C.** public abstract class ShippingCalculator {
+  public virtual void calculate() {/* implementation */ }
+} ✅
+- **D.** public abstract class ShippingCalculator {
+  public override calculate() {/* implementation */ }
+} ❌
 
 **📝 Dịch tiếng Việt:**
 > Lập trình viên cần tạo class ShippingCalculator không được phép khởi tạo trực tiếp (cannot be instantiated) nhưng phải chứa một phương thức calculate có sẵn mã xử lý mặc định để các class con có thể ghi đè (override). Khai báo nào sau đây là đúng?
@@ -1025,14 +1017,14 @@ public override calculate() { /*implementation*/}
 > To create a ShippingCalculator class that cannot be instantiated and includes a default implementation of a calculate method that sub-classes can override, you can use the abstract keyword for the class and the virtual keyword for the calculate method.
 
 **✅ Tại sao đáp án đúng:**
-> Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).
+> Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'public virtual void calculate() ...' (tương ứng với đáp án C).
 
 **❌ Tại sao đáp án sai:**
-> **B.** calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).
-> **C.** calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.
-> **D.** Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu.
+> **A.** Phương thức calculate() khai báo abstract thì không được phép định nghĩa body (phần thân hàm có chứa code mặc định) trong Apex.
+> **B.** Thiếu từ khóa 'virtual' ở phương thức calculate() khiến lớp con không thể sử dụng từ khóa 'override' để ghi đè.
+> **D.** Từ khóa 'override' chỉ dùng khi lớp con muốn ghi đè phương thức từ lớp cha, không thể dùng ở lớp cha để khai báo ban đầu.
 
-**💡 Từ khóa ghi nhớ:** `Cấm new (instantiate) -> abstract class. Cho phép con ghi đè -> virtual method.`
+**💡 Từ khóa ghi nhớ:** `Không cho new trực tiếp -> abstract class. Cho phép ghi đè + có code mặc định -> virtual method.`
 
 ---
 
@@ -1130,19 +1122,7 @@ What should a developer consider for an environment that has over 10,000 Case re
 
 ## Câu 40
 
-**🔵 A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored in a custom class, ContactInfo. Which is the correct definition of the Apex method that gets the additional information?
-A.
-@InvocableMethod(label='Additional Info')
-public ContactInfo getInfo(Id contactId) { /*implementation*/ }
-B.
-@InvocableMethod(label='Additional Info')
-public List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }
-C.
-@InvocableMethod(label='Additional Info')
-public static ContactInfo getInfo(Id contactId) { /*implementation*/ }
-D.
-@InvocableMethod(label='Additional Info')
-public static List<ContactInfo> getInfo(List<Contact> contactIds) { /*implementation*/ }**
+**🔵 A Visual Flow uses an Apex Action to provide additional information about multiple Contacts, stored in a custom class, ContactInfo. Which is the correct definition of the Apex method that gets the additional information?**
 
 - **A.** @InvocableMethod(label='Additional Info')
 public ContactInfo getInfo(Id contactId) { /*implementation*/ } ❌
@@ -2078,50 +2058,41 @@ insert a;
 
 ## Câu 72
 
-**🔵 A developer needs to implement a custom SOAP Web Service that is used by an external Web Application. The developer chooses to Include helper methods that are not used by the Web Application in the implementation of the Web Service Class. Which code segment shows the correct declaration of the class and methods?
-A.
-Webservice class WebserviceClass{
-private Boolean helperMethod(){ /*implementation ...*/}
-global static String updateRecords(){ /*implementation ...*/}
-}
-B.
-global class WebserviceClass{
-private Boolean helperMethod(){ /*implementation ...*/}
-webservice static String updateRecords(){ /*implementation ...*/}
-}
-C.
-Webservice class WebserviceClass{
-private Boolean helperMethod(){ /*implementation ...*/}
-Webservice static String updateRecords(){ /*implementation ...*/}
-}
-D.
-global class WebserviceClass{
-private Boolean helperMethod(){ /*implementation ...*/}
-global String updateRecords(){ /*implementation ...*/}
-}**
+**🔵 A developer needs to implement a custom SOAP Web Service that is used by an external Web Application. The developer chooses to Include helper methods that are not used by the Web Application in the implementation of the Web Service Class. Which code segment shows the correct declaration of the class and methods?**
 
-- **A.** Use lazy loading and a transient List variable. ❌
-- **B.** Implement pagination with an OffsetController. ❌
-- **C.** Implement pagination with a StandardSetController. ✅
-- **D.** Use JavaScript remoting with SOQL Offset. ❌
+- **A.** webservice class WebServiceClass {
+  private Boolean helperMethod() { /*implementation ...*/ }
+  global static String updateRecords() { /*implementation ...*/ }
+} ❌
+- **B.** global class WebServiceClass {
+  private Boolean helperMethod() { /*implementation ...*/ }
+  webservice static String updateRecords() { /*implementation ...*/ }
+} ✅
+- **C.** webservice class WebServiceClass {
+  private Boolean helperMethod() { /*implementation ...*/ }
+  webservice static String updateRecords() { /*implementation ...*/ }
+} ❌
+- **D.** global class WebServiceClass {
+  private Boolean helperMethod() { /*implementation ...*/ }
+  global String updateRecords() { /*implementation ...*/ }
+} ❌
 
 **📝 Dịch tiếng Việt:**
-> Developer cần tạo một custom SOAP Web Service để ứng dụng web bên ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn? (Ủa khoan, nhìn xuống đống đáp án kìa... Ơ kìa Salesforce! Lại một pha 'râu ông nọ cắm cằm bà kia' đi vào lịch sử! Câu hỏi thì hỏi về SOAP Web Service, mà đáp án lại nói về phân trang Visualforce! Đúng là 'bug game' kinh điển. Thôi thì để thầy giải thích cả hai cho các em đắc đạo nhé!)
+> Developer cần tạo một custom SOAP Web Service để ứng dụng web bên ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn?
 
 **💬 Giải thích gốc (English):**
 > The class must be declared as global to be accessible by external applications.
 > The method that is exposed as a web service must be declared with the webservice keyword.
 
 **✅ Tại sao đáp án đúng:**
-> 1. Nếu theo đề bài gốc (SOAP Web Service): Class chứa SOAP Web Service bắt buộc phải khai báo là global class. Phương thức API phơi ra cho bên ngoài gọi phải dùng từ khóa webservice static. Các phương thức helper nội bộ có thể để private hoặc public bình thường. 
-2. Nếu theo đống đáp án thực tế: Đáp án đúng được chấm điểm là C (Implement pagination with a StandardSetController). Lớp StandardSetController trong Apex là công cụ chuẩn chỉnh nhất để xử lý hiển thị danh sách bản ghi và phân trang (pagination) trên trang Visualforce cực kỳ mượt mà.
+> Bất kỳ class nào chứa phương thức khai báo từ khóa 'webservice' đều BẮT BUỘC phải là global class (để bên ngoài có thể truy cập). Phương thức API phơi ra cho bên ngoài gọi qua SOAP bắt buộc phải dùng từ khóa 'webservice static'. Các phương thức helper nội bộ không muốn lộ ra ngoài thì cứ khai báo 'private' bình thường. Do đó khai báo B là chuẩn nhất.
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng lazy loading và biến transient chỉ giúp tối ưu bộ nhớ View State của trang Visualforce chứ không giải quyết được tính năng phân trang chuẩn.
-> **B.** OffsetController là cái tên tự chế, không tồn tại trong Salesforce SDK.
-> **D.** Dùng JS Remoting kết hợp SOQL Offset cũng phân trang được nhưng viết code mệt mỏi, cồng kềnh, không phải cách khai báo đơn giản, sẵn có như StandardSetController.
+> **A.** Cú pháp 'webservice class' là sai bét, Apex không cho phép dùng từ khóa webservice cho phần định nghĩa class.
+> **C.** Tương tự A, sai cú pháp khai báo class với 'webservice class'.
+> **D.** Thiếu từ khóa 'webservice' và 'static' trên phương thức updateRecords(), làm cho hệ thống bên ngoài không thể nhận diện và gọi qua SOAP.
 
-**💡 Từ khóa ghi nhớ:** `Đi thi gặp câu hỏi SOAP Web Service mà đáp án toàn phân trang -> Nhắm mắt chọn StandardSetController để giật điểm nhé! Phân trang VF = StandardSetController.`
+**💡 Từ khóa ghi nhớ:** `Quy tắc vàng SOAP trong Apex: Class bắt buộc GLOBAL, Method bắt buộc WEBSERVICE STATIC.`
 
 ---
 
@@ -2160,25 +2131,7 @@ global String updateRecords(){ /*implementation ...*/}
 
 ## Câu 74
 
-**🔵 A developer needs to prevent the creation of Request records when certain conditions exist in the system. A RequestLogic class exists that checks the conditions. What is the correct implementation?
-A.
-trigger RequestTrigger on Request(before insert){
-if(RequestLogic.isValid(Request))
-Request.addError('Your request cannot be created at this time.');
-}
-B.
-trigger RequestTrigger on Request(after insert){
-if(RequestLogic.isValid(Request))
-Request.addError('Your request cannot be created at this time.');
-}
-C.
-trigger RequestTrigger on Request(after insert){
-RequestLogic.validateRecords(trigger.new)
-}
-D.
-trigger RequestTrigger on Request(before insert){
-RequestLogic.validateRecords(trigger.new)
-}**
+**🔵 A developer needs to prevent the creation of Request records when certain conditions exist in the system. A RequestLogic class exists that checks the conditions. What is the correct implementation?**
 
 - **A.** trigger RequestTrigger on Request(before insert){
 if(RequestLogic.isValid(Request))
@@ -4868,31 +4821,23 @@ How should the developer modify the code to ensure exceptions are handled gracef
 public virtual class Payment{
 public virtual void makePayment(Decimal amount){ /*implementation*/}
 }
-Which is the correct implementation?
-A.
-public class CreditCardPayment extends Payment{
-public virtual void makePayment(Decimal amount){ /*implementation*/}
-}
-B.
-public class CreditCardPayment extends Payment{
-public override void makePayment(Decimal amount){ /*implementation*/}
-}
-C.
-public class CreditCardPayment implements Payment{
-public virtual void makePayment(Decimal amount){ /*implementation*/}
-}
-D.
-public class CreditCardPayment implements Payment{
-public override void makePayment(Decimal amount){ /*implementation*/}
-}**
+Which is the correct implementation?**
 
-- **A.** Messaging. ❌
-- **B.** Exception. ❌
-- **C.** Org Limits. ❌
-- **D.** Limits. ✅
+- **A.** public class CreditCardPayment extends Payment {
+  public virtual void makePayment(Decimal amount) { /*implementation*/ }
+} ❌
+- **B.** public class CreditCardPayment extends Payment {
+  public override void makePayment(Decimal amount) { /*implementation*/ }
+} ✅
+- **C.** public class CreditCardPayment implements Payment {
+  public virtual void makePayment(Decimal amount) { /*implementation*/ }
+} ❌
+- **D.** public class CreditCardPayment implements Payment {
+  public override void makePayment(Decimal amount) { /*implementation*/ }
+} ❌
 
 **📝 Dịch tiếng Việt:**
-> Lập trình viên cần tạo class CreditCardPayment kế thừa từ một class ảo Payment có sẵn: [Payment Class]. Khai báo nào sau đây là chuẩn cú pháp kế thừa và ghi đè phương thức?
+> Developer cần tạo class CreditCardPayment kế thừa từ class Payment ảo có sẵn: [Payment Class]. Khai báo nào sau đây là đúng cú pháp?
 
 **💬 Giải thích gốc (English):**
 > The CreditCardPayment class should extend the Payment class and override the makePayment method to provide its specific implementation.
@@ -4901,10 +4846,9 @@ public override void makePayment(Decimal amount){ /*implementation*/}
 > Vì lớp cha Payment là một class ảo thông thường được khai báo với từ khóa virtual, nên class con muốn kế thừa bắt buộc phải dùng từ khóa extends. Đồng thời, để ghi đè (chỉnh sửa lại logic) của phương thức ảo makePayment(), class con bắt buộc phải dùng từ khóa override (B).
 
 **❌ Tại sao đáp án sai:**
-> **A.** Dùng lại từ khóa virtual ở class con là sai bét cú pháp ghi đè phương thức (virtual chỉ dùng ở lớp cha khai báo hoặc để cho phép class con khác kế thừa tiếp).
-> **C.** Từ khóa implements chỉ được dùng khi class con muốn hiện thực hóa một lớp Giao diện (Interface), dùng cho class thường là biên dịch báo lỗi ngay.
-> **D.** Tương tự C, sử dụng sai từ khóa implements thay vì extends để kế thừa class.
-> **B.** Lop Exception la lop biet tu xu ly loi, khong chua cac phuong thuc kiem tra governor limits runtime nhu getLimitXxx hay getXxx.
+> **A.** Sử dụng từ khóa virtual ở class con thay vì override khi muốn ghi đè phương thức lớp cha là sai cú pháp.
+> **C.** Từ khóa implements chỉ dành cho interface, không dùng để kế thừa một virtual class thông thường. Ngoài ra cũng sai từ khóa ghi đè.
+> **D.** Sử dụng sai từ khóa implements thay vị extends để kế thừa class.
 
 **💡 Từ khóa ghi nhớ:** `Kế thừa Class -> Dùng EXTENDS + OVERRIDE. Hiện thực hóa Interface -> Dùng IMPLEMENTS.`
 
@@ -4966,11 +4910,7 @@ public override void makePayment(Decimal amount){ /*implementation*/}
 
 ## Câu 168
 
-**🔵 Which code in a Visualforce page and/or controller might present a security vulnerability?
-A . <apex:outputField value="{!ctrl.userInput}" />
-B . <apex:outputText escape="false" value=" {!$CurrentPage.parameters.userInput}" />
-C . <apex:outputText value="{!£CurrentPage.parameters.userInput}" />
-D . <apex:outputField escape="false" value="{!ctrl.userInput}" />**
+**🔵 Which code in a Visualforce page and/or controller might present a security vulnerability?**
 
 - **A.** <apex:outputField value="{!ctrl.userInput}" /> ❌
 - **B.** <apex:outputText escape="false" value=" {!$CurrentPage.parameters.userInput}" /> ✅

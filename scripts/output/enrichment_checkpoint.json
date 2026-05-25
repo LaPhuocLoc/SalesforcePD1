@@ -1606,13 +1606,13 @@
   "36": {
     "id": 36,
     "vi_question": "Lập trình viên cần tạo class ShippingCalculator không được phép khởi tạo trực tiếp (cannot be instantiated) nhưng phải chứa một phương thức calculate có sẵn mã xử lý mặc định để các class con có thể ghi đè (override). Khai báo nào sau đây là đúng?",
-    "why_correct": "Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'virtual void calculate()' (B).",
+    "why_correct": "Để class không được khởi tạo trực tiếp, ta dùng từ khóa 'abstract class'. Để phương thức có code mặc định và cho phép class con ghi đè, ta dùng từ khóa 'public virtual void calculate() ...' (tương ứng với đáp án C).",
     "why_wrong": {
-      "A": "calculate() khai báo abstract thì cấm viết body code mặc định (bắt buộc class con tự viết).",
-      "C": "calculate() thiếu từ khóa 'virtual' thì các class con không thể override ghi đè được.",
-      "D": "Từ khóa 'override' chỉ dùng ở class con để ghi đè, không dùng ở class cha để khai báo ban đầu."
+      "A": "Phương thức calculate() khai báo abstract thì không được phép định nghĩa body (phần thân hàm có chứa code mặc định) trong Apex.",
+      "B": "Thiếu từ khóa 'virtual' ở phương thức calculate() khiến lớp con không thể sử dụng từ khóa 'override' để ghi đè.",
+      "D": "Từ khóa 'override' chỉ dùng khi lớp con muốn ghi đè phương thức từ lớp cha, không thể dùng ở lớp cha để khai báo ban đầu."
     },
-    "tip": "Cấm new (instantiate) -> abstract class. Cho phép con ghi đè -> virtual method."
+    "tip": "Không cho new trực tiếp -> abstract class. Cho phép ghi đè + có code mặc định -> virtual method."
   },
   "40": {
     "id": 40,
@@ -1809,14 +1809,14 @@
   },
   "72": {
     "id": 72,
-    "vi_question": "Lập trình viên cần tạo một SOAP Web Service tùy chỉnh để ứng dụng ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn?",
-    "why_correct": "Class chứa SOAP Web Service bắt buộc phải khai báo là 'global'. Phương thức phơi ra cho bên ngoài gọi phải dùng annotation 'webservice static'. Các phương thức helper nội bộ có thể để 'private' bình thường (B).",
+    "vi_question": "Developer cần tạo một custom SOAP Web Service để ứng dụng web bên ngoài gọi vào. Lập trình viên muốn viết thêm các phương thức helper nội bộ không dùng cho bên ngoài. Khai báo class và method nào sau đây là đúng chuẩn?",
+    "why_correct": "Bất kỳ class nào chứa phương thức khai báo từ khóa 'webservice' đều BẮT BUỘC phải là global class (để bên ngoài có thể truy cập). Phương thức API phơi ra cho bên ngoài gọi qua SOAP bắt buộc phải dùng từ khóa 'webservice static'. Các phương thức helper nội bộ không muốn lộ ra ngoài thì cứ khai báo 'private' bình thường. Do đó khai báo B là chuẩn nhất.",
     "why_wrong": {
-      "A": "Cú pháp 'Webservice class' ở đầu định nghĩa class là sai hoàn toàn, class phải khai báo bằng 'global class'.",
-      "C": "Sai cú pháp khai báo class giống câu A.",
-      "D": "Phương thức phơi ra làm API SOAP thiếu từ khóa 'webservice' và thiếu 'static'."
+      "A": "Cú pháp 'webservice class' là sai bét, Apex không cho phép dùng từ khóa webservice cho phần định nghĩa class.",
+      "C": "Tương tự A, sai cú pháp khai báo class với 'webservice class'.",
+      "D": "Thiếu từ khóa 'webservice' và 'static' trên phương thức updateRecords(), làm cho hệ thống bên ngoài không thể nhận diện và gọi qua SOAP."
     },
-    "tip": "SOAP Web Service: Class phải GLOBAL, Method phải WEBSERVICE STATIC."
+    "tip": "Quy tắc vàng SOAP trong Apex: Class bắt buộc GLOBAL, Method bắt buộc WEBSERVICE STATIC."
   },
   "74": {
     "id": 74,
@@ -2422,11 +2422,11 @@
   "165": {
     "id": 165,
     "vi_question": "Developer cần tạo class CreditCardPayment kế thừa từ class Payment ảo có sẵn: [Payment Class]. Khai báo nào sau đây là đúng cú pháp?",
-    "why_correct": "Vì lớp cha Payment là một class thông thường được gắn từ khóa 'virtual class' chứ không phải Interface, nên class con bắt buộc phải dùng từ khóa 'extends' để kế thừa. Để ghi đè phương thức makePayment(), class con phải dùng từ khóa 'override' (B).",
+    "why_correct": "Vì lớp cha Payment là một class ảo thông thường được khai báo với từ khóa virtual, nên class con muốn kế thừa bắt buộc phải dùng từ khóa extends. Đồng thời, để ghi đè (chỉnh sửa lại logic) của phương thức ảo makePayment(), class con bắt buộc phải dùng từ khóa override (B).",
     "why_wrong": {
-      "A": "Dùng lại từ khóa 'virtual' ở class con là sai cú pháp ghi đè phương thức.",
-      "C": "Dùng từ khóa 'implements' chỉ dành cho việc hiện thực hóa các lớp Interface, dùng cho class thường sẽ báo lỗi biên dịch.",
-      "D": "Tương tự C, sử dụng sai từ khóa implements."
+      "A": "Sử dụng từ khóa virtual ở class con thay vì override khi muốn ghi đè phương thức lớp cha là sai cú pháp.",
+      "C": "Từ khóa implements chỉ dành cho interface, không dùng để kế thừa một virtual class thông thường. Ngoài ra cũng sai từ khóa ghi đè.",
+      "D": "Sử dụng sai từ khóa implements thay vị extends để kế thừa class."
     },
     "tip": "Kế thừa Class -> Dùng EXTENDS + OVERRIDE. Hiện thực hóa Interface -> Dùng IMPLEMENTS."
   },
