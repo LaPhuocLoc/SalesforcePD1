@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useMemo, Suspense } from "react";
+import React, { useState, useEffect, useMemo, useRef, Suspense } from "react";
 import QuestionCard from "@/components/QuestionCard";
 import questionsDataRaw from "@/data/questions.json";
 import questionsDataEnhanced from "@/data/questions_enhanced.json";
@@ -30,6 +30,51 @@ interface Question {
   explanation: Explanation;
 }
 
+interface StudyProgress {
+  currentIndex: number;
+  answered: Record<number, boolean>;
+  updatedAt: string;
+}
+
+interface ProgressData {
+  study?: Record<string, StudyProgress>;
+}
+
+const progressSyncTimeoutMs = 3000;
+
+const getStorageKeySuffix = (sourceParam: string | null, setParam: string | null) =>
+  (sourceParam === "enhanced" ? "-enhanced" : "") + (setParam === "0" ? "-set0" : "");
+
+const getProgressScope = (sourceParam: string | null, setParam: string | null) => {
+  const source = sourceParam === "enhanced" ? "enhanced" : "default";
+  const set = setParam === "0" ? "set0" : "all";
+  return `${source}-${set}`;
+};
+
+const getProgressHeaders = () => {
+  const headers: Record<string, string> = {
+    "Content-Type": "application/json",
+  };
+  const key = process.env.NEXT_PUBLIC_PROGRESS_KEY;
+  if (key) headers["x-progress-key"] = key;
+  return headers;
+};
+
+const parseAnswered = (value: string | null): Record<number, boolean> => {
+  if (!value) return {};
+  try {
+    return JSON.parse(value) as Record<number, boolean>;
+  } catch {
+    return {};
+  }
+};
+
+const isRemoteNewer = (remoteUpdatedAt?: string, localUpdatedAt?: string | null) => {
+  if (!remoteUpdatedAt) return false;
+  if (!localUpdatedAt) return true;
+  return new Date(remoteUpdatedAt).getTime() > new Date(localUpdatedAt).getTime();
+};
+
 function StudyPageContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, boolean>>({});
@@ -37,6 +82,10 @@ function StudyPageContent() {
   const searchParams = useSearchParams();
   const setParam = searchParams.get("set");
   const sourceParam = searchParams.get("source");
+  const progressStoreRef = useRef<ProgressData>({ study: {} });
+  const readyToSyncRef = useRef(false);
+  const storageKeySuffix = useMemo(() => getStorageKeySuffix(sourceParam, setParam), [sourceParam, setParam]);
+  const progressScope = useMemo(() => getProgressScope(sourceParam, setParam), [sourceParam, setParam]);
 
   const questionsData = useMemo<Question[]>(() => {
     const dataSrc = (sourceParam === "enhanced" ? questionsDataEnhanced : questionsDataRaw) as unknown as Question[];
@@ -47,38 +96,94 @@ function StudyPageContent() {
   }, [setParam, sourceParam]);
 
   useEffect(() => {
-    const storageKeySuffix = (sourceParam === "enhanced" ? "-enhanced" : "") + (setParam === "0" ? "-set0" : "");
-    const savedIndex = localStorage.getItem(`pd1-study-index${storageKeySuffix}`);
-    if (savedIndex) {
-      setCurrentIndex(parseInt(savedIndex, 10));
-    }
-    const savedAnswered = localStorage.getItem(`pd1-answered${storageKeySuffix}`);
-    if (savedAnswered) {
+    let cancelled = false;
+    readyToSyncRef.current = false;
+
+    const loadProgress = async () => {
+      const savedIndex = localStorage.getItem(`pd1-study-index${storageKeySuffix}`);
+      const savedAnswered = localStorage.getItem(`pd1-answered${storageKeySuffix}`);
+      const localUpdatedAt = localStorage.getItem(`pd1-study-updated${storageKeySuffix}`);
+
+      let nextIndex = savedIndex ? parseInt(savedIndex, 10) : 0;
+      let nextAnswered = parseAnswered(savedAnswered);
+
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), progressSyncTimeoutMs);
+
       try {
-        setAnsweredQuestions(JSON.parse(savedAnswered) as Record<number, boolean>);
+        const response = await fetch("/api/progress", {
+          cache: "no-store",
+          headers: getProgressHeaders(),
+          signal: controller.signal,
+        });
+        if (response.ok) {
+          const data = (await response.json()) as { progress?: ProgressData };
+          const progress = data.progress || { study: {} };
+          progressStoreRef.current = progress;
+
+          const remoteProgress = progress.study?.[progressScope];
+          if (remoteProgress && isRemoteNewer(remoteProgress.updatedAt, localUpdatedAt)) {
+            nextIndex = remoteProgress.currentIndex;
+            nextAnswered = remoteProgress.answered || {};
+          }
+        }
       } catch {
-        // Safe fallback
+        // localStorage remains the offline fallback.
+      } finally {
+        window.clearTimeout(timeout);
       }
-    }
-    
-    // Set mounted asynchronously to bypass linter checks on synchronous cascading renders
-    const timer = setTimeout(() => {
+
+      if (cancelled) return;
+
+      const maxIndex = Math.max(questionsData.length - 1, 0);
+      const clampedIndex = Math.min(Math.max(Number.isFinite(nextIndex) ? nextIndex : 0, 0), maxIndex);
+      setCurrentIndex(clampedIndex);
+      setAnsweredQuestions(nextAnswered);
+      readyToSyncRef.current = true;
       setMounted(true);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, [setParam, sourceParam]);
+    };
+
+    void loadProgress();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [progressScope, questionsData.length, storageKeySuffix]);
 
   useEffect(() => {
-    if (!mounted) return;
-    const storageKeySuffix = (sourceParam === "enhanced" ? "-enhanced" : "") + (setParam === "0" ? "-set0" : "");
+    if (!mounted || !readyToSyncRef.current) return;
+
+    const updatedAt = new Date().toISOString();
+    const studyProgress: StudyProgress = {
+      currentIndex,
+      answered: answeredQuestions,
+      updatedAt,
+    };
+
     localStorage.setItem(`pd1-study-index${storageKeySuffix}`, currentIndex.toString());
-  }, [currentIndex, mounted, setParam, sourceParam]);
-
-  useEffect(() => {
-    if (!mounted) return;
-    const storageKeySuffix = (sourceParam === "enhanced" ? "-enhanced" : "") + (setParam === "0" ? "-set0" : "");
     localStorage.setItem(`pd1-answered${storageKeySuffix}`, JSON.stringify(answeredQuestions));
-  }, [answeredQuestions, mounted, setParam, sourceParam]);
+    localStorage.setItem(`pd1-study-updated${storageKeySuffix}`, updatedAt);
+
+    progressStoreRef.current = {
+      ...progressStoreRef.current,
+      study: {
+        ...progressStoreRef.current.study,
+        [progressScope]: studyProgress,
+      },
+    };
+
+    const timer = window.setTimeout(() => {
+      void fetch("/api/progress", {
+        method: "POST",
+        headers: getProgressHeaders(),
+        body: JSON.stringify({ progress: progressStoreRef.current }),
+      }).catch(() => {
+        // GitHub sync is best effort; localStorage has already been updated.
+      });
+    }, 1000);
+
+    return () => window.clearTimeout(timer);
+  }, [answeredQuestions, currentIndex, mounted, progressScope, storageKeySuffix]);
 
   const handleNext = () => {
     if (currentIndex < questionsData.length - 1) {
