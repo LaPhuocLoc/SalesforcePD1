@@ -32,7 +32,7 @@ interface QuestionCardProps {
   onPrevious: () => void;
   isFirst: boolean;
   isLast: boolean;
-  onAnswered?: () => void;
+  onAnswered?: (isCorrect: boolean) => void;
 }
 
 export default function QuestionCard({
@@ -61,7 +61,10 @@ export default function QuestionCard({
   const handleSubmit = () => {
     if (selectedKeys.length === 0) return;
     setShowResult(true);
-    if (onAnswered) onAnswered();
+    const isAnswerCorrect =
+      selectedKeys.length === question.correct.length &&
+      selectedKeys.every((key) => question.correct.includes(key));
+    if (onAnswered) onAnswered(isAnswerCorrect);
   };
 
   const handleReset = () => {

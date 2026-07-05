@@ -5,7 +5,7 @@ type ProgressData = {
     string,
     {
       currentIndex: number;
-      answered: Record<string, boolean>;
+      answered: Record<string, "correct" | "incorrect" | boolean>;
       updatedAt: string;
     }
   >;

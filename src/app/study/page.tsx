@@ -30,9 +30,12 @@ interface Question {
   explanation: Explanation;
 }
 
+type QuestionResult = "correct" | "incorrect";
+type StoredQuestionResult = QuestionResult | boolean;
+
 interface StudyProgress {
   currentIndex: number;
-  answered: Record<number, boolean>;
+  answered: Record<number, StoredQuestionResult>;
   updatedAt: string;
 }
 
@@ -60,10 +63,10 @@ const getProgressHeaders = () => {
   return headers;
 };
 
-const parseAnswered = (value: string | null): Record<number, boolean> => {
+const parseAnswered = (value: string | null): Record<number, StoredQuestionResult> => {
   if (!value) return {};
   try {
-    return JSON.parse(value) as Record<number, boolean>;
+    return JSON.parse(value) as Record<number, StoredQuestionResult>;
   } catch {
     return {};
   }
@@ -77,7 +80,7 @@ const isRemoteNewer = (remoteUpdatedAt?: string, localUpdatedAt?: string | null)
 
 function StudyPageContent() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, boolean>>({});
+  const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, StoredQuestionResult>>({});
   const [mounted, setMounted] = useState(false);
   const searchParams = useSearchParams();
   const setParam = searchParams.get("set");
@@ -199,8 +202,11 @@ function StudyPageContent() {
     }
   };
 
-  const handleAnswered = () => {
-    setAnsweredQuestions(prev => ({ ...prev, [questionsData[currentIndex].id]: true }));
+  const handleAnswered = (isCorrect: boolean) => {
+    setAnsweredQuestions(prev => ({
+      ...prev,
+      [questionsData[currentIndex].id]: isCorrect ? "correct" : "incorrect",
+    }));
   };
 
   if (!mounted) {
@@ -245,7 +251,9 @@ function StudyPageContent() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(40px, 1fr))', gap: '8px' }}>
           {questionsData.map((q, idx) => {
             const isCurrent = idx === currentIndex;
-            const isAnswered = answeredQuestions[q.id];
+            const questionResult = answeredQuestions[q.id];
+            const isAnswered = Boolean(questionResult);
+            const isIncorrect = questionResult === "incorrect";
             
             const btnStyle: React.CSSProperties = {
               padding: '0.5rem 0',
@@ -259,7 +267,11 @@ function StudyPageContent() {
                 : isAnswered 
                   ? '1px solid transparent' 
                   : '1px solid var(--color-border)',
-              backgroundColor: isAnswered ? 'var(--color-brand-cyan)' : 'var(--color-bg-surface)',
+              backgroundColor: isIncorrect
+                ? 'var(--color-error)'
+                : isAnswered
+                  ? 'var(--color-brand-cyan)'
+                  : 'var(--color-bg-surface)',
               color: isAnswered ? '#ffffff' : (isCurrent ? 'var(--color-brand-cyan)' : 'var(--color-text-secondary)'),
               transition: 'all 0.2s',
               display: 'flex',
